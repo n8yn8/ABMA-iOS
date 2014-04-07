@@ -21,6 +21,7 @@
 		4338BBC218F26F53002683EF /* UIKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 4338BBA418F26F53002683EF /* UIKit.framework */; };
 		4338BBCA18F26F53002683EF /* InfoPlist.strings in Resources */ = {isa = PBXBuildFile; fileRef = 4338BBC818F26F53002683EF /* InfoPlist.strings */; };
 		4338BBCC18F26F53002683EF /* ABMATests.m in Sources */ = {isa = PBXBuildFile; fileRef = 4338BBCB18F26F53002683EF /* ABMATests.m */; };
+		43F070C218F308C50077F11E /* SWRevealViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 43F070C118F308C50077F11E /* SWRevealViewController.m */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -53,6 +54,8 @@
 		4338BBC718F26F53002683EF /* ABMATests-Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = "ABMATests-Info.plist"; sourceTree = "<group>"; };
 		4338BBC918F26F53002683EF /* en */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = en; path = en.lproj/InfoPlist.strings; sourceTree = "<group>"; };
 		4338BBCB18F26F53002683EF /* ABMATests.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = ABMATests.m; sourceTree = "<group>"; };
+		43F070C018F308C50077F11E /* SWRevealViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = SWRevealViewController.h; path = "../../SWRevealViewController-master/SWRevealViewController/SWRevealViewController.h"; sourceTree = "<group>"; };
+		43F070C118F308C50077F11E /* SWRevealViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = SWRevealViewController.m; path = "../../SWRevealViewController-master/SWRevealViewController/SWRevealViewController.m"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -126,6 +129,8 @@
 		4338BBA718F26F53002683EF /* Supporting Files */ = {
 			isa = PBXGroup;
 			children = (
+				43F070C018F308C50077F11E /* SWRevealViewController.h */,
+				43F070C118F308C50077F11E /* SWRevealViewController.m */,
 				4338BBA818F26F53002683EF /* ABMA-Info.plist */,
 				4338BBA918F26F53002683EF /* InfoPlist.strings */,
 				4338BBAC18F26F53002683EF /* main.m */,
@@ -252,6 +257,7 @@
 				4338BBB718F26F53002683EF /* ViewController.m in Sources */,
 				4338BBB118F26F53002683EF /* AppDelegate.m in Sources */,
 				4338BBAD18F26F53002683EF /* main.m in Sources */,
+				43F070C218F308C50077F11E /* SWRevealViewController.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -456,6 +462,7 @@
 				4338BBD118F26F53002683EF /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
 		};
 		4338BBD218F26F53002683EF /* Build configuration list for PBXNativeTarget "ABMATests" */ = {
 			isa = XCConfigurationList;
@@ -464,6 +471,7 @@
 				4338BBD418F26F53002683EF /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
 		};
 /* End XCConfigurationList section */
 	};
