@@ -44,7 +44,7 @@
     [self.view addGestureRecognizer:self.revealViewController.panGestureRecognizer];
     
     //Sponsor image array
-    sponsorImages = [[NSArray alloc] initWithObjects:@"DallasZoo.png", @"Children's-Aquarium-at-Fair-Park.png", @"Blue-buffalo.png", @"MAF_Vert_144.png", @"SeaWorld.png", @"AAZK-Dallas.png", @"gcaazk.png", @"NEI-logo.png", @"MyTrainingStore.png", @"FRLOGO.png", @"DWA-logo.png", @"FWZ.png", @"CMZ-aazklogo.png", nil];
+    sponsorImages = [[NSArray alloc] initWithObjects:@"AAZK-Dallas.png", @"AAZK-Galv.png", @"AAZKChey.png", @"ABI.png", @"AP.png", @"Blue.png", @"ChildrensAquarium.png", @"Cliff.png", @"DallasZoo.png", @"DWA.png", @"FRWC.png", @"FWZoo.png", @"MAF.png", @"NatBal.png", @"NEI.png", @"SeaWorld.png", nil];
 }
 
 - (void)didReceiveMemoryWarning

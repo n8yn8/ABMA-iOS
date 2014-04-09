@@ -21,6 +21,9 @@
 		4338BBC218F26F53002683EF /* UIKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 4338BBA418F26F53002683EF /* UIKit.framework */; };
 		4338BBCA18F26F53002683EF /* InfoPlist.strings in Resources */ = {isa = PBXBuildFile; fileRef = 4338BBC818F26F53002683EF /* InfoPlist.strings */; };
 		4338BBCC18F26F53002683EF /* ABMATests.m in Sources */ = {isa = PBXBuildFile; fileRef = 4338BBCB18F26F53002683EF /* ABMATests.m */; };
+		43CF9B1818F5A4B300885DAC /* libTestFlight.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 43CF9B1618F5A48300885DAC /* libTestFlight.a */; };
+		43CF9B1A18F5A4E600885DAC /* libz.dylib in Frameworks */ = {isa = PBXBuildFile; fileRef = 43CF9B1918F5A4E600885DAC /* libz.dylib */; };
+		43CF9B1D18F5B23500885DAC /* ContactViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 43CF9B1C18F5B23500885DAC /* ContactViewController.m */; };
 		43F070C218F308C50077F11E /* SWRevealViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 43F070C118F308C50077F11E /* SWRevealViewController.m */; };
 		43F070C518F3561A0077F11E /* SideBarTableViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 43F070C418F3561A0077F11E /* SideBarTableViewController.m */; };
 		43F070C818F3631E0077F11E /* ScheduleViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 43F070C718F3631E0077F11E /* ScheduleViewController.m */; };
@@ -60,6 +63,13 @@
 		4338BBC718F26F53002683EF /* ABMATests-Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = "ABMATests-Info.plist"; sourceTree = "<group>"; };
 		4338BBC918F26F53002683EF /* en */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = en; path = en.lproj/InfoPlist.strings; sourceTree = "<group>"; };
 		4338BBCB18F26F53002683EF /* ABMATests.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = ABMATests.m; sourceTree = "<group>"; };
+		43CF9B1318F5A42900885DAC /* TestFlight.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = TestFlight.h; path = ../TestFlight.h; sourceTree = "<group>"; };
+		43CF9B1418F5A42900885DAC /* TestFlight+AsyncLogging.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = "TestFlight+AsyncLogging.h"; path = "../TestFlight+AsyncLogging.h"; sourceTree = "<group>"; };
+		43CF9B1518F5A42900885DAC /* TestFlight+ManualSessions.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = "TestFlight+ManualSessions.h"; path = "../TestFlight+ManualSessions.h"; sourceTree = "<group>"; };
+		43CF9B1618F5A48300885DAC /* libTestFlight.a */ = {isa = PBXFileReference; lastKnownFileType = archive.ar; name = libTestFlight.a; path = ../libTestFlight.a; sourceTree = "<group>"; };
+		43CF9B1918F5A4E600885DAC /* libz.dylib */ = {isa = PBXFileReference; lastKnownFileType = "compiled.mach-o.dylib"; name = libz.dylib; path = usr/lib/libz.dylib; sourceTree = SDKROOT; };
+		43CF9B1B18F5B23500885DAC /* ContactViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ContactViewController.h; sourceTree = "<group>"; };
+		43CF9B1C18F5B23500885DAC /* ContactViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ContactViewController.m; sourceTree = "<group>"; };
 		43F070C018F308C50077F11E /* SWRevealViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = SWRevealViewController.h; path = "../../SWRevealViewController-master/SWRevealViewController/SWRevealViewController.h"; sourceTree = "<group>"; };
 		43F070C118F308C50077F11E /* SWRevealViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = SWRevealViewController.m; path = "../../SWRevealViewController-master/SWRevealViewController/SWRevealViewController.m"; sourceTree = "<group>"; };
 		43F070C318F3561A0077F11E /* SideBarTableViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SideBarTableViewController.h; sourceTree = "<group>"; };
@@ -80,9 +90,11 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				43CF9B1A18F5A4E600885DAC /* libz.dylib in Frameworks */,
 				4338BBA318F26F53002683EF /* CoreGraphics.framework in Frameworks */,
 				4338BBA518F26F53002683EF /* UIKit.framework in Frameworks */,
 				4338BBA118F26F53002683EF /* Foundation.framework in Frameworks */,
+				43CF9B1818F5A4B300885DAC /* libTestFlight.a in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -121,6 +133,7 @@
 		4338BB9F18F26F52002683EF /* Frameworks */ = {
 			isa = PBXGroup;
 			children = (
+				43CF9B1918F5A4E600885DAC /* libz.dylib */,
 				4338BBA018F26F53002683EF /* Foundation.framework */,
 				4338BBA218F26F53002683EF /* CoreGraphics.framework */,
 				4338BBA418F26F53002683EF /* UIKit.framework */,
@@ -150,6 +163,8 @@
 				43F995E018F45843004DC565 /* FavoritesViewController.h */,
 				43F995E118F45843004DC565 /* FavoritesViewController.m */,
 				43F995E318F46102004DC565 /* EventList.plist */,
+				43CF9B1B18F5B23500885DAC /* ContactViewController.h */,
+				43CF9B1C18F5B23500885DAC /* ContactViewController.m */,
 			);
 			path = ABMA;
 			sourceTree = "<group>";
@@ -157,6 +172,10 @@
 		4338BBA718F26F53002683EF /* Supporting Files */ = {
 			isa = PBXGroup;
 			children = (
+				43CF9B1618F5A48300885DAC /* libTestFlight.a */,
+				43CF9B1318F5A42900885DAC /* TestFlight.h */,
+				43CF9B1418F5A42900885DAC /* TestFlight+AsyncLogging.h */,
+				43CF9B1518F5A42900885DAC /* TestFlight+ManualSessions.h */,
 				43F070C018F308C50077F11E /* SWRevealViewController.h */,
 				43F070C118F308C50077F11E /* SWRevealViewController.m */,
 				4338BBA818F26F53002683EF /* ABMA-Info.plist */,
@@ -291,6 +310,7 @@
 				43F070D118F3B4B60077F11E /* SchedDetailViewController.m in Sources */,
 				4338BBB118F26F53002683EF /* AppDelegate.m in Sources */,
 				4338BBAD18F26F53002683EF /* main.m in Sources */,
+				43CF9B1D18F5B23500885DAC /* ContactViewController.m in Sources */,
 				43F995E218F45843004DC565 /* FavoritesViewController.m in Sources */,
 				43F070C218F308C50077F11E /* SWRevealViewController.m in Sources */,
 				43F070C518F3561A0077F11E /* SideBarTableViewController.m in Sources */,
@@ -419,11 +439,16 @@
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				ASSETCATALOG_COMPILER_LAUNCHIMAGE_NAME = LaunchImage;
-				CODE_SIGN_IDENTITY = "iPhone Developer";
+				CODE_SIGN_IDENTITY = "iPhone Developer: Nathan Condell (752656QTHP)";
 				GCC_PRECOMPILE_PREFIX_HEADER = YES;
 				GCC_PREFIX_HEADER = "ABMA/ABMA-Prefix.pch";
 				INFOPLIST_FILE = "ABMA/ABMA-Info.plist";
+				LIBRARY_SEARCH_PATHS = (
+					"$(inherited)",
+					"$(PROJECT_DIR)",
+				);
 				PRODUCT_NAME = "$(TARGET_NAME)";
+				PROVISIONING_PROFILE = "7062387B-0E0B-4444-97E0-4528A9948008";
 				WRAPPER_EXTENSION = app;
 			};
 			name = Debug;
@@ -433,11 +458,16 @@
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				ASSETCATALOG_COMPILER_LAUNCHIMAGE_NAME = LaunchImage;
-				CODE_SIGN_IDENTITY = "iPhone Developer";
+				CODE_SIGN_IDENTITY = "iPhone Distribution: Nathan Condell (Z3X6HD4H5L)";
 				GCC_PRECOMPILE_PREFIX_HEADER = YES;
 				GCC_PREFIX_HEADER = "ABMA/ABMA-Prefix.pch";
 				INFOPLIST_FILE = "ABMA/ABMA-Info.plist";
+				LIBRARY_SEARCH_PATHS = (
+					"$(inherited)",
+					"$(PROJECT_DIR)",
+				);
 				PRODUCT_NAME = "$(TARGET_NAME)";
+				PROVISIONING_PROFILE = "57BF62D1-74C4-45FB-B4D1-F9306BCD9872";
 				WRAPPER_EXTENSION = app;
 			};
 			name = Release;
