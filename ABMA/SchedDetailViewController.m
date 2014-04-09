@@ -24,9 +24,33 @@
     return self;
 }
 
+#pragma mark - Managing the detail item
+
+- (void)setDetailItem:(NSDictionary *)newDetailItem onDay:(NSString *)newDayOfWeek onDate:(NSString *)newDateOfWeek
+{
+    if (_detailItem != newDetailItem) {
+        _detailItem = newDetailItem;
+    }
+    if (_detailDay != newDayOfWeek) {
+        _detailDay = newDayOfWeek;
+    }
+    if (_detailDate != newDateOfWeek) {
+        _detailDate = newDateOfWeek;
+    }
+}
+
+
 - (void)viewDidLoad
 {
     [super viewDidLoad];
+    
+    self.eventDay.text = self.detailDay;
+    self.eventDate.text = self.detailDate;
+    self.eventTitle.text = [self.detailItem objectForKey:@"Title"];
+    self.eventSubtitle.text = [self.detailItem objectForKey:@"Subtitle"];
+    self.eventLocation.text = [self.detailItem objectForKey:@"Location"];
+    self.eventTime.text = [self.detailItem objectForKey:@"Time"];
+    self.eventDetails.text = [self.detailItem objectForKey:@"Description"];
     
     [self.navigationController.navigationBar setBackgroundImage:[UIImage imageNamed:@"bar.png"] forBarMetrics:UIBarMetricsDefault];
     self.navigationItem.titleView = [[UIImageView alloc] initWithImage:[UIImage imageNamed:@"ABMAlogo.png"]];
@@ -37,7 +61,7 @@
     //_imageView.layer.borderColor = [UIColor concreteColor].CGColor;
     _imageView.layer.masksToBounds = NO;
     _imageView.clipsToBounds = YES;
-    _imageView.layer.cornerRadius = 50;
+    _imageView.layer.cornerRadius = 35;
 }
 
 - (void)didReceiveMemoryWarning

@@ -14,6 +14,9 @@
 @end
 
 @implementation SponsorCollectionViewController
+{
+    NSArray *sponsorImages;
+}
 
 - (id)initWithNibName:(NSString *)nibNameOrNil bundle:(NSBundle *)nibBundleOrNil
 {
@@ -39,12 +42,35 @@
     
     // Set the gesture
     [self.view addGestureRecognizer:self.revealViewController.panGestureRecognizer];
+    
+    //Sponsor image array
+    sponsorImages = [[NSArray alloc] initWithObjects:@"DallasZoo.png", @"Children's-Aquarium-at-Fair-Park.png", @"Blue-buffalo.png", @"MAF_Vert_144.png", @"SeaWorld.png", @"AAZK-Dallas.png", @"gcaazk.png", @"NEI-logo.png", @"MyTrainingStore.png", @"FRLOGO.png", @"DWA-logo.png", @"FWZ.png", @"CMZ-aazklogo.png", nil];
 }
 
 - (void)didReceiveMemoryWarning
 {
     [super didReceiveMemoryWarning];
     // Dispose of any resources that can be recreated.
+}
+
+#pragma mark - CollectionView methods
+
+- (NSInteger)collectionView:(UICollectionView *)collectionView numberOfItemsInSection:(NSInteger)section
+{
+    return [sponsorImages count];
+}
+
+- (UICollectionViewCell *)collectionView:(UICollectionView *)collectionView cellForItemAtIndexPath:(NSIndexPath *)indexPath{
+    //referencing the attributes of our cell
+    static NSString *identifier = @"Sponsor";
+    //start our virtual loop through the cell
+    UICollectionViewCell *cell = [collectionView dequeueReusableCellWithReuseIdentifier:identifier forIndexPath:indexPath];
+    //instantiate the imageview in each cell
+    UIImageView *imageView = (UIImageView *)[cell viewWithTag:200];
+    
+    imageView.image = [UIImage imageNamed:[sponsorImages objectAtIndex:indexPath.row]];
+    
+    return cell;
 }
 
 /*

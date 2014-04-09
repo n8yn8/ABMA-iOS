@@ -27,6 +27,7 @@
 		43F070D118F3B4B60077F11E /* SchedDetailViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 43F070D018F3B4B60077F11E /* SchedDetailViewController.m */; };
 		43F070D418F3B6A20077F11E /* SponsorCollectionViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 43F070D318F3B6A20077F11E /* SponsorCollectionViewController.m */; };
 		43F995E218F45843004DC565 /* FavoritesViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 43F995E118F45843004DC565 /* FavoritesViewController.m */; };
+		43F995E418F46102004DC565 /* EventList.plist in Resources */ = {isa = PBXBuildFile; fileRef = 43F995E318F46102004DC565 /* EventList.plist */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -71,6 +72,7 @@
 		43F070D318F3B6A20077F11E /* SponsorCollectionViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SponsorCollectionViewController.m; sourceTree = "<group>"; };
 		43F995E018F45843004DC565 /* FavoritesViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = FavoritesViewController.h; sourceTree = "<group>"; };
 		43F995E118F45843004DC565 /* FavoritesViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = FavoritesViewController.m; sourceTree = "<group>"; };
+		43F995E318F46102004DC565 /* EventList.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = EventList.plist; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -147,6 +149,7 @@
 				43F070D318F3B6A20077F11E /* SponsorCollectionViewController.m */,
 				43F995E018F45843004DC565 /* FavoritesViewController.h */,
 				43F995E118F45843004DC565 /* FavoritesViewController.m */,
+				43F995E318F46102004DC565 /* EventList.plist */,
 			);
 			path = ABMA;
 			sourceTree = "<group>";
@@ -229,6 +232,9 @@
 				LastUpgradeCheck = 0510;
 				ORGANIZATIONNAME = "Nathan Condell";
 				TargetAttributes = {
+					4338BB9C18F26F52002683EF = {
+						DevelopmentTeam = Z3X6HD4H5L;
+					};
 					4338BBBD18F26F53002683EF = {
 						TestTargetID = 4338BB9C18F26F52002683EF;
 					};
@@ -261,6 +267,7 @@
 				4338BBB918F26F53002683EF /* Images.xcassets in Resources */,
 				4338BBAB18F26F53002683EF /* InfoPlist.strings in Resources */,
 				4338BBB418F26F53002683EF /* Main.storyboard in Resources */,
+				43F995E418F46102004DC565 /* EventList.plist in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -412,6 +419,7 @@
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				ASSETCATALOG_COMPILER_LAUNCHIMAGE_NAME = LaunchImage;
+				CODE_SIGN_IDENTITY = "iPhone Developer";
 				GCC_PRECOMPILE_PREFIX_HEADER = YES;
 				GCC_PREFIX_HEADER = "ABMA/ABMA-Prefix.pch";
 				INFOPLIST_FILE = "ABMA/ABMA-Info.plist";
@@ -425,6 +433,7 @@
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				ASSETCATALOG_COMPILER_LAUNCHIMAGE_NAME = LaunchImage;
+				CODE_SIGN_IDENTITY = "iPhone Developer";
 				GCC_PRECOMPILE_PREFIX_HEADER = YES;
 				GCC_PREFIX_HEADER = "ABMA/ABMA-Prefix.pch";
 				INFOPLIST_FILE = "ABMA/ABMA-Info.plist";

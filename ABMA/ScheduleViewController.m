@@ -8,16 +8,22 @@
 
 #import "ScheduleViewController.h"
 #import "SWRevealViewController.h"
+#import "SchedDetailViewController.h"
 
 @interface ScheduleViewController ()
-@property (strong, nonatomic) NSDateFormatter *format;
+
 @end
 
 @implementation ScheduleViewController
 {
+    NSDictionary *dailySched;
     NSArray *events;
-    NSArray *times;
-    NSDate *selectedDate;
+    NSArray *dates;
+    NSArray *daysOfWeek;
+    NSArray *numbsOfWeek;
+    NSInteger dateIndex;
+    NSDateFormatter *format;
+    //NSDate *selectedDate;
 }
 
 - (id)initWithNibName:(NSString *)nibNameOrNil bundle:(NSBundle *)nibBundleOrNil
@@ -32,28 +38,51 @@
 - (void)viewDidLoad
 {
     [super viewDidLoad];
+    [self loadGraphics];
+    [self loadGestures];
+    [self loadData];
     
-    _format = [[NSDateFormatter alloc] init];
-    [_format setDateStyle:NSDateFormatterMediumStyle];
-    [_format setTimeStyle:NSDateFormatterNoStyle];
-    selectedDate = [NSDate date];
-    
-    _dateLabe.text = [_format stringFromDate:selectedDate];
-    
-    events = [NSArray arrayWithObjects:@"Conference Registration", @"Leave for San Francisco Zoo", @"Keynote Speaker", nil];
-    times = [NSArray arrayWithObjects:@"8:50AM - 9:40AM", @"9:40AM - 10:15AM", @"10:15AM - 4:00PM", nil];
-    
-    [self.navigationController.navigationBar setBackgroundImage:[UIImage imageNamed:@"bar.png"] forBarMetrics:UIBarMetricsDefault];
-    self.navigationItem.titleView = [[UIImageView alloc] initWithImage:[UIImage imageNamed:@"ABMAlogo.png"]];
-    UIColor *bg= [[UIColor alloc] initWithPatternImage:[UIImage imageNamed:@"BG.png"]];
-    self.view.backgroundColor = bg;
-    
+    format = [[NSDateFormatter alloc] init];
+    [format setDateStyle:NSDateFormatterMediumStyle];
+    [format setTimeStyle:NSDateFormatterNoStyle];
+    //selectedDate = [NSDate date];
+}
+
+-(void)loadData
+{
+    dates = [[NSArray alloc] initWithObjects:@"Apr 12, 2014", @"Apr 13, 2014", @"Apr 14, 2014", @"Apr 15, 2014", @"Apr 16, 2014", @"Apr 17, 2014", @"Apr 18, 2014", @"Apr 19, 2014", nil];
+    daysOfWeek = [[NSArray alloc] initWithObjects:@"SATURDAY", @"SUNDAY", @"MONDAY", @"TUESDAY", @"WEDNESDAY", @"THURSDAY", @"FRIDAY", @"SATURDAY", nil];
+    numbsOfWeek = [[NSArray alloc] initWithObjects:@"12", @"13", @"14", @"15", @"16", @"17", @"18", @"19", nil];
+    NSString *plistCatPath = [[NSBundle mainBundle] pathForResource:@"EventList" ofType:@"plist"];
+    dailySched = [[NSDictionary alloc] initWithContentsOfFile:plistCatPath];
+    dateIndex = 0;
+    [self loadThisDate:dateIndex];
+}
+
+- (void)loadThisDate:(NSUInteger)index
+{
+    NSString *date = [dates objectAtIndex:index];
+    _dateLabe.text = date;
+    events = [[NSArray alloc] initWithArray:[dailySched objectForKey:date]];
+    [_tableView reloadData];
+}
+
+- (void)loadGestures
+{
     // Set the side bar button action. When it's tapped, it'll show up the sidebar.
     _sidebarButton.target = self.revealViewController;
     _sidebarButton.action = @selector(revealToggle:);
     
     // Set the gesture
     [self.view addGestureRecognizer:self.revealViewController.panGestureRecognizer];
+}
+
+- (void)loadGraphics
+{
+    [self.navigationController.navigationBar setBackgroundImage:[UIImage imageNamed:@"bar.png"] forBarMetrics:UIBarMetricsDefault];
+    self.navigationItem.titleView = [[UIImageView alloc] initWithImage:[UIImage imageNamed:@"ABMAlogo.png"]];
+    UIColor *bg= [[UIColor alloc] initWithPatternImage:[UIImage imageNamed:@"BG.png"]];
+    self.view.backgroundColor = bg;
 }
 
 - (void)didReceiveMemoryWarning
@@ -87,37 +116,42 @@
         cell = [[UITableViewCell alloc] initWithStyle:UITableViewCellStyleDefault reuseIdentifier:simpleTableIdentifier];
     }
     
-    eventName.text = [events objectAtIndex:indexPath.row];
-    eventTime.text = [times objectAtIndex:indexPath.row];
+    NSDictionary *thisEvent = [[NSDictionary alloc] initWithDictionary:[events objectAtIndex:indexPath.row]];
+    
+    eventName.text = [thisEvent objectForKey:@"Title"];
+    eventTime.text = [thisEvent objectForKey:@"Time"];
     return cell;
 }
 
-/*
+
 #pragma mark - Navigation
 
 // In a storyboard-based application, you will often want to do a little preparation before navigation
 - (void)prepareForSegue:(UIStoryboardSegue *)segue sender:(id)sender
 {
-    // Get the new view controller using [segue destinationViewController].
-    // Pass the selected object to the new view controller.
+    if ([[segue identifier] isEqualToString:@"showDetail"]) {
+        NSIndexPath *indexPath = [self.tableView indexPathForSelectedRow];
+        NSDictionary *object = events[indexPath.row];
+        [[segue destinationViewController] setDetailItem:object onDay:[daysOfWeek objectAtIndex:dateIndex] onDate:[numbsOfWeek objectAtIndex:dateIndex]];
+    }
 }
-*/
+
 
 - (IBAction)earlierDate:(id)sender {
-    NSDateComponents *dayComponent = [[NSDateComponents alloc] init];
-    dayComponent.day = -1;
-    
-    NSCalendar *theCalendar = [NSCalendar currentCalendar];
-    selectedDate = [theCalendar dateByAddingComponents:dayComponent toDate:selectedDate options:0];
-    _dateLabe.text = [_format stringFromDate:selectedDate];
+    if (dateIndex == 0) {
+        dateIndex = 7;
+    } else {
+        dateIndex = dateIndex - 1;
+    }
+    [self loadThisDate:dateIndex];
 }
 
 - (IBAction)laterDate:(id)sender {
-    NSDateComponents *dayComponent = [[NSDateComponents alloc] init];
-    dayComponent.day = 1;
-    
-    NSCalendar *theCalendar = [NSCalendar currentCalendar];
-    selectedDate = [theCalendar dateByAddingComponents:dayComponent toDate:selectedDate options:0];
-    _dateLabe.text = [_format stringFromDate:selectedDate];
+    if (dateIndex == 7) {
+        dateIndex = 0;
+    } else {
+        dateIndex = dateIndex + 1;
+    }
+    [self loadThisDate:dateIndex];
 }
 @end
