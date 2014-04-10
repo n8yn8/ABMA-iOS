@@ -65,6 +65,7 @@
     _dateLabe.text = date;
     events = [[NSArray alloc] initWithArray:[dailySched objectForKey:date]];
     [_tableView reloadData];
+    [_tableView scrollRectToVisible:CGRectMake(0, 0, 1, 1) animated:YES];
 }
 
 - (void)loadGestures

@@ -8,6 +8,7 @@
 
 #import "ContactViewController.h"
 #import "SWRevealViewController.h"
+#import "TestFlight.h"
 
 @interface ContactViewController ()
 
@@ -65,5 +66,24 @@
     // Pass the selected object to the new view controller.
 }
 */
+
+- (IBAction)clear:(id)sender {
+    _textView.text = @"";
+}
+
+- (IBAction)send:(id)sender {
+    NSString *feedback = _textView.text;
+    [TestFlight submitFeedback:feedback];
+    _textView.text = @"";
+}
+
+- (void)touchesBegan:(NSSet *)touches withEvent:(UIEvent *)event {
+    
+    UITouch *touch = [[event allTouches] anyObject];
+    if ([_textView isFirstResponder] && [touch view] != _textView) {
+        [_textView resignFirstResponder];
+    }
+    [super touchesBegan:touches withEvent:event];
+}
 
 @end
