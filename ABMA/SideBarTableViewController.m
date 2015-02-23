@@ -8,7 +8,6 @@
 
 #import "SideBarTableViewController.h"
 #import "SWRevealViewController.h"
-#import "ViewController.h"
 
 @interface SideBarTableViewController ()
 @property (nonatomic, strong) NSArray *menuItems;
@@ -29,7 +28,7 @@
 {
     [super viewDidLoad];
     
-    _menuItems = @[@"logo", @"search", @"schedule", @"favorite", @"sponsor", @"contact"];
+    _menuItems = @[@"logo", @"schedule", @"sponsor", @"contact"];
     
     // Uncomment the following line to preserve selection between presentations.
     // self.clearsSelectionOnViewWillAppear = NO;

@@ -7,6 +7,7 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		4305618B1A9AF95000ED4BB0 /* SWRevealViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 4305618A1A9AF95000ED4BB0 /* SWRevealViewController.m */; };
 		4338BBA118F26F53002683EF /* Foundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 4338BBA018F26F53002683EF /* Foundation.framework */; };
 		4338BBA318F26F53002683EF /* CoreGraphics.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 4338BBA218F26F53002683EF /* CoreGraphics.framework */; };
 		4338BBA518F26F53002683EF /* UIKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 4338BBA418F26F53002683EF /* UIKit.framework */; };
@@ -14,7 +15,6 @@
 		4338BBAD18F26F53002683EF /* main.m in Sources */ = {isa = PBXBuildFile; fileRef = 4338BBAC18F26F53002683EF /* main.m */; };
 		4338BBB118F26F53002683EF /* AppDelegate.m in Sources */ = {isa = PBXBuildFile; fileRef = 4338BBB018F26F53002683EF /* AppDelegate.m */; };
 		4338BBB418F26F53002683EF /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 4338BBB218F26F53002683EF /* Main.storyboard */; };
-		4338BBB718F26F53002683EF /* ViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 4338BBB618F26F53002683EF /* ViewController.m */; };
 		4338BBB918F26F53002683EF /* Images.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 4338BBB818F26F53002683EF /* Images.xcassets */; };
 		4338BBC018F26F53002683EF /* XCTest.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 4338BBBF18F26F53002683EF /* XCTest.framework */; };
 		4338BBC118F26F53002683EF /* Foundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 4338BBA018F26F53002683EF /* Foundation.framework */; };
@@ -24,12 +24,10 @@
 		43CF9B1818F5A4B300885DAC /* libTestFlight.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 43CF9B1618F5A48300885DAC /* libTestFlight.a */; };
 		43CF9B1A18F5A4E600885DAC /* libz.dylib in Frameworks */ = {isa = PBXBuildFile; fileRef = 43CF9B1918F5A4E600885DAC /* libz.dylib */; };
 		43CF9B1D18F5B23500885DAC /* ContactViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 43CF9B1C18F5B23500885DAC /* ContactViewController.m */; };
-		43F070C218F308C50077F11E /* SWRevealViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 43F070C118F308C50077F11E /* SWRevealViewController.m */; };
 		43F070C518F3561A0077F11E /* SideBarTableViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 43F070C418F3561A0077F11E /* SideBarTableViewController.m */; };
 		43F070C818F3631E0077F11E /* ScheduleViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 43F070C718F3631E0077F11E /* ScheduleViewController.m */; };
 		43F070D118F3B4B60077F11E /* SchedDetailViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 43F070D018F3B4B60077F11E /* SchedDetailViewController.m */; };
 		43F070D418F3B6A20077F11E /* SponsorCollectionViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 43F070D318F3B6A20077F11E /* SponsorCollectionViewController.m */; };
-		43F995E218F45843004DC565 /* FavoritesViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 43F995E118F45843004DC565 /* FavoritesViewController.m */; };
 		43F995E418F46102004DC565 /* EventList.plist in Resources */ = {isa = PBXBuildFile; fileRef = 43F995E318F46102004DC565 /* EventList.plist */; };
 /* End PBXBuildFile section */
 
@@ -44,6 +42,8 @@
 /* End PBXContainerItemProxy section */
 
 /* Begin PBXFileReference section */
+		430561891A9AF95000ED4BB0 /* SWRevealViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SWRevealViewController.h; sourceTree = "<group>"; };
+		4305618A1A9AF95000ED4BB0 /* SWRevealViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SWRevealViewController.m; sourceTree = "<group>"; };
 		4338BB9D18F26F52002683EF /* ABMA.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = ABMA.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		4338BBA018F26F53002683EF /* Foundation.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Foundation.framework; path = System/Library/Frameworks/Foundation.framework; sourceTree = SDKROOT; };
 		4338BBA218F26F53002683EF /* CoreGraphics.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CoreGraphics.framework; path = System/Library/Frameworks/CoreGraphics.framework; sourceTree = SDKROOT; };
@@ -55,8 +55,6 @@
 		4338BBAF18F26F53002683EF /* AppDelegate.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = AppDelegate.h; sourceTree = "<group>"; };
 		4338BBB018F26F53002683EF /* AppDelegate.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = AppDelegate.m; sourceTree = "<group>"; };
 		4338BBB318F26F53002683EF /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Main.storyboard; sourceTree = "<group>"; };
-		4338BBB518F26F53002683EF /* ViewController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = ViewController.h; sourceTree = "<group>"; };
-		4338BBB618F26F53002683EF /* ViewController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = ViewController.m; sourceTree = "<group>"; };
 		4338BBB818F26F53002683EF /* Images.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Images.xcassets; sourceTree = "<group>"; };
 		4338BBBE18F26F53002683EF /* ABMATests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = ABMATests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
 		4338BBBF18F26F53002683EF /* XCTest.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = XCTest.framework; path = Library/Frameworks/XCTest.framework; sourceTree = DEVELOPER_DIR; };
@@ -70,8 +68,6 @@
 		43CF9B1918F5A4E600885DAC /* libz.dylib */ = {isa = PBXFileReference; lastKnownFileType = "compiled.mach-o.dylib"; name = libz.dylib; path = usr/lib/libz.dylib; sourceTree = SDKROOT; };
 		43CF9B1B18F5B23500885DAC /* ContactViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ContactViewController.h; sourceTree = "<group>"; };
 		43CF9B1C18F5B23500885DAC /* ContactViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ContactViewController.m; sourceTree = "<group>"; };
-		43F070C018F308C50077F11E /* SWRevealViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = SWRevealViewController.h; path = "../../SWRevealViewController-master/SWRevealViewController/SWRevealViewController.h"; sourceTree = "<group>"; };
-		43F070C118F308C50077F11E /* SWRevealViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = SWRevealViewController.m; path = "../../SWRevealViewController-master/SWRevealViewController/SWRevealViewController.m"; sourceTree = "<group>"; };
 		43F070C318F3561A0077F11E /* SideBarTableViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SideBarTableViewController.h; sourceTree = "<group>"; };
 		43F070C418F3561A0077F11E /* SideBarTableViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SideBarTableViewController.m; sourceTree = "<group>"; };
 		43F070C618F3631E0077F11E /* ScheduleViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ScheduleViewController.h; sourceTree = "<group>"; };
@@ -80,8 +76,6 @@
 		43F070D018F3B4B60077F11E /* SchedDetailViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SchedDetailViewController.m; sourceTree = "<group>"; };
 		43F070D218F3B6A20077F11E /* SponsorCollectionViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SponsorCollectionViewController.h; sourceTree = "<group>"; };
 		43F070D318F3B6A20077F11E /* SponsorCollectionViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SponsorCollectionViewController.m; sourceTree = "<group>"; };
-		43F995E018F45843004DC565 /* FavoritesViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = FavoritesViewController.h; sourceTree = "<group>"; };
-		43F995E118F45843004DC565 /* FavoritesViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = FavoritesViewController.m; sourceTree = "<group>"; };
 		43F995E318F46102004DC565 /* EventList.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = EventList.plist; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
@@ -148,8 +142,6 @@
 				4338BBAF18F26F53002683EF /* AppDelegate.h */,
 				4338BBB018F26F53002683EF /* AppDelegate.m */,
 				4338BBB218F26F53002683EF /* Main.storyboard */,
-				4338BBB518F26F53002683EF /* ViewController.h */,
-				4338BBB618F26F53002683EF /* ViewController.m */,
 				4338BBB818F26F53002683EF /* Images.xcassets */,
 				4338BBA718F26F53002683EF /* Supporting Files */,
 				43F070C318F3561A0077F11E /* SideBarTableViewController.h */,
@@ -160,8 +152,6 @@
 				43F070D018F3B4B60077F11E /* SchedDetailViewController.m */,
 				43F070D218F3B6A20077F11E /* SponsorCollectionViewController.h */,
 				43F070D318F3B6A20077F11E /* SponsorCollectionViewController.m */,
-				43F995E018F45843004DC565 /* FavoritesViewController.h */,
-				43F995E118F45843004DC565 /* FavoritesViewController.m */,
 				43F995E318F46102004DC565 /* EventList.plist */,
 				43CF9B1B18F5B23500885DAC /* ContactViewController.h */,
 				43CF9B1C18F5B23500885DAC /* ContactViewController.m */,
@@ -176,8 +166,8 @@
 				43CF9B1318F5A42900885DAC /* TestFlight.h */,
 				43CF9B1418F5A42900885DAC /* TestFlight+AsyncLogging.h */,
 				43CF9B1518F5A42900885DAC /* TestFlight+ManualSessions.h */,
-				43F070C018F308C50077F11E /* SWRevealViewController.h */,
-				43F070C118F308C50077F11E /* SWRevealViewController.m */,
+				430561891A9AF95000ED4BB0 /* SWRevealViewController.h */,
+				4305618A1A9AF95000ED4BB0 /* SWRevealViewController.m */,
 				4338BBA818F26F53002683EF /* ABMA-Info.plist */,
 				4338BBA918F26F53002683EF /* InfoPlist.strings */,
 				4338BBAC18F26F53002683EF /* main.m */,
@@ -305,14 +295,12 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				4338BBB718F26F53002683EF /* ViewController.m in Sources */,
 				43F070C818F3631E0077F11E /* ScheduleViewController.m in Sources */,
 				43F070D118F3B4B60077F11E /* SchedDetailViewController.m in Sources */,
 				4338BBB118F26F53002683EF /* AppDelegate.m in Sources */,
+				4305618B1A9AF95000ED4BB0 /* SWRevealViewController.m in Sources */,
 				4338BBAD18F26F53002683EF /* main.m in Sources */,
 				43CF9B1D18F5B23500885DAC /* ContactViewController.m in Sources */,
-				43F995E218F45843004DC565 /* FavoritesViewController.m in Sources */,
-				43F070C218F308C50077F11E /* SWRevealViewController.m in Sources */,
 				43F070C518F3561A0077F11E /* SideBarTableViewController.m in Sources */,
 				43F070D418F3B6A20077F11E /* SponsorCollectionViewController.m in Sources */,
 			);
@@ -439,16 +427,17 @@
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				ASSETCATALOG_COMPILER_LAUNCHIMAGE_NAME = LaunchImage;
-				CODE_SIGN_IDENTITY = "iPhone Developer: Nathan Condell (752656QTHP)";
+				CODE_SIGN_IDENTITY = "iPhone Developer";
 				GCC_PRECOMPILE_PREFIX_HEADER = YES;
 				GCC_PREFIX_HEADER = "ABMA/ABMA-Prefix.pch";
 				INFOPLIST_FILE = "ABMA/ABMA-Info.plist";
+				IPHONEOS_DEPLOYMENT_TARGET = 7.0;
 				LIBRARY_SEARCH_PATHS = (
 					"$(inherited)",
 					"$(PROJECT_DIR)",
 				);
 				PRODUCT_NAME = "$(TARGET_NAME)";
-				PROVISIONING_PROFILE = "7062387B-0E0B-4444-97E0-4528A9948008";
+				PROVISIONING_PROFILE = "CBA327E1-5886-4BB0-A75C-E77FD691C2A9";
 				WRAPPER_EXTENSION = app;
 			};
 			name = Debug;
@@ -458,16 +447,17 @@
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				ASSETCATALOG_COMPILER_LAUNCHIMAGE_NAME = LaunchImage;
-				CODE_SIGN_IDENTITY = "iPhone Distribution: Nathan Condell (Z3X6HD4H5L)";
+				CODE_SIGN_IDENTITY = "iPhone Developer";
 				GCC_PRECOMPILE_PREFIX_HEADER = YES;
 				GCC_PREFIX_HEADER = "ABMA/ABMA-Prefix.pch";
 				INFOPLIST_FILE = "ABMA/ABMA-Info.plist";
+				IPHONEOS_DEPLOYMENT_TARGET = 7.0;
 				LIBRARY_SEARCH_PATHS = (
 					"$(inherited)",
 					"$(PROJECT_DIR)",
 				);
 				PRODUCT_NAME = "$(TARGET_NAME)";
-				PROVISIONING_PROFILE = "57BF62D1-74C4-45FB-B4D1-F9306BCD9872";
+				PROVISIONING_PROFILE = "CBA327E1-5886-4BB0-A75C-E77FD691C2A9";
 				WRAPPER_EXTENSION = app;
 			};
 			name = Release;

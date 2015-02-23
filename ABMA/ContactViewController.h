@@ -10,8 +10,8 @@
 
 @interface ContactViewController : UIViewController
 @property (strong, nonatomic) IBOutlet UIBarButtonItem *sidebarButton;
-@property (strong, nonatomic) IBOutlet UITextView *textView;
-- (IBAction)clear:(id)sender;
-- (IBAction)send:(id)sender;
+
+- (IBAction)abmaWebsite:(id)sender;
+- (IBAction)abmaContactForm:(id)sender;
 
 @end

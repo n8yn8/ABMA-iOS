@@ -67,23 +67,13 @@
 }
 */
 
-- (IBAction)clear:(id)sender {
-    _textView.text = @"";
+
+- (IBAction)abmaWebsite:(id)sender {
+    [[UIApplication sharedApplication] openURL:[NSURL URLWithString: @"http://www.theabma.org"]];
 }
 
-- (IBAction)send:(id)sender {
-    NSString *feedback = _textView.text;
-    [TestFlight submitFeedback:feedback];
-    _textView.text = @"";
-}
-
-- (void)touchesBegan:(NSSet *)touches withEvent:(UIEvent *)event {
-    
-    UITouch *touch = [[event allTouches] anyObject];
-    if ([_textView isFirstResponder] && [touch view] != _textView) {
-        [_textView resignFirstResponder];
-    }
-    [super touchesBegan:touches withEvent:event];
+- (IBAction)abmaContactForm:(id)sender {
+    [[UIApplication sharedApplication] openURL:[NSURL URLWithString: @"http://www.theabma.org/index.php?option=com_qcontacts&view=contact&id=1%3Acontact-abma&catid=47%3Acontacts&Itemid=97"]];
 }
 
 @end
