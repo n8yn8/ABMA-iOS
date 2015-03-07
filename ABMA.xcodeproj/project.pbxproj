@@ -21,7 +21,6 @@
 		4338BBC218F26F53002683EF /* UIKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 4338BBA418F26F53002683EF /* UIKit.framework */; };
 		4338BBCA18F26F53002683EF /* InfoPlist.strings in Resources */ = {isa = PBXBuildFile; fileRef = 4338BBC818F26F53002683EF /* InfoPlist.strings */; };
 		4338BBCC18F26F53002683EF /* ABMATests.m in Sources */ = {isa = PBXBuildFile; fileRef = 4338BBCB18F26F53002683EF /* ABMATests.m */; };
-		43CF9B1818F5A4B300885DAC /* libTestFlight.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 43CF9B1618F5A48300885DAC /* libTestFlight.a */; };
 		43CF9B1A18F5A4E600885DAC /* libz.dylib in Frameworks */ = {isa = PBXBuildFile; fileRef = 43CF9B1918F5A4E600885DAC /* libz.dylib */; };
 		43CF9B1D18F5B23500885DAC /* ContactViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 43CF9B1C18F5B23500885DAC /* ContactViewController.m */; };
 		43F070C518F3561A0077F11E /* SideBarTableViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 43F070C418F3561A0077F11E /* SideBarTableViewController.m */; };
@@ -61,10 +60,6 @@
 		4338BBC718F26F53002683EF /* ABMATests-Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = "ABMATests-Info.plist"; sourceTree = "<group>"; };
 		4338BBC918F26F53002683EF /* en */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = en; path = en.lproj/InfoPlist.strings; sourceTree = "<group>"; };
 		4338BBCB18F26F53002683EF /* ABMATests.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = ABMATests.m; sourceTree = "<group>"; };
-		43CF9B1318F5A42900885DAC /* TestFlight.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = TestFlight.h; path = ../TestFlight.h; sourceTree = "<group>"; };
-		43CF9B1418F5A42900885DAC /* TestFlight+AsyncLogging.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = "TestFlight+AsyncLogging.h"; path = "../TestFlight+AsyncLogging.h"; sourceTree = "<group>"; };
-		43CF9B1518F5A42900885DAC /* TestFlight+ManualSessions.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = "TestFlight+ManualSessions.h"; path = "../TestFlight+ManualSessions.h"; sourceTree = "<group>"; };
-		43CF9B1618F5A48300885DAC /* libTestFlight.a */ = {isa = PBXFileReference; lastKnownFileType = archive.ar; name = libTestFlight.a; path = ../libTestFlight.a; sourceTree = "<group>"; };
 		43CF9B1918F5A4E600885DAC /* libz.dylib */ = {isa = PBXFileReference; lastKnownFileType = "compiled.mach-o.dylib"; name = libz.dylib; path = usr/lib/libz.dylib; sourceTree = SDKROOT; };
 		43CF9B1B18F5B23500885DAC /* ContactViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ContactViewController.h; sourceTree = "<group>"; };
 		43CF9B1C18F5B23500885DAC /* ContactViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ContactViewController.m; sourceTree = "<group>"; };
@@ -88,7 +83,6 @@
 				4338BBA318F26F53002683EF /* CoreGraphics.framework in Frameworks */,
 				4338BBA518F26F53002683EF /* UIKit.framework in Frameworks */,
 				4338BBA118F26F53002683EF /* Foundation.framework in Frameworks */,
-				43CF9B1818F5A4B300885DAC /* libTestFlight.a in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -162,10 +156,6 @@
 		4338BBA718F26F53002683EF /* Supporting Files */ = {
 			isa = PBXGroup;
 			children = (
-				43CF9B1618F5A48300885DAC /* libTestFlight.a */,
-				43CF9B1318F5A42900885DAC /* TestFlight.h */,
-				43CF9B1418F5A42900885DAC /* TestFlight+AsyncLogging.h */,
-				43CF9B1518F5A42900885DAC /* TestFlight+ManualSessions.h */,
 				430561891A9AF95000ED4BB0 /* SWRevealViewController.h */,
 				4305618A1A9AF95000ED4BB0 /* SWRevealViewController.m */,
 				4338BBA818F26F53002683EF /* ABMA-Info.plist */,

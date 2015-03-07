@@ -8,7 +8,6 @@
 
 #import "ContactViewController.h"
 #import "SWRevealViewController.h"
-#import "TestFlight.h"
 
 @interface ContactViewController ()
 
