@@ -8,6 +8,8 @@
 
 #import "SchedDetailViewController.h"
 #import <QuartzCore/QuartzCore.h>
+#import "AppDelegate.h"
+#import "Note.h"
 
 @interface SchedDetailViewController ()
 
@@ -25,6 +27,16 @@
 }
 
 #pragma mark - Managing the detail item
+
+- (IBAction)saveNote:(id)sender {
+    AppDelegate *appdelegate = [[UIApplication sharedApplication] delegate];
+    
+    NSManagedObjectContext *context = [appdelegate managedObjectContext];
+    Note *note = [NSEntityDescription insertNewObjectForEntityForName:@"Note" inManagedObjectContext:context];
+    NSError *error;
+    [context save:&error];
+    //TODO: error handling
+}
 
 - (void)setDetailItem:(NSDictionary *)newDetailItem onDay:(NSString *)newDayOfWeek onDate:(NSString *)newDateOfWeek
 {

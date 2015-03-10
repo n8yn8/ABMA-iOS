@@ -200,7 +200,7 @@
                                 <rect key="frame" x="0.0" y="132" width="320" height="436"/>
                                 <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                                 <prototypes>
-                                    <tableViewCell contentMode="scaleToFill" selectionStyle="default" accessoryType="disclosureIndicator" indentationWidth="10" reuseIdentifier="Schedule" rowHeight="54" id="yPx-bE-Hbr">
+                                    <tableViewCell contentMode="scaleToFill" selectionStyle="default" accessoryType="disclosureIndicator" indentationWidth="10" reuseIdentifier="EventCell" rowHeight="54" id="yPx-bE-Hbr" customClass="EventCellTableViewCell">
                                         <rect key="frame" x="0.0" y="22" width="320" height="54"/>
                                         <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                         <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="yPx-bE-Hbr" id="scf-RB-J9Y">
@@ -224,6 +224,8 @@
                                             </subviews>
                                         </tableViewCellContentView>
                                         <connections>
+                                            <outlet property="descriptionLabel" destination="y9e-1h-cyc" id="XTB-aO-26d"/>
+                                            <outlet property="timeLabel" destination="6tj-1K-ikm" id="Qio-Vw-1lD"/>
                                             <segue destination="H5I-Cp-abp" kind="push" identifier="showDetail" id="twV-FT-9Dc"/>
                                         </connections>
                                     </tableViewCell>

@@ -9,6 +9,10 @@
 #import "ScheduleViewController.h"
 #import "SWRevealViewController.h"
 #import "SchedDetailViewController.h"
+#import "Event.h"
+#import "Day.h"
+#import "Year.h"
+#import "AppDelegate.h"
 
 @interface ScheduleViewController ()
 
@@ -53,8 +57,56 @@
     dates = [[NSArray alloc] initWithObjects:@"Apr 12, 2014", @"Apr 13, 2014", @"Apr 14, 2014", @"Apr 15, 2014", @"Apr 16, 2014", @"Apr 17, 2014", @"Apr 18, 2014", @"Apr 19, 2014", nil];
     daysOfWeek = [[NSArray alloc] initWithObjects:@"SATURDAY", @"SUNDAY", @"MONDAY", @"TUESDAY", @"WEDNESDAY", @"THURSDAY", @"FRIDAY", @"SATURDAY", nil];
     numbsOfWeek = [[NSArray alloc] initWithObjects:@"12", @"13", @"14", @"15", @"16", @"17", @"18", @"19", nil];
+    
+    
+    //CoreData
+    AppDelegate *appdelegate = [[UIApplication sharedApplication] delegate];
+    NSManagedObjectContext *context = [appdelegate managedObjectContext];
+    
+    NSFetchRequest *fetchRequest = [[NSFetchRequest alloc] init];
+    [fetchRequest setEntity:[NSEntityDescription entityForName:@"Year" inManagedObjectContext:context]];
+    NSError *fetchError = nil;
+    NSArray *results = [context executeFetchRequest:fetchRequest error:&fetchError];
+    if (fetchError) {
+        NSLog(@"Unable to execute fetch request.");
+        NSLog(@"%@, %@", fetchError, fetchError.localizedDescription);
+    } else {
+        NSLog(@"results = %@", results);
+        if (results) {
+            //TODO: display results
+        } else {
+            [self saveSchedule: context];
+        }
+    }
+    
+
+}
+
+- (void)saveSchedule:(NSManagedObjectContext *)context {
     NSString *plistCatPath = [[NSBundle mainBundle] pathForResource:@"EventList" ofType:@"plist"];
     dailySched = [[NSDictionary alloc] initWithContentsOfFile:plistCatPath];
+    NSArray *allKeys = [dailySched allKeys];
+    
+    Year *year = [[Year alloc] initWithEntity:[NSEntityDescription entityForName:@"Year" inManagedObjectContext:context] insertIntoManagedObjectContext:context];
+    for (NSString *key in allKeys) {
+        Day *day = [[Day alloc] initWithEntity:[NSEntityDescription entityForName:@"Day" inManagedObjectContext:context] insertIntoManagedObjectContext:context];
+        events = [[NSArray alloc] initWithArray:[dailySched objectForKey:key]];
+        for (NSDictionary *event in events) {
+            Event *thisEvent = [[Event alloc] initWithEntity:[NSEntityDescription entityForName:@"Event" inManagedObjectContext:context] insertIntoManagedObjectContext:context];
+            thisEvent.title = [event objectForKey:@"Title"];
+            thisEvent.subtitle = [event objectForKey:@"Subtitle"];
+            thisEvent.locatoin = [event objectForKey:@"Location"];
+            thisEvent.time = [event objectForKey:@"Time"];
+            thisEvent.details = [event objectForKey:@"Description"];
+            [day addEventObject:thisEvent];
+        }
+        [year addDayObject:day];
+    }
+    NSError *error;
+    [context save:&error];
+    if (error) {
+        NSLog(@"Error: %@", error.localizedDescription);
+    }
     dateIndex = 0;
     [self loadThisDate:dateIndex];
 }

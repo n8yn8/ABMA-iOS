@@ -14,4 +14,7 @@
 @property (strong, nonatomic) IBOutlet UILabel *dateLabe;
 @property (strong, nonatomic) IBOutlet UIBarButtonItem *sidebarButton;
 @property (strong, nonatomic) IBOutlet UITableView *tableView;
+
+@property (strong, nonatomic) NSManagedObjectContext *managedObjectContext;
+
 @end

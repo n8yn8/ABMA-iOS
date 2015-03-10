@@ -20,6 +20,8 @@
 @property (strong, nonatomic) NSDictionary *detailItem;
 @property (strong, nonatomic) NSString *detailDay;
 @property (strong, nonatomic) NSString *detailDate;
+@property (weak, nonatomic) IBOutlet UITextView *noteTextField;
 
+- (IBAction)saveNote:(id)sender;
 -(void)setDetailItem:(NSDictionary *)newDetailItem onDay:(NSString *)newDayOfWeek onDate:(NSString *)newDateOfWeek;
 @end
