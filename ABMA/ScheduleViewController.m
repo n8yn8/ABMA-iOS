@@ -61,10 +61,10 @@
     dailySched = [[NSDictionary alloc] initWithContentsOfFile:plistCatPath];
     NSArray *allKeys = [dailySched allKeys];
     for (NSString *key in allKeys) {
-        events = [[NSArray alloc] initWithArray:[dailySched objectForKey:key]];
+        //events = [[NSArray alloc] initWithArray:[dailySched objectForKey:key]];
     }
     dateIndex = 0;
-    [self loadThisDate:dateIndex];
+    //[self loadThisDate:dateIndex];
     
     
     //CoreData
@@ -72,16 +72,17 @@
     NSManagedObjectContext *context = [appdelegate managedObjectContext];
     
     NSFetchRequest *fetchRequest = [[NSFetchRequest alloc] init];
-    [fetchRequest setEntity:[NSEntityDescription entityForName:@"Year" inManagedObjectContext:context]];
+    [fetchRequest setEntity:[NSEntityDescription entityForName:@"Event" inManagedObjectContext:context]];
     NSError *fetchError = nil;
-    NSArray *results = [context executeFetchRequest:fetchRequest error:&fetchError];
+    events = [[NSArray alloc] initWithArray:[context executeFetchRequest:fetchRequest error:&fetchError]];
     if (fetchError) {
         NSLog(@"Unable to execute fetch request.");
         NSLog(@"%@, %@", fetchError, fetchError.localizedDescription);
     } else {
-        NSLog(@"results = %@", results);
-        if (results.count) {
+        NSLog(@"results = %@", events);
+        if (events.count) {
             //TODO: display results
+            [self.tableView reloadData];
         } else {
             [self saveSchedule: context];
         }
@@ -175,10 +176,10 @@
         cell = [[UITableViewCell alloc] initWithStyle:UITableViewCellStyleDefault reuseIdentifier:simpleTableIdentifier];
     }
     
-    NSDictionary *thisEvent = [[NSDictionary alloc] initWithDictionary:[events objectAtIndex:indexPath.row]];
+    Event *thisEvent = [events objectAtIndex:indexPath.row];
     
-    eventName.text = [thisEvent objectForKey:@"Title"];
-    eventTime.text = [thisEvent objectForKey:@"Time"];
+    eventName.text = thisEvent.title;
+    eventTime.text = thisEvent.time;
     return cell;
 }
 
