@@ -33,6 +33,7 @@
     
     NSManagedObjectContext *context = [appdelegate managedObjectContext];
     Note *note = [NSEntityDescription insertNewObjectForEntityForName:@"Note" inManagedObjectContext:context];
+    note.content = self.noteTextField.text;
     NSError *error;
     [context save:&error];
     //TODO: error handling
