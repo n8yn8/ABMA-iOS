@@ -60,9 +60,9 @@
     NSString *plistCatPath = [[NSBundle mainBundle] pathForResource:@"EventList" ofType:@"plist"];
     dailySched = [[NSDictionary alloc] initWithContentsOfFile:plistCatPath];
     NSArray *allKeys = [dailySched allKeys];
-    for (NSString *key in allKeys) {
-        //events = [[NSArray alloc] initWithArray:[dailySched objectForKey:key]];
-    }
+//    for (NSString *key in allKeys) {
+//        events = [[NSArray alloc] initWithArray:[dailySched objectForKey:key]];
+//    }
     dateIndex = 0;
     //[self loadThisDate:dateIndex];
     
@@ -92,6 +92,8 @@
 }
 
 - (void)saveSchedule:(NSManagedObjectContext *)context {
+    NSDateFormatter *formatter = [[NSDateFormatter alloc] init];
+    [formatter setDateFormat:@"MMM d, yyyy h:mma"];
     NSString *plistCatPath = [[NSBundle mainBundle] pathForResource:@"EventList" ofType:@"plist"];
     dailySched = [[NSDictionary alloc] initWithContentsOfFile:plistCatPath];
     NSArray *allKeys = [dailySched allKeys];
@@ -106,6 +108,11 @@
             thisEvent.subtitle = [event objectForKey:@"Subtitle"];
             thisEvent.locatoin = [event objectForKey:@"Location"];
             thisEvent.time = [event objectForKey:@"Time"];
+            NSArray *times = [thisEvent.time componentsSeparatedByString:@" - "];
+            NSString *startString = [NSString stringWithFormat:@"%@ %@", key, [times firstObject]];
+            thisEvent.startDate = [formatter dateFromString:startString];
+            NSString *endString = [NSString stringWithFormat:@"%@ %@", key, [times lastObject]];
+            thisEvent.endDate = [formatter dateFromString:endString];
             thisEvent.details = [event objectForKey:@"Description"];
             [day addEventObject:thisEvent];
         }

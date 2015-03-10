@@ -2,7 +2,7 @@
 //  Event.m
 //  ABMA
 //
-//  Created by Nathan Condell on 3/7/15.
+//  Created by Nathan Condell on 3/9/15.
 //  Copyright (c) 2015 Nathan Condell. All rights reserved.
 //
 
@@ -12,12 +12,14 @@
 
 @implementation Event
 
-@dynamic title;
-@dynamic subtitle;
-@dynamic time;
-@dynamic place;
 @dynamic details;
 @dynamic locatoin;
+@dynamic place;
+@dynamic subtitle;
+@dynamic time;
+@dynamic title;
+@dynamic startDate;
+@dynamic endDate;
 @dynamic note;
 
 @end

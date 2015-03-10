@@ -23,13 +23,13 @@
 		4338BBCC18F26F53002683EF /* ABMATests.m in Sources */ = {isa = PBXBuildFile; fileRef = 4338BBCB18F26F53002683EF /* ABMATests.m */; };
 		43AAAE2A1AAAA484002C424A /* CoreData.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 43AAAE291AAAA484002C424A /* CoreData.framework */; };
 		43AAAE2D1AAAA4D1002C424A /* ABMA.xcdatamodeld in Sources */ = {isa = PBXBuildFile; fileRef = 43AAAE2B1AAAA4D1002C424A /* ABMA.xcdatamodeld */; };
-		43AAAE5A1AAB96A7002C424A /* Event.m in Sources */ = {isa = PBXBuildFile; fileRef = 43AAAE591AAB96A7002C424A /* Event.m */; };
 		43AAAE5D1AAB96A8002C424A /* Note.m in Sources */ = {isa = PBXBuildFile; fileRef = 43AAAE5C1AAB96A8002C424A /* Note.m */; };
 		43AAAE601AAB96A8002C424A /* Year.m in Sources */ = {isa = PBXBuildFile; fileRef = 43AAAE5F1AAB96A8002C424A /* Year.m */; };
 		43AAAE631AAB96A8002C424A /* Day.m in Sources */ = {isa = PBXBuildFile; fileRef = 43AAAE621AAB96A8002C424A /* Day.m */; };
 		43CF9B1A18F5A4E600885DAC /* libz.dylib in Frameworks */ = {isa = PBXBuildFile; fileRef = 43CF9B1918F5A4E600885DAC /* libz.dylib */; };
 		43CF9B1D18F5B23500885DAC /* ContactViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 43CF9B1C18F5B23500885DAC /* ContactViewController.m */; };
 		43D07C6F1AAEABA00033A1E6 /* EventCellTableViewCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 43D07C6E1AAEABA00033A1E6 /* EventCellTableViewCell.m */; };
+		43D07C721AAEB8650033A1E6 /* Event.m in Sources */ = {isa = PBXBuildFile; fileRef = 43D07C711AAEB8650033A1E6 /* Event.m */; };
 		43F070C518F3561A0077F11E /* SideBarTableViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 43F070C418F3561A0077F11E /* SideBarTableViewController.m */; };
 		43F070C818F3631E0077F11E /* ScheduleViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 43F070C718F3631E0077F11E /* ScheduleViewController.m */; };
 		43F070D118F3B4B60077F11E /* SchedDetailViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 43F070D018F3B4B60077F11E /* SchedDetailViewController.m */; };
@@ -69,8 +69,6 @@
 		4338BBCB18F26F53002683EF /* ABMATests.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = ABMATests.m; sourceTree = "<group>"; };
 		43AAAE291AAAA484002C424A /* CoreData.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CoreData.framework; path = System/Library/Frameworks/CoreData.framework; sourceTree = SDKROOT; };
 		43AAAE2C1AAAA4D1002C424A /* ABMA.xcdatamodel */ = {isa = PBXFileReference; lastKnownFileType = wrapper.xcdatamodel; path = ABMA.xcdatamodel; sourceTree = "<group>"; };
-		43AAAE581AAB96A7002C424A /* Event.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Event.h; sourceTree = "<group>"; };
-		43AAAE591AAB96A7002C424A /* Event.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = Event.m; sourceTree = "<group>"; };
 		43AAAE5B1AAB96A8002C424A /* Note.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Note.h; sourceTree = "<group>"; };
 		43AAAE5C1AAB96A8002C424A /* Note.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = Note.m; sourceTree = "<group>"; };
 		43AAAE5E1AAB96A8002C424A /* Year.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Year.h; sourceTree = "<group>"; };
@@ -82,6 +80,8 @@
 		43CF9B1C18F5B23500885DAC /* ContactViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ContactViewController.m; sourceTree = "<group>"; };
 		43D07C6D1AAEABA00033A1E6 /* EventCellTableViewCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = EventCellTableViewCell.h; sourceTree = "<group>"; };
 		43D07C6E1AAEABA00033A1E6 /* EventCellTableViewCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = EventCellTableViewCell.m; sourceTree = "<group>"; };
+		43D07C701AAEB8650033A1E6 /* Event.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Event.h; sourceTree = "<group>"; };
+		43D07C711AAEB8650033A1E6 /* Event.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = Event.m; sourceTree = "<group>"; };
 		43F070C318F3561A0077F11E /* SideBarTableViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SideBarTableViewController.h; sourceTree = "<group>"; };
 		43F070C418F3561A0077F11E /* SideBarTableViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SideBarTableViewController.m; sourceTree = "<group>"; };
 		43F070C618F3631E0077F11E /* ScheduleViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ScheduleViewController.h; sourceTree = "<group>"; };
@@ -177,6 +177,8 @@
 		4338BBA718F26F53002683EF /* Supporting Files */ = {
 			isa = PBXGroup;
 			children = (
+				43D07C701AAEB8650033A1E6 /* Event.h */,
+				43D07C711AAEB8650033A1E6 /* Event.m */,
 				430561891A9AF95000ED4BB0 /* SWRevealViewController.h */,
 				4305618A1A9AF95000ED4BB0 /* SWRevealViewController.m */,
 				4338BBA818F26F53002683EF /* ABMA-Info.plist */,
@@ -190,8 +192,6 @@
 				43AAAE5F1AAB96A8002C424A /* Year.m */,
 				43AAAE5B1AAB96A8002C424A /* Note.h */,
 				43AAAE5C1AAB96A8002C424A /* Note.m */,
-				43AAAE581AAB96A7002C424A /* Event.h */,
-				43AAAE591AAB96A7002C424A /* Event.m */,
 				43D07C6D1AAEABA00033A1E6 /* EventCellTableViewCell.h */,
 				43D07C6E1AAEABA00033A1E6 /* EventCellTableViewCell.m */,
 			);
@@ -320,10 +320,10 @@
 				43F070C818F3631E0077F11E /* ScheduleViewController.m in Sources */,
 				43F070D118F3B4B60077F11E /* SchedDetailViewController.m in Sources */,
 				43D07C6F1AAEABA00033A1E6 /* EventCellTableViewCell.m in Sources */,
-				43AAAE5A1AAB96A7002C424A /* Event.m in Sources */,
 				43AAAE2D1AAAA4D1002C424A /* ABMA.xcdatamodeld in Sources */,
 				4338BBB118F26F53002683EF /* AppDelegate.m in Sources */,
 				4305618B1A9AF95000ED4BB0 /* SWRevealViewController.m in Sources */,
+				43D07C721AAEB8650033A1E6 /* Event.m in Sources */,
 				4338BBAD18F26F53002683EF /* main.m in Sources */,
 				43CF9B1D18F5B23500885DAC /* ContactViewController.m in Sources */,
 				43F070C518F3561A0077F11E /* SideBarTableViewController.m in Sources */,
