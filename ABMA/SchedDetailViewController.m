@@ -8,8 +8,10 @@
 
 #import "SchedDetailViewController.h"
 #import <QuartzCore/QuartzCore.h>
+#import "AppDelegate.h"
+#import "Note.h"
 
-@interface SchedDetailViewController ()
+@interface SchedDetailViewController () <UITextFieldDelegate>
 
 @end
 
@@ -26,10 +28,27 @@
 
 #pragma mark - Managing the detail item
 
-- (void)setDetailItem:(NSDictionary *)newDetailItem onDay:(NSString *)newDayOfWeek onDate:(NSString *)newDateOfWeek
+- (IBAction)saveNote:(id)sender {
+    AppDelegate *appdelegate = [[UIApplication sharedApplication] delegate];
+    
+    NSManagedObjectContext *context = [appdelegate managedObjectContext];
+    Note *note = [NSEntityDescription insertNewObjectForEntityForName:@"Note" inManagedObjectContext:context];
+    note.content = self.noteTextField.text;
+    note.event = self.event;
+    NSError *error;
+    [context save:&error];
+    //TODO: error handling
+}
+
+- (BOOL)textFieldShouldReturn:(UITextField *)textField {
+    [textField resignFirstResponder];
+    return YES;
+}
+
+- (void)setDetailItem:(Event *)event onDay:(NSString *)newDayOfWeek onDate:(NSString *)newDateOfWeek
 {
-    if (_detailItem != newDetailItem) {
-        _detailItem = newDetailItem;
+    if (_event != event) {
+        _event = event;
     }
     if (_detailDay != newDayOfWeek) {
         _detailDay = newDayOfWeek;
@@ -46,11 +65,14 @@
     
     self.eventDay.text = self.detailDay;
     self.eventDate.text = self.detailDate;
-    self.eventTitle.text = [self.detailItem objectForKey:@"Title"];
-    self.eventSubtitle.text = [self.detailItem objectForKey:@"Subtitle"];
-    self.eventLocation.text = [self.detailItem objectForKey:@"Location"];
-    self.eventTime.text = [self.detailItem objectForKey:@"Time"];
-    self.eventDetails.text = [self.detailItem objectForKey:@"Description"];
+    self.eventTitle.text = self.event.title;
+    self.eventSubtitle.text = self.event.subtitle;
+    self.eventLocation.text = self.event.locatoin;
+    self.eventTime.text = self.event.time;
+    self.eventDetails.text = self.event.details;
+    if (self.event.note) {
+        self.noteTextField.text = self.event.note.content;
+    }
     
     [self.navigationController.navigationBar setBackgroundImage:[UIImage imageNamed:@"bar.png"] forBarMetrics:UIBarMetricsDefault];
     self.navigationItem.titleView = [[UIImageView alloc] initWithImage:[UIImage imageNamed:@"ABMAlogo.png"]];
