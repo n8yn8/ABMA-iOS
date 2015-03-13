@@ -21,6 +21,7 @@
 		4338BBC218F26F53002683EF /* UIKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 4338BBA418F26F53002683EF /* UIKit.framework */; };
 		4338BBCA18F26F53002683EF /* InfoPlist.strings in Resources */ = {isa = PBXBuildFile; fileRef = 4338BBC818F26F53002683EF /* InfoPlist.strings */; };
 		4338BBCC18F26F53002683EF /* ABMATests.m in Sources */ = {isa = PBXBuildFile; fileRef = 4338BBCB18F26F53002683EF /* ABMATests.m */; };
+		4352A8791AB28BBE00EC03CB /* BaseViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 4352A8781AB28BBE00EC03CB /* BaseViewController.m */; };
 		439947E51AB1E9F500D1479B /* NotesViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 439947E41AB1E9F500D1479B /* NotesViewController.m */; };
 		43AAAE2A1AAAA484002C424A /* CoreData.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 43AAAE291AAAA484002C424A /* CoreData.framework */; };
 		43AAAE2D1AAAA4D1002C424A /* ABMA.xcdatamodeld in Sources */ = {isa = PBXBuildFile; fileRef = 43AAAE2B1AAAA4D1002C424A /* ABMA.xcdatamodeld */; };
@@ -68,6 +69,8 @@
 		4338BBC718F26F53002683EF /* ABMATests-Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = "ABMATests-Info.plist"; sourceTree = "<group>"; };
 		4338BBC918F26F53002683EF /* en */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = en; path = en.lproj/InfoPlist.strings; sourceTree = "<group>"; };
 		4338BBCB18F26F53002683EF /* ABMATests.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = ABMATests.m; sourceTree = "<group>"; };
+		4352A8771AB28BBE00EC03CB /* BaseViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = BaseViewController.h; sourceTree = "<group>"; };
+		4352A8781AB28BBE00EC03CB /* BaseViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = BaseViewController.m; sourceTree = "<group>"; };
 		439947E31AB1E9F500D1479B /* NotesViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = NotesViewController.h; sourceTree = "<group>"; };
 		439947E41AB1E9F500D1479B /* NotesViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = NotesViewController.m; sourceTree = "<group>"; };
 		43AAAE291AAAA484002C424A /* CoreData.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CoreData.framework; path = System/Library/Frameworks/CoreData.framework; sourceTree = SDKROOT; };
@@ -199,6 +202,8 @@
 				43AAAE5C1AAB96A8002C424A /* Note.m */,
 				43D07C6D1AAEABA00033A1E6 /* EventCellTableViewCell.h */,
 				43D07C6E1AAEABA00033A1E6 /* EventCellTableViewCell.m */,
+				4352A8771AB28BBE00EC03CB /* BaseViewController.h */,
+				4352A8781AB28BBE00EC03CB /* BaseViewController.m */,
 			);
 			name = "Supporting Files";
 			sourceTree = "<group>";
@@ -331,6 +336,7 @@
 				4305618B1A9AF95000ED4BB0 /* SWRevealViewController.m in Sources */,
 				43D07C721AAEB8650033A1E6 /* Event.m in Sources */,
 				4338BBAD18F26F53002683EF /* main.m in Sources */,
+				4352A8791AB28BBE00EC03CB /* BaseViewController.m in Sources */,
 				43CF9B1D18F5B23500885DAC /* ContactViewController.m in Sources */,
 				43F070C518F3561A0077F11E /* SideBarTableViewController.m in Sources */,
 				43F070D418F3B6A20077F11E /* SponsorCollectionViewController.m in Sources */,

@@ -7,8 +7,9 @@
 //
 
 #import <UIKit/UIKit.h>
+#import "BaseViewController.h"
 
-@interface ScheduleViewController : UIViewController <UITableViewDelegate, UITableViewDataSource>
+@interface ScheduleViewController : BaseViewController <UITableViewDelegate, UITableViewDataSource>
 - (IBAction)earlierDate:(id)sender;
 - (IBAction)laterDate:(id)sender;
 @property (strong, nonatomic) IBOutlet UILabel *dateLabe;
