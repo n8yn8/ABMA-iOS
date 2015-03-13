@@ -20,13 +20,9 @@
 
 @implementation ScheduleViewController
 {
-    NSDictionary *dailySched;
     NSArray *events;
     NSArray *days;
-    NSArray *daysOfWeek;
-    NSArray *numbsOfWeek;
     NSInteger dateIndex;
-    NSDateFormatter *format;
     NSManagedObjectContext *context;
 }
 
@@ -43,18 +39,10 @@
 {
     [super viewDidLoad];
     [self loadData];
-    
-    format = [[NSDateFormatter alloc] init];
-    [format setDateStyle:NSDateFormatterMediumStyle];
-    [format setTimeStyle:NSDateFormatterNoStyle];
 }
 
 -(void)loadData
 {
-    daysOfWeek = [[NSArray alloc] initWithObjects:@"SATURDAY", @"SUNDAY", @"MONDAY", @"TUESDAY", @"WEDNESDAY", @"THURSDAY", @"FRIDAY", @"SATURDAY", nil];
-    numbsOfWeek = [[NSArray alloc] initWithObjects:@"12", @"13", @"14", @"15", @"16", @"17", @"18", @"19", nil];
-    NSString *plistCatPath = [[NSBundle mainBundle] pathForResource:@"EventList" ofType:@"plist"];
-    dailySched = [[NSDictionary alloc] initWithContentsOfFile:plistCatPath];
     dateIndex = 0;
     
     //CoreData
@@ -93,9 +81,6 @@
     self.dateLabe.text = [dayFormatter stringFromDate:thisDay.date];
     NSArray *sortDescriptors = [NSArray arrayWithObjects:[NSSortDescriptor sortDescriptorWithKey:@"startDate" ascending:YES], [NSSortDescriptor sortDescriptorWithKey:@"endDate" ascending:YES], nil];
     events = [thisDay.event sortedArrayUsingDescriptors:sortDescriptors];
-    for (Event *event in events) {
-        NSLog(@"event startTime = %@", event.startDate);
-    }
     [self.tableView reloadData];
 }
 
@@ -109,7 +94,7 @@
     [timeFormatter setDateFormat:@"MMM d, yyyy h:mma"];
     [timeFormatter setTimeZone:timeZone];
     NSString *plistCatPath = [[NSBundle mainBundle] pathForResource:@"EventList" ofType:@"plist"];
-    dailySched = [[NSDictionary alloc] initWithContentsOfFile:plistCatPath];
+    NSDictionary *dailySched = [[NSDictionary alloc] initWithContentsOfFile:plistCatPath];
     NSArray *allKeys = [dailySched allKeys];
     
     Year *year = [[Year alloc] initWithEntity:[NSEntityDescription entityForName:@"Year" inManagedObjectContext:context] insertIntoManagedObjectContext:context];
