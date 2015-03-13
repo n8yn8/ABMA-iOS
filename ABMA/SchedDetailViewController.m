@@ -49,8 +49,14 @@
 {
     [super viewDidLoad];
     
-    self.eventDay.text = self.detailDay;
-    self.eventDate.text = self.detailDate;
+    NSDateFormatter *dayformatter = [[NSDateFormatter alloc] init];
+    [dayformatter setDateFormat:@"EEEE"];
+    
+    NSDateFormatter *dateformatter = [[NSDateFormatter alloc] init];
+    [dateformatter setDateFormat:@"dd"];
+    
+    self.eventDay.text = [[dayformatter stringFromDate:self.event.startDate] uppercaseString];
+    self.eventDate.text = [dateformatter stringFromDate:self.event.startDate];
     self.eventTitle.text = self.event.title;
     self.eventSubtitle.text = self.event.subtitle;
     self.eventLocation.text = self.event.locatoin;

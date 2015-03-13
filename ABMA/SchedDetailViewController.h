@@ -19,8 +19,6 @@
 @property (strong, nonatomic) IBOutlet UILabel *eventDay;
 @property (strong, nonatomic) IBOutlet UILabel *eventDate;
 @property (strong, nonatomic) Event *event;
-@property (strong, nonatomic) NSString *detailDay;
-@property (strong, nonatomic) NSString *detailDate;
 @property (weak, nonatomic) IBOutlet UITextView *noteTextField;
 
 - (IBAction)saveNote:(id)sender;
