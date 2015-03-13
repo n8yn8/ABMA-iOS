@@ -341,7 +341,7 @@
                                     <constraint firstAttribute="centerY" secondItem="mGe-GW-HM6" secondAttribute="centerY" id="xln-BU-ocZ"/>
                                 </constraints>
                             </view>
-                            <textView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" editable="NO" translatesAutoresizingMaskIntoConstraints="NO" id="1KJ-OP-0Mm">
+                            <textView clipsSubviews="YES" multipleTouchEnabled="YES" userInteractionEnabled="NO" contentMode="scaleToFill" delaysContentTouches="NO" canCancelContentTouches="NO" keyboardDismissMode="interactive" editable="NO" translatesAutoresizingMaskIntoConstraints="NO" id="1KJ-OP-0Mm">
                                 <rect key="frame" x="0.0" y="221" width="320" height="174"/>
                                 <color key="backgroundColor" red="0.92941176469999998" green="0.92941176469999998" blue="0.93333333330000001" alpha="1" colorSpace="calibratedRGB"/>
                                 <color key="textColor" white="0.33333333333333331" alpha="1" colorSpace="calibratedWhite"/>
