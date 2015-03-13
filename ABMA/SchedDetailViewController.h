@@ -24,5 +24,5 @@
 @property (weak, nonatomic) IBOutlet UITextView *noteTextField;
 
 - (IBAction)saveNote:(id)sender;
--(void)setDetailItem:(Event *)event onDay:(NSString *)newDayOfWeek onDate:(NSString *)newDateOfWeek;
+
 @end

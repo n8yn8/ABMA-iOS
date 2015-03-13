@@ -173,7 +173,7 @@
                 </collectionViewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="fPB-cu-77c" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="1003" y="-521"/>
+            <point key="canvasLocation" x="1003" y="148"/>
         </scene>
         <!--Schedule View Controller-->
         <scene sceneID="y9B-kN-3Yq">
@@ -487,7 +487,7 @@
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="LbZ-Oe-yao" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="1594" y="-1269"/>
+            <point key="canvasLocation" x="1853" y="-860"/>
         </scene>
         <!--Contact View Controller-->
         <scene sceneID="3kI-Kl-2rH">
@@ -529,7 +529,7 @@
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="aY4-Ak-Jlu" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="1003" y="240"/>
+            <point key="canvasLocation" x="1003" y="837"/>
         </scene>
         <!--Notes View Controller-->
         <scene sceneID="ASf-6x-K7U">
@@ -547,7 +547,7 @@
                                 <rect key="frame" x="0.0" y="0.0" width="320" height="568"/>
                                 <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                                 <prototypes>
-                                    <tableViewCell contentMode="scaleToFill" selectionStyle="default" indentationWidth="10" reuseIdentifier="NoteCell" textLabel="BkB-XY-vaG" detailTextLabel="AIs-gR-GC7" style="IBUITableViewCellStyleValue1" id="Ju1-EE-E37">
+                                    <tableViewCell contentMode="scaleToFill" selectionStyle="default" accessoryType="disclosureIndicator" indentationWidth="10" reuseIdentifier="NoteCell" textLabel="BkB-XY-vaG" detailTextLabel="AIs-gR-GC7" style="IBUITableViewCellStyleValue1" id="Ju1-EE-E37">
                                         <rect key="frame" x="0.0" y="0.0" width="320" height="44"/>
                                         <autoresizingMask key="autoresizingMask"/>
                                         <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="Ju1-EE-E37" id="RFW-a7-Suf">
@@ -567,6 +567,9 @@
                                                 </label>
                                             </subviews>
                                         </tableViewCellContentView>
+                                        <connections>
+                                            <segue destination="H5I-Cp-abp" kind="push" identifier="showDetail" id="6O2-og-6Hq"/>
+                                        </connections>
                                     </tableViewCell>
                                 </prototypes>
                                 <connections>
@@ -583,10 +586,13 @@
                             <constraint firstItem="uoC-Hm-4fP" firstAttribute="top" secondItem="gvi-Pn-nZG" secondAttribute="topMargin" id="Xnc-yT-q85"/>
                         </constraints>
                     </view>
+                    <connections>
+                        <outlet property="tableView" destination="uoC-Hm-4fP" id="KWW-02-479"/>
+                    </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="MMR-JE-rvo" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="1003" y="914"/>
+            <point key="canvasLocation" x="1003" y="-567"/>
         </scene>
         <!--Navigation Controller-->
         <scene sceneID="oJj-hl-Z6w">
@@ -645,5 +651,6 @@
     </simulatedMetricsContainer>
     <inferredMetricsTieBreakers>
         <segue reference="yED-nK-6IL"/>
+        <segue reference="6O2-og-6Hq"/>
     </inferredMetricsTieBreakers>
 </document>

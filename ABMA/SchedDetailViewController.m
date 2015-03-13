@@ -45,20 +45,6 @@
     return YES;
 }
 
-- (void)setDetailItem:(Event *)event onDay:(NSString *)newDayOfWeek onDate:(NSString *)newDateOfWeek
-{
-    if (_event != event) {
-        _event = event;
-    }
-    if (_detailDay != newDayOfWeek) {
-        _detailDay = newDayOfWeek;
-    }
-    if (_detailDate != newDateOfWeek) {
-        _detailDate = newDateOfWeek;
-    }
-}
-
-
 - (void)viewDidLoad
 {
     [super viewDidLoad];

@@ -188,8 +188,9 @@
 {
     if ([[segue identifier] isEqualToString:@"showDetail"]) {
         NSIndexPath *indexPath = [self.tableView indexPathForSelectedRow];
-        Event *object = events[indexPath.row];
-        [[segue destinationViewController] setDetailItem:object onDay:[daysOfWeek objectAtIndex:dateIndex] onDate:[numbsOfWeek objectAtIndex:dateIndex]];
+        Event *selectedEvent = events[indexPath.row];
+        SchedDetailViewController* dvc = segue.destinationViewController;
+        dvc.event = selectedEvent;
     }
 }
 
