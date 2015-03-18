@@ -28,6 +28,7 @@
 		43AAAE5D1AAB96A8002C424A /* Note.m in Sources */ = {isa = PBXBuildFile; fileRef = 43AAAE5C1AAB96A8002C424A /* Note.m */; };
 		43AAAE601AAB96A8002C424A /* Year.m in Sources */ = {isa = PBXBuildFile; fileRef = 43AAAE5F1AAB96A8002C424A /* Year.m */; };
 		43AAAE631AAB96A8002C424A /* Day.m in Sources */ = {isa = PBXBuildFile; fileRef = 43AAAE621AAB96A8002C424A /* Day.m */; };
+		43B2B5A91AB72DE000F0A6D0 /* Y2015.plist in Resources */ = {isa = PBXBuildFile; fileRef = 43B2B5A81AB72DE000F0A6D0 /* Y2015.plist */; };
 		43CF9B1A18F5A4E600885DAC /* libz.dylib in Frameworks */ = {isa = PBXBuildFile; fileRef = 43CF9B1918F5A4E600885DAC /* libz.dylib */; };
 		43CF9B1D18F5B23500885DAC /* ContactViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 43CF9B1C18F5B23500885DAC /* ContactViewController.m */; };
 		43D07C6F1AAEABA00033A1E6 /* EventCellTableViewCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 43D07C6E1AAEABA00033A1E6 /* EventCellTableViewCell.m */; };
@@ -81,6 +82,7 @@
 		43AAAE5F1AAB96A8002C424A /* Year.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = Year.m; sourceTree = "<group>"; };
 		43AAAE611AAB96A8002C424A /* Day.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Day.h; sourceTree = "<group>"; };
 		43AAAE621AAB96A8002C424A /* Day.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = Day.m; sourceTree = "<group>"; };
+		43B2B5A81AB72DE000F0A6D0 /* Y2015.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = Y2015.plist; sourceTree = "<group>"; };
 		43CF9B1918F5A4E600885DAC /* libz.dylib */ = {isa = PBXFileReference; lastKnownFileType = "compiled.mach-o.dylib"; name = libz.dylib; path = usr/lib/libz.dylib; sourceTree = SDKROOT; };
 		43CF9B1B18F5B23500885DAC /* ContactViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ContactViewController.h; sourceTree = "<group>"; };
 		43CF9B1C18F5B23500885DAC /* ContactViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ContactViewController.m; sourceTree = "<group>"; };
@@ -178,6 +180,7 @@
 				43CF9B1C18F5B23500885DAC /* ContactViewController.m */,
 				439947E31AB1E9F500D1479B /* NotesViewController.h */,
 				439947E41AB1E9F500D1479B /* NotesViewController.m */,
+				43B2B5A81AB72DE000F0A6D0 /* Y2015.plist */,
 			);
 			path = ABMA;
 			sourceTree = "<group>";
@@ -307,6 +310,7 @@
 			files = (
 				4338BBB918F26F53002683EF /* Images.xcassets in Resources */,
 				4338BBAB18F26F53002683EF /* InfoPlist.strings in Resources */,
+				43B2B5A91AB72DE000F0A6D0 /* Y2015.plist in Resources */,
 				4338BBB418F26F53002683EF /* Main.storyboard in Resources */,
 				43F995E418F46102004DC565 /* EventList.plist in Resources */,
 			);
@@ -467,7 +471,8 @@
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				ASSETCATALOG_COMPILER_LAUNCHIMAGE_NAME = LaunchImage;
-				CODE_SIGN_IDENTITY = "iPhone Developer";
+				CODE_SIGN_IDENTITY = "iPhone Distribution: Nathan Condell (Z3X6HD4H5L)";
+				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Distribution: Nathan Condell (Z3X6HD4H5L)";
 				GCC_PRECOMPILE_PREFIX_HEADER = YES;
 				GCC_PREFIX_HEADER = "ABMA/ABMA-Prefix.pch";
 				INFOPLIST_FILE = "ABMA/ABMA-Info.plist";
@@ -477,7 +482,7 @@
 					"$(PROJECT_DIR)",
 				);
 				PRODUCT_NAME = "$(TARGET_NAME)";
-				PROVISIONING_PROFILE = "CBA327E1-5886-4BB0-A75C-E77FD691C2A9";
+				PROVISIONING_PROFILE = "5ae17412-e242-4382-97b9-6e7c2f6f4186";
 				WRAPPER_EXTENSION = app;
 			};
 			name = Debug;
@@ -487,7 +492,8 @@
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				ASSETCATALOG_COMPILER_LAUNCHIMAGE_NAME = LaunchImage;
-				CODE_SIGN_IDENTITY = "iPhone Developer";
+				CODE_SIGN_IDENTITY = "iPhone Distribution: Nathan Condell (Z3X6HD4H5L)";
+				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Distribution: Nathan Condell (Z3X6HD4H5L)";
 				GCC_PRECOMPILE_PREFIX_HEADER = YES;
 				GCC_PREFIX_HEADER = "ABMA/ABMA-Prefix.pch";
 				INFOPLIST_FILE = "ABMA/ABMA-Info.plist";
@@ -497,7 +503,7 @@
 					"$(PROJECT_DIR)",
 				);
 				PRODUCT_NAME = "$(TARGET_NAME)";
-				PROVISIONING_PROFILE = "CBA327E1-5886-4BB0-A75C-E77FD691C2A9";
+				PROVISIONING_PROFILE = "5ae17412-e242-4382-97b9-6e7c2f6f4186";
 				WRAPPER_EXTENSION = app;
 			};
 			name = Release;
