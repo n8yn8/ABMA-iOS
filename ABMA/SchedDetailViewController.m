@@ -116,6 +116,11 @@ static const CGFloat LANDSCAPE_KEYBOARD_HEIGHT = 162;
 
 - (void)textViewDidBeginEditing:(UITextView *)textField
 {
+    
+    if (textField == self.noteTextField) {
+        self.eventDetails.userInteractionEnabled = NO;
+    }
+    
     CGRect textFieldRect =
     [self.view.window convertRect:textField.bounds fromView:textField];
     CGRect viewRect =
@@ -165,6 +170,11 @@ static const CGFloat LANDSCAPE_KEYBOARD_HEIGHT = 162;
 
 - (void)textViewDidEndEditing:(UITextView *)textField
 {
+    
+    if (textField == self.noteTextField) {
+        self.eventDetails.userInteractionEnabled = YES;
+    }
+    
     CGRect viewFrame = self.view.frame;
     viewFrame.origin.y += animatedDistance;
     
