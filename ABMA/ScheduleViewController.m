@@ -45,18 +45,44 @@
 {
     dateIndex = 0;
     
-    //CoreData
     AppDelegate *appdelegate = [[UIApplication sharedApplication] delegate];
     context = [appdelegate managedObjectContext];
     
+//    [self clearSchedule:@"Day"];
+//    [self clearSchedule:@"Event"];
     [self loadSchedule];
 }
 
+- (void)clearSchedule:(NSString *)nameEntity {
+    NSFetchRequest *fetchRequest = [[NSFetchRequest alloc] initWithEntityName:nameEntity];
+    [fetchRequest setIncludesPropertyValues:NO]; //only fetch the managedObjectID
+    
+    NSError *error;
+    NSArray *fetchedObjects = [context executeFetchRequest:fetchRequest error:&error];
+    for (NSManagedObject *object in fetchedObjects)
+    {
+        [context deleteObject:object];
+    }
+    
+    error = nil;
+    [context save:&error];
+}
+
 - (void)loadSchedule {
+    
+    NSDateFormatter *dayFormatter = [[NSDateFormatter alloc] init];
+    [dayFormatter setDateFormat:@"MMM d, yyyy"];
+    NSTimeZone *timeZone = [NSTimeZone timeZoneWithName:@"UTC"];
+    [dayFormatter setTimeZone:timeZone];
+    
+    NSDate *schedStart = [dayFormatter dateFromString:@"April 12, 2015"];
+    NSDate *schedEnd = [dayFormatter dateFromString:@"April 20, 2015"];
+    
     NSArray *sortDescriptors = [NSArray arrayWithObject:[NSSortDescriptor sortDescriptorWithKey:@"date" ascending:YES]];
     NSFetchRequest *fetchRequest = [[NSFetchRequest alloc] init];
     [fetchRequest setEntity:[NSEntityDescription entityForName:@"Day" inManagedObjectContext:context]];
     fetchRequest.sortDescriptors = sortDescriptors;
+    fetchRequest.predicate = [NSPredicate predicateWithFormat:@"(date >= %@) AND (date <= %@)",schedStart, schedEnd];
     NSError *fetchError = nil;
     days = [[NSArray alloc] initWithArray:[context executeFetchRequest:fetchRequest error:&fetchError]];
     if (fetchError) {
@@ -93,7 +119,7 @@
     NSDateFormatter *timeFormatter = [[NSDateFormatter alloc] init];
     [timeFormatter setDateFormat:@"MMM d, yyyy h:mma"];
     [timeFormatter setTimeZone:timeZone];
-    NSString *plistCatPath = [[NSBundle mainBundle] pathForResource:@"EventList" ofType:@"plist"];
+    NSString *plistCatPath = [[NSBundle mainBundle] pathForResource:@"Y2015" ofType:@"plist"];
     NSDictionary *dailySched = [[NSDictionary alloc] initWithContentsOfFile:plistCatPath];
     NSArray *allKeys = [dailySched allKeys];
     
