@@ -7,7 +7,6 @@
 //
 
 #import <UIKit/UIKit.h>
-#import "BaseViewController.h"
 
 @interface ScheduleViewController : BaseViewController <UITableViewDelegate, UITableViewDataSource>
 - (IBAction)earlierDate:(id)sender;
