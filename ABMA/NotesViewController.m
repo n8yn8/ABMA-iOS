@@ -58,12 +58,14 @@
     if (cell == nil) {
         cell = [[UITableViewCell alloc] initWithStyle:UITableViewCellStyleDefault reuseIdentifier:simpleTableIdentifier];
     }
+    UILabel *eventNameLabel = (UILabel *)[cell viewWithTag:201];
+    UILabel *noteContent = (UILabel *)[cell viewWithTag:202];
     
     Note *note = [notes objectAtIndex:indexPath.row];
     Event *thisEvent = note.event;
     
-    cell.textLabel.text = thisEvent.title;
-    cell.detailTextLabel.text = note.content;
+    eventNameLabel.text = thisEvent.title;
+    noteContent.text = note.content;
     return cell;
 }
 

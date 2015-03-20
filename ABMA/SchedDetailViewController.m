@@ -29,14 +29,23 @@
 #pragma mark - Managing the detail item
 
 - (IBAction)saveNote:(id)sender {
-    AppDelegate *appdelegate = [[UIApplication sharedApplication] delegate];
     
-    NSManagedObjectContext *context = [appdelegate managedObjectContext];
-    Note *note = [NSEntityDescription insertNewObjectForEntityForName:@"Note" inManagedObjectContext:context];
-    note.content = self.noteTextField.text;
-    note.event = self.event;
-    NSError *error;
-    [context save:&error];
+    [self.noteTextField resignFirstResponder];
+    
+    NSString *noteText = self.noteTextField.text;
+    if (![noteText  isEqual: @""]) {
+        AppDelegate *appdelegate = [[UIApplication sharedApplication] delegate];
+        NSManagedObjectContext *context = [appdelegate managedObjectContext];
+        if (!self.event.note) {
+            self.event.note = [NSEntityDescription insertNewObjectForEntityForName:@"Note" inManagedObjectContext:context];
+        }
+        
+        self.event.note.content = self.noteTextField.text;
+        NSError *error;
+        [context save:&error];
+    }
+    
+    
     //TODO: error handling
 }
 
@@ -61,7 +70,6 @@
         self.noteTextField.text = self.event.note.content;
     }
     
-    [self.navigationController.navigationBar setBackgroundImage:[UIImage imageNamed:@"bar.png"] forBarMetrics:UIBarMetricsDefault];
     self.navigationItem.titleView = [[UIImageView alloc] initWithImage:[UIImage imageNamed:@"ABMAlogo.png"]];
     UIColor *bg= [[UIColor alloc] initWithPatternImage:[UIImage imageNamed:@"BG.png"]];
     self.view.backgroundColor = bg;
@@ -74,8 +82,6 @@
     
     _noteTextField.delegate = self;
     _eventDetails.delegate = self;
-    [self.view endEditing:YES];
-    
     [self.view endEditing:YES];
 }
 
