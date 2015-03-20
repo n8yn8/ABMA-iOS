@@ -12,7 +12,10 @@
             <rect key="frame" x="0.0" y="0.0" width="480" height="480"/>
             <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
             <subviews>
-                <imageView userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="ABMA-logo" translatesAutoresizingMaskIntoConstraints="NO" id="7ED-ei-ZWY">
+                <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="BG" translatesAutoresizingMaskIntoConstraints="NO" id="NfM-nn-sRb">
+                    <rect key="frame" x="0.0" y="0.0" width="480" height="480"/>
+                </imageView>
+                <imageView userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="ABMA-transparent" translatesAutoresizingMaskIntoConstraints="NO" id="7ED-ei-ZWY">
                     <rect key="frame" x="0.0" y="0.0" width="480" height="480"/>
                     <constraints>
                         <constraint firstAttribute="width" secondItem="7ED-ei-ZWY" secondAttribute="height" multiplier="1:1" id="AUA-J7-RSY"/>
@@ -21,9 +24,13 @@
             </subviews>
             <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="calibratedWhite"/>
             <constraints>
+                <constraint firstAttribute="trailing" secondItem="NfM-nn-sRb" secondAttribute="trailing" id="MRW-jj-nLT"/>
+                <constraint firstItem="NfM-nn-sRb" firstAttribute="top" secondItem="iN0-l3-epB" secondAttribute="top" id="WDu-Za-vGJ"/>
                 <constraint firstAttribute="centerY" secondItem="7ED-ei-ZWY" secondAttribute="centerY" id="arV-tk-6Q3"/>
+                <constraint firstItem="NfM-nn-sRb" firstAttribute="leading" secondItem="iN0-l3-epB" secondAttribute="leading" id="bjt-GX-F73"/>
                 <constraint firstItem="7ED-ei-ZWY" firstAttribute="leading" secondItem="iN0-l3-epB" secondAttribute="leading" id="gzE-7a-b9S"/>
                 <constraint firstAttribute="trailing" secondItem="7ED-ei-ZWY" secondAttribute="trailing" id="u44-ga-f2t"/>
+                <constraint firstAttribute="bottom" secondItem="NfM-nn-sRb" secondAttribute="bottom" id="uUl-Gb-lOK"/>
             </constraints>
             <nil key="simulatedStatusBarMetrics"/>
             <freeformSimulatedSizeMetrics key="simulatedDestinationMetrics"/>
@@ -31,6 +38,7 @@
         </view>
     </objects>
     <resources>
-        <image name="ABMA-logo" width="1024" height="1024"/>
+        <image name="ABMA-transparent" width="930" height="930"/>
+        <image name="BG" width="320" height="569"/>
     </resources>
 </document>
