@@ -26,7 +26,7 @@
                                             <rect key="frame" x="0.0" y="0.0" width="320" height="150"/>
                                             <autoresizingMask key="autoresizingMask"/>
                                             <subviews>
-                                                <imageView userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="ABMA-logo" translatesAutoresizingMaskIntoConstraints="NO" id="WP3-Jn-o7k">
+                                                <imageView userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" misplaced="YES" image="ABMA-transparent" translatesAutoresizingMaskIntoConstraints="NO" id="WP3-Jn-o7k">
                                                     <rect key="frame" x="-352" y="8" width="1025" height="134"/>
                                                 </imageView>
                                             </subviews>
@@ -406,7 +406,7 @@
                                             <constraint firstAttribute="bottom" secondItem="Zrl-ck-781" secondAttribute="bottom" id="eHn-UR-vEI"/>
                                         </constraints>
                                     </view>
-                                    <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="ABMA-logo" translatesAutoresizingMaskIntoConstraints="NO" id="V9I-fy-cK3">
+                                    <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="ABMA-transparent" translatesAutoresizingMaskIntoConstraints="NO" id="V9I-fy-cK3">
                                         <rect key="frame" x="15" y="18" width="70" height="70"/>
                                         <constraints>
                                             <constraint firstAttribute="height" constant="70" id="mUD-cn-4RM"/>
@@ -693,7 +693,7 @@
         <simulatedScreenMetrics key="destination" type="retina4"/>
     </simulatedMetricsContainer>
     <inferredMetricsTieBreakers>
-        <segue reference="czU-nI-UKg"/>
+        <segue reference="yED-nK-6IL"/>
         <segue reference="6O2-og-6Hq"/>
     </inferredMetricsTieBreakers>
     <color key="tintColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
