@@ -52,7 +52,7 @@
 }
 
 - (IBAction)abmaContactForm:(id)sender {
-    [[UIApplication sharedApplication] openURL:[NSURL URLWithString: @"http://www.theabma.org/index.php?option=com_qcontacts&view=contact&id=1%3Acontact-abma&catid=47%3Acontacts&Itemid=97"]];
+    [[UIApplication sharedApplication] openURL:[NSURL URLWithString: @"https://theabma.org/contact/"]];
 }
 
 @end
