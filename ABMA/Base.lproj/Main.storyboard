@@ -26,8 +26,11 @@
                                             <rect key="frame" x="0.0" y="0.0" width="320" height="150"/>
                                             <autoresizingMask key="autoresizingMask"/>
                                             <subviews>
-                                                <imageView userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" misplaced="YES" image="ABMA-transparent" translatesAutoresizingMaskIntoConstraints="NO" id="WP3-Jn-o7k">
-                                                    <rect key="frame" x="-352" y="8" width="1025" height="134"/>
+                                                <imageView userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="ABMA-transparent" translatesAutoresizingMaskIntoConstraints="NO" id="WP3-Jn-o7k">
+                                                    <rect key="frame" x="93" y="8" width="134" height="134"/>
+                                                    <constraints>
+                                                        <constraint firstAttribute="width" secondItem="WP3-Jn-o7k" secondAttribute="height" multiplier="1:1" id="6tP-ag-DLO"/>
+                                                    </constraints>
                                                 </imageView>
                                             </subviews>
                                             <constraints>
@@ -466,7 +469,8 @@
                                             <action selector="saveNote:" destination="H5I-Cp-abp" eventType="touchUpInside" id="fCa-ze-LUt"/>
                                         </connections>
                                     </button>
-                                    <textView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" misplaced="YES" translatesAutoresizingMaskIntoConstraints="NO" id="p0m-dm-2vR">
+                                    <textView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="p0m-dm-2vR">
+                                        <rect key="frame" x="16" y="32" width="288" height="90"/>
                                         <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                                         <fontDescription key="fontDescription" type="system" pointSize="14"/>
                                         <textInputTraits key="textInputTraits" autocapitalizationType="sentences"/>
@@ -643,8 +647,8 @@
                                 <color key="textColor" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
                                 <nil key="highlightedColor"/>
                             </label>
-                            <textView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" misplaced="YES" editable="NO" translatesAutoresizingMaskIntoConstraints="NO" id="nJ3-Al-dGr">
-                                <rect key="frame" x="16" y="57" width="288" height="1486"/>
+                            <textView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" editable="NO" translatesAutoresizingMaskIntoConstraints="NO" id="nJ3-Al-dGr">
+                                <rect key="frame" x="16" y="57" width="288" height="491"/>
                                 <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
                                 <string key="text">Badges
 Please make sure to wear your badges throughout the conference. These badges are your admission to the various events and programming.
