@@ -9,7 +9,7 @@
 #import <UIKit/UIKit.h>
 #import "Event.h"
 
-@interface SchedDetailViewController : UIViewController
+@interface SchedDetailViewController : UIViewController <UITableViewDelegate, UITableViewDataSource>
 @property (weak, nonatomic) IBOutlet UITableView *tableView;
 @property (strong, nonatomic) IBOutlet UILabel *eventTitle;
 @property (strong, nonatomic) IBOutlet UILabel *eventSubtitle;
@@ -20,6 +20,7 @@
 @property (strong, nonatomic) IBOutlet UILabel *eventDay;
 @property (strong, nonatomic) IBOutlet UILabel *eventDate;
 @property (strong, nonatomic) Event *event;
+@property (strong, nonatomic) Paper *paper;
 @property (weak, nonatomic) IBOutlet UITextView *noteTextField;
 
 - (IBAction)saveNote:(id)sender;

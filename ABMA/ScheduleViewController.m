@@ -51,6 +51,8 @@
     
     [self clearSchedule:@"Day"];
     [self clearSchedule:@"Event"];
+    [self clearSchedule:@"Note"];
+    [self clearSchedule:@"Paper"];
     [self loadSchedule];
 }
 
