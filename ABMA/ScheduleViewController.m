@@ -49,10 +49,10 @@
     AppDelegate *appdelegate = [[UIApplication sharedApplication] delegate];
     context = [appdelegate managedObjectContext];
     
-    [self clearSchedule:@"Day"];
-    [self clearSchedule:@"Event"];
-    [self clearSchedule:@"Note"];
-    [self clearSchedule:@"Paper"];
+//    [self clearSchedule:@"Day"];
+//    [self clearSchedule:@"Event"];
+//    [self clearSchedule:@"Note"];
+//    [self clearSchedule:@"Paper"];
     [self loadSchedule];
 }
 
