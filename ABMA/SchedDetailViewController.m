@@ -70,6 +70,10 @@
         self.noteTextField.text = self.event.note.content;
     }
     
+    if (![self.event.title  isEqual: @"Presentations"]) {
+        [self.tableView setHidden:YES];
+    }
+    
     self.navigationItem.titleView = [[UIImageView alloc] initWithImage:[UIImage imageNamed:@"ABMAlogo.png"]];
     UIColor *bg= [[UIColor alloc] initWithPatternImage:[UIImage imageNamed:@"BG.png"]];
     self.view.backgroundColor = bg;

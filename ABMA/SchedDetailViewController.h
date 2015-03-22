@@ -10,6 +10,7 @@
 #import "Event.h"
 
 @interface SchedDetailViewController : UIViewController
+@property (weak, nonatomic) IBOutlet UITableView *tableView;
 @property (strong, nonatomic) IBOutlet UILabel *eventTitle;
 @property (strong, nonatomic) IBOutlet UILabel *eventSubtitle;
 @property (strong, nonatomic) IBOutlet UILabel *eventLocation;
