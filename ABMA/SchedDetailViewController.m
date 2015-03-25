@@ -10,6 +10,8 @@
 #import <QuartzCore/QuartzCore.h>
 #import "AppDelegate.h"
 #import "Note.h"
+#import "Paper.h"
+#import "PaperTableViewCell.h"
 
 @interface SchedDetailViewController () <UITextViewDelegate>
 
@@ -36,11 +38,22 @@
     if (![noteText  isEqual: @""]) {
         AppDelegate *appdelegate = [[UIApplication sharedApplication] delegate];
         NSManagedObjectContext *context = [appdelegate managedObjectContext];
-        if (!self.event.note) {
-            self.event.note = [NSEntityDescription insertNewObjectForEntityForName:@"Note" inManagedObjectContext:context];
+        
+        
+        if (self.event) {
+            if (!self.event.note) {
+                self.event.note = [NSEntityDescription insertNewObjectForEntityForName:@"Note" inManagedObjectContext:context];
+            }
+            
+            self.event.note.content = self.noteTextField.text;
+        } else {
+            if (!self.paper.note) {
+                self.paper.note = [NSEntityDescription insertNewObjectForEntityForName:@"Note" inManagedObjectContext:context];
+            }
+            
+            self.paper.note.content = self.noteTextField.text;
         }
         
-        self.event.note.content = self.noteTextField.text;
         NSError *error;
         [context save:&error];
     }
@@ -59,15 +72,36 @@
     NSDateFormatter *dateformatter = [[NSDateFormatter alloc] init];
     [dateformatter setDateFormat:@"dd"];
     
-    self.eventDay.text = [[dayformatter stringFromDate:self.event.startDate] uppercaseString];
-    self.eventDate.text = [dateformatter stringFromDate:self.event.startDate];
-    self.eventTitle.text = self.event.title;
-    self.eventSubtitle.text = self.event.subtitle;
-    self.eventLocation.text = self.event.locatoin;
-    self.eventTime.text = self.event.time;
-    self.eventDetails.text = self.event.details;
-    if (self.event.note) {
-        self.noteTextField.text = self.event.note.content;
+    if (self.paper) {
+        self.eventDay.text = [[dayformatter stringFromDate:self.paper.event.startDate] uppercaseString];
+        self.eventDate.text = [dateformatter stringFromDate:self.paper.event.startDate];
+        self.eventLocation.text = self.paper.event.locatoin;
+        self.eventTime.text = self.paper.event.time;
+        self.eventTitle.text = self.paper.title;
+        self.eventSubtitle.text = self.paper.author;
+        self.eventDetails.text = self.paper.abstract;
+        if (self.paper.note) {
+            self.noteTextField.text = self.paper.note.content;
+        }
+    } else {
+        self.eventDay.text = [[dayformatter stringFromDate:self.event.startDate] uppercaseString];
+        self.eventDate.text = [dateformatter stringFromDate:self.event.startDate];
+        self.eventLocation.text = self.event.locatoin;
+        self.eventTime.text = self.event.time;
+        self.eventTitle.text = self.event.title;
+        self.eventSubtitle.text = self.event.subtitle;
+        self.eventDetails.text = self.event.details;
+        if (self.event.note) {
+            self.noteTextField.text = self.event.note.content;
+        }
+    }
+    
+    if (self.event.papers.count > 0) {
+        [self.tableView setHidden:NO];
+        [self.eventDetails setHidden:YES];
+    } else {
+        [self.tableView setHidden:YES];
+        [self.eventDetails setHidden:NO];
     }
     
     self.navigationItem.titleView = [[UIImageView alloc] initWithImage:[UIImage imageNamed:@"ABMAlogo.png"]];
@@ -91,16 +125,46 @@
     // Dispose of any resources that can be recreated.
 }
 
-/*
+#pragma mark - Table view data source
+
+- (NSInteger)numberOfSectionsInTableView:(UITableView *)tableView
+{
+    return 1;
+}
+
+- (NSInteger)tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section
+{
+    // Return the number of rows in the section.
+    return [self.event.papers count];
+}
+
+- (UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath
+{
+    static NSString *simpleTableIdentifier = @"PaperTableViewCell";
+    
+    PaperTableViewCell *cell = [tableView dequeueReusableCellWithIdentifier:simpleTableIdentifier];
+    
+    if (cell == nil) {
+        cell = [[PaperTableViewCell alloc] initWithStyle:UITableViewCellStyleDefault reuseIdentifier:simpleTableIdentifier];
+    }
+    
+    Paper *paper = [self.event.papers objectAtIndex:indexPath.row];
+    cell.paperTitleLabel.text = paper.title;
+    cell.authorLabel.text = paper.author;
+    
+    return cell;
+}
+
 #pragma mark - Navigation
 
 // In a storyboard-based application, you will often want to do a little preparation before navigation
 - (void)prepareForSegue:(UIStoryboardSegue *)segue sender:(id)sender
 {
-    // Get the new view controller using [segue destinationViewController].
-    // Pass the selected object to the new view controller.
+    if ([[segue identifier] isEqualToString:@"showPaper"]) {
+        SchedDetailViewController* dvc = segue.destinationViewController;
+        dvc.paper = self.event.papers[[self.tableView indexPathForSelectedRow].row];
+    }
 }
-*/
 
 #pragma mark - Textfield control
 

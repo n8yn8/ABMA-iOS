@@ -13,6 +13,7 @@
 #import "Day.h"
 #import "Year.h"
 #import "AppDelegate.h"
+#import "Paper.h"
 
 @interface ScheduleViewController ()
 
@@ -50,6 +51,8 @@
     
 //    [self clearSchedule:@"Day"];
 //    [self clearSchedule:@"Event"];
+//    [self clearSchedule:@"Note"];
+//    [self clearSchedule:@"Paper"];
     [self loadSchedule];
 }
 
@@ -140,6 +143,14 @@
             NSString *endString = [NSString stringWithFormat:@"%@ %@", key, [times lastObject]];
             thisEvent.endDate = [timeFormatter dateFromString:endString];
             thisEvent.details = [event objectForKey:@"Description"];
+            NSArray *papers = [event objectForKey:@"Papers"];
+            for (NSDictionary *paperDict in papers) {
+                Paper *paper = [[Paper alloc] initWithEntity:[NSEntityDescription entityForName:@"Paper" inManagedObjectContext:context] insertIntoManagedObjectContext:context];
+                paper.author = [paperDict objectForKey:@"Author"];
+                paper.title = [paperDict objectForKey:@"Title"];
+                paper.abstract = [paperDict objectForKey:@"Abstract"];
+                paper.event = thisEvent;
+            }
             [day addEventObject:thisEvent];
         }
         [year addDayObject:day];

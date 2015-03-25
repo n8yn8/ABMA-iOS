@@ -8,6 +8,7 @@
 
 #import "NotesViewController.h"
 #import "Event.h"
+#import "Paper.h"
 #import "Note.h"
 #import "AppDelegate.h"
 #import "SchedDetailViewController.h"
@@ -62,9 +63,14 @@
     UILabel *noteContent = (UILabel *)[cell viewWithTag:202];
     
     Note *note = [notes objectAtIndex:indexPath.row];
-    Event *thisEvent = note.event;
+    if (note.event) {
+        Event *thisEvent = note.event;
+        eventNameLabel.text = thisEvent.title;
+    } else if (note.paper) {
+        Paper *thisPaper = note.paper;
+        eventNameLabel.text = thisPaper.title;
+    }
     
-    eventNameLabel.text = thisEvent.title;
     noteContent.text = note.content;
     return cell;
 }
@@ -77,9 +83,14 @@
     if ([[segue identifier] isEqualToString:@"showDetail"]) {
         NSIndexPath *indexPath = [self.tableView indexPathForSelectedRow];
         Note *selectedNote = notes[indexPath.row];
-        Event *selectedEvent = selectedNote.event;
         SchedDetailViewController* dvc = segue.destinationViewController;
-        dvc.event = selectedEvent;
+        if (selectedNote.event) {
+            Event *selectedEvent = selectedNote.event;
+            dvc.event = selectedEvent;
+        } else if (selectedNote.paper) {
+            Paper *selectedPaper = selectedNote.paper;
+            dvc.paper = selectedPaper;
+        }
     }
 }
 
