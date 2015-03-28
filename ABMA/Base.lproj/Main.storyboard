@@ -162,7 +162,6 @@
         <!--Sponsor Collection View Controller-->
         <scene sceneID="nZC-GZ-kif">
             <objects>
-                <placeholder placeholderIdentifier="IBFirstResponder" id="eVB-De-xYb" userLabel="First Responder" sceneMemberID="firstResponder"/>
                 <viewController id="8z4-wf-t5w" customClass="SponsorCollectionViewController" sceneMemberID="viewController">
                     <layoutGuides>
                         <viewControllerLayoutGuide type="top" id="79K-2U-dIF"/>
@@ -172,8 +171,11 @@
                         <rect key="frame" x="0.0" y="0.0" width="320" height="568"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
-                            <collectionView opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" minimumZoomScale="0.0" maximumZoomScale="0.0" dataMode="prototypes" translatesAutoresizingMaskIntoConstraints="NO" id="33w-se-r7o">
+                            <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="BG" translatesAutoresizingMaskIntoConstraints="NO" id="Ct2-zl-x9a">
                                 <rect key="frame" x="0.0" y="0.0" width="320" height="568"/>
+                            </imageView>
+                            <collectionView opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" minimumZoomScale="0.0" maximumZoomScale="0.0" dataMode="prototypes" translatesAutoresizingMaskIntoConstraints="NO" id="33w-se-r7o">
+                                <rect key="frame" x="0.0" y="20" width="320" height="548"/>
                                 <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
                                 <collectionViewFlowLayout key="collectionViewLayout" minimumLineSpacing="0.0" minimumInteritemSpacing="0.0" id="TZJ-Ua-w06">
                                     <size key="itemSize" width="160" height="160"/>
@@ -213,13 +215,18 @@
                         </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                         <constraints>
-                            <constraint firstItem="33w-se-r7o" firstAttribute="top" secondItem="VGa-XE-4Bv" secondAttribute="topMargin" id="4CL-OB-smc"/>
+                            <constraint firstItem="Ct2-zl-x9a" firstAttribute="top" secondItem="VGa-XE-4Bv" secondAttribute="topMargin" id="6vI-h6-JVP"/>
                             <constraint firstAttribute="trailingMargin" secondItem="33w-se-r7o" secondAttribute="trailing" constant="-16" id="9EI-yf-4t1"/>
+                            <constraint firstItem="Ct2-zl-x9a" firstAttribute="leading" secondItem="VGa-XE-4Bv" secondAttribute="leadingMargin" constant="-16" id="A7i-BI-j2c"/>
+                            <constraint firstItem="0K5-Ri-CnL" firstAttribute="top" secondItem="Ct2-zl-x9a" secondAttribute="bottom" id="JRd-Qa-rvS"/>
                             <constraint firstItem="33w-se-r7o" firstAttribute="leading" secondItem="VGa-XE-4Bv" secondAttribute="leadingMargin" constant="-16" id="Q3i-Wg-O3k"/>
+                            <constraint firstAttribute="trailingMargin" secondItem="Ct2-zl-x9a" secondAttribute="trailing" constant="-16" id="UxM-H4-U9t"/>
                             <constraint firstItem="0K5-Ri-CnL" firstAttribute="top" secondItem="33w-se-r7o" secondAttribute="bottom" id="k0C-8d-LUX"/>
+                            <constraint firstItem="33w-se-r7o" firstAttribute="top" secondItem="79K-2U-dIF" secondAttribute="bottom" id="yS9-fw-PlH"/>
                         </constraints>
                     </view>
                 </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="eVB-De-xYb" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
             <point key="canvasLocation" x="1003" y="119"/>
         </scene>
@@ -245,24 +252,6 @@
                                 <color key="textColor" red="0.90196078430000004" green="0.90196078430000004" blue="0.90196078430000004" alpha="1" colorSpace="calibratedRGB"/>
                                 <nil key="highlightedColor"/>
                             </label>
-                            <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="gxA-PB-3Ff">
-                                <rect key="frame" x="20" y="87" width="14" height="22"/>
-                                <state key="normal" image="ArrowLeft">
-                                    <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
-                                </state>
-                                <connections>
-                                    <action selector="earlierDate:" destination="beF-5d-Hwp" eventType="touchUpInside" id="v67-Xs-8d5"/>
-                                </connections>
-                            </button>
-                            <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="sBb-R0-eSc">
-                                <rect key="frame" x="286" y="87" width="14" height="22"/>
-                                <state key="normal" image="ArrowRight">
-                                    <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
-                                </state>
-                                <connections>
-                                    <action selector="laterDate:" destination="beF-5d-Hwp" eventType="touchUpInside" id="PfY-ed-dCc"/>
-                                </connections>
-                            </button>
                             <tableView clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="54" sectionHeaderHeight="22" sectionFooterHeight="22" translatesAutoresizingMaskIntoConstraints="NO" id="txW-z0-ou2">
                                 <rect key="frame" x="0.0" y="88" width="320" height="480"/>
                                 <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
@@ -274,21 +263,30 @@
                                             <rect key="frame" x="0.0" y="0.0" width="287" height="53"/>
                                             <autoresizingMask key="autoresizingMask"/>
                                             <subviews>
-                                                <label opaque="NO" clipsSubviews="YES" userInteractionEnabled="NO" tag="101" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="Description" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="y9e-1h-cyc">
+                                                <label opaque="NO" clipsSubviews="YES" userInteractionEnabled="NO" tag="101" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Description" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="y9e-1h-cyc">
                                                     <rect key="frame" x="20" y="4" width="267" height="21"/>
                                                     <fontDescription key="fontDescription" type="boldSystem" pointSize="17"/>
                                                     <color key="textColor" red="0.0" green="0.47843137250000001" blue="1" alpha="1" colorSpace="calibratedRGB"/>
                                                     <nil key="highlightedColor"/>
                                                 </label>
-                                                <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" image="TimeIcon" translatesAutoresizingMaskIntoConstraints="NO" id="3kc-li-Yuf">
+                                                <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="TimeIcon" translatesAutoresizingMaskIntoConstraints="NO" id="3kc-li-Yuf">
                                                     <rect key="frame" x="20" y="30" width="13" height="14"/>
                                                 </imageView>
-                                                <label opaque="NO" clipsSubviews="YES" userInteractionEnabled="NO" tag="102" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="Time" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="6tj-1K-ikm">
-                                                    <rect key="frame" x="41" y="26" width="246" height="21"/>
+                                                <label opaque="NO" clipsSubviews="YES" userInteractionEnabled="NO" tag="102" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Time" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="6tj-1K-ikm">
+                                                    <rect key="frame" x="41" y="28" width="32" height="17"/>
                                                     <fontDescription key="fontDescription" type="system" pointSize="14"/>
                                                     <nil key="highlightedColor"/>
                                                 </label>
                                             </subviews>
+                                            <constraints>
+                                                <constraint firstAttribute="bottomMargin" secondItem="3kc-li-Yuf" secondAttribute="bottom" constant="1" id="4fp-So-dsN"/>
+                                                <constraint firstItem="6tj-1K-ikm" firstAttribute="leading" secondItem="3kc-li-Yuf" secondAttribute="trailing" constant="8" id="A1O-p8-HdB"/>
+                                                <constraint firstItem="3kc-li-Yuf" firstAttribute="centerY" secondItem="6tj-1K-ikm" secondAttribute="centerY" id="A5p-Pt-jc7"/>
+                                                <constraint firstItem="3kc-li-Yuf" firstAttribute="leading" secondItem="scf-RB-J9Y" secondAttribute="leadingMargin" constant="12" id="C5s-G3-6iY"/>
+                                                <constraint firstAttribute="trailingMargin" secondItem="y9e-1h-cyc" secondAttribute="trailing" constant="-8" id="DVy-cj-eXf"/>
+                                                <constraint firstItem="y9e-1h-cyc" firstAttribute="top" secondItem="scf-RB-J9Y" secondAttribute="topMargin" constant="-4" id="cpC-RT-EhK"/>
+                                                <constraint firstItem="y9e-1h-cyc" firstAttribute="leading" secondItem="scf-RB-J9Y" secondAttribute="leadingMargin" constant="12" id="eUZ-4Y-Lgc"/>
+                                            </constraints>
                                         </tableViewCellContentView>
                                         <connections>
                                             <outlet property="descriptionLabel" destination="y9e-1h-cyc" id="XTB-aO-26d"/>
@@ -302,13 +300,35 @@
                                     <outlet property="delegate" destination="beF-5d-Hwp" id="csw-FW-roi"/>
                                 </connections>
                             </tableView>
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="sBb-R0-eSc">
+                                <rect key="frame" x="290" y="43" width="14" height="22"/>
+                                <state key="normal" image="ArrowRight">
+                                    <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
+                                </state>
+                                <connections>
+                                    <action selector="laterDate:" destination="beF-5d-Hwp" eventType="touchUpInside" id="PfY-ed-dCc"/>
+                                </connections>
+                            </button>
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="gxA-PB-3Ff">
+                                <rect key="frame" x="16" y="43" width="14" height="22"/>
+                                <state key="normal" image="ArrowLeft">
+                                    <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
+                                </state>
+                                <connections>
+                                    <action selector="earlierDate:" destination="beF-5d-Hwp" eventType="touchUpInside" id="v67-Xs-8d5"/>
+                                </connections>
+                            </button>
                         </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="calibratedWhite"/>
                         <constraints>
+                            <constraint firstItem="sBb-R0-eSc" firstAttribute="centerY" secondItem="Dkg-Po-jaI" secondAttribute="centerY" id="0GA-xj-GCM"/>
                             <constraint firstItem="txW-z0-ou2" firstAttribute="top" secondItem="Dkg-Po-jaI" secondAttribute="bottom" id="2Ag-TW-IXX"/>
                             <constraint firstItem="txW-z0-ou2" firstAttribute="leading" secondItem="X64-Mu-uS1" secondAttribute="leading" id="4a3-MX-1Du"/>
+                            <constraint firstItem="sBb-R0-eSc" firstAttribute="centerY" secondItem="gxA-PB-3Ff" secondAttribute="centerY" id="Ja2-iJ-eun"/>
+                            <constraint firstItem="gxA-PB-3Ff" firstAttribute="leading" secondItem="Dkg-Po-jaI" secondAttribute="leading" constant="16" id="TYS-Bn-xpv"/>
                             <constraint firstItem="txW-z0-ou2" firstAttribute="top" secondItem="p2E-Hj-JwA" secondAttribute="bottom" constant="68" id="YT4-Ck-0Z8"/>
                             <constraint firstItem="dPM-HJ-N0p" firstAttribute="top" secondItem="txW-z0-ou2" secondAttribute="bottom" id="YXn-qK-T94"/>
+                            <constraint firstItem="sBb-R0-eSc" firstAttribute="trailing" secondItem="Dkg-Po-jaI" secondAttribute="trailing" constant="-16" id="ZkO-MQ-Hch"/>
                             <constraint firstAttribute="trailingMargin" secondItem="Dkg-Po-jaI" secondAttribute="trailing" constant="-16" id="c6D-Nu-Zbm"/>
                             <constraint firstAttribute="trailing" secondItem="txW-z0-ou2" secondAttribute="trailing" id="p3l-61-aWA"/>
                             <constraint firstItem="Dkg-Po-jaI" firstAttribute="leading" secondItem="X64-Mu-uS1" secondAttribute="leadingMargin" constant="-16" id="v60-Kt-tHD"/>
@@ -412,6 +432,9 @@
                             <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="JfH-Nb-q4i">
                                 <rect key="frame" x="0.0" y="88" width="320" height="105"/>
                                 <subviews>
+                                    <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="BG" translatesAutoresizingMaskIntoConstraints="NO" id="yn9-eS-Qf6">
+                                        <rect key="frame" x="0.0" y="0.0" width="320" height="105"/>
+                                    </imageView>
                                     <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="mtt-87-tIi">
                                         <rect key="frame" x="93" y="21" width="217" height="64"/>
                                         <subviews>
@@ -431,7 +454,7 @@
                                                 <nil key="highlightedColor"/>
                                             </label>
                                         </subviews>
-                                        <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                                        <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
                                         <constraints>
                                             <constraint firstAttribute="trailing" secondItem="Zrl-ck-781" secondAttribute="trailing" id="5dU-ny-emL"/>
                                             <constraint firstAttribute="trailing" secondItem="qre-SX-GdE" secondAttribute="trailing" id="AIO-3t-f2y"/>
@@ -444,6 +467,7 @@
                                     </view>
                                     <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="ABMA-transparent" translatesAutoresizingMaskIntoConstraints="NO" id="V9I-fy-cK3">
                                         <rect key="frame" x="15" y="18" width="70" height="70"/>
+                                        <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                                         <constraints>
                                             <constraint firstAttribute="height" constant="70" id="mUD-cn-4RM"/>
                                             <constraint firstAttribute="width" constant="70" id="oLI-y3-pau"/>
@@ -454,9 +478,13 @@
                                 <constraints>
                                     <constraint firstItem="mtt-87-tIi" firstAttribute="leading" secondItem="V9I-fy-cK3" secondAttribute="trailing" constant="8" id="5Nm-84-6d5"/>
                                     <constraint firstItem="V9I-fy-cK3" firstAttribute="leading" secondItem="JfH-Nb-q4i" secondAttribute="leading" constant="15" id="6LC-cp-6pK"/>
+                                    <constraint firstItem="yn9-eS-Qf6" firstAttribute="leading" secondItem="JfH-Nb-q4i" secondAttribute="leading" id="6Qu-jG-PAM"/>
+                                    <constraint firstAttribute="bottom" secondItem="yn9-eS-Qf6" secondAttribute="bottom" id="Ilj-Lg-L0N"/>
+                                    <constraint firstAttribute="trailing" secondItem="yn9-eS-Qf6" secondAttribute="trailing" id="MQ7-zI-9Wq"/>
                                     <constraint firstAttribute="height" constant="105" id="NCK-ms-hod"/>
                                     <constraint firstAttribute="trailing" secondItem="mtt-87-tIi" secondAttribute="trailing" constant="10" id="Tff-Xb-KGd"/>
                                     <constraint firstAttribute="centerY" secondItem="mtt-87-tIi" secondAttribute="centerY" id="Ws6-D2-SZG"/>
+                                    <constraint firstItem="yn9-eS-Qf6" firstAttribute="top" secondItem="JfH-Nb-q4i" secondAttribute="top" id="ibO-sb-v3e"/>
                                     <constraint firstAttribute="centerY" secondItem="V9I-fy-cK3" secondAttribute="centerY" id="mAt-X1-bep"/>
                                 </constraints>
                             </view>
@@ -489,16 +517,26 @@
                                             <outlet property="delegate" destination="H5I-Cp-abp" id="26M-bi-1lK"/>
                                         </connections>
                                     </textView>
+                                    <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="sti-eg-us9">
+                                        <rect key="frame" x="0.0" y="0.0" width="320" height="1"/>
+                                        <color key="backgroundColor" white="0.66666666666666663" alpha="1" colorSpace="calibratedWhite"/>
+                                        <constraints>
+                                            <constraint firstAttribute="height" constant="1" id="Gfb-fv-eWq"/>
+                                        </constraints>
+                                    </view>
                                 </subviews>
                                 <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                                 <constraints>
                                     <constraint firstItem="LbT-Eo-dPP" firstAttribute="centerY" secondItem="tSZ-SH-Z67" secondAttribute="centerY" id="2ld-IV-1b7"/>
                                     <constraint firstItem="p0m-dm-2vR" firstAttribute="leading" secondItem="FWk-c8-mms" secondAttribute="leading" constant="16" id="3z5-lH-wvb"/>
                                     <constraint firstItem="LbT-Eo-dPP" firstAttribute="leading" secondItem="FWk-c8-mms" secondAttribute="leading" constant="15" id="7Io-Wk-hPB"/>
+                                    <constraint firstItem="sti-eg-us9" firstAttribute="leading" secondItem="FWk-c8-mms" secondAttribute="leading" id="B3M-FM-asy"/>
                                     <constraint firstAttribute="bottom" secondItem="p0m-dm-2vR" secondAttribute="bottom" constant="8" id="Lfg-ut-ir3"/>
                                     <constraint firstItem="LbT-Eo-dPP" firstAttribute="top" secondItem="FWk-c8-mms" secondAttribute="top" constant="8" id="S6K-x8-p7g"/>
+                                    <constraint firstAttribute="trailing" secondItem="sti-eg-us9" secondAttribute="trailing" id="V1o-Te-N3O"/>
                                     <constraint firstAttribute="trailing" secondItem="p0m-dm-2vR" secondAttribute="trailing" constant="16" id="j59-hl-zVQ"/>
                                     <constraint firstItem="p0m-dm-2vR" firstAttribute="top" secondItem="LbT-Eo-dPP" secondAttribute="bottom" constant="8" id="kXZ-HR-Vbw"/>
+                                    <constraint firstItem="sti-eg-us9" firstAttribute="top" secondItem="FWk-c8-mms" secondAttribute="top" id="woq-4B-qlH"/>
                                     <constraint firstAttribute="trailing" secondItem="tSZ-SH-Z67" secondAttribute="trailing" constant="15" id="zXP-lc-QBx"/>
                                 </constraints>
                             </view>
@@ -609,6 +647,9 @@
                         <rect key="frame" x="0.0" y="0.0" width="320" height="568"/>
                         <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                         <subviews>
+                            <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="BG" translatesAutoresizingMaskIntoConstraints="NO" id="yx7-Ta-zNS">
+                                <rect key="frame" x="0.0" y="0.0" width="320" height="568"/>
+                            </imageView>
                             <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="0S4-H7-kPU">
                                 <rect key="frame" x="54" y="88" width="213" height="30"/>
                                 <state key="normal" title="ABMA Website (opens Safari)">
@@ -638,9 +679,13 @@
                         </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="calibratedWhite"/>
                         <constraints>
+                            <constraint firstItem="yx7-Ta-zNS" firstAttribute="leading" secondItem="K7w-OJ-FBM" secondAttribute="leadingMargin" constant="-16" id="1Cu-7d-ulJ"/>
                             <constraint firstAttribute="trailingMargin" secondItem="6LH-1k-Yh9" secondAttribute="trailing" constant="10" id="Bkt-mQ-hH2"/>
                             <constraint firstItem="6LH-1k-Yh9" firstAttribute="leading" secondItem="K7w-OJ-FBM" secondAttribute="leadingMargin" constant="10" id="aSW-Nk-Xcz"/>
                             <constraint firstItem="bc9-Bj-DDN" firstAttribute="top" secondItem="6LH-1k-Yh9" secondAttribute="bottom" constant="20" id="cCJ-km-aaD"/>
+                            <constraint firstAttribute="trailingMargin" secondItem="yx7-Ta-zNS" secondAttribute="trailing" constant="-16" id="mIQ-JM-Dad"/>
+                            <constraint firstItem="bc9-Bj-DDN" firstAttribute="top" secondItem="yx7-Ta-zNS" secondAttribute="bottom" id="sw1-mZ-2e4"/>
+                            <constraint firstItem="yx7-Ta-zNS" firstAttribute="top" secondItem="K7w-OJ-FBM" secondAttribute="topMargin" id="yLz-O0-NvQ"/>
                         </constraints>
                     </view>
                     <navigationItem key="navigationItem" id="t7P-o7-z8f"/>
@@ -661,47 +706,178 @@
                         <rect key="frame" x="0.0" y="0.0" width="320" height="568"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
+                            <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="BG" translatesAutoresizingMaskIntoConstraints="NO" id="GnO-Vn-kMd">
+                                <rect key="frame" x="0.0" y="0.0" width="325" height="568"/>
+                            </imageView>
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="General Information" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="KGv-W5-wuQ">
                                 <rect key="frame" x="84" y="28" width="152" height="21"/>
                                 <fontDescription key="fontDescription" type="system" pointSize="17"/>
                                 <color key="textColor" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
                                 <nil key="highlightedColor"/>
                             </label>
-                            <textView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" editable="NO" translatesAutoresizingMaskIntoConstraints="NO" id="nJ3-Al-dGr">
+                            <textView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" editable="NO" usesAttributedText="YES" translatesAutoresizingMaskIntoConstraints="NO" id="nJ3-Al-dGr">
                                 <rect key="frame" x="16" y="57" width="288" height="491"/>
                                 <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
-                                <string key="text">Badges
+                                <color key="tintColor" red="0.0" green="0.47843137250000001" blue="1" alpha="1" colorSpace="calibratedRGB"/>
+                                <attributedString key="attributedText">
+                                    <fragment content="Badges">
+                                        <attributes>
+                                            <color key="NSColor" white="0.33333333333333331" alpha="1" colorSpace="calibratedWhite"/>
+                                            <font key="NSFont" size="14" name="HelveticaNeue-Bold"/>
+                                            <font key="NSOriginalFont" size="14" name="HelveticaNeue-Bold"/>
+                                            <paragraphStyle key="NSParagraphStyle" alignment="left" lineBreakMode="wordWrapping" baseWritingDirection="natural"/>
+                                        </attributes>
+                                    </fragment>
+                                    <fragment>
+                                        <string key="content">
 Please make sure to wear your badges throughout the conference. These badges are your admission to the various events and programming.
 
-Behavioral Management Fund
+</string>
+                                        <attributes>
+                                            <color key="NSColor" white="0.33333333333333331" alpha="1" colorSpace="calibratedWhite"/>
+                                            <font key="NSFont" size="14" name="HelveticaNeue"/>
+                                            <paragraphStyle key="NSParagraphStyle" alignment="left" lineBreakMode="wordWrapping" baseWritingDirection="natural"/>
+                                        </attributes>
+                                    </fragment>
+                                    <fragment content="Behavioral Management Fund">
+                                        <attributes>
+                                            <color key="NSColor" white="0.33333333333333331" alpha="1" colorSpace="calibratedWhite"/>
+                                            <font key="NSFont" size="14" name="HelveticaNeue-Bold"/>
+                                            <font key="NSOriginalFont" size="14" name="HelveticaNeue-Bold"/>
+                                            <paragraphStyle key="NSParagraphStyle" alignment="left" lineBreakMode="wordWrapping" baseWritingDirection="natural"/>
+                                        </attributes>
+                                    </fragment>
+                                    <fragment>
+                                        <string key="content">
 The BMF Committee overlooks the Scholarship/Grant process by developing the criteria for the application, review of the applications, and selection of a recipient. The committee is also responsible for the fundraising and development of the Behavior Management Fund. The proceeds a portion of the silent auction support the Behavioral Management Fund.
 
-ABMA Travel Scholarship
+</string>
+                                        <attributes>
+                                            <color key="NSColor" white="0.33333333333333331" alpha="1" colorSpace="calibratedWhite"/>
+                                            <font key="NSFont" size="14" name="HelveticaNeue"/>
+                                            <paragraphStyle key="NSParagraphStyle" alignment="left" lineBreakMode="wordWrapping" baseWritingDirection="natural"/>
+                                        </attributes>
+                                    </fragment>
+                                    <fragment content="ABMA Travel Scholarship">
+                                        <attributes>
+                                            <color key="NSColor" white="0.33333333333333331" alpha="1" colorSpace="calibratedWhite"/>
+                                            <font key="NSFont" size="14" name="HelveticaNeue-Bold"/>
+                                            <font key="NSOriginalFont" size="14" name="HelveticaNeue-Bold"/>
+                                            <paragraphStyle key="NSParagraphStyle" alignment="left" lineBreakMode="wordWrapping" baseWritingDirection="natural"/>
+                                        </attributes>
+                                    </fragment>
+                                    <fragment>
+                                        <string key="content">
 The purpose of this scholarship is to assist an ABMA member who would otherwise be unable to secure financial support to attend the conference. The Travel Scholarship will help the award recipient by giving them the ability to present their work and it will help the organization by giving ABMA members the opportunity to hear presentations that they would not have otherwise been able to. The Travel Scholarship supports the ABMA Core Value of “Sharing the Knowledge”. The Travel Scholarship is made possible by the Behavior Management Fund (BMF) Committee.
 
 This year’s recipient is Anaka Nazareth from the Maymont Foundation in Richmond, Virginia. Her paper is titled "A chicken's choice: positive reinforcement training vs free food". The presentation will share the results of her Master's thesis research project in Animal Behavior and Conservation.
 For more Travel Scholarship information or to apply for next year’s conference, please visit www.theabma.org.
 
-Conservation Gift
+</string>
+                                        <attributes>
+                                            <color key="NSColor" white="0.33333333333333331" alpha="1" colorSpace="calibratedWhite"/>
+                                            <font key="NSFont" size="14" name="HelveticaNeue"/>
+                                            <paragraphStyle key="NSParagraphStyle" alignment="left" lineBreakMode="wordWrapping" baseWritingDirection="natural"/>
+                                        </attributes>
+                                    </fragment>
+                                    <fragment content="Conservation Gift">
+                                        <attributes>
+                                            <color key="NSColor" white="0.33333333333333331" alpha="1" colorSpace="calibratedWhite"/>
+                                            <font key="NSFont" size="14" name="HelveticaNeue-Bold"/>
+                                            <font key="NSOriginalFont" size="14" name="HelveticaNeue-Bold"/>
+                                            <paragraphStyle key="NSParagraphStyle" alignment="left" lineBreakMode="wordWrapping" baseWritingDirection="natural"/>
+                                        </attributes>
+                                    </fragment>
+                                    <fragment>
+                                        <string key="content">
 Each year the BMF provides a conservation-related gift to conference delegates.
 
-Business Services
+</string>
+                                        <attributes>
+                                            <color key="NSColor" white="0.33333333333333331" alpha="1" colorSpace="calibratedWhite"/>
+                                            <font key="NSFont" size="14" name="HelveticaNeue"/>
+                                            <paragraphStyle key="NSParagraphStyle" alignment="left" lineBreakMode="wordWrapping" baseWritingDirection="natural"/>
+                                        </attributes>
+                                    </fragment>
+                                    <fragment content="Business Services">
+                                        <attributes>
+                                            <color key="NSColor" white="0.33333333333333331" alpha="1" colorSpace="calibratedWhite"/>
+                                            <font key="NSFont" size="14" name="HelveticaNeue-Bold"/>
+                                            <font key="NSOriginalFont" size="14" name="HelveticaNeue-Bold"/>
+                                            <paragraphStyle key="NSParagraphStyle" alignment="left" lineBreakMode="wordWrapping" baseWritingDirection="natural"/>
+                                        </attributes>
+                                    </fragment>
+                                    <fragment>
+                                        <string key="content">
 Business services can be found at the reception desk. There is free Wi-Fi throughout the hotel.
 
-Conference Survey
+</string>
+                                        <attributes>
+                                            <color key="NSColor" white="0.33333333333333331" alpha="1" colorSpace="calibratedWhite"/>
+                                            <font key="NSFont" size="14" name="HelveticaNeue"/>
+                                            <paragraphStyle key="NSParagraphStyle" alignment="left" lineBreakMode="wordWrapping" baseWritingDirection="natural"/>
+                                        </attributes>
+                                    </fragment>
+                                    <fragment content="Conference Survey">
+                                        <attributes>
+                                            <color key="NSColor" white="0.33333333333333331" alpha="1" colorSpace="calibratedWhite"/>
+                                            <font key="NSFont" size="14" name="HelveticaNeue-Bold"/>
+                                            <font key="NSOriginalFont" size="14" name="HelveticaNeue-Bold"/>
+                                            <paragraphStyle key="NSParagraphStyle" alignment="left" lineBreakMode="wordWrapping" baseWritingDirection="natural"/>
+                                        </attributes>
+                                    </fragment>
+                                    <fragment>
+                                        <string key="content">
 Once again this year ABMA is being green and doing the conference surveys online. The results of these surveys help the ABMA to make each conference successful and better suited to the members’ needs. Your responses are greatly valued and do ensure the ABMA’s future conference programming is suited to the interests of our members. The survey will be emailed to registered delegates at the closing of the conference or accessed by the following link:
 http://survey.constantcontact.com/survey/a07eaicm35mi5pus5o9/start
 These surveys are an important component to the assessment of the ABMA, and we thank you for your time in completing them. If you do not receive a conference survey, please contact the Research and Evaluation Committee Chair, Darren Minier, at deminier@gmail.com.
 
-Silent Auction Donations
+</string>
+                                        <attributes>
+                                            <color key="NSColor" white="0.33333333333333331" alpha="1" colorSpace="calibratedWhite"/>
+                                            <font key="NSFont" size="14" name="HelveticaNeue"/>
+                                            <paragraphStyle key="NSParagraphStyle" alignment="left" lineBreakMode="wordWrapping" baseWritingDirection="natural"/>
+                                        </attributes>
+                                    </fragment>
+                                    <fragment content="Silent Auction Donations">
+                                        <attributes>
+                                            <color key="NSColor" white="0.33333333333333331" alpha="1" colorSpace="calibratedWhite"/>
+                                            <font key="NSFont" size="14" name="HelveticaNeue-Bold"/>
+                                            <font key="NSOriginalFont" size="14" name="HelveticaNeue-Bold"/>
+                                            <paragraphStyle key="NSParagraphStyle" alignment="left" lineBreakMode="wordWrapping" baseWritingDirection="natural"/>
+                                        </attributes>
+                                    </fragment>
+                                    <fragment>
+                                        <string key="content">
 Silent auction items can be dropped off at registration. If you did not already, please send us an email with the item you are bringing and its value, please let us know when you drop the item off so that we can create a bid sheet.
 
-Transportation
+</string>
+                                        <attributes>
+                                            <color key="NSColor" white="0.33333333333333331" alpha="1" colorSpace="calibratedWhite"/>
+                                            <font key="NSFont" size="14" name="HelveticaNeue"/>
+                                            <paragraphStyle key="NSParagraphStyle" alignment="left" lineBreakMode="wordWrapping" baseWritingDirection="natural"/>
+                                        </attributes>
+                                    </fragment>
+                                    <fragment content="Transportation">
+                                        <attributes>
+                                            <color key="NSColor" white="0.33333333333333331" alpha="1" colorSpace="calibratedWhite"/>
+                                            <font key="NSFont" size="14" name="HelveticaNeue-Bold"/>
+                                            <font key="NSOriginalFont" size="14" name="HelveticaNeue-Bold"/>
+                                            <paragraphStyle key="NSParagraphStyle" alignment="left" lineBreakMode="wordWrapping" baseWritingDirection="natural"/>
+                                        </attributes>
+                                    </fragment>
+                                    <fragment>
+                                        <string key="content">
 Bicycles can be borrowed from the hotel
 The train and bus station is a 10-minute walk from the hotel
 The Nyborg taxi can be ordered at the hotel reception or at the train/bus station</string>
-                                <color key="textColor" white="0.33333333333333331" alpha="1" colorSpace="calibratedWhite"/>
-                                <fontDescription key="fontDescription" type="system" pointSize="14"/>
+                                        <attributes>
+                                            <color key="NSColor" white="0.33333333333333331" alpha="1" colorSpace="calibratedWhite"/>
+                                            <font key="NSFont" size="14" name="HelveticaNeue"/>
+                                            <paragraphStyle key="NSParagraphStyle" alignment="left" lineBreakMode="wordWrapping" baseWritingDirection="natural"/>
+                                        </attributes>
+                                    </fragment>
+                                </attributedString>
                                 <textInputTraits key="textInputTraits" autocapitalizationType="sentences"/>
                                 <dataDetectorType key="dataDetectorTypes" link="YES"/>
                             </textView>
@@ -710,8 +886,12 @@ The Nyborg taxi can be ordered at the hotel reception or at the train/bus statio
                         <constraints>
                             <constraint firstItem="pDl-2g-Y29" firstAttribute="top" secondItem="nJ3-Al-dGr" secondAttribute="bottom" constant="20" id="2m7-By-uMz"/>
                             <constraint firstItem="KGv-W5-wuQ" firstAttribute="top" secondItem="eBR-PY-VXh" secondAttribute="bottom" constant="8" id="2rW-vN-nse"/>
+                            <constraint firstAttribute="trailingMargin" secondItem="GnO-Vn-kMd" secondAttribute="trailing" constant="-21" id="4gp-yh-YYj"/>
+                            <constraint firstAttribute="bottomMargin" secondItem="GnO-Vn-kMd" secondAttribute="bottom" id="5eA-he-Kr3"/>
                             <constraint firstItem="nJ3-Al-dGr" firstAttribute="top" secondItem="KGv-W5-wuQ" secondAttribute="bottom" constant="8" id="7kQ-hN-qwR"/>
                             <constraint firstAttribute="centerX" secondItem="KGv-W5-wuQ" secondAttribute="centerX" id="J4u-hj-KHl"/>
+                            <constraint firstItem="GnO-Vn-kMd" firstAttribute="top" secondItem="Mg0-Tp-2hU" secondAttribute="topMargin" id="LzU-nW-qM8"/>
+                            <constraint firstItem="GnO-Vn-kMd" firstAttribute="leading" secondItem="Mg0-Tp-2hU" secondAttribute="leadingMargin" constant="-16" id="QVz-VK-wzh"/>
                             <constraint firstItem="nJ3-Al-dGr" firstAttribute="trailing" secondItem="Mg0-Tp-2hU" secondAttribute="trailingMargin" id="iqh-qY-gT9"/>
                             <constraint firstItem="nJ3-Al-dGr" firstAttribute="leading" secondItem="Mg0-Tp-2hU" secondAttribute="leadingMargin" id="zGk-Dz-cF9"/>
                         </constraints>
@@ -843,6 +1023,7 @@ The Nyborg taxi can be ordered at the hotel reception or at the train/bus statio
         <image name="ABMA-transparent" width="930" height="930"/>
         <image name="ArrowLeft" width="14" height="22"/>
         <image name="ArrowRight" width="14" height="22"/>
+        <image name="BG" width="320" height="569"/>
         <image name="PlaceIcon" width="12" height="15"/>
         <image name="TimeIcon" width="13" height="14"/>
     </resources>

@@ -20,8 +20,6 @@
     // Do any additional setup after loading the view.
     
     self.navigationItem.titleView = [[UIImageView alloc] initWithImage:[UIImage imageNamed:@"ABMAlogo.png"]];
-    UIColor *bg= [[UIColor alloc] initWithPatternImage:[UIImage imageNamed:@"BG.png"]];
-    self.view.backgroundColor = bg;
     
     UIImage *image = [UIImage imageNamed:@"menu_button"];
     CGRect buttonFrame = CGRectMake(0, 0, image.size.width, image.size.height);
