@@ -8,6 +8,6 @@
 
 #import <UIKit/UIKit.h>
 
-@interface SponsorCollectionViewController : BaseViewController <UICollectionViewDataSource, UICollectionViewDelegate>
+@interface SponsorCollectionViewController : BaseViewController <UICollectionViewDataSource, UICollectionViewDelegate, UICollectionViewDelegateFlowLayout>
 @property (strong, nonatomic) IBOutlet UIBarButtonItem *sidebarButton;
 @end

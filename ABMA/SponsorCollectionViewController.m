@@ -33,7 +33,7 @@
     
     //Sponsor image array
 //    sponsorImages = [[NSArray alloc] initWithObjects:@"AAZK-Dallas.png", @"AAZK-Galv.png", @"AAZKChey.png", @"ABI.png", @"AP.png", @"Blue.png", @"ChildrensAquarium.png", @"Cliff.png", @"DallasZoo.png", @"DWA.png", @"FRWC.png", @"FWZoo.png", @"MAF.png", @"NatBal.png", @"NEI.png", @"SeaWorld.png", nil];
-    sponsorImages = [[NSArray alloc] initWithObjects:@"DBP.png", @"CPHZoo.png", @"GIVSKUD_ZOO.png", @"Odense Zoo.png", @"SDU.png", @"training_store.png", @"mazuri.png",  nil];
+    sponsorImages = [[NSArray alloc] initWithObjects:@"DBP.png", @"CPHZoo.png", @"GIVSKUD_ZOO.png", @"Odense Zoo.png", @"SDU.png", @"training_store.png", @"mazuri.png", @"profis.png",  nil];
 }
 
 - (void)didReceiveMemoryWarning
@@ -47,6 +47,10 @@
 - (NSInteger)collectionView:(UICollectionView *)collectionView numberOfItemsInSection:(NSInteger)section
 {
     return [sponsorImages count];
+}
+
+- (CGSize)collectionView:(UICollectionView *)collectionView layout:(UICollectionViewLayout *)collectionViewLayout sizeForItemAtIndexPath:(NSIndexPath *)indexPath {
+    return  CGSizeMake(self.view.bounds.size.width/2, self.view.bounds.size.width/2);
 }
 
 - (UICollectionViewCell *)collectionView:(UICollectionView *)collectionView cellForItemAtIndexPath:(NSIndexPath *)indexPath{
