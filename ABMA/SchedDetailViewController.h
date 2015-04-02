@@ -7,8 +7,10 @@
 //
 
 #import <UIKit/UIKit.h>
+#import "Event.h"
 
-@interface SchedDetailViewController : UIViewController
+@interface SchedDetailViewController : UIViewController <UITableViewDelegate, UITableViewDataSource>
+@property (weak, nonatomic) IBOutlet UITableView *tableView;
 @property (strong, nonatomic) IBOutlet UILabel *eventTitle;
 @property (strong, nonatomic) IBOutlet UILabel *eventSubtitle;
 @property (strong, nonatomic) IBOutlet UILabel *eventLocation;
@@ -17,9 +19,10 @@
 @property (strong, nonatomic) IBOutlet UIImageView *imageView;
 @property (strong, nonatomic) IBOutlet UILabel *eventDay;
 @property (strong, nonatomic) IBOutlet UILabel *eventDate;
-@property (strong, nonatomic) NSDictionary *detailItem;
-@property (strong, nonatomic) NSString *detailDay;
-@property (strong, nonatomic) NSString *detailDate;
+@property (strong, nonatomic) Event *event;
+@property (strong, nonatomic) Paper *paper;
+@property (weak, nonatomic) IBOutlet UITextView *noteTextField;
 
--(void)setDetailItem:(NSDictionary *)newDetailItem onDay:(NSString *)newDayOfWeek onDate:(NSString *)newDateOfWeek;
+- (IBAction)saveNote:(id)sender;
+
 @end

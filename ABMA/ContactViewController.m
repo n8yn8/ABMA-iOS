@@ -8,7 +8,6 @@
 
 #import "ContactViewController.h"
 #import "SWRevealViewController.h"
-#import "TestFlight.h"
 
 @interface ContactViewController ()
 
@@ -28,32 +27,12 @@
 - (void)viewDidLoad
 {
     [super viewDidLoad];
-    [self loadGraphics];
-    [self loadGestures];
 }
 
 - (void)didReceiveMemoryWarning
 {
     [super didReceiveMemoryWarning];
     // Dispose of any resources that can be recreated.
-}
-
-- (void)loadGestures
-{
-    // Set the side bar button action. When it's tapped, it'll show up the sidebar.
-    _sidebarButton.target = self.revealViewController;
-    _sidebarButton.action = @selector(revealToggle:);
-    
-    // Set the gesture
-    [self.view addGestureRecognizer:self.revealViewController.panGestureRecognizer];
-}
-
-- (void)loadGraphics
-{
-    [self.navigationController.navigationBar setBackgroundImage:[UIImage imageNamed:@"bar.png"] forBarMetrics:UIBarMetricsDefault];
-    self.navigationItem.titleView = [[UIImageView alloc] initWithImage:[UIImage imageNamed:@"ABMAlogo.png"]];
-    UIColor *bg= [[UIColor alloc] initWithPatternImage:[UIImage imageNamed:@"BG.png"]];
-    self.view.backgroundColor = bg;
 }
 
 /*
@@ -73,7 +52,7 @@
 }
 
 - (IBAction)abmaContactForm:(id)sender {
-    [[UIApplication sharedApplication] openURL:[NSURL URLWithString: @"http://www.theabma.org/index.php?option=com_qcontacts&view=contact&id=1%3Acontact-abma&catid=47%3Acontacts&Itemid=97"]];
+    [[UIApplication sharedApplication] openURL:[NSURL URLWithString: @"https://theabma.org/contact/"]];
 }
 
 @end

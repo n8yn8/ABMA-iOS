@@ -8,7 +8,7 @@
 
 #import <UIKit/UIKit.h>
 
-@interface ContactViewController : UIViewController
+@interface ContactViewController : BaseViewController
 @property (strong, nonatomic) IBOutlet UIBarButtonItem *sidebarButton;
 
 - (IBAction)abmaWebsite:(id)sender;

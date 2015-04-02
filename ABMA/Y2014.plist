@@ -33,7 +33,7 @@
 		</dict>
 		<dict>
 			<key>Time</key>
-			<string>6:00pm –9:00pm</string>
+			<string>6:00pm - 9:00pm</string>
 			<key>Title</key>
 			<string>Icebreaker</string>
 			<key>Location</key>
@@ -48,7 +48,7 @@
 	<array>
 		<dict>
 			<key>Time</key>
-			<string>7:00am — 8:00am</string>
+			<string>7:00am - 8:00am</string>
 			<key>Title</key>
 			<string>Registration</string>
 			<key>Location</key>
@@ -60,7 +60,7 @@
 		</dict>
 		<dict>
 			<key>Time</key>
-			<string>8:00am – 8:30am</string>
+			<string>8:00am - 8:30am</string>
 			<key>Title</key>
 			<string>Welcome</string>
 			<key>Location</key>
@@ -72,7 +72,7 @@
 		</dict>
 		<dict>
 			<key>Time</key>
-			<string>8:30am—9:30am</string>
+			<string>8:30am - 9:30am</string>
 			<key>Title</key>
 			<string>Keynote Address</string>
 			<key>Location</key>
@@ -87,7 +87,7 @@ Increasingly, humans have become part of the lives of other animals and other an
 		</dict>
 		<dict>
 			<key>Time</key>
-			<string>9:50am – 11:00am</string>
+			<string>9:50am - 11:00am</string>
 			<key>Title</key>
 			<string>Presentations</string>
 			<key>Location</key>
@@ -107,11 +107,11 @@ Stephanie DeYoung; Pawsitive Pet Training &amp; Services, LLC
 
 Pugs Preventing Pug-Nacious Behavior
 
-Rickey Kinley; Gary's Professional Dog Grooming and Training</string>
+Rickey Kinley; Gary&apos;s Professional Dog Grooming and Training</string>
 		</dict>
 		<dict>
 			<key>Time</key>
-			<string>11:00am – 12:00pm</string>
+			<string>11:00am - 12:00pm</string>
 			<key>Title</key>
 			<string>Service Dogs, Inc</string>
 			<key>Location</key>
@@ -125,7 +125,7 @@ Members of ABMA come together from different communities within the animal world
 		</dict>
 		<dict>
 			<key>Time</key>
-			<string>12:00pm-1:15pm</string>
+			<string>12:00pm - 1:15pm</string>
 			<key>Title</key>
 			<string>Lunch and Learn</string>
 			<key>Location</key>
@@ -144,7 +144,7 @@ Susan G. Friedman, Ph.D. is a faculty member in the Department of Psychology at 
 		</dict>
 		<dict>
 			<key>Time</key>
-			<string>1:15pm – 2:40pm</string>
+			<string>1:15pm - 2:40pm</string>
 			<key>Title</key>
 			<string>Panel Discussion</string>
 			<key>Location</key>
@@ -163,7 +163,7 @@ ABE’s clients included most of the major American theme parks, as well as a nu
 		</dict>
 		<dict>
 			<key>Time</key>
-			<string>3:00pm – 3:40pm</string>
+			<string>3:00pm - 3:40pm</string>
 			<key>Title</key>
 			<string>Presentations</string>
 			<key>Location</key>
@@ -194,7 +194,7 @@ Laura Laverick, Emily Gertiser, Theresa Larson; Cameron Park Zoo</string>
 		</dict>
 		<dict>
 			<key>Time</key>
-			<string>4:00pm – 5:00pm</string>
+			<string>4:00pm - 5:00pm</string>
 			<key>Title</key>
 			<string>Training 101</string>
 			<key>Location</key>
@@ -234,7 +234,7 @@ Heidi Hellmuth has 25+ years’ experience in the animal care and behavior field
 		</dict>
 		<dict>
 			<key>Time</key>
-			<string>6:00pm – 7:30 pm</string>
+			<string>6:00pm - 7:30 pm</string>
 			<key>Title</key>
 			<string>Career Night</string>
 			<key>Location</key>
@@ -261,7 +261,7 @@ Heidi Hellmuth has 25+ years’ experience in the animal care and behavior field
 		</dict>
 		<dict>
 			<key>Time</key>
-			<string>8:30am – 9:30am</string>
+			<string>8:30am - 9:30am</string>
 			<key>Title</key>
 			<string>Breakfast</string>
 			<key>Location</key>
@@ -273,7 +273,7 @@ Heidi Hellmuth has 25+ years’ experience in the animal care and behavior field
 		</dict>
 		<dict>
 			<key>Time</key>
-			<string>9:00am – 12:00pm</string>
+			<string>9:00am - 12:00pm</string>
 			<key>Title</key>
 			<string>Tours and Training</string>
 			<key>Location</key>
@@ -285,7 +285,7 @@ Heidi Hellmuth has 25+ years’ experience in the animal care and behavior field
 		</dict>
 		<dict>
 			<key>Time</key>
-			<string>9:00am – 12:00pm</string>
+			<string>9:00am - 12:00pm</string>
 			<key>Title</key>
 			<string>See the Zoo</string>
 			<key>Location</key>
@@ -297,7 +297,7 @@ Heidi Hellmuth has 25+ years’ experience in the animal care and behavior field
 		</dict>
 		<dict>
 			<key>Time</key>
-			<string>11:30am – 1:30pm</string>
+			<string>11:30am - 1:30pm</string>
 			<key>Title</key>
 			<string>Lunch</string>
 			<key>Location</key>
@@ -309,7 +309,7 @@ Heidi Hellmuth has 25+ years’ experience in the animal care and behavior field
 		</dict>
 		<dict>
 			<key>Time</key>
-			<string>11:30am – 1:30pm</string>
+			<string>11:30am - 1:30pm</string>
 			<key>Title</key>
 			<string>Members’ Business Meeting</string>
 			<key>Location</key>
@@ -321,7 +321,7 @@ Heidi Hellmuth has 25+ years’ experience in the animal care and behavior field
 		</dict>
 		<dict>
 			<key>Time</key>
-			<string>1:15pm – 4:00pm</string>
+			<string>1:15pm - 4:00pm</string>
 			<key>Title</key>
 			<string>Tours and Training</string>
 			<key>Location</key>
@@ -333,7 +333,7 @@ Heidi Hellmuth has 25+ years’ experience in the animal care and behavior field
 		</dict>
 		<dict>
 			<key>Time</key>
-			<string>1:15pm – 4:00pm</string>
+			<string>1:15pm - 4:00pm</string>
 			<key>Title</key>
 			<string>See the Zoo</string>
 			<key>Location</key>
@@ -357,7 +357,7 @@ Heidi Hellmuth has 25+ years’ experience in the animal care and behavior field
 		</dict>
 		<dict>
 			<key>Time</key>
-			<string>6:00pm – 9:00pm</string>
+			<string>6:00pm - 9:00pm</string>
 			<key>Title</key>
 			<string>Silent Auction</string>
 			<key>Location</key>
@@ -384,7 +384,7 @@ Heidi Hellmuth has 25+ years’ experience in the animal care and behavior field
 		</dict>
 		<dict>
 			<key>Time</key>
-			<string>8:00am – 9:20am</string>
+			<string>8:00am - 9:20am</string>
 			<key>Title</key>
 			<string>R&amp;E Workshop Part 1</string>
 			<key>Location</key>
@@ -402,7 +402,7 @@ The R&amp;E workshop is sponsored by Animal Behavior Institute, Inc.</string>
 		</dict>
 		<dict>
 			<key>Time</key>
-			<string>9:40am – 10:30am</string>
+			<string>9:40am - 10:30am</string>
 			<key>Title</key>
 			<string>R&amp;E Workshop Part 2</string>
 			<key>Location</key>
@@ -420,7 +420,7 @@ The R&amp;E workshop is sponsored by Animal Behavior Institute, Inc.</string>
 		</dict>
 		<dict>
 			<key>Time</key>
-			<string>10:30am – 12:00pm</string>
+			<string>10:30am - 12:00pm</string>
 			<key>Title</key>
 			<string>Presentations</string>
 			<key>Location</key>
@@ -442,7 +442,7 @@ Christina Eastwood; Dallas Zoo</string>
 		</dict>
 		<dict>
 			<key>Time</key>
-			<string>12:00pm -1:15pm</string>
+			<string>12:00pm - 1:15pm</string>
 			<key>Title</key>
 			<string>Lunch and Learn</string>
 			<key>Location</key>
@@ -454,7 +454,7 @@ Christina Eastwood; Dallas Zoo</string>
 		</dict>
 		<dict>
 			<key>Time</key>
-			<string>1:15pm – 2:30pm</string>
+			<string>1:15pm - 2:30pm</string>
 			<key>Title</key>
 			<string>Panel Discussion</string>
 			<key>Location</key>
@@ -467,7 +467,7 @@ Dr. Bob Bailey</string>
 		</dict>
 		<dict>
 			<key>Time</key>
-			<string>2:50pm – 4:00pm</string>
+			<string>2:50pm - 4:00pm</string>
 			<key>Title</key>
 			<string>Presentations</string>
 			<key>Location</key>
@@ -487,7 +487,7 @@ Justin Garner and Antonio Ramirez; Sea World Parks &amp; Entertainment - Busch G
 		</dict>
 		<dict>
 			<key>Time</key>
-			<string>4:00pm – 5:00pm</string>
+			<string>4:00pm - 5:00pm</string>
 			<key>Title</key>
 			<string>Committee Meetings</string>
 			<key>Location</key>
@@ -499,7 +499,7 @@ Justin Garner and Antonio Ramirez; Sea World Parks &amp; Entertainment - Busch G
 		</dict>
 		<dict>
 			<key>Time</key>
-			<string>5:15pm – 6:30pm</string>
+			<string>5:15pm - 6:30pm</string>
 			<key>Title</key>
 			<string>Program Council Meeting</string>
 			<key>Location</key>
@@ -523,7 +523,7 @@ Justin Garner and Antonio Ramirez; Sea World Parks &amp; Entertainment - Busch G
 		</dict>
 		<dict>
 			<key>Time</key>
-			<string>7:00pm – 9:00pm</string>
+			<string>7:00pm - 9:00pm</string>
 			<key>Title</key>
 			<string>Poster Night</string>
 			<key>Location</key>
@@ -594,7 +594,7 @@ Annette Pederson; Copenhagen Zoo</string>
 	<array>
 		<dict>
 			<key>Time</key>
-			<string>7:30am – 8:00am</string>
+			<string>7:30am - 8:00am</string>
 			<key>Title</key>
 			<string>Registration</string>
 			<key>Location</key>
@@ -606,7 +606,7 @@ Annette Pederson; Copenhagen Zoo</string>
 		</dict>
 		<dict>
 			<key>Time</key>
-			<string>8:00am – 9:40am</string>
+			<string>8:00am - 9:40am</string>
 			<key>Title</key>
 			<string>Presentations</string>
 			<key>Location</key>
@@ -628,9 +628,9 @@ Managing Training and Enrichment Programs; Bridging Gaps All Around the Zoo
 Julie Grove; The Maryland Zoo in Baltimore
 </string>
 		</dict>
-            <dict>
+		<dict>
 			<key>Time</key>
-			<string>10:00am – 12:00pm</string>
+			<string>10:00am - 12:00pm</string>
 			<key>Title</key>
 			<string>Presentations</string>
 			<key>Location</key>
@@ -656,7 +656,7 @@ Jeremy Dillon; Cheyenne Mountain Zoo</string>
 		</dict>
 		<dict>
 			<key>Time</key>
-			<string>12:00pm – 1:15pm</string>
+			<string>12:00pm - 1:15pm</string>
 			<key>Title</key>
 			<string>Lunch and Learn</string>
 			<key>Location</key>
@@ -668,7 +668,7 @@ Jeremy Dillon; Cheyenne Mountain Zoo</string>
 		</dict>
 		<dict>
 			<key>Time</key>
-			<string>1:15pm – 2:40pm</string>
+			<string>1:15pm - 2:40pm</string>
 			<key>Title</key>
 			<string>Panel Discussion</string>
 			<key>Location</key>
@@ -681,7 +681,7 @@ Dr. Bob Bailey</string>
 		</dict>
 		<dict>
 			<key>Time</key>
-			<string>3:00pm – 5:00pm</string>
+			<string>3:00pm - 5:00pm</string>
 			<key>Title</key>
 			<string>Presentations</string>
 			<key>Location</key>
@@ -709,7 +709,7 @@ Jennifer Ziegelmeyer Archibeque, Lisa Clifton-Bumpass; Happy Hollow Park and Zoo
 		</dict>
 		<dict>
 			<key>Time</key>
-			<string>5:00pm – 6:00pm</string>
+			<string>5:00pm - 6:00pm</string>
 			<key>Title</key>
 			<string>Dinner on your own</string>
 			<key>Location</key>
@@ -721,7 +721,7 @@ Jennifer Ziegelmeyer Archibeque, Lisa Clifton-Bumpass; Happy Hollow Park and Zoo
 		</dict>
 		<dict>
 			<key>Time</key>
-			<string>6:00pm – 8:00pm</string>
+			<string>6:00pm - 8:00pm</string>
 			<key>Title</key>
 			<string>Book Reading/Signing</string>
 			<key>Location</key>
@@ -765,7 +765,7 @@ Dr. Virga lives in southern New England with his wife, daughter, and two Norwegi
 	<array>
 		<dict>
 			<key>Time</key>
-			<string>7:30am – 8:00am</string>
+			<string>7:30am - 8:00am</string>
 			<key>Title</key>
 			<string>Registration</string>
 			<key>Location</key>
@@ -777,7 +777,7 @@ Dr. Virga lives in southern New England with his wife, daughter, and two Norwegi
 		</dict>
 		<dict>
 			<key>Time</key>
-			<string>8:00am – 9:10am</string>
+			<string>8:00am - 9:10am</string>
 			<key>Title</key>
 			<string>Presentations</string>
 			<key>Location</key>
@@ -798,7 +798,7 @@ Steven M. Aibel and Mark Galan; SeaWorld San Antonio
 		</dict>
 		<dict>
 			<key>Time</key>
-			<string>9:10am – 10:10am</string>
+			<string>9:10am - 10:10am</string>
 			<key>Title</key>
 			<string>Special Presentation</string>
 			<key>Location</key>
@@ -814,7 +814,7 @@ Historically, learning and behavior has been described as two distinct learning 
 		</dict>
 		<dict>
 			<key>Time</key>
-			<string>10:30am – 12:00pm</string>
+			<string>10:30am - 12:00pm</string>
 			<key>Title</key>
 			<string>Presentations</string>
 			<key>Location</key>
@@ -836,7 +836,7 @@ Elizabeth Kinsala; Six Flags Discovery Kingdom</string>
 		</dict>
 		<dict>
 			<key>Time</key>
-			<string>12:00pm – 1:15pm</string>
+			<string>12:00pm - 1:15pm</string>
 			<key>Title</key>
 			<string>Lunch and Learn</string>
 			<key>Location</key>
@@ -848,7 +848,7 @@ Elizabeth Kinsala; Six Flags Discovery Kingdom</string>
 		</dict>
 		<dict>
 			<key>Time</key>
-			<string>1:15pm – 2:40pm</string>
+			<string>1:15pm - 2:40pm</string>
 			<key>Title</key>
 			<string>Presentations</string>
 			<key>Location</key>
@@ -871,7 +871,7 @@ Amy Schilz; Cheyenne Mountain Zoo
 		</dict>
 		<dict>
 			<key>Time</key>
-			<string>3:00pm – 4:00pm</string>
+			<string>3:00pm - 4:00pm</string>
 			<key>Title</key>
 			<string>Presentations</string>
 			<key>Location</key>
@@ -885,13 +885,13 @@ C. Trapman O’Brien and A. Dublin; Moorpark College Exotic Animal Training and 
 The Challenges of Training a 16-Year-Old Cockatoo to Fly a Loop: Implications for Shows and Enrich- ment Opportunities
 Christina Lavallee; Zoo Atlanta
 
-Don't Mind the Quills: Training 0.2 Cape Porcupines to Become Program Animals
+Don&apos;t Mind the Quills: Training 0.2 Cape Porcupines to Become Program Animals
 Katie Cheng and Susan Patch; San Diego Zoo
             </string>
 		</dict>
 		<dict>
 			<key>Time</key>
-			<string>4:00pm – 5:00pm</string>
+			<string>4:00pm - 5:00pm</string>
 			<key>Title</key>
 			<string>Special Presentation</string>
 			<key>Location</key>
@@ -917,7 +917,7 @@ Steve Martin has a strong commitment to conservation and helping people understa
 		</dict>
 		<dict>
 			<key>Time</key>
-			<string>6:30pm – 7:00pm</string>
+			<string>6:30pm - 7:00pm</string>
 			<key>Title</key>
 			<string>Cocktails</string>
 			<key>Location</key>
@@ -929,7 +929,7 @@ Steve Martin has a strong commitment to conservation and helping people understa
 		</dict>
 		<dict>
 			<key>Time</key>
-			<string>7:00pm – 10:00pm</string>
+			<string>7:00pm - 10:00pm</string>
 			<key>Title</key>
 			<string>Banquet</string>
 			<key>Location</key>
@@ -944,7 +944,7 @@ Steve Martin has a strong commitment to conservation and helping people understa
 	<array>
 		<dict>
 			<key>Time</key>
-			<string>9:00am – 4:00pm</string>
+			<string>9:00am - 4:00pm</string>
 			<key>Title</key>
 			<string>Post Conference Trip</string>
 			<key>Location</key>
