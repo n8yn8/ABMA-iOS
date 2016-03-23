@@ -78,8 +78,8 @@
     NSTimeZone *timeZone = [NSTimeZone timeZoneWithName:@"UTC"];
     [dayFormatter setTimeZone:timeZone];
     
-    NSDate *schedStart = [dayFormatter dateFromString:@"April 12, 2015"];
-    NSDate *schedEnd = [dayFormatter dateFromString:@"April 20, 2015"];
+    NSDate *schedStart = [dayFormatter dateFromString:@"April 17, 2016"];
+    NSDate *schedEnd = [dayFormatter dateFromString:@"April 23, 2016"];
     
     NSArray *sortDescriptors = [NSArray arrayWithObject:[NSSortDescriptor sortDescriptorWithKey:@"date" ascending:YES]];
     NSFetchRequest *fetchRequest = [[NSFetchRequest alloc] init];
@@ -122,7 +122,7 @@
     NSDateFormatter *timeFormatter = [[NSDateFormatter alloc] init];
     [timeFormatter setDateFormat:@"MMM d, yyyy h:mma"];
     [timeFormatter setTimeZone:timeZone];
-    NSString *plistCatPath = [[NSBundle mainBundle] pathForResource:@"Y2015" ofType:@"plist"];
+    NSString *plistCatPath = [[NSBundle mainBundle] pathForResource:@"Y2016" ofType:@"plist"];
     NSDictionary *dailySched = [[NSDictionary alloc] initWithContentsOfFile:plistCatPath];
     NSArray *allKeys = [dailySched allKeys];
     
