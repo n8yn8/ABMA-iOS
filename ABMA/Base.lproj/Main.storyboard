@@ -1,8 +1,8 @@
 <?xml version="1.0" encoding="UTF-8" standalone="no"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="6751" systemVersion="14C1510" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" initialViewController="BJu-71-Rud">
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="9532" systemVersion="15D21" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" initialViewController="BJu-71-Rud">
     <dependencies>
         <deployment identifier="iOS"/>
-        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="6736"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="9530"/>
         <capability name="Aspect ratio constraints" minToolsVersion="5.1"/>
         <capability name="Constraints to layout margins" minToolsVersion="6.0"/>
         <capability name="Constraints with non-1.0 multipliers" minToolsVersion="5.1"/>
@@ -63,7 +63,7 @@
                                         </connections>
                                     </tableViewCell>
                                     <tableViewCell contentMode="scaleToFill" selectionStyle="blue" hidesAccessoryWhenEditing="NO" indentationLevel="1" indentationWidth="0.0" reuseIdentifier="notes" textLabel="CWZ-Aq-tsK" style="IBUITableViewCellStyleDefault" id="OJc-Jg-Sqg">
-                                        <rect key="frame" x="0.0" y="239" width="320" height="44"/>
+                                        <rect key="frame" x="0.0" y="195" width="320" height="44"/>
                                         <autoresizingMask key="autoresizingMask"/>
                                         <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="OJc-Jg-Sqg" id="VyK-q8-6w3">
                                             <rect key="frame" x="0.0" y="0.0" width="320" height="43"/>
@@ -90,7 +90,7 @@
                                             <rect key="frame" x="0.0" y="0.0" width="320" height="43"/>
                                             <autoresizingMask key="autoresizingMask"/>
                                             <subviews>
-                                                <label opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="left" text="2015 INFO" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" id="ZtF-YU-y7J">
+                                                <label opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="left" text="2016 INFO" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" id="ZtF-YU-y7J">
                                                     <rect key="frame" x="15" y="0.0" width="290" height="43"/>
                                                     <autoresizingMask key="autoresizingMask"/>
                                                     <fontDescription key="fontDescription" type="system" pointSize="18"/>
@@ -105,7 +105,7 @@
                                         </connections>
                                     </tableViewCell>
                                     <tableViewCell contentMode="scaleToFill" selectionStyle="blue" hidesAccessoryWhenEditing="NO" indentationLevel="1" indentationWidth="0.0" reuseIdentifier="sponsor" textLabel="qst-Io-549" style="IBUITableViewCellStyleDefault" id="RM7-Fy-2Id">
-                                        <rect key="frame" x="0.0" y="195" width="320" height="44"/>
+                                        <rect key="frame" x="0.0" y="283" width="320" height="44"/>
                                         <autoresizingMask key="autoresizingMask"/>
                                         <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="RM7-Fy-2Id" id="3JA-Ys-EiP">
                                             <rect key="frame" x="0.0" y="0.0" width="320" height="43"/>
@@ -126,7 +126,7 @@
                                         </connections>
                                     </tableViewCell>
                                     <tableViewCell contentMode="scaleToFill" selectionStyle="blue" hidesAccessoryWhenEditing="NO" indentationLevel="1" indentationWidth="0.0" reuseIdentifier="contact" textLabel="Vdy-Vh-7cC" style="IBUITableViewCellStyleDefault" id="WoF-cW-m4T">
-                                        <rect key="frame" x="0.0" y="239" width="320" height="44"/>
+                                        <rect key="frame" x="0.0" y="327" width="320" height="44"/>
                                         <autoresizingMask key="autoresizingMask"/>
                                         <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="WoF-cW-m4T" id="iEA-dn-dd3">
                                             <rect key="frame" x="0.0" y="0.0" width="320" height="43"/>
@@ -215,13 +215,13 @@
                         </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                         <constraints>
+                            <constraint firstAttribute="trailing" secondItem="33w-se-r7o" secondAttribute="trailing" id="1tJ-aI-ZfW"/>
                             <constraint firstItem="Ct2-zl-x9a" firstAttribute="top" secondItem="VGa-XE-4Bv" secondAttribute="topMargin" id="6vI-h6-JVP"/>
-                            <constraint firstAttribute="trailingMargin" secondItem="33w-se-r7o" secondAttribute="trailing" constant="-16" id="9EI-yf-4t1"/>
-                            <constraint firstItem="Ct2-zl-x9a" firstAttribute="leading" secondItem="VGa-XE-4Bv" secondAttribute="leadingMargin" constant="-16" id="A7i-BI-j2c"/>
+                            <constraint firstItem="Ct2-zl-x9a" firstAttribute="leading" secondItem="VGa-XE-4Bv" secondAttribute="leading" id="Dn3-x0-Ch6"/>
                             <constraint firstItem="0K5-Ri-CnL" firstAttribute="top" secondItem="Ct2-zl-x9a" secondAttribute="bottom" id="JRd-Qa-rvS"/>
-                            <constraint firstItem="33w-se-r7o" firstAttribute="leading" secondItem="VGa-XE-4Bv" secondAttribute="leadingMargin" constant="-16" id="Q3i-Wg-O3k"/>
-                            <constraint firstAttribute="trailingMargin" secondItem="Ct2-zl-x9a" secondAttribute="trailing" constant="-16" id="UxM-H4-U9t"/>
+                            <constraint firstAttribute="trailing" secondItem="Ct2-zl-x9a" secondAttribute="trailing" id="YS7-hv-Dom"/>
                             <constraint firstItem="0K5-Ri-CnL" firstAttribute="top" secondItem="33w-se-r7o" secondAttribute="bottom" id="k0C-8d-LUX"/>
+                            <constraint firstItem="33w-se-r7o" firstAttribute="leading" secondItem="VGa-XE-4Bv" secondAttribute="leading" id="ncv-he-Tm9"/>
                             <constraint firstItem="33w-se-r7o" firstAttribute="top" secondItem="79K-2U-dIF" secondAttribute="bottom" id="yS9-fw-PlH"/>
                         </constraints>
                     </view>
@@ -322,16 +322,16 @@
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="calibratedWhite"/>
                         <constraints>
                             <constraint firstItem="sBb-R0-eSc" firstAttribute="centerY" secondItem="Dkg-Po-jaI" secondAttribute="centerY" id="0GA-xj-GCM"/>
+                            <constraint firstAttribute="trailing" secondItem="txW-z0-ou2" secondAttribute="trailing" id="0pV-51-ngr"/>
                             <constraint firstItem="txW-z0-ou2" firstAttribute="top" secondItem="Dkg-Po-jaI" secondAttribute="bottom" id="2Ag-TW-IXX"/>
-                            <constraint firstItem="txW-z0-ou2" firstAttribute="leading" secondItem="X64-Mu-uS1" secondAttribute="leading" id="4a3-MX-1Du"/>
                             <constraint firstItem="sBb-R0-eSc" firstAttribute="centerY" secondItem="gxA-PB-3Ff" secondAttribute="centerY" id="Ja2-iJ-eun"/>
                             <constraint firstItem="gxA-PB-3Ff" firstAttribute="leading" secondItem="Dkg-Po-jaI" secondAttribute="leading" constant="16" id="TYS-Bn-xpv"/>
                             <constraint firstItem="txW-z0-ou2" firstAttribute="top" secondItem="p2E-Hj-JwA" secondAttribute="bottom" constant="68" id="YT4-Ck-0Z8"/>
                             <constraint firstItem="dPM-HJ-N0p" firstAttribute="top" secondItem="txW-z0-ou2" secondAttribute="bottom" id="YXn-qK-T94"/>
                             <constraint firstItem="sBb-R0-eSc" firstAttribute="trailing" secondItem="Dkg-Po-jaI" secondAttribute="trailing" constant="-16" id="ZkO-MQ-Hch"/>
-                            <constraint firstAttribute="trailingMargin" secondItem="Dkg-Po-jaI" secondAttribute="trailing" constant="-16" id="c6D-Nu-Zbm"/>
-                            <constraint firstAttribute="trailing" secondItem="txW-z0-ou2" secondAttribute="trailing" id="p3l-61-aWA"/>
-                            <constraint firstItem="Dkg-Po-jaI" firstAttribute="leading" secondItem="X64-Mu-uS1" secondAttribute="leadingMargin" constant="-16" id="v60-Kt-tHD"/>
+                            <constraint firstItem="txW-z0-ou2" firstAttribute="leading" secondItem="X64-Mu-uS1" secondAttribute="leading" id="fla-di-bRv"/>
+                            <constraint firstItem="Dkg-Po-jaI" firstAttribute="leading" secondItem="X64-Mu-uS1" secondAttribute="leading" id="ksG-SQ-Ala"/>
+                            <constraint firstAttribute="trailing" secondItem="Dkg-Po-jaI" secondAttribute="trailing" id="rVI-pc-bU0"/>
                             <constraint firstItem="Dkg-Po-jaI" firstAttribute="top" secondItem="p2E-Hj-JwA" secondAttribute="bottom" id="z1h-Hg-ue1"/>
                         </constraints>
                     </view>
@@ -417,14 +417,14 @@
                                 <textInputTraits key="textInputTraits" autocapitalizationType="sentences"/>
                             </textView>
                             <label opaque="NO" clipsSubviews="YES" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="WEDNESDAY" textAlignment="right" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="CXc-44-K0D">
-                                <rect key="frame" x="18" y="43" width="117" height="23"/>
+                                <rect key="frame" x="18" y="43" width="114" height="23"/>
                                 <color key="backgroundColor" red="0.49019607840000001" green="0.49019607840000001" blue="0.49019607840000001" alpha="1" colorSpace="calibratedRGB"/>
                                 <fontDescription key="fontDescription" type="system" pointSize="19"/>
                                 <color key="textColor" red="0.90196078430000004" green="0.90196078430000004" blue="0.90196078430000004" alpha="1" colorSpace="calibratedRGB"/>
                                 <nil key="highlightedColor"/>
                             </label>
                             <label opaque="NO" clipsSubviews="YES" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="13" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="16V-SM-KGc">
-                                <rect key="frame" x="137" y="31" width="43" height="46"/>
+                                <rect key="frame" x="134" y="31" width="43" height="46"/>
                                 <fontDescription key="fontDescription" type="boldSystem" pointSize="38"/>
                                 <color key="textColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                                 <nil key="highlightedColor"/>
@@ -545,9 +545,10 @@
                                 <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                                 <prototypes>
                                     <tableViewCell contentMode="scaleToFill" selectionStyle="default" accessoryType="disclosureIndicator" indentationWidth="10" reuseIdentifier="PaperTableViewCell" rowHeight="80" id="7y1-ap-7jJ" customClass="PaperTableViewCell">
-                                        <rect key="frame" x="0.0" y="0.0" width="320" height="44"/>
+                                        <rect key="frame" x="0.0" y="22" width="320" height="80"/>
                                         <autoresizingMask key="autoresizingMask"/>
                                         <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="7y1-ap-7jJ" id="R3a-N1-8uz">
+                                            <rect key="frame" x="0.0" y="0.0" width="287" height="79"/>
                                             <autoresizingMask key="autoresizingMask"/>
                                             <subviews>
                                                 <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" text="Label" lineBreakMode="tailTruncation" numberOfLines="2" baselineAdjustment="alignBaselines" adjustsLetterSpacingToFitWidth="YES" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="5Sw-IB-4cn">
@@ -590,6 +591,7 @@
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="calibratedWhite"/>
                         <constraints>
                             <constraint firstItem="01s-k2-b3i" firstAttribute="top" secondItem="QQm-Hb-aY0" secondAttribute="bottom" id="3hD-Ta-u13"/>
+                            <constraint firstItem="B0D-gF-6Yn" firstAttribute="leading" secondItem="fmh-gj-NrB" secondAttribute="leading" id="5UN-Xe-1QF"/>
                             <constraint firstItem="1KJ-OP-0Mm" firstAttribute="leading" secondItem="fmh-gj-NrB" secondAttribute="leading" id="6V4-Jx-PxE"/>
                             <constraint firstItem="B0D-gF-6Yn" firstAttribute="top" secondItem="JfH-Nb-q4i" secondAttribute="bottom" id="89x-Et-s9g"/>
                             <constraint firstAttribute="trailing" secondItem="1KJ-OP-0Mm" secondAttribute="trailing" id="A8Z-sl-jWr"/>
@@ -598,22 +600,21 @@
                             <constraint firstItem="CXc-44-K0D" firstAttribute="centerY" secondItem="01s-k2-b3i" secondAttribute="centerY" id="FUe-7W-diT"/>
                             <constraint firstItem="mcq-rg-uoY" firstAttribute="top" secondItem="FWk-c8-mms" secondAttribute="bottom" id="FVb-zl-cUH"/>
                             <constraint firstItem="FWk-c8-mms" firstAttribute="height" secondItem="YpM-9f-4gb" secondAttribute="height" multiplier="0.6" id="GzX-94-jfd"/>
-                            <constraint firstItem="01s-k2-b3i" firstAttribute="leading" secondItem="fmh-gj-NrB" secondAttribute="leadingMargin" constant="-16" id="HrM-NY-DpN"/>
-                            <constraint firstItem="FWk-c8-mms" firstAttribute="leading" secondItem="fmh-gj-NrB" secondAttribute="leadingMargin" constant="-16" id="JtA-xw-00d"/>
-                            <constraint firstItem="YpM-9f-4gb" firstAttribute="leading" secondItem="fmh-gj-NrB" secondAttribute="leadingMargin" constant="-16" id="MaA-aS-PLx"/>
-                            <constraint firstAttribute="trailingMargin" secondItem="JfH-Nb-q4i" secondAttribute="trailing" constant="-16" id="P06-T1-JJH"/>
+                            <constraint firstAttribute="trailing" secondItem="B0D-gF-6Yn" secondAttribute="trailing" id="LEd-Em-owc"/>
+                            <constraint firstItem="JfH-Nb-q4i" firstAttribute="leading" secondItem="fmh-gj-NrB" secondAttribute="leading" id="Lep-Fh-3Ig"/>
                             <constraint firstItem="FWk-c8-mms" firstAttribute="height" secondItem="1KJ-OP-0Mm" secondAttribute="height" multiplier="0.6" id="QTl-FJ-OXH"/>
-                            <constraint firstItem="B0D-gF-6Yn" firstAttribute="leading" secondItem="fmh-gj-NrB" secondAttribute="leadingMargin" constant="-16" id="Quj-Ql-hlr"/>
-                            <constraint firstAttribute="trailingMargin" secondItem="FWk-c8-mms" secondAttribute="trailing" constant="-16" id="SDV-Ly-eIo"/>
+                            <constraint firstAttribute="trailing" secondItem="FWk-c8-mms" secondAttribute="trailing" id="Wtu-yt-aHh"/>
+                            <constraint firstItem="YpM-9f-4gb" firstAttribute="leading" secondItem="fmh-gj-NrB" secondAttribute="leading" id="Z2v-qd-dzD"/>
                             <constraint firstItem="YpM-9f-4gb" firstAttribute="top" secondItem="B0D-gF-6Yn" secondAttribute="bottom" id="aC0-Wk-R3c"/>
                             <constraint firstItem="FWk-c8-mms" firstAttribute="top" secondItem="YpM-9f-4gb" secondAttribute="bottom" id="bPc-ZJ-JSd"/>
                             <constraint firstItem="CXc-44-K0D" firstAttribute="centerY" secondItem="16V-SM-KGc" secondAttribute="centerY" id="bmg-sY-Knh"/>
-                            <constraint firstAttribute="trailingMargin" secondItem="01s-k2-b3i" secondAttribute="trailing" constant="-16" id="fkB-ts-KfR"/>
+                            <constraint firstAttribute="trailing" secondItem="01s-k2-b3i" secondAttribute="trailing" id="c5r-vU-ud8"/>
+                            <constraint firstItem="FWk-c8-mms" firstAttribute="leading" secondItem="fmh-gj-NrB" secondAttribute="leading" id="cgh-6b-ETm"/>
                             <constraint firstItem="CXc-44-K0D" firstAttribute="leading" secondItem="fmh-gj-NrB" secondAttribute="leadingMargin" constant="2" id="flb-cz-yU9"/>
-                            <constraint firstAttribute="trailingMargin" secondItem="YpM-9f-4gb" secondAttribute="trailing" constant="-16" id="gmM-LX-BB2"/>
+                            <constraint firstAttribute="trailing" secondItem="YpM-9f-4gb" secondAttribute="trailing" id="kYs-9M-E7u"/>
+                            <constraint firstAttribute="trailing" secondItem="JfH-Nb-q4i" secondAttribute="trailing" id="kby-sv-Wwp"/>
                             <constraint firstItem="16V-SM-KGc" firstAttribute="leading" secondItem="CXc-44-K0D" secondAttribute="trailing" constant="2" id="m4r-Ym-wZb"/>
-                            <constraint firstAttribute="trailingMargin" secondItem="B0D-gF-6Yn" secondAttribute="trailing" constant="-16" id="mR4-4N-Mjc"/>
-                            <constraint firstItem="JfH-Nb-q4i" firstAttribute="leading" secondItem="fmh-gj-NrB" secondAttribute="leadingMargin" constant="-16" id="oia-dl-ANA"/>
+                            <constraint firstItem="01s-k2-b3i" firstAttribute="leading" secondItem="fmh-gj-NrB" secondAttribute="leading" id="wdc-BK-cJc"/>
                             <constraint firstItem="1KJ-OP-0Mm" firstAttribute="top" secondItem="B0D-gF-6Yn" secondAttribute="bottom" id="x3p-Rx-hy2"/>
                         </constraints>
                     </view>
@@ -679,11 +680,11 @@
                         </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="calibratedWhite"/>
                         <constraints>
-                            <constraint firstItem="yx7-Ta-zNS" firstAttribute="leading" secondItem="K7w-OJ-FBM" secondAttribute="leadingMargin" constant="-16" id="1Cu-7d-ulJ"/>
+                            <constraint firstAttribute="trailing" secondItem="yx7-Ta-zNS" secondAttribute="trailing" id="8tu-y0-MGf"/>
                             <constraint firstAttribute="trailingMargin" secondItem="6LH-1k-Yh9" secondAttribute="trailing" constant="10" id="Bkt-mQ-hH2"/>
                             <constraint firstItem="6LH-1k-Yh9" firstAttribute="leading" secondItem="K7w-OJ-FBM" secondAttribute="leadingMargin" constant="10" id="aSW-Nk-Xcz"/>
                             <constraint firstItem="bc9-Bj-DDN" firstAttribute="top" secondItem="6LH-1k-Yh9" secondAttribute="bottom" constant="20" id="cCJ-km-aaD"/>
-                            <constraint firstAttribute="trailingMargin" secondItem="yx7-Ta-zNS" secondAttribute="trailing" constant="-16" id="mIQ-JM-Dad"/>
+                            <constraint firstItem="yx7-Ta-zNS" firstAttribute="leading" secondItem="K7w-OJ-FBM" secondAttribute="leading" id="k0B-g1-jHC"/>
                             <constraint firstItem="bc9-Bj-DDN" firstAttribute="top" secondItem="yx7-Ta-zNS" secondAttribute="bottom" id="sw1-mZ-2e4"/>
                             <constraint firstItem="yx7-Ta-zNS" firstAttribute="top" secondItem="K7w-OJ-FBM" secondAttribute="topMargin" id="yLz-O0-NvQ"/>
                         </constraints>
@@ -707,10 +708,10 @@
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
                             <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="BG" translatesAutoresizingMaskIntoConstraints="NO" id="GnO-Vn-kMd">
-                                <rect key="frame" x="0.0" y="0.0" width="325" height="568"/>
+                                <rect key="frame" x="0.0" y="0.0" width="320" height="568"/>
                             </imageView>
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="General Information" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="KGv-W5-wuQ">
-                                <rect key="frame" x="84" y="28" width="152" height="21"/>
+                                <rect key="frame" x="85" y="28" width="151" height="21"/>
                                 <fontDescription key="fontDescription" type="system" pointSize="17"/>
                                 <color key="textColor" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
                                 <nil key="highlightedColor"/>
@@ -886,14 +887,14 @@ The Nyborg taxi can be ordered at the hotel reception or at the train/bus statio
                         <constraints>
                             <constraint firstItem="pDl-2g-Y29" firstAttribute="top" secondItem="nJ3-Al-dGr" secondAttribute="bottom" constant="20" id="2m7-By-uMz"/>
                             <constraint firstItem="KGv-W5-wuQ" firstAttribute="top" secondItem="eBR-PY-VXh" secondAttribute="bottom" constant="8" id="2rW-vN-nse"/>
-                            <constraint firstAttribute="trailingMargin" secondItem="GnO-Vn-kMd" secondAttribute="trailing" constant="-21" id="4gp-yh-YYj"/>
                             <constraint firstAttribute="bottomMargin" secondItem="GnO-Vn-kMd" secondAttribute="bottom" id="5eA-he-Kr3"/>
                             <constraint firstItem="nJ3-Al-dGr" firstAttribute="top" secondItem="KGv-W5-wuQ" secondAttribute="bottom" constant="8" id="7kQ-hN-qwR"/>
                             <constraint firstAttribute="centerX" secondItem="KGv-W5-wuQ" secondAttribute="centerX" id="J4u-hj-KHl"/>
                             <constraint firstItem="GnO-Vn-kMd" firstAttribute="top" secondItem="Mg0-Tp-2hU" secondAttribute="topMargin" id="LzU-nW-qM8"/>
-                            <constraint firstItem="GnO-Vn-kMd" firstAttribute="leading" secondItem="Mg0-Tp-2hU" secondAttribute="leadingMargin" constant="-16" id="QVz-VK-wzh"/>
-                            <constraint firstItem="nJ3-Al-dGr" firstAttribute="trailing" secondItem="Mg0-Tp-2hU" secondAttribute="trailingMargin" id="iqh-qY-gT9"/>
-                            <constraint firstItem="nJ3-Al-dGr" firstAttribute="leading" secondItem="Mg0-Tp-2hU" secondAttribute="leadingMargin" id="zGk-Dz-cF9"/>
+                            <constraint firstAttribute="trailing" secondItem="nJ3-Al-dGr" secondAttribute="trailing" constant="16" id="QLq-Ew-jtf"/>
+                            <constraint firstAttribute="trailing" secondItem="GnO-Vn-kMd" secondAttribute="trailing" id="WcH-zH-7dd"/>
+                            <constraint firstItem="GnO-Vn-kMd" firstAttribute="leading" secondItem="Mg0-Tp-2hU" secondAttribute="leading" id="Zi2-dc-R0b"/>
+                            <constraint firstItem="nJ3-Al-dGr" firstAttribute="leading" secondItem="Mg0-Tp-2hU" secondAttribute="leading" constant="16" id="hN8-Ih-adk"/>
                         </constraints>
                     </view>
                 </viewController>
@@ -918,9 +919,10 @@ The Nyborg taxi can be ordered at the hotel reception or at the train/bus statio
                                 <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                                 <prototypes>
                                     <tableViewCell contentMode="scaleToFill" selectionStyle="default" accessoryType="disclosureIndicator" indentationWidth="10" reuseIdentifier="NoteCell" rowHeight="87" id="Ju1-EE-E37">
-                                        <rect key="frame" x="0.0" y="0.0" width="320" height="44"/>
+                                        <rect key="frame" x="0.0" y="22" width="320" height="87"/>
                                         <autoresizingMask key="autoresizingMask"/>
                                         <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="Ju1-EE-E37" id="RFW-a7-Suf">
+                                            <rect key="frame" x="0.0" y="0.0" width="287" height="86"/>
                                             <autoresizingMask key="autoresizingMask"/>
                                             <subviews>
                                                 <label opaque="NO" userInteractionEnabled="NO" tag="201" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="EmC-Cz-sCP">
@@ -940,13 +942,13 @@ The Nyborg taxi can be ordered at the hotel reception or at the train/bus statio
                                                 </label>
                                             </subviews>
                                             <constraints>
-                                                <constraint firstItem="VA3-CK-cxK" firstAttribute="trailing" secondItem="RFW-a7-Suf" secondAttribute="trailingMargin" id="2gQ-ya-qg2"/>
+                                                <constraint firstAttribute="trailing" secondItem="VA3-CK-cxK" secondAttribute="trailing" constant="8" id="11T-3Y-fLF"/>
                                                 <constraint firstItem="VA3-CK-cxK" firstAttribute="top" secondItem="EmC-Cz-sCP" secondAttribute="bottom" constant="7" id="5Ny-c6-Sje"/>
-                                                <constraint firstItem="EmC-Cz-sCP" firstAttribute="trailing" secondItem="RFW-a7-Suf" secondAttribute="trailingMargin" id="IXL-DO-N2U"/>
-                                                <constraint firstAttribute="bottomMargin" secondItem="VA3-CK-cxK" secondAttribute="bottom" id="Kfy-zx-x8O"/>
-                                                <constraint firstItem="VA3-CK-cxK" firstAttribute="leading" secondItem="RFW-a7-Suf" secondAttribute="leadingMargin" id="Ogt-vz-fQD"/>
-                                                <constraint firstItem="EmC-Cz-sCP" firstAttribute="top" secondItem="RFW-a7-Suf" secondAttribute="topMargin" constant="1" id="W6R-sC-tHE"/>
-                                                <constraint firstItem="EmC-Cz-sCP" firstAttribute="leading" secondItem="RFW-a7-Suf" secondAttribute="leadingMargin" id="rXc-rI-la8"/>
+                                                <constraint firstItem="EmC-Cz-sCP" firstAttribute="top" secondItem="RFW-a7-Suf" secondAttribute="top" constant="9" id="IyF-Wl-tSO"/>
+                                                <constraint firstAttribute="trailing" secondItem="EmC-Cz-sCP" secondAttribute="trailing" constant="8" id="QX8-aN-ABB"/>
+                                                <constraint firstItem="EmC-Cz-sCP" firstAttribute="leading" secondItem="RFW-a7-Suf" secondAttribute="leading" constant="8" id="pU0-Gt-mDh"/>
+                                                <constraint firstItem="VA3-CK-cxK" firstAttribute="leading" secondItem="RFW-a7-Suf" secondAttribute="leading" constant="8" id="qMa-A1-KkL"/>
+                                                <constraint firstAttribute="bottom" secondItem="VA3-CK-cxK" secondAttribute="bottom" constant="8" id="tTn-WF-dnU"/>
                                             </constraints>
                                         </tableViewCellContentView>
                                         <connections>
@@ -962,10 +964,10 @@ The Nyborg taxi can be ordered at the hotel reception or at the train/bus statio
                         </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                         <constraints>
-                            <constraint firstAttribute="trailingMargin" secondItem="uoC-Hm-4fP" secondAttribute="trailing" constant="-16" id="5EL-eS-mxi"/>
+                            <constraint firstAttribute="trailing" secondItem="uoC-Hm-4fP" secondAttribute="trailing" id="8dY-pC-HFU"/>
                             <constraint firstItem="naz-O4-NKy" firstAttribute="top" secondItem="uoC-Hm-4fP" secondAttribute="bottom" id="KzF-Pq-K9J"/>
-                            <constraint firstItem="uoC-Hm-4fP" firstAttribute="leading" secondItem="gvi-Pn-nZG" secondAttribute="leadingMargin" constant="-16" id="Xjg-x8-kvW"/>
                             <constraint firstItem="uoC-Hm-4fP" firstAttribute="top" secondItem="gvi-Pn-nZG" secondAttribute="topMargin" id="Xnc-yT-q85"/>
+                            <constraint firstItem="uoC-Hm-4fP" firstAttribute="leading" secondItem="gvi-Pn-nZG" secondAttribute="leading" id="aop-Ia-IgZ"/>
                         </constraints>
                     </view>
                     <connections>
@@ -1027,14 +1029,9 @@ The Nyborg taxi can be ordered at the hotel reception or at the train/bus statio
         <image name="PlaceIcon" width="12" height="15"/>
         <image name="TimeIcon" width="13" height="14"/>
     </resources>
-    <simulatedMetricsContainer key="defaultSimulatedMetrics">
-        <simulatedStatusBarMetrics key="statusBar"/>
-        <simulatedOrientationMetrics key="orientation"/>
-        <simulatedScreenMetrics key="destination" type="retina4"/>
-    </simulatedMetricsContainer>
     <inferredMetricsTieBreakers>
-        <segue reference="twV-FT-9Dc"/>
         <segue reference="yED-nK-6IL"/>
+        <segue reference="6O2-og-6Hq"/>
     </inferredMetricsTieBreakers>
     <color key="tintColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
 </document>
