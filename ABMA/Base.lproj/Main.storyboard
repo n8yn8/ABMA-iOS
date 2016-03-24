@@ -59,7 +59,7 @@
                                         </tableViewCellContentView>
                                         <color key="backgroundColor" red="0.92941176469999998" green="0.92941176469999998" blue="0.93333333330000001" alpha="1" colorSpace="calibratedRGB"/>
                                         <connections>
-                                            <segue destination="beF-5d-Hwp" kind="custom" customClass="SWRevealViewControllerSegue" id="yED-nK-6IL"/>
+                                            <segue destination="hLw-EG-DOD" kind="custom" customClass="SWRevealViewControllerSeguePushController" id="i2t-q8-Kec"/>
                                         </connections>
                                     </tableViewCell>
                                     <tableViewCell contentMode="scaleToFill" selectionStyle="blue" hidesAccessoryWhenEditing="NO" indentationLevel="1" indentationWidth="0.0" reuseIdentifier="notes" textLabel="CWZ-Aq-tsK" style="IBUITableViewCellStyleDefault" id="OJc-Jg-Sqg">
@@ -80,7 +80,7 @@
                                         </tableViewCellContentView>
                                         <color key="backgroundColor" red="0.92941176469999998" green="0.92941176469999998" blue="0.93333333330000001" alpha="1" colorSpace="calibratedRGB"/>
                                         <connections>
-                                            <segue destination="77l-Bb-ZLe" kind="custom" customClass="SWRevealViewControllerSegue" id="ZZi-rn-T4D"/>
+                                            <segue destination="S21-KW-nMn" kind="custom" customClass="SWRevealViewControllerSeguePushController" id="ZZi-rn-T4D"/>
                                         </connections>
                                     </tableViewCell>
                                     <tableViewCell contentMode="scaleToFill" selectionStyle="blue" hidesAccessoryWhenEditing="NO" indentationLevel="1" indentationWidth="0.0" reuseIdentifier="info" textLabel="ZtF-YU-y7J" style="IBUITableViewCellStyleDefault" id="boH-75-NA9">
@@ -101,7 +101,7 @@
                                         </tableViewCellContentView>
                                         <color key="backgroundColor" red="0.92941176469999998" green="0.92941176469999998" blue="0.93333333330000001" alpha="1" colorSpace="calibratedRGB"/>
                                         <connections>
-                                            <segue destination="bLO-0s-Xc3" kind="custom" customClass="SWRevealViewControllerSegue" id="H3c-tE-TSq"/>
+                                            <segue destination="yt5-b2-JfU" kind="custom" customClass="SWRevealViewControllerSeguePushController" id="H3c-tE-TSq"/>
                                         </connections>
                                     </tableViewCell>
                                     <tableViewCell contentMode="scaleToFill" selectionStyle="blue" hidesAccessoryWhenEditing="NO" indentationLevel="1" indentationWidth="0.0" reuseIdentifier="sponsor" textLabel="qst-Io-549" style="IBUITableViewCellStyleDefault" id="RM7-Fy-2Id">
@@ -122,7 +122,7 @@
                                         </tableViewCellContentView>
                                         <color key="backgroundColor" red="0.92941176469999998" green="0.92941176469999998" blue="0.93333333330000001" alpha="1" colorSpace="calibratedRGB"/>
                                         <connections>
-                                            <segue destination="8z4-wf-t5w" kind="custom" customClass="SWRevealViewControllerSegue" id="qE6-Lb-mXg"/>
+                                            <segue destination="PBa-Vm-9NG" kind="custom" customClass="SWRevealViewControllerSeguePushController" id="qE6-Lb-mXg"/>
                                         </connections>
                                     </tableViewCell>
                                     <tableViewCell contentMode="scaleToFill" selectionStyle="blue" hidesAccessoryWhenEditing="NO" indentationLevel="1" indentationWidth="0.0" reuseIdentifier="contact" textLabel="Vdy-Vh-7cC" style="IBUITableViewCellStyleDefault" id="WoF-cW-m4T">
@@ -143,7 +143,7 @@
                                         </tableViewCellContentView>
                                         <color key="backgroundColor" red="0.92941176469999998" green="0.92941176469999998" blue="0.93333333330000001" alpha="1" colorSpace="calibratedRGB"/>
                                         <connections>
-                                            <segue destination="uhf-wR-b0T" kind="custom" customClass="SWRevealViewControllerSegue" id="I2T-nZ-6F1"/>
+                                            <segue destination="9QS-4W-heR" kind="custom" customClass="SWRevealViewControllerSeguePushController" id="I2T-nZ-6F1"/>
                                         </connections>
                                     </tableViewCell>
                                 </cells>
@@ -157,7 +157,7 @@
                 </tableViewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="8gV-Bb-fAh" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="321" y="-409"/>
+            <point key="canvasLocation" x="109" y="-407"/>
         </scene>
         <!--Sponsor Collection View Controller-->
         <scene sceneID="nZC-GZ-kif">
@@ -174,7 +174,7 @@
                             <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="BG" translatesAutoresizingMaskIntoConstraints="NO" id="Ct2-zl-x9a">
                                 <rect key="frame" x="0.0" y="0.0" width="320" height="568"/>
                             </imageView>
-                            <collectionView opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" minimumZoomScale="0.0" maximumZoomScale="0.0" dataMode="prototypes" translatesAutoresizingMaskIntoConstraints="NO" id="33w-se-r7o">
+                            <collectionView opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" misplaced="YES" minimumZoomScale="0.0" maximumZoomScale="0.0" dataMode="prototypes" translatesAutoresizingMaskIntoConstraints="NO" id="33w-se-r7o">
                                 <rect key="frame" x="0.0" y="20" width="320" height="548"/>
                                 <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
                                 <collectionViewFlowLayout key="collectionViewLayout" minimumLineSpacing="0.0" minimumInteritemSpacing="0.0" id="TZJ-Ua-w06">
@@ -225,10 +225,11 @@
                             <constraint firstItem="33w-se-r7o" firstAttribute="top" secondItem="79K-2U-dIF" secondAttribute="bottom" id="yS9-fw-PlH"/>
                         </constraints>
                     </view>
+                    <navigationItem key="navigationItem" id="ahW-46-jbW"/>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="eVB-De-xYb" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="1003" y="119"/>
+            <point key="canvasLocation" x="1535" y="119"/>
         </scene>
         <!--Schedule View Controller-->
         <scene sceneID="y9B-kN-3Yq">
@@ -634,7 +635,7 @@
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="LbZ-Oe-yao" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="1853" y="-863"/>
+            <point key="canvasLocation" x="2385" y="-863"/>
         </scene>
         <!--Contact View Controller-->
         <scene sceneID="3kI-Kl-2rH">
@@ -693,7 +694,7 @@
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="aY4-Ak-Jlu" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="1003" y="837"/>
+            <point key="canvasLocation" x="1535" y="837"/>
         </scene>
         <!--Info View Controller-->
         <scene sceneID="RA9-w2-8O9">
@@ -710,13 +711,13 @@
                             <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="BG" translatesAutoresizingMaskIntoConstraints="NO" id="GnO-Vn-kMd">
                                 <rect key="frame" x="0.0" y="0.0" width="320" height="568"/>
                             </imageView>
-                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="General Information" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="KGv-W5-wuQ">
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" misplaced="YES" text="General Information" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="KGv-W5-wuQ">
                                 <rect key="frame" x="85" y="28" width="151" height="21"/>
                                 <fontDescription key="fontDescription" type="system" pointSize="17"/>
                                 <color key="textColor" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
                                 <nil key="highlightedColor"/>
                             </label>
-                            <textView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" editable="NO" usesAttributedText="YES" translatesAutoresizingMaskIntoConstraints="NO" id="nJ3-Al-dGr">
+                            <textView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" misplaced="YES" editable="NO" usesAttributedText="YES" translatesAutoresizingMaskIntoConstraints="NO" id="nJ3-Al-dGr">
                                 <rect key="frame" x="16" y="57" width="288" height="491"/>
                                 <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
                                 <color key="tintColor" red="0.0" green="0.47843137250000001" blue="1" alpha="1" colorSpace="calibratedRGB"/>
@@ -897,10 +898,11 @@ The Nyborg taxi can be ordered at the hotel reception or at the train/bus statio
                             <constraint firstItem="nJ3-Al-dGr" firstAttribute="leading" secondItem="Mg0-Tp-2hU" secondAttribute="leading" constant="16" id="hN8-Ih-adk"/>
                         </constraints>
                     </view>
+                    <navigationItem key="navigationItem" id="j0V-uw-rh2"/>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="3zb-sH-SOJ" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="1554" y="-154"/>
+            <point key="canvasLocation" x="3150" y="-154"/>
         </scene>
         <!--Notes View Controller-->
         <scene sceneID="ASf-6x-K7U">
@@ -919,7 +921,7 @@ The Nyborg taxi can be ordered at the hotel reception or at the train/bus statio
                                 <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                                 <prototypes>
                                     <tableViewCell contentMode="scaleToFill" selectionStyle="default" accessoryType="disclosureIndicator" indentationWidth="10" reuseIdentifier="NoteCell" rowHeight="87" id="Ju1-EE-E37">
-                                        <rect key="frame" x="0.0" y="22" width="320" height="87"/>
+                                        <rect key="frame" x="0.0" y="86" width="320" height="87"/>
                                         <autoresizingMask key="autoresizingMask"/>
                                         <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="Ju1-EE-E37" id="RFW-a7-Suf">
                                             <rect key="frame" x="0.0" y="0.0" width="287" height="86"/>
@@ -970,13 +972,14 @@ The Nyborg taxi can be ordered at the hotel reception or at the train/bus statio
                             <constraint firstItem="uoC-Hm-4fP" firstAttribute="leading" secondItem="gvi-Pn-nZG" secondAttribute="leading" id="aop-Ia-IgZ"/>
                         </constraints>
                     </view>
+                    <navigationItem key="navigationItem" id="MaL-yG-U1c"/>
                     <connections>
                         <outlet property="tableView" destination="uoC-Hm-4fP" id="KWW-02-479"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="MMR-JE-rvo" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="1003" y="-568"/>
+            <point key="canvasLocation" x="1535" y="-568"/>
         </scene>
         <!--Navigation Controller-->
         <scene sceneID="oJj-hl-Z6w">
@@ -1011,13 +1014,89 @@ The Nyborg taxi can be ordered at the hotel reception or at the train/bus statio
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="calibratedWhite"/>
                     </view>
                     <connections>
-                        <segue destination="x36-I8-w5m" kind="custom" identifier="sw_rear" customClass="SWRevealViewControllerSegue" id="BH5-Qu-nr6"/>
-                        <segue destination="hLw-EG-DOD" kind="custom" identifier="sw_front" customClass="SWRevealViewControllerSegue" id="LGX-NL-ICO"/>
+                        <segue destination="x36-I8-w5m" kind="custom" identifier="sw_rear" customClass="SWRevealViewControllerSegueSetController" id="tKu-Pl-oMU"/>
+                        <segue destination="hLw-EG-DOD" kind="custom" identifier="sw_front" customClass="SWRevealViewControllerSegueSetController" id="fHx-tT-JDW"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="989-56-zGc" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="-394" y="-407"/>
+            <point key="canvasLocation" x="-374" y="-433"/>
+        </scene>
+        <!--Navigation Controller-->
+        <scene sceneID="lcs-QF-b6s">
+            <objects>
+                <navigationController automaticallyAdjustsScrollViewInsets="NO" id="S21-KW-nMn" sceneMemberID="viewController">
+                    <toolbarItems/>
+                    <navigationBar key="navigationBar" contentMode="scaleToFill" id="qBL-yK-iHC">
+                        <rect key="frame" x="0.0" y="0.0" width="320" height="44"/>
+                        <autoresizingMask key="autoresizingMask"/>
+                        <color key="barTintColor" red="0.0" green="0.66274511810000003" blue="0.89019614459999996" alpha="1" colorSpace="deviceRGB"/>
+                    </navigationBar>
+                    <nil name="viewControllers"/>
+                    <connections>
+                        <segue destination="77l-Bb-ZLe" kind="relationship" relationship="rootViewController" id="I1I-xg-8n9"/>
+                    </connections>
+                </navigationController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="lzV-gl-huD" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="1003" y="-568"/>
+        </scene>
+        <!--Navigation Controller-->
+        <scene sceneID="c7S-TD-8ev">
+            <objects>
+                <navigationController automaticallyAdjustsScrollViewInsets="NO" id="PBa-Vm-9NG" sceneMemberID="viewController">
+                    <toolbarItems/>
+                    <navigationBar key="navigationBar" contentMode="scaleToFill" id="X2m-ai-Z1B">
+                        <rect key="frame" x="0.0" y="0.0" width="320" height="44"/>
+                        <autoresizingMask key="autoresizingMask"/>
+                        <color key="barTintColor" red="0.0" green="0.66274511810000003" blue="0.89019614459999996" alpha="1" colorSpace="deviceRGB"/>
+                    </navigationBar>
+                    <nil name="viewControllers"/>
+                    <connections>
+                        <segue destination="8z4-wf-t5w" kind="relationship" relationship="rootViewController" id="g9C-7I-EPC"/>
+                    </connections>
+                </navigationController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="9zo-MY-7Q5" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="1003" y="119"/>
+        </scene>
+        <!--Navigation Controller-->
+        <scene sceneID="yLX-bM-0Zv">
+            <objects>
+                <navigationController automaticallyAdjustsScrollViewInsets="NO" id="9QS-4W-heR" sceneMemberID="viewController">
+                    <toolbarItems/>
+                    <navigationBar key="navigationBar" contentMode="scaleToFill" id="I8y-7R-LUF">
+                        <rect key="frame" x="0.0" y="0.0" width="320" height="44"/>
+                        <autoresizingMask key="autoresizingMask"/>
+                        <color key="barTintColor" red="0.0" green="0.66274511810000003" blue="0.89019614459999996" alpha="1" colorSpace="deviceRGB"/>
+                    </navigationBar>
+                    <nil name="viewControllers"/>
+                    <connections>
+                        <segue destination="uhf-wR-b0T" kind="relationship" relationship="rootViewController" id="3RY-Yb-2Rt"/>
+                    </connections>
+                </navigationController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="SNh-YW-jQg" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="1003" y="837"/>
+        </scene>
+        <!--Navigation Controller-->
+        <scene sceneID="bJx-rT-SAR">
+            <objects>
+                <navigationController automaticallyAdjustsScrollViewInsets="NO" id="yt5-b2-JfU" sceneMemberID="viewController">
+                    <toolbarItems/>
+                    <navigationBar key="navigationBar" contentMode="scaleToFill" id="nbZ-Vl-F1N">
+                        <rect key="frame" x="0.0" y="0.0" width="320" height="44"/>
+                        <autoresizingMask key="autoresizingMask"/>
+                        <color key="barTintColor" red="0.0" green="0.66274511810000003" blue="0.89019614459999996" alpha="1" colorSpace="deviceRGB"/>
+                    </navigationBar>
+                    <nil name="viewControllers"/>
+                    <connections>
+                        <segue destination="bLO-0s-Xc3" kind="relationship" relationship="rootViewController" id="q3Q-8o-gDg"/>
+                    </connections>
+                </navigationController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="pfW-eK-VVo" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="2618" y="-154"/>
         </scene>
     </scenes>
     <resources>
@@ -1030,8 +1109,8 @@ The Nyborg taxi can be ordered at the hotel reception or at the train/bus statio
         <image name="TimeIcon" width="13" height="14"/>
     </resources>
     <inferredMetricsTieBreakers>
-        <segue reference="yED-nK-6IL"/>
-        <segue reference="6O2-og-6Hq"/>
+        <segue reference="i2t-q8-Kec"/>
+        <segue reference="twV-FT-9Dc"/>
     </inferredMetricsTieBreakers>
     <color key="tintColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
 </document>
