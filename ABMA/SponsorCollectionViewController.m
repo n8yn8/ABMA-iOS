@@ -33,7 +33,8 @@
     
     //Sponsor image array
 //    sponsorImages = [[NSArray alloc] initWithObjects:@"AAZK-Dallas.png", @"AAZK-Galv.png", @"AAZKChey.png", @"ABI.png", @"AP.png", @"Blue.png", @"ChildrensAquarium.png", @"Cliff.png", @"DallasZoo.png", @"DWA.png", @"FRWC.png", @"FWZoo.png", @"MAF.png", @"NatBal.png", @"NEI.png", @"SeaWorld.png", nil];
-    sponsorImages = [[NSArray alloc] initWithObjects:@"DBP.png", @"CPHZoo.png", @"GIVSKUD_ZOO.png", @"Odense Zoo.png", @"SDU.png", @"training_store.png", @"mazuri.png", @"profis.png", @"sea_world.png", @"zooply.png",  nil];
+//    sponsorImages = [[NSArray alloc] initWithObjects:@"DBP.png", @"CPHZoo.png", @"GIVSKUD_ZOO.png", @"Odense Zoo.png", @"SDU.png", @"training_store.png", @"mazuri.png", @"profis.png", @"sea_world.png", @"zooply.png",  nil];
+    sponsorImages = [[NSArray alloc] initWithObjects:@"ABI Logo.jpg", @"BGT Logo.png", @"brevard_zoo_logo_m.jpg", @"CFZ.jpg", @"CMA.png", @"FAZA.png", @"fl aq logo.jpg", @"NEI.png", @"PB.png", @"sante_fe_teaching_zoo.png", @"SWO Logo.jpg", @"TAMPA BAY AAZK.png", @"Zoo_Logo.jpg",  nil];
 }
 
 - (void)didReceiveMemoryWarning
