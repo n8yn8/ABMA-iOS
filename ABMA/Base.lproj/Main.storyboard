@@ -652,8 +652,13 @@
                             <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="BG" translatesAutoresizingMaskIntoConstraints="NO" id="yx7-Ta-zNS">
                                 <rect key="frame" x="0.0" y="0.0" width="320" height="568"/>
                             </imageView>
-                            <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="0S4-H7-kPU">
-                                <rect key="frame" x="54" y="88" width="213" height="30"/>
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="0S4-H7-kPU">
+                                <rect key="frame" x="45" y="88" width="230" height="40"/>
+                                <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                                <constraints>
+                                    <constraint firstAttribute="width" constant="230" id="V4w-Ka-5jh"/>
+                                    <constraint firstAttribute="height" constant="40" id="amM-Uf-rzt"/>
+                                </constraints>
                                 <state key="normal" title="ABMA Website (opens Safari)">
                                     <color key="titleColor" white="0.33333333333333331" alpha="1" colorSpace="calibratedWhite"/>
                                     <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
@@ -662,8 +667,13 @@
                                     <action selector="abmaWebsite:" destination="uhf-wR-b0T" eventType="touchUpInside" id="xM5-Xk-hZP"/>
                                 </connections>
                             </button>
-                            <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="J1t-H4-4P4">
-                                <rect key="frame" x="54" y="142" width="213" height="30"/>
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="J1t-H4-4P4">
+                                <rect key="frame" x="45" y="152" width="230" height="40"/>
+                                <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                                <constraints>
+                                    <constraint firstAttribute="height" constant="40" id="Dhf-fi-xId"/>
+                                    <constraint firstAttribute="width" constant="230" id="MA4-Sr-tpR"/>
+                                </constraints>
                                 <state key="normal" title="Contact ABMA (opens Safari)">
                                     <color key="titleColor" white="0.33333333333333331" alpha="1" colorSpace="calibratedWhite"/>
                                     <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
@@ -683,14 +693,23 @@
                         <constraints>
                             <constraint firstAttribute="trailing" secondItem="yx7-Ta-zNS" secondAttribute="trailing" id="8tu-y0-MGf"/>
                             <constraint firstAttribute="trailingMargin" secondItem="6LH-1k-Yh9" secondAttribute="trailing" constant="10" id="Bkt-mQ-hH2"/>
+                            <constraint firstItem="J1t-H4-4P4" firstAttribute="top" secondItem="0S4-H7-kPU" secondAttribute="bottom" constant="24" id="EiH-IF-mZD"/>
+                            <constraint firstItem="J1t-H4-4P4" firstAttribute="centerX" secondItem="K7w-OJ-FBM" secondAttribute="centerX" id="LvQ-kq-OlK"/>
+                            <constraint firstItem="0S4-H7-kPU" firstAttribute="top" secondItem="jA1-WA-SAy" secondAttribute="bottom" constant="24" id="TdL-8V-Yul"/>
+                            <constraint firstItem="6LH-1k-Yh9" firstAttribute="centerX" secondItem="K7w-OJ-FBM" secondAttribute="centerX" id="a3K-Hr-3Dk"/>
                             <constraint firstItem="6LH-1k-Yh9" firstAttribute="leading" secondItem="K7w-OJ-FBM" secondAttribute="leadingMargin" constant="10" id="aSW-Nk-Xcz"/>
                             <constraint firstItem="bc9-Bj-DDN" firstAttribute="top" secondItem="6LH-1k-Yh9" secondAttribute="bottom" constant="20" id="cCJ-km-aaD"/>
                             <constraint firstItem="yx7-Ta-zNS" firstAttribute="leading" secondItem="K7w-OJ-FBM" secondAttribute="leading" id="k0B-g1-jHC"/>
+                            <constraint firstItem="0S4-H7-kPU" firstAttribute="centerX" secondItem="K7w-OJ-FBM" secondAttribute="centerX" id="kTg-Zk-2OP"/>
                             <constraint firstItem="bc9-Bj-DDN" firstAttribute="top" secondItem="yx7-Ta-zNS" secondAttribute="bottom" id="sw1-mZ-2e4"/>
                             <constraint firstItem="yx7-Ta-zNS" firstAttribute="top" secondItem="K7w-OJ-FBM" secondAttribute="topMargin" id="yLz-O0-NvQ"/>
                         </constraints>
                     </view>
                     <navigationItem key="navigationItem" id="t7P-o7-z8f"/>
+                    <connections>
+                        <outlet property="surveyButton" destination="J1t-H4-4P4" id="FdV-z5-Gmr"/>
+                        <outlet property="websiteButton" destination="0S4-H7-kPU" id="XJD-2F-O11"/>
+                    </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="aY4-Ak-Jlu" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
