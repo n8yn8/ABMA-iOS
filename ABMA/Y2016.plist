@@ -38,17 +38,6 @@ Previous to founding Precision Behavior, Angi held positions at several top-rank
 			<string></string>
 		</dict>
 		<dict>
-			<key>Papers</key>
-			<array>
-				<dict>
-					<key>Title</key>
-					<string></string>
-					<key>Author</key>
-					<string></string>
-					<key>Abstract</key>
-					<string></string>
-				</dict>
-			</array>
 			<key>Time</key>
 			<string>6:00pm - 9:00pm</string>
 			<key>Title</key>
@@ -1191,17 +1180,6 @@ To address this concern we developed a new method of teaching R+ training. It in
 			<string>mmerse yourself in wonder at SeaWorld® Orlando. Experience awe-inspiring shows, one-of-a-kind attractions and up-close animal interactions where the aquatic world comes alive.  SeaWorld Orlando® is owned by SeaWorld Parks &amp; Entertainment™, one of the World&apos;s foremost zoological organizations and a worldwide leader in animal welfare, training, husbandry and veterinary care. The company collectively cares for one of the largest animal collections on the North American continent and has helped lead advances in the care of species in zoological facilities and in the conservation of wild populations.
                 
 4:15pm, Depart for hotel     </string>
-			<key>Papers</key>
-			<array>
-				<dict>
-					<key>Title</key>
-					<string></string>
-					<key>Author</key>
-					<string></string>
-					<key>Abstract</key>
-					<string></string>
-				</dict>
-			</array>
 		</dict>
 	</array>
 </dict>
