@@ -41,14 +41,35 @@
                                             </constraints>
                                         </tableViewCellContentView>
                                     </tableViewCell>
-                                    <tableViewCell contentMode="scaleToFill" selectionStyle="blue" hidesAccessoryWhenEditing="NO" indentationLevel="1" indentationWidth="0.0" reuseIdentifier="schedule" textLabel="MlE-Bj-SwT" style="IBUITableViewCellStyleDefault" id="MS4-35-LKD">
+                                    <tableViewCell contentMode="scaleToFill" selectionStyle="blue" hidesAccessoryWhenEditing="NO" indentationLevel="1" indentationWidth="0.0" reuseIdentifier="welcome" textLabel="SOv-Kv-qHa" style="IBUITableViewCellStyleDefault" id="G1B-fD-LmO">
                                         <rect key="frame" x="0.0" y="151" width="320" height="44"/>
+                                        <autoresizingMask key="autoresizingMask"/>
+                                        <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="G1B-fD-LmO" id="Qmi-1F-CZf">
+                                            <rect key="frame" x="0.0" y="0.0" width="320" height="43"/>
+                                            <autoresizingMask key="autoresizingMask"/>
+                                            <subviews>
+                                                <label opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="left" text="PRESIDENT'S WELCOME" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" id="SOv-Kv-qHa">
+                                                    <rect key="frame" x="15" y="0.0" width="290" height="43"/>
+                                                    <autoresizingMask key="autoresizingMask"/>
+                                                    <fontDescription key="fontDescription" type="system" pointSize="18"/>
+                                                    <color key="textColor" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
+                                                    <nil key="highlightedColor"/>
+                                                </label>
+                                            </subviews>
+                                        </tableViewCellContentView>
+                                        <color key="backgroundColor" red="0.92941176469999998" green="0.92941176469999998" blue="0.93333333330000001" alpha="1" colorSpace="calibratedRGB"/>
+                                        <connections>
+                                            <segue destination="AEM-iV-HAE" kind="custom" customClass="SWRevealViewControllerSeguePushController" id="NIb-hZ-WCY"/>
+                                        </connections>
+                                    </tableViewCell>
+                                    <tableViewCell contentMode="scaleToFill" selectionStyle="blue" hidesAccessoryWhenEditing="NO" indentationLevel="1" indentationWidth="0.0" reuseIdentifier="schedule" textLabel="MlE-Bj-SwT" style="IBUITableViewCellStyleDefault" id="MS4-35-LKD">
+                                        <rect key="frame" x="0.0" y="195" width="320" height="44"/>
                                         <autoresizingMask key="autoresizingMask"/>
                                         <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="MS4-35-LKD" id="576-Y1-hZ5">
                                             <rect key="frame" x="0.0" y="0.0" width="320" height="43"/>
                                             <autoresizingMask key="autoresizingMask"/>
                                             <subviews>
-                                                <label opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="left" text="SCHEDULE" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" id="MlE-Bj-SwT">
+                                                <label opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="left" text="SCHEDULE" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" id="MlE-Bj-SwT">
                                                     <rect key="frame" x="15" y="0.0" width="290" height="43"/>
                                                     <autoresizingMask key="autoresizingMask"/>
                                                     <fontDescription key="fontDescription" type="system" pointSize="18"/>
@@ -63,13 +84,13 @@
                                         </connections>
                                     </tableViewCell>
                                     <tableViewCell contentMode="scaleToFill" selectionStyle="blue" hidesAccessoryWhenEditing="NO" indentationLevel="1" indentationWidth="0.0" reuseIdentifier="notes" textLabel="CWZ-Aq-tsK" style="IBUITableViewCellStyleDefault" id="OJc-Jg-Sqg">
-                                        <rect key="frame" x="0.0" y="195" width="320" height="44"/>
+                                        <rect key="frame" x="0.0" y="239" width="320" height="44"/>
                                         <autoresizingMask key="autoresizingMask"/>
                                         <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="OJc-Jg-Sqg" id="VyK-q8-6w3">
                                             <rect key="frame" x="0.0" y="0.0" width="320" height="43"/>
                                             <autoresizingMask key="autoresizingMask"/>
                                             <subviews>
-                                                <label opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="left" text="NOTES" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" id="CWZ-Aq-tsK">
+                                                <label opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="left" text="NOTES" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" id="CWZ-Aq-tsK">
                                                     <rect key="frame" x="15" y="0.0" width="290" height="43"/>
                                                     <autoresizingMask key="autoresizingMask"/>
                                                     <fontDescription key="fontDescription" type="system" pointSize="18"/>
@@ -84,13 +105,13 @@
                                         </connections>
                                     </tableViewCell>
                                     <tableViewCell contentMode="scaleToFill" selectionStyle="blue" hidesAccessoryWhenEditing="NO" indentationLevel="1" indentationWidth="0.0" reuseIdentifier="info" textLabel="ZtF-YU-y7J" style="IBUITableViewCellStyleDefault" id="boH-75-NA9">
-                                        <rect key="frame" x="0.0" y="239" width="320" height="44"/>
+                                        <rect key="frame" x="0.0" y="283" width="320" height="44"/>
                                         <autoresizingMask key="autoresizingMask"/>
                                         <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="boH-75-NA9" id="6nd-Kp-ZJS">
                                             <rect key="frame" x="0.0" y="0.0" width="320" height="43"/>
                                             <autoresizingMask key="autoresizingMask"/>
                                             <subviews>
-                                                <label opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="left" text="2016 INFO" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" id="ZtF-YU-y7J">
+                                                <label opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="left" text="2016 INFO" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" id="ZtF-YU-y7J">
                                                     <rect key="frame" x="15" y="0.0" width="290" height="43"/>
                                                     <autoresizingMask key="autoresizingMask"/>
                                                     <fontDescription key="fontDescription" type="system" pointSize="18"/>
@@ -105,13 +126,13 @@
                                         </connections>
                                     </tableViewCell>
                                     <tableViewCell contentMode="scaleToFill" selectionStyle="blue" hidesAccessoryWhenEditing="NO" indentationLevel="1" indentationWidth="0.0" reuseIdentifier="sponsor" textLabel="qst-Io-549" style="IBUITableViewCellStyleDefault" id="RM7-Fy-2Id">
-                                        <rect key="frame" x="0.0" y="283" width="320" height="44"/>
+                                        <rect key="frame" x="0.0" y="327" width="320" height="44"/>
                                         <autoresizingMask key="autoresizingMask"/>
                                         <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="RM7-Fy-2Id" id="3JA-Ys-EiP">
                                             <rect key="frame" x="0.0" y="0.0" width="320" height="43"/>
                                             <autoresizingMask key="autoresizingMask"/>
                                             <subviews>
-                                                <label opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="left" text="SPONSOR" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" id="qst-Io-549">
+                                                <label opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="left" text="SPONSOR" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" id="qst-Io-549">
                                                     <rect key="frame" x="15" y="0.0" width="290" height="43"/>
                                                     <autoresizingMask key="autoresizingMask"/>
                                                     <fontDescription key="fontDescription" type="system" pointSize="18"/>
@@ -126,13 +147,13 @@
                                         </connections>
                                     </tableViewCell>
                                     <tableViewCell contentMode="scaleToFill" selectionStyle="blue" hidesAccessoryWhenEditing="NO" indentationLevel="1" indentationWidth="0.0" reuseIdentifier="contact" textLabel="Vdy-Vh-7cC" style="IBUITableViewCellStyleDefault" id="WoF-cW-m4T">
-                                        <rect key="frame" x="0.0" y="327" width="320" height="44"/>
+                                        <rect key="frame" x="0.0" y="371" width="320" height="44"/>
                                         <autoresizingMask key="autoresizingMask"/>
                                         <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="WoF-cW-m4T" id="iEA-dn-dd3">
                                             <rect key="frame" x="0.0" y="0.0" width="320" height="43"/>
                                             <autoresizingMask key="autoresizingMask"/>
                                             <subviews>
-                                                <label opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="left" text="CONTACT" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" id="Vdy-Vh-7cC">
+                                                <label opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="left" text="CONTACT" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" id="Vdy-Vh-7cC">
                                                     <rect key="frame" x="15" y="0.0" width="290" height="43"/>
                                                     <autoresizingMask key="autoresizingMask"/>
                                                     <fontDescription key="fontDescription" type="system" pointSize="18"/>
@@ -243,8 +264,8 @@
                         <rect key="frame" x="0.0" y="0.0" width="320" height="568"/>
                         <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                         <subviews>
-                            <label opaque="NO" clipsSubviews="YES" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" misplaced="YES" text="Feb. 24 2014" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Dkg-Po-jaI">
-                                <rect key="frame" x="0.0" y="20" width="320" height="68"/>
+                            <label opaque="NO" clipsSubviews="YES" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Feb. 24 2014" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Dkg-Po-jaI">
+                                <rect key="frame" x="0.0" y="64" width="320" height="68"/>
                                 <color key="backgroundColor" red="0.49019607843137253" green="0.49019607843137253" blue="0.49019607843137253" alpha="1" colorSpace="calibratedRGB"/>
                                 <constraints>
                                     <constraint firstAttribute="height" constant="68" id="a2g-RU-Xw5"/>
@@ -253,8 +274,8 @@
                                 <color key="textColor" red="0.90196078430000004" green="0.90196078430000004" blue="0.90196078430000004" alpha="1" colorSpace="calibratedRGB"/>
                                 <nil key="highlightedColor"/>
                             </label>
-                            <tableView clipsSubviews="YES" contentMode="scaleToFill" misplaced="YES" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="54" sectionHeaderHeight="22" sectionFooterHeight="22" translatesAutoresizingMaskIntoConstraints="NO" id="txW-z0-ou2">
-                                <rect key="frame" x="0.0" y="88" width="320" height="480"/>
+                            <tableView clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="54" sectionHeaderHeight="22" sectionFooterHeight="22" translatesAutoresizingMaskIntoConstraints="NO" id="txW-z0-ou2">
+                                <rect key="frame" x="0.0" y="132" width="320" height="436"/>
                                 <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                                 <prototypes>
                                     <tableViewCell contentMode="scaleToFill" selectionStyle="default" accessoryType="disclosureIndicator" indentationWidth="10" reuseIdentifier="EventCell" rowHeight="54" id="yPx-bE-Hbr" customClass="EventCellTableViewCell">
@@ -301,8 +322,8 @@
                                     <outlet property="delegate" destination="beF-5d-Hwp" id="csw-FW-roi"/>
                                 </connections>
                             </tableView>
-                            <button opaque="NO" contentMode="scaleToFill" misplaced="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="sBb-R0-eSc">
-                                <rect key="frame" x="290" y="43" width="14" height="22"/>
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="sBb-R0-eSc">
+                                <rect key="frame" x="290" y="87" width="14" height="22"/>
                                 <state key="normal" image="ArrowRight">
                                     <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
                                 </state>
@@ -310,8 +331,8 @@
                                     <action selector="laterDate:" destination="beF-5d-Hwp" eventType="touchUpInside" id="PfY-ed-dCc"/>
                                 </connections>
                             </button>
-                            <button opaque="NO" contentMode="scaleToFill" misplaced="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="gxA-PB-3Ff">
-                                <rect key="frame" x="16" y="43" width="14" height="22"/>
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="gxA-PB-3Ff">
+                                <rect key="frame" x="16" y="87" width="14" height="22"/>
                                 <state key="normal" image="ArrowLeft">
                                     <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
                                 </state>
@@ -1267,6 +1288,102 @@ ABMA room rate is $139.00/night
                 <placeholder placeholderIdentifier="IBFirstResponder" id="pfW-eK-VVo" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
             <point key="canvasLocation" x="2618" y="-154"/>
+        </scene>
+        <!--Info View Controller-->
+        <scene sceneID="7uK-NF-qOo">
+            <objects>
+                <viewController id="sku-bu-PYc" customClass="InfoViewController" sceneMemberID="viewController">
+                    <layoutGuides>
+                        <viewControllerLayoutGuide type="top" id="fZ1-QX-bdH"/>
+                        <viewControllerLayoutGuide type="bottom" id="AJZ-Xe-lua"/>
+                    </layoutGuides>
+                    <view key="view" contentMode="scaleToFill" id="EQc-c2-iM3">
+                        <rect key="frame" x="0.0" y="0.0" width="320" height="568"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="BG" translatesAutoresizingMaskIntoConstraints="NO" id="iox-Xg-6Mt">
+                                <rect key="frame" x="0.0" y="0.0" width="320" height="568"/>
+                            </imageView>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="President's Welcome" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="GzL-vg-9Wn">
+                                <rect key="frame" x="80" y="72" width="161" height="21"/>
+                                <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                <color key="textColor" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
+                                <nil key="highlightedColor"/>
+                            </label>
+                            <textView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" editable="NO" usesAttributedText="YES" translatesAutoresizingMaskIntoConstraints="NO" id="SfI-Ta-qYR">
+                                <rect key="frame" x="16" y="101" width="288" height="447"/>
+                                <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
+                                <color key="tintColor" red="0.0" green="0.47843137250000001" blue="1" alpha="1" colorSpace="calibratedRGB"/>
+                                <attributedString key="attributedText">
+                                    <fragment>
+                                        <string key="content">Greetings and welcome to the 2016 Animal BehaviorManagement Alliance Conference! 
+
+The week is packed with some amazing talks. As I read through the schedule I am really excited to see everyone one of them.  I have always loved going to ABMA conferences because I learn from each and every training or enrichment talk.  I get new ideas and come back revitalized and inspired to continue to improve the welfare of all the animals in our facility.  We are kicking off the conference with our keynote speaker Dr. Susie Ellis, the Executive Director of the International Rhino Foundation (IRF).   She will be educating us on the partnership of zoos and IRF that help them reach their goals of in-situ conservation to prevent poaching and habitat loss.  They have been working for 25 years with one of the most threatened species on earth and now it is more critical than ever to collaborate and unite our efforts.
+
+Some of the highlights will be focused on welfare talks, Margaret Rousser (past president of ABMA) and manager at the Oakland Zoo will start off the talks with an out of the box matrix on how to shift our priorities in favor of psychological well-being and why.  Another talk people must attend is the integration of operant conditioning and veterinary care in wildlife management by Ray Ball D.V.M at Busch Gardens. As a veterinary technician and animal trainer this has always been a passion of mine to train animals to cooperate in their own health care.  Mark Simmons will also be telling a cautionary tale about the Killing of Keiko, the killer whale from the movie Free Willy.  We have to understand and be able to speak to the opposition about wildlife that live in captivity and why we cannot just “set them free”.  We will also have daily training demos with the local SPCA, great panels, and our Research and Evaluation workshop by Dr. Nicole Dorey, a former ABMA board member. 
+
+Also it wouldn’t be an ABMA conference without some great site visits, starting with the Ice Breaker at the Florida Aquarium. Then, since we know animal care professionals can’t sit in a room too long we head to Busch Gardens our second day and on the fourth day head out to see the Lowry Park Zoo.  All of these facilities have been working really hard to make our visits extra special. A big shout out to the conference committee for all their hard work. 
+
+Thank you to the other facilities that have offered pre and post conference trips, and in the learning spirit, Precision Behavior also offered a pre conference workshop from a founding member Thad Lacinak and former board member Angi Millwood, two of the best in the business! 
+
+We hope you all enjoy this conference and get to attend every talk and network with people from other zoos, aquariums, training facilities, and laboratories and create contacts and friends that will last a lifetime.  ABMA is always looking for enthusiastic members to join in committees and even board positions.Please consider getting more involved - we can always use the help!  Just find a board member or join the program council Wednesday night and see where you might be the most help.   
+
+Thanks again for supporting ABMA! 
+
+Sincerely, 
+Nicki Boyd, President Elect 
+</string>
+                                        <attributes>
+                                            <color key="NSColor" red="0.20784313725490197" green="0.20784313725490197" blue="0.20784313725490197" alpha="1" colorSpace="calibratedRGB"/>
+                                            <font key="NSFont" size="14" name="Helvetica"/>
+                                            <paragraphStyle key="NSParagraphStyle" alignment="left" lineBreakMode="wordWrapping" baseWritingDirection="leftToRight" lineSpacing="1" defaultTabInterval="28" tighteningFactorForTruncation="0.0" allowsDefaultTighteningForTruncation="NO">
+                                                <tabStops/>
+                                            </paragraphStyle>
+                                        </attributes>
+                                    </fragment>
+                                </attributedString>
+                                <textInputTraits key="textInputTraits" autocapitalizationType="sentences"/>
+                                <dataDetectorType key="dataDetectorTypes" link="YES"/>
+                            </textView>
+                        </subviews>
+                        <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                        <constraints>
+                            <constraint firstItem="SfI-Ta-qYR" firstAttribute="top" secondItem="GzL-vg-9Wn" secondAttribute="bottom" constant="8" id="03a-sD-4yC"/>
+                            <constraint firstAttribute="bottomMargin" secondItem="iox-Xg-6Mt" secondAttribute="bottom" id="4VS-gJ-xAz"/>
+                            <constraint firstItem="iox-Xg-6Mt" firstAttribute="top" secondItem="EQc-c2-iM3" secondAttribute="topMargin" id="62K-4w-gyI"/>
+                            <constraint firstItem="iox-Xg-6Mt" firstAttribute="leading" secondItem="EQc-c2-iM3" secondAttribute="leading" id="AXl-wn-pfl"/>
+                            <constraint firstAttribute="centerX" secondItem="GzL-vg-9Wn" secondAttribute="centerX" id="QS4-Tz-O3x"/>
+                            <constraint firstAttribute="trailing" secondItem="iox-Xg-6Mt" secondAttribute="trailing" id="RiS-sc-Cpf"/>
+                            <constraint firstItem="GzL-vg-9Wn" firstAttribute="top" secondItem="fZ1-QX-bdH" secondAttribute="bottom" constant="8" id="WLQ-nJ-LZG"/>
+                            <constraint firstItem="SfI-Ta-qYR" firstAttribute="leading" secondItem="EQc-c2-iM3" secondAttribute="leading" constant="16" id="btG-Ww-LRB"/>
+                            <constraint firstAttribute="trailing" secondItem="SfI-Ta-qYR" secondAttribute="trailing" constant="16" id="fMq-ki-qPy"/>
+                            <constraint firstItem="AJZ-Xe-lua" firstAttribute="top" secondItem="SfI-Ta-qYR" secondAttribute="bottom" constant="20" id="jfV-GI-RK0"/>
+                        </constraints>
+                    </view>
+                    <navigationItem key="navigationItem" id="KP1-8Y-S4b"/>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="5sq-dx-0gh" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="3443" y="-789"/>
+        </scene>
+        <!--Navigation Controller-->
+        <scene sceneID="Se5-Sd-fdb">
+            <objects>
+                <navigationController automaticallyAdjustsScrollViewInsets="NO" id="AEM-iV-HAE" sceneMemberID="viewController">
+                    <toolbarItems/>
+                    <navigationBar key="navigationBar" contentMode="scaleToFill" id="rMZ-pX-yHp">
+                        <rect key="frame" x="0.0" y="0.0" width="320" height="44"/>
+                        <autoresizingMask key="autoresizingMask"/>
+                        <color key="barTintColor" red="0.0" green="0.66274511810000003" blue="0.89019614459999996" alpha="1" colorSpace="deviceRGB"/>
+                    </navigationBar>
+                    <nil name="viewControllers"/>
+                    <connections>
+                        <segue destination="sku-bu-PYc" kind="relationship" relationship="rootViewController" id="O3q-rb-uC2"/>
+                    </connections>
+                </navigationController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="CJ4-Xf-ILW" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="2881" y="-789"/>
         </scene>
     </scenes>
     <resources>

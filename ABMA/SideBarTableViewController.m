@@ -28,7 +28,7 @@
 {
     [super viewDidLoad];
     
-    _menuItems = @[@"logo", @"schedule", @"notes", @"info", @"sponsor", @"contact"];
+    _menuItems = @[@"logo", @"welcome", @"schedule", @"notes", @"info", @"sponsor", @"contact"];
     
     // Uncomment the following line to preserve selection between presentations.
     // self.clearsSelectionOnViewWillAppear = NO;
