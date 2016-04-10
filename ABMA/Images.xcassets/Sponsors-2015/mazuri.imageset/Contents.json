@@ -2,11 +2,11 @@
   "images" : [
     {
       "idiom" : "universal",
-      "scale" : "1x",
-      "filename" : "mazuri.png"
+      "scale" : "1x"
     },
     {
       "idiom" : "universal",
+      "filename" : "mazuri.png",
       "scale" : "2x"
     },
     {

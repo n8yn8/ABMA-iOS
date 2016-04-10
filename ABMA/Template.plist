@@ -1,0 +1,39 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE plist PUBLIC "-//Apple Computer//DTD PLIST 1.0//EN" "http://www.apple.com/DTDs/PropertyList-1.0.dtd">
+<!--
+   Templay.plist
+   ABMA
+
+   Created by Nathan Condell on 3/20/16.
+   Copyright (c) 2016 Nathan Condell. All rights reserved.
+-->
+<plist version="1.0">
+    <dict>
+        <key>April 17, 2016</key>
+        <array>
+            <dict>
+                <key>Papers</key>
+                <array>
+                    <dict>
+                        <key>Title</key>
+                        <string></string>
+                        <key>Author</key>
+                        <string></string>
+                        <key>Abstract</key>
+                        <string></string>
+                    </dict>
+                </array>
+                <key>Time</key>
+                <string></string>
+                <key>Title</key>
+                <string></string>
+                <key>Location</key>
+                <string></string>
+                <key>Subtitle</key>
+                <string></string>
+                <key>Description</key>
+                <string></string>
+            </dict>
+        </array>
+    </dict>
+</plist>

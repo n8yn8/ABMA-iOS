@@ -34,6 +34,8 @@
 		43AAAE2A1AAAA484002C424A /* CoreData.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 43AAAE291AAAA484002C424A /* CoreData.framework */; };
 		43AAAE2D1AAAA4D1002C424A /* ABMA.xcdatamodeld in Sources */ = {isa = PBXBuildFile; fileRef = 43AAAE2B1AAAA4D1002C424A /* ABMA.xcdatamodeld */; };
 		43B2B5A91AB72DE000F0A6D0 /* Y2015.plist in Resources */ = {isa = PBXBuildFile; fileRef = 43B2B5A81AB72DE000F0A6D0 /* Y2015.plist */; };
+		43C75EC31C9F9A500020C39E /* Y2016.plist in Resources */ = {isa = PBXBuildFile; fileRef = 43C75EC21C9F9A500020C39E /* Y2016.plist */; };
+		43C75EC51C9F9CF50020C39E /* Template.plist in Resources */ = {isa = PBXBuildFile; fileRef = 43C75EC41C9F9CF50020C39E /* Template.plist */; };
 		43CF9B1A18F5A4E600885DAC /* libz.dylib in Frameworks */ = {isa = PBXBuildFile; fileRef = 43CF9B1918F5A4E600885DAC /* libz.dylib */; };
 		43CF9B1D18F5B23500885DAC /* ContactViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 43CF9B1C18F5B23500885DAC /* ContactViewController.m */; };
 		43D07C6F1AAEABA00033A1E6 /* EventCellTableViewCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 43D07C6E1AAEABA00033A1E6 /* EventCellTableViewCell.m */; };
@@ -96,6 +98,8 @@
 		43AAAE291AAAA484002C424A /* CoreData.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CoreData.framework; path = System/Library/Frameworks/CoreData.framework; sourceTree = SDKROOT; };
 		43AAAE2C1AAAA4D1002C424A /* ABMA.xcdatamodel */ = {isa = PBXFileReference; lastKnownFileType = wrapper.xcdatamodel; path = ABMA.xcdatamodel; sourceTree = "<group>"; };
 		43B2B5A81AB72DE000F0A6D0 /* Y2015.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = Y2015.plist; sourceTree = "<group>"; };
+		43C75EC21C9F9A500020C39E /* Y2016.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = Y2016.plist; sourceTree = "<group>"; };
+		43C75EC41C9F9CF50020C39E /* Template.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = Template.plist; sourceTree = "<group>"; };
 		43CF9B1918F5A4E600885DAC /* libz.dylib */ = {isa = PBXFileReference; lastKnownFileType = "compiled.mach-o.dylib"; name = libz.dylib; path = usr/lib/libz.dylib; sourceTree = SDKROOT; };
 		43CF9B1B18F5B23500885DAC /* ContactViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ContactViewController.h; sourceTree = "<group>"; };
 		43CF9B1C18F5B23500885DAC /* ContactViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ContactViewController.m; sourceTree = "<group>"; };
@@ -186,8 +190,10 @@
 				43F070D018F3B4B60077F11E /* SchedDetailViewController.m */,
 				43F070D218F3B6A20077F11E /* SponsorCollectionViewController.h */,
 				43F070D318F3B6A20077F11E /* SponsorCollectionViewController.m */,
+				43C75EC41C9F9CF50020C39E /* Template.plist */,
 				43F995E318F46102004DC565 /* Y2014.plist */,
 				43B2B5A81AB72DE000F0A6D0 /* Y2015.plist */,
+				43C75EC21C9F9A500020C39E /* Y2016.plist */,
 				43CF9B1B18F5B23500885DAC /* ContactViewController.h */,
 				43CF9B1C18F5B23500885DAC /* ContactViewController.m */,
 				439947E31AB1E9F500D1479B /* NotesViewController.h */,
@@ -291,7 +297,7 @@
 		4338BB9518F26F52002683EF /* Project object */ = {
 			isa = PBXProject;
 			attributes = {
-				LastUpgradeCheck = 0510;
+				LastUpgradeCheck = 0720;
 				ORGANIZATIONNAME = "Nathan Condell";
 				TargetAttributes = {
 					4338BB9C18F26F52002683EF = {
@@ -329,9 +335,11 @@
 				4338BBB918F26F53002683EF /* Images.xcassets in Resources */,
 				4338BBAB18F26F53002683EF /* InfoPlist.strings in Resources */,
 				43B2B5A91AB72DE000F0A6D0 /* Y2015.plist in Resources */,
+				43C75EC51C9F9CF50020C39E /* Template.plist in Resources */,
 				4338BBB418F26F53002683EF /* Main.storyboard in Resources */,
 				43F995E418F46102004DC565 /* Y2014.plist in Resources */,
 				438D599E1ABA97D3004FF7ED /* Launch Screen.xib in Resources */,
+				43C75EC31C9F9A500020C39E /* Y2016.plist in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -436,6 +444,7 @@
 				CLANG_WARN__DUPLICATE_METHOD_MATCH = YES;
 				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
 				COPY_PHASE_STRIP = NO;
+				ENABLE_TESTABILITY = YES;
 				GCC_C_LANGUAGE_STANDARD = gnu99;
 				GCC_DYNAMIC_NO_PIC = NO;
 				GCC_OPTIMIZATION_LEVEL = 0;
@@ -493,18 +502,19 @@
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				ASSETCATALOG_COMPILER_LAUNCHIMAGE_NAME = LaunchImage;
-				CODE_SIGN_IDENTITY = "iPhone Distribution: Nathan Condell (Z3X6HD4H5L)";
-				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Distribution: Nathan Condell (Z3X6HD4H5L)";
+				CODE_SIGN_IDENTITY = "iPhone Developer";
+				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
 				GCC_PRECOMPILE_PREFIX_HEADER = YES;
 				GCC_PREFIX_HEADER = "ABMA/ABMA-Prefix.pch";
 				INFOPLIST_FILE = "ABMA/ABMA-Info.plist";
-				IPHONEOS_DEPLOYMENT_TARGET = 7.0;
+				IPHONEOS_DEPLOYMENT_TARGET = 7.1;
 				LIBRARY_SEARCH_PATHS = (
 					"$(inherited)",
 					"$(PROJECT_DIR)",
 				);
+				PRODUCT_BUNDLE_IDENTIFIER = "com.n8yn8.${PRODUCT_NAME:rfc1034identifier}";
 				PRODUCT_NAME = "$(TARGET_NAME)";
-				PROVISIONING_PROFILE = "5ae17412-e242-4382-97b9-6e7c2f6f4186";
+				PROVISIONING_PROFILE = "";
 				WRAPPER_EXTENSION = app;
 			};
 			name = Debug;
@@ -514,18 +524,19 @@
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				ASSETCATALOG_COMPILER_LAUNCHIMAGE_NAME = LaunchImage;
-				CODE_SIGN_IDENTITY = "iPhone Distribution: Nathan Condell (Z3X6HD4H5L)";
-				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Distribution: Nathan Condell (Z3X6HD4H5L)";
+				CODE_SIGN_IDENTITY = "iPhone Developer";
+				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
 				GCC_PRECOMPILE_PREFIX_HEADER = YES;
 				GCC_PREFIX_HEADER = "ABMA/ABMA-Prefix.pch";
 				INFOPLIST_FILE = "ABMA/ABMA-Info.plist";
-				IPHONEOS_DEPLOYMENT_TARGET = 7.0;
+				IPHONEOS_DEPLOYMENT_TARGET = 7.1;
 				LIBRARY_SEARCH_PATHS = (
 					"$(inherited)",
 					"$(PROJECT_DIR)",
 				);
+				PRODUCT_BUNDLE_IDENTIFIER = "com.n8yn8.${PRODUCT_NAME:rfc1034identifier}";
 				PRODUCT_NAME = "$(TARGET_NAME)";
-				PROVISIONING_PROFILE = "5ae17412-e242-4382-97b9-6e7c2f6f4186";
+				PROVISIONING_PROFILE = "";
 				WRAPPER_EXTENSION = app;
 			};
 			name = Release;
@@ -546,6 +557,7 @@
 					"$(inherited)",
 				);
 				INFOPLIST_FILE = "ABMATests/ABMATests-Info.plist";
+				PRODUCT_BUNDLE_IDENTIFIER = "com.n8yn8.${PRODUCT_NAME:rfc1034identifier}";
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				TEST_HOST = "$(BUNDLE_LOADER)";
 				WRAPPER_EXTENSION = xctest;
@@ -564,6 +576,7 @@
 				GCC_PRECOMPILE_PREFIX_HEADER = YES;
 				GCC_PREFIX_HEADER = "ABMA/ABMA-Prefix.pch";
 				INFOPLIST_FILE = "ABMATests/ABMATests-Info.plist";
+				PRODUCT_BUNDLE_IDENTIFIER = "com.n8yn8.${PRODUCT_NAME:rfc1034identifier}";
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				TEST_HOST = "$(BUNDLE_LOADER)";
 				WRAPPER_EXTENSION = xctest;

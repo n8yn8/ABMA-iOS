@@ -2,11 +2,11 @@
   "images" : [
     {
       "idiom" : "universal",
-      "scale" : "1x",
-      "filename" : "GIVSKUD_ZOO.png"
+      "scale" : "1x"
     },
     {
       "idiom" : "universal",
+      "filename" : "GIVSKUD_ZOO.png",
       "scale" : "2x"
     },
     {

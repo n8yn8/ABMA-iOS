@@ -2,11 +2,11 @@
   "images" : [
     {
       "idiom" : "universal",
-      "scale" : "1x",
-      "filename" : "sea_world.png"
+      "scale" : "1x"
     },
     {
       "idiom" : "universal",
+      "filename" : "sea_world.png",
       "scale" : "2x"
     },
     {
