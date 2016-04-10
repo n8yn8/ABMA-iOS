@@ -1,8 +1,8 @@
 <?xml version="1.0" encoding="UTF-8" standalone="no"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="6751" systemVersion="14C1510" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" initialViewController="BJu-71-Rud">
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="10116" systemVersion="15E65" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" initialViewController="BJu-71-Rud">
     <dependencies>
         <deployment identifier="iOS"/>
-        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="6736"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="10085"/>
         <capability name="Aspect ratio constraints" minToolsVersion="5.1"/>
         <capability name="Constraints to layout margins" minToolsVersion="6.0"/>
         <capability name="Constraints with non-1.0 multipliers" minToolsVersion="5.1"/>
@@ -41,14 +41,14 @@
                                             </constraints>
                                         </tableViewCellContentView>
                                     </tableViewCell>
-                                    <tableViewCell contentMode="scaleToFill" selectionStyle="blue" hidesAccessoryWhenEditing="NO" indentationLevel="1" indentationWidth="0.0" reuseIdentifier="schedule" textLabel="MlE-Bj-SwT" style="IBUITableViewCellStyleDefault" id="MS4-35-LKD">
+                                    <tableViewCell contentMode="scaleToFill" selectionStyle="blue" hidesAccessoryWhenEditing="NO" indentationLevel="1" indentationWidth="0.0" reuseIdentifier="welcome" textLabel="SOv-Kv-qHa" style="IBUITableViewCellStyleDefault" id="G1B-fD-LmO">
                                         <rect key="frame" x="0.0" y="151" width="320" height="44"/>
                                         <autoresizingMask key="autoresizingMask"/>
-                                        <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="MS4-35-LKD" id="576-Y1-hZ5">
+                                        <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="G1B-fD-LmO" id="Qmi-1F-CZf">
                                             <rect key="frame" x="0.0" y="0.0" width="320" height="43"/>
                                             <autoresizingMask key="autoresizingMask"/>
                                             <subviews>
-                                                <label opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="left" text="SCHEDULE" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" id="MlE-Bj-SwT">
+                                                <label opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="left" text="PRESIDENT'S WELCOME" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" id="SOv-Kv-qHa">
                                                     <rect key="frame" x="15" y="0.0" width="290" height="43"/>
                                                     <autoresizingMask key="autoresizingMask"/>
                                                     <fontDescription key="fontDescription" type="system" pointSize="18"/>
@@ -59,7 +59,28 @@
                                         </tableViewCellContentView>
                                         <color key="backgroundColor" red="0.92941176469999998" green="0.92941176469999998" blue="0.93333333330000001" alpha="1" colorSpace="calibratedRGB"/>
                                         <connections>
-                                            <segue destination="beF-5d-Hwp" kind="custom" customClass="SWRevealViewControllerSegue" id="yED-nK-6IL"/>
+                                            <segue destination="AEM-iV-HAE" kind="custom" customClass="SWRevealViewControllerSeguePushController" id="NIb-hZ-WCY"/>
+                                        </connections>
+                                    </tableViewCell>
+                                    <tableViewCell contentMode="scaleToFill" selectionStyle="blue" hidesAccessoryWhenEditing="NO" indentationLevel="1" indentationWidth="0.0" reuseIdentifier="schedule" textLabel="MlE-Bj-SwT" style="IBUITableViewCellStyleDefault" id="MS4-35-LKD">
+                                        <rect key="frame" x="0.0" y="195" width="320" height="44"/>
+                                        <autoresizingMask key="autoresizingMask"/>
+                                        <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="MS4-35-LKD" id="576-Y1-hZ5">
+                                            <rect key="frame" x="0.0" y="0.0" width="320" height="43"/>
+                                            <autoresizingMask key="autoresizingMask"/>
+                                            <subviews>
+                                                <label opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="left" text="SCHEDULE" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" id="MlE-Bj-SwT">
+                                                    <rect key="frame" x="15" y="0.0" width="290" height="43"/>
+                                                    <autoresizingMask key="autoresizingMask"/>
+                                                    <fontDescription key="fontDescription" type="system" pointSize="18"/>
+                                                    <color key="textColor" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
+                                                    <nil key="highlightedColor"/>
+                                                </label>
+                                            </subviews>
+                                        </tableViewCellContentView>
+                                        <color key="backgroundColor" red="0.92941176469999998" green="0.92941176469999998" blue="0.93333333330000001" alpha="1" colorSpace="calibratedRGB"/>
+                                        <connections>
+                                            <segue destination="hLw-EG-DOD" kind="custom" customClass="SWRevealViewControllerSeguePushController" id="i2t-q8-Kec"/>
                                         </connections>
                                     </tableViewCell>
                                     <tableViewCell contentMode="scaleToFill" selectionStyle="blue" hidesAccessoryWhenEditing="NO" indentationLevel="1" indentationWidth="0.0" reuseIdentifier="notes" textLabel="CWZ-Aq-tsK" style="IBUITableViewCellStyleDefault" id="OJc-Jg-Sqg">
@@ -69,7 +90,7 @@
                                             <rect key="frame" x="0.0" y="0.0" width="320" height="43"/>
                                             <autoresizingMask key="autoresizingMask"/>
                                             <subviews>
-                                                <label opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="left" text="NOTES" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" id="CWZ-Aq-tsK">
+                                                <label opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="left" text="NOTES" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" id="CWZ-Aq-tsK">
                                                     <rect key="frame" x="15" y="0.0" width="290" height="43"/>
                                                     <autoresizingMask key="autoresizingMask"/>
                                                     <fontDescription key="fontDescription" type="system" pointSize="18"/>
@@ -80,17 +101,17 @@
                                         </tableViewCellContentView>
                                         <color key="backgroundColor" red="0.92941176469999998" green="0.92941176469999998" blue="0.93333333330000001" alpha="1" colorSpace="calibratedRGB"/>
                                         <connections>
-                                            <segue destination="77l-Bb-ZLe" kind="custom" customClass="SWRevealViewControllerSegue" id="ZZi-rn-T4D"/>
+                                            <segue destination="S21-KW-nMn" kind="custom" customClass="SWRevealViewControllerSeguePushController" id="ZZi-rn-T4D"/>
                                         </connections>
                                     </tableViewCell>
                                     <tableViewCell contentMode="scaleToFill" selectionStyle="blue" hidesAccessoryWhenEditing="NO" indentationLevel="1" indentationWidth="0.0" reuseIdentifier="info" textLabel="ZtF-YU-y7J" style="IBUITableViewCellStyleDefault" id="boH-75-NA9">
-                                        <rect key="frame" x="0.0" y="239" width="320" height="44"/>
+                                        <rect key="frame" x="0.0" y="283" width="320" height="44"/>
                                         <autoresizingMask key="autoresizingMask"/>
                                         <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="boH-75-NA9" id="6nd-Kp-ZJS">
                                             <rect key="frame" x="0.0" y="0.0" width="320" height="43"/>
                                             <autoresizingMask key="autoresizingMask"/>
                                             <subviews>
-                                                <label opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="left" text="2015 INFO" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" id="ZtF-YU-y7J">
+                                                <label opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="left" text="2016 INFO" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" id="ZtF-YU-y7J">
                                                     <rect key="frame" x="15" y="0.0" width="290" height="43"/>
                                                     <autoresizingMask key="autoresizingMask"/>
                                                     <fontDescription key="fontDescription" type="system" pointSize="18"/>
@@ -101,17 +122,17 @@
                                         </tableViewCellContentView>
                                         <color key="backgroundColor" red="0.92941176469999998" green="0.92941176469999998" blue="0.93333333330000001" alpha="1" colorSpace="calibratedRGB"/>
                                         <connections>
-                                            <segue destination="bLO-0s-Xc3" kind="custom" customClass="SWRevealViewControllerSegue" id="H3c-tE-TSq"/>
+                                            <segue destination="yt5-b2-JfU" kind="custom" customClass="SWRevealViewControllerSeguePushController" id="H3c-tE-TSq"/>
                                         </connections>
                                     </tableViewCell>
                                     <tableViewCell contentMode="scaleToFill" selectionStyle="blue" hidesAccessoryWhenEditing="NO" indentationLevel="1" indentationWidth="0.0" reuseIdentifier="sponsor" textLabel="qst-Io-549" style="IBUITableViewCellStyleDefault" id="RM7-Fy-2Id">
-                                        <rect key="frame" x="0.0" y="195" width="320" height="44"/>
+                                        <rect key="frame" x="0.0" y="327" width="320" height="44"/>
                                         <autoresizingMask key="autoresizingMask"/>
                                         <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="RM7-Fy-2Id" id="3JA-Ys-EiP">
                                             <rect key="frame" x="0.0" y="0.0" width="320" height="43"/>
                                             <autoresizingMask key="autoresizingMask"/>
                                             <subviews>
-                                                <label opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="left" text="SPONSOR" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" id="qst-Io-549">
+                                                <label opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="left" text="SPONSOR" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" id="qst-Io-549">
                                                     <rect key="frame" x="15" y="0.0" width="290" height="43"/>
                                                     <autoresizingMask key="autoresizingMask"/>
                                                     <fontDescription key="fontDescription" type="system" pointSize="18"/>
@@ -122,17 +143,17 @@
                                         </tableViewCellContentView>
                                         <color key="backgroundColor" red="0.92941176469999998" green="0.92941176469999998" blue="0.93333333330000001" alpha="1" colorSpace="calibratedRGB"/>
                                         <connections>
-                                            <segue destination="8z4-wf-t5w" kind="custom" customClass="SWRevealViewControllerSegue" id="qE6-Lb-mXg"/>
+                                            <segue destination="PBa-Vm-9NG" kind="custom" customClass="SWRevealViewControllerSeguePushController" id="qE6-Lb-mXg"/>
                                         </connections>
                                     </tableViewCell>
                                     <tableViewCell contentMode="scaleToFill" selectionStyle="blue" hidesAccessoryWhenEditing="NO" indentationLevel="1" indentationWidth="0.0" reuseIdentifier="contact" textLabel="Vdy-Vh-7cC" style="IBUITableViewCellStyleDefault" id="WoF-cW-m4T">
-                                        <rect key="frame" x="0.0" y="239" width="320" height="44"/>
+                                        <rect key="frame" x="0.0" y="371" width="320" height="44"/>
                                         <autoresizingMask key="autoresizingMask"/>
                                         <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="WoF-cW-m4T" id="iEA-dn-dd3">
                                             <rect key="frame" x="0.0" y="0.0" width="320" height="43"/>
                                             <autoresizingMask key="autoresizingMask"/>
                                             <subviews>
-                                                <label opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="left" text="CONTACT" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" id="Vdy-Vh-7cC">
+                                                <label opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="left" text="CONTACT" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" id="Vdy-Vh-7cC">
                                                     <rect key="frame" x="15" y="0.0" width="290" height="43"/>
                                                     <autoresizingMask key="autoresizingMask"/>
                                                     <fontDescription key="fontDescription" type="system" pointSize="18"/>
@@ -143,7 +164,7 @@
                                         </tableViewCellContentView>
                                         <color key="backgroundColor" red="0.92941176469999998" green="0.92941176469999998" blue="0.93333333330000001" alpha="1" colorSpace="calibratedRGB"/>
                                         <connections>
-                                            <segue destination="uhf-wR-b0T" kind="custom" customClass="SWRevealViewControllerSegue" id="I2T-nZ-6F1"/>
+                                            <segue destination="9QS-4W-heR" kind="custom" customClass="SWRevealViewControllerSeguePushController" id="I2T-nZ-6F1"/>
                                         </connections>
                                     </tableViewCell>
                                 </cells>
@@ -157,7 +178,7 @@
                 </tableViewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="8gV-Bb-fAh" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="321" y="-409"/>
+            <point key="canvasLocation" x="109" y="-407"/>
         </scene>
         <!--Sponsor Collection View Controller-->
         <scene sceneID="nZC-GZ-kif">
@@ -175,7 +196,7 @@
                                 <rect key="frame" x="0.0" y="0.0" width="320" height="568"/>
                             </imageView>
                             <collectionView opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" minimumZoomScale="0.0" maximumZoomScale="0.0" dataMode="prototypes" translatesAutoresizingMaskIntoConstraints="NO" id="33w-se-r7o">
-                                <rect key="frame" x="0.0" y="20" width="320" height="548"/>
+                                <rect key="frame" x="0.0" y="64" width="320" height="504"/>
                                 <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
                                 <collectionViewFlowLayout key="collectionViewLayout" minimumLineSpacing="0.0" minimumInteritemSpacing="0.0" id="TZJ-Ua-w06">
                                     <size key="itemSize" width="160" height="160"/>
@@ -215,20 +236,21 @@
                         </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                         <constraints>
+                            <constraint firstAttribute="trailing" secondItem="33w-se-r7o" secondAttribute="trailing" id="1tJ-aI-ZfW"/>
                             <constraint firstItem="Ct2-zl-x9a" firstAttribute="top" secondItem="VGa-XE-4Bv" secondAttribute="topMargin" id="6vI-h6-JVP"/>
-                            <constraint firstAttribute="trailingMargin" secondItem="33w-se-r7o" secondAttribute="trailing" constant="-16" id="9EI-yf-4t1"/>
-                            <constraint firstItem="Ct2-zl-x9a" firstAttribute="leading" secondItem="VGa-XE-4Bv" secondAttribute="leadingMargin" constant="-16" id="A7i-BI-j2c"/>
+                            <constraint firstItem="Ct2-zl-x9a" firstAttribute="leading" secondItem="VGa-XE-4Bv" secondAttribute="leading" id="Dn3-x0-Ch6"/>
                             <constraint firstItem="0K5-Ri-CnL" firstAttribute="top" secondItem="Ct2-zl-x9a" secondAttribute="bottom" id="JRd-Qa-rvS"/>
-                            <constraint firstItem="33w-se-r7o" firstAttribute="leading" secondItem="VGa-XE-4Bv" secondAttribute="leadingMargin" constant="-16" id="Q3i-Wg-O3k"/>
-                            <constraint firstAttribute="trailingMargin" secondItem="Ct2-zl-x9a" secondAttribute="trailing" constant="-16" id="UxM-H4-U9t"/>
+                            <constraint firstAttribute="trailing" secondItem="Ct2-zl-x9a" secondAttribute="trailing" id="YS7-hv-Dom"/>
                             <constraint firstItem="0K5-Ri-CnL" firstAttribute="top" secondItem="33w-se-r7o" secondAttribute="bottom" id="k0C-8d-LUX"/>
+                            <constraint firstItem="33w-se-r7o" firstAttribute="leading" secondItem="VGa-XE-4Bv" secondAttribute="leading" id="ncv-he-Tm9"/>
                             <constraint firstItem="33w-se-r7o" firstAttribute="top" secondItem="79K-2U-dIF" secondAttribute="bottom" id="yS9-fw-PlH"/>
                         </constraints>
                     </view>
+                    <navigationItem key="navigationItem" id="ahW-46-jbW"/>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="eVB-De-xYb" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="1003" y="119"/>
+            <point key="canvasLocation" x="1535" y="119"/>
         </scene>
         <!--Schedule View Controller-->
         <scene sceneID="y9B-kN-3Yq">
@@ -243,7 +265,7 @@
                         <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                         <subviews>
                             <label opaque="NO" clipsSubviews="YES" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Feb. 24 2014" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Dkg-Po-jaI">
-                                <rect key="frame" x="0.0" y="20" width="320" height="68"/>
+                                <rect key="frame" x="0.0" y="64" width="320" height="68"/>
                                 <color key="backgroundColor" red="0.49019607843137253" green="0.49019607843137253" blue="0.49019607843137253" alpha="1" colorSpace="calibratedRGB"/>
                                 <constraints>
                                     <constraint firstAttribute="height" constant="68" id="a2g-RU-Xw5"/>
@@ -253,7 +275,7 @@
                                 <nil key="highlightedColor"/>
                             </label>
                             <tableView clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="54" sectionHeaderHeight="22" sectionFooterHeight="22" translatesAutoresizingMaskIntoConstraints="NO" id="txW-z0-ou2">
-                                <rect key="frame" x="0.0" y="88" width="320" height="480"/>
+                                <rect key="frame" x="0.0" y="132" width="320" height="436"/>
                                 <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                                 <prototypes>
                                     <tableViewCell contentMode="scaleToFill" selectionStyle="default" accessoryType="disclosureIndicator" indentationWidth="10" reuseIdentifier="EventCell" rowHeight="54" id="yPx-bE-Hbr" customClass="EventCellTableViewCell">
@@ -301,7 +323,7 @@
                                 </connections>
                             </tableView>
                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="sBb-R0-eSc">
-                                <rect key="frame" x="290" y="43" width="14" height="22"/>
+                                <rect key="frame" x="290" y="87" width="14" height="22"/>
                                 <state key="normal" image="ArrowRight">
                                     <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
                                 </state>
@@ -310,7 +332,7 @@
                                 </connections>
                             </button>
                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="gxA-PB-3Ff">
-                                <rect key="frame" x="16" y="43" width="14" height="22"/>
+                                <rect key="frame" x="16" y="87" width="14" height="22"/>
                                 <state key="normal" image="ArrowLeft">
                                     <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
                                 </state>
@@ -322,16 +344,16 @@
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="calibratedWhite"/>
                         <constraints>
                             <constraint firstItem="sBb-R0-eSc" firstAttribute="centerY" secondItem="Dkg-Po-jaI" secondAttribute="centerY" id="0GA-xj-GCM"/>
+                            <constraint firstAttribute="trailing" secondItem="txW-z0-ou2" secondAttribute="trailing" id="0pV-51-ngr"/>
                             <constraint firstItem="txW-z0-ou2" firstAttribute="top" secondItem="Dkg-Po-jaI" secondAttribute="bottom" id="2Ag-TW-IXX"/>
-                            <constraint firstItem="txW-z0-ou2" firstAttribute="leading" secondItem="X64-Mu-uS1" secondAttribute="leading" id="4a3-MX-1Du"/>
                             <constraint firstItem="sBb-R0-eSc" firstAttribute="centerY" secondItem="gxA-PB-3Ff" secondAttribute="centerY" id="Ja2-iJ-eun"/>
                             <constraint firstItem="gxA-PB-3Ff" firstAttribute="leading" secondItem="Dkg-Po-jaI" secondAttribute="leading" constant="16" id="TYS-Bn-xpv"/>
                             <constraint firstItem="txW-z0-ou2" firstAttribute="top" secondItem="p2E-Hj-JwA" secondAttribute="bottom" constant="68" id="YT4-Ck-0Z8"/>
                             <constraint firstItem="dPM-HJ-N0p" firstAttribute="top" secondItem="txW-z0-ou2" secondAttribute="bottom" id="YXn-qK-T94"/>
                             <constraint firstItem="sBb-R0-eSc" firstAttribute="trailing" secondItem="Dkg-Po-jaI" secondAttribute="trailing" constant="-16" id="ZkO-MQ-Hch"/>
-                            <constraint firstAttribute="trailingMargin" secondItem="Dkg-Po-jaI" secondAttribute="trailing" constant="-16" id="c6D-Nu-Zbm"/>
-                            <constraint firstAttribute="trailing" secondItem="txW-z0-ou2" secondAttribute="trailing" id="p3l-61-aWA"/>
-                            <constraint firstItem="Dkg-Po-jaI" firstAttribute="leading" secondItem="X64-Mu-uS1" secondAttribute="leadingMargin" constant="-16" id="v60-Kt-tHD"/>
+                            <constraint firstItem="txW-z0-ou2" firstAttribute="leading" secondItem="X64-Mu-uS1" secondAttribute="leading" id="fla-di-bRv"/>
+                            <constraint firstItem="Dkg-Po-jaI" firstAttribute="leading" secondItem="X64-Mu-uS1" secondAttribute="leading" id="ksG-SQ-Ala"/>
+                            <constraint firstAttribute="trailing" secondItem="Dkg-Po-jaI" secondAttribute="trailing" id="rVI-pc-bU0"/>
                             <constraint firstItem="Dkg-Po-jaI" firstAttribute="top" secondItem="p2E-Hj-JwA" secondAttribute="bottom" id="z1h-Hg-ue1"/>
                         </constraints>
                     </view>
@@ -358,14 +380,14 @@
                         <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                         <subviews>
                             <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="01s-k2-b3i">
-                                <rect key="frame" x="0.0" y="20" width="320" height="68"/>
+                                <rect key="frame" x="0.0" y="64" width="320" height="68"/>
                                 <color key="backgroundColor" red="0.49019607840000001" green="0.49019607840000001" blue="0.49019607840000001" alpha="1" colorSpace="calibratedRGB"/>
                                 <constraints>
                                     <constraint firstAttribute="height" constant="68" id="Pcy-sA-lyu"/>
                                 </constraints>
                             </view>
                             <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="B0D-gF-6Yn">
-                                <rect key="frame" x="0.0" y="193" width="320" height="28"/>
+                                <rect key="frame" x="0.0" y="237" width="320" height="28"/>
                                 <subviews>
                                     <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="PlaceIcon" translatesAutoresizingMaskIntoConstraints="NO" id="mGe-GW-HM6">
                                         <rect key="frame" x="8" y="7" width="12" height="15"/>
@@ -410,27 +432,27 @@
                                 </constraints>
                             </view>
                             <textView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" delaysContentTouches="NO" canCancelContentTouches="NO" keyboardDismissMode="interactive" editable="NO" translatesAutoresizingMaskIntoConstraints="NO" id="1KJ-OP-0Mm">
-                                <rect key="frame" x="0.0" y="221" width="320" height="217"/>
+                                <rect key="frame" x="0.0" y="265" width="320" height="189"/>
                                 <color key="backgroundColor" red="0.92941176469999998" green="0.92941176469999998" blue="0.93333333330000001" alpha="1" colorSpace="calibratedRGB"/>
                                 <color key="textColor" white="0.33333333333333331" alpha="1" colorSpace="calibratedWhite"/>
                                 <fontDescription key="fontDescription" type="system" pointSize="14"/>
                                 <textInputTraits key="textInputTraits" autocapitalizationType="sentences"/>
                             </textView>
                             <label opaque="NO" clipsSubviews="YES" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="WEDNESDAY" textAlignment="right" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="CXc-44-K0D">
-                                <rect key="frame" x="18" y="43" width="117" height="23"/>
+                                <rect key="frame" x="18" y="87" width="114" height="23"/>
                                 <color key="backgroundColor" red="0.49019607840000001" green="0.49019607840000001" blue="0.49019607840000001" alpha="1" colorSpace="calibratedRGB"/>
                                 <fontDescription key="fontDescription" type="system" pointSize="19"/>
                                 <color key="textColor" red="0.90196078430000004" green="0.90196078430000004" blue="0.90196078430000004" alpha="1" colorSpace="calibratedRGB"/>
                                 <nil key="highlightedColor"/>
                             </label>
                             <label opaque="NO" clipsSubviews="YES" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="13" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="16V-SM-KGc">
-                                <rect key="frame" x="137" y="31" width="43" height="46"/>
+                                <rect key="frame" x="134" y="75" width="43" height="46"/>
                                 <fontDescription key="fontDescription" type="boldSystem" pointSize="38"/>
                                 <color key="textColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                                 <nil key="highlightedColor"/>
                             </label>
                             <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="JfH-Nb-q4i">
-                                <rect key="frame" x="0.0" y="88" width="320" height="105"/>
+                                <rect key="frame" x="0.0" y="132" width="320" height="105"/>
                                 <subviews>
                                     <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="BG" translatesAutoresizingMaskIntoConstraints="NO" id="yn9-eS-Qf6">
                                         <rect key="frame" x="0.0" y="0.0" width="320" height="105"/>
@@ -489,7 +511,7 @@
                                 </constraints>
                             </view>
                             <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="FWk-c8-mms">
-                                <rect key="frame" x="0.0" y="438" width="320" height="130"/>
+                                <rect key="frame" x="0.0" y="454" width="320" height="114"/>
                                 <subviews>
                                     <label opaque="NO" clipsSubviews="YES" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Notes" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsLetterSpacingToFitWidth="YES" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="LbT-Eo-dPP">
                                         <rect key="frame" x="15" y="8" width="36" height="16"/>
@@ -509,7 +531,7 @@
                                         </connections>
                                     </button>
                                     <textView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="p0m-dm-2vR">
-                                        <rect key="frame" x="16" y="32" width="288" height="90"/>
+                                        <rect key="frame" x="16" y="32" width="288" height="74"/>
                                         <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                                         <fontDescription key="fontDescription" type="system" pointSize="14"/>
                                         <textInputTraits key="textInputTraits" autocapitalizationType="sentences"/>
@@ -541,13 +563,14 @@
                                 </constraints>
                             </view>
                             <tableView clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="80" sectionHeaderHeight="22" sectionFooterHeight="22" translatesAutoresizingMaskIntoConstraints="NO" id="YpM-9f-4gb">
-                                <rect key="frame" x="0.0" y="221" width="320" height="217"/>
+                                <rect key="frame" x="0.0" y="265" width="320" height="189"/>
                                 <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                                 <prototypes>
                                     <tableViewCell contentMode="scaleToFill" selectionStyle="default" accessoryType="disclosureIndicator" indentationWidth="10" reuseIdentifier="PaperTableViewCell" rowHeight="80" id="7y1-ap-7jJ" customClass="PaperTableViewCell">
-                                        <rect key="frame" x="0.0" y="0.0" width="320" height="44"/>
+                                        <rect key="frame" x="0.0" y="22" width="320" height="80"/>
                                         <autoresizingMask key="autoresizingMask"/>
                                         <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="7y1-ap-7jJ" id="R3a-N1-8uz">
+                                            <rect key="frame" x="0.0" y="0.0" width="287" height="79"/>
                                             <autoresizingMask key="autoresizingMask"/>
                                             <subviews>
                                                 <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" text="Label" lineBreakMode="tailTruncation" numberOfLines="2" baselineAdjustment="alignBaselines" adjustsLetterSpacingToFitWidth="YES" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="5Sw-IB-4cn">
@@ -590,6 +613,7 @@
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="calibratedWhite"/>
                         <constraints>
                             <constraint firstItem="01s-k2-b3i" firstAttribute="top" secondItem="QQm-Hb-aY0" secondAttribute="bottom" id="3hD-Ta-u13"/>
+                            <constraint firstItem="B0D-gF-6Yn" firstAttribute="leading" secondItem="fmh-gj-NrB" secondAttribute="leading" id="5UN-Xe-1QF"/>
                             <constraint firstItem="1KJ-OP-0Mm" firstAttribute="leading" secondItem="fmh-gj-NrB" secondAttribute="leading" id="6V4-Jx-PxE"/>
                             <constraint firstItem="B0D-gF-6Yn" firstAttribute="top" secondItem="JfH-Nb-q4i" secondAttribute="bottom" id="89x-Et-s9g"/>
                             <constraint firstAttribute="trailing" secondItem="1KJ-OP-0Mm" secondAttribute="trailing" id="A8Z-sl-jWr"/>
@@ -598,22 +622,21 @@
                             <constraint firstItem="CXc-44-K0D" firstAttribute="centerY" secondItem="01s-k2-b3i" secondAttribute="centerY" id="FUe-7W-diT"/>
                             <constraint firstItem="mcq-rg-uoY" firstAttribute="top" secondItem="FWk-c8-mms" secondAttribute="bottom" id="FVb-zl-cUH"/>
                             <constraint firstItem="FWk-c8-mms" firstAttribute="height" secondItem="YpM-9f-4gb" secondAttribute="height" multiplier="0.6" id="GzX-94-jfd"/>
-                            <constraint firstItem="01s-k2-b3i" firstAttribute="leading" secondItem="fmh-gj-NrB" secondAttribute="leadingMargin" constant="-16" id="HrM-NY-DpN"/>
-                            <constraint firstItem="FWk-c8-mms" firstAttribute="leading" secondItem="fmh-gj-NrB" secondAttribute="leadingMargin" constant="-16" id="JtA-xw-00d"/>
-                            <constraint firstItem="YpM-9f-4gb" firstAttribute="leading" secondItem="fmh-gj-NrB" secondAttribute="leadingMargin" constant="-16" id="MaA-aS-PLx"/>
-                            <constraint firstAttribute="trailingMargin" secondItem="JfH-Nb-q4i" secondAttribute="trailing" constant="-16" id="P06-T1-JJH"/>
+                            <constraint firstAttribute="trailing" secondItem="B0D-gF-6Yn" secondAttribute="trailing" id="LEd-Em-owc"/>
+                            <constraint firstItem="JfH-Nb-q4i" firstAttribute="leading" secondItem="fmh-gj-NrB" secondAttribute="leading" id="Lep-Fh-3Ig"/>
                             <constraint firstItem="FWk-c8-mms" firstAttribute="height" secondItem="1KJ-OP-0Mm" secondAttribute="height" multiplier="0.6" id="QTl-FJ-OXH"/>
-                            <constraint firstItem="B0D-gF-6Yn" firstAttribute="leading" secondItem="fmh-gj-NrB" secondAttribute="leadingMargin" constant="-16" id="Quj-Ql-hlr"/>
-                            <constraint firstAttribute="trailingMargin" secondItem="FWk-c8-mms" secondAttribute="trailing" constant="-16" id="SDV-Ly-eIo"/>
+                            <constraint firstAttribute="trailing" secondItem="FWk-c8-mms" secondAttribute="trailing" id="Wtu-yt-aHh"/>
+                            <constraint firstItem="YpM-9f-4gb" firstAttribute="leading" secondItem="fmh-gj-NrB" secondAttribute="leading" id="Z2v-qd-dzD"/>
                             <constraint firstItem="YpM-9f-4gb" firstAttribute="top" secondItem="B0D-gF-6Yn" secondAttribute="bottom" id="aC0-Wk-R3c"/>
                             <constraint firstItem="FWk-c8-mms" firstAttribute="top" secondItem="YpM-9f-4gb" secondAttribute="bottom" id="bPc-ZJ-JSd"/>
                             <constraint firstItem="CXc-44-K0D" firstAttribute="centerY" secondItem="16V-SM-KGc" secondAttribute="centerY" id="bmg-sY-Knh"/>
-                            <constraint firstAttribute="trailingMargin" secondItem="01s-k2-b3i" secondAttribute="trailing" constant="-16" id="fkB-ts-KfR"/>
+                            <constraint firstAttribute="trailing" secondItem="01s-k2-b3i" secondAttribute="trailing" id="c5r-vU-ud8"/>
+                            <constraint firstItem="FWk-c8-mms" firstAttribute="leading" secondItem="fmh-gj-NrB" secondAttribute="leading" id="cgh-6b-ETm"/>
                             <constraint firstItem="CXc-44-K0D" firstAttribute="leading" secondItem="fmh-gj-NrB" secondAttribute="leadingMargin" constant="2" id="flb-cz-yU9"/>
-                            <constraint firstAttribute="trailingMargin" secondItem="YpM-9f-4gb" secondAttribute="trailing" constant="-16" id="gmM-LX-BB2"/>
+                            <constraint firstAttribute="trailing" secondItem="YpM-9f-4gb" secondAttribute="trailing" id="kYs-9M-E7u"/>
+                            <constraint firstAttribute="trailing" secondItem="JfH-Nb-q4i" secondAttribute="trailing" id="kby-sv-Wwp"/>
                             <constraint firstItem="16V-SM-KGc" firstAttribute="leading" secondItem="CXc-44-K0D" secondAttribute="trailing" constant="2" id="m4r-Ym-wZb"/>
-                            <constraint firstAttribute="trailingMargin" secondItem="B0D-gF-6Yn" secondAttribute="trailing" constant="-16" id="mR4-4N-Mjc"/>
-                            <constraint firstItem="JfH-Nb-q4i" firstAttribute="leading" secondItem="fmh-gj-NrB" secondAttribute="leadingMargin" constant="-16" id="oia-dl-ANA"/>
+                            <constraint firstItem="01s-k2-b3i" firstAttribute="leading" secondItem="fmh-gj-NrB" secondAttribute="leading" id="wdc-BK-cJc"/>
                             <constraint firstItem="1KJ-OP-0Mm" firstAttribute="top" secondItem="B0D-gF-6Yn" secondAttribute="bottom" id="x3p-Rx-hy2"/>
                         </constraints>
                     </view>
@@ -633,7 +656,7 @@
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="LbZ-Oe-yao" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="1853" y="-863"/>
+            <point key="canvasLocation" x="2385" y="-863"/>
         </scene>
         <!--Contact View Controller-->
         <scene sceneID="3kI-Kl-2rH">
@@ -650,8 +673,13 @@
                             <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="BG" translatesAutoresizingMaskIntoConstraints="NO" id="yx7-Ta-zNS">
                                 <rect key="frame" x="0.0" y="0.0" width="320" height="568"/>
                             </imageView>
-                            <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="0S4-H7-kPU">
-                                <rect key="frame" x="54" y="88" width="213" height="30"/>
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="0S4-H7-kPU">
+                                <rect key="frame" x="45" y="88" width="230" height="40"/>
+                                <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                                <constraints>
+                                    <constraint firstAttribute="width" constant="230" id="V4w-Ka-5jh"/>
+                                    <constraint firstAttribute="height" constant="40" id="amM-Uf-rzt"/>
+                                </constraints>
                                 <state key="normal" title="ABMA Website (opens Safari)">
                                     <color key="titleColor" white="0.33333333333333331" alpha="1" colorSpace="calibratedWhite"/>
                                     <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
@@ -660,8 +688,13 @@
                                     <action selector="abmaWebsite:" destination="uhf-wR-b0T" eventType="touchUpInside" id="xM5-Xk-hZP"/>
                                 </connections>
                             </button>
-                            <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="J1t-H4-4P4">
-                                <rect key="frame" x="54" y="142" width="213" height="30"/>
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="J1t-H4-4P4">
+                                <rect key="frame" x="45" y="152" width="230" height="40"/>
+                                <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                                <constraints>
+                                    <constraint firstAttribute="height" constant="40" id="Dhf-fi-xId"/>
+                                    <constraint firstAttribute="width" constant="230" id="MA4-Sr-tpR"/>
+                                </constraints>
                                 <state key="normal" title="Contact ABMA (opens Safari)">
                                     <color key="titleColor" white="0.33333333333333331" alpha="1" colorSpace="calibratedWhite"/>
                                     <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
@@ -679,20 +712,29 @@
                         </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="calibratedWhite"/>
                         <constraints>
-                            <constraint firstItem="yx7-Ta-zNS" firstAttribute="leading" secondItem="K7w-OJ-FBM" secondAttribute="leadingMargin" constant="-16" id="1Cu-7d-ulJ"/>
+                            <constraint firstAttribute="trailing" secondItem="yx7-Ta-zNS" secondAttribute="trailing" id="8tu-y0-MGf"/>
                             <constraint firstAttribute="trailingMargin" secondItem="6LH-1k-Yh9" secondAttribute="trailing" constant="10" id="Bkt-mQ-hH2"/>
+                            <constraint firstItem="J1t-H4-4P4" firstAttribute="top" secondItem="0S4-H7-kPU" secondAttribute="bottom" constant="24" id="EiH-IF-mZD"/>
+                            <constraint firstItem="J1t-H4-4P4" firstAttribute="centerX" secondItem="K7w-OJ-FBM" secondAttribute="centerX" id="LvQ-kq-OlK"/>
+                            <constraint firstItem="0S4-H7-kPU" firstAttribute="top" secondItem="jA1-WA-SAy" secondAttribute="bottom" constant="24" id="TdL-8V-Yul"/>
+                            <constraint firstItem="6LH-1k-Yh9" firstAttribute="centerX" secondItem="K7w-OJ-FBM" secondAttribute="centerX" id="a3K-Hr-3Dk"/>
                             <constraint firstItem="6LH-1k-Yh9" firstAttribute="leading" secondItem="K7w-OJ-FBM" secondAttribute="leadingMargin" constant="10" id="aSW-Nk-Xcz"/>
                             <constraint firstItem="bc9-Bj-DDN" firstAttribute="top" secondItem="6LH-1k-Yh9" secondAttribute="bottom" constant="20" id="cCJ-km-aaD"/>
-                            <constraint firstAttribute="trailingMargin" secondItem="yx7-Ta-zNS" secondAttribute="trailing" constant="-16" id="mIQ-JM-Dad"/>
+                            <constraint firstItem="yx7-Ta-zNS" firstAttribute="leading" secondItem="K7w-OJ-FBM" secondAttribute="leading" id="k0B-g1-jHC"/>
+                            <constraint firstItem="0S4-H7-kPU" firstAttribute="centerX" secondItem="K7w-OJ-FBM" secondAttribute="centerX" id="kTg-Zk-2OP"/>
                             <constraint firstItem="bc9-Bj-DDN" firstAttribute="top" secondItem="yx7-Ta-zNS" secondAttribute="bottom" id="sw1-mZ-2e4"/>
                             <constraint firstItem="yx7-Ta-zNS" firstAttribute="top" secondItem="K7w-OJ-FBM" secondAttribute="topMargin" id="yLz-O0-NvQ"/>
                         </constraints>
                     </view>
                     <navigationItem key="navigationItem" id="t7P-o7-z8f"/>
+                    <connections>
+                        <outlet property="surveyButton" destination="J1t-H4-4P4" id="FdV-z5-Gmr"/>
+                        <outlet property="websiteButton" destination="0S4-H7-kPU" id="XJD-2F-O11"/>
+                    </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="aY4-Ak-Jlu" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="1003" y="837"/>
+            <point key="canvasLocation" x="1535" y="837"/>
         </scene>
         <!--Info View Controller-->
         <scene sceneID="RA9-w2-8O9">
@@ -707,174 +749,325 @@
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
                             <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="BG" translatesAutoresizingMaskIntoConstraints="NO" id="GnO-Vn-kMd">
-                                <rect key="frame" x="0.0" y="0.0" width="325" height="568"/>
+                                <rect key="frame" x="0.0" y="0.0" width="320" height="568"/>
                             </imageView>
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="General Information" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="KGv-W5-wuQ">
-                                <rect key="frame" x="84" y="28" width="152" height="21"/>
+                                <rect key="frame" x="85" y="72" width="151" height="21"/>
                                 <fontDescription key="fontDescription" type="system" pointSize="17"/>
                                 <color key="textColor" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
                                 <nil key="highlightedColor"/>
                             </label>
                             <textView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" editable="NO" usesAttributedText="YES" translatesAutoresizingMaskIntoConstraints="NO" id="nJ3-Al-dGr">
-                                <rect key="frame" x="16" y="57" width="288" height="491"/>
+                                <rect key="frame" x="16" y="101" width="288" height="447"/>
                                 <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
                                 <color key="tintColor" red="0.0" green="0.47843137250000001" blue="1" alpha="1" colorSpace="calibratedRGB"/>
                                 <attributedString key="attributedText">
-                                    <fragment content="Badges">
+                                    <fragment>
+                                        <string key="content">Badges
+</string>
                                         <attributes>
-                                            <color key="NSColor" white="0.33333333333333331" alpha="1" colorSpace="calibratedWhite"/>
-                                            <font key="NSFont" size="14" name="HelveticaNeue-Bold"/>
-                                            <font key="NSOriginalFont" size="14" name="HelveticaNeue-Bold"/>
-                                            <paragraphStyle key="NSParagraphStyle" alignment="left" lineBreakMode="wordWrapping" baseWritingDirection="natural"/>
+                                            <color key="NSColor" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
+                                            <font key="NSFont" size="12" name="Helvetica-Bold"/>
+                                            <paragraphStyle key="NSParagraphStyle" alignment="left" lineBreakMode="wordWrapping" baseWritingDirection="natural" lineSpacing="1" defaultTabInterval="28" tighteningFactorForTruncation="0.0" allowsDefaultTighteningForTruncation="NO">
+                                                <tabStops/>
+                                            </paragraphStyle>
+                                        </attributes>
+                                    </fragment>
+                                    <fragment>
+                                        <string key="content">Please make sure to wear your badges throughout the conference.  These badges are your admission to the various events and programming.</string>
+                                        <attributes>
+                                            <color key="NSColor" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
+                                            <font key="NSFont" size="12" name="Helvetica"/>
+                                            <paragraphStyle key="NSParagraphStyle" alignment="left" lineBreakMode="wordWrapping" baseWritingDirection="natural" lineSpacing="1" defaultTabInterval="28" tighteningFactorForTruncation="0.0" allowsDefaultTighteningForTruncation="NO">
+                                                <tabStops/>
+                                            </paragraphStyle>
                                         </attributes>
                                     </fragment>
                                     <fragment>
                                         <string key="content">
-Please make sure to wear your badges throughout the conference. These badges are your admission to the various events and programming.
+
+Behavioral Management Fund</string>
+                                        <attributes>
+                                            <color key="NSColor" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
+                                            <font key="NSFont" size="12" name="Helvetica-Bold"/>
+                                            <paragraphStyle key="NSParagraphStyle" alignment="left" lineBreakMode="wordWrapping" baseWritingDirection="natural" lineSpacing="1" defaultTabInterval="28" tighteningFactorForTruncation="0.0" allowsDefaultTighteningForTruncation="NO">
+                                                <tabStops/>
+                                            </paragraphStyle>
+                                        </attributes>
+                                    </fragment>
+                                    <fragment>
+                                        <string key="content">
+The BMF Committee overlooks the Scholarship/Grant process by developing the criteria for the application, review of the applications, and selection of a recipient.  The committee is also responsible for the fundraising and development of the Behavior Management Fund. The proceeds a portion of the silent auction support the Behavioral Management Fund.</string>
+                                        <attributes>
+                                            <color key="NSColor" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
+                                            <font key="NSFont" size="12" name="Helvetica"/>
+                                            <paragraphStyle key="NSParagraphStyle" alignment="left" lineBreakMode="wordWrapping" baseWritingDirection="natural" lineSpacing="1" defaultTabInterval="28" tighteningFactorForTruncation="0.0" allowsDefaultTighteningForTruncation="NO">
+                                                <tabStops/>
+                                            </paragraphStyle>
+                                        </attributes>
+                                    </fragment>
+                                    <fragment>
+                                        <string key="content">
+
+ABMA Travel Scholarship
+</string>
+                                        <attributes>
+                                            <color key="NSColor" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
+                                            <font key="NSFont" size="12" name="Helvetica-Bold"/>
+                                            <paragraphStyle key="NSParagraphStyle" alignment="left" lineBreakMode="wordWrapping" baseWritingDirection="natural" lineSpacing="1" defaultTabInterval="28" tighteningFactorForTruncation="0.0" allowsDefaultTighteningForTruncation="NO">
+                                                <tabStops/>
+                                            </paragraphStyle>
+                                        </attributes>
+                                    </fragment>
+                                    <fragment>
+                                        <string key="content">The purpose of this scholarship is to assist an ABMA member who would otherwise be unable to secure financial support to attend the conference. The Travel Scholarship will help the award recipient by giving them the ability to present their work and it will help the organization by giving ABMA members the opportunity to hear presentations that they would not have otherwise been able to.  The Travel Scholarship supports the ABMA Core Value of "Sharing the Knowledge".The Travel Scholarship is made possible by the Behavior Management Fund (BMF) Committee.</string>
+                                        <attributes>
+                                            <color key="NSColor" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
+                                            <font key="NSFont" size="12" name="Helvetica"/>
+                                            <paragraphStyle key="NSParagraphStyle" alignment="left" lineBreakMode="wordWrapping" baseWritingDirection="natural" lineSpacing="1" defaultTabInterval="28" tighteningFactorForTruncation="0.0" allowsDefaultTighteningForTruncation="NO">
+                                                <tabStops/>
+                                            </paragraphStyle>
+                                        </attributes>
+                                    </fragment>
+                                    <fragment>
+                                        <string key="content" base64-UTF8="YES">
+Cg
+</string>
+                                        <attributes>
+                                            <color key="NSColor" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
+                                            <font key="NSFont" size="12" name="Helvetica-Bold"/>
+                                            <paragraphStyle key="NSParagraphStyle" alignment="left" lineBreakMode="wordWrapping" baseWritingDirection="natural" lineSpacing="1" defaultTabInterval="28" tighteningFactorForTruncation="0.0" allowsDefaultTighteningForTruncation="NO">
+                                                <tabStops/>
+                                            </paragraphStyle>
+                                        </attributes>
+                                    </fragment>
+                                    <fragment content="This year’s recipient is: ">
+                                        <attributes>
+                                            <color key="NSColor" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
+                                            <font key="NSFont" size="12" name="Helvetica-BoldOblique"/>
+                                            <paragraphStyle key="NSParagraphStyle" alignment="left" lineBreakMode="wordWrapping" baseWritingDirection="natural" lineSpacing="1" defaultTabInterval="28" tighteningFactorForTruncation="0.0" allowsDefaultTighteningForTruncation="NO">
+                                                <tabStops/>
+                                            </paragraphStyle>
+                                        </attributes>
+                                    </fragment>
+                                    <fragment>
+                                        <string key="content">
+“Here and Now with Your Animal“- Techniques to Improve the Mental Awareness of Trainers and So Enable More Effective Training
+</string>
+                                        <attributes>
+                                            <color key="NSColor" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
+                                            <font key="NSFont" size="12" name="Helvetica-Bold"/>
+                                            <paragraphStyle key="NSParagraphStyle" alignment="left" lineBreakMode="wordWrapping" baseWritingDirection="natural" lineSpacing="1" defaultTabInterval="28" tighteningFactorForTruncation="0.0" allowsDefaultTighteningForTruncation="NO">
+                                                <tabStops/>
+                                            </paragraphStyle>
+                                        </attributes>
+                                    </fragment>
+                                    <fragment>
+                                        <string key="content">František Šusta, Petra Jaškówová; www.trainingisdialogue.com 
+For more Travel Scholarship information or to apply for next year’s conference, please visit www.theabma.org.</string>
+                                        <attributes>
+                                            <color key="NSColor" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
+                                            <font key="NSFont" size="12" name="Helvetica"/>
+                                            <paragraphStyle key="NSParagraphStyle" alignment="left" lineBreakMode="wordWrapping" baseWritingDirection="natural" lineSpacing="1" defaultTabInterval="28" tighteningFactorForTruncation="0.0" allowsDefaultTighteningForTruncation="NO">
+                                                <tabStops/>
+                                            </paragraphStyle>
+                                        </attributes>
+                                    </fragment>
+                                    <fragment>
+                                        <string key="content">
+
+Conservation Gift
+</string>
+                                        <attributes>
+                                            <color key="NSColor" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
+                                            <font key="NSFont" size="12" name="Helvetica-Bold"/>
+                                            <paragraphStyle key="NSParagraphStyle" alignment="left" lineBreakMode="wordWrapping" baseWritingDirection="natural" lineSpacing="1" defaultTabInterval="28" tighteningFactorForTruncation="0.0" allowsDefaultTighteningForTruncation="NO">
+                                                <tabStops/>
+                                            </paragraphStyle>
+                                        </attributes>
+                                    </fragment>
+                                    <fragment>
+                                        <string key="content">Each year the BMF provides a conservation-related gift to conference delegates.  This year we are doing something new! There are three different conservation organizations that delegates can vote for when registering for the conference. Each vote will correlate to a dollar amount given to that organization. </string>
+                                        <attributes>
+                                            <color key="NSColor" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
+                                            <font key="NSFont" size="12" name="Helvetica"/>
+                                            <paragraphStyle key="NSParagraphStyle" alignment="left" lineBreakMode="wordWrapping" baseWritingDirection="natural" lineSpacing="1" defaultTabInterval="28" tighteningFactorForTruncation="0.0" allowsDefaultTighteningForTruncation="NO">
+                                                <tabStops/>
+                                            </paragraphStyle>
+                                        </attributes>
+                                    </fragment>
+                                    <fragment>
+                                        <string key="content" base64-UTF8="YES">
+IAo
+</string>
+                                        <attributes>
+                                            <color key="NSColor" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
+                                            <font key="NSFont" size="12" name="Helvetica-Bold"/>
+                                            <paragraphStyle key="NSParagraphStyle" alignment="left" lineBreakMode="wordWrapping" baseWritingDirection="natural" lineSpacing="1" defaultTabInterval="28" tighteningFactorForTruncation="0.0" allowsDefaultTighteningForTruncation="NO">
+                                                <tabStops/>
+                                            </paragraphStyle>
+                                        </attributes>
+                                    </fragment>
+                                    <fragment>
+                                        <string key="content">Gopher Tortoise Council 
+http://www.gophertortoisecouncil.org/Guardian 
+Angel Dog Rescue 
+http://guardianangeldogrescue.org/
+The Nature Conservancy-Florida Panther Land Acquisition 
+http://www.nature.org/ourinitiatives/regions/northamerica/unitedstates/florida/explore/save-the-florida-panther.xmlBusiness </string>
+                                        <attributes>
+                                            <color key="NSColor" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
+                                            <font key="NSFont" size="12" name="Helvetica"/>
+                                            <paragraphStyle key="NSParagraphStyle" alignment="left" lineBreakMode="wordWrapping" baseWritingDirection="natural" lineSpacing="1" defaultTabInterval="28" tighteningFactorForTruncation="0.0" allowsDefaultTighteningForTruncation="NO">
+                                                <tabStops/>
+                                            </paragraphStyle>
+                                        </attributes>
+                                    </fragment>
+                                    <fragment>
+                                        <string key="content">
+
+Services
+</string>
+                                        <attributes>
+                                            <color key="NSColor" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
+                                            <font key="NSFont" size="12" name="Helvetica-Bold"/>
+                                            <paragraphStyle key="NSParagraphStyle" alignment="left" lineBreakMode="wordWrapping" baseWritingDirection="natural" lineSpacing="1" defaultTabInterval="28" tighteningFactorForTruncation="0.0" allowsDefaultTighteningForTruncation="NO">
+                                                <tabStops/>
+                                            </paragraphStyle>
+                                        </attributes>
+                                    </fragment>
+                                    <fragment content="There is a business center located in the hotel.">
+                                        <attributes>
+                                            <color key="NSColor" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
+                                            <font key="NSFont" size="12" name="Helvetica"/>
+                                            <paragraphStyle key="NSParagraphStyle" alignment="left" lineBreakMode="wordWrapping" baseWritingDirection="natural" lineSpacing="1" defaultTabInterval="28" tighteningFactorForTruncation="0.0" allowsDefaultTighteningForTruncation="NO">
+                                                <tabStops/>
+                                            </paragraphStyle>
+                                        </attributes>
+                                    </fragment>
+                                    <fragment>
+                                        <string key="content">
+
+Conference Survey
+</string>
+                                        <attributes>
+                                            <color key="NSColor" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
+                                            <font key="NSFont" size="12" name="Helvetica-Bold"/>
+                                            <paragraphStyle key="NSParagraphStyle" alignment="left" lineBreakMode="wordWrapping" baseWritingDirection="natural" lineSpacing="1" defaultTabInterval="28" tighteningFactorForTruncation="0.0" allowsDefaultTighteningForTruncation="NO">
+                                                <tabStops/>
+                                            </paragraphStyle>
+                                        </attributes>
+                                    </fragment>
+                                    <fragment>
+                                        <string key="content">Once again this year ABMA is being green and doing the conference surveys online.  The results of these surveys help the ABMA to make each conference successful and better suited to the members’ needs.  Your responses are greatly valued and do ensure the ABMA’s future conference programming is suited to the interests of our members. The survey will be emailed to registered delegates at the closing of the conference or accessed by the following link: http://survey.constantcontact.com/survey/a07ecc74bjtil9lzqj9/startThese surveys are an important component to the assessment of the ABMA, and we thank you for your time in completing them.</string>
+                                        <attributes>
+                                            <color key="NSColor" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
+                                            <font key="NSFont" size="12" name="Helvetica"/>
+                                            <paragraphStyle key="NSParagraphStyle" alignment="left" lineBreakMode="wordWrapping" baseWritingDirection="natural" lineSpacing="1" defaultTabInterval="28" tighteningFactorForTruncation="0.0" allowsDefaultTighteningForTruncation="NO">
+                                                <tabStops/>
+                                            </paragraphStyle>
+                                        </attributes>
+                                    </fragment>
+                                    <fragment>
+                                        <string key="content">
+
+Silent Auction Donations
+</string>
+                                        <attributes>
+                                            <color key="NSColor" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
+                                            <font key="NSFont" size="12" name="Helvetica-Bold"/>
+                                            <paragraphStyle key="NSParagraphStyle" alignment="left" lineBreakMode="wordWrapping" baseWritingDirection="natural" lineSpacing="1" defaultTabInterval="28" tighteningFactorForTruncation="0.0" allowsDefaultTighteningForTruncation="NO">
+                                                <tabStops/>
+                                            </paragraphStyle>
+                                        </attributes>
+                                    </fragment>
+                                    <fragment>
+                                        <string key="content">Silent auction items can be dropped off at registration.  If you did not already, please send us an email with the item you are bringing and its value, please let us know when you drop the item off so that we can create a bid sheet.
 
 </string>
                                         <attributes>
-                                            <color key="NSColor" white="0.33333333333333331" alpha="1" colorSpace="calibratedWhite"/>
-                                            <font key="NSFont" size="14" name="HelveticaNeue"/>
-                                            <paragraphStyle key="NSParagraphStyle" alignment="left" lineBreakMode="wordWrapping" baseWritingDirection="natural"/>
+                                            <color key="NSColor" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
+                                            <font key="NSFont" size="12" name="Helvetica"/>
+                                            <paragraphStyle key="NSParagraphStyle" alignment="left" lineBreakMode="wordWrapping" baseWritingDirection="natural" lineSpacing="1" defaultTabInterval="28" tighteningFactorForTruncation="0.0" allowsDefaultTighteningForTruncation="NO">
+                                                <tabStops/>
+                                            </paragraphStyle>
                                         </attributes>
                                     </fragment>
-                                    <fragment content="Behavioral Management Fund">
+                                    <fragment>
+                                        <string key="content">ABMA Disclaimer
+</string>
                                         <attributes>
-                                            <color key="NSColor" white="0.33333333333333331" alpha="1" colorSpace="calibratedWhite"/>
-                                            <font key="NSFont" size="14" name="HelveticaNeue-Bold"/>
-                                            <font key="NSOriginalFont" size="14" name="HelveticaNeue-Bold"/>
-                                            <paragraphStyle key="NSParagraphStyle" alignment="left" lineBreakMode="wordWrapping" baseWritingDirection="natural"/>
+                                            <color key="NSColor" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
+                                            <font key="NSFont" size="12" name="Helvetica-Bold"/>
+                                            <paragraphStyle key="NSParagraphStyle" alignment="left" lineBreakMode="wordWrapping" baseWritingDirection="natural" lineSpacing="1" defaultTabInterval="28" tighteningFactorForTruncation="0.0" allowsDefaultTighteningForTruncation="NO">
+                                                <tabStops/>
+                                            </paragraphStyle>
+                                        </attributes>
+                                    </fragment>
+                                    <fragment>
+                                        <string key="content">One of the core values of the ABMA states that: 
+</string>
+                                        <attributes>
+                                            <color key="NSColor" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
+                                            <font key="NSFont" size="12" name="Helvetica"/>
+                                            <paragraphStyle key="NSParagraphStyle" alignment="left" lineBreakMode="wordWrapping" baseWritingDirection="leftToRight" lineSpacing="1" defaultTabInterval="28" tighteningFactorForTruncation="0.0" allowsDefaultTighteningForTruncation="NO">
+                                                <tabStops/>
+                                            </paragraphStyle>
+                                        </attributes>
+                                    </fragment>
+                                    <fragment content="The sharing of knowledge and new ideas is fundamental to advancing animal behavior management.  ">
+                                        <attributes>
+                                            <color key="NSColor" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
+                                            <font key="NSFont" size="12" name="Helvetica-Oblique"/>
+                                            <paragraphStyle key="NSParagraphStyle" alignment="left" lineBreakMode="wordWrapping" baseWritingDirection="leftToRight" lineSpacing="1" defaultTabInterval="28" tighteningFactorForTruncation="0.0" allowsDefaultTighteningForTruncation="NO">
+                                                <tabStops/>
+                                            </paragraphStyle>
                                         </attributes>
                                     </fragment>
                                     <fragment>
                                         <string key="content">
-The BMF Committee overlooks the Scholarship/Grant process by developing the criteria for the application, review of the applications, and selection of a recipient. The committee is also responsible for the fundraising and development of the Behavior Management Fund. The proceeds a portion of the silent auction support the Behavioral Management Fund.
+We do this in many ways, such as through our conferences and newsletters.  This week you’ll be seeing a lot of fascinating and thought-provoking talks, workshops, and presentations.  Some you may agree with, others may challenge your perceptions and ideas. And while the content that you see in each presentation reflects the views of 
+the author and does not necessarily represent the feelings of the ABMA or the board of directors, we think that the diversity of subjects and viewpoints represented by our members and at our conferences is one of the strengths of this organization. 
+We encourage you to listen to all that you hear this week with an open mind, because you might be surprised by what you learn. Thank you and enjoy the conference! 
 
 </string>
                                         <attributes>
-                                            <color key="NSColor" white="0.33333333333333331" alpha="1" colorSpace="calibratedWhite"/>
-                                            <font key="NSFont" size="14" name="HelveticaNeue"/>
-                                            <paragraphStyle key="NSParagraphStyle" alignment="left" lineBreakMode="wordWrapping" baseWritingDirection="natural"/>
-                                        </attributes>
-                                    </fragment>
-                                    <fragment content="ABMA Travel Scholarship">
-                                        <attributes>
-                                            <color key="NSColor" white="0.33333333333333331" alpha="1" colorSpace="calibratedWhite"/>
-                                            <font key="NSFont" size="14" name="HelveticaNeue-Bold"/>
-                                            <font key="NSOriginalFont" size="14" name="HelveticaNeue-Bold"/>
-                                            <paragraphStyle key="NSParagraphStyle" alignment="left" lineBreakMode="wordWrapping" baseWritingDirection="natural"/>
+                                            <color key="NSColor" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
+                                            <font key="NSFont" size="12" name="Helvetica"/>
+                                            <paragraphStyle key="NSParagraphStyle" alignment="left" lineBreakMode="wordWrapping" baseWritingDirection="leftToRight" lineSpacing="1" defaultTabInterval="28" tighteningFactorForTruncation="0.0" allowsDefaultTighteningForTruncation="NO">
+                                                <tabStops/>
+                                            </paragraphStyle>
                                         </attributes>
                                     </fragment>
                                     <fragment>
-                                        <string key="content">
-The purpose of this scholarship is to assist an ABMA member who would otherwise be unable to secure financial support to attend the conference. The Travel Scholarship will help the award recipient by giving them the ability to present their work and it will help the organization by giving ABMA members the opportunity to hear presentations that they would not have otherwise been able to. The Travel Scholarship supports the ABMA Core Value of “Sharing the Knowledge”. The Travel Scholarship is made possible by the Behavior Management Fund (BMF) Committee.
-
-This year’s recipient is Anaka Nazareth from the Maymont Foundation in Richmond, Virginia. Her paper is titled "A chicken's choice: positive reinforcement training vs free food". The presentation will share the results of her Master's thesis research project in Animal Behavior and Conservation.
-For more Travel Scholarship information or to apply for next year’s conference, please visit www.theabma.org.
-
+                                        <string key="content">2017 Save The Date
 </string>
                                         <attributes>
-                                            <color key="NSColor" white="0.33333333333333331" alpha="1" colorSpace="calibratedWhite"/>
-                                            <font key="NSFont" size="14" name="HelveticaNeue"/>
-                                            <paragraphStyle key="NSParagraphStyle" alignment="left" lineBreakMode="wordWrapping" baseWritingDirection="natural"/>
-                                        </attributes>
-                                    </fragment>
-                                    <fragment content="Conservation Gift">
-                                        <attributes>
-                                            <color key="NSColor" white="0.33333333333333331" alpha="1" colorSpace="calibratedWhite"/>
-                                            <font key="NSFont" size="14" name="HelveticaNeue-Bold"/>
-                                            <font key="NSOriginalFont" size="14" name="HelveticaNeue-Bold"/>
-                                            <paragraphStyle key="NSParagraphStyle" alignment="left" lineBreakMode="wordWrapping" baseWritingDirection="natural"/>
+                                            <color key="NSColor" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
+                                            <font key="NSFont" size="12" name="Helvetica-Bold"/>
+                                            <paragraphStyle key="NSParagraphStyle" alignment="left" lineBreakMode="wordWrapping" baseWritingDirection="leftToRight" lineSpacing="1" defaultTabInterval="28" tighteningFactorForTruncation="0.0" allowsDefaultTighteningForTruncation="NO">
+                                                <tabStops/>
+                                            </paragraphStyle>
                                         </attributes>
                                     </fragment>
                                     <fragment>
-                                        <string key="content">
-Each year the BMF provides a conservation-related gift to conference delegates.
-
+                                        <string key="content">Back to Basics Crossing the Bridge between Training and Conservation
+Cincinnati, Ohio
+April 24-28, 2017
+Join us in Cincinnati Ohio where we will be connecting conservation through training. The week will start off across the river in Kentucky at the Newport Aquarium for the icebreaker event. We will show off all Ohio zoos have to offer with site visits to the Cincinnati Zoo &amp; Botanical Garden and the Columbus Zoo and Aquarium. 
+The conference meetings will be held at the Historic Hilton Netherland Hotel in downtown Cincinnati. The hotel is located in the heart of downtown Cincinnati on the bank of the Ohio River - home to the Cincinnati Reds, local and national restaurants, and celebrated micro-breweries.
+Hilton Cincinnati Netherland Plaza                                                                      
+35 West Fifth Street                                                            
+Cincinnati Ohio 45202 
+513-421-9100 
+ABMA room rate is $139.00/night 
 </string>
                                         <attributes>
-                                            <color key="NSColor" white="0.33333333333333331" alpha="1" colorSpace="calibratedWhite"/>
-                                            <font key="NSFont" size="14" name="HelveticaNeue"/>
-                                            <paragraphStyle key="NSParagraphStyle" alignment="left" lineBreakMode="wordWrapping" baseWritingDirection="natural"/>
-                                        </attributes>
-                                    </fragment>
-                                    <fragment content="Business Services">
-                                        <attributes>
-                                            <color key="NSColor" white="0.33333333333333331" alpha="1" colorSpace="calibratedWhite"/>
-                                            <font key="NSFont" size="14" name="HelveticaNeue-Bold"/>
-                                            <font key="NSOriginalFont" size="14" name="HelveticaNeue-Bold"/>
-                                            <paragraphStyle key="NSParagraphStyle" alignment="left" lineBreakMode="wordWrapping" baseWritingDirection="natural"/>
-                                        </attributes>
-                                    </fragment>
-                                    <fragment>
-                                        <string key="content">
-Business services can be found at the reception desk. There is free Wi-Fi throughout the hotel.
-
-</string>
-                                        <attributes>
-                                            <color key="NSColor" white="0.33333333333333331" alpha="1" colorSpace="calibratedWhite"/>
-                                            <font key="NSFont" size="14" name="HelveticaNeue"/>
-                                            <paragraphStyle key="NSParagraphStyle" alignment="left" lineBreakMode="wordWrapping" baseWritingDirection="natural"/>
-                                        </attributes>
-                                    </fragment>
-                                    <fragment content="Conference Survey">
-                                        <attributes>
-                                            <color key="NSColor" white="0.33333333333333331" alpha="1" colorSpace="calibratedWhite"/>
-                                            <font key="NSFont" size="14" name="HelveticaNeue-Bold"/>
-                                            <font key="NSOriginalFont" size="14" name="HelveticaNeue-Bold"/>
-                                            <paragraphStyle key="NSParagraphStyle" alignment="left" lineBreakMode="wordWrapping" baseWritingDirection="natural"/>
-                                        </attributes>
-                                    </fragment>
-                                    <fragment>
-                                        <string key="content">
-Once again this year ABMA is being green and doing the conference surveys online. The results of these surveys help the ABMA to make each conference successful and better suited to the members’ needs. Your responses are greatly valued and do ensure the ABMA’s future conference programming is suited to the interests of our members. The survey will be emailed to registered delegates at the closing of the conference or accessed by the following link:
-http://survey.constantcontact.com/survey/a07eaicm35mi5pus5o9/start
-These surveys are an important component to the assessment of the ABMA, and we thank you for your time in completing them. If you do not receive a conference survey, please contact the Research and Evaluation Committee Chair, Darren Minier, at deminier@gmail.com.
-
-</string>
-                                        <attributes>
-                                            <color key="NSColor" white="0.33333333333333331" alpha="1" colorSpace="calibratedWhite"/>
-                                            <font key="NSFont" size="14" name="HelveticaNeue"/>
-                                            <paragraphStyle key="NSParagraphStyle" alignment="left" lineBreakMode="wordWrapping" baseWritingDirection="natural"/>
-                                        </attributes>
-                                    </fragment>
-                                    <fragment content="Silent Auction Donations">
-                                        <attributes>
-                                            <color key="NSColor" white="0.33333333333333331" alpha="1" colorSpace="calibratedWhite"/>
-                                            <font key="NSFont" size="14" name="HelveticaNeue-Bold"/>
-                                            <font key="NSOriginalFont" size="14" name="HelveticaNeue-Bold"/>
-                                            <paragraphStyle key="NSParagraphStyle" alignment="left" lineBreakMode="wordWrapping" baseWritingDirection="natural"/>
-                                        </attributes>
-                                    </fragment>
-                                    <fragment>
-                                        <string key="content">
-Silent auction items can be dropped off at registration. If you did not already, please send us an email with the item you are bringing and its value, please let us know when you drop the item off so that we can create a bid sheet.
-
-</string>
-                                        <attributes>
-                                            <color key="NSColor" white="0.33333333333333331" alpha="1" colorSpace="calibratedWhite"/>
-                                            <font key="NSFont" size="14" name="HelveticaNeue"/>
-                                            <paragraphStyle key="NSParagraphStyle" alignment="left" lineBreakMode="wordWrapping" baseWritingDirection="natural"/>
-                                        </attributes>
-                                    </fragment>
-                                    <fragment content="Transportation">
-                                        <attributes>
-                                            <color key="NSColor" white="0.33333333333333331" alpha="1" colorSpace="calibratedWhite"/>
-                                            <font key="NSFont" size="14" name="HelveticaNeue-Bold"/>
-                                            <font key="NSOriginalFont" size="14" name="HelveticaNeue-Bold"/>
-                                            <paragraphStyle key="NSParagraphStyle" alignment="left" lineBreakMode="wordWrapping" baseWritingDirection="natural"/>
-                                        </attributes>
-                                    </fragment>
-                                    <fragment>
-                                        <string key="content">
-Bicycles can be borrowed from the hotel
-The train and bus station is a 10-minute walk from the hotel
-The Nyborg taxi can be ordered at the hotel reception or at the train/bus station</string>
-                                        <attributes>
-                                            <color key="NSColor" white="0.33333333333333331" alpha="1" colorSpace="calibratedWhite"/>
-                                            <font key="NSFont" size="14" name="HelveticaNeue"/>
-                                            <paragraphStyle key="NSParagraphStyle" alignment="left" lineBreakMode="wordWrapping" baseWritingDirection="natural"/>
+                                            <color key="NSColor" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
+                                            <font key="NSFont" size="12" name="Helvetica"/>
+                                            <paragraphStyle key="NSParagraphStyle" alignment="left" lineBreakMode="wordWrapping" baseWritingDirection="leftToRight" lineSpacing="1" defaultTabInterval="28" tighteningFactorForTruncation="0.0" allowsDefaultTighteningForTruncation="NO">
+                                                <tabStops/>
+                                            </paragraphStyle>
                                         </attributes>
                                     </fragment>
                                 </attributedString>
@@ -886,20 +1079,21 @@ The Nyborg taxi can be ordered at the hotel reception or at the train/bus statio
                         <constraints>
                             <constraint firstItem="pDl-2g-Y29" firstAttribute="top" secondItem="nJ3-Al-dGr" secondAttribute="bottom" constant="20" id="2m7-By-uMz"/>
                             <constraint firstItem="KGv-W5-wuQ" firstAttribute="top" secondItem="eBR-PY-VXh" secondAttribute="bottom" constant="8" id="2rW-vN-nse"/>
-                            <constraint firstAttribute="trailingMargin" secondItem="GnO-Vn-kMd" secondAttribute="trailing" constant="-21" id="4gp-yh-YYj"/>
                             <constraint firstAttribute="bottomMargin" secondItem="GnO-Vn-kMd" secondAttribute="bottom" id="5eA-he-Kr3"/>
                             <constraint firstItem="nJ3-Al-dGr" firstAttribute="top" secondItem="KGv-W5-wuQ" secondAttribute="bottom" constant="8" id="7kQ-hN-qwR"/>
                             <constraint firstAttribute="centerX" secondItem="KGv-W5-wuQ" secondAttribute="centerX" id="J4u-hj-KHl"/>
                             <constraint firstItem="GnO-Vn-kMd" firstAttribute="top" secondItem="Mg0-Tp-2hU" secondAttribute="topMargin" id="LzU-nW-qM8"/>
-                            <constraint firstItem="GnO-Vn-kMd" firstAttribute="leading" secondItem="Mg0-Tp-2hU" secondAttribute="leadingMargin" constant="-16" id="QVz-VK-wzh"/>
-                            <constraint firstItem="nJ3-Al-dGr" firstAttribute="trailing" secondItem="Mg0-Tp-2hU" secondAttribute="trailingMargin" id="iqh-qY-gT9"/>
-                            <constraint firstItem="nJ3-Al-dGr" firstAttribute="leading" secondItem="Mg0-Tp-2hU" secondAttribute="leadingMargin" id="zGk-Dz-cF9"/>
+                            <constraint firstAttribute="trailing" secondItem="nJ3-Al-dGr" secondAttribute="trailing" constant="16" id="QLq-Ew-jtf"/>
+                            <constraint firstAttribute="trailing" secondItem="GnO-Vn-kMd" secondAttribute="trailing" id="WcH-zH-7dd"/>
+                            <constraint firstItem="GnO-Vn-kMd" firstAttribute="leading" secondItem="Mg0-Tp-2hU" secondAttribute="leading" id="Zi2-dc-R0b"/>
+                            <constraint firstItem="nJ3-Al-dGr" firstAttribute="leading" secondItem="Mg0-Tp-2hU" secondAttribute="leading" constant="16" id="hN8-Ih-adk"/>
                         </constraints>
                     </view>
+                    <navigationItem key="navigationItem" id="j0V-uw-rh2"/>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="3zb-sH-SOJ" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="1554" y="-154"/>
+            <point key="canvasLocation" x="3150" y="-154"/>
         </scene>
         <!--Notes View Controller-->
         <scene sceneID="ASf-6x-K7U">
@@ -918,9 +1112,10 @@ The Nyborg taxi can be ordered at the hotel reception or at the train/bus statio
                                 <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                                 <prototypes>
                                     <tableViewCell contentMode="scaleToFill" selectionStyle="default" accessoryType="disclosureIndicator" indentationWidth="10" reuseIdentifier="NoteCell" rowHeight="87" id="Ju1-EE-E37">
-                                        <rect key="frame" x="0.0" y="0.0" width="320" height="44"/>
+                                        <rect key="frame" x="0.0" y="86" width="320" height="87"/>
                                         <autoresizingMask key="autoresizingMask"/>
                                         <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="Ju1-EE-E37" id="RFW-a7-Suf">
+                                            <rect key="frame" x="0.0" y="0.0" width="287" height="86"/>
                                             <autoresizingMask key="autoresizingMask"/>
                                             <subviews>
                                                 <label opaque="NO" userInteractionEnabled="NO" tag="201" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="EmC-Cz-sCP">
@@ -940,13 +1135,13 @@ The Nyborg taxi can be ordered at the hotel reception or at the train/bus statio
                                                 </label>
                                             </subviews>
                                             <constraints>
-                                                <constraint firstItem="VA3-CK-cxK" firstAttribute="trailing" secondItem="RFW-a7-Suf" secondAttribute="trailingMargin" id="2gQ-ya-qg2"/>
+                                                <constraint firstAttribute="trailing" secondItem="VA3-CK-cxK" secondAttribute="trailing" constant="8" id="11T-3Y-fLF"/>
                                                 <constraint firstItem="VA3-CK-cxK" firstAttribute="top" secondItem="EmC-Cz-sCP" secondAttribute="bottom" constant="7" id="5Ny-c6-Sje"/>
-                                                <constraint firstItem="EmC-Cz-sCP" firstAttribute="trailing" secondItem="RFW-a7-Suf" secondAttribute="trailingMargin" id="IXL-DO-N2U"/>
-                                                <constraint firstAttribute="bottomMargin" secondItem="VA3-CK-cxK" secondAttribute="bottom" id="Kfy-zx-x8O"/>
-                                                <constraint firstItem="VA3-CK-cxK" firstAttribute="leading" secondItem="RFW-a7-Suf" secondAttribute="leadingMargin" id="Ogt-vz-fQD"/>
-                                                <constraint firstItem="EmC-Cz-sCP" firstAttribute="top" secondItem="RFW-a7-Suf" secondAttribute="topMargin" constant="1" id="W6R-sC-tHE"/>
-                                                <constraint firstItem="EmC-Cz-sCP" firstAttribute="leading" secondItem="RFW-a7-Suf" secondAttribute="leadingMargin" id="rXc-rI-la8"/>
+                                                <constraint firstItem="EmC-Cz-sCP" firstAttribute="top" secondItem="RFW-a7-Suf" secondAttribute="top" constant="9" id="IyF-Wl-tSO"/>
+                                                <constraint firstAttribute="trailing" secondItem="EmC-Cz-sCP" secondAttribute="trailing" constant="8" id="QX8-aN-ABB"/>
+                                                <constraint firstItem="EmC-Cz-sCP" firstAttribute="leading" secondItem="RFW-a7-Suf" secondAttribute="leading" constant="8" id="pU0-Gt-mDh"/>
+                                                <constraint firstItem="VA3-CK-cxK" firstAttribute="leading" secondItem="RFW-a7-Suf" secondAttribute="leading" constant="8" id="qMa-A1-KkL"/>
+                                                <constraint firstAttribute="bottom" secondItem="VA3-CK-cxK" secondAttribute="bottom" constant="8" id="tTn-WF-dnU"/>
                                             </constraints>
                                         </tableViewCellContentView>
                                         <connections>
@@ -962,19 +1157,20 @@ The Nyborg taxi can be ordered at the hotel reception or at the train/bus statio
                         </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                         <constraints>
-                            <constraint firstAttribute="trailingMargin" secondItem="uoC-Hm-4fP" secondAttribute="trailing" constant="-16" id="5EL-eS-mxi"/>
+                            <constraint firstAttribute="trailing" secondItem="uoC-Hm-4fP" secondAttribute="trailing" id="8dY-pC-HFU"/>
                             <constraint firstItem="naz-O4-NKy" firstAttribute="top" secondItem="uoC-Hm-4fP" secondAttribute="bottom" id="KzF-Pq-K9J"/>
-                            <constraint firstItem="uoC-Hm-4fP" firstAttribute="leading" secondItem="gvi-Pn-nZG" secondAttribute="leadingMargin" constant="-16" id="Xjg-x8-kvW"/>
                             <constraint firstItem="uoC-Hm-4fP" firstAttribute="top" secondItem="gvi-Pn-nZG" secondAttribute="topMargin" id="Xnc-yT-q85"/>
+                            <constraint firstItem="uoC-Hm-4fP" firstAttribute="leading" secondItem="gvi-Pn-nZG" secondAttribute="leading" id="aop-Ia-IgZ"/>
                         </constraints>
                     </view>
+                    <navigationItem key="navigationItem" id="MaL-yG-U1c"/>
                     <connections>
                         <outlet property="tableView" destination="uoC-Hm-4fP" id="KWW-02-479"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="MMR-JE-rvo" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="1003" y="-568"/>
+            <point key="canvasLocation" x="1535" y="-568"/>
         </scene>
         <!--Navigation Controller-->
         <scene sceneID="oJj-hl-Z6w">
@@ -1009,13 +1205,176 @@ The Nyborg taxi can be ordered at the hotel reception or at the train/bus statio
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="calibratedWhite"/>
                     </view>
                     <connections>
-                        <segue destination="x36-I8-w5m" kind="custom" identifier="sw_rear" customClass="SWRevealViewControllerSegue" id="BH5-Qu-nr6"/>
-                        <segue destination="hLw-EG-DOD" kind="custom" identifier="sw_front" customClass="SWRevealViewControllerSegue" id="LGX-NL-ICO"/>
+                        <segue destination="x36-I8-w5m" kind="custom" identifier="sw_rear" customClass="SWRevealViewControllerSegueSetController" id="tKu-Pl-oMU"/>
+                        <segue destination="hLw-EG-DOD" kind="custom" identifier="sw_front" customClass="SWRevealViewControllerSegueSetController" id="fHx-tT-JDW"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="989-56-zGc" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="-394" y="-407"/>
+            <point key="canvasLocation" x="-374" y="-433"/>
+        </scene>
+        <!--Navigation Controller-->
+        <scene sceneID="lcs-QF-b6s">
+            <objects>
+                <navigationController automaticallyAdjustsScrollViewInsets="NO" id="S21-KW-nMn" sceneMemberID="viewController">
+                    <toolbarItems/>
+                    <navigationBar key="navigationBar" contentMode="scaleToFill" id="qBL-yK-iHC">
+                        <rect key="frame" x="0.0" y="0.0" width="320" height="44"/>
+                        <autoresizingMask key="autoresizingMask"/>
+                        <color key="barTintColor" red="0.0" green="0.66274511810000003" blue="0.89019614459999996" alpha="1" colorSpace="deviceRGB"/>
+                    </navigationBar>
+                    <nil name="viewControllers"/>
+                    <connections>
+                        <segue destination="77l-Bb-ZLe" kind="relationship" relationship="rootViewController" id="I1I-xg-8n9"/>
+                    </connections>
+                </navigationController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="lzV-gl-huD" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="1003" y="-568"/>
+        </scene>
+        <!--Navigation Controller-->
+        <scene sceneID="c7S-TD-8ev">
+            <objects>
+                <navigationController automaticallyAdjustsScrollViewInsets="NO" id="PBa-Vm-9NG" sceneMemberID="viewController">
+                    <toolbarItems/>
+                    <navigationBar key="navigationBar" contentMode="scaleToFill" id="X2m-ai-Z1B">
+                        <rect key="frame" x="0.0" y="0.0" width="320" height="44"/>
+                        <autoresizingMask key="autoresizingMask"/>
+                        <color key="barTintColor" red="0.0" green="0.66274511810000003" blue="0.89019614459999996" alpha="1" colorSpace="deviceRGB"/>
+                    </navigationBar>
+                    <nil name="viewControllers"/>
+                    <connections>
+                        <segue destination="8z4-wf-t5w" kind="relationship" relationship="rootViewController" id="g9C-7I-EPC"/>
+                    </connections>
+                </navigationController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="9zo-MY-7Q5" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="1003" y="119"/>
+        </scene>
+        <!--Navigation Controller-->
+        <scene sceneID="yLX-bM-0Zv">
+            <objects>
+                <navigationController automaticallyAdjustsScrollViewInsets="NO" id="9QS-4W-heR" sceneMemberID="viewController">
+                    <toolbarItems/>
+                    <navigationBar key="navigationBar" contentMode="scaleToFill" id="I8y-7R-LUF">
+                        <rect key="frame" x="0.0" y="0.0" width="320" height="44"/>
+                        <autoresizingMask key="autoresizingMask"/>
+                        <color key="barTintColor" red="0.0" green="0.66274511810000003" blue="0.89019614459999996" alpha="1" colorSpace="deviceRGB"/>
+                    </navigationBar>
+                    <nil name="viewControllers"/>
+                    <connections>
+                        <segue destination="uhf-wR-b0T" kind="relationship" relationship="rootViewController" id="3RY-Yb-2Rt"/>
+                    </connections>
+                </navigationController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="SNh-YW-jQg" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="1003" y="837"/>
+        </scene>
+        <!--Navigation Controller-->
+        <scene sceneID="bJx-rT-SAR">
+            <objects>
+                <navigationController automaticallyAdjustsScrollViewInsets="NO" id="yt5-b2-JfU" sceneMemberID="viewController">
+                    <toolbarItems/>
+                    <navigationBar key="navigationBar" contentMode="scaleToFill" id="nbZ-Vl-F1N">
+                        <rect key="frame" x="0.0" y="0.0" width="320" height="44"/>
+                        <autoresizingMask key="autoresizingMask"/>
+                        <color key="barTintColor" red="0.0" green="0.66274511810000003" blue="0.89019614459999996" alpha="1" colorSpace="deviceRGB"/>
+                    </navigationBar>
+                    <nil name="viewControllers"/>
+                    <connections>
+                        <segue destination="bLO-0s-Xc3" kind="relationship" relationship="rootViewController" id="q3Q-8o-gDg"/>
+                    </connections>
+                </navigationController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="pfW-eK-VVo" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="2618" y="-154"/>
+        </scene>
+        <!--Info View Controller-->
+        <scene sceneID="7uK-NF-qOo">
+            <objects>
+                <viewController id="sku-bu-PYc" customClass="InfoViewController" sceneMemberID="viewController">
+                    <layoutGuides>
+                        <viewControllerLayoutGuide type="top" id="fZ1-QX-bdH"/>
+                        <viewControllerLayoutGuide type="bottom" id="AJZ-Xe-lua"/>
+                    </layoutGuides>
+                    <view key="view" contentMode="scaleToFill" id="EQc-c2-iM3">
+                        <rect key="frame" x="0.0" y="0.0" width="320" height="568"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="BG" translatesAutoresizingMaskIntoConstraints="NO" id="iox-Xg-6Mt">
+                                <rect key="frame" x="0.0" y="0.0" width="320" height="568"/>
+                            </imageView>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="President's Welcome" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="GzL-vg-9Wn">
+                                <rect key="frame" x="80" y="72" width="161" height="21"/>
+                                <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                <color key="textColor" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
+                                <nil key="highlightedColor"/>
+                            </label>
+                            <textView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" editable="NO" translatesAutoresizingMaskIntoConstraints="NO" id="SfI-Ta-qYR">
+                                <rect key="frame" x="16" y="101" width="288" height="447"/>
+                                <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
+                                <color key="tintColor" red="0.0" green="0.47843137250000001" blue="1" alpha="1" colorSpace="calibratedRGB"/>
+                                <string key="text">Greetings and welcome to the 2016 Animal Behavior Management Alliance Conference! 
+
+The week is packed with some amazing talks. As I read through the schedule I am really excited to see everyone one of them.  I have always loved going to ABMA conferences because I learn from each and every training or enrichment talk.  I get new ideas and come back revitalized and inspired to continue to improve the welfare of all the animals in our facility.  We are kicking off the conference with our keynote speaker Dr. Susie Ellis, the Executive Director of the International Rhino Foundation (IRF).   She will be educating us on the partnership of zoos and IRF that help them reach their goals of in-situ conservation to prevent poaching and habitat loss.  They have been working for 25 years with one of the most threatened species on earth and now it is more critical than ever to collaborate and unite our efforts.
+
+Some of the highlights will be focused on welfare talks, Margaret Rousser (past president of ABMA) and manager at the Oakland Zoo will start off the talks with an out of the box matrix on how to shift our priorities in favor of psychological well-being and why.  Another talk people must attend is the integration of operant conditioning and veterinary care in wildlife management by Ray Ball D.V.M at Busch Gardens. As a veterinary technician and animal trainer this has always been a passion of mine to train animals to cooperate in their own health care.  Mark Simmons will also be telling a cautionary tale about the Killing of Keiko, the killer whale from the movie Free Willy.  We have to understand and be able to speak to the opposition about wildlife that live in captivity and why we cannot just “set them free”.  We will also have daily training demos with the local SPCA, great panels, and our Research and Evaluation workshop by Dr. Nicole Dorey, a former ABMA board member. 
+
+Also it wouldn’t be an ABMA conference without some great site visits, starting with the Ice Breaker at the Florida Aquarium. Then, since we know animal care professionals can’t sit in a room too long we head to Busch Gardens our second day and on the fourth day head out to see the Lowry Park Zoo.  All of these facilities have been working really hard to make our visits extra special. A big shout out to the conference committee for all their hard work. 
+
+Thank you to the other facilities that have offered pre and post conference trips, and in the learning spirit, Precision Behavior also offered a pre conference workshop from a founding member Thad Lacinak and former board member Angi Millwood, two of the best in the business! 
+
+We hope you all enjoy this conference and get to attend every talk and network with people from other zoos, aquariums, training facilities, and laboratories and create contacts and friends that will last a lifetime.  ABMA is always looking for enthusiastic members to join in committees and even board positions.Please consider getting more involved - we can always use the help!  Just find a board member or join the program council Wednesday night and see where you might be the most help.   
+
+Thanks again for supporting ABMA! 
+
+Sincerely, 
+Nicki Boyd, President Elect 
+</string>
+                                <color key="textColor" red="0.20784313725490197" green="0.20784313725490197" blue="0.20784313725490197" alpha="1" colorSpace="calibratedRGB"/>
+                                <fontDescription key="fontDescription" name="Helvetica" family="Helvetica" pointSize="14"/>
+                                <textInputTraits key="textInputTraits" autocapitalizationType="sentences"/>
+                                <dataDetectorType key="dataDetectorTypes" link="YES"/>
+                            </textView>
+                        </subviews>
+                        <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                        <constraints>
+                            <constraint firstItem="SfI-Ta-qYR" firstAttribute="top" secondItem="GzL-vg-9Wn" secondAttribute="bottom" constant="8" id="03a-sD-4yC"/>
+                            <constraint firstAttribute="bottomMargin" secondItem="iox-Xg-6Mt" secondAttribute="bottom" id="4VS-gJ-xAz"/>
+                            <constraint firstItem="iox-Xg-6Mt" firstAttribute="top" secondItem="EQc-c2-iM3" secondAttribute="topMargin" id="62K-4w-gyI"/>
+                            <constraint firstItem="iox-Xg-6Mt" firstAttribute="leading" secondItem="EQc-c2-iM3" secondAttribute="leading" id="AXl-wn-pfl"/>
+                            <constraint firstAttribute="centerX" secondItem="GzL-vg-9Wn" secondAttribute="centerX" id="QS4-Tz-O3x"/>
+                            <constraint firstAttribute="trailing" secondItem="iox-Xg-6Mt" secondAttribute="trailing" id="RiS-sc-Cpf"/>
+                            <constraint firstItem="GzL-vg-9Wn" firstAttribute="top" secondItem="fZ1-QX-bdH" secondAttribute="bottom" constant="8" id="WLQ-nJ-LZG"/>
+                            <constraint firstItem="SfI-Ta-qYR" firstAttribute="leading" secondItem="EQc-c2-iM3" secondAttribute="leading" constant="16" id="btG-Ww-LRB"/>
+                            <constraint firstAttribute="trailing" secondItem="SfI-Ta-qYR" secondAttribute="trailing" constant="16" id="fMq-ki-qPy"/>
+                            <constraint firstItem="AJZ-Xe-lua" firstAttribute="top" secondItem="SfI-Ta-qYR" secondAttribute="bottom" constant="20" id="jfV-GI-RK0"/>
+                        </constraints>
+                    </view>
+                    <navigationItem key="navigationItem" id="KP1-8Y-S4b"/>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="5sq-dx-0gh" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="3443" y="-789"/>
+        </scene>
+        <!--Navigation Controller-->
+        <scene sceneID="Se5-Sd-fdb">
+            <objects>
+                <navigationController automaticallyAdjustsScrollViewInsets="NO" id="AEM-iV-HAE" sceneMemberID="viewController">
+                    <toolbarItems/>
+                    <navigationBar key="navigationBar" contentMode="scaleToFill" id="rMZ-pX-yHp">
+                        <rect key="frame" x="0.0" y="0.0" width="320" height="44"/>
+                        <autoresizingMask key="autoresizingMask"/>
+                        <color key="barTintColor" red="0.0" green="0.66274511810000003" blue="0.89019614459999996" alpha="1" colorSpace="deviceRGB"/>
+                    </navigationBar>
+                    <nil name="viewControllers"/>
+                    <connections>
+                        <segue destination="sku-bu-PYc" kind="relationship" relationship="rootViewController" id="O3q-rb-uC2"/>
+                    </connections>
+                </navigationController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="CJ4-Xf-ILW" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="2881" y="-789"/>
         </scene>
     </scenes>
     <resources>
@@ -1027,14 +1386,9 @@ The Nyborg taxi can be ordered at the hotel reception or at the train/bus statio
         <image name="PlaceIcon" width="12" height="15"/>
         <image name="TimeIcon" width="13" height="14"/>
     </resources>
-    <simulatedMetricsContainer key="defaultSimulatedMetrics">
-        <simulatedStatusBarMetrics key="statusBar"/>
-        <simulatedOrientationMetrics key="orientation"/>
-        <simulatedScreenMetrics key="destination" type="retina4"/>
-    </simulatedMetricsContainer>
     <inferredMetricsTieBreakers>
+        <segue reference="i2t-q8-Kec"/>
         <segue reference="twV-FT-9Dc"/>
-        <segue reference="yED-nK-6IL"/>
     </inferredMetricsTieBreakers>
     <color key="tintColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
 </document>

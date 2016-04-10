@@ -2,11 +2,11 @@
   "images" : [
     {
       "idiom" : "universal",
-      "scale" : "1x",
-      "filename" : "CPHZoo.png"
+      "scale" : "1x"
     },
     {
       "idiom" : "universal",
+      "filename" : "CPHZoo.png",
       "scale" : "2x"
     },
     {

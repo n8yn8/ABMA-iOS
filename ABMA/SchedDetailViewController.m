@@ -102,6 +102,7 @@
     } else {
         [self.tableView setHidden:YES];
         [self.eventDetails setHidden:NO];
+        [self.eventDetails setContentOffset:CGPointZero];
     }
     
     self.navigationItem.titleView = [[UIImageView alloc] initWithImage:[UIImage imageNamed:@"ABMAlogo.png"]];

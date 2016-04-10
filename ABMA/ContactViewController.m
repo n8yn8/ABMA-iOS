@@ -10,6 +10,8 @@
 #import "SWRevealViewController.h"
 
 @interface ContactViewController ()
+@property (weak, nonatomic) IBOutlet UIButton *websiteButton;
+@property (weak, nonatomic) IBOutlet UIButton *surveyButton;
 
 @end
 
@@ -27,6 +29,9 @@
 - (void)viewDidLoad
 {
     [super viewDidLoad];
+    
+    self.websiteButton.layer.cornerRadius = 6;
+    self.surveyButton.layer.cornerRadius = 6;
 }
 
 - (void)didReceiveMemoryWarning
