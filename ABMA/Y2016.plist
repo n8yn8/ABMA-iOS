@@ -523,14 +523,6 @@ Throughout the days, there are several other activities happening at Be A Zookee
 					<key>Abstract</key>
 					<string>Animal welfare is very important to us as keepers and trainers. Mimicking the natural environment where our exotic birds would normally live is crucial to maintaining the overall health of the animal. When housing birds in a show setting where natural elements may not always be available, other options need to be discovered. In the wild, birds would naturally wear down their nails because of the various perches and surfaces they experience. Maintaining trimmed nails is very important for the safety and health of the bird and trainer alike. In this paper, I will discuss the process of training toucans, birds of prey, cranes, and parrots to voluntarily step on to a specially made perch and have their nails trimmed.</string>
 				</dict>
-				<dict>
-					<key>Title</key>
-					<string>The Use of Smart Feeders to Understand Reward Predictability and Activity Levels in Captive Lemurs</string>
-					<key>Author</key>
-					<string>Penelope J Wilson, Karin E Jaffe, Darren Minier; Sonoma State University, Oakland Zoo</string>
-					<key>Abstract</key>
-					<string>Captive animals whose physical and behavioral needs are met are more likely to have reduced fear and anxiety, be more responsive to training, and display a greater diversity of natural behaviors. These animals will in turn be better &apos;ambassadors&apos; for conservation and zoo visitors may spend more time watching them. However, compared to wild animals, for whom change is a constant, captive animals are often less active because their environments are more predictable, their enclosures are often smaller than natural ranges, and their routines do not require high levels of activity. In an effort to increase activity levels of Oakland Zoo lemurs as well as zoo visitor interest, we installed &apos;smart feeders&apos; fitted with Arduino boards in the exhibit, which allowed the study animals to interact with their environment (instead of with keepers) to obtain food. The Arduino boards allowed us to vary the predictability with which eight feeders dispensed food allowing us to study how altering predictability of reward affects the lemurs&apos; activity levels and corresponding &apos;stay-times&apos; of visitors. Previous research (Watters et al., 2011; Watters, 2009) indicates that when reward is completely random or completely predictable, animals lose interest and stop searching. We expect to see the highest activity levels, and a corresponding increase in zoo visitor &apos;stay times&apos; at the lemur enclosure, at an intermediate level of certainty of reward. Our research builds on others that suggest timing of enrichment is an important factor in enhancing captive animal welfare and improving the experience of zoo visitors. </string>
-				</dict>
 			</array>
 		</dict>
 		<dict>
