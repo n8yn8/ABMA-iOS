@@ -1314,7 +1314,7 @@ ABMA room rate is $139.00/night
                                 <rect key="frame" x="16" y="101" width="288" height="447"/>
                                 <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
                                 <color key="tintColor" red="0.0" green="0.47843137250000001" blue="1" alpha="1" colorSpace="calibratedRGB"/>
-                                <string key="text">Greetings and welcome to the 2016 Animal Behavior Management Alliance Conference! 
+                                <mutableString key="text">Greetings and welcome to the 2016 Animal Behavior Management Alliance Conference! 
 
 The week is packed with some amazing talks. As I read through the schedule I am really excited to see everyone one of them.  I have always loved going to ABMA conferences because I learn from each and every training or enrichment talk.  I get new ideas and come back revitalized and inspired to continue to improve the welfare of all the animals in our facility.  We are kicking off the conference with our keynote speaker Dr. Susie Ellis, the Executive Director of the International Rhino Foundation (IRF).   She will be educating us on the partnership of zoos and IRF that help them reach their goals of in-situ conservation to prevent poaching and habitat loss.  They have been working for 25 years with one of the most threatened species on earth and now it is more critical than ever to collaborate and unite our efforts.
 
@@ -1329,8 +1329,8 @@ We hope you all enjoy this conference and get to attend every talk and network w
 Thanks again for supporting ABMA! 
 
 Sincerely, 
-Nicki Boyd, President Elect 
-</string>
+Nicki Boyd, President 
+</mutableString>
                                 <color key="textColor" red="0.20784313725490197" green="0.20784313725490197" blue="0.20784313725490197" alpha="1" colorSpace="calibratedRGB"/>
                                 <fontDescription key="fontDescription" name="Helvetica" family="Helvetica" pointSize="14"/>
                                 <textInputTraits key="textInputTraits" autocapitalizationType="sentences"/>
