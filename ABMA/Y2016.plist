@@ -4,6 +4,18 @@
 <dict>
 	<key>April 17, 2016</key>
 	<array>
+        <dict>
+            <key>Time</key>
+            <string>7:15am</string>
+            <key>Title</key>
+            <string>Depart for Pre-Conference Workshop</string>
+            <key>Location</key>
+            <string>Valet Drop Off/Pick Up</string>
+            <key>Subtitle</key>
+            <string></string>
+            <key>Description</key>
+            <string></string>
+        </dict>
 		<dict>
 			<key>Time</key>
 			<string>8:00am - 4:00pm </string>
