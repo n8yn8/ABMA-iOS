@@ -93,14 +93,21 @@
         NSLog(@"%@, %@", fetchError, fetchError.localizedDescription);
     } else {
         if (days.count) {
+            NSString *build = [[NSUserDefaults standardUserDefaults] stringForKey:@"build"];
+            if (!build) {
+                [self fixBuildEighteen];
+            }
             [self loadDay: 0];
+
         } else {
             [self saveSchedule];
         }
+        NSString *currentBuild = [[NSBundle mainBundle] objectForInfoDictionaryKey: (NSString *)kCFBundleVersionKey];
+        [[NSUserDefaults standardUserDefaults] setObject:currentBuild forKey:@"build"];
     }
 }
 
-- (void)loadDay: (int)index {
+- (void)loadDay: (NSUInteger)index {
     Day *thisDay = days[index];
     NSDateFormatter *dayFormatter = [[NSDateFormatter alloc] init];
     [dayFormatter setDateFormat:@"MMM d, yyyy"];
@@ -138,8 +145,14 @@
             thisEvent.locatoin = [event objectForKey:@"Location"];
             thisEvent.time = [event objectForKey:@"Time"];
             NSArray *times = [thisEvent.time componentsSeparatedByString:@" - "];
+            if (times.count == 0) {
+                NSLog(@"No times for %@", thisEvent.time);
+            }
             NSString *startString = [NSString stringWithFormat:@"%@ %@", key, [times firstObject]];
             thisEvent.startDate = [timeFormatter dateFromString:startString];
+            if (thisEvent.startDate == nil) {
+                NSLog(@"startDate did't format for %@", startString);
+            }
             NSString *endString = [NSString stringWithFormat:@"%@ %@", key, [times lastObject]];
             thisEvent.endDate = [timeFormatter dateFromString:endString];
             thisEvent.details = [event objectForKey:@"Description"];
@@ -161,6 +174,38 @@
         NSLog(@"Error: %@", error.localizedDescription);
     } else {
         [self loadSchedule];
+    }
+}
+
+- (void)fixBuildEighteen {
+    NSFetchRequest *fetchRequest = [[NSFetchRequest alloc] init];
+    [fetchRequest setEntity:[NSEntityDescription entityForName:@"Event" inManagedObjectContext:context]];
+    fetchRequest.predicate = [NSPredicate predicateWithFormat:@"startDate == NULL"];
+    NSError *fetchError = nil;
+    NSArray *updateEvents = [[NSArray alloc] initWithArray:[context executeFetchRequest:fetchRequest error:&fetchError]];
+    if (fetchError) {
+        NSLog(@"Unable to execute fetch request.");
+        NSLog(@"%@, %@", fetchError, fetchError.localizedDescription);
+    } else {
+        NSDateFormatter *timeFormatter = [[NSDateFormatter alloc] init];
+        [timeFormatter setDateFormat:@"MMM d, yyyy h:mma"];
+        [timeFormatter setTimeZone:[NSTimeZone timeZoneWithName:@"UTC"]];
+        for (Event *thisEvent in updateEvents) {
+            thisEvent.time = @"3:00pm - 3:20pm";
+            NSArray *times = [thisEvent.time componentsSeparatedByString:@" - "];
+            if (times.count == 0) {
+                NSLog(@"No times for %@", thisEvent.time);
+            }
+            NSString *startString = [NSString stringWithFormat:@"April 22, 2016 %@", [times firstObject]];
+            thisEvent.startDate = [timeFormatter dateFromString:startString];
+            if (thisEvent.startDate == nil) {
+                NSLog(@"startDate did't format for %@", startString);
+            }
+            NSString *endString = [NSString stringWithFormat:@"April 22, 2016 %@", [times lastObject]];
+            thisEvent.endDate = [timeFormatter dateFromString:endString];
+        }
+        NSError *error;
+        [context save:&error];
     }
 }
 
