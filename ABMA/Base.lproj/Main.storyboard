@@ -751,14 +751,18 @@
                             <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="BG" translatesAutoresizingMaskIntoConstraints="NO" id="GnO-Vn-kMd">
                                 <rect key="frame" x="0.0" y="0.0" width="320" height="568"/>
                             </imageView>
-                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="General Information" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="KGv-W5-wuQ">
-                                <rect key="frame" x="85" y="72" width="151" height="21"/>
-                                <fontDescription key="fontDescription" type="system" pointSize="17"/>
-                                <color key="textColor" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="General Information" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="KGv-W5-wuQ">
+                                <rect key="frame" x="0.0" y="64" width="320" height="40"/>
+                                <color key="backgroundColor" red="0.49019607840000001" green="0.49019607840000001" blue="0.49019607840000001" alpha="1" colorSpace="calibratedRGB"/>
+                                <constraints>
+                                    <constraint firstAttribute="height" constant="40" id="EGT-XQ-VGa"/>
+                                </constraints>
+                                <fontDescription key="fontDescription" type="system" pointSize="22"/>
+                                <color key="textColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                                 <nil key="highlightedColor"/>
                             </label>
                             <textView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" editable="NO" usesAttributedText="YES" translatesAutoresizingMaskIntoConstraints="NO" id="nJ3-Al-dGr">
-                                <rect key="frame" x="16" y="101" width="288" height="447"/>
+                                <rect key="frame" x="16" y="104" width="288" height="464"/>
                                 <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
                                 <color key="tintColor" red="0.0" green="0.47843137250000001" blue="1" alpha="1" colorSpace="calibratedRGB"/>
                                 <attributedString key="attributedText">
@@ -1077,16 +1081,17 @@ ABMA room rate is $139.00/night
                         </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                         <constraints>
-                            <constraint firstItem="pDl-2g-Y29" firstAttribute="top" secondItem="nJ3-Al-dGr" secondAttribute="bottom" constant="20" id="2m7-By-uMz"/>
-                            <constraint firstItem="KGv-W5-wuQ" firstAttribute="top" secondItem="eBR-PY-VXh" secondAttribute="bottom" constant="8" id="2rW-vN-nse"/>
+                            <constraint firstItem="pDl-2g-Y29" firstAttribute="top" secondItem="nJ3-Al-dGr" secondAttribute="bottom" id="2m7-By-uMz"/>
+                            <constraint firstItem="KGv-W5-wuQ" firstAttribute="top" secondItem="eBR-PY-VXh" secondAttribute="bottom" id="2rW-vN-nse"/>
                             <constraint firstAttribute="bottomMargin" secondItem="GnO-Vn-kMd" secondAttribute="bottom" id="5eA-he-Kr3"/>
-                            <constraint firstItem="nJ3-Al-dGr" firstAttribute="top" secondItem="KGv-W5-wuQ" secondAttribute="bottom" constant="8" id="7kQ-hN-qwR"/>
-                            <constraint firstAttribute="centerX" secondItem="KGv-W5-wuQ" secondAttribute="centerX" id="J4u-hj-KHl"/>
+                            <constraint firstItem="nJ3-Al-dGr" firstAttribute="top" secondItem="KGv-W5-wuQ" secondAttribute="bottom" id="7kQ-hN-qwR"/>
                             <constraint firstItem="GnO-Vn-kMd" firstAttribute="top" secondItem="Mg0-Tp-2hU" secondAttribute="topMargin" id="LzU-nW-qM8"/>
                             <constraint firstAttribute="trailing" secondItem="nJ3-Al-dGr" secondAttribute="trailing" constant="16" id="QLq-Ew-jtf"/>
                             <constraint firstAttribute="trailing" secondItem="GnO-Vn-kMd" secondAttribute="trailing" id="WcH-zH-7dd"/>
                             <constraint firstItem="GnO-Vn-kMd" firstAttribute="leading" secondItem="Mg0-Tp-2hU" secondAttribute="leading" id="Zi2-dc-R0b"/>
                             <constraint firstItem="nJ3-Al-dGr" firstAttribute="leading" secondItem="Mg0-Tp-2hU" secondAttribute="leading" constant="16" id="hN8-Ih-adk"/>
+                            <constraint firstAttribute="trailing" secondItem="KGv-W5-wuQ" secondAttribute="trailing" id="tsC-Vi-efo"/>
+                            <constraint firstItem="KGv-W5-wuQ" firstAttribute="leading" secondItem="Mg0-Tp-2hU" secondAttribute="leading" id="zF0-C4-V85"/>
                         </constraints>
                     </view>
                     <navigationItem key="navigationItem" id="j0V-uw-rh2"/>
@@ -1304,14 +1309,18 @@ ABMA room rate is $139.00/night
                             <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="BG" translatesAutoresizingMaskIntoConstraints="NO" id="iox-Xg-6Mt">
                                 <rect key="frame" x="0.0" y="0.0" width="320" height="568"/>
                             </imageView>
-                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="President's Welcome" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="GzL-vg-9Wn">
-                                <rect key="frame" x="80" y="72" width="161" height="21"/>
-                                <fontDescription key="fontDescription" type="system" pointSize="17"/>
-                                <color key="textColor" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="President's Welcome" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="GzL-vg-9Wn">
+                                <rect key="frame" x="0.0" y="64" width="320" height="40"/>
+                                <color key="backgroundColor" red="0.49019607840000001" green="0.49019607840000001" blue="0.49019607840000001" alpha="1" colorSpace="calibratedRGB"/>
+                                <constraints>
+                                    <constraint firstAttribute="height" constant="40" id="WM4-P5-uhD"/>
+                                </constraints>
+                                <fontDescription key="fontDescription" type="system" pointSize="22"/>
+                                <color key="textColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                                 <nil key="highlightedColor"/>
                             </label>
                             <textView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" editable="NO" translatesAutoresizingMaskIntoConstraints="NO" id="SfI-Ta-qYR">
-                                <rect key="frame" x="16" y="101" width="288" height="447"/>
+                                <rect key="frame" x="16" y="104" width="288" height="464"/>
                                 <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
                                 <color key="tintColor" red="0.0" green="0.47843137250000001" blue="1" alpha="1" colorSpace="calibratedRGB"/>
                                 <mutableString key="text">Greetings and welcome to the 2016 Animal Behavior Management Alliance Conference! 
@@ -1339,16 +1348,17 @@ Nicki Boyd, President
                         </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                         <constraints>
-                            <constraint firstItem="SfI-Ta-qYR" firstAttribute="top" secondItem="GzL-vg-9Wn" secondAttribute="bottom" constant="8" id="03a-sD-4yC"/>
+                            <constraint firstItem="SfI-Ta-qYR" firstAttribute="top" secondItem="GzL-vg-9Wn" secondAttribute="bottom" id="03a-sD-4yC"/>
                             <constraint firstAttribute="bottomMargin" secondItem="iox-Xg-6Mt" secondAttribute="bottom" id="4VS-gJ-xAz"/>
                             <constraint firstItem="iox-Xg-6Mt" firstAttribute="top" secondItem="EQc-c2-iM3" secondAttribute="topMargin" id="62K-4w-gyI"/>
+                            <constraint firstItem="GzL-vg-9Wn" firstAttribute="leading" secondItem="EQc-c2-iM3" secondAttribute="leading" id="6ea-Ow-kRx"/>
                             <constraint firstItem="iox-Xg-6Mt" firstAttribute="leading" secondItem="EQc-c2-iM3" secondAttribute="leading" id="AXl-wn-pfl"/>
-                            <constraint firstAttribute="centerX" secondItem="GzL-vg-9Wn" secondAttribute="centerX" id="QS4-Tz-O3x"/>
+                            <constraint firstAttribute="trailing" secondItem="GzL-vg-9Wn" secondAttribute="trailing" id="J4s-A4-AFf"/>
                             <constraint firstAttribute="trailing" secondItem="iox-Xg-6Mt" secondAttribute="trailing" id="RiS-sc-Cpf"/>
-                            <constraint firstItem="GzL-vg-9Wn" firstAttribute="top" secondItem="fZ1-QX-bdH" secondAttribute="bottom" constant="8" id="WLQ-nJ-LZG"/>
+                            <constraint firstItem="GzL-vg-9Wn" firstAttribute="top" secondItem="fZ1-QX-bdH" secondAttribute="bottom" id="WLQ-nJ-LZG"/>
                             <constraint firstItem="SfI-Ta-qYR" firstAttribute="leading" secondItem="EQc-c2-iM3" secondAttribute="leading" constant="16" id="btG-Ww-LRB"/>
                             <constraint firstAttribute="trailing" secondItem="SfI-Ta-qYR" secondAttribute="trailing" constant="16" id="fMq-ki-qPy"/>
-                            <constraint firstItem="AJZ-Xe-lua" firstAttribute="top" secondItem="SfI-Ta-qYR" secondAttribute="bottom" constant="20" id="jfV-GI-RK0"/>
+                            <constraint firstItem="AJZ-Xe-lua" firstAttribute="top" secondItem="SfI-Ta-qYR" secondAttribute="bottom" id="jfV-GI-RK0"/>
                         </constraints>
                     </view>
                     <navigationItem key="navigationItem" id="KP1-8Y-S4b"/>
