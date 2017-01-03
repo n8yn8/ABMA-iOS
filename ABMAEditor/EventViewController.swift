@@ -16,12 +16,15 @@ class EventViewController: NSViewController {
     @IBOutlet weak var locationTextField: NSTextField!
     @IBOutlet weak var titleTextField: NSTextField!
     @IBOutlet weak var subtitleTextField: NSTextField!
-    @IBOutlet weak var descriptionTextField: NSScrollView!
+    @IBOutlet var descriptionTextView: NSTextView!
+    
+    let calendar = Calendar.current
     
     override func viewDidLoad() {
         super.viewDidLoad()
         
         datePicker.dateValue = Date()
+        datePicker.calendar = self.calendar
 
         // Do any additional setup after loading the view.
     }
@@ -33,8 +36,24 @@ class EventViewController: NSViewController {
     }
 
     @IBAction func save(_ sender: NSButton) {
-        print("date = \(datePicker.dateValue)")
+        
+        let startDate = buildDate(timePart: startTimePicker.dateValue)
+        print("date = \(startDate)")
+        
+        let endDate = buildDate(timePart: endTimePicker.dateValue)
+        print("endDate = \(endDate)")
+        
         print("locaion = \(locationTextField.stringValue)")
+        print("title = \(titleTextField.stringValue)")
+        print("subtitle = \(subtitleTextField.stringValue)")
+        print("description = \(descriptionTextView.string)")
+    }
+    
+    func buildDate(timePart: Date) -> Date {
+        let timeComponents = calendar.dateComponents([.hour, .minute], from: timePart)
+        let date = calendar.startOfDay(for: datePicker.dateValue)
+        let finalDate = calendar.date(byAdding: timeComponents, to: date)!
+        return finalDate
     }
 
 }
