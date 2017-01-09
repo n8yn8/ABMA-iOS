@@ -10,4 +10,21 @@ import Foundation
 
 class Event: NSObject {
     
+    var details: String?
+    var endDate: Date
+    var location: String?
+    var startDate: Date
+    var subtitle: String?
+    var time: String?
+    var title: String
+//    var day: Day
+//    var note: Note
+//    var papers: [Paper]
+    
+    init(startDate: Date, endDate: Date, title: String) {
+        
+        self.startDate = startDate
+        self.endDate = endDate
+        self.title = title
+    }
 }

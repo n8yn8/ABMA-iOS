@@ -19,6 +19,7 @@ class EventViewController: NSViewController {
     @IBOutlet var descriptionTextView: NSTextView!
     
     let calendar = Calendar.current
+    var event: Event?
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -31,7 +32,17 @@ class EventViewController: NSViewController {
 
     override var representedObject: Any? {
         didSet {
-        // Update the view, if already loaded.
+            if let event = representedObject as? Event {
+                
+                datePicker.dateValue = event.startDate
+                startTimePicker.dateValue = event.startDate
+                endTimePicker.dateValue = event.endDate
+//                locationTextField.stringValue = event.location
+                titleTextField.stringValue = event.title
+//                subtitleTextField.stringValue = event.subtitle
+//                descriptionTextView.string = event.details
+            }
+            
         }
     }
 
@@ -42,6 +53,12 @@ class EventViewController: NSViewController {
         
         let endDate = buildDate(timePart: endTimePicker.dateValue)
         print("endDate = \(endDate)")
+        
+        var isNew = false
+        if event == nil {
+            event = Event(startDate: startDate, endDate: endDate, title: titleTextField.stringValue)
+            isNew = true
+        }
         
         print("locaion = \(locationTextField.stringValue)")
         print("title = \(titleTextField.stringValue)")
