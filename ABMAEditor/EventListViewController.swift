@@ -13,14 +13,16 @@ class EventListViewController: NSViewController, NSTableViewDelegate, NSTableVie
     @IBOutlet weak var eventTableView: NSTableView!
     weak var delegate: MasterViewControllerDelegate?
     
-    var eventList = [Event]()
+    var eventList = [Date: Event]()
+    var eventListKeys = [Date]()
     
     override func viewDidLoad() {
         super.viewDidLoad()
     }
     
-    func setEventList(list: [Event]) {
+    func setEventList(list: [Date: Event]) {
         eventList = list
+        eventListKeys = Array(list.keys)
         eventTableView.reloadData()
     }
     
@@ -30,7 +32,7 @@ class EventListViewController: NSViewController, NSTableViewDelegate, NSTableVie
     
     func tableView(_ tableView: NSTableView, viewFor tableColumn: NSTableColumn?, row: Int) -> NSView? {
         
-        let event = eventList[row]
+        let event = eventList[eventListKeys[row]]!
         
         let cell = tableView.make(withIdentifier: tableColumn!.identifier, owner: self) as! NSTableCellView
         
@@ -50,7 +52,7 @@ class EventListViewController: NSViewController, NSTableViewDelegate, NSTableVie
     func getSelectedEvet() -> Event? {
         let selectedRow = eventTableView.selectedRow
         if selectedRow >= 0 && eventList.count > selectedRow {
-            return eventList[selectedRow]
+            return eventList[eventListKeys[selectedRow]]
         }
         return nil
     }

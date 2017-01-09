@@ -8,18 +8,18 @@
 
 import Cocoa
 
-class ContainerController: NSSplitViewController, MasterViewControllerDelegate {
+class ContainerController: NSSplitViewController, MasterViewControllerDelegate, EventViewControllerDelegate {
     
     var eventListController: EventListViewController!
     var eventController: EventViewController!
-    var eventList = [Event]()
+    var eventList = [Date: Event]()
     
     override func viewDidLoad() {
         super.viewDidLoad()
         
         for i in 0 ..< 5 {
             let event = Event(startDate: Date(), endDate: Date(), title: "title \(i)")
-            eventList.append(event)
+            eventList[event.createdAt] = event
         }
         
         for splitItem in splitViewItems {
@@ -30,12 +30,18 @@ class ContainerController: NSSplitViewController, MasterViewControllerDelegate {
             }
         }
         eventListController.delegate = self
+        eventController.delegate = self
         
         eventListController.setEventList(list: eventList)
     }
     
     func updateSelectedEvent(event: Event?) {
         eventController.representedObject = event
+    }
+    
+    func updateEvent(event: Event) {
+        eventList[event.createdAt] = event
+        eventListController.setEventList(list: eventList)
     }
 
 }

@@ -18,13 +18,14 @@ class EventViewController: NSViewController {
     @IBOutlet weak var subtitleTextField: NSTextField!
     @IBOutlet var descriptionTextView: NSTextView!
     
-    let calendar = Calendar.current
-    var event: Event?
+    weak var delegate: EventViewControllerDelegate?
+    
+    private let calendar = Calendar.current
+    private var event: Event?
     
     override func viewDidLoad() {
         super.viewDidLoad()
         
-        datePicker.dateValue = Date()
         datePicker.calendar = self.calendar
 
         // Do any additional setup after loading the view.
@@ -32,38 +33,54 @@ class EventViewController: NSViewController {
 
     override var representedObject: Any? {
         didSet {
+            
+            datePicker.dateValue = Date()
+            startTimePicker.dateValue = Date()
+            endTimePicker.dateValue = Date()
+            locationTextField.stringValue = ""
+            titleTextField.stringValue = ""
+            subtitleTextField.stringValue = ""
+            descriptionTextView.string = ""
+            
             if let event = representedObject as? Event {
                 
                 datePicker.dateValue = event.startDate
                 startTimePicker.dateValue = event.startDate
                 endTimePicker.dateValue = event.endDate
-//                locationTextField.stringValue = event.location
+                if let location = event.location {
+                    locationTextField.stringValue = location
+                }
                 titleTextField.stringValue = event.title
-//                subtitleTextField.stringValue = event.subtitle
-//                descriptionTextView.string = event.details
+                if let subtitle = event.subtitle {
+                    subtitleTextField.stringValue = subtitle
+                }
+                if let details = event.details {
+                    descriptionTextView.string = details
+                }
+                
             }
-            
         }
     }
 
     @IBAction func save(_ sender: NSButton) {
         
         let startDate = buildDate(timePart: startTimePicker.dateValue)
-        print("date = \(startDate)")
-        
         let endDate = buildDate(timePart: endTimePicker.dateValue)
-        print("endDate = \(endDate)")
         
-        var isNew = false
         if event == nil {
             event = Event(startDate: startDate, endDate: endDate, title: titleTextField.stringValue)
-            isNew = true
+        } else {
+            event?.startDate = startDate
+            event?.endDate = endDate
+            event?.title = titleTextField.stringValue
         }
         
-        print("locaion = \(locationTextField.stringValue)")
-        print("title = \(titleTextField.stringValue)")
-        print("subtitle = \(subtitleTextField.stringValue)")
-        print("description = \(descriptionTextView.string)")
+        event!.location = locationTextField.stringValue
+        event!.subtitle = subtitleTextField.stringValue
+        event!.details = descriptionTextView.string
+        event!.updatedAt = Date()
+        
+        delegate?.updateEvent(event: event!)
     }
     
     func buildDate(timePart: Date) -> Date {
@@ -75,3 +92,6 @@ class EventViewController: NSViewController {
 
 }
 
+protocol EventViewControllerDelegate: class {
+    func updateEvent(event: Event)
+}
