@@ -35,13 +35,22 @@ class ContainerController: NSSplitViewController, MasterViewControllerDelegate, 
         eventListController.setEventList(list: eventList)
     }
     
+    func update() {
+        eventListController.setEventList(list: eventList)
+    }
+    
     func updateSelectedEvent(event: Event?) {
         eventController.representedObject = event
     }
     
+    func removeSelectedEvent(key: Date) {
+        eventList.removeValue(forKey: key)
+        update()
+    }
+    
     func updateEvent(event: Event) {
         eventList[event.createdAt] = event
-        eventListController.setEventList(list: eventList)
+        update()
     }
 
 }

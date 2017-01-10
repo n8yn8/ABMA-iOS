@@ -27,13 +27,13 @@ class EventViewController: NSViewController {
         super.viewDidLoad()
         
         datePicker.calendar = self.calendar
+        datePicker.dateValue = Date()
 
         // Do any additional setup after loading the view.
     }
 
     override var representedObject: Any? {
         didSet {
-            
             datePicker.dateValue = Date()
             startTimePicker.dateValue = Date()
             endTimePicker.dateValue = Date()
@@ -43,6 +43,7 @@ class EventViewController: NSViewController {
             descriptionTextView.string = ""
             
             if let event = representedObject as? Event {
+                self.event = event
                 
                 datePicker.dateValue = event.startDate
                 startTimePicker.dateValue = event.startDate
@@ -58,6 +59,8 @@ class EventViewController: NSViewController {
                     descriptionTextView.string = details
                 }
                 
+            } else{
+                self.event = nil
             }
         }
     }
