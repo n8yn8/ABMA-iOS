@@ -709,13 +709,13 @@
                         <autoresizingMask key="autoresizingMask"/>
                         <subviews>
                             <scrollView autohidesScrollers="YES" horizontalLineScroll="19" horizontalPageScroll="10" verticalLineScroll="19" verticalPageScroll="10" usesPredominantAxisScrolling="NO" translatesAutoresizingMaskIntoConstraints="NO" id="OhN-Z6-vzp">
-                                <rect key="frame" x="0.0" y="40" width="450" height="260"/>
+                                <rect key="frame" x="0.0" y="40" width="450" height="219"/>
                                 <clipView key="contentView" id="zw5-3Z-1in">
-                                    <rect key="frame" x="1" y="0.0" width="448" height="259"/>
+                                    <rect key="frame" x="1" y="0.0" width="448" height="218"/>
                                     <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                                     <subviews>
                                         <tableView verticalHuggingPriority="750" allowsExpansionToolTips="YES" columnAutoresizingStyle="lastColumnOnly" columnSelection="YES" multipleSelection="NO" autosaveColumns="NO" rowSizeStyle="automatic" headerView="zQC-Gu-5DQ" viewBased="YES" id="g4h-nU-vpx">
-                                            <rect key="frame" x="0.0" y="0.0" width="448" height="236"/>
+                                            <rect key="frame" x="0.0" y="0.0" width="448" height="195"/>
                                             <autoresizingMask key="autoresizingMask"/>
                                             <size key="intercellSpacing" width="3" height="2"/>
                                             <color key="backgroundColor" name="controlBackgroundColor" catalog="System" colorSpace="catalog"/>
@@ -836,21 +836,35 @@
                                     <action selector="remove:" target="cEQ-fS-Qcc" id="rwg-2M-sXM"/>
                                 </connections>
                             </button>
+                            <popUpButton verticalHuggingPriority="750" translatesAutoresizingMaskIntoConstraints="NO" id="HP2-tF-jqu">
+                                <rect key="frame" x="8" y="266" width="37" height="26"/>
+                                <popUpButtonCell key="cell" type="push" bezelStyle="rounded" alignment="left" lineBreakMode="truncatingTail" borderStyle="borderAndBezel" imageScaling="proportionallyDown" inset="2" id="fD7-kP-lhk">
+                                    <behavior key="behavior" lightByBackground="YES" lightByGray="YES"/>
+                                    <font key="font" metaFont="menu"/>
+                                    <menu key="menu" id="SYT-pH-0d7"/>
+                                </popUpButtonCell>
+                                <connections>
+                                    <action selector="yearSelected:" target="cEQ-fS-Qcc" id="ZgW-Hz-UCf"/>
+                                </connections>
+                            </popUpButton>
                         </subviews>
                         <constraints>
                             <constraint firstItem="DqZ-eV-InO" firstAttribute="leading" secondItem="jr6-Di-Nfw" secondAttribute="leading" constant="10" id="7BO-IZ-13f"/>
+                            <constraint firstItem="HP2-tF-jqu" firstAttribute="leading" secondItem="jr6-Di-Nfw" secondAttribute="leading" constant="10" id="FfK-hn-jvn"/>
                             <constraint firstAttribute="trailing" secondItem="OhN-Z6-vzp" secondAttribute="trailing" id="Kto-VU-Pco"/>
-                            <constraint firstItem="OhN-Z6-vzp" firstAttribute="top" secondItem="jr6-Di-Nfw" secondAttribute="top" id="NhJ-6X-DPx"/>
                             <constraint firstAttribute="bottom" secondItem="DqZ-eV-InO" secondAttribute="bottom" constant="10" id="Uya-cy-pvi"/>
                             <constraint firstItem="OhN-Z6-vzp" firstAttribute="leading" secondItem="jr6-Di-Nfw" secondAttribute="leading" id="Zqu-UO-0nf"/>
                             <constraint firstItem="i1c-DE-E1x" firstAttribute="centerY" secondItem="DqZ-eV-InO" secondAttribute="centerY" id="g1q-PT-lN0"/>
+                            <constraint firstItem="OhN-Z6-vzp" firstAttribute="top" secondItem="HP2-tF-jqu" secondAttribute="bottom" constant="10" id="kdW-U4-8ul"/>
                             <constraint firstItem="DqZ-eV-InO" firstAttribute="top" secondItem="OhN-Z6-vzp" secondAttribute="bottom" constant="10" id="lEq-kT-1f5"/>
                             <constraint firstItem="i1c-DE-E1x" firstAttribute="leading" secondItem="DqZ-eV-InO" secondAttribute="trailing" constant="8" id="q39-PS-40N"/>
+                            <constraint firstItem="HP2-tF-jqu" firstAttribute="top" secondItem="jr6-Di-Nfw" secondAttribute="top" constant="10" id="vcw-uc-ZCw"/>
                         </constraints>
                     </view>
                     <connections>
                         <outlet property="eventTableView" destination="g4h-nU-vpx" id="xHj-1v-2ur"/>
                         <outlet property="removeButton" destination="i1c-DE-E1x" id="51d-sG-dTq"/>
+                        <outlet property="yearsPopUpButton" destination="HP2-tF-jqu" id="NGl-iB-HsD"/>
                     </connections>
                 </viewController>
                 <customObject id="H0R-bT-vK1" userLabel="First Responder" customClass="NSResponder" sceneMemberID="firstResponder"/>

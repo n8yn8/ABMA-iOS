@@ -8,19 +8,27 @@
 
 import Cocoa
 
-class ContainerController: NSSplitViewController, MasterViewControllerDelegate, EventViewControllerDelegate {
+class ContainerController: NSSplitViewController {
     
     var eventListController: EventListViewController!
     var eventController: EventViewController!
+    var years = [String: [Date: Event]]()
+    var selectedYear: String!
     var eventList = [Date: Event]()
     
     override func viewDidLoad() {
         super.viewDidLoad()
         
-        for i in 0 ..< 5 {
-            let event = Event(startDate: Date(), endDate: Date(), title: "title \(i)")
-            eventList[event.createdAt] = event
+        for j in 0 ..< 5 {
+            let yearName = "201\(j)"
+            var theseEvents = [Date: Event]()
+            for i in 0 ..< 5 {
+                let event = Event(startDate: Date(), endDate: Date(), title: "title \(i) \(j)")
+                theseEvents[event.createdAt] = event
+            }
+            years[yearName] = theseEvents
         }
+        
         
         for splitItem in splitViewItems {
             if splitItem.viewController is EventListViewController {
@@ -32,11 +40,19 @@ class ContainerController: NSSplitViewController, MasterViewControllerDelegate, 
         eventListController.delegate = self
         eventController.delegate = self
         
-        eventListController.setEventList(list: eventList)
+        eventListController.setYears(years: Array(years.keys))
     }
     
     func update() {
         eventListController.setEventList(list: eventList)
+    }
+}
+
+extension ContainerController: MasterViewControllerDelegate {
+    func updateSeelctedYear(year: String) {
+        selectedYear = year
+        eventList = years[year]!
+        update()
     }
     
     func updateSelectedEvent(event: Event?) {
@@ -47,10 +63,12 @@ class ContainerController: NSSplitViewController, MasterViewControllerDelegate, 
         eventList.removeValue(forKey: key)
         update()
     }
-    
+}
+
+extension ContainerController: EventViewControllerDelegate {
     func updateEvent(event: Event) {
         eventList[event.createdAt] = event
+        years[selectedYear] = eventList
         update()
     }
-
 }

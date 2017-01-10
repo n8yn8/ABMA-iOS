@@ -12,6 +12,7 @@ class EventListViewController: NSViewController, NSTableViewDelegate, NSTableVie
     
     @IBOutlet weak var eventTableView: NSTableView!
     @IBOutlet weak var removeButton: NSButton!
+    @IBOutlet weak var yearsPopUpButton: NSPopUpButton!
     weak var delegate: MasterViewControllerDelegate?
     
     private let formatter = DateFormatter()
@@ -26,12 +27,22 @@ class EventListViewController: NSViewController, NSTableViewDelegate, NSTableVie
         formatter.timeStyle = .short
     }
     
+    func setYears(years: [String]) {
+        yearsPopUpButton.addItems(withTitles: years)
+        yearSelected(self)
+    }
+    
     func setEventList(list: [Date: Event]) {
         eventList = list
         eventListKeys = Array(list.keys).sorted(by: { (first, second) -> Bool in
             first.compare(second) == .orderedAscending
         })
         eventTableView.reloadData()
+    }
+    
+    @IBAction func yearSelected(_ sender: Any) {
+        let selectedYear = yearsPopUpButton.itemTitle(at: yearsPopUpButton.indexOfSelectedItem)
+        delegate?.updateSeelctedYear(year: selectedYear)
     }
     
     func numberOfRows(in tableView: NSTableView) -> Int {
@@ -77,6 +88,7 @@ class EventListViewController: NSViewController, NSTableViewDelegate, NSTableVie
 }
 
 protocol MasterViewControllerDelegate: class {
+    func updateSeelctedYear(year: String)
     func updateSelectedEvent(event: Event?)
     func removeSelectedEvent(key: Date)
 }
