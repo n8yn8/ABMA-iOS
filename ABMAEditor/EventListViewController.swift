@@ -14,10 +14,10 @@ class EventListViewController: NSViewController, NSTableViewDelegate, NSTableVie
     @IBOutlet weak var removeButton: NSButton!
     weak var delegate: MasterViewControllerDelegate?
     
-    let formatter = DateFormatter()
+    private let formatter = DateFormatter()
     
-    var eventList = [Date: Event]()
-    var eventListKeys = [Date]()
+    private var eventList = [Date: Event]()
+    private var eventListKeys = [Date]()
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -59,6 +59,7 @@ class EventListViewController: NSViewController, NSTableViewDelegate, NSTableVie
     
     func getSelectedEvent() -> Event? {
         let selectedRow = eventTableView.selectedRow
+        removeButton.isEnabled = selectedRow >= 0
         if selectedRow >= 0 && eventList.count > selectedRow {
             return eventList[eventListKeys[selectedRow]]
         }
@@ -71,6 +72,7 @@ class EventListViewController: NSViewController, NSTableViewDelegate, NSTableVie
 
     @IBAction func remove(_ sender: Any) {
         delegate?.removeSelectedEvent(key: eventListKeys[eventTableView.selectedRow])
+        removeButton.isEnabled = false
     }
 }
 
