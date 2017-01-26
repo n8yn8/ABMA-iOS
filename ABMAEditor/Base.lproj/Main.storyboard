@@ -1107,8 +1107,22 @@
                                             </tabViewItem>
                                             <tabViewItem label="Papers" identifier="2" id="F6z-aN-Wqz">
                                                 <view key="view" id="hP7-YT-KTb">
-                                                    <rect key="frame" x="10" y="33" width="564" height="405"/>
+                                                    <rect key="frame" x="10" y="33" width="564" height="160"/>
                                                     <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                                                    <subviews>
+                                                        <containerView translatesAutoresizingMaskIntoConstraints="NO" id="sac-CI-v7h">
+                                                            <rect key="frame" x="0.0" y="0.0" width="564" height="160"/>
+                                                            <connections>
+                                                                <segue destination="AgI-8S-XxS" kind="embed" id="pkQ-v6-qJr"/>
+                                                            </connections>
+                                                        </containerView>
+                                                    </subviews>
+                                                    <constraints>
+                                                        <constraint firstItem="sac-CI-v7h" firstAttribute="top" secondItem="hP7-YT-KTb" secondAttribute="top" id="7Yx-5l-fPq"/>
+                                                        <constraint firstItem="sac-CI-v7h" firstAttribute="leading" secondItem="hP7-YT-KTb" secondAttribute="leading" id="LJ7-W6-mPN"/>
+                                                        <constraint firstAttribute="trailing" secondItem="sac-CI-v7h" secondAttribute="trailing" id="Vor-FG-goP"/>
+                                                        <constraint firstAttribute="bottom" secondItem="sac-CI-v7h" secondAttribute="bottom" id="nO9-xK-2R1"/>
+                                                    </constraints>
                                                 </view>
                                             </tabViewItem>
                                         </tabViewItems>
@@ -1124,6 +1138,12 @@
                                         </connections>
                                     </button>
                                 </subviews>
+                                <constraints>
+                                    <constraint firstItem="Non-yx-mBw" firstAttribute="top" secondItem="idK-gV-kCD" secondAttribute="bottom" constant="8" id="1KT-dH-f1W"/>
+                                    <constraint firstItem="idK-gV-kCD" firstAttribute="leading" secondItem="ock-WX-fgN" secondAttribute="leading" id="Fzk-oT-5ev"/>
+                                    <constraint firstItem="idK-gV-kCD" firstAttribute="top" secondItem="IDy-17-96q" secondAttribute="bottom" constant="8" id="WMt-YU-eqt"/>
+                                    <constraint firstAttribute="trailing" secondItem="idK-gV-kCD" secondAttribute="trailing" id="jjj-wK-NPB"/>
+                                </constraints>
                                 <visibilityPriorities>
                                     <integer value="1000"/>
                                     <integer value="1000"/>
@@ -1164,6 +1184,14 @@
                 <customObject id="rPt-NT-nkU" userLabel="First Responder" customClass="NSResponder" sceneMemberID="firstResponder"/>
             </objects>
             <point key="canvasLocation" x="687" y="1001"/>
+        </scene>
+        <!--Papers-->
+        <scene sceneID="yNF-Ho-qlY">
+            <objects>
+                <controllerPlaceholder storyboardName="Papers" id="AgI-8S-XxS" sceneMemberID="viewController"/>
+                <customObject id="ph4-dF-KdL" userLabel="First Responder" customClass="NSResponder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="694" y="1357"/>
         </scene>
     </scenes>
     <resources>

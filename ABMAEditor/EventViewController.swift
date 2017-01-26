@@ -17,11 +17,12 @@ class EventViewController: NSViewController {
     @IBOutlet weak var titleTextField: NSTextField!
     @IBOutlet weak var subtitleTextField: NSTextField!
     @IBOutlet var descriptionTextView: NSTextView!
+    @IBOutlet weak var tabView: NSTabView!
     
     weak var delegate: EventViewControllerDelegate?
     
     private let calendar = Calendar.current
-    private var event: Event?
+    fileprivate var event: Event?
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -57,6 +58,9 @@ class EventViewController: NSViewController {
                 }
                 if let details = event.details {
                     descriptionTextView.string = details
+                    tabView.selectFirstTabViewItem(self)
+                } else  if !event.papers.isEmpty {
+                    tabView.selectLastTabViewItem(self)
                 }
                 
             } else{

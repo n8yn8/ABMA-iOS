@@ -21,7 +21,7 @@ class Event: NSObject {
     var updatedAt: Date
 //    var day: Day
 //    var note: Note
-//    var papers: [Paper]
+    var papers = [Paper]()
     
     convenience init(startDate: Date, endDate: Date, title: String, createdAt: Date, updatedAt: Date) {
         
