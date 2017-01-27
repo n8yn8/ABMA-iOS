@@ -77,6 +77,7 @@ class PapersViewController: NSViewController, NSTableViewDelegate, NSTableViewDa
     
     @IBAction func add(_ sender: Any) {
         papersTableView.deselectAll(self)
+        saveButton.isEnabled = true
     }
     
     @IBAction func remove(_ sender: Any) {
@@ -87,5 +88,11 @@ class PapersViewController: NSViewController, NSTableViewDelegate, NSTableViewDa
     }
     
     @IBAction func save(_ sender: Any) {
+        let title = titleTextField.stringValue
+        let author = authorTextField.stringValue
+        let abstract = abstractTextView.string
+        let paper = Paper(title: title, author: author, abstract: abstract!)
+        papers.append(paper)
+        papersTableView.reloadData()
     }
 }
