@@ -17,16 +17,17 @@ class PapersViewController: NSViewController, NSTableViewDelegate, NSTableViewDa
     @IBOutlet var abstractTextView: NSTextView!
     @IBOutlet weak var saveButton: NSButtonCell!
     
-    var papers = [Paper]()
+    weak var delegate: PapersViewControllerDelegate?
+    
+    var papers = [Paper]() {
+        didSet {
+            papersTableView.reloadData()
+        }
+    }
 
     override func viewDidLoad() {
         super.viewDidLoad()
         // Do view setup here.
-        
-        for j in 0 ..< 5 {
-            let paper = Paper(title: "title \(j)", author: "author \(j)", abstract: "Some abstract \(j)")
-            papers.append(paper)
-        }
     }
     
     func numberOfRows(in tableView: NSTableView) -> Int {
@@ -94,5 +95,10 @@ class PapersViewController: NSViewController, NSTableViewDelegate, NSTableViewDa
         let paper = Paper(title: title, author: author, abstract: abstract!)
         papers.append(paper)
         papersTableView.reloadData()
+        delegate?.updatePapers(papers: papers)
     }
+}
+
+protocol PapersViewControllerDelegate: class {
+    func updatePapers(papers: [Paper])
 }

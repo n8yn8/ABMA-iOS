@@ -8,7 +8,7 @@
 
 import Cocoa
 
-class EventViewController: NSViewController {
+class EventViewController: NSViewController, PapersViewControllerDelegate {
 
     @IBOutlet weak var datePicker: NSDatePicker!
     @IBOutlet weak var startTimePicker: NSDatePicker!
@@ -23,6 +23,7 @@ class EventViewController: NSViewController {
     
     private let calendar = Calendar.current
     fileprivate var event: Event?
+    fileprivate var papersViewController: PapersViewController?
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -62,6 +63,9 @@ class EventViewController: NSViewController {
                 } else  if !event.papers.isEmpty {
                     tabView.selectLastTabViewItem(self)
                 }
+                if let controller = papersViewController {
+                    controller.papers = event.papers
+                }
                 
             } else{
                 self.event = nil
@@ -95,6 +99,18 @@ class EventViewController: NSViewController {
         let date = calendar.startOfDay(for: datePicker.dateValue)
         let finalDate = calendar.date(byAdding: timeComponents, to: date)!
         return finalDate
+    }
+    
+    func updatePapers(papers: [Paper]) {
+        event?.papers = papers
+        delegate?.updateEvent(event: event!)
+    }
+    
+    override func prepare(for segue: NSStoryboardSegue, sender: Any?) {
+        if let controller = segue.destinationController as? PapersViewController {
+            papersViewController = controller
+            papersViewController?.delegate = self
+        }
     }
 
 }

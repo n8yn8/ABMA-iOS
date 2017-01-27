@@ -1178,6 +1178,7 @@
                         <outlet property="locationTextField" destination="qKr-S4-Qzw" id="kte-oo-eLL"/>
                         <outlet property="startTimePicker" destination="sdU-Zy-KgE" id="F04-te-BNB"/>
                         <outlet property="subtitleTextField" destination="vX2-B9-eEv" id="NAF-b9-v7W"/>
+                        <outlet property="tabView" destination="idK-gV-kCD" id="28Z-6Z-Y6h"/>
                         <outlet property="titleTextField" destination="58x-AP-1M9" id="ac3-5i-O1w"/>
                     </connections>
                 </viewController>

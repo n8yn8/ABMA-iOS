@@ -24,6 +24,13 @@ class ContainerController: NSSplitViewController {
             var theseEvents = [Date: Event]()
             for i in 0 ..< 5 {
                 let event = Event(startDate: Date(), endDate: Date(), title: "title \(i) \(j)")
+                
+                var papers = [Paper]()
+                for k in 0 ..< 5 {
+                    let paper = Paper(title: "title \(i) \(k)", author: "author \(k)", abstract: "Some abstract \(i) \(k)")
+                    papers.append(paper)
+                }
+                event.papers = papers
                 theseEvents[event.createdAt] = event
             }
             years[yearName] = theseEvents
