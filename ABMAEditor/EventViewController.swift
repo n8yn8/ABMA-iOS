@@ -60,7 +60,8 @@ class EventViewController: NSViewController, PapersViewControllerDelegate {
                 if let details = event.details {
                     descriptionTextView.string = details
                     tabView.selectFirstTabViewItem(self)
-                } else  if !event.papers.isEmpty {
+                }
+                if !event.papers.isEmpty {
                     tabView.selectLastTabViewItem(self)
                 }
                 if let controller = papersViewController {

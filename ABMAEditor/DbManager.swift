@@ -57,4 +57,18 @@ class DbManager {
         })
     }
     
+    func getEvents(callback: @escaping (_ events: [Event]?, _ errorString: String?) -> Void) {
+        let dataQuery = BackendlessDataQuery()
+        
+        backendless?.persistenceService.find(Event.ofClass(), dataQuery: dataQuery, response: { (response) in
+            print("response \(response)")
+            if let events = response?.data as? [Event] {
+                callback(events, nil)
+            }
+        }, error: { (error) in
+            print("error: \(error)")
+            callback(nil, error.debugDescription)
+        })
+    }
+    
 }

@@ -25,6 +25,15 @@ class ContainerController: NSSplitViewController {
             years[yearName] = theseEvents
         }
         
+        DbManager.sharedInstance.getEvents { (events, error) in
+            if let data = events {
+                for event in data {
+                    self.eventList[event.objectId!] = event
+                }
+                self.update()
+            }
+        }
+        
         
         for splitItem in splitViewItems {
             if splitItem.viewController is EventListViewController {
