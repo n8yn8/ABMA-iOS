@@ -65,7 +65,8 @@ extension ContainerController: MasterViewControllerDelegate {
     }
     
     func removeSelectedEvent(key: String) {
-        eventList.removeValue(forKey: key)
+        let removedEvent = eventList.removeValue(forKey: key)
+        DbManager.sharedInstance.deleteEvent(event: removedEvent!)
         update()
     }
 }

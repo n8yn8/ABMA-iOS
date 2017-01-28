@@ -80,7 +80,10 @@ class PapersViewController: NSViewController, NSTableViewDelegate, NSTableViewDa
     }
     
     @IBAction func remove(_ sender: Any) {
-        papers.remove(at: papersTableView.selectedRow)
+        let removedPaper = papers.remove(at: papersTableView.selectedRow)
+        if removedPaper.objectId != nil {
+            DbManager.sharedInstance.deletePaper(paper: removedPaper)
+        }
         papersTableView.reloadData()
         removeButton.isEnabled = false
         updateSelectedPaper()

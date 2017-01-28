@@ -59,4 +59,35 @@ class DbManager {
         })
     }
     
+    func deleteEvent(event: Event) {
+        deleteRelatedPapers(event: event) { 
+            self.backendless?.data.remove(Event.ofClass(), sid: event.objectId, response: { (ref) in
+                print("delete ref: \(ref)")
+            }, error: { (error) in
+                print("\(error.debugDescription)")
+            })
+
+        }
+    }
+    
+    func deleteRelatedPapers(event: Event, callback: @escaping () -> Void) {
+        let query = BackendlessDataQuery()
+        query.whereClause = "Event[papers].objectId = \'\(event.objectId!)\'"
+        backendless?.data.removeAll(Paper.ofClass(), dataQuery: query, response: { (response) in
+            print("response: \(response)")
+            callback()
+        }, error: { (error) in
+            print("error: \(error.debugDescription)")
+            callback()
+        })
+    }
+    
+    func deletePaper(paper: Paper) {
+        backendless?.data.remove(paper, response: { (ref) in
+            print("delete ref: \(ref)")
+        }, error: { (error) in
+            print("\(error.debugDescription)")
+        })
+    }
+    
 }
