@@ -8,7 +8,7 @@
 
 import Cocoa
 
-class EventViewController: NSViewController, PapersViewControllerDelegate {
+class EventViewController: NSViewController {
 
     @IBOutlet weak var datePicker: NSDatePicker!
     @IBOutlet weak var startTimePicker: NSDatePicker!
@@ -94,6 +94,7 @@ class EventViewController: NSViewController, PapersViewControllerDelegate {
         event!.location = locationTextField.stringValue
         event!.subtitle = subtitleTextField.stringValue
         event!.details = descriptionTextView.string
+        event!.papers = papersViewController!.papers
         
         DbManager.sharedInstance.updateEvent(event: event!) { (savedEvent, error) in
             if let err = error {
@@ -111,15 +112,9 @@ class EventViewController: NSViewController, PapersViewControllerDelegate {
         return finalDate
     }
     
-    func updatePapers(papers: [Paper]) {
-        event?.papers = papers
-        saveEvent()
-    }
-    
     override func prepare(for segue: NSStoryboardSegue, sender: Any?) {
         if let controller = segue.destinationController as? PapersViewController {
             papersViewController = controller
-            papersViewController?.delegate = self
         }
     }
 

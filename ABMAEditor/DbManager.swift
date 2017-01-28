@@ -45,18 +45,6 @@ class DbManager {
         })
     }
     
-    func updatePaper(paper: Paper, callback: @escaping (_ savedPaper: Paper?, _ errorString: String?) -> Void) {
-        backendless?.persistenceService.of(Paper.ofClass()).save(paper, response: { (response) in
-            if let savedPaper = response as? Paper {
-                callback(savedPaper, nil)
-            }
-            callback(nil, nil)
-        }, error: { (error) in
-            print("error: \(error)")
-            callback(nil, error.debugDescription)
-        })
-    }
-    
     func getEvents(callback: @escaping (_ events: [Event]?, _ errorString: String?) -> Void) {
         let dataQuery = BackendlessDataQuery()
         

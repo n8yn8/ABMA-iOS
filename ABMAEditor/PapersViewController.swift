@@ -17,8 +17,6 @@ class PapersViewController: NSViewController, NSTableViewDelegate, NSTableViewDa
     @IBOutlet var abstractTextView: NSTextView!
     @IBOutlet weak var saveButton: NSButtonCell!
     
-    weak var delegate: PapersViewControllerDelegate?
-    
     var papers = [Paper]() {
         didSet {
             papersTableView.reloadData()
@@ -94,17 +92,7 @@ class PapersViewController: NSViewController, NSTableViewDelegate, NSTableViewDa
         let abstract = abstractTextView.string
         let paper = Paper()
         paper.initWith(title: title, author: author, abstract: abstract!)
-        DbManager.sharedInstance.updatePaper(paper: paper) { (savedPaper, error) in
-            if let thisPaper = savedPaper {
-                self.papers.append(thisPaper)
-                self.papersTableView.reloadData()
-                self.delegate?.updatePapers(papers: self.papers)
-            }
-        }
-        
+        self.papers.append(paper)
+        self.papersTableView.reloadData()
     }
-}
-
-protocol PapersViewControllerDelegate: class {
-    func updatePapers(papers: [Paper])
 }
