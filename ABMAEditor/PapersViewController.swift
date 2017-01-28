@@ -92,10 +92,16 @@ class PapersViewController: NSViewController, NSTableViewDelegate, NSTableViewDa
         let title = titleTextField.stringValue
         let author = authorTextField.stringValue
         let abstract = abstractTextView.string
-        let paper = Paper(title: title, author: author, abstract: abstract!)
-        papers.append(paper)
-        papersTableView.reloadData()
-        delegate?.updatePapers(papers: papers)
+        let paper = Paper()
+        paper.initWith(title: title, author: author, abstract: abstract!)
+        DbManager.sharedInstance.updatePaper(paper: paper) { (savedPaper, error) in
+            if let thisPaper = savedPaper {
+                self.papers.append(thisPaper)
+                self.papersTableView.reloadData()
+                self.delegate?.updatePapers(papers: self.papers)
+            }
+        }
+        
     }
 }
 

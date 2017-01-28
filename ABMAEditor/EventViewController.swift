@@ -74,12 +74,16 @@ class EventViewController: NSViewController, PapersViewControllerDelegate {
     }
 
     @IBAction func save(_ sender: NSButton) {
-        
+        saveEvent()
+    }
+    
+    func saveEvent() {
         let startDate = buildDate(timePart: startTimePicker.dateValue)
         let endDate = buildDate(timePart: endTimePicker.dateValue)
         
         if event == nil {
-            event = Event(startDate: startDate, endDate: endDate, title: titleTextField.stringValue)
+            event = Event()
+            event!.initWith(startDate: startDate, endDate: endDate, title: titleTextField.stringValue)
         } else {
             event?.startDate = startDate
             event?.endDate = endDate
@@ -89,9 +93,14 @@ class EventViewController: NSViewController, PapersViewControllerDelegate {
         event!.location = locationTextField.stringValue
         event!.subtitle = subtitleTextField.stringValue
         event!.details = descriptionTextView.string
-        event!.updatedAt = Date()
         
-        delegate?.updateEvent(event: event!)
+        DbManager.sharedInstance.updateEvent(event: event!) { (savedEvent, error) in
+            if let err = error {
+                print("error: \(err)")
+            } else if let thisEvent = savedEvent {
+                self.delegate?.updateEvent(event: thisEvent)
+            }
+        }
     }
     
     func buildDate(timePart: Date) -> Date {
@@ -103,7 +112,7 @@ class EventViewController: NSViewController, PapersViewControllerDelegate {
     
     func updatePapers(papers: [Paper]) {
         event?.papers = papers
-        delegate?.updateEvent(event: event!)
+        saveEvent()
     }
     
     override func prepare(for segue: NSStoryboardSegue, sender: Any?) {

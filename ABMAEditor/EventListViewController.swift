@@ -17,8 +17,8 @@ class EventListViewController: NSViewController, NSTableViewDelegate, NSTableVie
     
     private let formatter = DateFormatter()
     
-    private var eventList = [Date: Event]()
-    private var eventListKeys = [Date]()
+    private var eventList = [String: Event]()
+    private var eventListKeys = [String]()
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -32,11 +32,9 @@ class EventListViewController: NSViewController, NSTableViewDelegate, NSTableVie
         yearSelected(self)
     }
     
-    func setEventList(list: [Date: Event]) {
+    func setEventList(list: [String: Event]) {
         eventList = list
-        eventListKeys = Array(list.keys).sorted(by: { (first, second) -> Bool in
-            first.compare(second) == .orderedAscending
-        })
+        eventListKeys = Array(list.keys)
         eventTableView.reloadData()
     }
     
@@ -90,5 +88,5 @@ class EventListViewController: NSViewController, NSTableViewDelegate, NSTableVie
 protocol MasterViewControllerDelegate: class {
     func updateSeelctedYear(year: String)
     func updateSelectedEvent(event: Event?)
-    func removeSelectedEvent(key: Date)
+    func removeSelectedEvent(key: String)
 }

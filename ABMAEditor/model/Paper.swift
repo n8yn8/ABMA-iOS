@@ -10,26 +10,17 @@ import Cocoa
 
 class Paper: NSObject {
     
-    var title: String
-    var author: String
-    var abstract: String
-    var createdAt: Date
-    var updatedAt: Date
+    var objectId: String?
+    var title: String!
+    var author: String!
+    var abstract: String!
+    var created: Date?
+    var updated: Date?
     
-    init(title: String, author: String, abstract: String, createdAt: Date, updatedAt: Date) {
+    func initWith(title: String, author: String, abstract: String) {
         self.title = title
         self.author = author
         self.abstract = abstract
-        self.createdAt = createdAt
-        self.updatedAt = updatedAt
-    }
-    
-    init(title: String, author: String, abstract: String) {
-        self.title = title
-        self.author = author
-        self.abstract = abstract
-        self.createdAt = Date()
-        self.updatedAt = Date()
     }
 
 }

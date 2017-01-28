@@ -22,4 +22,39 @@ class DbManager {
         backendless?.initApp(APP_ID, secret:SECRET_KEY, version:VERSION_NUM)
     }
     
+    func registerUser(email: String, password: String) {
+        let user: BackendlessUser = BackendlessUser()
+        user.email = email as NSString!
+        user.password = password as NSString!
+        backendless?.userService.registering(user, response: { (response) in
+            print("response: \(response)")
+        }, error: { (error) in
+            print("error: \(error)")
+        })
+    }
+    
+    func updateEvent(event: Event, callback: @escaping (_ savedEvent: Event?, _ errorString: String?) -> Void) {
+        backendless?.persistenceService.of(Event.ofClass()).save(event, response: { (response) in
+            if let savedEvent = response as? Event {
+                callback(savedEvent, nil)
+            }
+            callback(nil, nil)
+        }, error: { (error) in
+            print("error: \(error)")
+            callback(nil, error.debugDescription)
+        })
+    }
+    
+    func updatePaper(paper: Paper, callback: @escaping (_ savedPaper: Paper?, _ errorString: String?) -> Void) {
+        backendless?.persistenceService.of(Paper.ofClass()).save(paper, response: { (response) in
+            if let savedPaper = response as? Paper {
+                callback(savedPaper, nil)
+            }
+            callback(nil, nil)
+        }, error: { (error) in
+            print("error: \(error)")
+            callback(nil, error.debugDescription)
+        })
+    }
+    
 }

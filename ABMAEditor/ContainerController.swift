@@ -12,27 +12,16 @@ class ContainerController: NSSplitViewController {
     
     var eventListController: EventListViewController!
     var eventController: EventViewController!
-    var years = [String: [Date: Event]]()
+    var years = [String: [String: Event]]()
     var selectedYear: String!
-    var eventList = [Date: Event]()
+    var eventList = [String: Event]()
     
     override func viewDidLoad() {
         super.viewDidLoad()
         
         for j in 0 ..< 5 {
             let yearName = "201\(j)"
-            var theseEvents = [Date: Event]()
-            for i in 0 ..< 5 {
-                let event = Event(startDate: Date(), endDate: Date(), title: "title \(i) \(j)")
-                
-                var papers = [Paper]()
-                for k in 0 ..< 5 {
-                    let paper = Paper(title: "title \(i) \(k)", author: "author \(k)", abstract: "Some abstract \(i) \(k)")
-                    papers.append(paper)
-                }
-                event.papers = papers
-                theseEvents[event.createdAt] = event
-            }
+            let theseEvents = [String: Event]()
             years[yearName] = theseEvents
         }
         
@@ -66,7 +55,7 @@ extension ContainerController: MasterViewControllerDelegate {
         eventController.representedObject = event
     }
     
-    func removeSelectedEvent(key: Date) {
+    func removeSelectedEvent(key: String) {
         eventList.removeValue(forKey: key)
         update()
     }
@@ -74,7 +63,7 @@ extension ContainerController: MasterViewControllerDelegate {
 
 extension ContainerController: EventViewControllerDelegate {
     func updateEvent(event: Event) {
-        eventList[event.createdAt] = event
+        eventList[event.objectId!] = event
         years[selectedYear] = eventList
         update()
     }
