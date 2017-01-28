@@ -96,12 +96,10 @@ class EventViewController: NSViewController {
         event!.details = descriptionTextView.string
         event!.papers = papersViewController!.papers
         
-        DbManager.sharedInstance.updateEvent(event: event!) { (savedEvent, error) in
-            if let err = error {
-                print("error: \(err)")
-            } else if let thisEvent = savedEvent {
-                self.delegate?.updateEvent(event: thisEvent)
-            }
+        if event!.objectId == nil {
+            self.delegate?.createEvent(event: event!)
+        } else {
+            self.delegate?.updateEvent(event: event!)
         }
     }
     
@@ -122,4 +120,5 @@ class EventViewController: NSViewController {
 
 protocol EventViewControllerDelegate: class {
     func updateEvent(event: Event)
+    func createEvent(event: Event)
 }

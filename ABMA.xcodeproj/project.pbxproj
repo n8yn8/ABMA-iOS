@@ -39,6 +39,8 @@
 		434B44F01E1FF92900963096 /* EventListViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 434B44EF1E1FF92900963096 /* EventListViewController.swift */; };
 		434B44F21E23222700963096 /* ContainerController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 434B44F11E23222700963096 /* ContainerController.swift */; };
 		4352A8791AB28BBE00EC03CB /* BaseViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 4352A8781AB28BBE00EC03CB /* BaseViewController.m */; };
+		435EEE681E3D329F00C9CF84 /* Year.swift in Sources */ = {isa = PBXBuildFile; fileRef = 435EEE671E3D329F00C9CF84 /* Year.swift */; };
+		435EEE6E1E3D3A4200C9CF84 /* NewYearsViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 435EEE6D1E3D3A4200C9CF84 /* NewYearsViewController.swift */; };
 		4378FD9B1E3A452F00319DE0 /* Papers.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 4378FD9A1E3A452F00319DE0 /* Papers.storyboard */; };
 		4378FDA11E3C482C00319DE0 /* DbManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4378FDA01E3C482C00319DE0 /* DbManager.swift */; };
 		438D599E1ABA97D3004FF7ED /* Launch Screen.xib in Resources */ = {isa = PBXBuildFile; fileRef = 438D599D1ABA97D3004FF7ED /* Launch Screen.xib */; };
@@ -120,6 +122,8 @@
 		434B44F11E23222700963096 /* ContainerController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ContainerController.swift; sourceTree = "<group>"; };
 		4352A8771AB28BBE00EC03CB /* BaseViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = BaseViewController.h; sourceTree = "<group>"; };
 		4352A8781AB28BBE00EC03CB /* BaseViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = BaseViewController.m; sourceTree = "<group>"; };
+		435EEE671E3D329F00C9CF84 /* Year.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Year.swift; sourceTree = "<group>"; };
+		435EEE6D1E3D3A4200C9CF84 /* NewYearsViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = NewYearsViewController.swift; sourceTree = "<group>"; };
 		4378FD9A1E3A452F00319DE0 /* Papers.storyboard */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.storyboard; path = Papers.storyboard; sourceTree = "<group>"; };
 		4378FDA01E3C482C00319DE0 /* DbManager.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = DbManager.swift; sourceTree = "<group>"; };
 		438D599D1ABA97D3004FF7ED /* Launch Screen.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = "Launch Screen.xib"; sourceTree = "<group>"; };
@@ -319,6 +323,7 @@
 				43027B361E39B7F400585C8B /* PapersViewController.swift */,
 				4378FD9A1E3A452F00319DE0 /* Papers.storyboard */,
 				4378FDA01E3C482C00319DE0 /* DbManager.swift */,
+				435EEE6D1E3D3A4200C9CF84 /* NewYearsViewController.swift */,
 			);
 			path = ABMAEditor;
 			sourceTree = "<group>";
@@ -328,6 +333,7 @@
 			children = (
 				434B44ED1E1BF75500963096 /* Event.swift */,
 				432ED0931E267AC300DD92BB /* Paper.swift */,
+				435EEE671E3D329F00C9CF84 /* Year.swift */,
 			);
 			path = model;
 			sourceTree = "<group>";
@@ -666,10 +672,12 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				435EEE6E1E3D3A4200C9CF84 /* NewYearsViewController.swift in Sources */,
 				434B44DF1E1B231F00963096 /* EventViewController.swift in Sources */,
 				43027B371E39B7F400585C8B /* PapersViewController.swift in Sources */,
 				434B44F21E23222700963096 /* ContainerController.swift in Sources */,
 				4378FDA11E3C482C00319DE0 /* DbManager.swift in Sources */,
+				435EEE681E3D329F00C9CF84 /* Year.swift in Sources */,
 				432ED0941E267AC300DD92BB /* Paper.swift in Sources */,
 				434B44F01E1FF92900963096 /* EventListViewController.swift in Sources */,
 				434B44EE1E1BF75500963096 /* Event.swift in Sources */,

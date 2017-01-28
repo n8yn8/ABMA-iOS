@@ -18,8 +18,6 @@ class Event: NSObject {
     var subtitle: String?
 //    var time: String?
     var title: String!
-    var created: Date!
-    var updated: Date?
 //    var day: Day
 //    var note: Note
     var papers = [Paper]()

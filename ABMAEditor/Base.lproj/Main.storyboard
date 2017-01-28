@@ -847,13 +847,29 @@
                                     <action selector="yearSelected:" target="cEQ-fS-Qcc" id="ZgW-Hz-UCf"/>
                                 </connections>
                             </popUpButton>
+                            <button verticalHuggingPriority="750" translatesAutoresizingMaskIntoConstraints="NO" id="vYY-WL-OMG">
+                                <rect key="frame" x="50" y="268" width="20" height="22"/>
+                                <constraints>
+                                    <constraint firstAttribute="width" constant="20" id="MMU-cP-QAl"/>
+                                    <constraint firstAttribute="height" constant="20" id="nC1-NQ-qdr"/>
+                                </constraints>
+                                <buttonCell key="cell" type="smallSquare" bezelStyle="smallSquare" image="NSAddTemplate" imagePosition="overlaps" alignment="center" lineBreakMode="truncatingTail" state="on" borderStyle="border" imageScaling="proportionallyDown" inset="2" id="eBH-eA-ROI">
+                                    <behavior key="behavior" pushIn="YES" lightByBackground="YES" lightByGray="YES"/>
+                                    <font key="font" metaFont="system"/>
+                                </buttonCell>
+                                <connections>
+                                    <segue destination="M8J-bl-ZkB" kind="sheet" id="sol-f3-WXb"/>
+                                </connections>
+                            </button>
                         </subviews>
                         <constraints>
+                            <constraint firstItem="vYY-WL-OMG" firstAttribute="centerY" secondItem="HP2-tF-jqu" secondAttribute="centerY" id="54l-Gd-jgz"/>
                             <constraint firstItem="DqZ-eV-InO" firstAttribute="leading" secondItem="jr6-Di-Nfw" secondAttribute="leading" constant="10" id="7BO-IZ-13f"/>
                             <constraint firstItem="HP2-tF-jqu" firstAttribute="leading" secondItem="jr6-Di-Nfw" secondAttribute="leading" constant="10" id="FfK-hn-jvn"/>
                             <constraint firstAttribute="trailing" secondItem="OhN-Z6-vzp" secondAttribute="trailing" id="Kto-VU-Pco"/>
                             <constraint firstAttribute="bottom" secondItem="DqZ-eV-InO" secondAttribute="bottom" constant="10" id="Uya-cy-pvi"/>
                             <constraint firstItem="OhN-Z6-vzp" firstAttribute="leading" secondItem="jr6-Di-Nfw" secondAttribute="leading" id="Zqu-UO-0nf"/>
+                            <constraint firstItem="vYY-WL-OMG" firstAttribute="leading" secondItem="HP2-tF-jqu" secondAttribute="trailing" constant="8" id="fzm-bO-VFO"/>
                             <constraint firstItem="i1c-DE-E1x" firstAttribute="centerY" secondItem="DqZ-eV-InO" secondAttribute="centerY" id="g1q-PT-lN0"/>
                             <constraint firstItem="OhN-Z6-vzp" firstAttribute="top" secondItem="HP2-tF-jqu" secondAttribute="bottom" constant="10" id="kdW-U4-8ul"/>
                             <constraint firstItem="DqZ-eV-InO" firstAttribute="top" secondItem="OhN-Z6-vzp" secondAttribute="bottom" constant="10" id="lEq-kT-1f5"/>
@@ -870,6 +886,56 @@
                 <customObject id="H0R-bT-vK1" userLabel="First Responder" customClass="NSResponder" sceneMemberID="firstResponder"/>
             </objects>
             <point key="canvasLocation" x="1277" y="417"/>
+        </scene>
+        <!--New Years View Controller-->
+        <scene sceneID="a2u-kV-8v1">
+            <objects>
+                <viewController id="M8J-bl-ZkB" customClass="NewYearsViewController" customModule="ABMAEditor" customModuleProvider="target" sceneMemberID="viewController">
+                    <view key="view" id="aCO-cV-5mM">
+                        <rect key="frame" x="0.0" y="0.0" width="450" height="300"/>
+                        <autoresizingMask key="autoresizingMask"/>
+                        <subviews>
+                            <stepper horizontalHuggingPriority="750" verticalHuggingPriority="750" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="TBk-b1-bVE">
+                                <rect key="frame" x="121" y="256" width="19" height="27"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
+                                <stepperCell key="cell" continuous="YES" alignment="left" minValue="2000" maxValue="2020" doubleValue="2000" id="Cv6-qb-hQQ"/>
+                                <connections>
+                                    <action selector="changed:" target="M8J-bl-ZkB" id="gmi-PL-Dt0"/>
+                                </connections>
+                            </stepper>
+                            <button verticalHuggingPriority="750" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="7Pn-5B-DQx">
+                                <rect key="frame" x="185" y="13" width="81" height="32"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
+                                <buttonCell key="cell" type="push" title="OK" bezelStyle="rounded" alignment="center" borderStyle="border" imageScaling="proportionallyDown" inset="2" id="Nqh-v1-3Yl">
+                                    <behavior key="behavior" pushIn="YES" lightByBackground="YES" lightByGray="YES"/>
+                                    <font key="font" metaFont="system"/>
+                                    <string key="keyEquivalent" base64-UTF8="YES">
+DQ
+</string>
+                                </buttonCell>
+                                <connections>
+                                    <action selector="done:" target="M8J-bl-ZkB" id="pY4-4e-ZiU"/>
+                                </connections>
+                            </button>
+                            <textField verticalHuggingPriority="750" fixedFrame="YES" allowsCharacterPickerTouchBarItem="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Dkv-sv-Z3c">
+                                <rect key="frame" x="20" y="258" width="96" height="22"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
+                                <textFieldCell key="cell" scrollable="YES" lineBreakMode="clipping" selectable="YES" editable="YES" sendsActionOnEndEditing="YES" state="on" borderStyle="bezel" drawsBackground="YES" id="OEs-qM-8hh">
+                                    <font key="font" metaFont="system"/>
+                                    <color key="textColor" name="textColor" catalog="System" colorSpace="catalog"/>
+                                    <color key="backgroundColor" name="textBackgroundColor" catalog="System" colorSpace="catalog"/>
+                                </textFieldCell>
+                            </textField>
+                        </subviews>
+                    </view>
+                    <connections>
+                        <outlet property="yearStepper" destination="TBk-b1-bVE" id="OBR-TB-jIg"/>
+                        <outlet property="yearTextField" destination="Dkv-sv-Z3c" id="EdF-Pi-CVe"/>
+                    </connections>
+                </viewController>
+                <customObject id="LC4-pX-YEB" userLabel="First Responder" customClass="NSResponder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="1809" y="417"/>
         </scene>
         <!--Event View Controller-->
         <scene sceneID="hIz-AP-VOD">

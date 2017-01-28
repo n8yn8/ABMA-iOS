@@ -33,6 +33,18 @@ class DbManager {
         })
     }
     
+    func update(year: Year, callback: @escaping (_ savedYear: Year?, _ errorString: String?) -> Void) {
+        backendless?.persistenceService.of(Year.ofClass()).save(year, response: { (response) in
+            if let saved = response as? Year {
+                callback(saved, nil)
+            }
+            callback(nil, nil)
+        }, error: { (error) in
+            print("error: \(error)")
+            callback(nil, error.debugDescription)
+        })
+    }
+    
     func updateEvent(event: Event, callback: @escaping (_ savedEvent: Event?, _ errorString: String?) -> Void) {
         backendless?.persistenceService.of(Event.ofClass()).save(event, response: { (response) in
             if let savedEvent = response as? Event {
@@ -45,13 +57,13 @@ class DbManager {
         })
     }
     
-    func getEvents(callback: @escaping (_ events: [Event]?, _ errorString: String?) -> Void) {
+    func getYears(callback: @escaping (_ years: [Year]?, _ errorString: String?) -> Void) {
         let dataQuery = BackendlessDataQuery()
         
-        backendless?.persistenceService.find(Event.ofClass(), dataQuery: dataQuery, response: { (response) in
+        backendless?.persistenceService.find(Year.ofClass(), dataQuery: dataQuery, response: { (response) in
             print("response \(response)")
-            if let events = response?.data as? [Event] {
-                callback(events, nil)
+            if let years = response?.data as? [Year] {
+                callback(years, nil)
             }
         }, error: { (error) in
             print("error: \(error)")
