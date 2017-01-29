@@ -10,6 +10,8 @@ import Cocoa
 
 class YearViewController: NSViewController {
     
+    @IBOutlet var welcomeTextView: NSTextView!
+    @IBOutlet var infoTextView: NSTextView!
     var containerController: ContainerController?
     
     var years = [String: Year]()
@@ -34,6 +36,7 @@ class YearViewController: NSViewController {
     
     func setYears(years: [String]) {
         yearsPopUpButton.addItems(withTitles: years)
+        yearsPopUpButton.selectItem(at: 0)
     }
     
     @IBAction func yearSelected(_ sender: NSPopUpButton) {
@@ -48,6 +51,8 @@ class YearViewController: NSViewController {
             if "\(thisYear.name)" == year {
                 selectedYear = thisYear
                 containerController?.updateEventList(events: thisYear.events)
+                welcomeTextView.string = thisYear.welcome
+                infoTextView.string = thisYear.info
             }
         }
     }
@@ -69,6 +74,20 @@ class YearViewController: NSViewController {
         }
     }
     
+    @IBAction func saveWelcome(_ sender: Any) {
+        selectedYear?.welcome = welcomeTextView.string
+        updateYear()
+    }
+    
+    @IBAction func saveInfo(_ sender: Any) {
+        selectedYear?.info = infoTextView.string
+        updateYear()
+    }
+    
+    func updateYear() {
+        DbManager.sharedInstance.update(year: selectedYear!) { (saved, error) in
+        }
+    }
 }
 
 extension YearViewController: NewYearsViewControllerDelegate {

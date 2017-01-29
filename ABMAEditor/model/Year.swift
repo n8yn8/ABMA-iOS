@@ -13,4 +13,6 @@ class Year: NSObject {
     var objectId: String?
     var name = 0
     var events = [Event]()
+    var welcome: String?
+    var info: String?
 }
