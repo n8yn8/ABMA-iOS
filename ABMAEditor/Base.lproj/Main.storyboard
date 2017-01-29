@@ -661,6 +661,14 @@
             </objects>
             <point key="canvasLocation" x="75" y="0.0"/>
         </scene>
+        <!--Sponsors-->
+        <scene sceneID="FGv-WE-Ff8">
+            <objects>
+                <controllerPlaceholder storyboardName="Sponsors" id="CkX-lF-ojs" sceneMemberID="viewController"/>
+                <customObject id="mx2-8T-to1" userLabel="First Responder" customClass="NSResponder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="560" y="170"/>
+        </scene>
         <!--Year View Controller-->
         <scene sceneID="WCL-4N-qlP">
             <objects>
@@ -826,6 +834,20 @@
                                         <view key="view" id="8st-rd-w5M">
                                             <rect key="frame" x="10" y="33" width="444" height="229"/>
                                             <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                                            <subviews>
+                                                <containerView translatesAutoresizingMaskIntoConstraints="NO" id="cx3-VB-Ovc">
+                                                    <rect key="frame" x="0.0" y="0.0" width="444" height="229"/>
+                                                    <connections>
+                                                        <segue destination="CkX-lF-ojs" kind="embed" id="bFn-d6-rHW"/>
+                                                    </connections>
+                                                </containerView>
+                                            </subviews>
+                                            <constraints>
+                                                <constraint firstAttribute="trailing" secondItem="cx3-VB-Ovc" secondAttribute="trailing" id="6xH-ff-adF"/>
+                                                <constraint firstAttribute="bottom" secondItem="cx3-VB-Ovc" secondAttribute="bottom" id="CyX-GH-GmB"/>
+                                                <constraint firstItem="cx3-VB-Ovc" firstAttribute="top" secondItem="8st-rd-w5M" secondAttribute="top" id="EsW-jO-dR5"/>
+                                                <constraint firstItem="cx3-VB-Ovc" firstAttribute="leading" secondItem="8st-rd-w5M" secondAttribute="leading" id="eS7-fI-0oq"/>
+                                            </constraints>
                                         </view>
                                     </tabViewItem>
                                 </tabViewItems>

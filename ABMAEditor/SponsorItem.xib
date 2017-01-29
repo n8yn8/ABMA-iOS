@@ -1,0 +1,50 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<document type="com.apple.InterfaceBuilder3.Cocoa.XIB" version="3.0" toolsVersion="11762" systemVersion="16C67" targetRuntime="MacOSX.Cocoa" propertyAccessControl="none" useAutolayout="YES" customObjectInstantitationMethod="direct">
+    <dependencies>
+        <deployment identifier="macosx"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.CocoaPlugin" version="11762"/>
+        <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
+    </dependencies>
+    <objects>
+        <customObject id="-2" userLabel="File's Owner" customClass="SponsorItem" customModule="ABMAEditor" customModuleProvider="target">
+            <connections>
+                <outlet property="imageView" destination="2UP-Pj-3iM" id="KrC-w2-Ayc"/>
+                <outlet property="textField" destination="jXI-T3-7c5" id="zse-DZ-0fp"/>
+                <outlet property="view" destination="Hz6-mo-xeY" id="0bl-1N-x8E"/>
+            </connections>
+        </customObject>
+        <customObject id="-1" userLabel="First Responder" customClass="FirstResponder"/>
+        <customObject id="-3" userLabel="Application" customClass="NSObject"/>
+        <customView id="Hz6-mo-xeY">
+            <rect key="frame" x="0.0" y="0.0" width="480" height="272"/>
+            <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
+            <subviews>
+                <imageView horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="2UP-Pj-3iM">
+                    <rect key="frame" x="0.0" y="57" width="480" height="215"/>
+                    <imageCell key="cell" refusesFirstResponder="YES" alignment="left" imageScaling="proportionallyDown" id="XbE-00-cwh"/>
+                </imageView>
+                <textField horizontalHuggingPriority="251" verticalHuggingPriority="750" allowsCharacterPickerTouchBarItem="NO" translatesAutoresizingMaskIntoConstraints="NO" id="jXI-T3-7c5">
+                    <rect key="frame" x="18" y="20" width="444" height="17"/>
+                    <constraints>
+                        <constraint firstAttribute="height" constant="17" id="B4a-ca-MEk"/>
+                    </constraints>
+                    <textFieldCell key="cell" scrollable="YES" lineBreakMode="clipping" sendsActionOnEndEditing="YES" alignment="center" title="Label" id="gCB-9s-YKH">
+                        <font key="font" metaFont="system"/>
+                        <color key="textColor" name="labelColor" catalog="System" colorSpace="catalog"/>
+                        <color key="backgroundColor" name="controlColor" catalog="System" colorSpace="catalog"/>
+                    </textFieldCell>
+                </textField>
+            </subviews>
+            <constraints>
+                <constraint firstItem="2UP-Pj-3iM" firstAttribute="leading" secondItem="Hz6-mo-xeY" secondAttribute="leading" id="6Qi-rY-LQD"/>
+                <constraint firstItem="jXI-T3-7c5" firstAttribute="top" secondItem="2UP-Pj-3iM" secondAttribute="bottom" constant="20" id="7Rq-JK-NhE"/>
+                <constraint firstAttribute="trailing" secondItem="jXI-T3-7c5" secondAttribute="trailing" constant="20" id="7YV-y4-3OY"/>
+                <constraint firstItem="2UP-Pj-3iM" firstAttribute="top" secondItem="Hz6-mo-xeY" secondAttribute="top" id="cR4-Ou-n11"/>
+                <constraint firstItem="jXI-T3-7c5" firstAttribute="leading" secondItem="Hz6-mo-xeY" secondAttribute="leading" constant="20" id="kY5-Jf-aUE"/>
+                <constraint firstAttribute="trailing" secondItem="2UP-Pj-3iM" secondAttribute="trailing" id="khs-Wj-Xfr"/>
+                <constraint firstAttribute="bottom" secondItem="jXI-T3-7c5" secondAttribute="bottom" constant="20" id="rR2-PB-S9X"/>
+            </constraints>
+        </customView>
+        <collectionViewItem id="k9k-Fm-G16" customClass="SponsorItem" customModule="ABMAEditor" customModuleProvider="target"/>
+    </objects>
+</document>
