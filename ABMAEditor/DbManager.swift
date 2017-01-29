@@ -7,6 +7,7 @@
 //
 
 import Foundation
+import Cocoa
 
 class DbManager {
     
@@ -99,6 +100,17 @@ class DbManager {
             print("delete ref: \(ref)")
         }, error: { (error) in
             print("\(error.debugDescription)")
+        })
+    }
+    
+    func uploadImage(name: String, image: NSData, callback: @escaping (_ imageUrl: String) -> Void) {
+        backendless?.file.upload("sponsors/\(name)", content: image as Data!, overwrite: true, response: { (saved) in
+            if let file = saved {
+                print("file uplodaed")
+                callback(file.fileURL)
+            }
+        }, error: { (error) in
+            print("error: \(error.debugDescription)")
         })
     }
     

@@ -8,9 +8,10 @@
 
 import Foundation
 
-class Sponsor {
+class Sponsor: NSObject {
     
     var objectId: String?
     var url: String?
+    var imageUrl: String?
     
 }

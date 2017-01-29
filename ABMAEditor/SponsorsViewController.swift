@@ -14,6 +14,8 @@ class SponsorsViewController: NSViewController {
 
     @IBOutlet weak var collectionView: NSCollectionView!
     @IBOutlet weak var removeButton: NSButton!
+    
+    weak var delegate: SponsorsViewControllerDelegate?
     lazy var sheetViewController: NewSponsorViewController = {
         return self.storyboard!.instantiateController(withIdentifier: "NewSponsorViewController")
             as! NewSponsorViewController
@@ -22,12 +24,6 @@ class SponsorsViewController: NSViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         // Do view setup here.
-        
-        for i in 0 ..< 30 {
-            let sponsor = Sponsor()
-            sponsor.url = "Some url \(i)"
-            sponsors.append(sponsor)
-        }
         
         configureCollectionView()
     }
@@ -44,25 +40,37 @@ class SponsorsViewController: NSViewController {
         view.wantsLayer = true
     }
     
+    func updateSponsors(sponsorList: [Sponsor]) {
+        sponsors.removeAll()
+        sponsors.append(contentsOf: sponsorList)
+        collectionView.reloadData()
+    }
+    
     @IBAction func add(_ sender: Any) {
         let fileDialog = NSOpenPanel()
         fileDialog.runModal()
         
         let path = fileDialog.url?.path
+        let name = fileDialog.url?.lastPathComponent
+        print("name = \(name)")
         
         // Make sure that a path was chosen
         if let path = path {
-            loadImageFromPath(path: path)
+            loadImageFromPath(name: name!, path: path)
         }
     }
     
-    func loadImageFromPath(path: String) {
+    func loadImageFromPath(name: String, path: String) {
+        
+        let data = NSData(contentsOfFile: path)
         
         let image = NSImage(contentsOfFile: path)
         
         if let image = image  {
             print("Image exists")
             sheetViewController.image = image
+            sheetViewController.imageData = data
+            sheetViewController.imageName = name
             sheetViewController.delegate = self
             presentViewControllerAsSheet(sheetViewController)
         } else {
@@ -98,9 +106,11 @@ extension SponsorsViewController: NSCollectionViewDataSource {
 }
 
 extension SponsorsViewController: NewSponsorViewControllerDelegate {
-    func saveSponsor(url: String, image: NSImage) {
-        let sponsor = Sponsor()
-        sponsor.url = url
-        
+    func saveSponsor(sponsor: Sponsor) {
+        delegate?.saveSponsor(savedSponsor: sponsor)
     }
+}
+
+protocol SponsorsViewControllerDelegate: class {
+    func saveSponsor(savedSponsor: Sponsor)
 }

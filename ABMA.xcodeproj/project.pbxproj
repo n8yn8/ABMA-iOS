@@ -139,7 +139,7 @@
 		435EEE671E3D329F00C9CF84 /* Year.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Year.swift; sourceTree = "<group>"; };
 		435EEE6D1E3D3A4200C9CF84 /* NewYearsViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = NewYearsViewController.swift; sourceTree = "<group>"; };
 		4378FD9A1E3A452F00319DE0 /* Papers.storyboard */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.storyboard; path = Papers.storyboard; sourceTree = "<group>"; };
-		4378FDA01E3C482C00319DE0 /* DbManager.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = DbManager.swift; sourceTree = "<group>"; };
+		4378FDA01E3C482C00319DE0 /* DbManager.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = DbManager.swift; path = ../DbManager.swift; sourceTree = "<group>"; };
 		438D599D1ABA97D3004FF7ED /* Launch Screen.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = "Launch Screen.xib"; sourceTree = "<group>"; };
 		439947E31AB1E9F500D1479B /* NotesViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = NotesViewController.h; sourceTree = "<group>"; };
 		439947E41AB1E9F500D1479B /* NotesViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = NotesViewController.m; sourceTree = "<group>"; };
@@ -336,7 +336,6 @@
 				434B44F11E23222700963096 /* ContainerController.swift */,
 				43027B361E39B7F400585C8B /* PapersViewController.swift */,
 				4378FD9A1E3A452F00319DE0 /* Papers.storyboard */,
-				4378FDA01E3C482C00319DE0 /* DbManager.swift */,
 				435EEE6D1E3D3A4200C9CF84 /* NewYearsViewController.swift */,
 				4313269F1E3D655B003C808E /* YearViewController.swift */,
 				431326A31E3D7605003C808E /* Sponsors.storyboard */,
@@ -351,6 +350,7 @@
 		434B44EC1E1BF74700963096 /* model */ = {
 			isa = PBXGroup;
 			children = (
+				4378FDA01E3C482C00319DE0 /* DbManager.swift */,
 				434B44ED1E1BF75500963096 /* Event.swift */,
 				432ED0931E267AC300DD92BB /* Paper.swift */,
 				435EEE671E3D329F00C9CF84 /* Year.swift */,

@@ -15,15 +15,31 @@ class NewSponsorViewController: NSViewController {
     
     weak var delegate: NewSponsorViewControllerDelegate?
     var image: NSImage!
+    var imageData: NSData!
+    var imageName: String!
     
     override func viewDidLoad() {
         super.viewDidLoad()
         // Do view setup here.
+        
+    }
+    
+    override func viewWillAppear() {
+        super.viewWillAppear()
+        
         imageView.image = image
+        urlTextField.stringValue = ""
     }
     
     @IBAction func save(_ sender: Any) {
-        delegate?.saveSponsor(url: urlTextField.stringValue, image: image)
+        DbManager.sharedInstance.uploadImage(name: imageName, image: imageData) { (url) in
+            let sponsor = Sponsor()
+            sponsor.url = self.urlTextField.stringValue
+            sponsor.imageUrl = url
+            self.delegate?.saveSponsor(sponsor: sponsor)
+            self.dismiss(nil)
+        }
+        
     }
     
     @IBAction func cancel(_ sender: Any) {
@@ -32,5 +48,5 @@ class NewSponsorViewController: NSViewController {
 }
 
 protocol NewSponsorViewControllerDelegate: class {
-    func saveSponsor(url: String, image: NSImage)
+    func saveSponsor(sponsor: Sponsor)
 }

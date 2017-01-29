@@ -15,4 +15,5 @@ class Year: NSObject {
     var events = [Event]()
     var welcome: String?
     var info: String?
+    var sponsors = [Sponsor]()
 }
