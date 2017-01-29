@@ -16,6 +16,7 @@
 		431326A91E3D7AF3003C808E /* SponsorsViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 431326A71E3D7AF3003C808E /* SponsorsViewController.swift */; };
 		431326AF1E3D7BE7003C808E /* SponsorItem.swift in Sources */ = {isa = PBXBuildFile; fileRef = 431326AD1E3D7BE7003C808E /* SponsorItem.swift */; };
 		431326B01E3D7BE7003C808E /* SponsorItem.xib in Resources */ = {isa = PBXBuildFile; fileRef = 431326AE1E3D7BE7003C808E /* SponsorItem.xib */; };
+		431326B21E3D8B47003C808E /* NewSponsorViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 431326B11E3D8B47003C808E /* NewSponsorViewController.swift */; };
 		43201F2F1ABE37A600486999 /* InfoViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 43201F2E1ABE37A600486999 /* InfoViewController.m */; };
 		43201F351ABE41A000486999 /* Event.m in Sources */ = {isa = PBXBuildFile; fileRef = 43201F341ABE41A000486999 /* Event.m */; };
 		43201F381ABE41A100486999 /* Day.m in Sources */ = {isa = PBXBuildFile; fileRef = 43201F371ABE41A100486999 /* Day.m */; };
@@ -91,6 +92,7 @@
 		431326A71E3D7AF3003C808E /* SponsorsViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SponsorsViewController.swift; sourceTree = "<group>"; };
 		431326AD1E3D7BE7003C808E /* SponsorItem.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SponsorItem.swift; sourceTree = "<group>"; };
 		431326AE1E3D7BE7003C808E /* SponsorItem.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = SponsorItem.xib; sourceTree = "<group>"; };
+		431326B11E3D8B47003C808E /* NewSponsorViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = NewSponsorViewController.swift; sourceTree = "<group>"; };
 		43201F2D1ABE37A600486999 /* InfoViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = InfoViewController.h; sourceTree = "<group>"; };
 		43201F2E1ABE37A600486999 /* InfoViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = InfoViewController.m; sourceTree = "<group>"; };
 		43201F331ABE41A000486999 /* Event.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Event.h; sourceTree = "<group>"; };
@@ -341,6 +343,7 @@
 				431326A71E3D7AF3003C808E /* SponsorsViewController.swift */,
 				431326AD1E3D7BE7003C808E /* SponsorItem.swift */,
 				431326AE1E3D7BE7003C808E /* SponsorItem.xib */,
+				431326B11E3D8B47003C808E /* NewSponsorViewController.swift */,
 			);
 			path = ABMAEditor;
 			sourceTree = "<group>";
@@ -697,6 +700,7 @@
 				435EEE6E1E3D3A4200C9CF84 /* NewYearsViewController.swift in Sources */,
 				434B44DF1E1B231F00963096 /* EventViewController.swift in Sources */,
 				43027B371E39B7F400585C8B /* PapersViewController.swift in Sources */,
+				431326B21E3D8B47003C808E /* NewSponsorViewController.swift in Sources */,
 				434B44F21E23222700963096 /* ContainerController.swift in Sources */,
 				4378FDA11E3C482C00319DE0 /* DbManager.swift in Sources */,
 				431326AF1E3D7BE7003C808E /* SponsorItem.swift in Sources */,

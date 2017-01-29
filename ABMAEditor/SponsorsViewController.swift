@@ -13,6 +13,11 @@ class SponsorsViewController: NSViewController {
     var sponsors = [Sponsor]()
 
     @IBOutlet weak var collectionView: NSCollectionView!
+    @IBOutlet weak var removeButton: NSButton!
+    lazy var sheetViewController: NewSponsorViewController = {
+        return self.storyboard!.instantiateController(withIdentifier: "NewSponsorViewController")
+            as! NewSponsorViewController
+    }()
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -39,6 +44,36 @@ class SponsorsViewController: NSViewController {
         view.wantsLayer = true
     }
     
+    @IBAction func add(_ sender: Any) {
+        let fileDialog = NSOpenPanel()
+        fileDialog.runModal()
+        
+        let path = fileDialog.url?.path
+        
+        // Make sure that a path was chosen
+        if let path = path {
+            loadImageFromPath(path: path)
+        }
+    }
+    
+    func loadImageFromPath(path: String) {
+        
+        let image = NSImage(contentsOfFile: path)
+        
+        if let image = image  {
+            print("Image exists")
+            sheetViewController.image = image
+            sheetViewController.delegate = self
+            presentViewControllerAsSheet(sheetViewController)
+        } else {
+            print("missing image at: \(path)")
+        }
+        
+    }
+    
+    @IBAction func remove(_ sender: Any) {
+    }
+    
 }
 
 extension SponsorsViewController: NSCollectionViewDataSource {
@@ -60,4 +95,12 @@ extension SponsorsViewController: NSCollectionViewDataSource {
         return sponsorItem
     }
     
+}
+
+extension SponsorsViewController: NewSponsorViewControllerDelegate {
+    func saveSponsor(url: String, image: NSImage) {
+        let sponsor = Sponsor()
+        sponsor.url = url
+        
+    }
 }
