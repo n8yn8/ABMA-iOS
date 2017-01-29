@@ -9,6 +9,7 @@
         <customObject id="-2" userLabel="File's Owner" customClass="SponsorItem" customModule="ABMAEditor" customModuleProvider="target">
             <connections>
                 <outlet property="imageView" destination="2UP-Pj-3iM" id="KrC-w2-Ayc"/>
+                <outlet property="spinner" destination="byD-Ja-zS2" id="KmX-TC-5uH"/>
                 <outlet property="textField" destination="jXI-T3-7c5" id="zse-DZ-0fp"/>
                 <outlet property="view" destination="Hz6-mo-xeY" id="0bl-1N-x8E"/>
             </connections>
@@ -34,15 +35,20 @@
                         <color key="backgroundColor" name="controlColor" catalog="System" colorSpace="catalog"/>
                     </textFieldCell>
                 </textField>
+                <progressIndicator wantsLayer="YES" horizontalHuggingPriority="750" verticalHuggingPriority="750" maxValue="100" displayedWhenStopped="NO" bezeled="NO" indeterminate="YES" style="spinning" translatesAutoresizingMaskIntoConstraints="NO" id="byD-Ja-zS2">
+                    <rect key="frame" x="224" y="120" width="32" height="32"/>
+                </progressIndicator>
             </subviews>
             <constraints>
                 <constraint firstItem="2UP-Pj-3iM" firstAttribute="leading" secondItem="Hz6-mo-xeY" secondAttribute="leading" id="6Qi-rY-LQD"/>
                 <constraint firstItem="jXI-T3-7c5" firstAttribute="top" secondItem="2UP-Pj-3iM" secondAttribute="bottom" constant="20" id="7Rq-JK-NhE"/>
                 <constraint firstAttribute="trailing" secondItem="jXI-T3-7c5" secondAttribute="trailing" constant="20" id="7YV-y4-3OY"/>
                 <constraint firstItem="2UP-Pj-3iM" firstAttribute="top" secondItem="Hz6-mo-xeY" secondAttribute="top" id="cR4-Ou-n11"/>
+                <constraint firstItem="byD-Ja-zS2" firstAttribute="centerY" secondItem="Hz6-mo-xeY" secondAttribute="centerY" id="diF-Rb-Yjh"/>
                 <constraint firstItem="jXI-T3-7c5" firstAttribute="leading" secondItem="Hz6-mo-xeY" secondAttribute="leading" constant="20" id="kY5-Jf-aUE"/>
                 <constraint firstAttribute="trailing" secondItem="2UP-Pj-3iM" secondAttribute="trailing" id="khs-Wj-Xfr"/>
                 <constraint firstAttribute="bottom" secondItem="jXI-T3-7c5" secondAttribute="bottom" constant="20" id="rR2-PB-S9X"/>
+                <constraint firstItem="byD-Ja-zS2" firstAttribute="centerX" secondItem="Hz6-mo-xeY" secondAttribute="centerX" id="ugs-HE-nGz"/>
             </constraints>
         </customView>
         <collectionViewItem id="k9k-Fm-G16" customClass="SponsorItem" customModule="ABMAEditor" customModuleProvider="target"/>

@@ -22,5 +22,6 @@ target 'ABMAEditor' do
 
   # Pods for ABMAEditor
   pod 'Backendless-osx-SDK'
+  pod 'SDWebImage', '~>4.0'
 
 end
