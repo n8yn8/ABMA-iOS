@@ -12,23 +12,11 @@ class ContainerController: NSSplitViewController {
     
     var eventListController: EventListViewController!
     var eventController: EventViewController!
-    var years = [String: Year]()
-    var selectedYear: Year?
     var eventList = [String: Event]()
     
     override func viewDidLoad() {
         super.viewDidLoad()
         
-        DbManager.sharedInstance.getYears { (years, error) in
-            if let data = years {
-                self.years.removeAll()
-                for year in data {
-                    self.years[year.objectId!] = year
-                }
-                self.updateYearOptions()
-                self.update()
-            }
-        }
         
         
         for splitItem in splitViewItems {
@@ -43,13 +31,12 @@ class ContainerController: NSSplitViewController {
 
     }
     
-    func updateYearOptions() {
-        var yearList = [String]()
-        for year in Array(years.values) {
-            yearList.append("\(year.name)")
+    func updateEventList(events: [Event]) {
+        eventList.removeAll()
+        for event in events {
+            eventList[event.objectId!] = event
         }
-        
-        eventListController.setYears(years: yearList)
+        update()
     }
     
     func update() {
@@ -58,30 +45,6 @@ class ContainerController: NSSplitViewController {
 }
 
 extension ContainerController: MasterViewControllerDelegate {
-    
-    func yearCreated(year: Year) {
-        DbManager.sharedInstance.update(year: year) { (saved, error) in
-            if let savedYear = saved {
-                self.years[savedYear.objectId!] = savedYear
-                self.updateYearOptions()
-            }
-        }
-        
-    }
-    
-    func updateSeelctedYear(year: String) {
-        for thisYear in Array(years.values) {
-            if "\(thisYear.name)" == year {
-                selectedYear = thisYear
-                eventList.removeAll()
-                for event in thisYear.events {
-                    eventList[event.objectId!] = event
-                }
-                
-            }
-        }
-        update()
-    }
     
     func updateSelectedEvent(event: Event?) {
         eventController.representedObject = event
@@ -100,20 +63,20 @@ extension ContainerController: EventViewControllerDelegate {
             
         }
         eventList[event.objectId!] = event
-        years[selectedYear!.objectId!]?.events = Array(eventList.values)
+//        years[selectedYear!.objectId!]?.events = Array(eventList.values)
         update()
     }
     
     func createEvent(event: Event) {
-        selectedYear?.events.append(event)
-        DbManager.sharedInstance.update(year: selectedYear!) { (saved, error) in
-            if let savedYear = saved {
-                self.eventList.removeAll()
-                for event in savedYear.events {
-                    self.eventList[event.objectId!] = event
-                }
-                self.update()
-            }
-        }
+//        selectedYear?.events.append(event)
+//        DbManager.sharedInstance.update(year: selectedYear!) { (saved, error) in
+//            if let savedYear = saved {
+//                self.eventList.removeAll()
+//                for event in savedYear.events {
+//                    self.eventList[event.objectId!] = event
+//                }
+//                self.update()
+//            }
+//        }
     }
 }

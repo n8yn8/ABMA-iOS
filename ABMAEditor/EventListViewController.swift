@@ -12,7 +12,6 @@ class EventListViewController: NSViewController, NSTableViewDelegate, NSTableVie
     
     @IBOutlet weak var eventTableView: NSTableView!
     @IBOutlet weak var removeButton: NSButton!
-    @IBOutlet weak var yearsPopUpButton: NSPopUpButton!
     weak var delegate: MasterViewControllerDelegate?
     
     private let formatter = DateFormatter()
@@ -27,22 +26,10 @@ class EventListViewController: NSViewController, NSTableViewDelegate, NSTableVie
         formatter.timeStyle = .short
     }
     
-    func setYears(years: [String]) {
-        yearsPopUpButton.addItems(withTitles: years)
-        yearSelected(self)
-    }
-    
     func setEventList(list: [String: Event]) {
         eventList = list
         eventListKeys = Array(list.keys)
         eventTableView.reloadData()
-    }
-    
-    @IBAction func yearSelected(_ sender: Any) {
-        if !yearsPopUpButton.itemArray.isEmpty {
-            let selectedYear = yearsPopUpButton.itemTitle(at: yearsPopUpButton.indexOfSelectedItem)
-            delegate?.updateSeelctedYear(year: selectedYear)
-        }
     }
     
     func numberOfRows(in tableView: NSTableView) -> Int {
@@ -86,25 +73,9 @@ class EventListViewController: NSViewController, NSTableViewDelegate, NSTableVie
         removeButton.isEnabled = false
     }
     
-    override func prepare(for segue: NSStoryboardSegue, sender: Any?) {
-        if let dvc = segue.destinationController as? NewYearsViewController {
-            dvc.year = 2017
-            dvc.delegate = self
-        }
-    }
-}
-
-extension EventListViewController: NewYearsViewControllerDelegate {
-    func yearCreated(year: Int) {
-        let thisYear = Year()
-        thisYear.name = year
-        self.delegate?.yearCreated(year: thisYear)
-    }
 }
 
 protocol MasterViewControllerDelegate: class {
-    func yearCreated(year: Year)
-    func updateSeelctedYear(year: String)
     func updateSelectedEvent(event: Event?)
     func removeSelectedEvent(key: String)
 }

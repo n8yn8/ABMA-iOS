@@ -10,6 +10,7 @@
 		3D25B7AF9C7EE3BC4CAC82C4 /* libPods-ABMATests.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 7772E1B684CC8FDF0E210670 /* libPods-ABMATests.a */; };
 		43027B371E39B7F400585C8B /* PapersViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 43027B361E39B7F400585C8B /* PapersViewController.swift */; };
 		4305618B1A9AF95000ED4BB0 /* SWRevealViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 4305618A1A9AF95000ED4BB0 /* SWRevealViewController.m */; };
+		431326A01E3D655B003C808E /* YearViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4313269F1E3D655B003C808E /* YearViewController.swift */; };
 		43201F2F1ABE37A600486999 /* InfoViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 43201F2E1ABE37A600486999 /* InfoViewController.m */; };
 		43201F351ABE41A000486999 /* Event.m in Sources */ = {isa = PBXBuildFile; fileRef = 43201F341ABE41A000486999 /* Event.m */; };
 		43201F381ABE41A100486999 /* Day.m in Sources */ = {isa = PBXBuildFile; fileRef = 43201F371ABE41A100486999 /* Day.m */; };
@@ -79,6 +80,7 @@
 		43027B361E39B7F400585C8B /* PapersViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = PapersViewController.swift; sourceTree = "<group>"; };
 		430561891A9AF95000ED4BB0 /* SWRevealViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SWRevealViewController.h; sourceTree = "<group>"; };
 		4305618A1A9AF95000ED4BB0 /* SWRevealViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SWRevealViewController.m; sourceTree = "<group>"; };
+		4313269F1E3D655B003C808E /* YearViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = YearViewController.swift; sourceTree = "<group>"; };
 		43201F2D1ABE37A600486999 /* InfoViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = InfoViewController.h; sourceTree = "<group>"; };
 		43201F2E1ABE37A600486999 /* InfoViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = InfoViewController.m; sourceTree = "<group>"; };
 		43201F331ABE41A000486999 /* Event.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Event.h; sourceTree = "<group>"; };
@@ -324,6 +326,7 @@
 				4378FD9A1E3A452F00319DE0 /* Papers.storyboard */,
 				4378FDA01E3C482C00319DE0 /* DbManager.swift */,
 				435EEE6D1E3D3A4200C9CF84 /* NewYearsViewController.swift */,
+				4313269F1E3D655B003C808E /* YearViewController.swift */,
 			);
 			path = ABMAEditor;
 			sourceTree = "<group>";
@@ -682,6 +685,7 @@
 				434B44F01E1FF92900963096 /* EventListViewController.swift in Sources */,
 				434B44EE1E1BF75500963096 /* Event.swift in Sources */,
 				434B44DD1E1B231F00963096 /* AppDelegate.swift in Sources */,
+				431326A01E3D655B003C808E /* YearViewController.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

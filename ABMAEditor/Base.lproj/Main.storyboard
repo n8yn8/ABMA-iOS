@@ -661,6 +661,91 @@
             </objects>
             <point key="canvasLocation" x="75" y="0.0"/>
         </scene>
+        <!--Year View Controller-->
+        <scene sceneID="WCL-4N-qlP">
+            <objects>
+                <viewController id="ISR-eh-a1F" customClass="YearViewController" customModule="ABMAEditor" customModuleProvider="target" sceneMemberID="viewController">
+                    <view key="view" id="iyd-Yb-Drc">
+                        <rect key="frame" x="0.0" y="0.0" width="450" height="300"/>
+                        <autoresizingMask key="autoresizingMask"/>
+                        <subviews>
+                            <popUpButton verticalHuggingPriority="750" translatesAutoresizingMaskIntoConstraints="NO" id="H9u-aR-Egj">
+                                <rect key="frame" x="8" y="266" width="37" height="26"/>
+                                <popUpButtonCell key="cell" type="push" bezelStyle="rounded" alignment="left" lineBreakMode="truncatingTail" borderStyle="borderAndBezel" imageScaling="proportionallyDown" inset="2" id="lm2-QI-5K0">
+                                    <behavior key="behavior" lightByBackground="YES" lightByGray="YES"/>
+                                    <font key="font" metaFont="menu"/>
+                                    <menu key="menu" id="1TW-Pz-buz"/>
+                                </popUpButtonCell>
+                                <connections>
+                                    <action selector="yearSelected:" target="ISR-eh-a1F" id="aqZ-tV-cHv"/>
+                                </connections>
+                            </popUpButton>
+                            <button verticalHuggingPriority="750" translatesAutoresizingMaskIntoConstraints="NO" id="gog-kC-GEY">
+                                <rect key="frame" x="50" y="269" width="20" height="22"/>
+                                <constraints>
+                                    <constraint firstAttribute="width" constant="20" id="7kn-wx-Atz"/>
+                                    <constraint firstAttribute="height" constant="20" id="reF-xZ-DSY"/>
+                                </constraints>
+                                <buttonCell key="cell" type="smallSquare" bezelStyle="smallSquare" image="NSAddTemplate" imagePosition="overlaps" alignment="center" lineBreakMode="truncatingTail" state="on" borderStyle="border" imageScaling="proportionallyDown" inset="2" id="HOX-zE-pSb">
+                                    <behavior key="behavior" pushIn="YES" lightByBackground="YES" lightByGray="YES"/>
+                                    <font key="font" metaFont="system"/>
+                                </buttonCell>
+                                <connections>
+                                    <segue destination="M8J-bl-ZkB" kind="sheet" id="6o9-ZF-fhn"/>
+                                </connections>
+                            </button>
+                            <tabView translatesAutoresizingMaskIntoConstraints="NO" id="NXf-ea-d5m">
+                                <rect key="frame" x="-7" y="-10" width="464" height="275"/>
+                                <font key="font" metaFont="system"/>
+                                <tabViewItems>
+                                    <tabViewItem label="Events" identifier="1" id="JJ0-rN-Ca1">
+                                        <view key="view" id="TYD-rb-t97">
+                                            <rect key="frame" x="10" y="33" width="444" height="229"/>
+                                            <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                                            <subviews>
+                                                <containerView translatesAutoresizingMaskIntoConstraints="NO" id="IxR-UF-MAv">
+                                                    <rect key="frame" x="0.0" y="0.0" width="444" height="229"/>
+                                                    <connections>
+                                                        <segue destination="jeM-fb-fhu" kind="embed" id="ebj-dm-STF"/>
+                                                    </connections>
+                                                </containerView>
+                                            </subviews>
+                                            <constraints>
+                                                <constraint firstItem="IxR-UF-MAv" firstAttribute="top" secondItem="TYD-rb-t97" secondAttribute="top" id="Cff-a1-qMq"/>
+                                                <constraint firstAttribute="bottom" secondItem="IxR-UF-MAv" secondAttribute="bottom" id="FqQ-L5-9Q6"/>
+                                                <constraint firstAttribute="trailing" secondItem="IxR-UF-MAv" secondAttribute="trailing" id="Kx6-x3-mAW"/>
+                                                <constraint firstItem="IxR-UF-MAv" firstAttribute="leading" secondItem="TYD-rb-t97" secondAttribute="leading" id="pKw-mY-25P"/>
+                                            </constraints>
+                                        </view>
+                                    </tabViewItem>
+                                    <tabViewItem label="View" identifier="2" id="teF-V0-fSy">
+                                        <view key="view" id="LMe-SU-vV0">
+                                            <rect key="frame" x="10" y="33" width="446" height="174"/>
+                                            <autoresizingMask key="autoresizingMask"/>
+                                        </view>
+                                    </tabViewItem>
+                                </tabViewItems>
+                            </tabView>
+                        </subviews>
+                        <constraints>
+                            <constraint firstItem="H9u-aR-Egj" firstAttribute="top" secondItem="iyd-Yb-Drc" secondAttribute="top" constant="10" id="6LF-C4-fMI"/>
+                            <constraint firstItem="H9u-aR-Egj" firstAttribute="leading" secondItem="iyd-Yb-Drc" secondAttribute="leading" constant="10" id="L5c-np-Y01"/>
+                            <constraint firstItem="gog-kC-GEY" firstAttribute="leading" secondItem="H9u-aR-Egj" secondAttribute="trailing" constant="8" id="XOI-jY-Bb0"/>
+                            <constraint firstItem="gog-kC-GEY" firstAttribute="centerY" secondItem="H9u-aR-Egj" secondAttribute="centerY" id="fTo-Fn-Mz0"/>
+                            <constraint firstItem="NXf-ea-d5m" firstAttribute="leading" secondItem="iyd-Yb-Drc" secondAttribute="leading" id="hvG-gx-vj6"/>
+                            <constraint firstItem="NXf-ea-d5m" firstAttribute="top" secondItem="H9u-aR-Egj" secondAttribute="bottom" constant="10" id="i0c-Tx-HyO"/>
+                            <constraint firstAttribute="trailing" secondItem="NXf-ea-d5m" secondAttribute="trailing" id="jdB-NB-gmV"/>
+                            <constraint firstAttribute="bottom" secondItem="NXf-ea-d5m" secondAttribute="bottom" id="sc1-B7-5h7"/>
+                        </constraints>
+                    </view>
+                    <connections>
+                        <outlet property="yearsPopUpButton" destination="H9u-aR-Egj" id="ARw-to-RLa"/>
+                    </connections>
+                </viewController>
+                <customObject id="FaH-Em-mwt" userLabel="First Responder" customClass="NSResponder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="540" y="422"/>
+        </scene>
         <!--Window Controller-->
         <scene sceneID="R2V-B0-nI4">
             <objects>
@@ -672,7 +757,7 @@
                         <rect key="screenRect" x="0.0" y="0.0" width="1680" height="1027"/>
                     </window>
                     <connections>
-                        <segue destination="jeM-fb-fhu" kind="relationship" relationship="window.shadowedContentViewController" id="4h6-id-PCB"/>
+                        <segue destination="ISR-eh-a1F" kind="relationship" relationship="window.shadowedContentViewController" id="iti-KP-FdM"/>
                     </connections>
                 </windowController>
                 <customObject id="Oky-zY-oP4" userLabel="First Responder" customClass="NSResponder" sceneMemberID="firstResponder"/>
@@ -682,6 +767,7 @@
         <!--Container Controller-->
         <scene sceneID="hlk-47-7hh">
             <objects>
+                <customObject id="64e-gA-Kr3" userLabel="First Responder" customClass="NSResponder" sceneMemberID="firstResponder"/>
                 <splitViewController id="jeM-fb-fhu" customClass="ContainerController" customModule="ABMAEditor" customModuleProvider="target" sceneMemberID="viewController">
                     <splitViewItems>
                         <splitViewItem id="3M9-Io-UHq"/>
@@ -696,26 +782,26 @@
                         <segue destination="XfG-lQ-9wD" kind="relationship" relationship="splitItems" id="8Gk-ex-cet"/>
                     </connections>
                 </splitViewController>
-                <customObject id="64e-gA-Kr3" userLabel="First Responder" customClass="NSResponder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="687" y="417.5"/>
+            <point key="canvasLocation" x="1125" y="429"/>
         </scene>
         <!--Event List View Controller-->
         <scene sceneID="FUY-HF-pZ9">
             <objects>
+                <customObject id="H0R-bT-vK1" userLabel="First Responder" customClass="NSResponder" sceneMemberID="firstResponder"/>
                 <viewController id="cEQ-fS-Qcc" customClass="EventListViewController" customModule="ABMAEditor" customModuleProvider="target" sceneMemberID="viewController">
                     <view key="view" id="jr6-Di-Nfw">
                         <rect key="frame" x="0.0" y="0.0" width="450" height="300"/>
                         <autoresizingMask key="autoresizingMask"/>
                         <subviews>
                             <scrollView autohidesScrollers="YES" horizontalLineScroll="19" horizontalPageScroll="10" verticalLineScroll="19" verticalPageScroll="10" usesPredominantAxisScrolling="NO" translatesAutoresizingMaskIntoConstraints="NO" id="OhN-Z6-vzp">
-                                <rect key="frame" x="0.0" y="40" width="450" height="219"/>
+                                <rect key="frame" x="0.0" y="40" width="450" height="260"/>
                                 <clipView key="contentView" id="zw5-3Z-1in">
-                                    <rect key="frame" x="1" y="0.0" width="448" height="218"/>
+                                    <rect key="frame" x="1" y="0.0" width="448" height="259"/>
                                     <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                                     <subviews>
                                         <tableView verticalHuggingPriority="750" allowsExpansionToolTips="YES" columnAutoresizingStyle="lastColumnOnly" columnSelection="YES" multipleSelection="NO" autosaveColumns="NO" rowSizeStyle="automatic" headerView="zQC-Gu-5DQ" viewBased="YES" id="g4h-nU-vpx">
-                                            <rect key="frame" x="0.0" y="0.0" width="448" height="195"/>
+                                            <rect key="frame" x="0.0" y="0.0" width="448" height="236"/>
                                             <autoresizingMask key="autoresizingMask"/>
                                             <size key="intercellSpacing" width="3" height="2"/>
                                             <color key="backgroundColor" name="controlBackgroundColor" catalog="System" colorSpace="catalog"/>
@@ -836,56 +922,25 @@
                                     <action selector="remove:" target="cEQ-fS-Qcc" id="rwg-2M-sXM"/>
                                 </connections>
                             </button>
-                            <popUpButton verticalHuggingPriority="750" translatesAutoresizingMaskIntoConstraints="NO" id="HP2-tF-jqu">
-                                <rect key="frame" x="8" y="266" width="37" height="26"/>
-                                <popUpButtonCell key="cell" type="push" bezelStyle="rounded" alignment="left" lineBreakMode="truncatingTail" borderStyle="borderAndBezel" imageScaling="proportionallyDown" inset="2" id="fD7-kP-lhk">
-                                    <behavior key="behavior" lightByBackground="YES" lightByGray="YES"/>
-                                    <font key="font" metaFont="menu"/>
-                                    <menu key="menu" id="SYT-pH-0d7"/>
-                                </popUpButtonCell>
-                                <connections>
-                                    <action selector="yearSelected:" target="cEQ-fS-Qcc" id="ZgW-Hz-UCf"/>
-                                </connections>
-                            </popUpButton>
-                            <button verticalHuggingPriority="750" translatesAutoresizingMaskIntoConstraints="NO" id="vYY-WL-OMG">
-                                <rect key="frame" x="50" y="268" width="20" height="22"/>
-                                <constraints>
-                                    <constraint firstAttribute="width" constant="20" id="MMU-cP-QAl"/>
-                                    <constraint firstAttribute="height" constant="20" id="nC1-NQ-qdr"/>
-                                </constraints>
-                                <buttonCell key="cell" type="smallSquare" bezelStyle="smallSquare" image="NSAddTemplate" imagePosition="overlaps" alignment="center" lineBreakMode="truncatingTail" state="on" borderStyle="border" imageScaling="proportionallyDown" inset="2" id="eBH-eA-ROI">
-                                    <behavior key="behavior" pushIn="YES" lightByBackground="YES" lightByGray="YES"/>
-                                    <font key="font" metaFont="system"/>
-                                </buttonCell>
-                                <connections>
-                                    <segue destination="M8J-bl-ZkB" kind="sheet" id="sol-f3-WXb"/>
-                                </connections>
-                            </button>
                         </subviews>
                         <constraints>
-                            <constraint firstItem="vYY-WL-OMG" firstAttribute="centerY" secondItem="HP2-tF-jqu" secondAttribute="centerY" id="54l-Gd-jgz"/>
                             <constraint firstItem="DqZ-eV-InO" firstAttribute="leading" secondItem="jr6-Di-Nfw" secondAttribute="leading" constant="10" id="7BO-IZ-13f"/>
-                            <constraint firstItem="HP2-tF-jqu" firstAttribute="leading" secondItem="jr6-Di-Nfw" secondAttribute="leading" constant="10" id="FfK-hn-jvn"/>
                             <constraint firstAttribute="trailing" secondItem="OhN-Z6-vzp" secondAttribute="trailing" id="Kto-VU-Pco"/>
                             <constraint firstAttribute="bottom" secondItem="DqZ-eV-InO" secondAttribute="bottom" constant="10" id="Uya-cy-pvi"/>
                             <constraint firstItem="OhN-Z6-vzp" firstAttribute="leading" secondItem="jr6-Di-Nfw" secondAttribute="leading" id="Zqu-UO-0nf"/>
-                            <constraint firstItem="vYY-WL-OMG" firstAttribute="leading" secondItem="HP2-tF-jqu" secondAttribute="trailing" constant="8" id="fzm-bO-VFO"/>
                             <constraint firstItem="i1c-DE-E1x" firstAttribute="centerY" secondItem="DqZ-eV-InO" secondAttribute="centerY" id="g1q-PT-lN0"/>
-                            <constraint firstItem="OhN-Z6-vzp" firstAttribute="top" secondItem="HP2-tF-jqu" secondAttribute="bottom" constant="10" id="kdW-U4-8ul"/>
                             <constraint firstItem="DqZ-eV-InO" firstAttribute="top" secondItem="OhN-Z6-vzp" secondAttribute="bottom" constant="10" id="lEq-kT-1f5"/>
                             <constraint firstItem="i1c-DE-E1x" firstAttribute="leading" secondItem="DqZ-eV-InO" secondAttribute="trailing" constant="8" id="q39-PS-40N"/>
-                            <constraint firstItem="HP2-tF-jqu" firstAttribute="top" secondItem="jr6-Di-Nfw" secondAttribute="top" constant="10" id="vcw-uc-ZCw"/>
+                            <constraint firstItem="OhN-Z6-vzp" firstAttribute="top" secondItem="jr6-Di-Nfw" secondAttribute="top" id="tVz-yM-lPX"/>
                         </constraints>
                     </view>
                     <connections>
                         <outlet property="eventTableView" destination="g4h-nU-vpx" id="xHj-1v-2ur"/>
                         <outlet property="removeButton" destination="i1c-DE-E1x" id="51d-sG-dTq"/>
-                        <outlet property="yearsPopUpButton" destination="HP2-tF-jqu" id="NGl-iB-HsD"/>
                     </connections>
                 </viewController>
-                <customObject id="H0R-bT-vK1" userLabel="First Responder" customClass="NSResponder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="1277" y="417"/>
+            <point key="canvasLocation" x="2118" y="459"/>
         </scene>
         <!--New Years View Controller-->
         <scene sceneID="a2u-kV-8v1">
@@ -935,11 +990,12 @@ DQ
                 </viewController>
                 <customObject id="LC4-pX-YEB" userLabel="First Responder" customClass="NSResponder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="1809" y="417"/>
+            <point key="canvasLocation" x="540" y="868"/>
         </scene>
         <!--Event View Controller-->
         <scene sceneID="hIz-AP-VOD">
             <objects>
+                <customObject id="rPt-NT-nkU" userLabel="First Responder" customClass="NSResponder" sceneMemberID="firstResponder"/>
                 <viewController id="XfG-lQ-9wD" customClass="EventViewController" customModule="ABMAEditor" customModuleProvider="target" sceneMemberID="viewController">
                     <view key="view" wantsLayer="YES" id="m2S-Jp-Qdl">
                         <rect key="frame" x="0.0" y="0.0" width="610" height="411"/>
@@ -1248,15 +1304,14 @@ DQ
                         <outlet property="titleTextField" destination="58x-AP-1M9" id="ac3-5i-O1w"/>
                     </connections>
                 </viewController>
-                <customObject id="rPt-NT-nkU" userLabel="First Responder" customClass="NSResponder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="687" y="1001"/>
+            <point key="canvasLocation" x="1528" y="1043"/>
         </scene>
         <!--Papers-->
         <scene sceneID="yNF-Ho-qlY">
             <objects>
-                <controllerPlaceholder storyboardName="Papers" id="AgI-8S-XxS" sceneMemberID="viewController"/>
                 <customObject id="ph4-dF-KdL" userLabel="First Responder" customClass="NSResponder" sceneMemberID="firstResponder"/>
+                <controllerPlaceholder storyboardName="Papers" id="AgI-8S-XxS" sceneMemberID="viewController"/>
             </objects>
             <point key="canvasLocation" x="694" y="1357"/>
         </scene>
