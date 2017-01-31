@@ -37,7 +37,7 @@ class YearViewController: NSViewController {
     
     func setYears(years: [String]) {
         yearsPopUpButton.addItems(withTitles: years)
-        yearsPopUpButton.selectItem(at: 0)
+        yearSelected(yearsPopUpButton)
     }
     
     @IBAction func yearSelected(_ sender: NSPopUpButton) {
