@@ -85,6 +85,7 @@ class YearViewController: NSViewController {
             dvc.delegate = self
         } else if let dvc = segue.destinationController as? ContainerController {
             containerController = dvc
+            containerController?.delegate = self
         } else if let dvc = segue.destinationController as? SponsorsViewController {
             sponsorsViewController = dvc
             sponsorsViewController?.delegate = self
@@ -138,5 +139,12 @@ extension YearViewController: SponsorsViewControllerDelegate {
             updateYear()
         }
         
+    }
+}
+
+extension YearViewController: ContainerControllerDelegate {
+    func updateEvents(list: [Event]) {
+        selectedYear?.events = list
+        updateYear()
     }
 }

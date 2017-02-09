@@ -10,6 +10,8 @@ import Cocoa
 
 class ContainerController: NSSplitViewController {
     
+    weak var delegate: ContainerControllerDelegate?
+    
     var eventListController: EventListViewController!
     var eventController: EventViewController!
     var eventList = [String: Event]()
@@ -63,20 +65,16 @@ extension ContainerController: EventViewControllerDelegate {
             
         }
         eventList[event.objectId!] = event
-//        years[selectedYear!.objectId!]?.events = Array(eventList.values)
         update()
     }
     
     func createEvent(event: Event) {
-//        selectedYear?.events.append(event)
-//        DbManager.sharedInstance.update(year: selectedYear!) { (saved, error) in
-//            if let savedYear = saved {
-//                self.eventList.removeAll()
-//                for event in savedYear.events {
-//                    self.eventList[event.objectId!] = event
-//                }
-//                self.update()
-//            }
-//        }
+        var list = Array(eventList.values)
+        list.append(event)
+        delegate?.updateEvents(list: list)
     }
+}
+
+protocol ContainerControllerDelegate: class {
+    func updateEvents(list: [Event])
 }
