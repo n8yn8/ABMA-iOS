@@ -38,8 +38,9 @@ class DbManager {
         backendless?.persistenceService.of(Year.ofClass()).save(year, response: { (response) in
             if let saved = response as? Year {
                 callback(saved, nil)
+            } else {
+                callback(nil, nil)
             }
-            callback(nil, nil)
         }, error: { (error) in
             print("error: \(error)")
             callback(nil, error.debugDescription)
@@ -50,8 +51,9 @@ class DbManager {
         backendless?.persistenceService.of(Event.ofClass()).save(event, response: { (response) in
             if let savedEvent = response as? Event {
                 callback(savedEvent, nil)
+            } else {
+                callback(nil, nil)
             }
-            callback(nil, nil)
         }, error: { (error) in
             print("error: \(error)")
             callback(nil, error.debugDescription)
