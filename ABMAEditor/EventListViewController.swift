@@ -16,8 +16,8 @@ class EventListViewController: NSViewController, NSTableViewDelegate, NSTableVie
     
     private let formatter = DateFormatter()
     
-    private var eventList = [String: Event]()
-    private var eventListKeys = [String]()
+    private var eventList = [Event]()
+    private var selectedIndex: Int?
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -26,9 +26,8 @@ class EventListViewController: NSViewController, NSTableViewDelegate, NSTableVie
         formatter.timeStyle = .short
     }
     
-    func setEventList(list: [String: Event]) {
+    func setEventList(list: [Event]) {
         eventList = list
-        eventListKeys = Array(list.keys)
         eventTableView.reloadData()
     }
     
@@ -38,7 +37,7 @@ class EventListViewController: NSViewController, NSTableViewDelegate, NSTableVie
     
     func tableView(_ tableView: NSTableView, viewFor tableColumn: NSTableColumn?, row: Int) -> NSView? {
         
-        let event = eventList[eventListKeys[row]]!
+        let event = eventList[row]
         
         let cell = tableView.make(withIdentifier: tableColumn!.identifier, owner: self) as! NSTableCellView
         
@@ -52,30 +51,32 @@ class EventListViewController: NSViewController, NSTableViewDelegate, NSTableVie
     }
     
     func tableViewSelectionDidChange(_ notification: Notification) {
-        delegate?.updateSelectedEvent(event: getSelectedEvent())
+        delegate?.updateSelectedEvent(event: getSelectedEvent(), index: selectedIndex)
     }
     
     func getSelectedEvent() -> Event? {
         let selectedRow = eventTableView.selectedRow
         removeButton.isEnabled = selectedRow >= 0
         if selectedRow >= 0 && eventList.count > selectedRow {
-            return eventList[eventListKeys[selectedRow]]
+            selectedIndex = selectedRow
+            return eventList[selectedRow]
         }
+        selectedIndex = nil
         return nil
     }
     
     @IBAction func add(_ sender: Any) {
-        delegate?.updateSelectedEvent(event: nil)
+        delegate?.updateSelectedEvent(event: nil, index: nil)
     }
 
     @IBAction func remove(_ sender: Any) {
-        delegate?.removeSelectedEvent(key: eventListKeys[eventTableView.selectedRow])
+        delegate?.removeSelectedEvent(index: eventTableView.selectedRow)
         removeButton.isEnabled = false
     }
     
 }
 
 protocol MasterViewControllerDelegate: class {
-    func updateSelectedEvent(event: Event?)
-    func removeSelectedEvent(key: String)
+    func updateSelectedEvent(event: Event?, index: Int?)
+    func removeSelectedEvent(index: Int)
 }

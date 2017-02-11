@@ -82,7 +82,9 @@ class EventViewController: NSViewController {
         let startDate = buildDate(timePart: startTimePicker.dateValue)
         let endDate = buildDate(timePart: endTimePicker.dateValue)
         
+        var isNew = false
         if event == nil {
+            isNew = true
             event = Event()
             event!.initWith(startDate: startDate, endDate: endDate, title: titleTextField.stringValue)
         } else {
@@ -96,7 +98,7 @@ class EventViewController: NSViewController {
         event!.details = descriptionTextView.string
         event!.papers = papersViewController!.papers
         
-        if event!.objectId == nil {
+        if isNew {
             self.delegate?.createEvent(event: event!)
         } else {
             self.delegate?.updateEvent(event: event!)

@@ -14,7 +14,8 @@ class ContainerController: NSSplitViewController {
     
     var eventListController: EventListViewController!
     var eventController: EventViewController!
-    var eventList = [String: Event]()
+    var eventList = [Event]()
+    var selectedEventIndex: Int?
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -35,9 +36,7 @@ class ContainerController: NSSplitViewController {
     
     func updateEventList(events: [Event]) {
         eventList.removeAll()
-        for event in events {
-            eventList[event.objectId!] = event
-        }
+        eventList.append(contentsOf: events)
         update()
     }
     
@@ -48,13 +47,14 @@ class ContainerController: NSSplitViewController {
 
 extension ContainerController: MasterViewControllerDelegate {
     
-    func updateSelectedEvent(event: Event?) {
+    func updateSelectedEvent(event: Event?, index: Int?) {
         eventController.representedObject = event
+        selectedEventIndex = index
     }
     
-    func removeSelectedEvent(key: String) {
-        let removedEvent = eventList.removeValue(forKey: key)
-        DbManager.sharedInstance.deleteEvent(event: removedEvent!)
+    func removeSelectedEvent(index: Int) {
+        let removedEvent = eventList.remove(at: index)
+        DbManager.sharedInstance.deleteEvent(event: removedEvent)
         update()
     }
 }
@@ -64,14 +64,15 @@ extension ContainerController: EventViewControllerDelegate {
         DbManager.sharedInstance.updateEvent(event: event) { (saved, error) in
             
         }
-        eventList[event.objectId!] = event
+        if let index = selectedEventIndex {
+            eventList[index] = event
+        }
         update()
     }
     
     func createEvent(event: Event) {
-        var list = Array(eventList.values)
-        list.append(event)
-        delegate?.updateEvents(list: list)
+        eventList.append(event)
+        delegate?.updateEvents(list: eventList)
     }
 }
 

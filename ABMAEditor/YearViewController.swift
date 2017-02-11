@@ -15,7 +15,7 @@ class YearViewController: NSViewController {
     var containerController: ContainerController?
     var sponsorsViewController: SponsorsViewController?
     
-    var years = [String: Year]()
+    var years = [Year]()
     var selectedYear: Year?
     
     @IBOutlet weak var yearsPopUpButton: NSPopUpButton!
@@ -27,9 +27,7 @@ class YearViewController: NSViewController {
         DbManager.sharedInstance.getYears { (years, error) in
             if let data = years {
                 self.years.removeAll()
-                for year in data {
-                    self.years[year.objectId!] = year
-                }
+                self.years.append(contentsOf: data)
                 self.updateYearOptions()
             }
         }
@@ -48,7 +46,7 @@ class YearViewController: NSViewController {
     }
     
     func updateSeelctedYear(year: String) {
-        for thisYear in Array(years.values) {
+        for thisYear in years {
             if "\(thisYear.name)" == year {
                 selectedYear = thisYear
                 updateUi()
@@ -59,8 +57,17 @@ class YearViewController: NSViewController {
     func updateUi() {
         if let year = selectedYear {
             containerController?.updateEventList(events: year.events)
-            welcomeTextView.string = year.welcome
-            infoTextView.string = year.info
+            if let welcome = year.welcome {
+                welcomeTextView.string = welcome
+            } else {
+                welcomeTextView.string = ""
+            }
+            if let info = year.info {
+                infoTextView.string = info
+            } else {
+                infoTextView.string = ""
+            }
+            
             sponsorsViewController?.updateSponsors(sponsorList: year.sponsors)
         } else {
             containerController?.updateEventList(events: [Event]())
@@ -73,7 +80,7 @@ class YearViewController: NSViewController {
     
     func updateYearOptions() {
         var yearList = [String]()
-        for year in Array(years.values) {
+        for year in years {
             yearList.append("\(year.name)")
         }
         setYears(years: yearList)
@@ -116,7 +123,7 @@ extension YearViewController: NewYearsViewControllerDelegate {
         thisYear.name = year
         DbManager.sharedInstance.update(year: thisYear) { (saved, error) in
             if let savedYear = saved {
-                self.years[savedYear.objectId!] = savedYear
+                self.years.append(savedYear)
                 self.updateYearOptions()
             }
         }

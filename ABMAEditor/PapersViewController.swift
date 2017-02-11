@@ -22,6 +22,8 @@ class PapersViewController: NSViewController, NSTableViewDelegate, NSTableViewDa
             papersTableView.reloadData()
         }
     }
+    
+    private var selectedIndex: Int?
 
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -55,8 +57,10 @@ class PapersViewController: NSViewController, NSTableViewDelegate, NSTableViewDa
         let selectedRow = papersTableView.selectedRow
         removeButton.isEnabled = selectedRow >= 0
         if selectedRow >= 0 && papers.count > selectedRow {
+            selectedIndex = selectedRow
             return papers[selectedRow]
         }
+        selectedIndex = nil
         return nil
     }
     
@@ -93,9 +97,21 @@ class PapersViewController: NSViewController, NSTableViewDelegate, NSTableViewDa
         let title = titleTextField.stringValue
         let author = authorTextField.stringValue
         let abstract = abstractTextView.string
-        let paper = Paper()
+        
+        var paper: Paper
+        if let index = selectedIndex {
+            paper = papers[index]
+        } else {
+            paper = Paper()
+        }
         paper.initWith(title: title, author: author, abstract: abstract!)
-        self.papers.append(paper)
+        
+        if let index = selectedIndex {
+            self.papers[index] = paper
+        } else {
+            self.papers.append(paper)
+        }
+        
         self.papersTableView.reloadData()
     }
 }
