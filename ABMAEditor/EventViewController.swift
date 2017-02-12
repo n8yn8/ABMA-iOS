@@ -43,6 +43,9 @@ class EventViewController: NSViewController {
             titleTextField.stringValue = ""
             subtitleTextField.stringValue = ""
             descriptionTextView.string = ""
+            if let controller = papersViewController {
+                controller.papers = [Paper]()
+            }
             
             if let event = representedObject as? Event {
                 self.event = event
@@ -70,6 +73,7 @@ class EventViewController: NSViewController {
                 
             } else{
                 self.event = nil
+                tabView.selectFirstTabViewItem(self)
             }
         }
     }

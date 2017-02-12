@@ -19,6 +19,7 @@ class PapersViewController: NSViewController, NSTableViewDelegate, NSTableViewDa
     
     var papers = [Paper]() {
         didSet {
+            papersTableView.deselectAll(self)
             papersTableView.reloadData()
         }
     }

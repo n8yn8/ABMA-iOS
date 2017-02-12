@@ -28,6 +28,7 @@ class EventListViewController: NSViewController, NSTableViewDelegate, NSTableVie
     
     func setEventList(list: [Event]) {
         eventList = list
+        eventTableView.deselectAll(self)
         eventTableView.reloadData()
     }
     
