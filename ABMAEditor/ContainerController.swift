@@ -50,6 +50,7 @@ extension ContainerController: MasterViewControllerDelegate {
     func updateSelectedEvent(event: Event?, index: Int?) {
         eventController.representedObject = event
         selectedEventIndex = index
+        eventController.setEnabled(enabled: true)
     }
     
     func removeSelectedEvent(index: Int) {

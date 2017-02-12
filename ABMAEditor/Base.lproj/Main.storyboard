@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<document type="com.apple.InterfaceBuilder3.Cocoa.Storyboard.XIB" version="3.0" toolsVersion="11762" systemVersion="16C67" targetRuntime="MacOSX.Cocoa" propertyAccessControl="none" useAutolayout="YES" initialViewController="B8D-0N-5wS">
+<document type="com.apple.InterfaceBuilder3.Cocoa.Storyboard.XIB" version="3.0" toolsVersion="11762" systemVersion="16D32" targetRuntime="MacOSX.Cocoa" propertyAccessControl="none" useAutolayout="YES" initialViewController="B8D-0N-5wS">
     <dependencies>
         <deployment identifier="macosx"/>
         <plugIn identifier="com.apple.InterfaceBuilder.CocoaPlugin" version="11762"/>
@@ -735,7 +735,7 @@
                                                     <rect key="frame" x="20" y="51" width="404" height="173"/>
                                                     <clipView key="contentView" id="9J5-B5-zlQ">
                                                         <rect key="frame" x="1" y="1" width="402" height="171"/>
-                                                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                                                        <autoresizingMask key="autoresizingMask"/>
                                                         <subviews>
                                                             <textView importsGraphics="NO" usesFontPanel="YES" findStyle="panel" continuousSpellChecking="YES" allowsUndo="YES" usesRuler="YES" allowsNonContiguousLayout="YES" quoteSubstitution="YES" dashSubstitution="YES" spellingCorrection="YES" smartInsertDelete="YES" id="GUG-t9-2tJ">
                                                                 <rect key="frame" x="0.0" y="0.0" width="402" height="171"/>
@@ -787,7 +787,7 @@
                                                     <rect key="frame" x="20" y="51" width="404" height="173"/>
                                                     <clipView key="contentView" id="ONh-sT-c6g">
                                                         <rect key="frame" x="1" y="1" width="402" height="171"/>
-                                                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                                                        <autoresizingMask key="autoresizingMask"/>
                                                         <subviews>
                                                             <textView importsGraphics="NO" usesFontPanel="YES" findStyle="panel" continuousSpellChecking="YES" allowsUndo="YES" usesRuler="YES" allowsNonContiguousLayout="YES" quoteSubstitution="YES" dashSubstitution="YES" spellingCorrection="YES" smartInsertDelete="YES" id="krI-ZG-dN7">
                                                                 <rect key="frame" x="0.0" y="0.0" width="402" height="171"/>
@@ -1426,6 +1426,7 @@ DQ
                         <outlet property="descriptionTextView" destination="ydf-oc-RDt" id="XZK-Ts-uEz"/>
                         <outlet property="endTimePicker" destination="RJg-Oe-ROD" id="ARs-D0-YAS"/>
                         <outlet property="locationTextField" destination="qKr-S4-Qzw" id="kte-oo-eLL"/>
+                        <outlet property="saveButton" destination="Non-yx-mBw" id="Yja-k3-kcy"/>
                         <outlet property="startTimePicker" destination="sdU-Zy-KgE" id="F04-te-BNB"/>
                         <outlet property="subtitleTextField" destination="vX2-B9-eEv" id="NAF-b9-v7W"/>
                         <outlet property="tabView" destination="idK-gV-kCD" id="28Z-6Z-Y6h"/>

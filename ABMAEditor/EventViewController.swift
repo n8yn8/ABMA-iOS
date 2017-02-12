@@ -18,6 +18,7 @@ class EventViewController: NSViewController {
     @IBOutlet weak var subtitleTextField: NSTextField!
     @IBOutlet var descriptionTextView: NSTextView!
     @IBOutlet weak var tabView: NSTabView!
+    @IBOutlet weak var saveButton: NSButton!
     
     weak var delegate: EventViewControllerDelegate?
     
@@ -27,6 +28,8 @@ class EventViewController: NSViewController {
     
     override func viewDidLoad() {
         super.viewDidLoad()
+        
+        setEnabled(enabled: false)
         
         datePicker.calendar = self.calendar
         datePicker.dateValue = Date()
@@ -70,12 +73,26 @@ class EventViewController: NSViewController {
                 if let controller = papersViewController {
                     controller.papers = event.papers
                 }
+                setEnabled(enabled: true)
                 
             } else{
                 self.event = nil
                 tabView.selectFirstTabViewItem(self)
+                setEnabled(enabled: false)
             }
         }
+    }
+    
+    func setEnabled(enabled: Bool) {
+        datePicker.isEnabled = enabled
+        startTimePicker.isEnabled = enabled
+        endTimePicker.isEnabled = enabled
+        locationTextField.isEnabled = enabled
+        titleTextField.isEnabled = enabled
+        subtitleTextField.isEnabled = enabled
+        descriptionTextView.isEditable = enabled
+        descriptionTextView.isSelectable = enabled
+        saveButton.isEnabled = enabled
     }
 
     @IBAction func save(_ sender: NSButton) {

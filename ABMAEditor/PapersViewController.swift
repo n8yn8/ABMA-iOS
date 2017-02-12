@@ -29,6 +29,7 @@ class PapersViewController: NSViewController, NSTableViewDelegate, NSTableViewDa
     override func viewDidLoad() {
         super.viewDidLoad()
         // Do view setup here.
+        setEnabled(enabled: false)
     }
     
     func numberOfRows(in tableView: NSTableView) -> Int {
@@ -70,18 +71,26 @@ class PapersViewController: NSViewController, NSTableViewDelegate, NSTableViewDa
             titleTextField.stringValue = paper.title
             authorTextField.stringValue = paper.author
             abstractTextView.string = paper.abstract
-            saveButton.isEnabled = true
+            setEnabled(enabled: true)
         } else {
             titleTextField.stringValue = ""
             authorTextField.stringValue = ""
             abstractTextView.string = ""
-            saveButton.isEnabled = false
+            setEnabled(enabled: false)
         }
+    }
+    
+    func setEnabled(enabled: Bool) {
+        titleTextField.isEnabled = enabled
+        authorTextField.isEnabled = enabled
+        abstractTextView.isSelectable = enabled
+        abstractTextView.isEditable = enabled
+        saveButton.isEnabled = enabled
     }
     
     @IBAction func add(_ sender: Any) {
         papersTableView.deselectAll(self)
-        saveButton.isEnabled = true
+        setEnabled(enabled: true)
     }
     
     @IBAction func remove(_ sender: Any) {
