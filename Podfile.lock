@@ -1,5 +1,5 @@
 PODS:
-  - Backendless (3.0.43)
+  - Backendless (3.0.44)
   - Backendless-osx-SDK (3.0.43)
   - SDWebImage (4.0.0):
     - SDWebImage/Core (= 4.0.0)
@@ -11,10 +11,10 @@ DEPENDENCIES:
   - SDWebImage (~> 4.0)
 
 SPEC CHECKSUMS:
-  Backendless: 47e50f3a7f141f386625dae527e866b88ee8d9b4
+  Backendless: bd77ad90cbd16fbd85fda03b3659b46a2c8f3179
   Backendless-osx-SDK: af49460c92e35bf5f37284a438112fb63f0acd02
   SDWebImage: 76a6348bdc74eb5a55dd08a091ef298e56b55e41
 
 PODFILE CHECKSUM: 55d78e7075dad8f67cd1aa92871c9d4f580da24b
 
-COCOAPODS: 1.0.1
+COCOAPODS: 1.2.0
