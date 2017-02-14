@@ -36,7 +36,7 @@
     
     NSString *noteText = self.noteTextField.text;
     if (![noteText  isEqual: @""]) {
-        AppDelegate *appdelegate = [[UIApplication sharedApplication] delegate];
+        AppDelegate *appdelegate = (AppDelegate *)[[UIApplication sharedApplication] delegate];
         NSManagedObjectContext *context = [appdelegate managedObjectContext];
         
         

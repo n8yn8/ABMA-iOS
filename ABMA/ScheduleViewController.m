@@ -46,7 +46,7 @@
 {
     dateIndex = 0;
     
-    AppDelegate *appdelegate = [[UIApplication sharedApplication] delegate];
+    AppDelegate *appdelegate = (AppDelegate *)[[UIApplication sharedApplication] delegate];
     context = [appdelegate managedObjectContext];
     
 //    [self clearSchedule:@"Day"];
