@@ -7,19 +7,18 @@
 //
 
 import Foundation
-import Cocoa
 
-class DbManager {
+class DbManager: NSObject {
     
     static let sharedInstance = DbManager()
 
-    let APP_ID = "4F90A91F-3E58-5E4D-FF43-A0BA7FE1D500"
-    let SECRET_KEY = "98A23A0E-4700-A4F9-FF98-4D2357390900"
+    let APP_ID = "6AC37915-D986-26C2-FF1C-B0B3ACCB6A00"
+    let SECRET_KEY = "8CAD138B-161D-CC78-FF65-B2B6B6A40500"
     let VERSION_NUM = "v1"
     
     var backendless = Backendless.sharedInstance()
     
-    init() {
+    override init() {
         backendless?.initApp(APP_ID, secret:SECRET_KEY, version:VERSION_NUM)
     }
     
@@ -34,9 +33,9 @@ class DbManager {
         })
     }
     
-    func update(year: Year, callback: @escaping (_ savedYear: Year?, _ errorString: String?) -> Void) {
-        backendless?.persistenceService.of(Year.ofClass()).save(year, response: { (response) in
-            if let saved = response as? Year {
+    func update(year: BYear, callback: @escaping (_ savedYear: BYear?, _ errorString: String?) -> Void) {
+        backendless?.persistenceService.of(BYear.ofClass()).save(year, response: { (response) in
+            if let saved = response as? BYear {
                 callback(saved, nil)
             } else {
                 callback(nil, nil)
@@ -47,9 +46,9 @@ class DbManager {
         })
     }
     
-    func updateEvent(event: Event, callback: @escaping (_ savedEvent: Event?, _ errorString: String?) -> Void) {
-        backendless?.persistenceService.of(Event.ofClass()).save(event, response: { (response) in
-            if let savedEvent = response as? Event {
+    func updateEvent(event: BEvent, callback: @escaping (_ savedEvent: BEvent?, _ errorString: String?) -> Void) {
+        backendless?.persistenceService.of(BEvent.ofClass()).save(event, response: { (response) in
+            if let savedEvent = response as? BEvent {
                 callback(savedEvent, nil)
             } else {
                 callback(nil, nil)
@@ -60,12 +59,12 @@ class DbManager {
         })
     }
     
-    func getYears(callback: @escaping (_ years: [Year]?, _ errorString: String?) -> Void) {
+    func getYears(callback: @escaping (_ years: [BYear]?, _ errorString: String?) -> Void) {
         let dataQuery = BackendlessDataQuery()
         
-        backendless?.persistenceService.find(Year.ofClass(), dataQuery: dataQuery, response: { (response) in
+        backendless?.persistenceService.find(BYear.ofClass(), dataQuery: dataQuery, response: { (response) in
             print("response \(response)")
-            if let years = response?.data as? [Year] {
+            if let years = response?.data as? [BYear] {
                 callback(years, nil)
             }
         }, error: { (error) in
@@ -74,9 +73,9 @@ class DbManager {
         })
     }
     
-    func deleteEvent(event: Event) {
+    func deleteEvent(event: BEvent) {
         deleteRelatedPapers(event: event) { 
-            self.backendless?.data.remove(Event.ofClass(), sid: event.objectId, response: { (ref) in
+            self.backendless?.data.remove(BEvent.ofClass(), sid: event.objectId, response: { (ref) in
                 print("delete ref: \(ref)")
             }, error: { (error) in
                 print("\(error.debugDescription)")
@@ -85,10 +84,10 @@ class DbManager {
         }
     }
     
-    func deleteRelatedPapers(event: Event, callback: @escaping () -> Void) {
+    func deleteRelatedPapers(event: BEvent, callback: @escaping () -> Void) {
         let query = BackendlessDataQuery()
-        query.whereClause = "Event[papers].objectId = \'\(event.objectId!)\'"
-        backendless?.data.removeAll(Paper.ofClass(), dataQuery: query, response: { (response) in
+        query.whereClause = "BEvent[papers].objectId = \'\(event.objectId!)\'"
+        backendless?.data.removeAll(BPaper.ofClass(), dataQuery: query, response: { (response) in
             print("response: \(response)")
             callback()
         }, error: { (error) in
@@ -97,7 +96,7 @@ class DbManager {
         })
     }
     
-    func deletePaper(paper: Paper) {
+    func deletePaper(paper: BPaper) {
         backendless?.data.remove(paper, response: { (ref) in
             print("delete ref: \(ref)")
         }, error: { (error) in

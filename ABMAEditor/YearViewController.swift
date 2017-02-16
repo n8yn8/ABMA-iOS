@@ -15,8 +15,8 @@ class YearViewController: NSViewController {
     var containerController: ContainerController?
     var sponsorsViewController: SponsorsViewController?
     
-    var years = [Year]()
-    var selectedYear: Year?
+    var years = [BYear]()
+    var selectedYear: BYear?
     
     @IBOutlet weak var yearsPopUpButton: NSPopUpButton!
 
@@ -70,10 +70,10 @@ class YearViewController: NSViewController {
             
             sponsorsViewController?.updateSponsors(sponsorList: year.sponsors)
         } else {
-            containerController?.updateEventList(events: [Event]())
+            containerController?.updateEventList(events: [BEvent]())
             welcomeTextView.string = ""
             infoTextView.string = ""
-            sponsorsViewController?.updateSponsors(sponsorList: [Sponsor]())
+            sponsorsViewController?.updateSponsors(sponsorList: [BSponsor]())
         }
         
     }
@@ -119,7 +119,7 @@ class YearViewController: NSViewController {
 
 extension YearViewController: NewYearsViewControllerDelegate {
     func yearCreated(year: Int) {
-        let thisYear = Year()
+        let thisYear = BYear()
         thisYear.name = year
         DbManager.sharedInstance.update(year: thisYear) { (saved, error) in
             if let savedYear = saved {
@@ -131,7 +131,7 @@ extension YearViewController: NewYearsViewControllerDelegate {
 }
 
 extension YearViewController: SponsorsViewControllerDelegate {
-    func saveSponsor(savedSponsor: Sponsor) {
+    func saveSponsor(savedSponsor: BSponsor) {
         if let thisYear = selectedYear {
             if let id = savedSponsor.objectId {
                 for i in 0 ..< thisYear.sponsors.count {
@@ -150,7 +150,7 @@ extension YearViewController: SponsorsViewControllerDelegate {
 }
 
 extension YearViewController: ContainerControllerDelegate {
-    func updateEvents(list: [Event]) {
+    func updateEvents(list: [BEvent]) {
         selectedYear?.events = list
         updateYear()
     }

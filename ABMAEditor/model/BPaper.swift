@@ -1,14 +1,14 @@
 //
-//  Paper.swift
+//  BPaper.swift
 //  ABMA
 //
 //  Created by Nathan Condell on 1/11/17.
 //  Copyright © 2017 Nathan Condell. All rights reserved.
 //
 
-import Cocoa
+import Foundation
 
-class Paper: NSObject {
+class BPaper: NSObject {
     
     var objectId: String?
     var title: String!

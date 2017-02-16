@@ -16,7 +16,7 @@ class EventListViewController: NSViewController, NSTableViewDelegate, NSTableVie
     
     private let formatter = DateFormatter()
     
-    private var eventList = [Event]()
+    private var eventList = [BEvent]()
     private var selectedIndex: Int?
     
     override func viewDidLoad() {
@@ -26,7 +26,7 @@ class EventListViewController: NSViewController, NSTableViewDelegate, NSTableVie
         formatter.timeStyle = .short
     }
     
-    func setEventList(list: [Event]) {
+    func setEventList(list: [BEvent]) {
         eventList = list
         eventTableView.deselectAll(self)
         eventTableView.reloadData()
@@ -55,7 +55,7 @@ class EventListViewController: NSViewController, NSTableViewDelegate, NSTableVie
         delegate?.updateSelectedEvent(event: getSelectedEvent(), index: selectedIndex)
     }
     
-    func getSelectedEvent() -> Event? {
+    func getSelectedEvent() -> BEvent? {
         let selectedRow = eventTableView.selectedRow
         removeButton.isEnabled = selectedRow >= 0
         if selectedRow >= 0 && eventList.count > selectedRow {
@@ -78,6 +78,6 @@ class EventListViewController: NSViewController, NSTableViewDelegate, NSTableVie
 }
 
 protocol MasterViewControllerDelegate: class {
-    func updateSelectedEvent(event: Event?, index: Int?)
+    func updateSelectedEvent(event: BEvent?, index: Int?)
     func removeSelectedEvent(index: Int)
 }

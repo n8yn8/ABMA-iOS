@@ -23,7 +23,7 @@ class EventViewController: NSViewController {
     weak var delegate: EventViewControllerDelegate?
     
     private let calendar = Calendar.current
-    fileprivate var event: Event?
+    fileprivate var event: BEvent?
     fileprivate var papersViewController: PapersViewController?
     
     override func viewDidLoad() {
@@ -47,10 +47,10 @@ class EventViewController: NSViewController {
             subtitleTextField.stringValue = ""
             descriptionTextView.string = ""
             if let controller = papersViewController {
-                controller.papers = [Paper]()
+                controller.papers = [BPaper]()
             }
             
-            if let event = representedObject as? Event {
+            if let event = representedObject as? BEvent {
                 self.event = event
                 
                 datePicker.dateValue = event.startDate
@@ -106,7 +106,7 @@ class EventViewController: NSViewController {
         var isNew = false
         if event == nil {
             isNew = true
-            event = Event()
+            event = BEvent()
             event!.initWith(startDate: startDate, endDate: endDate, title: titleTextField.stringValue)
         } else {
             event?.startDate = startDate
@@ -142,6 +142,6 @@ class EventViewController: NSViewController {
 }
 
 protocol EventViewControllerDelegate: class {
-    func updateEvent(event: Event)
-    func createEvent(event: Event)
+    func updateEvent(event: BEvent)
+    func createEvent(event: BEvent)
 }

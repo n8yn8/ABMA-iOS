@@ -13,7 +13,7 @@ class SponsorItem: NSCollectionViewItem {
     
     @IBOutlet weak var spinner: NSProgressIndicator!
     
-    var sponsor: Sponsor? {
+    var sponsor: BSponsor? {
         didSet {
             guard isViewLoaded else { return }
             if let sponsor = sponsor {
