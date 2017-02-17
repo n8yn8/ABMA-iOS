@@ -67,7 +67,7 @@ class EventListViewController: NSViewController, NSTableViewDelegate, NSTableVie
     }
     
     @IBAction func add(_ sender: Any) {
-        delegate?.updateSelectedEvent(event: nil, index: nil)
+        delegate?.addNewEvent()
     }
 
     @IBAction func remove(_ sender: Any) {
@@ -79,5 +79,6 @@ class EventListViewController: NSViewController, NSTableViewDelegate, NSTableVie
 
 protocol MasterViewControllerDelegate: class {
     func updateSelectedEvent(event: BEvent?, index: Int?)
+    func addNewEvent()
     func removeSelectedEvent(index: Int)
 }

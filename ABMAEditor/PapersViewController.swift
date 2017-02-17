@@ -123,5 +123,6 @@ class PapersViewController: NSViewController, NSTableViewDelegate, NSTableViewDa
         }
         
         self.papersTableView.reloadData()
+        self.papersTableView.selectRowIndexes(NSIndexSet(index: papers.count - 1) as IndexSet, byExtendingSelection: false)
     }
 }
