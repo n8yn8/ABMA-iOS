@@ -10,7 +10,7 @@
 #import <Foundation/Foundation.h>
 #import <CoreData/CoreData.h>
 
-@class Day;
+@class Day, Sponsor;
 
 NS_ASSUME_NONNULL_BEGIN
 

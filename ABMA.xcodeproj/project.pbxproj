@@ -42,6 +42,8 @@
 		433BA8231E581456007B7893 /* Paper+CoreDataProperties.m in Sources */ = {isa = PBXBuildFile; fileRef = 433BA8171E581456007B7893 /* Paper+CoreDataProperties.m */; };
 		433BA8241E581456007B7893 /* Event+CoreDataClass.m in Sources */ = {isa = PBXBuildFile; fileRef = 433BA8191E581456007B7893 /* Event+CoreDataClass.m */; };
 		433BA8251E581456007B7893 /* Event+CoreDataProperties.m in Sources */ = {isa = PBXBuildFile; fileRef = 433BA81B1E581456007B7893 /* Event+CoreDataProperties.m */; };
+		433BA85B1E58B471007B7893 /* Sponsor+CoreDataClass.m in Sources */ = {isa = PBXBuildFile; fileRef = 433BA8581E58B471007B7893 /* Sponsor+CoreDataClass.m */; };
+		433BA85C1E58B471007B7893 /* Sponsor+CoreDataProperties.m in Sources */ = {isa = PBXBuildFile; fileRef = 433BA85A1E58B471007B7893 /* Sponsor+CoreDataProperties.m */; };
 		434B44DD1E1B231F00963096 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 434B44DC1E1B231F00963096 /* AppDelegate.swift */; };
 		434B44DF1E1B231F00963096 /* EventViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 434B44DE1E1B231F00963096 /* EventViewController.swift */; };
 		434B44E11E1B231F00963096 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 434B44E01E1B231F00963096 /* Assets.xcassets */; };
@@ -145,6 +147,11 @@
 		433BA8191E581456007B7893 /* Event+CoreDataClass.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "Event+CoreDataClass.m"; sourceTree = "<group>"; };
 		433BA81A1E581456007B7893 /* Event+CoreDataProperties.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "Event+CoreDataProperties.h"; sourceTree = "<group>"; };
 		433BA81B1E581456007B7893 /* Event+CoreDataProperties.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "Event+CoreDataProperties.m"; sourceTree = "<group>"; };
+		433BA8561E58ACBE007B7893 /* ABMA 2.xcdatamodel */ = {isa = PBXFileReference; lastKnownFileType = wrapper.xcdatamodel; path = "ABMA 2.xcdatamodel"; sourceTree = "<group>"; };
+		433BA8571E58B471007B7893 /* Sponsor+CoreDataClass.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "Sponsor+CoreDataClass.h"; sourceTree = "<group>"; };
+		433BA8581E58B471007B7893 /* Sponsor+CoreDataClass.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "Sponsor+CoreDataClass.m"; sourceTree = "<group>"; };
+		433BA8591E58B471007B7893 /* Sponsor+CoreDataProperties.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "Sponsor+CoreDataProperties.h"; sourceTree = "<group>"; };
+		433BA85A1E58B471007B7893 /* Sponsor+CoreDataProperties.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "Sponsor+CoreDataProperties.m"; sourceTree = "<group>"; };
 		434B44DA1E1B231F00963096 /* ABMAEditor.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = ABMAEditor.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		434B44DC1E1B231F00963096 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		434B44DE1E1B231F00963096 /* EventViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EventViewController.swift; sourceTree = "<group>"; };
@@ -339,6 +346,10 @@
 		433BA8071E581400007B7893 /* model */ = {
 			isa = PBXGroup;
 			children = (
+				433BA8571E58B471007B7893 /* Sponsor+CoreDataClass.h */,
+				433BA8581E58B471007B7893 /* Sponsor+CoreDataClass.m */,
+				433BA8591E58B471007B7893 /* Sponsor+CoreDataProperties.h */,
+				433BA85A1E58B471007B7893 /* Sponsor+CoreDataProperties.m */,
 				433BA8081E581456007B7893 /* Note+CoreDataClass.h */,
 				433BA8091E581456007B7893 /* Note+CoreDataClass.m */,
 				433BA80A1E581456007B7893 /* Note+CoreDataProperties.h */,
@@ -708,6 +719,7 @@
 				433BA81D1E581456007B7893 /* Note+CoreDataProperties.m in Sources */,
 				43B16CEA1E54A83C00A240FA /* DbManager.swift in Sources */,
 				43201F441ABF371F00486999 /* PaperTableViewCell.m in Sources */,
+				433BA85C1E58B471007B7893 /* Sponsor+CoreDataProperties.m in Sources */,
 				43F070C818F3631E0077F11E /* ScheduleViewController.m in Sources */,
 				43F070D118F3B4B60077F11E /* SchedDetailViewController.m in Sources */,
 				43D07C6F1AAEABA00033A1E6 /* EventCellTableViewCell.m in Sources */,
@@ -726,6 +738,7 @@
 				43F070C518F3561A0077F11E /* SideBarTableViewController.m in Sources */,
 				433BA8211E581456007B7893 /* Year+CoreDataProperties.m in Sources */,
 				433BA8241E581456007B7893 /* Event+CoreDataClass.m in Sources */,
+				433BA85B1E58B471007B7893 /* Sponsor+CoreDataClass.m in Sources */,
 				433BA8201E581456007B7893 /* Year+CoreDataClass.m in Sources */,
 				433BA8221E581456007B7893 /* Paper+CoreDataClass.m in Sources */,
 				43B16CED1E54A83C00A240FA /* BYear.swift in Sources */,
@@ -1100,9 +1113,10 @@
 		43AAAE2B1AAAA4D1002C424A /* ABMA.xcdatamodeld */ = {
 			isa = XCVersionGroup;
 			children = (
+				433BA8561E58ACBE007B7893 /* ABMA 2.xcdatamodel */,
 				43AAAE2C1AAAA4D1002C424A /* ABMA.xcdatamodel */,
 			);
-			currentVersion = 43AAAE2C1AAAA4D1002C424A /* ABMA.xcdatamodel */;
+			currentVersion = 433BA8561E58ACBE007B7893 /* ABMA 2.xcdatamodel */;
 			path = ABMA.xcdatamodeld;
 			sourceTree = "<group>";
 			versionGroupType = wrapper.xcdatamodel;

@@ -9,6 +9,7 @@
 
 #import "Year+CoreDataClass.h"
 #import "Day+CoreDataClass.h"
+#import "Sponsor+CoreDataClass.h"
 @implementation Year
 
 @end
