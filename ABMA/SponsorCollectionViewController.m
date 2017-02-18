@@ -8,8 +8,9 @@
 
 #import "SponsorCollectionViewController.h"
 #import "SWRevealViewController.h"
-#import "ABMA-Swift.h"
 #import <SDWebImage/UIImageView+WebCache.h>
+#import "AppDelegate.h"
+#import "Sponsor+CoreDataClass.h"
 
 @interface SponsorCollectionViewController ()
 @property (weak, nonatomic) IBOutlet UICollectionView *sponsorsCollectionView;
@@ -18,7 +19,7 @@
 
 @implementation SponsorCollectionViewController
 {
-    NSMutableArray<BSponsor *> *sponsors;
+    NSMutableArray<Sponsor *> *sponsors;
 }
 
 - (id)initWithNibName:(NSString *)nibNameOrNil bundle:(NSBundle *)nibBundleOrNil
@@ -35,6 +36,19 @@
     [super viewDidLoad];
     
     sponsors = [[NSMutableArray alloc] init];
+    
+    AppDelegate *appdelegate = (AppDelegate *)[[UIApplication sharedApplication] delegate];
+    NSManagedObjectContext *context = [appdelegate managedObjectContext];
+    
+    NSFetchRequest *fetchRequest = [Sponsor fetchRequest];
+    NSError *fetchError = nil;
+    sponsors = [[NSMutableArray alloc] initWithArray:[context executeFetchRequest:fetchRequest error:&fetchError]];
+    if (fetchError) {
+        NSLog(@"Unable to execute fetch request.");
+        NSLog(@"%@, %@", fetchError, fetchError.localizedDescription);
+    } else {
+        NSLog(@"Fetch success %lu", (unsigned long)sponsors.count);
+    }
     
     //Sponsor image array
 //    sponsorImages = [[NSArray alloc] initWithObjects:@"AAZK-Dallas.png", @"AAZK-Galv.png", @"AAZKChey.png", @"ABI.png", @"AP.png", @"Blue.png", @"ChildrensAquarium.png", @"Cliff.png", @"DallasZoo.png", @"DWA.png", @"FRWC.png", @"FWZoo.png", @"MAF.png", @"NatBal.png", @"NEI.png", @"SeaWorld.png", nil];
