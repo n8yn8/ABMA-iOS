@@ -9,8 +9,8 @@
 #import "SchedDetailViewController.h"
 #import <QuartzCore/QuartzCore.h>
 #import "AppDelegate.h"
-#import "Note.h"
-#import "Paper.h"
+#import "Note+CoreDataClass.h"
+#import "Paper+CoreDataClass.h"
 #import "PaperTableViewCell.h"
 
 @interface SchedDetailViewController () <UITextViewDelegate>

@@ -7,9 +7,9 @@
 //
 
 #import "NotesViewController.h"
-#import "Event.h"
-#import "Paper.h"
-#import "Note.h"
+#import "Event+CoreDataClass.h"
+#import "Paper+CoreDataClass.h"
+#import "Note+CoreDataClass.h"
 #import "AppDelegate.h"
 #import "SchedDetailViewController.h"
 

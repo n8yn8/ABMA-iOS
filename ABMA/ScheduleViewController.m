@@ -9,11 +9,11 @@
 #import "ScheduleViewController.h"
 #import "SWRevealViewController.h"
 #import "SchedDetailViewController.h"
-#import "Event.h"
-#import "Day.h"
-#import "Year.h"
+#import "Event+CoreDataClass.h"
+#import "Day+CoreDataClass.h"
+#import "Year+CoreDataClass.h"
 #import "AppDelegate.h"
-#import "Paper.h"
+#import "Paper+CoreDataClass.h"
 
 @interface ScheduleViewController ()
 
