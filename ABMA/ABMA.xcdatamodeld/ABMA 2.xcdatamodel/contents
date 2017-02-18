@@ -45,7 +45,7 @@
         <attribute name="welcome" optional="YES" attributeType="String" syncable="YES"/>
         <attribute name="year" optional="YES" attributeType="String" syncable="YES"/>
         <relationship name="day" optional="YES" toMany="YES" deletionRule="Nullify" destinationEntity="Day" inverseName="year" inverseEntity="Day" syncable="YES"/>
-        <relationship name="sponsors" optional="YES" maxCount="1" deletionRule="Nullify" destinationEntity="Sponsor" inverseName="year" inverseEntity="Sponsor" syncable="YES"/>
+        <relationship name="sponsors" optional="YES" toMany="YES" deletionRule="Nullify" destinationEntity="Sponsor" inverseName="year" inverseEntity="Sponsor" syncable="YES"/>
     </entity>
     <elements>
         <element name="Day" positionX="54" positionY="234" width="128" height="90"/>

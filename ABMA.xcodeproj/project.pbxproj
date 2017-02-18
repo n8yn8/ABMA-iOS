@@ -36,14 +36,14 @@
 		433BA81D1E581456007B7893 /* Note+CoreDataProperties.m in Sources */ = {isa = PBXBuildFile; fileRef = 433BA80B1E581456007B7893 /* Note+CoreDataProperties.m */; };
 		433BA81E1E581456007B7893 /* Day+CoreDataClass.m in Sources */ = {isa = PBXBuildFile; fileRef = 433BA80D1E581456007B7893 /* Day+CoreDataClass.m */; };
 		433BA81F1E581456007B7893 /* Day+CoreDataProperties.m in Sources */ = {isa = PBXBuildFile; fileRef = 433BA80F1E581456007B7893 /* Day+CoreDataProperties.m */; };
-		433BA8201E581456007B7893 /* Year+CoreDataClass.m in Sources */ = {isa = PBXBuildFile; fileRef = 433BA8111E581456007B7893 /* Year+CoreDataClass.m */; };
-		433BA8211E581456007B7893 /* Year+CoreDataProperties.m in Sources */ = {isa = PBXBuildFile; fileRef = 433BA8131E581456007B7893 /* Year+CoreDataProperties.m */; };
 		433BA8221E581456007B7893 /* Paper+CoreDataClass.m in Sources */ = {isa = PBXBuildFile; fileRef = 433BA8151E581456007B7893 /* Paper+CoreDataClass.m */; };
 		433BA8231E581456007B7893 /* Paper+CoreDataProperties.m in Sources */ = {isa = PBXBuildFile; fileRef = 433BA8171E581456007B7893 /* Paper+CoreDataProperties.m */; };
 		433BA8241E581456007B7893 /* Event+CoreDataClass.m in Sources */ = {isa = PBXBuildFile; fileRef = 433BA8191E581456007B7893 /* Event+CoreDataClass.m */; };
 		433BA8251E581456007B7893 /* Event+CoreDataProperties.m in Sources */ = {isa = PBXBuildFile; fileRef = 433BA81B1E581456007B7893 /* Event+CoreDataProperties.m */; };
 		433BA85B1E58B471007B7893 /* Sponsor+CoreDataClass.m in Sources */ = {isa = PBXBuildFile; fileRef = 433BA8581E58B471007B7893 /* Sponsor+CoreDataClass.m */; };
 		433BA85C1E58B471007B7893 /* Sponsor+CoreDataProperties.m in Sources */ = {isa = PBXBuildFile; fileRef = 433BA85A1E58B471007B7893 /* Sponsor+CoreDataProperties.m */; };
+		433BA8611E58C005007B7893 /* Year+CoreDataClass.m in Sources */ = {isa = PBXBuildFile; fileRef = 433BA85E1E58C005007B7893 /* Year+CoreDataClass.m */; };
+		433BA8621E58C005007B7893 /* Year+CoreDataProperties.m in Sources */ = {isa = PBXBuildFile; fileRef = 433BA8601E58C005007B7893 /* Year+CoreDataProperties.m */; };
 		434B44DD1E1B231F00963096 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 434B44DC1E1B231F00963096 /* AppDelegate.swift */; };
 		434B44DF1E1B231F00963096 /* EventViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 434B44DE1E1B231F00963096 /* EventViewController.swift */; };
 		434B44E11E1B231F00963096 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 434B44E01E1B231F00963096 /* Assets.xcassets */; };
@@ -135,10 +135,6 @@
 		433BA80D1E581456007B7893 /* Day+CoreDataClass.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "Day+CoreDataClass.m"; sourceTree = "<group>"; };
 		433BA80E1E581456007B7893 /* Day+CoreDataProperties.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "Day+CoreDataProperties.h"; sourceTree = "<group>"; };
 		433BA80F1E581456007B7893 /* Day+CoreDataProperties.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "Day+CoreDataProperties.m"; sourceTree = "<group>"; };
-		433BA8101E581456007B7893 /* Year+CoreDataClass.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "Year+CoreDataClass.h"; sourceTree = "<group>"; };
-		433BA8111E581456007B7893 /* Year+CoreDataClass.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "Year+CoreDataClass.m"; sourceTree = "<group>"; };
-		433BA8121E581456007B7893 /* Year+CoreDataProperties.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "Year+CoreDataProperties.h"; sourceTree = "<group>"; };
-		433BA8131E581456007B7893 /* Year+CoreDataProperties.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "Year+CoreDataProperties.m"; sourceTree = "<group>"; };
 		433BA8141E581456007B7893 /* Paper+CoreDataClass.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "Paper+CoreDataClass.h"; sourceTree = "<group>"; };
 		433BA8151E581456007B7893 /* Paper+CoreDataClass.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "Paper+CoreDataClass.m"; sourceTree = "<group>"; };
 		433BA8161E581456007B7893 /* Paper+CoreDataProperties.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "Paper+CoreDataProperties.h"; sourceTree = "<group>"; };
@@ -152,6 +148,10 @@
 		433BA8581E58B471007B7893 /* Sponsor+CoreDataClass.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "Sponsor+CoreDataClass.m"; sourceTree = "<group>"; };
 		433BA8591E58B471007B7893 /* Sponsor+CoreDataProperties.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "Sponsor+CoreDataProperties.h"; sourceTree = "<group>"; };
 		433BA85A1E58B471007B7893 /* Sponsor+CoreDataProperties.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "Sponsor+CoreDataProperties.m"; sourceTree = "<group>"; };
+		433BA85D1E58C005007B7893 /* Year+CoreDataClass.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "Year+CoreDataClass.h"; sourceTree = "<group>"; };
+		433BA85E1E58C005007B7893 /* Year+CoreDataClass.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "Year+CoreDataClass.m"; sourceTree = "<group>"; };
+		433BA85F1E58C005007B7893 /* Year+CoreDataProperties.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "Year+CoreDataProperties.h"; sourceTree = "<group>"; };
+		433BA8601E58C005007B7893 /* Year+CoreDataProperties.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "Year+CoreDataProperties.m"; sourceTree = "<group>"; };
 		434B44DA1E1B231F00963096 /* ABMAEditor.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = ABMAEditor.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		434B44DC1E1B231F00963096 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		434B44DE1E1B231F00963096 /* EventViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EventViewController.swift; sourceTree = "<group>"; };
@@ -346,6 +346,10 @@
 		433BA8071E581400007B7893 /* model */ = {
 			isa = PBXGroup;
 			children = (
+				433BA85D1E58C005007B7893 /* Year+CoreDataClass.h */,
+				433BA85E1E58C005007B7893 /* Year+CoreDataClass.m */,
+				433BA85F1E58C005007B7893 /* Year+CoreDataProperties.h */,
+				433BA8601E58C005007B7893 /* Year+CoreDataProperties.m */,
 				433BA8571E58B471007B7893 /* Sponsor+CoreDataClass.h */,
 				433BA8581E58B471007B7893 /* Sponsor+CoreDataClass.m */,
 				433BA8591E58B471007B7893 /* Sponsor+CoreDataProperties.h */,
@@ -358,10 +362,6 @@
 				433BA80D1E581456007B7893 /* Day+CoreDataClass.m */,
 				433BA80E1E581456007B7893 /* Day+CoreDataProperties.h */,
 				433BA80F1E581456007B7893 /* Day+CoreDataProperties.m */,
-				433BA8101E581456007B7893 /* Year+CoreDataClass.h */,
-				433BA8111E581456007B7893 /* Year+CoreDataClass.m */,
-				433BA8121E581456007B7893 /* Year+CoreDataProperties.h */,
-				433BA8131E581456007B7893 /* Year+CoreDataProperties.m */,
 				433BA8141E581456007B7893 /* Paper+CoreDataClass.h */,
 				433BA8151E581456007B7893 /* Paper+CoreDataClass.m */,
 				433BA8161E581456007B7893 /* Paper+CoreDataProperties.h */,
@@ -727,7 +727,9 @@
 				43AAAE2D1AAAA4D1002C424A /* ABMA.xcdatamodeld in Sources */,
 				4338BBB118F26F53002683EF /* AppDelegate.m in Sources */,
 				43B16CEB1E54A83C00A240FA /* BEvent.swift in Sources */,
+				433BA8611E58C005007B7893 /* Year+CoreDataClass.m in Sources */,
 				439947E51AB1E9F500D1479B /* NotesViewController.m in Sources */,
+				433BA8621E58C005007B7893 /* Year+CoreDataProperties.m in Sources */,
 				4305618B1A9AF95000ED4BB0 /* SWRevealViewController.m in Sources */,
 				4338BBAD18F26F53002683EF /* main.m in Sources */,
 				43B16CEC1E54A83C00A240FA /* BPaper.swift in Sources */,
@@ -736,10 +738,8 @@
 				43CF9B1D18F5B23500885DAC /* ContactViewController.m in Sources */,
 				433BA8251E581456007B7893 /* Event+CoreDataProperties.m in Sources */,
 				43F070C518F3561A0077F11E /* SideBarTableViewController.m in Sources */,
-				433BA8211E581456007B7893 /* Year+CoreDataProperties.m in Sources */,
 				433BA8241E581456007B7893 /* Event+CoreDataClass.m in Sources */,
 				433BA85B1E58B471007B7893 /* Sponsor+CoreDataClass.m in Sources */,
-				433BA8201E581456007B7893 /* Year+CoreDataClass.m in Sources */,
 				433BA8221E581456007B7893 /* Paper+CoreDataClass.m in Sources */,
 				43B16CED1E54A83C00A240FA /* BYear.swift in Sources */,
 				433BA81F1E581456007B7893 /* Day+CoreDataProperties.m in Sources */,
