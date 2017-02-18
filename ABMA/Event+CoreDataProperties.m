@@ -20,7 +20,6 @@
 @dynamic place;
 @dynamic startDate;
 @dynamic subtitle;
-@dynamic time;
 @dynamic title;
 @dynamic bObjectId;
 @dynamic day;

@@ -43,7 +43,8 @@ class EventListViewController: NSViewController, NSTableViewDelegate, NSTableVie
         let cell = tableView.make(withIdentifier: tableColumn!.identifier, owner: self) as! NSTableCellView
         
         if tableColumn!.identifier == "Time" {
-            cell.textField?.stringValue = formatter.string(from: event.startDate)
+            let dateUTC = event.startDate.addingTimeInterval(TimeInterval(-TimeZone.current.secondsFromGMT()))
+            cell.textField?.stringValue = formatter.string(from: dateUTC)
         } else if tableColumn!.identifier == "Title" {
             cell.textField?.stringValue = event.title
         }

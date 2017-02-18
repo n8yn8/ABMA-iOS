@@ -21,7 +21,6 @@ NS_ASSUME_NONNULL_BEGIN
 @property (nullable, nonatomic, copy) NSString *place;
 @property (nullable, nonatomic, copy) NSDate *startDate;
 @property (nullable, nonatomic, copy) NSString *subtitle;
-@property (nullable, nonatomic, copy) NSString *time;
 @property (nullable, nonatomic, copy) NSString *title;
 @property (nullable, nonatomic, copy) NSString *bObjectId;
 @property (nullable, nonatomic, retain) Day *day;

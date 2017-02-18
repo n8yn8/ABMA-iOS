@@ -54,8 +54,9 @@ class EventViewController: NSViewController {
                 self.event = event
                 
                 datePicker.dateValue = event.startDate
-                startTimePicker.dateValue = event.startDate
-                endTimePicker.dateValue = event.endDate
+                let utcOffset = TimeInterval(-TimeZone.current.secondsFromGMT())
+                startTimePicker.dateValue = event.startDate.addingTimeInterval(utcOffset)
+                endTimePicker.dateValue = event.endDate.addingTimeInterval(utcOffset)
                 if let location = event.location {
                     locationTextField.stringValue = location
                 }
@@ -100,8 +101,8 @@ class EventViewController: NSViewController {
     }
     
     func saveEvent() {
-        let startDate = buildDate(timePart: startTimePicker.dateValue)
-        let endDate = buildDate(timePart: endTimePicker.dateValue)
+        let startDate = buildDate(timePartInCurTZ: startTimePicker.dateValue)
+        let endDate = buildDate(timePartInCurTZ: endTimePicker.dateValue)
         
         var isNew = false
         if event == nil {
@@ -126,9 +127,11 @@ class EventViewController: NSViewController {
         }
     }
     
-    func buildDate(timePart: Date) -> Date {
+    func buildDate(timePartInCurTZ: Date) -> Date {
+        let timePart = timePartInCurTZ.addingTimeInterval(TimeInterval(TimeZone.current.secondsFromGMT()))
         let timeComponents = calendar.dateComponents([.hour, .minute], from: timePart)
-        let date = calendar.startOfDay(for: datePicker.dateValue)
+        let datePart = datePicker.dateValue.addingTimeInterval(TimeInterval(TimeZone.current.secondsFromGMT()))
+        let date = calendar.startOfDay(for: datePart)
         let finalDate = calendar.date(byAdding: timeComponents, to: date)!
         return finalDate
     }

@@ -13,7 +13,6 @@
         <attribute name="place" optional="YES" attributeType="String" syncable="YES"/>
         <attribute name="startDate" optional="YES" attributeType="Date" usesScalarValueType="NO" syncable="YES"/>
         <attribute name="subtitle" optional="YES" attributeType="String" syncable="YES"/>
-        <attribute name="time" optional="YES" attributeType="String" syncable="YES"/>
         <attribute name="title" optional="YES" attributeType="String" syncable="YES"/>
         <relationship name="day" optional="YES" maxCount="1" deletionRule="Nullify" destinationEntity="Day" inverseName="event" inverseEntity="Day" syncable="YES"/>
         <relationship name="note" optional="YES" maxCount="1" deletionRule="Nullify" destinationEntity="Note" inverseName="event" inverseEntity="Note" syncable="YES"/>
@@ -49,7 +48,7 @@
     </entity>
     <elements>
         <element name="Day" positionX="54" positionY="234" width="128" height="90"/>
-        <element name="Event" positionX="241" positionY="216" width="128" height="225"/>
+        <element name="Event" positionX="241" positionY="216" width="128" height="210"/>
         <element name="Note" positionX="412" positionY="228" width="128" height="105"/>
         <element name="Paper" positionX="108" positionY="297" width="128" height="135"/>
         <element name="Year" positionX="-99" positionY="210" width="128" height="135"/>

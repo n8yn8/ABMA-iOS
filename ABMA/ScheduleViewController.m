@@ -112,7 +112,6 @@
         thisEvent.title = bEvent.title;
         thisEvent.subtitle = bEvent.subtitle;
         thisEvent.locatoin = bEvent.location;
-//        thisEvent.time = [event objectForKey:@"Time"];
         thisEvent.startDate = bEvent.startDate;
         thisEvent.endDate = bEvent.endDate;
         thisEvent.details = bEvent.details;
