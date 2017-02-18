@@ -230,10 +230,10 @@
             thisEvent.title = [event objectForKey:@"Title"];
             thisEvent.subtitle = [event objectForKey:@"Subtitle"];
             thisEvent.locatoin = [event objectForKey:@"Location"];
-            thisEvent.time = [event objectForKey:@"Time"];
-            NSArray *times = [thisEvent.time componentsSeparatedByString:@" - "];
+            NSString *time = [event objectForKey:@"Time"];
+            NSArray *times = [time componentsSeparatedByString:@" - "];
             if (times.count == 0) {
-                NSLog(@"No times for %@", thisEvent.time);
+                NSLog(@"No times for %@", time);
             }
             NSString *startString = [NSString stringWithFormat:@"%@ %@", key, [times firstObject]];
             thisEvent.startDate = [timeFormatter dateFromString:startString];
@@ -241,7 +241,9 @@
                 NSLog(@"startDate did't format for %@", startString);
             }
             NSString *endString = [NSString stringWithFormat:@"%@ %@", key, [times lastObject]];
-            thisEvent.endDate = [timeFormatter dateFromString:endString];
+            if (times.count == 2) {
+                thisEvent.endDate = [timeFormatter dateFromString:endString];
+            }
             thisEvent.details = [event objectForKey:@"Description"];
             NSArray *papers = [event objectForKey:@"Papers"];
             for (NSDictionary *paperDict in papers) {
@@ -278,10 +280,10 @@
         [timeFormatter setDateFormat:@"MMM d, yyyy h:mma"];
         [timeFormatter setTimeZone:[NSTimeZone timeZoneWithName:@"UTC"]];
         for (Event *thisEvent in updateEvents) {
-            thisEvent.time = @"3:00pm - 3:20pm";
-            NSArray *times = [thisEvent.time componentsSeparatedByString:@" - "];
+            NSString *time = @"3:00pm - 3:20pm";
+            NSArray *times = [time componentsSeparatedByString:@" - "];
             if (times.count == 0) {
-                NSLog(@"No times for %@", thisEvent.time);
+                NSLog(@"No times for %@", time);
             }
             NSString *startString = [NSString stringWithFormat:@"April 22, 2016 %@", [times firstObject]];
             thisEvent.startDate = [timeFormatter dateFromString:startString];
@@ -330,9 +332,11 @@
     Event *thisEvent = [events objectAtIndex:indexPath.row];
     
     eventName.text = thisEvent.title;
-    eventTime.text = thisEvent.time;
+    eventTime.text = [Utils timeFrameWithStartDate:thisEvent.startDate endDate:thisEvent.endDate];
     return cell;
 }
+
+
 
 
 #pragma mark - Navigation

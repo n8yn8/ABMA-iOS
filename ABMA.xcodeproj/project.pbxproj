@@ -76,6 +76,7 @@
 		43F070D118F3B4B60077F11E /* SchedDetailViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 43F070D018F3B4B60077F11E /* SchedDetailViewController.m */; };
 		43F070D418F3B6A20077F11E /* SponsorCollectionViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 43F070D318F3B6A20077F11E /* SponsorCollectionViewController.m */; };
 		43F995E418F46102004DC565 /* Y2014.plist in Resources */ = {isa = PBXBuildFile; fileRef = 43F995E318F46102004DC565 /* Y2014.plist */; };
+		43FA2A131E5900B700BAE929 /* Utils.swift in Sources */ = {isa = PBXBuildFile; fileRef = 43FA2A121E5900B700BAE929 /* Utils.swift */; };
 		A74DC917320DD00E07BDE9AE /* libPods-ABMATests.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 53801DBDA437513E1C1E9818 /* libPods-ABMATests.a */; };
 		C4F0E907AB72A132E94E0BDE /* Pods_ABMAEditor.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 2374DDF4EB28960621A806BE /* Pods_ABMAEditor.framework */; };
 		EFFEC9CC9B3881A91ED820F5 /* libPods-ABMA.a in Frameworks */ = {isa = PBXBuildFile; fileRef = A78BFBB4A91629F58FE039ED /* libPods-ABMA.a */; };
@@ -190,6 +191,7 @@
 		43F070D218F3B6A20077F11E /* SponsorCollectionViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SponsorCollectionViewController.h; sourceTree = "<group>"; };
 		43F070D318F3B6A20077F11E /* SponsorCollectionViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SponsorCollectionViewController.m; sourceTree = "<group>"; };
 		43F995E318F46102004DC565 /* Y2014.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = Y2014.plist; sourceTree = "<group>"; };
+		43FA2A121E5900B700BAE929 /* Utils.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Utils.swift; sourceTree = "<group>"; };
 		53801DBDA437513E1C1E9818 /* libPods-ABMATests.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; includeInIndex = 0; path = "libPods-ABMATests.a"; sourceTree = BUILT_PRODUCTS_DIR; };
 		5FC6B48EF335B7844BFD6C79 /* Pods-ABMATests.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-ABMATests.release.xcconfig"; path = "Pods/Target Support Files/Pods-ABMATests/Pods-ABMATests.release.xcconfig"; sourceTree = "<group>"; };
 		A1C6CB95C3883781050D0BE8 /* Pods-ABMA.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-ABMA.release.xcconfig"; path = "Pods/Target Support Files/Pods-ABMA/Pods-ABMA.release.xcconfig"; sourceTree = "<group>"; };
@@ -321,6 +323,7 @@
 				43D07C6E1AAEABA00033A1E6 /* EventCellTableViewCell.m */,
 				4352A8771AB28BBE00EC03CB /* BaseViewController.h */,
 				4352A8781AB28BBE00EC03CB /* BaseViewController.m */,
+				43FA2A121E5900B700BAE929 /* Utils.swift */,
 			);
 			name = "Supporting Files";
 			sourceTree = "<group>";
@@ -736,6 +739,7 @@
 				4352A8791AB28BBE00EC03CB /* BaseViewController.m in Sources */,
 				433BA8231E581456007B7893 /* Paper+CoreDataProperties.m in Sources */,
 				43CF9B1D18F5B23500885DAC /* ContactViewController.m in Sources */,
+				43FA2A131E5900B700BAE929 /* Utils.swift in Sources */,
 				433BA8251E581456007B7893 /* Event+CoreDataProperties.m in Sources */,
 				43F070C518F3561A0077F11E /* SideBarTableViewController.m in Sources */,
 				433BA8241E581456007B7893 /* Event+CoreDataClass.m in Sources */,

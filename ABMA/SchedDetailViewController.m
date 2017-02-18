@@ -12,6 +12,7 @@
 #import "Note+CoreDataClass.h"
 #import "Paper+CoreDataClass.h"
 #import "PaperTableViewCell.h"
+#import "ABMA-Swift.h"
 
 @interface SchedDetailViewController () <UITextViewDelegate>
 
@@ -76,7 +77,7 @@
         self.eventDay.text = [[dayformatter stringFromDate:self.paper.event.startDate] uppercaseString];
         self.eventDate.text = [dateformatter stringFromDate:self.paper.event.startDate];
         self.eventLocation.text = self.paper.event.locatoin;
-        self.eventTime.text = [self timeFrameFromStart:self.paper.event.startDate toEnd:self.paper.event.endDate];
+        self.eventTime.text = [Utils timeFrameWithStartDate:self.paper.event.startDate endDate:self.paper.event.endDate];
         self.eventTitle.text = self.paper.title;
         self.eventSubtitle.text = self.paper.author;
         self.eventDetails.text = self.paper.abstract;
@@ -87,7 +88,7 @@
         self.eventDay.text = [[dayformatter stringFromDate:self.event.startDate] uppercaseString];
         self.eventDate.text = [dateformatter stringFromDate:self.event.startDate];
         self.eventLocation.text = self.event.locatoin;
-        self.eventTime.text = [self timeFrameFromStart:self.event.startDate toEnd:self.event.endDate];
+        self.eventTime.text = [Utils timeFrameWithStartDate:self.event.startDate endDate:self.event.endDate];
         self.eventTitle.text = self.event.title;
         self.eventSubtitle.text = self.event.subtitle;
         self.eventDetails.text = self.event.details;
@@ -124,18 +125,6 @@
 {
     [super didReceiveMemoryWarning];
     // Dispose of any resources that can be recreated.
-}
-
-- (NSString *)timeFrameFromStart:(NSDate *)startDate toEnd:(NSDate *)endDate {
-    NSTimeZone *timeZone = [NSTimeZone timeZoneWithName:@"UTC"];
-    NSDateFormatter *timeFormatter = [[NSDateFormatter alloc] init];
-    [timeFormatter setDateFormat:@"h:mma"];
-    [timeFormatter setTimeZone:timeZone];
-    NSMutableString *start = [[NSMutableString alloc] initWithString:[timeFormatter stringFromDate:startDate]];
-    if (endDate) {
-        [start appendFormat:@" - %@", [timeFormatter stringFromDate:endDate]];
-    }
-    return start;
 }
 
 #pragma mark - Table view data source
