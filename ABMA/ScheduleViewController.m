@@ -14,6 +14,8 @@
 #import "Year+CoreDataClass.h"
 #import "AppDelegate.h"
 #import "Paper+CoreDataClass.h"
+#import "Sponsor+CoreDataClass.h"
+#import "ABMA-Swift.h"
 
 @interface ScheduleViewController ()
 
@@ -53,7 +55,93 @@
 //    [self clearSchedule:@"Event"];
 //    [self clearSchedule:@"Note"];
 //    [self clearSchedule:@"Paper"];
-    [self loadSchedule];
+//    [self loadSchedule];
+    [self loadBackendless];
+}
+
+- (void)loadBackendless {
+    [[DbManager sharedInstance] getYearsWithCallback:^(NSArray<BYear *> * _Nullable years, NSString * _Nullable error) {
+        if (error) {
+            NSLog(@"error: %@", error);
+        } else {
+            for (BYear *bYear in years) {
+                [self saveBackendlessYear:bYear];
+            }
+        }
+    }];
+}
+
+- (void)saveBackendlessYear:(BYear *)bYear {
+    NSDateFormatter *dayFormatter = [[NSDateFormatter alloc] init];
+    [dayFormatter setDateFormat:@"MMM d, yyyy"];
+    NSTimeZone *timeZone = [NSTimeZone timeZoneWithName:@"UTC"];
+    [dayFormatter setTimeZone:timeZone];
+    NSDateFormatter *timeFormatter = [[NSDateFormatter alloc] init];
+    [timeFormatter setDateFormat:@"MMM d, yyyy h:mma"];
+    
+    Year *year = [[Year alloc] initWithEntity:[NSEntityDescription entityForName:@"Year" inManagedObjectContext:context] insertIntoManagedObjectContext:context];
+    year.bObjectId = bYear.objectId;
+    year.info = bYear.info;
+    year.welcome = bYear.welcome;
+    for (BSponsor *bSponsor in bYear.sponsors) {
+        Sponsor *sponsor = [[Sponsor alloc] initWithEntity:[NSEntityDescription entityForName:@"Sponsor" inManagedObjectContext:context] insertIntoManagedObjectContext:context];
+        sponsor.bObjectId = bSponsor.objectId;
+        sponsor.url = bSponsor.url;
+        sponsor.imageUrl = bSponsor.imageUrl;
+        sponsor.year = year;
+        [year addSponsorsObject:sponsor];
+    }
+    for (BEvent *bEvent in bYear.events) {
+        NSCalendar * calendar = [[NSCalendar alloc] initWithCalendarIdentifier:NSCalendarIdentifierGregorian];
+        
+        Day *dayForEvent = nil;
+        for (Day *day in year.day) {
+            if ([calendar isDate:bEvent.startDate equalToDate:day.date toUnitGranularity:NSCalendarUnitDay]) {
+                dayForEvent = day;
+                break;
+            }
+        }
+        if (dayForEvent == nil) {
+            dayForEvent = [[Day alloc] initWithEntity:[NSEntityDescription entityForName:@"Day" inManagedObjectContext:context] insertIntoManagedObjectContext:context];
+            dayForEvent.date = [self dateWithOutTime:bEvent.startDate];
+            [year addDayObject:dayForEvent];
+        }
+        
+        Event *thisEvent = [[Event alloc] initWithEntity:[NSEntityDescription entityForName:@"Event" inManagedObjectContext:context] insertIntoManagedObjectContext:context];
+        thisEvent.bObjectId = bEvent.objectId;
+        thisEvent.title = bEvent.title;
+        thisEvent.subtitle = bEvent.subtitle;
+        thisEvent.locatoin = bEvent.location;
+//        thisEvent.time = [event objectForKey:@"Time"];
+        thisEvent.startDate = bEvent.startDate;
+        thisEvent.endDate = bEvent.endDate;
+        thisEvent.details = bEvent.details;
+        for (BPaper *bPaper in bEvent.papers) {
+            Paper *paper = [[Paper alloc] initWithEntity:[NSEntityDescription entityForName:@"Paper" inManagedObjectContext:context] insertIntoManagedObjectContext:context];
+            paper.bObjectId = bPaper.objectId;
+            paper.author = bPaper.author;
+            paper.title = bPaper.title;
+            paper.abstract = bPaper.abstract;
+            paper.event = thisEvent;
+            [thisEvent addPapersObject:paper];
+        }
+        [dayForEvent addEventObject:thisEvent];
+    }
+    NSError *error;
+    [context save:&error];
+    if (error) {
+        NSLog(@"Error: %@", error.localizedDescription);
+    } else {
+        [self loadSchedule];
+    }
+}
+
+-(NSDate *)dateWithOutTime:(NSDate *)datDate {
+    if( datDate == nil ) {
+        datDate = [NSDate date];
+    }
+    NSDateComponents* comps = [[NSCalendar currentCalendar] components:NSCalendarUnitYear|NSCalendarUnitMonth|NSCalendarUnitDay fromDate:datDate];
+    return [[NSCalendar currentCalendar] dateFromComponents:comps];
 }
 
 - (void)clearSchedule:(NSString *)nameEntity {
@@ -78,14 +166,14 @@
     NSTimeZone *timeZone = [NSTimeZone timeZoneWithName:@"UTC"];
     [dayFormatter setTimeZone:timeZone];
     
-    NSDate *schedStart = [dayFormatter dateFromString:@"April 17, 2016"];
-    NSDate *schedEnd = [dayFormatter dateFromString:@"April 23, 2016"];
+//    NSDate *schedStart = [dayFormatter dateFromString:@"April 17, 2016"];
+//    NSDate *schedEnd = [dayFormatter dateFromString:@"April 23, 2016"];
     
     NSArray *sortDescriptors = [NSArray arrayWithObject:[NSSortDescriptor sortDescriptorWithKey:@"date" ascending:YES]];
     NSFetchRequest *fetchRequest = [[NSFetchRequest alloc] init];
     [fetchRequest setEntity:[NSEntityDescription entityForName:@"Day" inManagedObjectContext:context]];
     fetchRequest.sortDescriptors = sortDescriptors;
-    fetchRequest.predicate = [NSPredicate predicateWithFormat:@"(date >= %@) AND (date <= %@)",schedStart, schedEnd];
+//    fetchRequest.predicate = [NSPredicate predicateWithFormat:@"(date >= %@) AND (date <= %@)",schedStart, schedEnd];
     NSError *fetchError = nil;
     days = [[NSArray alloc] initWithArray:[context executeFetchRequest:fetchRequest error:&fetchError]];
     if (fetchError) {
@@ -93,10 +181,10 @@
         NSLog(@"%@, %@", fetchError, fetchError.localizedDescription);
     } else {
         if (days.count) {
-            NSString *build = [[NSUserDefaults standardUserDefaults] stringForKey:@"build"];
-            if (!build) {
-                [self fixBuildEighteen];
-            }
+//            NSString *build = [[NSUserDefaults standardUserDefaults] stringForKey:@"build"];
+//            if (!build) {
+//                [self fixBuildEighteen];
+//            }
             [self loadDay: 0];
 
         } else {
