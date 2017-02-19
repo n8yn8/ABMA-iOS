@@ -16,6 +16,7 @@
 
 @interface NotesViewController () {
     NSArray *notes;
+    NSManagedObjectContext *context;
 }
 
 @end
@@ -27,7 +28,7 @@
     // Do any additional setup after loading the view.
     
     AppDelegate *appdelegate = (AppDelegate *)[[UIApplication sharedApplication] delegate];
-    NSManagedObjectContext *context = [appdelegate managedObjectContext];
+    context = [appdelegate managedObjectContext];
     
     
     NSFetchRequest *fetchRequest = [[NSFetchRequest alloc] init];
@@ -47,6 +48,11 @@
     BackendlessUser *user = [[DbManager sharedInstance] getCurrentUser];
     if (user) {
         [self hideLogin];
+        for (Note *note in notes) {
+            if (note.bObjectId == nil) {
+                [Utils saveWithNote:note context:context];
+            }
+        }
     }
 }
 
@@ -113,6 +119,7 @@
 }
 
 - (void)handleResponse:(NSString * _Nullable)error {
+    [self.activityIndicator stopAnimating];
     if (error) {
         NSLog(@"Error: %@", error);
     }

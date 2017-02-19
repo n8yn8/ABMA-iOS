@@ -19,6 +19,7 @@ class DbManager: NSObject {
     var backendless = Backendless.sharedInstance()
     
     override init() {
+        super.init()
         backendless?.initApp(APP_ID, secret:SECRET_KEY, version:VERSION_NUM)
         backendless?.userService.setStayLoggedIn(true)
     }
@@ -137,6 +138,19 @@ class DbManager: NSObject {
             }
         }, error: { (error) in
             print("error: \(error.debugDescription)")
+        })
+    }
+    
+    func update(note: BNote, callback: @escaping (_ savedNote: BNote?, _ errorString: String?) -> Void) {
+        backendless?.data.of(BNote.ofClass()).save(note, response: { (response) in
+            if let saved = response as? BNote {
+                callback(saved, nil)
+            } else {
+                callback(nil, nil)
+            }
+        }, error: { (error) in
+            print("error \(error.debugDescription)")
+            callback(nil, error.debugDescription)
         })
     }
     

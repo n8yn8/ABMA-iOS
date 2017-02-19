@@ -21,15 +21,35 @@ class Utils: NSObject {
         return value
     }
     
-//    - (NSString *)timeFrameFromStart:(NSDate *)startDate toEnd:(NSDate *)endDate {
-//    NSTimeZone *timeZone = [NSTimeZone timeZoneWithName:@"UTC"];
-//    NSDateFormatter *timeFormatter = [[NSDateFormatter alloc] init];
-//    [timeFormatter setDateFormat:@"h:mma"];
-//    [timeFormatter setTimeZone:timeZone];
-//    NSMutableString *start = [[NSMutableString alloc] initWithString:[timeFormatter stringFromDate:startDate]];
-//    if (endDate) {
-//    [start appendFormat:@" - %@", [timeFormatter stringFromDate:endDate]];
-//    }
-//    return start;
-//    }
+    static func save(note: Note, context: NSManagedObjectContext) {
+        
+        let user = DbManager.sharedInstance.getCurrentUser()
+        if let user = user {
+            let bNote = BNote();
+            bNote.objectId = note.bObjectId;
+            bNote.user = user;
+            bNote.paperId = note.paper?.bObjectId
+            bNote.eventId = note.event?.bObjectId
+            bNote.content = note.content;
+            
+            DbManager.sharedInstance.update(note: bNote) { (savedNote, error) in
+                if let error = error {
+                    print("Error: \(error)");
+                } else {
+                    note.bObjectId = savedNote?.objectId;
+                    save(context: context)
+                }
+            }
+        }
+        save(context: context)
+        
+    }
+    
+    static func save(context: NSManagedObjectContext) {
+        do {
+            try context.save()
+        } catch let error as NSError {
+            print("Could not save. \(error), \(error.userInfo)")
+        }
+    }
 }

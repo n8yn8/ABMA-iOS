@@ -40,27 +40,29 @@
         AppDelegate *appdelegate = (AppDelegate *)[[UIApplication sharedApplication] delegate];
         NSManagedObjectContext *context = [appdelegate managedObjectContext];
         
+        Note *note = nil;
         
         if (self.event) {
             if (!self.event.note) {
                 self.event.note = [NSEntityDescription insertNewObjectForEntityForName:@"Note" inManagedObjectContext:context];
             }
             
-            self.event.note.content = self.noteTextField.text;
+            self.event.note.content = noteText;
+            note = self.event.note;
         } else {
             if (!self.paper.note) {
                 self.paper.note = [NSEntityDescription insertNewObjectForEntityForName:@"Note" inManagedObjectContext:context];
+            } else {
+                //Get existing bNote
             }
             
-            self.paper.note.content = self.noteTextField.text;
+            self.paper.note.content = noteText;
+            note = self.paper.note;
         }
         
-        NSError *error;
-        [context save:&error];
+        [Utils saveWithNote:note context:context];
     }
     
-    
-    //TODO: error handling
 }
 
 - (void)viewDidLoad
