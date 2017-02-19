@@ -3,3 +3,4 @@
 //
 
 #import "Backendless.h"
+#import "BackendlessUser.h"

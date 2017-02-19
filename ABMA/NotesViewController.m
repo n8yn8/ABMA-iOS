@@ -12,6 +12,7 @@
 #import "Note+CoreDataClass.h"
 #import "AppDelegate.h"
 #import "SchedDetailViewController.h"
+#import "ABMA-Swift.h"
 
 @interface NotesViewController () {
     NSArray *notes;
@@ -37,12 +38,97 @@
         NSLog(@"Unable to execute fetch request.");
         NSLog(@"%@, %@", fetchError, fetchError.localizedDescription);
     }
+    
+    [self checkUser];
+    
+}
+
+- (void)checkUser {
+    BackendlessUser *user = [[DbManager sharedInstance] getCurrentUser];
+    if (user) {
+        [self hideLogin];
+    }
+}
+
+- (IBAction)login:(id)sender {
+    
+    UIAlertController *alertController = [UIAlertController alertControllerWithTitle:@"Log in" message:@"Have you created an account before?" preferredStyle:UIAlertControllerStyleAlert];
+    
+    [alertController addAction:[UIAlertAction actionWithTitle:@"Have account" style:UIAlertActionStyleDefault handler:^(UIAlertAction * _Nonnull action) {
+        [self showLoginIsNew: NO];
+    }]];
+    
+    [alertController addAction:[UIAlertAction actionWithTitle:@"Create" style:UIAlertActionStyleDefault handler:^(UIAlertAction * _Nonnull action) {
+        [self showLoginIsNew: YES];
+    }]];
+    
+    [alertController addAction:[UIAlertAction actionWithTitle:@"Cancel" style:UIAlertActionStyleCancel handler:^(UIAlertAction * _Nonnull action) {
+        NSLog(@"Login cancelled");
+    }]];
+    
+    [self presentViewController:alertController animated:YES completion:nil];
+}
+
+- (void)showLoginIsNew:(BOOL)isNew {
+    
+    UIAlertController *alertController = [UIAlertController alertControllerWithTitle:@"Log in" message:@"Enter email and password" preferredStyle:UIAlertControllerStyleAlert];
+    
+    UIAlertAction *loginAction = [UIAlertAction actionWithTitle:@"Login" style:UIAlertActionStyleDefault handler:^(UIAlertAction * _Nonnull action) {
+        [self.activityIndicator startAnimating];
+        [self.loginButton setEnabled:NO];
+        NSString *email = alertController.textFields[0].text;
+        NSString *password = alertController.textFields[1].text;
+        if (isNew) {
+            [[DbManager sharedInstance] registerUserWithEmail:email password:password callback:^(NSString * _Nullable error) {
+                [self handleResponse:error];
+            }];
+        } else {
+            [[DbManager sharedInstance] loginWithEmail:email password:password callback:^(NSString * _Nullable error) {
+                [self handleResponse:error];
+            }];
+        }
+    }];
+    loginAction.enabled = NO;
+    [alertController addAction:loginAction];
+    
+    [alertController addTextFieldWithConfigurationHandler:^(UITextField * _Nonnull textField) {
+        textField.placeholder = @"Email";
+        [[NSNotificationCenter defaultCenter] addObserverForName:UITextFieldTextDidChangeNotification object:textField queue:[NSOperationQueue mainQueue] usingBlock:^(NSNotification * _Nonnull note) {
+            if (![textField.text isEqualToString:@""]) {
+                loginAction.enabled = YES;
+            }
+        }];
+    }];
+    
+    [alertController addTextFieldWithConfigurationHandler:^(UITextField * _Nonnull textField) {
+        textField.placeholder = @"Password";
+        textField.secureTextEntry = YES;
+    }];
+    
+    [alertController addAction:[UIAlertAction actionWithTitle:@"Cancel" style:UIAlertActionStyleCancel handler:^(UIAlertAction * _Nonnull action) {
+        NSLog(@"Login cancelled");
+    }]];
+    
+    [self presentViewController:alertController animated:YES completion:nil];
+}
+
+- (void)handleResponse:(NSString * _Nullable)error {
+    if (error) {
+        NSLog(@"Error: %@", error);
+    }
+    [self checkUser];
 }
 
 - (void)didReceiveMemoryWarning {
     [super didReceiveMemoryWarning];
     // Dispose of any resources that can be recreated.
 }
+
+- (void)hideLogin {
+    self.loginView.hidden = true;
+    [self.view addConstraint:[NSLayoutConstraint constraintWithItem:self.loginView attribute:NSLayoutAttributeHeight relatedBy:NSLayoutRelationEqual toItem:nil attribute:NSLayoutAttributeNotAnAttribute multiplier:1.0 constant:0]];
+}
+
 
 #pragma mark - UITableView
 

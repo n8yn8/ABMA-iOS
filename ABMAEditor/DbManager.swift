@@ -20,17 +20,42 @@ class DbManager: NSObject {
     
     override init() {
         backendless?.initApp(APP_ID, secret:SECRET_KEY, version:VERSION_NUM)
+        backendless?.userService.setStayLoggedIn(true)
     }
     
-    func registerUser(email: String, password: String) {
+    func registerUser(email: String, password: String, callback: @escaping (_ errorString: String?) -> Void) {
         let user: BackendlessUser = BackendlessUser()
         user.email = email as NSString!
         user.password = password as NSString!
         backendless?.userService.registering(user, response: { (response) in
             print("response: \(response)")
+            callback(nil)
         }, error: { (error) in
             print("error: \(error)")
+            callback(error.debugDescription)
         })
+    }
+    
+    func login(email: String, password: String, callback: @escaping (_ errorString: String?) -> Void) {
+        backendless?.userService.login(email, password: password, response: { (user) in
+            print("User logged in")
+            callback(nil)
+        }, error: { (error) in
+            print("Error \(error.debugDescription)")
+            callback(error.debugDescription)
+        })
+    }
+    
+    func logout(callback: @escaping (_ errorString: String?) -> Void) {
+        backendless?.userService.logout({ (response) in
+            callback(nil)
+        }, error: { (error) in
+            callback(error.debugDescription)
+        })
+    }
+    
+    func getCurrentUser() -> BackendlessUser? {
+        return backendless?.userService.currentUser
     }
     
     func update(year: BYear, callback: @escaping (_ savedYear: BYear?, _ errorString: String?) -> Void) {
