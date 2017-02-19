@@ -30,7 +30,7 @@ class DbManager: NSObject {
         user.password = password as NSString!
         backendless?.userService.registering(user, response: { (response) in
             print("response: \(response)")
-            callback(nil)
+            self.login(email: email, password: password, callback: callback)
         }, error: { (error) in
             print("error: \(error)")
             callback(error.debugDescription)
