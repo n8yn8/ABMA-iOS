@@ -12,12 +12,12 @@ class BEvent: NSObject {
     
     var objectId: String?
     var details: String?
-    var endDate: Date!
+    var endDate: Date?
     var location: String?
     var startDate: Date!
     var subtitle: String?
 //    var time: String?
-    var title: String!
+    var title: String?
 //    var day: Day
 //    var note: Note
     var papers = [BPaper]()

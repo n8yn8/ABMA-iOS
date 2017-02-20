@@ -13,6 +13,7 @@ class EventViewController: NSViewController {
     @IBOutlet weak var datePicker: NSDatePicker!
     @IBOutlet weak var startTimePicker: NSDatePicker!
     @IBOutlet weak var endTimePicker: NSDatePicker!
+    @IBOutlet weak var includeEndTimeButton: NSButton!
     @IBOutlet weak var locationTextField: NSTextField!
     @IBOutlet weak var titleTextField: NSTextField!
     @IBOutlet weak var subtitleTextField: NSTextField!
@@ -56,11 +57,21 @@ class EventViewController: NSViewController {
                 datePicker.dateValue = event.startDate
                 let utcOffset = TimeInterval(-TimeZone.current.secondsFromGMT())
                 startTimePicker.dateValue = event.startDate.addingTimeInterval(utcOffset)
-                endTimePicker.dateValue = event.endDate.addingTimeInterval(utcOffset)
+                if let endDate = event.endDate {
+                    endTimePicker.dateValue = endDate.addingTimeInterval(utcOffset)
+                    endTimePicker.isHidden = false
+                    includeEndTimeButton.state = 1
+                } else {
+                    endTimePicker.isHidden = true
+                    includeEndTimeButton.state = 0
+                }
                 if let location = event.location {
                     locationTextField.stringValue = location
                 }
-                titleTextField.stringValue = event.title
+                if let title = event.title {
+                    titleTextField.stringValue = title
+                }
+                
                 if let subtitle = event.subtitle {
                     subtitleTextField.stringValue = subtitle
                 }
@@ -88,6 +99,7 @@ class EventViewController: NSViewController {
         datePicker.isEnabled = enabled
         startTimePicker.isEnabled = enabled
         endTimePicker.isEnabled = enabled
+        includeEndTimeButton.isEnabled = enabled
         locationTextField.isEnabled = enabled
         titleTextField.isEnabled = enabled
         subtitleTextField.isEnabled = enabled
@@ -100,21 +112,23 @@ class EventViewController: NSViewController {
         saveEvent()
     }
     
+    @IBAction func toggleIncludeEnd(_ sender: Any) {
+        endTimePicker.isHidden = includeEndTimeButton.state == 0
+        endTimePicker.isEnabled = includeEndTimeButton.state == 1
+    }
+    
     func saveEvent() {
         let startDate = buildDate(timePartInCurTZ: startTimePicker.dateValue)
-        let endDate = buildDate(timePartInCurTZ: endTimePicker.dateValue)
+        let endDate = includeEndTimeButton.state == 1 ? buildDate(timePartInCurTZ: endTimePicker.dateValue) : nil
         
         var isNew = false
         if event == nil {
             isNew = true
             event = BEvent()
-            event!.initWith(startDate: startDate, endDate: endDate, title: titleTextField.stringValue)
-        } else {
-            event?.startDate = startDate
-            event?.endDate = endDate
-            event?.title = titleTextField.stringValue
         }
-        
+        event?.startDate = startDate
+        event?.endDate = endDate
+        event?.title = titleTextField.stringValue
         event!.location = locationTextField.stringValue
         event!.subtitle = subtitleTextField.stringValue
         event!.details = descriptionTextView.string
