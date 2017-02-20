@@ -27,7 +27,9 @@ class EventListViewController: NSViewController, NSTableViewDelegate, NSTableVie
     }
     
     func setEventList(list: [BEvent]) {
-        eventList = list
+        eventList = list.sorted(by: { (e1, e2) -> Bool in
+            e1.startDate.compare(e2.startDate) == ComparisonResult.orderedAscending
+        })
         eventTableView.deselectAll(self)
         eventTableView.reloadData()
     }
