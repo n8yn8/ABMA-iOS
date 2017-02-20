@@ -33,7 +33,7 @@ class NewSponsorViewController: NSViewController {
     
     @IBAction func save(_ sender: Any) {
         DbManager.sharedInstance.uploadImage(name: imageName, image: imageData) { (url) in
-            let sponsor = Sponsor()
+            let sponsor = BSponsor()
             sponsor.url = self.urlTextField.stringValue
             sponsor.imageUrl = url
             self.delegate?.saveSponsor(sponsor: sponsor)
@@ -48,5 +48,5 @@ class NewSponsorViewController: NSViewController {
 }
 
 protocol NewSponsorViewControllerDelegate: class {
-    func saveSponsor(sponsor: Sponsor)
+    func saveSponsor(sponsor: BSponsor)
 }

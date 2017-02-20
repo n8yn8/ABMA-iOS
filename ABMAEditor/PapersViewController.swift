@@ -17,7 +17,7 @@ class PapersViewController: NSViewController, NSTableViewDelegate, NSTableViewDa
     @IBOutlet var abstractTextView: NSTextView!
     @IBOutlet weak var saveButton: NSButtonCell!
     
-    var papers = [Paper]() {
+    var papers = [BPaper]() {
         didSet {
             papersTableView.deselectAll(self)
             papersTableView.reloadData()
@@ -55,7 +55,7 @@ class PapersViewController: NSViewController, NSTableViewDelegate, NSTableViewDa
         updateSelectedPaper()
     }
     
-    func getSelectedPaper() -> Paper? {
+    func getSelectedPaper() -> BPaper? {
         let selectedRow = papersTableView.selectedRow
         removeButton.isEnabled = selectedRow >= 0
         if selectedRow >= 0 && papers.count > selectedRow {
@@ -108,11 +108,11 @@ class PapersViewController: NSViewController, NSTableViewDelegate, NSTableViewDa
         let author = authorTextField.stringValue
         let abstract = abstractTextView.string
         
-        var paper: Paper
+        var paper: BPaper
         if let index = selectedIndex {
             paper = papers[index]
         } else {
-            paper = Paper()
+            paper = BPaper()
         }
         paper.initWith(title: title, author: author, abstract: abstract!)
         
@@ -123,5 +123,6 @@ class PapersViewController: NSViewController, NSTableViewDelegate, NSTableViewDa
         }
         
         self.papersTableView.reloadData()
+        self.papersTableView.selectRowIndexes(NSIndexSet(index: papers.count - 1) as IndexSet, byExtendingSelection: false)
     }
 }

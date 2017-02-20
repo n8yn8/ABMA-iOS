@@ -10,7 +10,7 @@ import Cocoa
 
 class SponsorsViewController: NSViewController {
     
-    var sponsors = [Sponsor]()
+    var sponsors = [BSponsor]()
 
     @IBOutlet weak var collectionView: NSCollectionView!
     @IBOutlet weak var removeButton: NSButton!
@@ -40,7 +40,7 @@ class SponsorsViewController: NSViewController {
         view.wantsLayer = true
     }
     
-    func updateSponsors(sponsorList: [Sponsor]) {
+    func updateSponsors(sponsorList: [BSponsor]) {
         sponsors.removeAll()
         sponsors.append(contentsOf: sponsorList)
         collectionView.reloadData()
@@ -106,11 +106,11 @@ extension SponsorsViewController: NSCollectionViewDataSource {
 }
 
 extension SponsorsViewController: NewSponsorViewControllerDelegate {
-    func saveSponsor(sponsor: Sponsor) {
+    func saveSponsor(sponsor: BSponsor) {
         delegate?.saveSponsor(savedSponsor: sponsor)
     }
 }
 
 protocol SponsorsViewControllerDelegate: class {
-    func saveSponsor(savedSponsor: Sponsor)
+    func saveSponsor(savedSponsor: BSponsor)
 }

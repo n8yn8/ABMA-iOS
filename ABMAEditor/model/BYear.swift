@@ -1,5 +1,5 @@
 //
-//  Year.swift
+//  BYear.swift
 //  ABMA
 //
 //  Created by Nathan Condell on 1/28/17.
@@ -8,12 +8,12 @@
 
 import Foundation
 
-class Year: NSObject {
+class BYear: NSObject {
     
     var objectId: String?
     var name = 0
-    var events = [Event]()
+    var events = [BEvent]()
     var welcome: String?
     var info: String?
-    var sponsors = [Sponsor]()
+    var sponsors = [BSponsor]()
 }

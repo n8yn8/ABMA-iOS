@@ -1,5 +1,5 @@
 //
-//  Event.swift
+//  BEvent.swift
 //  ABMA
 //
 //  Created by Nathan Condell on 1/3/17.
@@ -8,19 +8,19 @@
 
 import Foundation
 
-class Event: NSObject {
+class BEvent: NSObject {
     
     var objectId: String?
     var details: String?
-    var endDate: Date!
+    var endDate: Date?
     var location: String?
     var startDate: Date!
     var subtitle: String?
 //    var time: String?
-    var title: String!
+    var title: String?
 //    var day: Day
 //    var note: Note
-    var papers = [Paper]()
+    var papers = [BPaper]()
     
     func initWith(startDate: Date, endDate: Date, title: String) {
         

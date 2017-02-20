@@ -13,6 +13,7 @@ class EventViewController: NSViewController {
     @IBOutlet weak var datePicker: NSDatePicker!
     @IBOutlet weak var startTimePicker: NSDatePicker!
     @IBOutlet weak var endTimePicker: NSDatePicker!
+    @IBOutlet weak var includeEndTimeButton: NSButton!
     @IBOutlet weak var locationTextField: NSTextField!
     @IBOutlet weak var titleTextField: NSTextField!
     @IBOutlet weak var subtitleTextField: NSTextField!
@@ -23,7 +24,7 @@ class EventViewController: NSViewController {
     weak var delegate: EventViewControllerDelegate?
     
     private let calendar = Calendar.current
-    fileprivate var event: Event?
+    fileprivate var event: BEvent?
     fileprivate var papersViewController: PapersViewController?
     
     override func viewDidLoad() {
@@ -47,19 +48,30 @@ class EventViewController: NSViewController {
             subtitleTextField.stringValue = ""
             descriptionTextView.string = ""
             if let controller = papersViewController {
-                controller.papers = [Paper]()
+                controller.papers = [BPaper]()
             }
             
-            if let event = representedObject as? Event {
+            if let event = representedObject as? BEvent {
                 self.event = event
                 
                 datePicker.dateValue = event.startDate
-                startTimePicker.dateValue = event.startDate
-                endTimePicker.dateValue = event.endDate
+                let utcOffset = TimeInterval(-TimeZone.current.secondsFromGMT())
+                startTimePicker.dateValue = event.startDate.addingTimeInterval(utcOffset)
+                if let endDate = event.endDate {
+                    endTimePicker.dateValue = endDate.addingTimeInterval(utcOffset)
+                    endTimePicker.isHidden = false
+                    includeEndTimeButton.state = 1
+                } else {
+                    endTimePicker.isHidden = true
+                    includeEndTimeButton.state = 0
+                }
                 if let location = event.location {
                     locationTextField.stringValue = location
                 }
-                titleTextField.stringValue = event.title
+                if let title = event.title {
+                    titleTextField.stringValue = title
+                }
+                
                 if let subtitle = event.subtitle {
                     subtitleTextField.stringValue = subtitle
                 }
@@ -87,6 +99,7 @@ class EventViewController: NSViewController {
         datePicker.isEnabled = enabled
         startTimePicker.isEnabled = enabled
         endTimePicker.isEnabled = enabled
+        includeEndTimeButton.isEnabled = enabled
         locationTextField.isEnabled = enabled
         titleTextField.isEnabled = enabled
         subtitleTextField.isEnabled = enabled
@@ -99,21 +112,23 @@ class EventViewController: NSViewController {
         saveEvent()
     }
     
+    @IBAction func toggleIncludeEnd(_ sender: Any) {
+        endTimePicker.isHidden = includeEndTimeButton.state == 0
+        endTimePicker.isEnabled = includeEndTimeButton.state == 1
+    }
+    
     func saveEvent() {
-        let startDate = buildDate(timePart: startTimePicker.dateValue)
-        let endDate = buildDate(timePart: endTimePicker.dateValue)
+        let startDate = buildDate(timePartInCurTZ: startTimePicker.dateValue)
+        let endDate = includeEndTimeButton.state == 1 ? buildDate(timePartInCurTZ: endTimePicker.dateValue) : nil
         
         var isNew = false
         if event == nil {
             isNew = true
-            event = Event()
-            event!.initWith(startDate: startDate, endDate: endDate, title: titleTextField.stringValue)
-        } else {
-            event?.startDate = startDate
-            event?.endDate = endDate
-            event?.title = titleTextField.stringValue
+            event = BEvent()
         }
-        
+        event?.startDate = startDate
+        event?.endDate = endDate
+        event?.title = titleTextField.stringValue
         event!.location = locationTextField.stringValue
         event!.subtitle = subtitleTextField.stringValue
         event!.details = descriptionTextView.string
@@ -126,9 +141,11 @@ class EventViewController: NSViewController {
         }
     }
     
-    func buildDate(timePart: Date) -> Date {
+    func buildDate(timePartInCurTZ: Date) -> Date {
+        let timePart = timePartInCurTZ.addingTimeInterval(TimeInterval(TimeZone.current.secondsFromGMT()))
         let timeComponents = calendar.dateComponents([.hour, .minute], from: timePart)
-        let date = calendar.startOfDay(for: datePicker.dateValue)
+        let datePart = datePicker.dateValue.addingTimeInterval(TimeInterval(TimeZone.current.secondsFromGMT()))
+        let date = calendar.startOfDay(for: datePart)
         let finalDate = calendar.date(byAdding: timeComponents, to: date)!
         return finalDate
     }
@@ -142,6 +159,6 @@ class EventViewController: NSViewController {
 }
 
 protocol EventViewControllerDelegate: class {
-    func updateEvent(event: Event)
-    func createEvent(event: Event)
+    func updateEvent(event: BEvent)
+    func createEvent(event: BEvent)
 }

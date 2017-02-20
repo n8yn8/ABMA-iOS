@@ -1,5 +1,5 @@
 //
-//  Sponsor.swift
+//  BSponsor.swift
 //  ABMA
 //
 //  Created by Nathan Condell on 1/28/17.
@@ -8,7 +8,7 @@
 
 import Foundation
 
-class Sponsor: NSObject {
+class BSponsor: NSObject {
     
     var objectId: String?
     var url: String?

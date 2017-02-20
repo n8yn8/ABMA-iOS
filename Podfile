@@ -3,11 +3,12 @@
 
 target 'ABMA' do
   # Uncomment this line if you're using Swift or would like to use dynamic frameworks
-  # use_frameworks!
+#   use_frameworks!
 
   # Pods for ABMA
 
   pod 'Backendless'
+  pod 'SDWebImage', '~>4.0'
 
   target 'ABMATests' do
     inherit! :search_paths

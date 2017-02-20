@@ -9,9 +9,10 @@
 #import "SchedDetailViewController.h"
 #import <QuartzCore/QuartzCore.h>
 #import "AppDelegate.h"
-#import "Note.h"
-#import "Paper.h"
+#import "Note+CoreDataClass.h"
+#import "Paper+CoreDataClass.h"
 #import "PaperTableViewCell.h"
+#import "ABMA-Swift.h"
 
 @interface SchedDetailViewController () <UITextViewDelegate>
 
@@ -39,27 +40,29 @@
         AppDelegate *appdelegate = (AppDelegate *)[[UIApplication sharedApplication] delegate];
         NSManagedObjectContext *context = [appdelegate managedObjectContext];
         
+        Note *note = nil;
         
         if (self.event) {
             if (!self.event.note) {
                 self.event.note = [NSEntityDescription insertNewObjectForEntityForName:@"Note" inManagedObjectContext:context];
             }
             
-            self.event.note.content = self.noteTextField.text;
+            self.event.note.content = noteText;
+            note = self.event.note;
         } else {
             if (!self.paper.note) {
                 self.paper.note = [NSEntityDescription insertNewObjectForEntityForName:@"Note" inManagedObjectContext:context];
+            } else {
+                //Get existing bNote
             }
             
-            self.paper.note.content = self.noteTextField.text;
+            self.paper.note.content = noteText;
+            note = self.paper.note;
         }
         
-        NSError *error;
-        [context save:&error];
+        [Utils saveWithNote:note context:context];
     }
     
-    
-    //TODO: error handling
 }
 
 - (void)viewDidLoad
@@ -76,7 +79,7 @@
         self.eventDay.text = [[dayformatter stringFromDate:self.paper.event.startDate] uppercaseString];
         self.eventDate.text = [dateformatter stringFromDate:self.paper.event.startDate];
         self.eventLocation.text = self.paper.event.locatoin;
-        self.eventTime.text = self.paper.event.time;
+        self.eventTime.text = [Utils timeFrameWithStartDate:self.paper.event.startDate endDate:self.paper.event.endDate];
         self.eventTitle.text = self.paper.title;
         self.eventSubtitle.text = self.paper.author;
         self.eventDetails.text = self.paper.abstract;
@@ -87,7 +90,7 @@
         self.eventDay.text = [[dayformatter stringFromDate:self.event.startDate] uppercaseString];
         self.eventDate.text = [dateformatter stringFromDate:self.event.startDate];
         self.eventLocation.text = self.event.locatoin;
-        self.eventTime.text = self.event.time;
+        self.eventTime.text = [Utils timeFrameWithStartDate:self.event.startDate endDate:self.event.endDate];
         self.eventTitle.text = self.event.title;
         self.eventSubtitle.text = self.event.subtitle;
         self.eventDetails.text = self.event.details;

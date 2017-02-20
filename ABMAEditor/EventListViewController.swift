@@ -16,7 +16,7 @@ class EventListViewController: NSViewController, NSTableViewDelegate, NSTableVie
     
     private let formatter = DateFormatter()
     
-    private var eventList = [Event]()
+    private var eventList = [BEvent]()
     private var selectedIndex: Int?
     
     override func viewDidLoad() {
@@ -26,8 +26,10 @@ class EventListViewController: NSViewController, NSTableViewDelegate, NSTableVie
         formatter.timeStyle = .short
     }
     
-    func setEventList(list: [Event]) {
-        eventList = list
+    func setEventList(list: [BEvent]) {
+        eventList = list.sorted(by: { (e1, e2) -> Bool in
+            e1.startDate.compare(e2.startDate) == ComparisonResult.orderedAscending
+        })
         eventTableView.deselectAll(self)
         eventTableView.reloadData()
     }
@@ -43,9 +45,15 @@ class EventListViewController: NSViewController, NSTableViewDelegate, NSTableVie
         let cell = tableView.make(withIdentifier: tableColumn!.identifier, owner: self) as! NSTableCellView
         
         if tableColumn!.identifier == "Time" {
-            cell.textField?.stringValue = formatter.string(from: event.startDate)
+            let dateUTC = event.startDate.addingTimeInterval(TimeInterval(-TimeZone.current.secondsFromGMT()))
+            cell.textField?.stringValue = formatter.string(from: dateUTC)
         } else if tableColumn!.identifier == "Title" {
-            cell.textField?.stringValue = event.title
+            if let title = event.title {
+                cell.textField?.stringValue = title
+            } else {
+                cell.textField?.stringValue = ""
+            }
+            
         }
         
         return cell
@@ -55,7 +63,7 @@ class EventListViewController: NSViewController, NSTableViewDelegate, NSTableVie
         delegate?.updateSelectedEvent(event: getSelectedEvent(), index: selectedIndex)
     }
     
-    func getSelectedEvent() -> Event? {
+    func getSelectedEvent() -> BEvent? {
         let selectedRow = eventTableView.selectedRow
         removeButton.isEnabled = selectedRow >= 0
         if selectedRow >= 0 && eventList.count > selectedRow {
@@ -67,7 +75,7 @@ class EventListViewController: NSViewController, NSTableViewDelegate, NSTableVie
     }
     
     @IBAction func add(_ sender: Any) {
-        delegate?.updateSelectedEvent(event: nil, index: nil)
+        delegate?.addNewEvent()
     }
 
     @IBAction func remove(_ sender: Any) {
@@ -78,6 +86,7 @@ class EventListViewController: NSViewController, NSTableViewDelegate, NSTableVie
 }
 
 protocol MasterViewControllerDelegate: class {
-    func updateSelectedEvent(event: Event?, index: Int?)
+    func updateSelectedEvent(event: BEvent?, index: Int?)
+    func addNewEvent()
     func removeSelectedEvent(index: Int)
 }

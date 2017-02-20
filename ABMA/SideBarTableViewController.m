@@ -8,6 +8,7 @@
 
 #import "SideBarTableViewController.h"
 #import "SWRevealViewController.h"
+#import "ABMA-Swift.h"
 
 @interface SideBarTableViewController ()
 @property (nonatomic, strong) NSArray *menuItems;
@@ -28,7 +29,7 @@
 {
     [super viewDidLoad];
     
-    _menuItems = @[@"logo", @"welcome", @"schedule", @"notes", @"info", @"sponsor", @"contact"];
+    _menuItems = @[@"logo", @"welcome", @"schedule", @"notes", @"info", @"sponsor", @"contact", @"logout"];
     
     // Uncomment the following line to preserve selection between presentations.
     // self.clearsSelectionOnViewWillAppear = NO;
@@ -52,8 +53,21 @@
 
 - (NSInteger)tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section
 {
-    // Return the number of rows in the section.
-    return [self.menuItems count];
+    BackendlessUser *user = [[DbManager sharedInstance] getCurrentUser];
+    if (user) {
+        return [self.menuItems count];
+    }
+    return [self.menuItems count] - 1;
+}
+
+- (void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath {
+    UITableViewCell *cell = [tableView cellForRowAtIndexPath:indexPath];
+    if ([cell.reuseIdentifier isEqualToString:@"logout"]) {
+        [[DbManager sharedInstance] logoutWithCallback:^(NSString * _Nullable error) {
+            [self.tableView reloadData];
+        }];
+    }
+    
 }
 
 @end
