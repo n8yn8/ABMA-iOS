@@ -13,12 +13,12 @@ class BPaper: NSObject {
     var objectId: String?
     var title: String!
     var author: String!
-    var abstract: String!
+    var synopsis: String!
     
-    func initWith(title: String, author: String, abstract: String) {
+    func initWith(title: String, author: String, synopsis: String) {
         self.title = title
         self.author = author
-        self.abstract = abstract
+        self.synopsis = synopsis
     }
 
 }

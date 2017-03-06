@@ -70,7 +70,7 @@ class PapersViewController: NSViewController, NSTableViewDelegate, NSTableViewDa
         if let paper = getSelectedPaper() {
             titleTextField.stringValue = paper.title
             authorTextField.stringValue = paper.author
-            abstractTextView.string = paper.abstract
+            abstractTextView.string = paper.synopsis
             setEnabled(enabled: true)
         } else {
             titleTextField.stringValue = ""
@@ -114,7 +114,7 @@ class PapersViewController: NSViewController, NSTableViewDelegate, NSTableViewDa
         } else {
             paper = BPaper()
         }
-        paper.initWith(title: title, author: author, abstract: abstract!)
+        paper.initWith(title: title, author: author, synopsis: abstract!)
         
         if let index = selectedIndex {
             self.papers[index] = paper

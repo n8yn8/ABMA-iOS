@@ -16,10 +16,7 @@ class BEvent: NSObject {
     var location: String?
     var startDate: Date!
     var subtitle: String?
-//    var time: String?
     var title: String?
-//    var day: Day
-//    var note: Note
     var papers = [BPaper]()
     
     func initWith(startDate: Date, endDate: Date, title: String) {

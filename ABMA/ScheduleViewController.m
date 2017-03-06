@@ -120,7 +120,7 @@
             paper.bObjectId = bPaper.objectId;
             paper.author = bPaper.author;
             paper.title = bPaper.title;
-            paper.abstract = bPaper.abstract;
+            paper.abstract = bPaper.synopsis;
             paper.event = thisEvent;
             [thisEvent addPapersObject:paper];
         }
@@ -310,7 +310,7 @@
                 BPaper *paper = [[BPaper alloc] init];
                 paper.author = [paperDict objectForKey:@"Author"];
                 paper.title = [paperDict objectForKey:@"Title"];
-                paper.abstract = [paperDict objectForKey:@"Abstract"];
+                paper.synopsis = [paperDict objectForKey:@"Abstract"];
                 [eventPapers addObject:paper];
             }
             thisEvent.papers = eventPapers;
