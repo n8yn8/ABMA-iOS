@@ -22,7 +22,11 @@ class SponsorItem: NSCollectionViewItem {
                 imageView?.sd_setImage(with: url!, completed: { (image, error, cacheType, url) in
                     self.spinner.stopAnimation(nil)
                 })
-                textField?.stringValue = sponsor.url!
+                if let clickUrl = sponsor.url {
+                    textField?.stringValue = clickUrl
+                } else {
+                    textField?.stringValue = ""
+                }
             } else {
                 imageView?.image = nil
                 textField?.stringValue = ""
