@@ -52,10 +52,7 @@
     AppDelegate *appdelegate = (AppDelegate *)[[UIApplication sharedApplication] delegate];
     context = [appdelegate managedObjectContext];
     
-//    [self clearSchedule:@"Day"];
-//    [self clearSchedule:@"Event"];
-//    [self clearSchedule:@"Note"];
-//    [self clearSchedule:@"Paper"];
+    
 //    [self loadSchedule];
     [self loadBackendless];
 }
@@ -92,6 +89,8 @@
     }
     NSError *saveError;
     [context save:&saveError];
+    
+    [self clearSchedule];
 }
 
 - (void)loadBackendless {
@@ -179,15 +178,25 @@
     return [[NSCalendar currentCalendar] dateFromComponents:comps];
 }
 
-- (void)clearSchedule:(NSString *)nameEntity {
-    NSFetchRequest *fetchRequest = [[NSFetchRequest alloc] initWithEntityName:nameEntity];
+- (void)clearSchedule {
+    NSFetchRequest *fetchRequest = [Year fetchRequest];
+    fetchRequest.predicate = [NSPredicate predicateWithFormat:@"bObjectId==nil"];
     [fetchRequest setIncludesPropertyValues:NO]; //only fetch the managedObjectID
     
     NSError *error;
-    NSArray *fetchedObjects = [context executeFetchRequest:fetchRequest error:&error];
-    for (NSManagedObject *object in fetchedObjects)
+    NSArray<Year *> *fetchedObjects = [context executeFetchRequest:fetchRequest error:&error];
+    for (Year *year in fetchedObjects)
     {
-        [context deleteObject:object];
+        for (Day *day in year.day) {
+            for (Event *event in day.event) {
+                for (Paper *paper in event.papers) {
+                    [context deleteObject:paper];
+                }
+                [context deleteObject:event];
+            }
+            [context deleteObject:day];
+        }
+        [context deleteObject:year];
     }
     
     error = nil;
@@ -409,38 +418,6 @@
                 completion(sponsors);
             }
         }];
-    }
-}
-
-- (void)fixBuildEighteen {
-    NSFetchRequest *fetchRequest = [[NSFetchRequest alloc] init];
-    [fetchRequest setEntity:[NSEntityDescription entityForName:@"Event" inManagedObjectContext:context]];
-    fetchRequest.predicate = [NSPredicate predicateWithFormat:@"startDate == NULL"];
-    NSError *fetchError = nil;
-    NSArray *updateEvents = [[NSArray alloc] initWithArray:[context executeFetchRequest:fetchRequest error:&fetchError]];
-    if (fetchError) {
-        NSLog(@"Unable to execute fetch request.");
-        NSLog(@"%@, %@", fetchError, fetchError.localizedDescription);
-    } else {
-        NSDateFormatter *timeFormatter = [[NSDateFormatter alloc] init];
-        [timeFormatter setDateFormat:@"MMM d, yyyy h:mma"];
-        [timeFormatter setTimeZone:[NSTimeZone timeZoneWithName:@"UTC"]];
-        for (Event *thisEvent in updateEvents) {
-            NSString *time = @"3:00pm - 3:20pm";
-            NSArray *times = [time componentsSeparatedByString:@" - "];
-            if (times.count == 0) {
-                NSLog(@"No times for %@", time);
-            }
-            NSString *startString = [NSString stringWithFormat:@"April 22, 2016 %@", [times firstObject]];
-            thisEvent.startDate = [timeFormatter dateFromString:startString];
-            if (thisEvent.startDate == nil) {
-                NSLog(@"startDate did't format for %@", startString);
-            }
-            NSString *endString = [NSString stringWithFormat:@"April 22, 2016 %@", [times lastObject]];
-            thisEvent.endDate = [timeFormatter dateFromString:endString];
-        }
-        NSError *error;
-        [context save:&error];
     }
 }
 
