@@ -11,6 +11,7 @@
 #import <SDWebImage/UIImageView+WebCache.h>
 #import "AppDelegate.h"
 #import "Sponsor+CoreDataClass.h"
+#import "Year+CoreDataClass.h"
 
 @interface SponsorCollectionViewController ()
 @property (weak, nonatomic) IBOutlet UICollectionView *sponsorsCollectionView;
@@ -19,7 +20,7 @@
 
 @implementation SponsorCollectionViewController
 {
-    NSMutableArray<Sponsor *> *sponsors;
+    NSArray<Sponsor *> *sponsors;
 }
 
 - (id)initWithNibName:(NSString *)nibNameOrNil bundle:(NSBundle *)nibBundleOrNil
@@ -35,19 +36,18 @@
 {
     [super viewDidLoad];
     
-    sponsors = [[NSMutableArray alloc] init];
+    sponsors = [[NSArray alloc] init];
     
     AppDelegate *appdelegate = (AppDelegate *)[[UIApplication sharedApplication] delegate];
     NSManagedObjectContext *context = [appdelegate managedObjectContext];
     
-    NSFetchRequest *fetchRequest = [Sponsor fetchRequest];
-    NSError *fetchError = nil;
-    sponsors = [[NSMutableArray alloc] initWithArray:[context executeFetchRequest:fetchRequest error:&fetchError]];
-    if (fetchError) {
-        NSLog(@"Unable to execute fetch request.");
-        NSLog(@"%@, %@", fetchError, fetchError.localizedDescription);
-    } else {
-        NSLog(@"Fetch success %lu", (unsigned long)sponsors.count);
+    NSFetchRequest<Year*> *yearRequest = [Year fetchRequest];
+    yearRequest.fetchLimit = 1;
+    yearRequest.sortDescriptors = @[[NSSortDescriptor sortDescriptorWithKey:@"year" ascending:NO]];
+    NSError *error = nil;
+    Year *year = [context executeFetchRequest:yearRequest error:&error].firstObject;
+    if (year) {
+        sponsors = [year.sponsors allObjects];
     }
     
     //Sponsor image array
@@ -117,7 +117,10 @@
 
 - (void)collectionView:(UICollectionView *)collectionView didSelectItemAtIndexPath:(NSIndexPath *)indexPath {
     NSString *selectedLink = [sponsors objectAtIndex:indexPath.item].url;
-    [[UIApplication sharedApplication] openURL:[NSURL URLWithString: selectedLink]];
+    if (selectedLink) {
+        [[UIApplication sharedApplication] openURL:[NSURL URLWithString: selectedLink]];
+    }
+    
 }
 
 /*
