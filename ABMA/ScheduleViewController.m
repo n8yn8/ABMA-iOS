@@ -53,8 +53,8 @@
     context = [appdelegate managedObjectContext];
     
     
-//    [self loadSchedule];
-    [self loadBackendless];
+    [self loadSchedule];
+//    [self loadBackendless];
 }
 
 - (void)matchNotes {
@@ -205,34 +205,25 @@
 
 - (void)loadSchedule {
     
-    NSDateFormatter *dayFormatter = [[NSDateFormatter alloc] init];
-    [dayFormatter setDateFormat:@"MMM d, yyyy"];
-    NSTimeZone *timeZone = [NSTimeZone timeZoneWithName:@"UTC"];
-    [dayFormatter setTimeZone:timeZone];
+    NSFetchRequest<Year*> *yearRequest = [Year fetchRequest];
+    yearRequest.fetchLimit = 1;
+    yearRequest.predicate = [NSPredicate predicateWithFormat:@"bObjectId!=nil"];
+    yearRequest.sortDescriptors = @[[NSSortDescriptor sortDescriptorWithKey:@"year" ascending:NO]];
+    NSError *error = nil;
+    Year *year = [context executeFetchRequest:yearRequest error:&error].firstObject;
     
-//    NSDate *schedStart = [dayFormatter dateFromString:@"April 17, 2016"];
-//    NSDate *schedEnd = [dayFormatter dateFromString:@"April 23, 2016"];
-    
-    NSArray *sortDescriptors = [NSArray arrayWithObject:[NSSortDescriptor sortDescriptorWithKey:@"date" ascending:YES]];
-    NSFetchRequest *fetchRequest = [[NSFetchRequest alloc] init];
-    [fetchRequest setEntity:[NSEntityDescription entityForName:@"Day" inManagedObjectContext:context]];
-    fetchRequest.sortDescriptors = sortDescriptors;
-//    fetchRequest.predicate = [NSPredicate predicateWithFormat:@"(date >= %@) AND (date <= %@)",schedStart, schedEnd];
-    NSError *fetchError = nil;
-    days = [[NSArray alloc] initWithArray:[context executeFetchRequest:fetchRequest error:&fetchError]];
-    if (fetchError) {
+    if (error) {
         NSLog(@"Unable to execute fetch request.");
-        NSLog(@"%@, %@", fetchError, fetchError.localizedDescription);
+        NSLog(@"%@, %@", error, error.localizedDescription);
     } else {
-        if (days.count) {
-//            NSString *build = [[NSUserDefaults standardUserDefaults] stringForKey:@"build"];
-//            if (!build) {
-//                [self fixBuildEighteen];
-//            }
-            [self loadDay: 0];
-
+        if (year) {
+            NSSortDescriptor *sortDescriptor = [[NSSortDescriptor alloc] initWithKey:@"date" ascending:TRUE];
+            
+            days = [[year.day allObjects] sortedArrayUsingDescriptors:@[sortDescriptor]];
+            
+            [self loadDay:0];
         } else {
-            [self saveSchedule];
+            [self loadBackendless];
         }
         NSString *currentBuild = [[NSBundle mainBundle] objectForInfoDictionaryKey: (NSString *)kCFBundleVersionKey];
         [[NSUserDefaults standardUserDefaults] setObject:currentBuild forKey:@"build"];
