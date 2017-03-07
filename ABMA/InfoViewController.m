@@ -7,8 +7,11 @@
 //
 
 #import "InfoViewController.h"
+#import "Year+CoreDataClass.h"
+#import "AppDelegate.h"
 
 @interface InfoViewController ()
+@property (weak, nonatomic) IBOutlet UITextView *contentTextView;
 
 @end
 
@@ -17,6 +20,23 @@
 - (void)viewDidLoad {
     [super viewDidLoad];
     // Do any additional setup after loading the view.
+    
+    AppDelegate *appdelegate = (AppDelegate *)[[UIApplication sharedApplication] delegate];
+    NSManagedObjectContext *context = [appdelegate managedObjectContext];
+    
+    NSFetchRequest<Year*> *yearRequest = [Year fetchRequest];
+    yearRequest.fetchLimit = 1;
+    yearRequest.sortDescriptors = @[[NSSortDescriptor sortDescriptorWithKey:@"year" ascending:NO]];
+    NSError *error = nil;
+    Year *year = [context executeFetchRequest:yearRequest error:&error].firstObject;
+    if (year) {
+        if (self.mode == Info) {
+            self.contentTextView.text = year.info;
+        } else if (self.mode == Welcome) {
+            self.contentTextView.text = year.welcome;
+        }
+    }
+    
 }
 
 - (void)didReceiveMemoryWarning {

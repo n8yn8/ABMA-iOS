@@ -8,6 +8,13 @@
 
 #import <UIKit/UIKit.h>
 
+typedef enum {
+    Info = 1,
+    Welcome
+} Mode;
+
 @interface InfoViewController : BaseViewController
+
+@property (nonatomic, assign) Mode mode;
 
 @end

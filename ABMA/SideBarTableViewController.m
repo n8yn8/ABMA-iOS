@@ -9,6 +9,7 @@
 #import "SideBarTableViewController.h"
 #import "SWRevealViewController.h"
 #import "ABMA-Swift.h"
+#import "InfoViewController.h"
 
 @interface SideBarTableViewController ()
 @property (nonatomic, strong) NSArray *menuItems;
@@ -68,6 +69,21 @@
         }];
     }
     
+}
+
+- (void)prepareForSegue:(UIStoryboardSegue *)segue sender:(id)sender {
+    if ([segue.destinationViewController isKindOfClass:[UINavigationController class]]) {
+        UIViewController *child = (UINavigationController *) segue.destinationViewController.childViewControllers[0];
+        if ([child isKindOfClass:[InfoViewController class]]) {
+            InfoViewController *dvc = (InfoViewController *)child;
+            NSString *item = [self.menuItems objectAtIndex:self.tableView.indexPathForSelectedRow.row];
+            if ([item isEqualToString:@"welcome"]) {
+                dvc.mode = Welcome;
+            } else if ([item isEqualToString:@"info"]) {
+                dvc.mode = Info;
+            }
+        }
+    }
 }
 
 @end
