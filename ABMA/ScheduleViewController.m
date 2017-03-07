@@ -16,6 +16,7 @@
 #import "Paper+CoreDataClass.h"
 #import "Sponsor+CoreDataClass.h"
 #import "ABMA-Swift.h"
+#import "Note+CoreDataClass.h"
 
 @interface ScheduleViewController ()
 
@@ -57,6 +58,40 @@
 //    [self clearSchedule:@"Paper"];
 //    [self loadSchedule];
     [self loadBackendless];
+}
+
+- (void)matchNotes {
+    NSFetchRequest <Note *> *noteRequst = [Note fetchRequest];
+    NSError *error = nil;
+    NSArray<Note *> *notes = [context executeFetchRequest:noteRequst error:&error];
+    for (Note *note in notes) {
+        if (note.paper) {
+            if (note.paper.bObjectId) {
+                NSLog(@"Already found paper");
+            } else {
+                NSFetchRequest *paperRequest = [Paper fetchRequest];
+                paperRequest.predicate = [NSPredicate predicateWithFormat:@"bObjectId!=nil AND title==%@ AND abstract==%@", note.paper.title, note.paper.abstract];
+                NSError *error;
+                NSArray *papers = [context executeFetchRequest:paperRequest error:&error];
+                NSLog(@"Found %lu papers", (unsigned long)papers.count);
+                note.paper = [papers firstObject];
+            }
+        }
+        if (note.event) {
+            if (note.event.bObjectId) {
+                NSLog(@"Already found event");
+            } else {
+                NSFetchRequest *eventRequest = [Event fetchRequest];
+                eventRequest.predicate = [NSPredicate predicateWithFormat:@"bObjectId!=nil AND title==%@ AND details==%@", note.event.title, note.event.details];
+                NSError *error;
+                NSArray *retrieved = [context executeFetchRequest:eventRequest error:&error];
+                NSLog(@"Found %lu events", (unsigned long)retrieved.count);
+                note.event = [retrieved firstObject];
+            }
+        }
+    }
+    NSError *saveError;
+    [context save:&saveError];
 }
 
 - (void)loadBackendless {
@@ -132,6 +167,7 @@
         NSLog(@"Error: %@", error.localizedDescription);
     } else {
         [self loadSchedule];
+        [self matchNotes];
     }
 }
 
