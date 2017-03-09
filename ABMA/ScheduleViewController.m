@@ -20,6 +20,8 @@
 
 @interface ScheduleViewController ()
 
+@property (weak, nonatomic) IBOutlet UIActivityIndicatorView *activityIndicator;
+
 @end
 
 @implementation ScheduleViewController
@@ -54,7 +56,7 @@
     
     
     [self loadSchedule];
-//    [self loadBackendless];
+    [self loadBackendless];
 }
 
 - (void)matchNotes {
@@ -94,7 +96,9 @@
 }
 
 - (void)loadBackendless {
+    [self.activityIndicator startAnimating];
     [[DbManager sharedInstance] getYearsWithCallback:^(NSArray<BYear *> * _Nullable years, NSString * _Nullable error) {
+        [self.activityIndicator stopAnimating];
         if (error) {
             NSLog(@"error: %@", error);
         } else {

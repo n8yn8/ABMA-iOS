@@ -381,8 +381,26 @@
                             <constraint firstItem="Dkg-Po-jaI" firstAttribute="top" secondItem="p2E-Hj-JwA" secondAttribute="bottom" id="z1h-Hg-ue1"/>
                         </constraints>
                     </view>
-                    <navigationItem key="navigationItem" id="YoR-u3-DUj"/>
+                    <navigationItem key="navigationItem" id="YoR-u3-DUj">
+                        <barButtonItem key="rightBarButtonItem" style="plain" id="0Jy-cJ-szD">
+                            <view key="customView" contentMode="scaleToFill" id="ZrJ-7c-zO2">
+                                <rect key="frame" x="299" y="5" width="60" height="33"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                <subviews>
+                                    <activityIndicatorView opaque="NO" contentMode="scaleToFill" horizontalHuggingPriority="750" verticalHuggingPriority="750" hidesWhenStopped="YES" animating="YES" style="whiteLarge" translatesAutoresizingMaskIntoConstraints="NO" id="ptK-2Z-ixX">
+                                        <rect key="frame" x="11.5" y="-2" width="37" height="37"/>
+                                    </activityIndicatorView>
+                                </subviews>
+                                <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
+                                <constraints>
+                                    <constraint firstItem="ptK-2Z-ixX" firstAttribute="centerY" secondItem="ZrJ-7c-zO2" secondAttribute="centerY" id="KEE-dH-YAM"/>
+                                    <constraint firstItem="ptK-2Z-ixX" firstAttribute="centerX" secondItem="ZrJ-7c-zO2" secondAttribute="centerX" id="z6O-b5-7Ml"/>
+                                </constraints>
+                            </view>
+                        </barButtonItem>
+                    </navigationItem>
                     <connections>
+                        <outlet property="activityIndicator" destination="ptK-2Z-ixX" id="PY4-lY-L30"/>
                         <outlet property="dateLabe" destination="Dkg-Po-jaI" id="qYM-mc-g8b"/>
                         <outlet property="tableView" destination="txW-z0-ou2" id="DuR-mr-qWk"/>
                     </connections>
@@ -1170,7 +1188,7 @@
     </simulatedMetricsContainer>
     <inferredMetricsTieBreakers>
         <segue reference="i2t-q8-Kec"/>
-        <segue reference="6O2-og-6Hq"/>
+        <segue reference="twV-FT-9Dc"/>
     </inferredMetricsTieBreakers>
     <color key="tintColor" red="1" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
 </document>
