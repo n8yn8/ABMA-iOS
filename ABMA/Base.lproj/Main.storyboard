@@ -238,12 +238,17 @@
                                                     <rect key="frame" x="5" y="5" width="150" height="150"/>
                                                     <color key="backgroundColor" red="1" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                                 </imageView>
+                                                <activityIndicatorView opaque="NO" tag="201" contentMode="scaleToFill" horizontalHuggingPriority="750" verticalHuggingPriority="750" hidesWhenStopped="YES" animating="YES" style="gray" translatesAutoresizingMaskIntoConstraints="NO" id="ycz-Oi-K3z">
+                                                    <rect key="frame" x="70" y="70" width="20" height="20"/>
+                                                </activityIndicatorView>
                                             </subviews>
                                         </view>
                                         <color key="backgroundColor" red="0.0" green="0.0" blue="0.0" alpha="0.0" colorSpace="custom" customColorSpace="sRGB"/>
                                         <constraints>
                                             <constraint firstAttribute="bottom" secondItem="tjj-dr-r5k" secondAttribute="bottom" constant="5" id="81V-gI-9UU"/>
+                                            <constraint firstItem="ycz-Oi-K3z" firstAttribute="centerY" secondItem="exF-8y-5i4" secondAttribute="centerY" id="Ees-cR-s7z"/>
                                             <constraint firstAttribute="trailing" secondItem="tjj-dr-r5k" secondAttribute="trailing" constant="5" id="bC1-Vo-5d6"/>
+                                            <constraint firstItem="ycz-Oi-K3z" firstAttribute="centerX" secondItem="exF-8y-5i4" secondAttribute="centerX" id="dom-rZ-hBW"/>
                                             <constraint firstItem="tjj-dr-r5k" firstAttribute="top" secondItem="exF-8y-5i4" secondAttribute="top" constant="5" id="lYQ-eB-jxM"/>
                                             <constraint firstItem="tjj-dr-r5k" firstAttribute="leading" secondItem="exF-8y-5i4" secondAttribute="leading" constant="5" id="uz0-AP-K0m"/>
                                         </constraints>

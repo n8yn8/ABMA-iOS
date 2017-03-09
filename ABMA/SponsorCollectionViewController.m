@@ -109,8 +109,13 @@
     UICollectionViewCell *cell = [collectionView dequeueReusableCellWithReuseIdentifier:identifier forIndexPath:indexPath];
     //instantiate the imageview in each cell
     UIImageView *imageView = (UIImageView *)[cell viewWithTag:200];
+    UIActivityIndicatorView *activityIndicator = (UIActivityIndicatorView *) [cell viewWithTag:201];
+    [activityIndicator startAnimating];
     
-    [imageView sd_setImageWithURL:[NSURL URLWithString:sponsors[indexPath.item].imageUrl]];
+    
+    [imageView sd_setImageWithURL:[NSURL URLWithString:sponsors[indexPath.item].imageUrl] completed:^(UIImage * _Nullable image, NSError * _Nullable error, SDImageCacheType cacheType, NSURL * _Nullable imageURL) {
+        [activityIndicator stopAnimating];
+    }];
     
     return cell;
 }
