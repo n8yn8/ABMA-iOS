@@ -153,6 +153,7 @@
         thisEvent.startDate = bEvent.startDate;
         thisEvent.endDate = bEvent.endDate;
         thisEvent.details = bEvent.details;
+        NSMutableOrderedSet *papersSet = [[NSMutableOrderedSet alloc] init];
         for (BPaper *bPaper in bEvent.papers) {
             Paper *paper = [[Paper alloc] initWithEntity:[NSEntityDescription entityForName:@"Paper" inManagedObjectContext:context] insertIntoManagedObjectContext:context];
             paper.bObjectId = bPaper.objectId;
@@ -160,8 +161,9 @@
             paper.title = bPaper.title;
             paper.abstract = bPaper.synopsis;
             paper.event = thisEvent;
-            [thisEvent addPapersObject:paper];
+            [papersSet addObject:paper];
         }
+        thisEvent.papers = papersSet;
         [dayForEvent addEventObject:thisEvent];
     }
     NSError *error;
