@@ -443,6 +443,7 @@
 				4338BB9B18F26F52002683EF /* Resources */,
 				461F3C39CFC8DA0E924A5770 /* [CP] Embed Pods Frameworks */,
 				C12D6CD538280536E265BE30 /* [CP] Copy Pods Resources */,
+				43732BD31E72F5F400A85B63 /* Fabric Run Script */,
 			);
 			buildRules = (
 			);
@@ -484,6 +485,7 @@
 				434B44D81E1B231F00963096 /* Resources */,
 				C2C8D2E17AE0586775EDE0D7 /* [CP] Embed Pods Frameworks */,
 				D5E976CF05AC4F4B950580C9 /* [CP] Copy Pods Resources */,
+				43732BD21E72F34200A85B63 /* Fabric Run Script */,
 			);
 			buildRules = (
 			);
@@ -622,6 +624,34 @@
 			shellPath = /bin/sh;
 			shellScript = "\"${SRCROOT}/Pods/Target Support Files/Pods-ABMATests/Pods-ABMATests-frameworks.sh\"\n";
 			showEnvVarsInLog = 0;
+		};
+		43732BD21E72F34200A85B63 /* Fabric Run Script */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputPaths = (
+			);
+			name = "Fabric Run Script";
+			outputPaths = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "";
+		};
+		43732BD31E72F5F400A85B63 /* Fabric Run Script */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputPaths = (
+			);
+			name = "Fabric Run Script";
+			outputPaths = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "releaseConfig=\"Release\"\n\nif [ \"$releaseConfig\" = \"${CONFIGURATION}\" ]; then\necho \"Running Crashlytics\"\n\"${PODS_ROOT}/Fabric/run\" 8d96e50ad3aa3a14f2bc63cc1f2ecefb807e2099 f58304b865eb4803e74654648b5849c744e24c53c2597d274229a2fd8c959401\nfi";
 		};
 		460FC14E88BD6D06B7068FEF /* [CP] Check Pods Manifest.lock */ = {
 			isa = PBXShellScriptBuildPhase;
@@ -1036,7 +1066,7 @@
 				);
 				INFOPLIST_FILE = ABMAEditor/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/../Frameworks";
-				MACOSX_DEPLOYMENT_TARGET = 10.12;
+				MACOSX_DEPLOYMENT_TARGET = 10.11;
 				MTL_ENABLE_DEBUG_INFO = YES;
 				PRODUCT_BUNDLE_IDENTIFIER = com.n8yn8.ABMAEditor;
 				PRODUCT_NAME = "$(TARGET_NAME)";
@@ -1067,7 +1097,7 @@
 				);
 				INFOPLIST_FILE = ABMAEditor/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/../Frameworks";
-				MACOSX_DEPLOYMENT_TARGET = 10.12;
+				MACOSX_DEPLOYMENT_TARGET = 10.11;
 				MTL_ENABLE_DEBUG_INFO = NO;
 				PRODUCT_BUNDLE_IDENTIFIER = com.n8yn8.ABMAEditor;
 				PRODUCT_NAME = "$(TARGET_NAME)";

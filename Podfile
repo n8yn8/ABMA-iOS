@@ -9,6 +9,8 @@ target 'ABMA' do
 
   pod 'Backendless'
   pod 'SDWebImage', '~>4.0'
+  pod 'Fabric'
+  pod 'Crashlytics'
 
   target 'ABMATests' do
     inherit! :search_paths
