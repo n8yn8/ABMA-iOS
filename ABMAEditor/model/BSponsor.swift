@@ -13,5 +13,7 @@ class BSponsor: NSObject {
     var objectId: String?
     var url: String?
     var imageUrl: String?
+    var upadted: Date?
+    var created: Date?
     
 }

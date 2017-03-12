@@ -2,7 +2,7 @@
 //  Day+CoreDataProperties.m
 //  ABMA
 //
-//  Created by Nathan Condell on 2/18/17.
+//  Created by Nathan Condell on 3/12/17.
 //  Copyright © 2017 Nathan Condell. All rights reserved.
 //
 

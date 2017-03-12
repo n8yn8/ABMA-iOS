@@ -2,7 +2,7 @@
 //  Event+CoreDataProperties.h
 //  ABMA
 //
-//  Created by Nathan Condell on 2/18/17.
+//  Created by Nathan Condell on 3/12/17.
 //  Copyright © 2017 Nathan Condell. All rights reserved.
 //
 
@@ -15,6 +15,7 @@ NS_ASSUME_NONNULL_BEGIN
 
 + (NSFetchRequest<Event *> *)fetchRequest;
 
+@property (nullable, nonatomic, copy) NSString *bObjectId;
 @property (nullable, nonatomic, copy) NSString *details;
 @property (nullable, nonatomic, copy) NSDate *endDate;
 @property (nullable, nonatomic, copy) NSString *locatoin;
@@ -22,7 +23,8 @@ NS_ASSUME_NONNULL_BEGIN
 @property (nullable, nonatomic, copy) NSDate *startDate;
 @property (nullable, nonatomic, copy) NSString *subtitle;
 @property (nullable, nonatomic, copy) NSString *title;
-@property (nullable, nonatomic, copy) NSString *bObjectId;
+@property (nullable, nonatomic, copy) NSDate *created;
+@property (nullable, nonatomic, copy) NSDate *updated;
 @property (nullable, nonatomic, retain) Day *day;
 @property (nullable, nonatomic, retain) Note *note;
 @property (nullable, nonatomic, retain) NSOrderedSet<Paper *> *papers;

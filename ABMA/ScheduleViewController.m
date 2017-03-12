@@ -56,7 +56,7 @@
     
     
     [self loadSchedule];
-    [self loadBackendless];
+//    [self loadBackendless];
 }
 
 - (void)matchNotes {
@@ -121,12 +121,16 @@
     year.bObjectId = bYear.objectId;
     year.info = bYear.info;
     year.welcome = bYear.welcome;
+    year.created = bYear.created;
+    year.updated = bYear.upadted;
     for (BSponsor *bSponsor in bYear.sponsors) {
         Sponsor *sponsor = [[Sponsor alloc] initWithEntity:[NSEntityDescription entityForName:@"Sponsor" inManagedObjectContext:context] insertIntoManagedObjectContext:context];
         sponsor.bObjectId = bSponsor.objectId;
         sponsor.url = bSponsor.url;
         sponsor.imageUrl = bSponsor.imageUrl;
         sponsor.year = year;
+        sponsor.created = bSponsor.created;
+        sponsor.updated = bSponsor.upadted;
         [year addSponsorsObject:sponsor];
     }
     for (BEvent *bEvent in bYear.events) {
@@ -153,6 +157,8 @@
         thisEvent.startDate = bEvent.startDate;
         thisEvent.endDate = bEvent.endDate;
         thisEvent.details = bEvent.details;
+        thisEvent.created = bEvent.created;
+        thisEvent.updated = bEvent.upadted;
         NSMutableOrderedSet *papersSet = [[NSMutableOrderedSet alloc] init];
         for (BPaper *bPaper in bEvent.papers) {
             Paper *paper = [[Paper alloc] initWithEntity:[NSEntityDescription entityForName:@"Paper" inManagedObjectContext:context] insertIntoManagedObjectContext:context];
@@ -161,6 +167,8 @@
             paper.title = bPaper.title;
             paper.abstract = bPaper.synopsis;
             paper.event = thisEvent;
+            paper.created = bPaper.created;
+            paper.updated = bPaper.upadted;
             [papersSet addObject:paper];
         }
         thisEvent.papers = papersSet;

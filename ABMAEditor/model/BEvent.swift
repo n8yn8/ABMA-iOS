@@ -18,6 +18,8 @@ class BEvent: NSObject {
     var subtitle: String?
     var title: String?
     var papers = [BPaper]()
+    var upadted: Date?
+    var created: Date?
     
     func initWith(startDate: Date, endDate: Date, title: String) {
         
