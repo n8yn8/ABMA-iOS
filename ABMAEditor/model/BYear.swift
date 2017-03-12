@@ -16,4 +16,6 @@ class BYear: NSObject {
     var welcome: String?
     var info: String?
     var sponsors = [BSponsor]()
+    var upadted: Date?
+    var created: Date?
 }

@@ -2,7 +2,7 @@
 //  Sponsor+CoreDataProperties.m
 //  ABMA
 //
-//  Created by Nathan Condell on 2/18/17.
+//  Created by Nathan Condell on 3/12/17.
 //  Copyright © 2017 Nathan Condell. All rights reserved.
 //
 
@@ -14,9 +14,11 @@
 	return [[NSFetchRequest alloc] initWithEntityName:@"Sponsor"];
 }
 
+@dynamic bObjectId;
 @dynamic imageUrl;
 @dynamic url;
-@dynamic bObjectId;
+@dynamic created;
+@dynamic updated;
 @dynamic year;
 
 @end

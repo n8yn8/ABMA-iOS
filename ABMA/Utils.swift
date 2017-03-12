@@ -30,18 +30,22 @@ class Utils: NSObject {
             bNote.user = user;
             bNote.paperId = note.paper?.bObjectId
             bNote.eventId = note.event?.bObjectId
-            bNote.content = note.content;
+            bNote.content = note.content
             
             DbManager.sharedInstance.update(note: bNote) { (savedNote, error) in
                 if let error = error {
                     print("Error: \(error)");
                 } else {
-                    note.bObjectId = savedNote?.objectId;
+                    note.bObjectId = savedNote?.objectId
+                    note.created = savedNote?.created
+                    note.updated = savedNote?.updated
                     save(context: context)
                 }
             }
+        } else {
+            note.created = Date()
+            save(context: context)
         }
-        save(context: context)
         
     }
     

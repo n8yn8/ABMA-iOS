@@ -7,6 +7,7 @@
     </entity>
     <entity name="Event" representedClassName="Event" syncable="YES">
         <attribute name="bObjectId" optional="YES" attributeType="String" syncable="YES"/>
+        <attribute name="created" optional="YES" attributeType="Date" usesScalarValueType="NO" syncable="YES"/>
         <attribute name="details" optional="YES" attributeType="String" syncable="YES"/>
         <attribute name="endDate" optional="YES" attributeType="Date" usesScalarValueType="NO" syncable="YES"/>
         <attribute name="locatoin" optional="YES" attributeType="String" syncable="YES"/>
@@ -14,6 +15,7 @@
         <attribute name="startDate" optional="YES" attributeType="Date" usesScalarValueType="NO" syncable="YES"/>
         <attribute name="subtitle" optional="YES" attributeType="String" syncable="YES"/>
         <attribute name="title" optional="YES" attributeType="String" syncable="YES"/>
+        <attribute name="updated" optional="YES" attributeType="Date" usesScalarValueType="NO" syncable="YES"/>
         <relationship name="day" optional="YES" maxCount="1" deletionRule="Nullify" destinationEntity="Day" inverseName="event" inverseEntity="Day" syncable="YES"/>
         <relationship name="note" optional="YES" maxCount="1" deletionRule="Nullify" destinationEntity="Note" inverseName="event" inverseEntity="Note" syncable="YES"/>
         <relationship name="papers" optional="YES" toMany="YES" deletionRule="Nullify" ordered="YES" destinationEntity="Paper" inverseName="event" inverseEntity="Paper" syncable="YES"/>
@@ -21,6 +23,8 @@
     <entity name="Note" representedClassName="Note" syncable="YES">
         <attribute name="bObjectId" optional="YES" attributeType="String" syncable="YES"/>
         <attribute name="content" optional="YES" attributeType="String" syncable="YES"/>
+        <attribute name="created" optional="YES" attributeType="Date" usesScalarValueType="NO" syncable="YES"/>
+        <attribute name="updated" optional="YES" attributeType="Date" usesScalarValueType="NO" syncable="YES"/>
         <relationship name="event" optional="YES" maxCount="1" deletionRule="Nullify" destinationEntity="Event" inverseName="note" inverseEntity="Event" syncable="YES"/>
         <relationship name="paper" optional="YES" maxCount="1" deletionRule="Nullify" destinationEntity="Paper" inverseName="note" inverseEntity="Paper" syncable="YES"/>
     </entity>
@@ -28,19 +32,25 @@
         <attribute name="abstract" optional="YES" attributeType="String" syncable="YES"/>
         <attribute name="author" optional="YES" attributeType="String" syncable="YES"/>
         <attribute name="bObjectId" optional="YES" attributeType="String" syncable="YES"/>
+        <attribute name="created" optional="YES" attributeType="Date" usesScalarValueType="NO" syncable="YES"/>
         <attribute name="title" optional="YES" attributeType="String" syncable="YES"/>
+        <attribute name="updated" optional="YES" attributeType="Date" usesScalarValueType="NO" syncable="YES"/>
         <relationship name="event" optional="YES" maxCount="1" deletionRule="Nullify" destinationEntity="Event" inverseName="papers" inverseEntity="Event" syncable="YES"/>
         <relationship name="note" optional="YES" maxCount="1" deletionRule="Nullify" destinationEntity="Note" inverseName="paper" inverseEntity="Note" syncable="YES"/>
     </entity>
     <entity name="Sponsor" representedClassName="Sponsor" syncable="YES">
         <attribute name="bObjectId" optional="YES" attributeType="String" syncable="YES"/>
+        <attribute name="created" optional="YES" attributeType="Date" usesScalarValueType="NO" syncable="YES"/>
         <attribute name="imageUrl" optional="YES" attributeType="String" syncable="YES"/>
+        <attribute name="updated" optional="YES" attributeType="Date" usesScalarValueType="NO" syncable="YES"/>
         <attribute name="url" optional="YES" attributeType="String" syncable="YES"/>
         <relationship name="year" optional="YES" maxCount="1" deletionRule="Nullify" destinationEntity="Year" inverseName="sponsors" inverseEntity="Year" syncable="YES"/>
     </entity>
     <entity name="Year" representedClassName="Year" syncable="YES">
         <attribute name="bObjectId" optional="YES" attributeType="String" syncable="YES"/>
+        <attribute name="created" optional="YES" attributeType="Date" usesScalarValueType="NO" syncable="YES"/>
         <attribute name="info" optional="YES" attributeType="String" syncable="YES"/>
+        <attribute name="updated" optional="YES" attributeType="Date" usesScalarValueType="NO" syncable="YES"/>
         <attribute name="welcome" optional="YES" attributeType="String" syncable="YES"/>
         <attribute name="year" optional="YES" attributeType="String" syncable="YES"/>
         <relationship name="day" optional="YES" toMany="YES" deletionRule="Nullify" destinationEntity="Day" inverseName="year" inverseEntity="Day" syncable="YES"/>
@@ -48,10 +58,10 @@
     </entity>
     <elements>
         <element name="Day" positionX="54" positionY="234" width="128" height="90"/>
-        <element name="Event" positionX="241" positionY="216" width="128" height="210"/>
-        <element name="Note" positionX="412" positionY="228" width="128" height="105"/>
-        <element name="Paper" positionX="108" positionY="297" width="128" height="135"/>
-        <element name="Year" positionX="-99" positionY="210" width="128" height="135"/>
-        <element name="Sponsor" positionX="126" positionY="324" width="128" height="105"/>
+        <element name="Event" positionX="241" positionY="216" width="128" height="240"/>
+        <element name="Note" positionX="412" positionY="228" width="128" height="135"/>
+        <element name="Paper" positionX="108" positionY="297" width="128" height="165"/>
+        <element name="Sponsor" positionX="126" positionY="324" width="128" height="135"/>
+        <element name="Year" positionX="-99" positionY="210" width="128" height="165"/>
     </elements>
 </model>

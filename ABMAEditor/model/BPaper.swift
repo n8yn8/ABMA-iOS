@@ -14,6 +14,8 @@ class BPaper: NSObject {
     var title: String!
     var author: String!
     var synopsis: String!
+    var upadted: Date?
+    var created: Date?
     
     func initWith(title: String, author: String, synopsis: String) {
         self.title = title
