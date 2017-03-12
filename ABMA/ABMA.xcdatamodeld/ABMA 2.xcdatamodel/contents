@@ -21,6 +21,8 @@
     <entity name="Note" representedClassName="Note" syncable="YES">
         <attribute name="bObjectId" optional="YES" attributeType="String" syncable="YES"/>
         <attribute name="content" optional="YES" attributeType="String" syncable="YES"/>
+        <attribute name="created" optional="YES" attributeType="Date" usesScalarValueType="NO" syncable="YES"/>
+        <attribute name="updated" optional="YES" attributeType="Date" usesScalarValueType="NO" syncable="YES"/>
         <relationship name="event" optional="YES" maxCount="1" deletionRule="Nullify" destinationEntity="Event" inverseName="note" inverseEntity="Event" syncable="YES"/>
         <relationship name="paper" optional="YES" maxCount="1" deletionRule="Nullify" destinationEntity="Paper" inverseName="note" inverseEntity="Paper" syncable="YES"/>
     </entity>
@@ -49,9 +51,9 @@
     <elements>
         <element name="Day" positionX="54" positionY="234" width="128" height="90"/>
         <element name="Event" positionX="241" positionY="216" width="128" height="210"/>
-        <element name="Note" positionX="412" positionY="228" width="128" height="105"/>
+        <element name="Note" positionX="412" positionY="228" width="128" height="135"/>
         <element name="Paper" positionX="108" positionY="297" width="128" height="135"/>
-        <element name="Year" positionX="-99" positionY="210" width="128" height="135"/>
         <element name="Sponsor" positionX="126" positionY="324" width="128" height="105"/>
+        <element name="Year" positionX="-99" positionY="210" width="128" height="135"/>
     </elements>
 </model>

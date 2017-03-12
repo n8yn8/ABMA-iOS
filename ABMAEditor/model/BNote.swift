@@ -15,5 +15,7 @@ class BNote: NSObject {
     var paperId: String?
     var eventId: String?
     var user: BackendlessUser!
+    var updated: Date?
+    var created: Date?
     
 }

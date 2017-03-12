@@ -154,4 +154,22 @@ class DbManager: NSObject {
         })
     }
     
+    func getNotes(callback: @escaping (_ years: [BNote]?, _ errorString: String?) -> Void) {
+        guard let user = getCurrentUser() else {
+            callback(nil, "User not logged in")
+            return
+        }
+        let dataQuery = BackendlessDataQuery()
+        dataQuery.whereClause = "user.objectId = \'\(user.objectId!)\'"
+        backendless?.persistenceService.find(BNote.ofClass(), dataQuery: dataQuery, response: { (response) in
+            print("response \(response)")
+            if let notes = response?.data as? [BNote] {
+                callback(notes, nil)
+            }
+        }, error: { (error) in
+            print("error: \(error)")
+            callback(nil, error.debugDescription)
+        })
+    }
+    
 }
