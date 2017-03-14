@@ -172,4 +172,12 @@ class DbManager: NSObject {
         })
     }
     
+    func registerForPush(tokenData: Data) {
+        backendless?.messaging.registerDeviceToken(tokenData, response: { (response) in
+            print("response \(response)")
+        }, error: { (fault) in
+            print("error: \(fault?.message)")
+        })
+    }
+    
 }
