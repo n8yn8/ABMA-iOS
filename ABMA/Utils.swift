@@ -28,8 +28,12 @@ class Utils: NSObject {
             let bNote = BNote();
             bNote.objectId = note.bObjectId;
             bNote.user = user;
-            bNote.paperId = note.paper?.bObjectId
-            bNote.eventId = note.event?.bObjectId
+            if let paper = note.paper {
+                bNote.paperId = paper.bObjectId
+                bNote.eventId = paper.event?.bObjectId
+            } else {
+                bNote.eventId = note.event?.bObjectId
+            }
             bNote.content = note.content
             
             DbManager.sharedInstance.update(note: bNote) { (savedNote, error) in
