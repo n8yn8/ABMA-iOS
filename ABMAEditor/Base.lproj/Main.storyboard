@@ -852,11 +852,23 @@
                                     </tabViewItem>
                                 </tabViewItems>
                             </tabView>
+                            <button verticalHuggingPriority="750" misplaced="YES" translatesAutoresizingMaskIntoConstraints="NO" id="H8n-MC-rnf">
+                                <rect key="frame" x="90" y="262" width="81" height="32"/>
+                                <buttonCell key="cell" type="push" title="Publish" bezelStyle="rounded" alignment="center" enabled="NO" borderStyle="border" imageScaling="proportionallyDown" inset="2" id="wGq-FY-jqa">
+                                    <behavior key="behavior" pushIn="YES" lightByBackground="YES" lightByGray="YES"/>
+                                    <font key="font" metaFont="system"/>
+                                </buttonCell>
+                                <connections>
+                                    <action selector="publish:" target="ISR-eh-a1F" id="0cS-03-g0y"/>
+                                </connections>
+                            </button>
                         </subviews>
                         <constraints>
                             <constraint firstItem="H9u-aR-Egj" firstAttribute="top" secondItem="iyd-Yb-Drc" secondAttribute="top" constant="10" id="6LF-C4-fMI"/>
                             <constraint firstItem="H9u-aR-Egj" firstAttribute="leading" secondItem="iyd-Yb-Drc" secondAttribute="leading" constant="10" id="L5c-np-Y01"/>
                             <constraint firstItem="gog-kC-GEY" firstAttribute="leading" secondItem="H9u-aR-Egj" secondAttribute="trailing" constant="8" id="XOI-jY-Bb0"/>
+                            <constraint firstItem="H8n-MC-rnf" firstAttribute="leading" secondItem="gog-kC-GEY" secondAttribute="trailing" constant="26" id="Yet-Vo-H5I"/>
+                            <constraint firstItem="H8n-MC-rnf" firstAttribute="centerY" secondItem="gog-kC-GEY" secondAttribute="centerY" id="ZR0-4t-cii"/>
                             <constraint firstItem="gog-kC-GEY" firstAttribute="centerY" secondItem="H9u-aR-Egj" secondAttribute="centerY" id="fTo-Fn-Mz0"/>
                             <constraint firstItem="NXf-ea-d5m" firstAttribute="leading" secondItem="iyd-Yb-Drc" secondAttribute="leading" id="hvG-gx-vj6"/>
                             <constraint firstItem="NXf-ea-d5m" firstAttribute="top" secondItem="H9u-aR-Egj" secondAttribute="bottom" constant="10" id="i0c-Tx-HyO"/>
@@ -866,6 +878,7 @@
                     </view>
                     <connections>
                         <outlet property="infoTextView" destination="krI-ZG-dN7" id="yG2-n9-8HN"/>
+                        <outlet property="publishButton" destination="H8n-MC-rnf" id="14l-ak-EZx"/>
                         <outlet property="welcomeTextView" destination="GUG-t9-2tJ" id="ixT-eM-tGJ"/>
                         <outlet property="yearsPopUpButton" destination="H9u-aR-Egj" id="ARw-to-RLa"/>
                     </connections>

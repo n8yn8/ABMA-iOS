@@ -60,4 +60,26 @@ class Utils: NSObject {
             print("Could not save. \(error), \(error.userInfo)")
         }
     }
+    
+    private static let LAST_UPDATED = "lastUpdated"
+    
+    static func getLastUpdated() -> Date? {
+        let date = UserDefaults.standard.object(forKey: LAST_UPDATED) as? Date
+        return date
+    }
+    
+    static func updateLastUpdated(date: Date) {
+        let prevUpdated = getLastUpdated()
+        if let prev = prevUpdated {
+            if date.timeIntervalSince1970 > prev.timeIntervalSince1970 {
+                saveLastUpdated(date: date)
+            }
+        } else {
+            saveLastUpdated(date: date)
+        }
+    }
+    
+    private static func saveLastUpdated(date: Date) {
+        UserDefaults.standard.set(date, forKey: LAST_UPDATED)
+    }
 }

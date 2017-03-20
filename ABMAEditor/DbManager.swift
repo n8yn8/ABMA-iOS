@@ -86,7 +86,23 @@ class DbManager: NSObject {
     }
     
     func getYears(callback: @escaping (_ years: [BYear]?, _ errorString: String?) -> Void) {
+        getYears(query: nil, callback: callback)
+    }
+
+    func getPublishedYears(since: Date?, callback: @escaping (_ years: [BYear]?, _ errorString: String?) -> Void) {
+        var query = "publishedAt is not null"
+        if let s = since {
+            query += " AND updated > \(Double((s.timeIntervalSince1970 * 1000.0).rounded()))"
+        }
+        getYears(query: query, callback: callback)
+    }
+    
+    private func getYears(query: String?, callback: @escaping (_ years: [BYear]?, _ errorString: String?) -> Void) {
         let dataQuery = BackendlessDataQuery()
+        
+        if let q = query {
+            dataQuery.whereClause = q
+        }
         
         backendless?.persistenceService.find(BYear.ofClass(), dataQuery: dataQuery, response: { (response) in
             print("response \(response)")
@@ -177,6 +193,18 @@ class DbManager: NSObject {
             print("response \(response)")
         }, error: { (fault) in
             print("error: \(fault?.message)")
+        })
+    }
+    
+    func pushUpdate() {
+        let publishOptions = PublishOptions()
+        publishOptions.assignHeaders(["ios-text":"Notification for iOS ",
+                                      "android-content-title":"Notification title for Android",
+                                      "android-content-text":"Notification text for Android"])
+        backendless?.messaging.publish("default", message: "There is an update", response: { (messageStatus) in
+            print("message status = \(messageStatus?.status) \(messageStatus?.messageId)")
+        }, error: { (fault) in
+            print("Message fault \(fault?.message)")
         })
     }
     

@@ -10,6 +10,7 @@
 #import <Fabric/Fabric.h>
 #import <Crashlytics/Crashlytics.h>
 #import "ABMA-Swift.h"
+#import "ScheduleViewController.h"
 
 @implementation AppDelegate
 
@@ -36,6 +37,15 @@
 
 - (void)application:(UIApplication *)application didFailToRegisterForRemoteNotificationsWithError:(NSError *)error {
     NSLog(@"Error registering for remote notifications: %@", error.description);
+}
+
+- (void)application:(UIApplication *)application didReceiveRemoteNotification:(NSDictionary *)userInfo {
+    NSLog(@"Received %@", userInfo);
+    [[DbManager sharedInstance] getPublishedYearsSince:[Utils getLastUpdated] callback:^(NSArray<BYear *> * _Nullable years, NSString * _Nullable error) {
+        for (BYear *bYear in years) {
+            [ScheduleViewController saveBackendlessYear:bYear context:[self managedObjectContext]];
+        }
+    }];
 }
 							
 - (void)applicationWillResignActive:(UIApplication *)application
