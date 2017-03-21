@@ -19,6 +19,7 @@ class YearViewController: NSViewController {
     var selectedYear: BYear?
     
     @IBOutlet weak var yearsPopUpButton: NSPopUpButton!
+    @IBOutlet weak var publishButton: NSButton!
 
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -67,6 +68,12 @@ class YearViewController: NSViewController {
             } else {
                 infoTextView.string = ""
             }
+            publishButton.isEnabled = true
+            if year.publishedAt == nil{
+                publishButton.title = "Publish"
+            } else {
+                publishButton.title = "Update"
+            }
             
             sponsorsViewController?.updateSponsors(sponsorList: year.sponsors)
         } else {
@@ -74,6 +81,8 @@ class YearViewController: NSViewController {
             welcomeTextView.string = ""
             infoTextView.string = ""
             sponsorsViewController?.updateSponsors(sponsorList: [BSponsor]())
+            publishButton.isEnabled = false
+            publishButton.title = "Publish"
         }
         
     }
@@ -112,8 +121,18 @@ class YearViewController: NSViewController {
     func updateYear() {
         DbManager.sharedInstance.update(year: selectedYear!) { (saved, error) in
             self.selectedYear = saved
+            if self.selectedYear?.publishedAt != nil {
+                DbManager.sharedInstance.pushUpdate()
+            }
             self.updateUi()
         }
+    }
+    
+    @IBAction func publish(_ sender: Any) {
+        if selectedYear?.publishedAt == nil {
+            selectedYear?.publishedAt = Date()
+        }
+        updateYear()
     }
 }
 

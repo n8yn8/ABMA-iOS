@@ -9,7 +9,8 @@
 #import "AppDelegate.h"
 #import <Fabric/Fabric.h>
 #import <Crashlytics/Crashlytics.h>
-
+#import "ABMA-Swift.h"
+#import "ScheduleViewController.h"
 
 @implementation AppDelegate
 
@@ -17,7 +18,34 @@
 {
     [Fabric with:@[[Crashlytics class]]];
 
+    UIUserNotificationSettings *settings = [UIUserNotificationSettings settingsForTypes:(UIUserNotificationTypeBadge | UIUserNotificationTypeAlert | UIUserNotificationTypeSound) categories:nil];
+    
+    [application registerUserNotificationSettings:settings];
+    
     return YES;
+}
+
+- (void)application:(UIApplication *)application didRegisterUserNotificationSettings:(UIUserNotificationSettings *)notificationSettings {
+    if (notificationSettings.types != UIUserNotificationTypeNone) {
+        [application registerForRemoteNotifications];
+    }
+}
+
+- (void)application:(UIApplication *)application didRegisterForRemoteNotificationsWithDeviceToken:(NSData *)deviceToken {
+    [[DbManager sharedInstance] registerForPushWithTokenData:deviceToken];
+}
+
+- (void)application:(UIApplication *)application didFailToRegisterForRemoteNotificationsWithError:(NSError *)error {
+    NSLog(@"Error registering for remote notifications: %@", error.description);
+}
+
+- (void)application:(UIApplication *)application didReceiveRemoteNotification:(NSDictionary *)userInfo {
+    NSLog(@"Received %@", userInfo);
+    [[DbManager sharedInstance] getPublishedYearsSince:[Utils getLastUpdated] callback:^(NSArray<BYear *> * _Nullable years, NSString * _Nullable error) {
+        for (BYear *bYear in years) {
+            [ScheduleViewController saveBackendlessYear:bYear context:[self managedObjectContext]];
+        }
+    }];
 }
 							
 - (void)applicationWillResignActive:(UIApplication *)application
