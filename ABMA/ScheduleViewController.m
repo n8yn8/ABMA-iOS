@@ -97,19 +97,21 @@
 
 - (void)loadBackendless {
     [self.activityIndicator startAnimating];
-    [[DbManager sharedInstance] getYearsWithCallback:^(NSArray<BYear *> * _Nullable years, NSString * _Nullable error) {
+    [[DbManager sharedInstance] getPublishedYearsSince:[Utils getLastUpdated] callback:^(NSArray<BYear *> * _Nullable years, NSString * _Nullable error) {
         [self.activityIndicator stopAnimating];
         if (error) {
             NSLog(@"error: %@", error);
         } else {
             for (BYear *bYear in years) {
-                [self saveBackendlessYear:bYear];
+                [ScheduleViewController saveBackendlessYear:bYear context:context];
             }
+            [self loadSchedule];
+            [self matchNotes];
         }
     }];
 }
 
-- (void)saveBackendlessYear:(BYear *)bYear {
++ (void)saveBackendlessYear:(BYear *)bYear context:(NSManagedObjectContext *)context {
     NSDateFormatter *dayFormatter = [[NSDateFormatter alloc] init];
     [dayFormatter setDateFormat:@"MMM d, yyyy"];
     NSTimeZone *timeZone = [NSTimeZone timeZoneWithName:@"UTC"];
@@ -119,10 +121,16 @@
     
     Year *year = [[Year alloc] initWithEntity:[NSEntityDescription entityForName:@"Year" inManagedObjectContext:context] insertIntoManagedObjectContext:context];
     year.bObjectId = bYear.objectId;
+    year.year = [NSString stringWithFormat:@"%d", bYear.name] ;
     year.info = bYear.info;
     year.welcome = bYear.welcome;
     year.created = bYear.created;
-    year.updated = bYear.upadted;
+    year.updated = bYear.updated;
+    if (year.updated) {
+        [Utils updateLastUpdatedWithDate:year.updated];
+    } else {
+        [Utils updateLastUpdatedWithDate:year.created];
+    }
     for (BSponsor *bSponsor in bYear.sponsors) {
         Sponsor *sponsor = [[Sponsor alloc] initWithEntity:[NSEntityDescription entityForName:@"Sponsor" inManagedObjectContext:context] insertIntoManagedObjectContext:context];
         sponsor.bObjectId = bSponsor.objectId;
@@ -178,13 +186,10 @@
     [context save:&error];
     if (error) {
         NSLog(@"Error: %@", error.localizedDescription);
-    } else {
-        [self loadSchedule];
-        [self matchNotes];
     }
 }
 
--(NSDate *)dateWithOutTime:(NSDate *)datDate {
++ (NSDate *)dateWithOutTime:(NSDate *)datDate {
     if( datDate == nil ) {
         datDate = [NSDate date];
     }

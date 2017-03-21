@@ -168,6 +168,7 @@
 		43732BCC1E6E660E00A85B63 /* Year+CoreDataClass.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "Year+CoreDataClass.m"; sourceTree = "<group>"; };
 		43732BCD1E6E660E00A85B63 /* Year+CoreDataProperties.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "Year+CoreDataProperties.h"; sourceTree = "<group>"; };
 		43732BCE1E6E660E00A85B63 /* Year+CoreDataProperties.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "Year+CoreDataProperties.m"; sourceTree = "<group>"; };
+		43732BD11E70501A00A85B63 /* ABMA.entitlements */ = {isa = PBXFileReference; lastKnownFileType = text.plist.entitlements; path = ABMA.entitlements; sourceTree = "<group>"; };
 		4378FD9A1E3A452F00319DE0 /* Papers.storyboard */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.storyboard; path = Papers.storyboard; sourceTree = "<group>"; };
 		4378FDA01E3C482C00319DE0 /* DbManager.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = DbManager.swift; path = ../DbManager.swift; sourceTree = "<group>"; };
 		438D599D1ABA97D3004FF7ED /* Launch Screen.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = "Launch Screen.xib"; sourceTree = "<group>"; };
@@ -280,6 +281,7 @@
 		4338BBA618F26F53002683EF /* ABMA */ = {
 			isa = PBXGroup;
 			children = (
+				43732BD11E70501A00A85B63 /* ABMA.entitlements */,
 				433BA8071E581400007B7893 /* model */,
 				4338BBAF18F26F53002683EF /* AppDelegate.h */,
 				4338BBB018F26F53002683EF /* AppDelegate.m */,
@@ -509,6 +511,11 @@
 					4338BB9C18F26F52002683EF = {
 						DevelopmentTeam = Z3X6HD4H5L;
 						LastSwiftMigration = 0820;
+						SystemCapabilities = {
+							com.apple.Push = {
+								enabled = 1;
+							};
+						};
 					};
 					4338BBBD18F26F53002683EF = {
 						TestTargetID = 4338BB9C18F26F52002683EF;
@@ -952,6 +959,7 @@
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				ASSETCATALOG_COMPILER_LAUNCHIMAGE_NAME = LaunchImage;
 				CLANG_ENABLE_MODULES = YES;
+				CODE_SIGN_ENTITLEMENTS = ABMA/ABMA.entitlements;
 				CODE_SIGN_IDENTITY = "iPhone Developer";
 				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
 				DEFINES_MODULE = YES;
@@ -981,6 +989,7 @@
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				ASSETCATALOG_COMPILER_LAUNCHIMAGE_NAME = LaunchImage;
 				CLANG_ENABLE_MODULES = YES;
+				CODE_SIGN_ENTITLEMENTS = ABMA/ABMA.entitlements;
 				CODE_SIGN_IDENTITY = "iPhone Developer";
 				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
 				DEFINES_MODULE = YES;
