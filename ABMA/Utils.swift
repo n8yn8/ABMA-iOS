@@ -7,6 +7,7 @@
 //
 
 import Foundation
+import Crashlytics
 
 class Utils: NSObject {
     static func timeFrame(startDate: Date, endDate: Date?) -> String {
@@ -81,5 +82,10 @@ class Utils: NSObject {
     
     private static func saveLastUpdated(date: Date) {
         UserDefaults.standard.set(date, forKey: LAST_UPDATED)
+    }
+    
+    static func handleError(method: String, message: String) {
+        Answers.logCustomEvent(withName: "Error", customAttributes: ["method": method, "message": message])
+        print("Error \(method) \(message)")
     }
 }

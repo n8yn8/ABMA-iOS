@@ -100,6 +100,7 @@
     [[DbManager sharedInstance] getPublishedYearsSince:[Utils getLastUpdated] callback:^(NSArray<BYear *> * _Nullable years, NSString * _Nullable error) {
         [self.activityIndicator stopAnimating];
         if (error) {
+            [Utils handleErrorWithMethod:@"GetPublishedYears" message:error];
             NSLog(@"error: %@", error);
         } else {
             for (BYear *bYear in years) {
@@ -121,7 +122,7 @@
     
     Year *year = [[Year alloc] initWithEntity:[NSEntityDescription entityForName:@"Year" inManagedObjectContext:context] insertIntoManagedObjectContext:context];
     year.bObjectId = bYear.objectId;
-    year.year = [NSString stringWithFormat:@"%d", bYear.name] ;
+    year.year = [NSString stringWithFormat:@"%ld", (long)bYear.name] ;
     year.info = bYear.info;
     year.welcome = bYear.welcome;
     year.created = bYear.created;
