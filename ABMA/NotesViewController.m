@@ -10,13 +10,15 @@
 #import "Event+CoreDataClass.h"
 #import "Paper+CoreDataClass.h"
 #import "Note+CoreDataClass.h"
+#import "Day+CoreDataClass.h"
+#import "Year+CoreDataClass.h"
 #import "AppDelegate.h"
 #import "SchedDetailViewController.h"
 #import "ABMA-Swift.h"
 #import <Crashlytics/Crashlytics.h>
 
 @interface NotesViewController () {
-    NSArray *notes;
+    NSMutableDictionary<NSString *, NSMutableArray<Note *> *> *yearDict;
     NSManagedObjectContext *context;
 }
 
@@ -41,11 +43,27 @@
     NSFetchRequest *fetchRequest = [[NSFetchRequest alloc] init];
     [fetchRequest setEntity:[NSEntityDescription entityForName:@"Note" inManagedObjectContext:context]];
     NSError *fetchError = nil;
-    notes = [[NSArray alloc] initWithArray:[context executeFetchRequest:fetchRequest error:&fetchError]];
+    NSArray *notes = [[NSArray alloc] initWithArray:[context executeFetchRequest:fetchRequest error:&fetchError]];
     if (fetchError) {
         NSLog(@"Unable to execute fetch request.");
         NSLog(@"%@, %@", fetchError, fetchError.localizedDescription);
     }
+    yearDict = [[NSMutableDictionary alloc] init];
+    for (Note *note in notes) {
+        NSString *yearKey = note.paper.event.day.year.year;
+        if (!yearKey) {
+            yearKey = note.event.day.year.year;
+        }
+        NSMutableArray<Note *> *yearNotes = [yearDict objectForKey: yearKey];
+        if (!yearNotes) {
+            yearNotes = [[NSMutableArray alloc] init];
+        }
+        [yearNotes addObject:note];
+        yearDict[yearKey] = yearNotes;
+        NSLog(@"note year = %@", note.paper.event.day.year.year );
+        NSLog(@"note year = %@", note.event.day.year.year );
+    }
+    
     [self.tableView reloadData];
 }
 
@@ -53,6 +71,10 @@
     BackendlessUser *user = [[DbManager sharedInstance] getCurrentUser];
     if (user) {
         [self hideLogin];
+        NSFetchRequest *fetchRequest = [[NSFetchRequest alloc] init];
+        [fetchRequest setEntity:[NSEntityDescription entityForName:@"Note" inManagedObjectContext:context]];
+        NSError *fetchError = nil;
+        NSArray *notes = [[NSArray alloc] initWithArray:[context executeFetchRequest:fetchRequest error:&fetchError]];
         for (Note *note in notes) {
             if (note.bObjectId == nil) {
                 [Utils saveWithNote:note context:context];
@@ -195,8 +217,21 @@
 
 #pragma mark - UITableView
 
+- (NSInteger)numberOfSectionsInTableView:(UITableView *)tableView {
+    return [yearDict allKeys].count;
+}
+
+- (NSString *)tableView:(UITableView *)tableView titleForHeaderInSection:(NSInteger)section {
+    return [[yearDict allKeys] objectAtIndex:section];
+}
+
+- (NSArray<NSString *> *)sectionIndexTitlesForTableView:(UITableView *)tableView {
+    return [yearDict allKeys];
+}
+
 - (NSInteger)tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section {
-    return notes.count;
+    NSString *yearKey = [[yearDict allKeys] objectAtIndex:section];
+    return [yearDict objectForKey:yearKey].count;
 }
 
 - (UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath
@@ -211,7 +246,8 @@
     UILabel *eventNameLabel = (UILabel *)[cell viewWithTag:201];
     UILabel *noteContent = (UILabel *)[cell viewWithTag:202];
     
-    Note *note = [notes objectAtIndex:indexPath.row];
+    NSString *yearKey = [[yearDict allKeys] objectAtIndex:indexPath.section];
+    Note *note = [[yearDict objectForKey:yearKey] objectAtIndex:indexPath.row];
     if (note.event) {
         Event *thisEvent = note.event;
         eventNameLabel.text = thisEvent.title;
@@ -231,7 +267,8 @@
 - (void)prepareForSegue:(UIStoryboardSegue *)segue sender:(id)sender {
     if ([[segue identifier] isEqualToString:@"showDetail"]) {
         NSIndexPath *indexPath = [self.tableView indexPathForSelectedRow];
-        Note *selectedNote = notes[indexPath.row];
+        NSString *yearKey = [[yearDict allKeys] objectAtIndex:indexPath.section];
+        Note *selectedNote = [[yearDict objectForKey:yearKey] objectAtIndex:indexPath.row];
         SchedDetailViewController* dvc = segue.destinationViewController;
         if (selectedNote.event) {
             Event *selectedEvent = selectedNote.event;
