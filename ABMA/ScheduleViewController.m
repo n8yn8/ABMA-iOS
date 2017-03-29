@@ -120,7 +120,17 @@
     NSDateFormatter *timeFormatter = [[NSDateFormatter alloc] init];
     [timeFormatter setDateFormat:@"MMM d, yyyy h:mma"];
     
-    Year *year = [[Year alloc] initWithEntity:[NSEntityDescription entityForName:@"Year" inManagedObjectContext:context] insertIntoManagedObjectContext:context];
+    NSFetchRequest<Year*> *yearRequest = [Year fetchRequest];
+    yearRequest.fetchLimit = 1;
+    yearRequest.predicate = [NSPredicate predicateWithFormat:@"year==%ld", (long)bYear.name];
+    yearRequest.sortDescriptors = @[[NSSortDescriptor sortDescriptorWithKey:@"year" ascending:NO]];
+    NSError *error = nil;
+    Year *year = [context executeFetchRequest:yearRequest error:&error].firstObject;
+    
+    if (!year) {
+        year = [[Year alloc] initWithEntity:[NSEntityDescription entityForName:@"Year" inManagedObjectContext:context] insertIntoManagedObjectContext:context];
+    }
+    
     year.bObjectId = bYear.objectId;
     year.year = [NSString stringWithFormat:@"%ld", (long)bYear.name] ;
     year.info = bYear.info;
@@ -133,7 +143,15 @@
         [Utils updateLastUpdatedWithDate:year.created];
     }
     for (BSponsor *bSponsor in bYear.sponsors) {
-        Sponsor *sponsor = [[Sponsor alloc] initWithEntity:[NSEntityDescription entityForName:@"Sponsor" inManagedObjectContext:context] insertIntoManagedObjectContext:context];
+        
+        NSFetchRequest<Sponsor*> *sponsorRequest = [Sponsor fetchRequest];
+        sponsorRequest.fetchLimit = 1;
+        sponsorRequest.predicate = [NSPredicate predicateWithFormat:@"bObjectId==%@", bSponsor.objectId];
+        NSError *sponsorError = nil;
+        Sponsor *sponsor = [context executeFetchRequest:sponsorRequest error:&sponsorError].firstObject;
+        if (!sponsor) {
+            sponsor = [[Sponsor alloc] initWithEntity:[NSEntityDescription entityForName:@"Sponsor" inManagedObjectContext:context] insertIntoManagedObjectContext:context];
+        }
         sponsor.bObjectId = bSponsor.objectId;
         sponsor.url = bSponsor.url;
         sponsor.imageUrl = bSponsor.imageUrl;
@@ -158,7 +176,14 @@
             [year addDayObject:dayForEvent];
         }
         
-        Event *thisEvent = [[Event alloc] initWithEntity:[NSEntityDescription entityForName:@"Event" inManagedObjectContext:context] insertIntoManagedObjectContext:context];
+        NSFetchRequest<Event*> *eventRequest = [Event fetchRequest];
+        eventRequest.fetchLimit = 1;
+        eventRequest.predicate = [NSPredicate predicateWithFormat:@"bObjectId==%@", bEvent.objectId];
+        NSError *eventError = nil;
+        Event *thisEvent = [context executeFetchRequest:eventRequest error:&eventError].firstObject;
+        if (!thisEvent) {
+            thisEvent = [[Event alloc] initWithEntity:[NSEntityDescription entityForName:@"Event" inManagedObjectContext:context] insertIntoManagedObjectContext:context];
+        }
         thisEvent.bObjectId = bEvent.objectId;
         thisEvent.title = bEvent.title;
         thisEvent.subtitle = bEvent.subtitle;
@@ -170,7 +195,15 @@
         thisEvent.updated = bEvent.upadted;
         NSMutableOrderedSet *papersSet = [[NSMutableOrderedSet alloc] init];
         for (BPaper *bPaper in bEvent.papers) {
-            Paper *paper = [[Paper alloc] initWithEntity:[NSEntityDescription entityForName:@"Paper" inManagedObjectContext:context] insertIntoManagedObjectContext:context];
+            
+            NSFetchRequest<Paper*> *paperRequest = [Paper fetchRequest];
+            paperRequest.fetchLimit = 1;
+            paperRequest.predicate = [NSPredicate predicateWithFormat:@"bObjectId==%@", bPaper.objectId];
+            NSError *paperError = nil;
+            Paper *paper = [context executeFetchRequest:paperRequest error:&paperError].firstObject;
+            if (!paper) {
+                paper = [[Paper alloc] initWithEntity:[NSEntityDescription entityForName:@"Paper" inManagedObjectContext:context] insertIntoManagedObjectContext:context];
+            }
             paper.bObjectId = bPaper.objectId;
             paper.author = bPaper.author;
             paper.title = bPaper.title;
@@ -183,8 +216,8 @@
         thisEvent.papers = papersSet;
         [dayForEvent addEventObject:thisEvent];
     }
-    NSError *error;
-    [context save:&error];
+    NSError *saveEror;
+    [context save:&saveEror];
     if (error) {
         NSLog(@"Error: %@", error.localizedDescription);
     }
