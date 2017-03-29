@@ -30,6 +30,9 @@
     NSArray *days;
     NSInteger dateIndex;
     NSManagedObjectContext *context;
+    NSArray *pickerData;
+    UIPickerView *picker;
+    UIView *actionView;
 }
 
 - (id)initWithNibName:(NSString *)nibNameOrNil bundle:(NSBundle *)nibBundleOrNil
@@ -55,8 +58,8 @@
     context = [appdelegate managedObjectContext];
     
     
-    [self loadSchedule];
-    [self loadBackendless];
+    [self loadSchedule: nil];
+//    [self loadBackendless];
 }
 
 - (void)matchNotes {
@@ -106,7 +109,7 @@
             for (BYear *bYear in years) {
                 [ScheduleViewController saveBackendlessYear:bYear context:context];
             }
-            [self loadSchedule];
+            [self loadSchedule: nil];
             [self matchNotes];
         }
     }];
@@ -256,11 +259,15 @@
     [context save:&error];
 }
 
-- (void)loadSchedule {
+- (void)loadSchedule:(NSString *)selectedYear {
     
     NSFetchRequest<Year*> *yearRequest = [Year fetchRequest];
     yearRequest.fetchLimit = 1;
-    yearRequest.predicate = [NSPredicate predicateWithFormat:@"bObjectId!=nil"];
+    if (selectedYear) {
+        yearRequest.predicate = [NSPredicate predicateWithFormat:@"year==%@", selectedYear];
+    } else {
+        yearRequest.predicate = [NSPredicate predicateWithFormat:@"bObjectId!=nil"];
+    }
     yearRequest.sortDescriptors = @[[NSSortDescriptor sortDescriptorWithKey:@"year" ascending:NO]];
     NSError *error = nil;
     Year *year = [context executeFetchRequest:yearRequest error:&error].firstObject;
@@ -351,7 +358,7 @@
     if (error) {
         NSLog(@"Error: %@", error.localizedDescription);
     } else {
-        [self loadSchedule];
+        [self loadSchedule: nil];
     }
 }
 
@@ -504,7 +511,110 @@
 }
 
 
+#pragma mark - Picker
 
+- (IBAction)showYearSelection:(id)sender {
+    NSFetchRequest<Year*> *yearRequest = [Year fetchRequest];
+    yearRequest.predicate = [NSPredicate predicateWithFormat:@"bObjectId!=nil"];
+    yearRequest.sortDescriptors = @[[NSSortDescriptor sortDescriptorWithKey:@"year" ascending:NO]];
+    NSError *error = nil;
+    NSArray<Year *> *years = [context executeFetchRequest:yearRequest error:&error];
+    
+    if (error) {
+        NSLog(@"Unable to execute fetch request.");
+        NSLog(@"%@, %@", error, error.localizedDescription);
+    } else {
+        if (years.count) {
+            NSMutableArray<NSString *> *yearNames = [[NSMutableArray alloc] init];
+            for (Year *year in years) {
+                NSLog(@"Year name = %@", year.year);
+                [yearNames addObject:year.year];
+            }
+            [self showPicker:yearNames];
+        }
+    }
+}
+
+
+- (void)showPicker:(NSArray *)names {
+    CGFloat width = [UIScreen mainScreen].bounds.size.width;
+    picker = [[UIPickerView alloc] init];
+    picker.frame = CGRectMake(0.0, 44.0, width, 216.0);
+    picker.dataSource = self;
+    picker.delegate = self;
+    picker.showsSelectionIndicator = true;
+    picker.backgroundColor = [UIColor whiteColor];
+    
+    UIToolbar *pickerDateToolbar = [[UIToolbar alloc] initWithFrame:CGRectMake(0, 0, width, 44)];
+    pickerDateToolbar.barStyle = UIBarStyleBlack;
+    pickerDateToolbar.barTintColor = [UIColor blackColor];
+    pickerDateToolbar.translucent = true;
+    
+    NSMutableArray *barItems = [[NSMutableArray alloc] init];
+    
+    UIBarButtonItem *titleCancel = [[UIBarButtonItem alloc] initWithTitle:@"Cancel" style:UIBarButtonItemStyleDone target:self action:@selector(cancelPickerSelectionButtonClicked:)];
+    [barItems addObject:titleCancel];
+    
+    UIBarButtonItem *flexSpace = [[UIBarButtonItem alloc] initWithBarButtonSystemItem:UIBarButtonSystemItemFlexibleSpace target:self action:nil];
+    [barItems addObject: flexSpace];
+    
+    pickerData = names;
+    [picker selectRow:1 inComponent:0 animated:false];
+    
+    UIBarButtonItem *doneBtn = [[UIBarButtonItem alloc] initWithBarButtonSystemItem:UIBarButtonSystemItemDone target:self action:@selector(countryDoneClicked:)];
+    [barItems addObject: doneBtn];
+    
+    [pickerDateToolbar setItems:barItems animated:true];
+    
+    actionView = [[UIView alloc] init];
+    actionView.frame = CGRectMake(0, [UIScreen mainScreen].bounds.size.height, [UIScreen mainScreen].bounds.size.width, 260.0);
+
+    
+    [actionView addSubview:pickerDateToolbar];
+    [actionView addSubview:picker];
+    
+    [self.view addSubview:actionView];
+    
+    [UIView animateWithDuration:0.2 animations:^{
+        actionView.frame = CGRectMake(0, [UIScreen mainScreen].bounds.size.height - 260.0, [UIScreen mainScreen].bounds.size.width, 260.0);
+    }];
+}
+
+- (void)cancelPickerSelectionButtonClicked:(UIBarButtonItem*)sender {
+    [self dismissPicker];
+}
+
+- (void)countryDoneClicked:(UIBarButtonItem*)sender {
+    
+    NSInteger myRow = [picker selectedRowInComponent:0];
+    NSString *selectedYear = [pickerData objectAtIndex:myRow];
+    NSLog(@"Selected %@", selectedYear);
+    [self loadSchedule:selectedYear];
+    
+    [self dismissPicker];
+}
+
+- (void)dismissPicker {
+    [UIView animateWithDuration:0.2 animations:^{
+        actionView.frame = CGRectMake(0, [UIScreen mainScreen].bounds.size.height, [UIScreen mainScreen].bounds.size.width, 260.0);
+    } completion:^(BOOL finished) {
+        for (UIView *subview in actionView.subviews) {
+            [subview removeFromSuperview];
+        }
+    }];
+}
+
+- (NSInteger)pickerView:(UIPickerView *)pickerView numberOfRowsInComponent:(NSInteger)component {
+    return pickerData.count;
+}
+
+- (NSInteger)numberOfComponentsInPickerView:(UIPickerView *)pickerView {
+    return 1;
+}
+
+- (NSString *)pickerView:(UIPickerView *)pickerView titleForRow:(NSInteger)row forComponent:(NSInteger)component {
+    return [pickerData objectAtIndex:row];
+}
 
 #pragma mark - Navigation
 
