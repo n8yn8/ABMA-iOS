@@ -30,6 +30,9 @@
     NSArray *days;
     NSInteger dateIndex;
     NSManagedObjectContext *context;
+    NSArray *pickerData;
+    UIPickerView *picker;
+    UIView *actionView;
 }
 
 - (id)initWithNibName:(NSString *)nibNameOrNil bundle:(NSBundle *)nibBundleOrNil
@@ -55,8 +58,8 @@
     context = [appdelegate managedObjectContext];
     
     
-    [self loadSchedule];
-    [self loadBackendless];
+    [self loadSchedule: nil];
+//    [self loadBackendless];
 }
 
 - (void)matchNotes {
@@ -100,12 +103,13 @@
     [[DbManager sharedInstance] getPublishedYearsSince:[Utils getLastUpdated] callback:^(NSArray<BYear *> * _Nullable years, NSString * _Nullable error) {
         [self.activityIndicator stopAnimating];
         if (error) {
+            [Utils handleErrorWithMethod:@"GetPublishedYears" message:error];
             NSLog(@"error: %@", error);
         } else {
             for (BYear *bYear in years) {
                 [ScheduleViewController saveBackendlessYear:bYear context:context];
             }
-            [self loadSchedule];
+            [self loadSchedule: nil];
             [self matchNotes];
         }
     }];
@@ -119,9 +123,19 @@
     NSDateFormatter *timeFormatter = [[NSDateFormatter alloc] init];
     [timeFormatter setDateFormat:@"MMM d, yyyy h:mma"];
     
-    Year *year = [[Year alloc] initWithEntity:[NSEntityDescription entityForName:@"Year" inManagedObjectContext:context] insertIntoManagedObjectContext:context];
+    NSFetchRequest<Year*> *yearRequest = [Year fetchRequest];
+    yearRequest.fetchLimit = 1;
+    yearRequest.predicate = [NSPredicate predicateWithFormat:@"year==%ld", (long)bYear.name];
+    yearRequest.sortDescriptors = @[[NSSortDescriptor sortDescriptorWithKey:@"year" ascending:NO]];
+    NSError *error = nil;
+    Year *year = [context executeFetchRequest:yearRequest error:&error].firstObject;
+    
+    if (!year) {
+        year = [[Year alloc] initWithEntity:[NSEntityDescription entityForName:@"Year" inManagedObjectContext:context] insertIntoManagedObjectContext:context];
+    }
+    
     year.bObjectId = bYear.objectId;
-    year.year = [NSString stringWithFormat:@"%d", bYear.name] ;
+    year.year = [NSString stringWithFormat:@"%ld", (long)bYear.name] ;
     year.info = bYear.info;
     year.welcome = bYear.welcome;
     year.created = bYear.created;
@@ -132,7 +146,15 @@
         [Utils updateLastUpdatedWithDate:year.created];
     }
     for (BSponsor *bSponsor in bYear.sponsors) {
-        Sponsor *sponsor = [[Sponsor alloc] initWithEntity:[NSEntityDescription entityForName:@"Sponsor" inManagedObjectContext:context] insertIntoManagedObjectContext:context];
+        
+        NSFetchRequest<Sponsor*> *sponsorRequest = [Sponsor fetchRequest];
+        sponsorRequest.fetchLimit = 1;
+        sponsorRequest.predicate = [NSPredicate predicateWithFormat:@"bObjectId==%@", bSponsor.objectId];
+        NSError *sponsorError = nil;
+        Sponsor *sponsor = [context executeFetchRequest:sponsorRequest error:&sponsorError].firstObject;
+        if (!sponsor) {
+            sponsor = [[Sponsor alloc] initWithEntity:[NSEntityDescription entityForName:@"Sponsor" inManagedObjectContext:context] insertIntoManagedObjectContext:context];
+        }
         sponsor.bObjectId = bSponsor.objectId;
         sponsor.url = bSponsor.url;
         sponsor.imageUrl = bSponsor.imageUrl;
@@ -157,7 +179,14 @@
             [year addDayObject:dayForEvent];
         }
         
-        Event *thisEvent = [[Event alloc] initWithEntity:[NSEntityDescription entityForName:@"Event" inManagedObjectContext:context] insertIntoManagedObjectContext:context];
+        NSFetchRequest<Event*> *eventRequest = [Event fetchRequest];
+        eventRequest.fetchLimit = 1;
+        eventRequest.predicate = [NSPredicate predicateWithFormat:@"bObjectId==%@", bEvent.objectId];
+        NSError *eventError = nil;
+        Event *thisEvent = [context executeFetchRequest:eventRequest error:&eventError].firstObject;
+        if (!thisEvent) {
+            thisEvent = [[Event alloc] initWithEntity:[NSEntityDescription entityForName:@"Event" inManagedObjectContext:context] insertIntoManagedObjectContext:context];
+        }
         thisEvent.bObjectId = bEvent.objectId;
         thisEvent.title = bEvent.title;
         thisEvent.subtitle = bEvent.subtitle;
@@ -169,7 +198,15 @@
         thisEvent.updated = bEvent.upadted;
         NSMutableOrderedSet *papersSet = [[NSMutableOrderedSet alloc] init];
         for (BPaper *bPaper in bEvent.papers) {
-            Paper *paper = [[Paper alloc] initWithEntity:[NSEntityDescription entityForName:@"Paper" inManagedObjectContext:context] insertIntoManagedObjectContext:context];
+            
+            NSFetchRequest<Paper*> *paperRequest = [Paper fetchRequest];
+            paperRequest.fetchLimit = 1;
+            paperRequest.predicate = [NSPredicate predicateWithFormat:@"bObjectId==%@", bPaper.objectId];
+            NSError *paperError = nil;
+            Paper *paper = [context executeFetchRequest:paperRequest error:&paperError].firstObject;
+            if (!paper) {
+                paper = [[Paper alloc] initWithEntity:[NSEntityDescription entityForName:@"Paper" inManagedObjectContext:context] insertIntoManagedObjectContext:context];
+            }
             paper.bObjectId = bPaper.objectId;
             paper.author = bPaper.author;
             paper.title = bPaper.title;
@@ -182,8 +219,8 @@
         thisEvent.papers = papersSet;
         [dayForEvent addEventObject:thisEvent];
     }
-    NSError *error;
-    [context save:&error];
+    NSError *saveEror;
+    [context save:&saveEror];
     if (error) {
         NSLog(@"Error: %@", error.localizedDescription);
     }
@@ -222,11 +259,15 @@
     [context save:&error];
 }
 
-- (void)loadSchedule {
+- (void)loadSchedule:(NSString *)selectedYear {
     
     NSFetchRequest<Year*> *yearRequest = [Year fetchRequest];
     yearRequest.fetchLimit = 1;
-    yearRequest.predicate = [NSPredicate predicateWithFormat:@"bObjectId!=nil"];
+    if (selectedYear) {
+        yearRequest.predicate = [NSPredicate predicateWithFormat:@"year==%@", selectedYear];
+    } else {
+        yearRequest.predicate = [NSPredicate predicateWithFormat:@"bObjectId!=nil"];
+    }
     yearRequest.sortDescriptors = @[[NSSortDescriptor sortDescriptorWithKey:@"year" ascending:NO]];
     NSError *error = nil;
     Year *year = [context executeFetchRequest:yearRequest error:&error].firstObject;
@@ -317,7 +358,7 @@
     if (error) {
         NSLog(@"Error: %@", error.localizedDescription);
     } else {
-        [self loadSchedule];
+        [self loadSchedule: nil];
     }
 }
 
@@ -470,7 +511,110 @@
 }
 
 
+#pragma mark - Picker
 
+- (IBAction)showYearSelection:(id)sender {
+    NSFetchRequest<Year*> *yearRequest = [Year fetchRequest];
+    yearRequest.predicate = [NSPredicate predicateWithFormat:@"bObjectId!=nil"];
+    yearRequest.sortDescriptors = @[[NSSortDescriptor sortDescriptorWithKey:@"year" ascending:NO]];
+    NSError *error = nil;
+    NSArray<Year *> *years = [context executeFetchRequest:yearRequest error:&error];
+    
+    if (error) {
+        NSLog(@"Unable to execute fetch request.");
+        NSLog(@"%@, %@", error, error.localizedDescription);
+    } else {
+        if (years.count) {
+            NSMutableArray<NSString *> *yearNames = [[NSMutableArray alloc] init];
+            for (Year *year in years) {
+                NSLog(@"Year name = %@", year.year);
+                [yearNames addObject:year.year];
+            }
+            [self showPicker:yearNames];
+        }
+    }
+}
+
+
+- (void)showPicker:(NSArray *)names {
+    CGFloat width = [UIScreen mainScreen].bounds.size.width;
+    picker = [[UIPickerView alloc] init];
+    picker.frame = CGRectMake(0.0, 44.0, width, 216.0);
+    picker.dataSource = self;
+    picker.delegate = self;
+    picker.showsSelectionIndicator = true;
+    picker.backgroundColor = [UIColor whiteColor];
+    
+    UIToolbar *pickerDateToolbar = [[UIToolbar alloc] initWithFrame:CGRectMake(0, 0, width, 44)];
+    pickerDateToolbar.barStyle = UIBarStyleBlack;
+    pickerDateToolbar.barTintColor = [UIColor blackColor];
+    pickerDateToolbar.translucent = true;
+    
+    NSMutableArray *barItems = [[NSMutableArray alloc] init];
+    
+    UIBarButtonItem *titleCancel = [[UIBarButtonItem alloc] initWithTitle:@"Cancel" style:UIBarButtonItemStyleDone target:self action:@selector(cancelPickerSelectionButtonClicked:)];
+    [barItems addObject:titleCancel];
+    
+    UIBarButtonItem *flexSpace = [[UIBarButtonItem alloc] initWithBarButtonSystemItem:UIBarButtonSystemItemFlexibleSpace target:self action:nil];
+    [barItems addObject: flexSpace];
+    
+    pickerData = names;
+    [picker selectRow:1 inComponent:0 animated:false];
+    
+    UIBarButtonItem *doneBtn = [[UIBarButtonItem alloc] initWithBarButtonSystemItem:UIBarButtonSystemItemDone target:self action:@selector(countryDoneClicked:)];
+    [barItems addObject: doneBtn];
+    
+    [pickerDateToolbar setItems:barItems animated:true];
+    
+    actionView = [[UIView alloc] init];
+    actionView.frame = CGRectMake(0, [UIScreen mainScreen].bounds.size.height, [UIScreen mainScreen].bounds.size.width, 260.0);
+
+    
+    [actionView addSubview:pickerDateToolbar];
+    [actionView addSubview:picker];
+    
+    [self.view addSubview:actionView];
+    
+    [UIView animateWithDuration:0.2 animations:^{
+        actionView.frame = CGRectMake(0, [UIScreen mainScreen].bounds.size.height - 260.0, [UIScreen mainScreen].bounds.size.width, 260.0);
+    }];
+}
+
+- (void)cancelPickerSelectionButtonClicked:(UIBarButtonItem*)sender {
+    [self dismissPicker];
+}
+
+- (void)countryDoneClicked:(UIBarButtonItem*)sender {
+    
+    NSInteger myRow = [picker selectedRowInComponent:0];
+    NSString *selectedYear = [pickerData objectAtIndex:myRow];
+    NSLog(@"Selected %@", selectedYear);
+    [self loadSchedule:selectedYear];
+    
+    [self dismissPicker];
+}
+
+- (void)dismissPicker {
+    [UIView animateWithDuration:0.2 animations:^{
+        actionView.frame = CGRectMake(0, [UIScreen mainScreen].bounds.size.height, [UIScreen mainScreen].bounds.size.width, 260.0);
+    } completion:^(BOOL finished) {
+        for (UIView *subview in actionView.subviews) {
+            [subview removeFromSuperview];
+        }
+    }];
+}
+
+- (NSInteger)pickerView:(UIPickerView *)pickerView numberOfRowsInComponent:(NSInteger)component {
+    return pickerData.count;
+}
+
+- (NSInteger)numberOfComponentsInPickerView:(UIPickerView *)pickerView {
+    return 1;
+}
+
+- (NSString *)pickerView:(UIPickerView *)pickerView titleForRow:(NSInteger)row forComponent:(NSInteger)component {
+    return [pickerData objectAtIndex:row];
+}
 
 #pragma mark - Navigation
 

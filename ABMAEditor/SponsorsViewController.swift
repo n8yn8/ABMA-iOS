@@ -52,7 +52,7 @@ class SponsorsViewController: NSViewController {
         
         let path = fileDialog.url?.path
         let name = fileDialog.url?.lastPathComponent
-        print("name = \(name)")
+        print("name = \(String(describing: name))")
         
         // Make sure that a path was chosen
         if let path = path {

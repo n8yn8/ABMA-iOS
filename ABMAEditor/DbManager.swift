@@ -29,10 +29,10 @@ class DbManager: NSObject {
         user.email = email as NSString!
         user.password = password as NSString!
         backendless?.userService.registering(user, response: { (response) in
-            print("response: \(response)")
+            print("response: \(String(describing: response))")
             self.login(email: email, password: password, callback: callback)
         }, error: { (error) in
-            print("error: \(error)")
+            print("error: \(String(describing: error))")
             callback(error.debugDescription)
         })
     }
@@ -67,7 +67,7 @@ class DbManager: NSObject {
                 callback(nil, nil)
             }
         }, error: { (error) in
-            print("error: \(error)")
+            print("error: \(String(describing: error))")
             callback(nil, error.debugDescription)
         })
     }
@@ -80,7 +80,7 @@ class DbManager: NSObject {
                 callback(nil, nil)
             }
         }, error: { (error) in
-            print("error: \(error)")
+            print("error: \(String(describing: error))")
             callback(nil, error.debugDescription)
         })
     }
@@ -105,12 +105,12 @@ class DbManager: NSObject {
         }
         
         backendless?.persistenceService.find(BYear.ofClass(), dataQuery: dataQuery, response: { (response) in
-            print("response \(response)")
+            print("response \(String(describing: response))")
             if let years = response?.data as? [BYear] {
                 callback(years, nil)
             }
         }, error: { (error) in
-            print("error: \(error)")
+            print("error: \(String(describing: error))")
             callback(nil, error.debugDescription)
         })
     }
@@ -118,7 +118,7 @@ class DbManager: NSObject {
     func deleteEvent(event: BEvent) {
         deleteRelatedPapers(event: event) { 
             self.backendless?.data.remove(BEvent.ofClass(), sid: event.objectId, response: { (ref) in
-                print("delete ref: \(ref)")
+                print("delete ref: \(String(describing: ref))")
             }, error: { (error) in
                 print("\(error.debugDescription)")
             })
@@ -130,7 +130,7 @@ class DbManager: NSObject {
         let query = BackendlessDataQuery()
         query.whereClause = "BEvent[papers].objectId = \'\(event.objectId!)\'"
         backendless?.data.removeAll(BPaper.ofClass(), dataQuery: query, response: { (response) in
-            print("response: \(response)")
+            print("response: \(String(describing: response))")
             callback()
         }, error: { (error) in
             print("error: \(error.debugDescription)")
@@ -140,7 +140,7 @@ class DbManager: NSObject {
     
     func deletePaper(paper: BPaper) {
         backendless?.data.remove(paper, response: { (ref) in
-            print("delete ref: \(ref)")
+            print("delete ref: \(String(describing: ref))")
         }, error: { (error) in
             print("\(error.debugDescription)")
         })
@@ -178,21 +178,21 @@ class DbManager: NSObject {
         let dataQuery = BackendlessDataQuery()
         dataQuery.whereClause = "user.objectId = \'\(user.objectId!)\'"
         backendless?.persistenceService.find(BNote.ofClass(), dataQuery: dataQuery, response: { (response) in
-            print("response \(response)")
+            print("response \(String(describing: response))")
             if let notes = response?.data as? [BNote] {
                 callback(notes, nil)
             }
         }, error: { (error) in
-            print("error: \(error)")
+            print("error: \(String(describing: error))")
             callback(nil, error.debugDescription)
         })
     }
     
     func registerForPush(tokenData: Data) {
         backendless?.messaging.registerDeviceToken(tokenData, response: { (response) in
-            print("response \(response)")
+            print("response \(String(describing: response))")
         }, error: { (fault) in
-            print("error: \(fault?.message)")
+            print("error: \(String(describing: fault?.message))")
         })
     }
     
@@ -202,9 +202,9 @@ class DbManager: NSObject {
                                       "android-content-title":"Notification title for Android",
                                       "android-content-text":"Notification text for Android"])
         backendless?.messaging.publish("default", message: "There is an update", response: { (messageStatus) in
-            print("message status = \(messageStatus?.status) \(messageStatus?.messageId)")
+            print("message status = \(String(describing: messageStatus?.status)) \(String(describing: messageStatus?.messageId))")
         }, error: { (fault) in
-            print("Message fault \(fault?.message)")
+            print("Message fault \(String(describing: fault?.message))")
         })
     }
     
