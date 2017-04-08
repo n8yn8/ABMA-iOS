@@ -2,7 +2,7 @@
 //  Year+CoreDataProperties.m
 //  ABMA
 //
-//  Created by Nathan Condell on 3/12/17.
+//  Created by Nathan Condell on 4/7/17.
 //  Copyright © 2017 Nathan Condell. All rights reserved.
 //
 
@@ -15,11 +15,14 @@
 }
 
 @dynamic bObjectId;
+@dynamic created;
 @dynamic info;
+@dynamic updated;
 @dynamic welcome;
 @dynamic year;
-@dynamic created;
-@dynamic updated;
+@dynamic surveyLink;
+@dynamic surveyStart;
+@dynamic surveyEnd;
 @dynamic day;
 @dynamic sponsors;
 
