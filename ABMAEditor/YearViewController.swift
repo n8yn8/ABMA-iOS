@@ -12,6 +12,9 @@ class YearViewController: NSViewController {
     
     @IBOutlet var welcomeTextView: NSTextView!
     @IBOutlet var infoTextView: NSTextView!
+    @IBOutlet weak var surveyLinkTextField: NSTextField!
+    @IBOutlet weak var surveyStartDatePicker: NSDatePicker!
+    @IBOutlet weak var surveyEndDatePicker: NSDatePicker!
     var containerController: ContainerController?
     var sponsorsViewController: SponsorsViewController?
     
@@ -56,6 +59,12 @@ class YearViewController: NSViewController {
     }
     
     func updateUi() {
+        
+        
+        surveyLinkTextField.stringValue = ""
+        surveyStartDatePicker.dateValue = Date()
+        surveyEndDatePicker.dateValue = Date()
+        
         if let year = selectedYear {
             containerController?.updateEventList(events: year.events)
             if let welcome = year.welcome {
@@ -73,6 +82,18 @@ class YearViewController: NSViewController {
                 publishButton.title = "Publish"
             } else {
                 publishButton.title = "Update"
+            }
+            
+            if let surveyLink = year.surveyUrl {
+                surveyLinkTextField.stringValue = surveyLink
+            }
+            
+            if let surveyStart = year.surveyStart {
+                surveyStartDatePicker.dateValue = surveyStart
+            }
+            
+            if let surveyEnd = year.surveyEnd {
+                surveyEndDatePicker.dateValue = surveyEnd
             }
             
             sponsorsViewController?.updateSponsors(sponsorList: year.sponsors)
@@ -110,11 +131,13 @@ class YearViewController: NSViewController {
     
     @IBAction func saveWelcome(_ sender: Any) {
         selectedYear?.welcome = welcomeTextView.string
-        updateYear()
-    }
-    
-    @IBAction func saveInfo(_ sender: Any) {
         selectedYear?.info = infoTextView.string
+        let surveyLink = surveyLinkTextField.stringValue
+        if !surveyLink.isEmpty {
+            selectedYear?.surveyUrl = surveyLink
+            selectedYear?.surveyStart = surveyStartDatePicker.dateValue
+            selectedYear?.surveyEnd = surveyEndDatePicker.dateValue
+        }
         updateYear()
     }
     
