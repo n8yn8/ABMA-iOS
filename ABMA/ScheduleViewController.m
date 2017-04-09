@@ -138,6 +138,9 @@
     year.year = [NSString stringWithFormat:@"%ld", (long)bYear.name] ;
     year.info = bYear.info;
     year.welcome = bYear.welcome;
+    year.surveyLink = bYear.surveyUrl;
+    year.surveyStart = bYear.surveyStart;
+    year.surveyEnd = bYear.surveyEnd;
     year.created = bYear.created;
     year.updated = bYear.updated;
     if (year.updated) {
@@ -261,33 +264,19 @@
 
 - (void)loadSchedule:(NSString *)selectedYear {
     
-    NSFetchRequest<Year*> *yearRequest = [Year fetchRequest];
-    yearRequest.fetchLimit = 1;
-    if (selectedYear) {
-        yearRequest.predicate = [NSPredicate predicateWithFormat:@"year==%@", selectedYear];
-    } else {
-        yearRequest.predicate = [NSPredicate predicateWithFormat:@"bObjectId!=nil"];
-    }
-    yearRequest.sortDescriptors = @[[NSSortDescriptor sortDescriptorWithKey:@"year" ascending:NO]];
-    NSError *error = nil;
-    Year *year = [context executeFetchRequest:yearRequest error:&error].firstObject;
+    Year *year = [Year getLatestYear:selectedYear context:context];
     
-    if (error) {
-        NSLog(@"Unable to execute fetch request.");
-        NSLog(@"%@, %@", error, error.localizedDescription);
+    if (year) {
+        NSSortDescriptor *sortDescriptor = [[NSSortDescriptor alloc] initWithKey:@"date" ascending:TRUE];
+        
+        days = [[year.day allObjects] sortedArrayUsingDescriptors:@[sortDescriptor]];
+        
+        [self loadDay:0];
     } else {
-        if (year) {
-            NSSortDescriptor *sortDescriptor = [[NSSortDescriptor alloc] initWithKey:@"date" ascending:TRUE];
-            
-            days = [[year.day allObjects] sortedArrayUsingDescriptors:@[sortDescriptor]];
-            
-            [self loadDay:0];
-        } else {
-            [self loadBackendless];
-        }
-        NSString *currentBuild = [[NSBundle mainBundle] objectForInfoDictionaryKey: (NSString *)kCFBundleVersionKey];
-        [[NSUserDefaults standardUserDefaults] setObject:currentBuild forKey:@"build"];
+        [self loadBackendless];
     }
+    NSString *currentBuild = [[NSBundle mainBundle] objectForInfoDictionaryKey: (NSString *)kCFBundleVersionKey];
+    [[NSUserDefaults standardUserDefaults] setObject:currentBuild forKey:@"build"];
 }
 
 - (void)loadDay: (NSUInteger)index {

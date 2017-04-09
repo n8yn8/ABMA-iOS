@@ -2,7 +2,7 @@
 //  Year+CoreDataProperties.h
 //  ABMA
 //
-//  Created by Nathan Condell on 3/12/17.
+//  Created by Nathan Condell on 4/7/17.
 //  Copyright © 2017 Nathan Condell. All rights reserved.
 //
 
@@ -16,11 +16,14 @@ NS_ASSUME_NONNULL_BEGIN
 + (NSFetchRequest<Year *> *)fetchRequest;
 
 @property (nullable, nonatomic, copy) NSString *bObjectId;
+@property (nullable, nonatomic, copy) NSDate *created;
 @property (nullable, nonatomic, copy) NSString *info;
+@property (nullable, nonatomic, copy) NSDate *updated;
 @property (nullable, nonatomic, copy) NSString *welcome;
 @property (nullable, nonatomic, copy) NSString *year;
-@property (nullable, nonatomic, copy) NSDate *created;
-@property (nullable, nonatomic, copy) NSDate *updated;
+@property (nullable, nonatomic, copy) NSString *surveyLink;
+@property (nullable, nonatomic, copy) NSDate *surveyStart;
+@property (nullable, nonatomic, copy) NSDate *surveyEnd;
 @property (nullable, nonatomic, retain) NSSet<Day *> *day;
 @property (nullable, nonatomic, retain) NSSet<Sponsor *> *sponsors;
 

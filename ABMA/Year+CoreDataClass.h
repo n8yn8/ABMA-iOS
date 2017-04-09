@@ -15,6 +15,8 @@ NS_ASSUME_NONNULL_BEGIN
 
 @interface Year : NSManagedObject
 
++ (Year *)getLatestYear:( NSString * _Nullable )  selectedYear context:(NSManagedObjectContext *)context;
+
 @end
 
 NS_ASSUME_NONNULL_END
