@@ -44,8 +44,9 @@
         if (year.surveyLink) {
             surveyUrl = year.surveyLink;
             NSDate *now = [[NSDate alloc] init];
-            //TODO: compare start and end of survey
-            isSurveyAvailable = true;
+            if (now.timeIntervalSince1970 > year.surveyStart.timeIntervalSince1970 && now.timeIntervalSince1970 < year.surveyEnd.timeIntervalSince1970) {
+                isSurveyAvailable = true;
+            }
         }
     }
     if (isSurveyAvailable) {
