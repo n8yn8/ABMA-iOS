@@ -50,6 +50,9 @@
         <attribute name="bObjectId" optional="YES" attributeType="String" syncable="YES"/>
         <attribute name="created" optional="YES" attributeType="Date" usesScalarValueType="NO" syncable="YES"/>
         <attribute name="info" optional="YES" attributeType="String" syncable="YES"/>
+        <attribute name="surveyEnd" optional="YES" attributeType="Date" usesScalarValueType="NO" syncable="YES"/>
+        <attribute name="surveyLink" optional="YES" attributeType="String" syncable="YES"/>
+        <attribute name="surveyStart" optional="YES" attributeType="Date" usesScalarValueType="NO" syncable="YES"/>
         <attribute name="updated" optional="YES" attributeType="Date" usesScalarValueType="NO" syncable="YES"/>
         <attribute name="welcome" optional="YES" attributeType="String" syncable="YES"/>
         <attribute name="year" optional="YES" attributeType="String" syncable="YES"/>
@@ -62,6 +65,6 @@
         <element name="Note" positionX="412" positionY="228" width="128" height="135"/>
         <element name="Paper" positionX="108" positionY="297" width="128" height="165"/>
         <element name="Sponsor" positionX="126" positionY="324" width="128" height="135"/>
-        <element name="Year" positionX="-99" positionY="210" width="128" height="165"/>
+        <element name="Year" positionX="-99" positionY="210" width="128" height="210"/>
     </elements>
 </model>

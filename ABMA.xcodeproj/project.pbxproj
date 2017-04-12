@@ -112,6 +112,7 @@
 		43201F2E1ABE37A600486999 /* InfoViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = InfoViewController.m; sourceTree = "<group>"; };
 		43201F421ABF371F00486999 /* PaperTableViewCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = PaperTableViewCell.h; sourceTree = "<group>"; };
 		43201F431ABF371F00486999 /* PaperTableViewCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = PaperTableViewCell.m; sourceTree = "<group>"; };
+		432CF5E21E9E359B003FC09D /* ABMA 3.xcdatamodel */ = {isa = PBXFileReference; lastKnownFileType = wrapper.xcdatamodel; path = "ABMA 3.xcdatamodel"; sourceTree = "<group>"; };
 		432ED0931E267AC300DD92BB /* BPaper.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = BPaper.swift; sourceTree = "<group>"; };
 		4338BB9D18F26F52002683EF /* ABMA.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = ABMA.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		4338BBA018F26F53002683EF /* Foundation.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Foundation.framework; path = System/Library/Frameworks/Foundation.framework; sourceTree = SDKROOT; };
@@ -1162,10 +1163,11 @@
 		43AAAE2B1AAAA4D1002C424A /* ABMA.xcdatamodeld */ = {
 			isa = XCVersionGroup;
 			children = (
+				432CF5E21E9E359B003FC09D /* ABMA 3.xcdatamodel */,
 				433BA8561E58ACBE007B7893 /* ABMA 2.xcdatamodel */,
 				43AAAE2C1AAAA4D1002C424A /* ABMA.xcdatamodel */,
 			);
-			currentVersion = 433BA8561E58ACBE007B7893 /* ABMA 2.xcdatamodel */;
+			currentVersion = 432CF5E21E9E359B003FC09D /* ABMA 3.xcdatamodel */;
 			path = ABMA.xcdatamodeld;
 			sourceTree = "<group>";
 			versionGroupType = wrapper.xcdatamodel;
