@@ -10,6 +10,7 @@ import Cocoa
 
 class YearViewController: NSViewController {
     
+    @IBOutlet weak var activityIndicator: NSProgressIndicator!
     @IBOutlet var welcomeTextView: NSTextView!
     @IBOutlet var infoTextView: NSTextView!
     @IBOutlet weak var surveyLinkTextField: NSTextField!
@@ -28,7 +29,9 @@ class YearViewController: NSViewController {
         super.viewDidLoad()
         // Do view setup here.
         
+        activityIndicator.startAnimation(self)
         DbManager.sharedInstance.getYears { (years, error) in
+            self.activityIndicator.stopAnimation(self)
             if let data = years {
                 self.years.removeAll()
                 self.years.append(contentsOf: data)
@@ -142,7 +145,9 @@ class YearViewController: NSViewController {
     }
     
     func updateYear() {
+        activityIndicator.startAnimation(self)
         DbManager.sharedInstance.update(year: selectedYear!) { (saved, error) in
+            self.activityIndicator.stopAnimation(self)
             self.selectedYear = saved
             if self.selectedYear?.publishedAt != nil {
                 DbManager.sharedInstance.pushUpdate()
