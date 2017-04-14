@@ -33,8 +33,11 @@ class YearViewController: NSViewController {
         DbManager.sharedInstance.getYears { (years, error) in
             self.activityIndicator.stopAnimation(self)
             if let data = years {
+                let sorted = data.sorted(by: { (year1, year2) -> Bool in
+                    return year1.name > year2.name
+                })
                 self.years.removeAll()
-                self.years.append(contentsOf: data)
+                self.years.append(contentsOf: sorted)
                 self.updateYearOptions()
             }
         }
@@ -162,6 +165,15 @@ class YearViewController: NSViewController {
 
 extension YearViewController: NewYearsViewControllerDelegate {
     func yearCreated(year: Int) {
+        for checkYear in years {
+            if checkYear.name == year {
+                selectedYear = checkYear
+                updateYearOptions()
+                yearsPopUpButton.selectItem(withTitle: "\(year)")
+                yearSelected(yearsPopUpButton)
+                return
+            }
+        }
         let thisYear = BYear()
         thisYear.name = year
         DbManager.sharedInstance.update(year: thisYear) { (saved, error) in
