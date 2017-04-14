@@ -44,19 +44,17 @@
     return self;
 }
 
-- (void)viewDidLoad
-{
+- (void)viewDidLoad {
     [super viewDidLoad];
-    [self loadData];
-}
-
--(void)loadData
-{
-    dateIndex = 0;
     
+    dateIndex = 0;
     AppDelegate *appdelegate = (AppDelegate *)[[UIApplication sharedApplication] delegate];
     context = [appdelegate managedObjectContext];
     
+}
+
+- (void)viewWillAppear:(BOOL)animated {
+    [super viewWillAppear:animated];
     
     [self loadSchedule: nil];
 //    [self loadBackendless];

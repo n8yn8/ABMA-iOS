@@ -196,12 +196,12 @@ class DbManager: NSObject {
         })
     }
     
-    func pushUpdate() {
+    func pushUpdate(message: String) {
         let publishOptions = PublishOptions()
-        publishOptions.assignHeaders(["ios-text":"Notification for iOS ",
-                                      "android-content-title":"Notification title for Android",
-                                      "android-content-text":"Notification text for Android"])
-        backendless?.messaging.publish("default", message: "There is an update", response: { (messageStatus) in
+        publishOptions.assignHeaders(["ios-text":message,
+                                      "android-content-title":"ABMA",
+                                      "android-content-text":message])
+        backendless?.messaging.publish("default", message: message, response: { (messageStatus) in
             print("message status = \(String(describing: messageStatus?.status)) \(String(describing: messageStatus?.messageId))")
         }, error: { (fault) in
             print("Message fault \(String(describing: fault?.message))")
