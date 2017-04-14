@@ -129,6 +129,8 @@ class YearViewController: NSViewController {
         } else if let dvc = segue.destinationController as? SponsorsViewController {
             sponsorsViewController = dvc
             sponsorsViewController?.delegate = self
+        } else if let dvc = segue.destinationController as? PushViewController {
+            dvc.delegate = self
         }
     }
     
@@ -141,26 +143,20 @@ class YearViewController: NSViewController {
             selectedYear?.surveyStart = surveyStartDatePicker.dateValue
             selectedYear?.surveyEnd = surveyEndDatePicker.dateValue
         }
-        updateYear()
+        updateYear(callback: nil)
     }
     
-    func updateYear() {
+    func updateYear(callback: (() -> Void)?) {
         activityIndicator.startAnimation(self)
         DbManager.sharedInstance.update(year: selectedYear!) { (saved, error) in
             self.activityIndicator.stopAnimation(self)
             self.selectedYear = saved
-            if self.selectedYear?.publishedAt != nil {
-                DbManager.sharedInstance.pushUpdate()
-            }
             self.updateUi()
         }
     }
     
     @IBAction func publish(_ sender: Any) {
-        if selectedYear?.publishedAt == nil {
-            selectedYear?.publishedAt = Date()
-        }
-        updateYear()
+        updateYear(callback: nil)
     }
 }
 
@@ -190,7 +186,7 @@ extension YearViewController: SponsorsViewControllerDelegate {
             } else {
                 selectedYear?.sponsors.append(savedSponsor)
             }
-            updateYear()
+            updateYear(callback: nil)
         }
         
     }
@@ -199,6 +195,19 @@ extension YearViewController: SponsorsViewControllerDelegate {
 extension YearViewController: ContainerControllerDelegate {
     func updateEvents(list: [BEvent]) {
         selectedYear?.events = list
-        updateYear()
+        updateYear(callback: nil)
+    }
+}
+
+extension YearViewController: PushViewControllerDelegate {
+    func sendUpdate(message: String) {
+        if selectedYear?.publishedAt == nil {
+            selectedYear?.publishedAt = Date()
+            updateYear(callback: { 
+                DbManager.sharedInstance.pushUpdate(message: message)
+            })
+        } else {
+            DbManager.sharedInstance.pushUpdate(message: message)
+        }
     }
 }

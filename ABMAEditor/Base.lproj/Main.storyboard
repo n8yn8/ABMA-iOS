@@ -661,6 +661,61 @@
             </objects>
             <point key="canvasLocation" x="75" y="0.0"/>
         </scene>
+        <!--Push View Controller-->
+        <scene sceneID="gJi-mb-sPA">
+            <objects>
+                <viewController id="CyU-kn-rYv" customClass="PushViewController" customModule="ABMAEditor" customModuleProvider="target" sceneMemberID="viewController">
+                    <view key="view" id="vsw-fE-VAq">
+                        <rect key="frame" x="0.0" y="0.0" width="450" height="148"/>
+                        <autoresizingMask key="autoresizingMask"/>
+                        <subviews>
+                            <textField horizontalHuggingPriority="251" verticalHuggingPriority="750" allowsCharacterPickerTouchBarItem="NO" translatesAutoresizingMaskIntoConstraints="NO" id="vOs-ew-J1X">
+                                <rect key="frame" x="18" y="111" width="414" height="17"/>
+                                <textFieldCell key="cell" scrollable="YES" lineBreakMode="clipping" sendsActionOnEndEditing="YES" title="Add a brief message to display to users:" id="hEd-nD-jJH">
+                                    <font key="font" metaFont="system"/>
+                                    <color key="textColor" name="labelColor" catalog="System" colorSpace="catalog"/>
+                                    <color key="backgroundColor" name="controlColor" catalog="System" colorSpace="catalog"/>
+                                </textFieldCell>
+                            </textField>
+                            <textField verticalHuggingPriority="750" allowsCharacterPickerTouchBarItem="NO" translatesAutoresizingMaskIntoConstraints="NO" id="b3b-da-UEg">
+                                <rect key="frame" x="20" y="81" width="410" height="22"/>
+                                <textFieldCell key="cell" scrollable="YES" lineBreakMode="clipping" selectable="YES" editable="YES" sendsActionOnEndEditing="YES" state="on" borderStyle="bezel" drawsBackground="YES" id="VCD-MW-A00">
+                                    <font key="font" metaFont="system"/>
+                                    <color key="textColor" name="textColor" catalog="System" colorSpace="catalog"/>
+                                    <color key="backgroundColor" name="textBackgroundColor" catalog="System" colorSpace="catalog"/>
+                                </textFieldCell>
+                            </textField>
+                            <button verticalHuggingPriority="750" translatesAutoresizingMaskIntoConstraints="NO" id="DIm-W2-Z66">
+                                <rect key="frame" x="365" y="13" width="71" height="32"/>
+                                <buttonCell key="cell" type="push" title="Send" bezelStyle="rounded" alignment="center" borderStyle="border" imageScaling="proportionallyDown" inset="2" id="8Ju-zL-tpG">
+                                    <behavior key="behavior" pushIn="YES" lightByBackground="YES" lightByGray="YES"/>
+                                    <font key="font" metaFont="system"/>
+                                </buttonCell>
+                                <connections>
+                                    <action selector="sendPush:" target="CyU-kn-rYv" id="7LB-vm-G52"/>
+                                </connections>
+                            </button>
+                        </subviews>
+                        <constraints>
+                            <constraint firstItem="DIm-W2-Z66" firstAttribute="top" secondItem="b3b-da-UEg" secondAttribute="bottom" constant="40" id="4R6-VL-6wA"/>
+                            <constraint firstAttribute="trailing" secondItem="DIm-W2-Z66" secondAttribute="trailing" constant="20" id="CjE-hD-z5G"/>
+                            <constraint firstAttribute="trailing" secondItem="b3b-da-UEg" secondAttribute="trailing" constant="20" id="R9d-Ve-2cY"/>
+                            <constraint firstItem="vOs-ew-J1X" firstAttribute="leading" secondItem="vsw-fE-VAq" secondAttribute="leading" constant="20" id="hAi-GB-5ve"/>
+                            <constraint firstAttribute="bottom" secondItem="DIm-W2-Z66" secondAttribute="bottom" constant="20" id="mWw-5V-xUf"/>
+                            <constraint firstItem="vOs-ew-J1X" firstAttribute="top" secondItem="vsw-fE-VAq" secondAttribute="top" constant="20" id="mfx-cH-u8P"/>
+                            <constraint firstItem="b3b-da-UEg" firstAttribute="top" secondItem="vOs-ew-J1X" secondAttribute="bottom" constant="8" id="rX7-cj-KDQ"/>
+                            <constraint firstItem="b3b-da-UEg" firstAttribute="leading" secondItem="vsw-fE-VAq" secondAttribute="leading" constant="20" id="tNK-at-wrF"/>
+                            <constraint firstAttribute="trailing" secondItem="vOs-ew-J1X" secondAttribute="trailing" constant="20" id="vaT-6E-ZZ2"/>
+                        </constraints>
+                    </view>
+                    <connections>
+                        <outlet property="messageTextField" destination="b3b-da-UEg" id="0ig-bc-rIn"/>
+                    </connections>
+                </viewController>
+                <customObject id="Wdp-BX-0Sb" userLabel="First Responder" customClass="NSResponder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="848" y="-21"/>
+        </scene>
         <!--Sponsors-->
         <scene sceneID="FGv-WE-Ff8">
             <objects>
@@ -735,7 +790,7 @@
                                                     <rect key="frame" x="20" y="121" width="508" height="184"/>
                                                     <clipView key="contentView" id="ONh-sT-c6g">
                                                         <rect key="frame" x="1" y="1" width="506" height="182"/>
-                                                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                                                        <autoresizingMask key="autoresizingMask"/>
                                                         <subviews>
                                                             <textView importsGraphics="NO" usesFontPanel="YES" findStyle="panel" continuousSpellChecking="YES" allowsUndo="YES" usesRuler="YES" allowsNonContiguousLayout="YES" quoteSubstitution="YES" dashSubstitution="YES" spellingCorrection="YES" smartInsertDelete="YES" id="krI-ZG-dN7">
                                                                 <rect key="frame" x="0.0" y="0.0" width="506" height="182"/>
@@ -803,7 +858,7 @@
                                                     <rect key="frame" x="20" y="345" width="508" height="184"/>
                                                     <clipView key="contentView" id="9J5-B5-zlQ">
                                                         <rect key="frame" x="1" y="1" width="506" height="182"/>
-                                                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                                                        <autoresizingMask key="autoresizingMask"/>
                                                         <subviews>
                                                             <textView importsGraphics="NO" usesFontPanel="YES" findStyle="panel" continuousSpellChecking="YES" allowsUndo="YES" usesRuler="YES" allowsNonContiguousLayout="YES" quoteSubstitution="YES" dashSubstitution="YES" spellingCorrection="YES" smartInsertDelete="YES" id="GUG-t9-2tJ">
                                                                 <rect key="frame" x="0.0" y="0.0" width="506" height="182"/>
@@ -926,7 +981,7 @@
                                     <font key="font" metaFont="system"/>
                                 </buttonCell>
                                 <connections>
-                                    <action selector="publish:" target="ISR-eh-a1F" id="0cS-03-g0y"/>
+                                    <segue destination="CyU-kn-rYv" kind="sheet" id="bVA-qg-0O0"/>
                                 </connections>
                             </button>
                             <progressIndicator wantsLayer="YES" horizontalHuggingPriority="750" verticalHuggingPriority="750" maxValue="100" displayedWhenStopped="NO" bezeled="NO" indeterminate="YES" controlSize="small" style="spinning" translatesAutoresizingMaskIntoConstraints="NO" id="Y4C-c8-IOQ">
