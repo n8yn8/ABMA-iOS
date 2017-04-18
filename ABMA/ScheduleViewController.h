@@ -7,8 +7,9 @@
 //
 
 #import <UIKit/UIKit.h>
+#import "ABMA-Swift.h"
 
-@interface ScheduleViewController : BaseViewController <UITableViewDelegate, UITableViewDataSource>
+@interface ScheduleViewController : BaseViewController <UITableViewDelegate, UITableViewDataSource, UIPickerViewDataSource, UIPickerViewDelegate>
 - (IBAction)earlierDate:(id)sender;
 - (IBAction)laterDate:(id)sender;
 @property (strong, nonatomic) IBOutlet UILabel *dateLabe;
@@ -16,5 +17,7 @@
 @property (strong, nonatomic) IBOutlet UITableView *tableView;
 
 @property (strong, nonatomic) NSManagedObjectContext *managedObjectContext;
+
++ (void)saveBackendlessYear:(BYear *)bYear context:(NSManagedObjectContext *)context;
 
 @end

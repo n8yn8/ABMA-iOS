@@ -9,13 +9,18 @@
 #import "ScheduleViewController.h"
 #import "SWRevealViewController.h"
 #import "SchedDetailViewController.h"
-#import "Event.h"
-#import "Day.h"
-#import "Year.h"
+#import "Event+CoreDataClass.h"
+#import "Day+CoreDataClass.h"
+#import "Year+CoreDataClass.h"
 #import "AppDelegate.h"
-#import "Paper.h"
+#import "Paper+CoreDataClass.h"
+#import "Sponsor+CoreDataClass.h"
+#import "ABMA-Swift.h"
+#import "Note+CoreDataClass.h"
 
 @interface ScheduleViewController ()
+
+@property (weak, nonatomic) IBOutlet UIActivityIndicatorView *activityIndicator;
 
 @end
 
@@ -25,6 +30,9 @@
     NSArray *days;
     NSInteger dateIndex;
     NSManagedObjectContext *context;
+    NSArray *pickerData;
+    UIPickerView *picker;
+    UIView *actionView;
 }
 
 - (id)initWithNibName:(NSString *)nibNameOrNil bundle:(NSBundle *)nibBundleOrNil
@@ -36,75 +44,237 @@
     return self;
 }
 
-- (void)viewDidLoad
-{
+- (void)viewDidLoad {
     [super viewDidLoad];
-    [self loadData];
-}
-
--(void)loadData
-{
-    dateIndex = 0;
     
-    AppDelegate *appdelegate = [[UIApplication sharedApplication] delegate];
+    dateIndex = 0;
+    AppDelegate *appdelegate = (AppDelegate *)[[UIApplication sharedApplication] delegate];
     context = [appdelegate managedObjectContext];
     
-//    [self clearSchedule:@"Day"];
-//    [self clearSchedule:@"Event"];
-//    [self clearSchedule:@"Note"];
-//    [self clearSchedule:@"Paper"];
-    [self loadSchedule];
 }
 
-- (void)clearSchedule:(NSString *)nameEntity {
-    NSFetchRequest *fetchRequest = [[NSFetchRequest alloc] initWithEntityName:nameEntity];
+- (void)viewWillAppear:(BOOL)animated {
+    [super viewWillAppear:animated];
+    
+    [self loadSchedule: nil];
+//    [self loadBackendless];
+}
+
+- (void)matchNotes {
+    NSFetchRequest <Note *> *noteRequst = [Note fetchRequest];
+    NSError *error = nil;
+    NSArray<Note *> *notes = [context executeFetchRequest:noteRequst error:&error];
+    for (Note *note in notes) {
+        if (note.paper) {
+            if (note.paper.bObjectId) {
+                NSLog(@"Already found paper");
+            } else {
+                NSFetchRequest *paperRequest = [Paper fetchRequest];
+                paperRequest.predicate = [NSPredicate predicateWithFormat:@"bObjectId!=nil AND title==%@ AND abstract==%@", note.paper.title, note.paper.abstract];
+                NSError *error;
+                NSArray *papers = [context executeFetchRequest:paperRequest error:&error];
+                NSLog(@"Found %lu papers", (unsigned long)papers.count);
+                note.paper = [papers firstObject];
+            }
+        }
+        if (note.event) {
+            if (note.event.bObjectId) {
+                NSLog(@"Already found event");
+            } else {
+                NSFetchRequest *eventRequest = [Event fetchRequest];
+                eventRequest.predicate = [NSPredicate predicateWithFormat:@"bObjectId!=nil AND title==%@ AND details==%@", note.event.title, note.event.details];
+                NSError *error;
+                NSArray *retrieved = [context executeFetchRequest:eventRequest error:&error];
+                NSLog(@"Found %lu events", (unsigned long)retrieved.count);
+                note.event = [retrieved firstObject];
+            }
+        }
+    }
+    NSError *saveError;
+    [context save:&saveError];
+    
+    [self clearSchedule];
+}
+
+- (void)loadBackendless {
+    [self.activityIndicator startAnimating];
+    [[DbManager sharedInstance] getPublishedYearsSince:[Utils getLastUpdated] callback:^(NSArray<BYear *> * _Nullable years, NSString * _Nullable error) {
+        [self.activityIndicator stopAnimating];
+        if (error) {
+            [Utils handleErrorWithMethod:@"GetPublishedYears" message:error];
+            NSLog(@"error: %@", error);
+        } else {
+            for (BYear *bYear in years) {
+                [ScheduleViewController saveBackendlessYear:bYear context:context];
+            }
+            [self loadSchedule: nil];
+            [self matchNotes];
+        }
+    }];
+}
+
++ (void)saveBackendlessYear:(BYear *)bYear context:(NSManagedObjectContext *)context {
+    NSDateFormatter *dayFormatter = [[NSDateFormatter alloc] init];
+    [dayFormatter setDateFormat:@"MMM d, yyyy"];
+    NSTimeZone *timeZone = [NSTimeZone timeZoneWithName:@"UTC"];
+    [dayFormatter setTimeZone:timeZone];
+    NSDateFormatter *timeFormatter = [[NSDateFormatter alloc] init];
+    [timeFormatter setDateFormat:@"MMM d, yyyy h:mma"];
+    
+    NSFetchRequest<Year*> *yearRequest = [Year fetchRequest];
+    yearRequest.fetchLimit = 1;
+    yearRequest.predicate = [NSPredicate predicateWithFormat:@"year==%ld", (long)bYear.name];
+    yearRequest.sortDescriptors = @[[NSSortDescriptor sortDescriptorWithKey:@"year" ascending:NO]];
+    NSError *error = nil;
+    Year *year = [context executeFetchRequest:yearRequest error:&error].firstObject;
+    
+    if (!year) {
+        year = [[Year alloc] initWithEntity:[NSEntityDescription entityForName:@"Year" inManagedObjectContext:context] insertIntoManagedObjectContext:context];
+    }
+    
+    year.bObjectId = bYear.objectId;
+    year.year = [NSString stringWithFormat:@"%ld", (long)bYear.name] ;
+    year.info = bYear.info;
+    year.welcome = bYear.welcome;
+    year.surveyLink = bYear.surveyUrl;
+    year.surveyStart = bYear.surveyStart;
+    year.surveyEnd = bYear.surveyEnd;
+    year.created = bYear.created;
+    year.updated = bYear.updated;
+    if (year.updated) {
+        [Utils updateLastUpdatedWithDate:year.updated];
+    } else {
+        [Utils updateLastUpdatedWithDate:year.created];
+    }
+    for (BSponsor *bSponsor in bYear.sponsors) {
+        
+        NSFetchRequest<Sponsor*> *sponsorRequest = [Sponsor fetchRequest];
+        sponsorRequest.fetchLimit = 1;
+        sponsorRequest.predicate = [NSPredicate predicateWithFormat:@"bObjectId==%@", bSponsor.objectId];
+        NSError *sponsorError = nil;
+        Sponsor *sponsor = [context executeFetchRequest:sponsorRequest error:&sponsorError].firstObject;
+        if (!sponsor) {
+            sponsor = [[Sponsor alloc] initWithEntity:[NSEntityDescription entityForName:@"Sponsor" inManagedObjectContext:context] insertIntoManagedObjectContext:context];
+        }
+        sponsor.bObjectId = bSponsor.objectId;
+        sponsor.url = bSponsor.url;
+        sponsor.imageUrl = bSponsor.imageUrl;
+        sponsor.year = year;
+        sponsor.created = bSponsor.created;
+        sponsor.updated = bSponsor.upadted;
+        [year addSponsorsObject:sponsor];
+    }
+    for (BEvent *bEvent in bYear.events) {
+        NSCalendar * calendar = [[NSCalendar alloc] initWithCalendarIdentifier:NSCalendarIdentifierGregorian];
+        
+        Day *dayForEvent = nil;
+        for (Day *day in year.day) {
+            if ([calendar isDate:bEvent.startDate equalToDate:day.date toUnitGranularity:NSCalendarUnitDay]) {
+                dayForEvent = day;
+                break;
+            }
+        }
+        if (dayForEvent == nil) {
+            dayForEvent = [[Day alloc] initWithEntity:[NSEntityDescription entityForName:@"Day" inManagedObjectContext:context] insertIntoManagedObjectContext:context];
+            dayForEvent.date = [self dateWithOutTime:bEvent.startDate];
+            [year addDayObject:dayForEvent];
+        }
+        
+        NSFetchRequest<Event*> *eventRequest = [Event fetchRequest];
+        eventRequest.fetchLimit = 1;
+        eventRequest.predicate = [NSPredicate predicateWithFormat:@"bObjectId==%@", bEvent.objectId];
+        NSError *eventError = nil;
+        Event *thisEvent = [context executeFetchRequest:eventRequest error:&eventError].firstObject;
+        if (!thisEvent) {
+            thisEvent = [[Event alloc] initWithEntity:[NSEntityDescription entityForName:@"Event" inManagedObjectContext:context] insertIntoManagedObjectContext:context];
+        }
+        thisEvent.bObjectId = bEvent.objectId;
+        thisEvent.title = bEvent.title;
+        thisEvent.subtitle = bEvent.subtitle;
+        thisEvent.locatoin = bEvent.location;
+        thisEvent.startDate = bEvent.startDate;
+        thisEvent.endDate = bEvent.endDate;
+        thisEvent.details = bEvent.details;
+        thisEvent.created = bEvent.created;
+        thisEvent.updated = bEvent.upadted;
+        NSMutableOrderedSet *papersSet = [[NSMutableOrderedSet alloc] init];
+        for (BPaper *bPaper in bEvent.papers) {
+            
+            NSFetchRequest<Paper*> *paperRequest = [Paper fetchRequest];
+            paperRequest.fetchLimit = 1;
+            paperRequest.predicate = [NSPredicate predicateWithFormat:@"bObjectId==%@", bPaper.objectId];
+            NSError *paperError = nil;
+            Paper *paper = [context executeFetchRequest:paperRequest error:&paperError].firstObject;
+            if (!paper) {
+                paper = [[Paper alloc] initWithEntity:[NSEntityDescription entityForName:@"Paper" inManagedObjectContext:context] insertIntoManagedObjectContext:context];
+            }
+            paper.bObjectId = bPaper.objectId;
+            paper.author = bPaper.author;
+            paper.title = bPaper.title;
+            paper.abstract = bPaper.synopsis;
+            paper.event = thisEvent;
+            paper.created = bPaper.created;
+            paper.updated = bPaper.upadted;
+            [papersSet addObject:paper];
+        }
+        thisEvent.papers = papersSet;
+        [dayForEvent addEventObject:thisEvent];
+    }
+    NSError *saveEror;
+    [context save:&saveEror];
+    if (error) {
+        NSLog(@"Error: %@", error.localizedDescription);
+    }
+}
+
++ (NSDate *)dateWithOutTime:(NSDate *)datDate {
+    if( datDate == nil ) {
+        datDate = [NSDate date];
+    }
+    NSDateComponents* comps = [[NSCalendar currentCalendar] components:NSCalendarUnitYear|NSCalendarUnitMonth|NSCalendarUnitDay fromDate:datDate];
+    return [[NSCalendar currentCalendar] dateFromComponents:comps];
+}
+
+- (void)clearSchedule {
+    NSFetchRequest *fetchRequest = [Year fetchRequest];
+    fetchRequest.predicate = [NSPredicate predicateWithFormat:@"bObjectId==nil"];
     [fetchRequest setIncludesPropertyValues:NO]; //only fetch the managedObjectID
     
     NSError *error;
-    NSArray *fetchedObjects = [context executeFetchRequest:fetchRequest error:&error];
-    for (NSManagedObject *object in fetchedObjects)
+    NSArray<Year *> *fetchedObjects = [context executeFetchRequest:fetchRequest error:&error];
+    for (Year *year in fetchedObjects)
     {
-        [context deleteObject:object];
+        for (Day *day in year.day) {
+            for (Event *event in day.event) {
+                for (Paper *paper in event.papers) {
+                    [context deleteObject:paper];
+                }
+                [context deleteObject:event];
+            }
+            [context deleteObject:day];
+        }
+        [context deleteObject:year];
     }
     
     error = nil;
     [context save:&error];
 }
 
-- (void)loadSchedule {
+- (void)loadSchedule:(NSString *)selectedYear {
     
-    NSDateFormatter *dayFormatter = [[NSDateFormatter alloc] init];
-    [dayFormatter setDateFormat:@"MMM d, yyyy"];
-    NSTimeZone *timeZone = [NSTimeZone timeZoneWithName:@"UTC"];
-    [dayFormatter setTimeZone:timeZone];
+    Year *year = [Year getLatestYear:selectedYear context:context];
     
-    NSDate *schedStart = [dayFormatter dateFromString:@"April 17, 2016"];
-    NSDate *schedEnd = [dayFormatter dateFromString:@"April 23, 2016"];
-    
-    NSArray *sortDescriptors = [NSArray arrayWithObject:[NSSortDescriptor sortDescriptorWithKey:@"date" ascending:YES]];
-    NSFetchRequest *fetchRequest = [[NSFetchRequest alloc] init];
-    [fetchRequest setEntity:[NSEntityDescription entityForName:@"Day" inManagedObjectContext:context]];
-    fetchRequest.sortDescriptors = sortDescriptors;
-    fetchRequest.predicate = [NSPredicate predicateWithFormat:@"(date >= %@) AND (date <= %@)",schedStart, schedEnd];
-    NSError *fetchError = nil;
-    days = [[NSArray alloc] initWithArray:[context executeFetchRequest:fetchRequest error:&fetchError]];
-    if (fetchError) {
-        NSLog(@"Unable to execute fetch request.");
-        NSLog(@"%@, %@", fetchError, fetchError.localizedDescription);
+    if (year) {
+        NSSortDescriptor *sortDescriptor = [[NSSortDescriptor alloc] initWithKey:@"date" ascending:TRUE];
+        
+        days = [[year.day allObjects] sortedArrayUsingDescriptors:@[sortDescriptor]];
+        
+        [self loadDay:0];
     } else {
-        if (days.count) {
-            NSString *build = [[NSUserDefaults standardUserDefaults] stringForKey:@"build"];
-            if (!build) {
-                [self fixBuildEighteen];
-            }
-            [self loadDay: 0];
-
-        } else {
-            [self saveSchedule];
-        }
-        NSString *currentBuild = [[NSBundle mainBundle] objectForInfoDictionaryKey: (NSString *)kCFBundleVersionKey];
-        [[NSUserDefaults standardUserDefaults] setObject:currentBuild forKey:@"build"];
+        [self loadBackendless];
     }
+    NSString *currentBuild = [[NSBundle mainBundle] objectForInfoDictionaryKey: (NSString *)kCFBundleVersionKey];
+    [[NSUserDefaults standardUserDefaults] setObject:currentBuild forKey:@"build"];
 }
 
 - (void)loadDay: (NSUInteger)index {
@@ -143,10 +313,10 @@
             thisEvent.title = [event objectForKey:@"Title"];
             thisEvent.subtitle = [event objectForKey:@"Subtitle"];
             thisEvent.locatoin = [event objectForKey:@"Location"];
-            thisEvent.time = [event objectForKey:@"Time"];
-            NSArray *times = [thisEvent.time componentsSeparatedByString:@" - "];
+            NSString *time = [event objectForKey:@"Time"];
+            NSArray *times = [time componentsSeparatedByString:@" - "];
             if (times.count == 0) {
-                NSLog(@"No times for %@", thisEvent.time);
+                NSLog(@"No times for %@", time);
             }
             NSString *startString = [NSString stringWithFormat:@"%@ %@", key, [times firstObject]];
             thisEvent.startDate = [timeFormatter dateFromString:startString];
@@ -154,7 +324,9 @@
                 NSLog(@"startDate did't format for %@", startString);
             }
             NSString *endString = [NSString stringWithFormat:@"%@ %@", key, [times lastObject]];
-            thisEvent.endDate = [timeFormatter dateFromString:endString];
+            if (times.count == 2) {
+                thisEvent.endDate = [timeFormatter dateFromString:endString];
+            }
             thisEvent.details = [event objectForKey:@"Description"];
             NSArray *papers = [event objectForKey:@"Papers"];
             for (NSDictionary *paperDict in papers) {
@@ -173,39 +345,117 @@
     if (error) {
         NSLog(@"Error: %@", error.localizedDescription);
     } else {
-        [self loadSchedule];
+        [self loadSchedule: nil];
     }
 }
 
-- (void)fixBuildEighteen {
-    NSFetchRequest *fetchRequest = [[NSFetchRequest alloc] init];
-    [fetchRequest setEntity:[NSEntityDescription entityForName:@"Event" inManagedObjectContext:context]];
-    fetchRequest.predicate = [NSPredicate predicateWithFormat:@"startDate == NULL"];
-    NSError *fetchError = nil;
-    NSArray *updateEvents = [[NSArray alloc] initWithArray:[context executeFetchRequest:fetchRequest error:&fetchError]];
-    if (fetchError) {
-        NSLog(@"Unable to execute fetch request.");
-        NSLog(@"%@, %@", fetchError, fetchError.localizedDescription);
-    } else {
-        NSDateFormatter *timeFormatter = [[NSDateFormatter alloc] init];
-        [timeFormatter setDateFormat:@"MMM d, yyyy h:mma"];
-        [timeFormatter setTimeZone:[NSTimeZone timeZoneWithName:@"UTC"]];
-        for (Event *thisEvent in updateEvents) {
-            thisEvent.time = @"3:00pm - 3:20pm";
-            NSArray *times = [thisEvent.time componentsSeparatedByString:@" - "];
+- (void)saveScheduleToServer:(int)yearName {
+    
+    NSDateFormatter *dayFormatter = [[NSDateFormatter alloc] init];
+    [dayFormatter setDateFormat:@"MMM d, yyyy"];
+    NSTimeZone *timeZone = [NSTimeZone timeZoneWithName:@"UTC"];
+    [dayFormatter setTimeZone:timeZone];
+    NSDateFormatter *timeFormatter = [[NSDateFormatter alloc] init];
+    [timeFormatter setDateFormat:@"MMM d, yyyy h:mma"];
+    [timeFormatter setTimeZone:timeZone];
+    NSString *plistCatPath = [[NSBundle mainBundle] pathForResource:[NSString stringWithFormat:@"Y%i", yearName] ofType:@"plist"];
+    NSDictionary *dailySched = [[NSDictionary alloc] initWithContentsOfFile:plistCatPath];
+    NSArray *allKeys = [dailySched allKeys];
+    
+    BYear *year = [[BYear alloc] init];
+    year.name = yearName;
+    NSMutableArray<BEvent *> *eventsForBYear = [[NSMutableArray alloc] init];
+    for (NSString *key in allKeys) {
+        NSArray *eventsArray = [[NSArray alloc] initWithArray:[dailySched objectForKey:key]];
+        for (NSDictionary *event in eventsArray) {
+            BEvent *thisEvent = [[BEvent alloc] init];
+            thisEvent.title = [event objectForKey:@"Title"];
+            thisEvent.subtitle = [event objectForKey:@"Subtitle"];
+            thisEvent.location = [event objectForKey:@"Location"];
+            NSString *time = [event objectForKey:@"Time"];
+            NSArray *times = [time componentsSeparatedByString:@" - "];
             if (times.count == 0) {
-                NSLog(@"No times for %@", thisEvent.time);
+                NSLog(@"No times for %@", time);
             }
-            NSString *startString = [NSString stringWithFormat:@"April 22, 2016 %@", [times firstObject]];
+            NSString *startString = [NSString stringWithFormat:@"%@ %@", key, [times firstObject]];
             thisEvent.startDate = [timeFormatter dateFromString:startString];
             if (thisEvent.startDate == nil) {
                 NSLog(@"startDate did't format for %@", startString);
             }
-            NSString *endString = [NSString stringWithFormat:@"April 22, 2016 %@", [times lastObject]];
-            thisEvent.endDate = [timeFormatter dateFromString:endString];
+            NSString *endString = [NSString stringWithFormat:@"%@ %@", key, [times lastObject]];
+            if (times.count == 2) {
+                thisEvent.endDate = [timeFormatter dateFromString:endString];
+            }
+            thisEvent.details = [event objectForKey:@"Description"];
+            NSArray *papers = [event objectForKey:@"Papers"];
+            NSMutableArray<BPaper*> *eventPapers = [[NSMutableArray alloc] initWithCapacity:papers.count];
+            for (NSDictionary *paperDict in papers) {
+                BPaper *paper = [[BPaper alloc] init];
+                paper.author = [paperDict objectForKey:@"Author"];
+                paper.title = [paperDict objectForKey:@"Title"];
+                paper.synopsis = [paperDict objectForKey:@"Abstract"];
+                [eventPapers addObject:paper];
+            }
+            thisEvent.papers = eventPapers;
+            [eventsForBYear addObject:thisEvent];
         }
-        NSError *error;
-        [context save:&error];
+        
+    }
+    year.events = eventsForBYear;
+    
+    [self saveSponsorsCompletion:^(NSMutableArray<BSponsor *> *sponsors) {
+        year.sponsors = sponsors;
+        [[DbManager sharedInstance] updateWithYear:year callback:^(BYear * _Nullable save, NSString * _Nullable error) {
+            NSLog(@"error %@", error);
+            NSLog(@"saved year %@", save);
+        }];
+    }];
+    
+}
+
+- (void)saveSponsorsCompletion:(void(^)(NSMutableArray<BSponsor*>* sponsors)) completion {
+    NSArray *sponsorImages = [[NSArray alloc] initWithObjects:
+                              @"brevard_zoo_logo_m.jpg",
+                              @"CFZ.jpg",
+                              @"Zoo_Logo.jpg",
+                              @"sante_fe_teaching_zoo.png",
+                              @"CMA.png",
+                              @"fl aq logo.jpg",
+                              @"SWO Logo.jpg",
+                              @"NEI.png",
+                              @"PB.png",
+                              @"ABI Logo.jpg",
+                              @"BGT Logo.png",
+                              @"FAZA.png",
+                              @"TAMPA BAY AAZK.png",  nil];
+    NSArray *links = [[NSArray alloc] initWithObjects:
+                      @"http://www.brevardzoo.org/",
+                      @"http://www.centralfloridazoo.org/",
+                      @"http://www.lowryparkzoo.org/",
+                      @"http://www.sfcollege.edu/zoo/",
+                      @"http://www.seewinter.com/",
+                      @"http://www.flaquarium.org/",
+                      @"https://seaworldparks.com/seaworld-orlando?&gclid=CNnZ_rOg5ssCFUQbgQodW_gLyg&dclid=CMvQhLSg5ssCFUQFgQod384IRQ",
+                      @"http://naturalencounters.com/",
+                      @"http://www.precisionbehavior.com/",
+                      @"http://www.animaledu.com/Home/d/1",
+                      @"https://seaworldparks.com/en/buschgardens-tampa/?&gclid=CM7sh5ig5ssCFYclgQodFi4MFg&dclid=CLD5i5ig5ssCFQsNgQodm1IJ_g",
+                      @"http://www.flaza.org/zoos--aquariums.html",
+                      @"http://tampabayaazk.weebly.com/",
+                      nil];
+    NSMutableArray<BSponsor *> *sponsors = [[NSMutableArray alloc] initWithCapacity:sponsorImages.count];
+    for (int i = 0; i < sponsorImages.count; i++) {
+        UIImage *image = [UIImage imageNamed:sponsorImages[i]];
+        NSData *imageData = UIImagePNGRepresentation(image);
+        [[DbManager sharedInstance] uploadImageWithName:[sponsorImages[i] stringByReplacingOccurrencesOfString:@" " withString:@""] image:imageData callback:^(NSString * _Nonnull imageUrl) {
+            BSponsor *sponsor = [[BSponsor alloc] init];
+            sponsor.url = links[i];
+            sponsor.imageUrl = imageUrl;
+            [sponsors addObject:sponsor];
+            if (sponsors.count == sponsorImages.count) {
+                completion(sponsors);
+            }
+        }];
     }
 }
 
@@ -243,10 +493,115 @@
     Event *thisEvent = [events objectAtIndex:indexPath.row];
     
     eventName.text = thisEvent.title;
-    eventTime.text = thisEvent.time;
+    eventTime.text = [Utils timeFrameWithStartDate:thisEvent.startDate endDate:thisEvent.endDate];
     return cell;
 }
 
+
+#pragma mark - Picker
+
+- (IBAction)showYearSelection:(id)sender {
+    NSFetchRequest<Year*> *yearRequest = [Year fetchRequest];
+    yearRequest.predicate = [NSPredicate predicateWithFormat:@"bObjectId!=nil"];
+    yearRequest.sortDescriptors = @[[NSSortDescriptor sortDescriptorWithKey:@"year" ascending:NO]];
+    NSError *error = nil;
+    NSArray<Year *> *years = [context executeFetchRequest:yearRequest error:&error];
+    
+    if (error) {
+        NSLog(@"Unable to execute fetch request.");
+        NSLog(@"%@, %@", error, error.localizedDescription);
+    } else {
+        if (years.count) {
+            NSMutableArray<NSString *> *yearNames = [[NSMutableArray alloc] init];
+            for (Year *year in years) {
+                NSLog(@"Year name = %@", year.year);
+                [yearNames addObject:year.year];
+            }
+            [self showPicker:yearNames];
+        }
+    }
+}
+
+
+- (void)showPicker:(NSArray *)names {
+    CGFloat width = [UIScreen mainScreen].bounds.size.width;
+    picker = [[UIPickerView alloc] init];
+    picker.frame = CGRectMake(0.0, 44.0, width, 216.0);
+    picker.dataSource = self;
+    picker.delegate = self;
+    picker.showsSelectionIndicator = true;
+    picker.backgroundColor = [UIColor whiteColor];
+    
+    UIToolbar *pickerDateToolbar = [[UIToolbar alloc] initWithFrame:CGRectMake(0, 0, width, 44)];
+    pickerDateToolbar.barStyle = UIBarStyleBlack;
+    pickerDateToolbar.barTintColor = [UIColor blackColor];
+    pickerDateToolbar.translucent = true;
+    
+    NSMutableArray *barItems = [[NSMutableArray alloc] init];
+    
+    UIBarButtonItem *titleCancel = [[UIBarButtonItem alloc] initWithTitle:@"Cancel" style:UIBarButtonItemStyleDone target:self action:@selector(cancelPickerSelectionButtonClicked:)];
+    [barItems addObject:titleCancel];
+    
+    UIBarButtonItem *flexSpace = [[UIBarButtonItem alloc] initWithBarButtonSystemItem:UIBarButtonSystemItemFlexibleSpace target:self action:nil];
+    [barItems addObject: flexSpace];
+    
+    pickerData = names;
+    [picker selectRow:1 inComponent:0 animated:false];
+    
+    UIBarButtonItem *doneBtn = [[UIBarButtonItem alloc] initWithBarButtonSystemItem:UIBarButtonSystemItemDone target:self action:@selector(countryDoneClicked:)];
+    [barItems addObject: doneBtn];
+    
+    [pickerDateToolbar setItems:barItems animated:true];
+    
+    actionView = [[UIView alloc] init];
+    actionView.frame = CGRectMake(0, [UIScreen mainScreen].bounds.size.height, [UIScreen mainScreen].bounds.size.width, 260.0);
+
+    
+    [actionView addSubview:pickerDateToolbar];
+    [actionView addSubview:picker];
+    
+    [self.view addSubview:actionView];
+    
+    [UIView animateWithDuration:0.2 animations:^{
+        actionView.frame = CGRectMake(0, [UIScreen mainScreen].bounds.size.height - 260.0, [UIScreen mainScreen].bounds.size.width, 260.0);
+    }];
+}
+
+- (void)cancelPickerSelectionButtonClicked:(UIBarButtonItem*)sender {
+    [self dismissPicker];
+}
+
+- (void)countryDoneClicked:(UIBarButtonItem*)sender {
+    
+    NSInteger myRow = [picker selectedRowInComponent:0];
+    NSString *selectedYear = [pickerData objectAtIndex:myRow];
+    NSLog(@"Selected %@", selectedYear);
+    [self loadSchedule:selectedYear];
+    
+    [self dismissPicker];
+}
+
+- (void)dismissPicker {
+    [UIView animateWithDuration:0.2 animations:^{
+        actionView.frame = CGRectMake(0, [UIScreen mainScreen].bounds.size.height, [UIScreen mainScreen].bounds.size.width, 260.0);
+    } completion:^(BOOL finished) {
+        for (UIView *subview in actionView.subviews) {
+            [subview removeFromSuperview];
+        }
+    }];
+}
+
+- (NSInteger)pickerView:(UIPickerView *)pickerView numberOfRowsInComponent:(NSInteger)component {
+    return pickerData.count;
+}
+
+- (NSInteger)numberOfComponentsInPickerView:(UIPickerView *)pickerView {
+    return 1;
+}
+
+- (NSString *)pickerView:(UIPickerView *)pickerView titleForRow:(NSInteger)row forComponent:(NSInteger)component {
+    return [pickerData objectAtIndex:row];
+}
 
 #pragma mark - Navigation
 

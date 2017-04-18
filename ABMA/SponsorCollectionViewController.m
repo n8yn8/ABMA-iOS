@@ -8,15 +8,19 @@
 
 #import "SponsorCollectionViewController.h"
 #import "SWRevealViewController.h"
+#import <SDWebImage/UIImageView+WebCache.h>
+#import "AppDelegate.h"
+#import "Sponsor+CoreDataClass.h"
+#import "Year+CoreDataClass.h"
 
 @interface SponsorCollectionViewController ()
+@property (weak, nonatomic) IBOutlet UICollectionView *sponsorsCollectionView;
 
 @end
 
 @implementation SponsorCollectionViewController
 {
-    NSArray *sponsorImages;
-    NSArray *links;
+    NSArray<Sponsor *> *sponsors;
 }
 
 - (id)initWithNibName:(NSString *)nibNameOrNil bundle:(NSBundle *)nibBundleOrNil
@@ -32,39 +36,53 @@
 {
     [super viewDidLoad];
     
+    sponsors = [[NSArray alloc] init];
+    
+    AppDelegate *appdelegate = (AppDelegate *)[[UIApplication sharedApplication] delegate];
+    NSManagedObjectContext *context = [appdelegate managedObjectContext];
+    
+    NSFetchRequest<Year*> *yearRequest = [Year fetchRequest];
+    yearRequest.fetchLimit = 1;
+    yearRequest.sortDescriptors = @[[NSSortDescriptor sortDescriptorWithKey:@"year" ascending:NO]];
+    NSError *error = nil;
+    Year *year = [context executeFetchRequest:yearRequest error:&error].firstObject;
+    if (year) {
+        sponsors = [year.sponsors allObjects];
+    }
+    
     //Sponsor image array
 //    sponsorImages = [[NSArray alloc] initWithObjects:@"AAZK-Dallas.png", @"AAZK-Galv.png", @"AAZKChey.png", @"ABI.png", @"AP.png", @"Blue.png", @"ChildrensAquarium.png", @"Cliff.png", @"DallasZoo.png", @"DWA.png", @"FRWC.png", @"FWZoo.png", @"MAF.png", @"NatBal.png", @"NEI.png", @"SeaWorld.png", nil];
 //    sponsorImages = [[NSArray alloc] initWithObjects:@"DBP.png", @"CPHZoo.png", @"GIVSKUD_ZOO.png", @"Odense Zoo.png", @"SDU.png", @"training_store.png", @"mazuri.png", @"profis.png", @"sea_world.png", @"zooply.png",  nil];
     
-    sponsorImages = [[NSArray alloc] initWithObjects:
-                     @"brevard_zoo_logo_m.jpg",
-                     @"CFZ.jpg",
-                     @"Zoo_Logo.jpg",
-                     @"sante_fe_teaching_zoo.png",
-                     @"CMA.png",
-                     @"fl aq logo.jpg",
-                     @"SWO Logo.jpg",
-                     @"NEI.png",
-                     @"PB.png",
-                     @"ABI Logo.jpg",
-                     @"BGT Logo.png",
-                     @"FAZA.png",
-                     @"TAMPA BAY AAZK.png",  nil];
-    links = [[NSArray alloc] initWithObjects:
-             @"http://www.brevardzoo.org/",
-             @"http://www.centralfloridazoo.org/",
-             @"http://www.lowryparkzoo.org/",
-             @"http://www.sfcollege.edu/zoo/",
-             @"http://www.seewinter.com/",
-             @"http://www.flaquarium.org/",
-             @"https://seaworldparks.com/seaworld-orlando?&gclid=CNnZ_rOg5ssCFUQbgQodW_gLyg&dclid=CMvQhLSg5ssCFUQFgQod384IRQ",
-             @"http://naturalencounters.com/",
-             @"http://www.precisionbehavior.com/",
-             @"http://www.animaledu.com/Home/d/1",
-             @"https://seaworldparks.com/en/buschgardens-tampa/?&gclid=CM7sh5ig5ssCFYclgQodFi4MFg&dclid=CLD5i5ig5ssCFQsNgQodm1IJ_g",
-             @"http://www.flaza.org/zoos--aquariums.html",
-             @"http://tampabayaazk.weebly.com/",
-               nil];
+//    sponsorImages = [[NSArray alloc] initWithObjects:
+//                     @"brevard_zoo_logo_m.jpg",
+//                     @"CFZ.jpg",
+//                     @"Zoo_Logo.jpg",
+//                     @"sante_fe_teaching_zoo.png",
+//                     @"CMA.png",
+//                     @"fl aq logo.jpg",
+//                     @"SWO Logo.jpg",
+//                     @"NEI.png",
+//                     @"PB.png",
+//                     @"ABI Logo.jpg",
+//                     @"BGT Logo.png",
+//                     @"FAZA.png",
+//                     @"TAMPA BAY AAZK.png",  nil];
+//    links = [[NSArray alloc] initWithObjects:
+//             @"http://www.brevardzoo.org/",
+//             @"http://www.centralfloridazoo.org/",
+//             @"http://www.lowryparkzoo.org/",
+//             @"http://www.sfcollege.edu/zoo/",
+//             @"http://www.seewinter.com/",
+//             @"http://www.flaquarium.org/",
+//             @"https://seaworldparks.com/seaworld-orlando?&gclid=CNnZ_rOg5ssCFUQbgQodW_gLyg&dclid=CMvQhLSg5ssCFUQFgQod384IRQ",
+//             @"http://naturalencounters.com/",
+//             @"http://www.precisionbehavior.com/",
+//             @"http://www.animaledu.com/Home/d/1",
+//             @"https://seaworldparks.com/en/buschgardens-tampa/?&gclid=CM7sh5ig5ssCFYclgQodFi4MFg&dclid=CLD5i5ig5ssCFQsNgQodm1IJ_g",
+//             @"http://www.flaza.org/zoos--aquariums.html",
+//             @"http://tampabayaazk.weebly.com/",
+//               nil];
 }
 
 - (void)didReceiveMemoryWarning
@@ -77,7 +95,7 @@
 
 - (NSInteger)collectionView:(UICollectionView *)collectionView numberOfItemsInSection:(NSInteger)section
 {
-    return [sponsorImages count];
+    return [sponsors count];
 }
 
 - (CGSize)collectionView:(UICollectionView *)collectionView layout:(UICollectionViewLayout *)collectionViewLayout sizeForItemAtIndexPath:(NSIndexPath *)indexPath {
@@ -91,15 +109,23 @@
     UICollectionViewCell *cell = [collectionView dequeueReusableCellWithReuseIdentifier:identifier forIndexPath:indexPath];
     //instantiate the imageview in each cell
     UIImageView *imageView = (UIImageView *)[cell viewWithTag:200];
+    UIActivityIndicatorView *activityIndicator = (UIActivityIndicatorView *) [cell viewWithTag:201];
+    [activityIndicator startAnimating];
     
-    imageView.image = [UIImage imageNamed:[sponsorImages objectAtIndex:indexPath.row]];
+    
+    [imageView sd_setImageWithURL:[NSURL URLWithString:sponsors[indexPath.item].imageUrl] completed:^(UIImage * _Nullable image, NSError * _Nullable error, SDImageCacheType cacheType, NSURL * _Nullable imageURL) {
+        [activityIndicator stopAnimating];
+    }];
     
     return cell;
 }
 
 - (void)collectionView:(UICollectionView *)collectionView didSelectItemAtIndexPath:(NSIndexPath *)indexPath {
-    NSString *selectedLink = [links objectAtIndex:indexPath.item];
-    [[UIApplication sharedApplication] openURL:[NSURL URLWithString: selectedLink]];
+    NSString *selectedLink = [sponsors objectAtIndex:indexPath.item].url;
+    if (selectedLink) {
+        [[UIApplication sharedApplication] openURL:[NSURL URLWithString: selectedLink]];
+    }
+    
 }
 
 /*
