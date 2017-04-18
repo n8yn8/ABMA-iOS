@@ -198,7 +198,8 @@
         thisEvent.created = bEvent.created;
         thisEvent.updated = bEvent.upadted;
         NSMutableOrderedSet *papersSet = [[NSMutableOrderedSet alloc] init];
-        for (BPaper *bPaper in bEvent.papers) {
+        NSArray <BPaper *> *orderedPapers = [bEvent.papers sortedArrayUsingDescriptors: @[[NSSortDescriptor sortDescriptorWithKey:@"order" ascending:YES]]];
+        for (BPaper *bPaper in orderedPapers) {
             
             NSFetchRequest<Paper*> *paperRequest = [Paper fetchRequest];
             paperRequest.fetchLimit = 1;
