@@ -16,9 +16,14 @@ class PapersViewController: NSViewController, NSTableViewDelegate, NSTableViewDa
     @IBOutlet weak var authorTextField: NSTextField!
     @IBOutlet var abstractTextView: NSTextView!
     @IBOutlet weak var saveButton: NSButtonCell!
+    @IBOutlet weak var orderStepper: NSStepper!
+    @IBOutlet weak var orderTextView: NSTextField!
     
     var papers = [BPaper]() {
         didSet {
+            papers = papers.sorted(by: { (paper1, paper2) -> Bool in
+                paper1.order < paper2.order
+            })
             papersTableView.deselectAll(self)
             papersTableView.reloadData()
         }
@@ -71,11 +76,15 @@ class PapersViewController: NSViewController, NSTableViewDelegate, NSTableViewDa
             titleTextField.stringValue = paper.title
             authorTextField.stringValue = paper.author
             abstractTextView.string = paper.synopsis
+            orderTextView.stringValue = "\(paper.order)"
+            orderStepper.integerValue = paper.order
             setEnabled(enabled: true)
         } else {
             titleTextField.stringValue = ""
             authorTextField.stringValue = ""
             abstractTextView.string = ""
+            orderTextView.stringValue = "\(0)"
+            orderStepper.integerValue = 0
             setEnabled(enabled: false)
         }
     }
@@ -86,6 +95,7 @@ class PapersViewController: NSViewController, NSTableViewDelegate, NSTableViewDa
         abstractTextView.isSelectable = enabled
         abstractTextView.isEditable = enabled
         saveButton.isEnabled = enabled
+        orderStepper.isEnabled = enabled
     }
     
     @IBAction func add(_ sender: Any) {
@@ -107,6 +117,7 @@ class PapersViewController: NSViewController, NSTableViewDelegate, NSTableViewDa
         let title = titleTextField.stringValue
         let author = authorTextField.stringValue
         let abstract = abstractTextView.string
+        let order = orderStepper.integerValue
         
         var paper: BPaper
         if let index = selectedIndex {
@@ -114,7 +125,7 @@ class PapersViewController: NSViewController, NSTableViewDelegate, NSTableViewDa
         } else {
             paper = BPaper()
         }
-        paper.initWith(title: title, author: author, synopsis: abstract!)
+        paper.initWith(title: title, author: author, synopsis: abstract!, order: order)
         
         if let index = selectedIndex {
             self.papers[index] = paper
@@ -124,5 +135,9 @@ class PapersViewController: NSViewController, NSTableViewDelegate, NSTableViewDa
         
         self.papersTableView.reloadData()
         self.papersTableView.selectRowIndexes(NSIndexSet(index: papers.count - 1) as IndexSet, byExtendingSelection: false)
+    }
+    
+    @IBAction func orderChanged(_ sender: NSStepper) {
+        orderTextView.stringValue = "\(orderStepper.integerValue)"
     }
 }
