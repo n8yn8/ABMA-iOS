@@ -16,11 +16,13 @@ class BPaper: NSObject {
     var synopsis: String!
     var upadted: Date?
     var created: Date?
+    var order = 0
     
-    func initWith(title: String, author: String, synopsis: String) {
+    func initWith(title: String, author: String, synopsis: String, order: Int) {
         self.title = title
         self.author = author
         self.synopsis = synopsis
+        self.order = order
     }
 
 }
