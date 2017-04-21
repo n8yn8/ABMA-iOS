@@ -113,12 +113,12 @@
         NSString *password = alertController.textFields[1].text;
         if (isNew) {
             [[DbManager sharedInstance] registerUserWithEmail:email password:password callback:^(NSString * _Nullable error) {
-                [Answers logSignUpWithMethod:@"Email" success:@(error == nil) customAttributes:@{@"error": error}];
+                [Answers logSignUpWithMethod:@"Email" success:@(error == nil) customAttributes:error ? @{@"error": error} : nil];
                 [self handleResponse:error];
             }];
         } else {
             [[DbManager sharedInstance] loginWithEmail:email password:password callback:^(NSString * _Nullable error) {
-                [Answers logLoginWithMethod:@"Email" success: @(error == nil) customAttributes:@{@"error": error}];
+                [Answers logLoginWithMethod:@"Email" success: @(error == nil) customAttributes:error ? @{@"error": error} : nil];
                 [self handleResponse:error];
             }];
         }
