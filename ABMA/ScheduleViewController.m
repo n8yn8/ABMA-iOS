@@ -51,13 +51,8 @@
     AppDelegate *appdelegate = (AppDelegate *)[[UIApplication sharedApplication] delegate];
     context = [appdelegate managedObjectContext];
     
-}
-
-- (void)viewWillAppear:(BOOL)animated {
-    [super viewWillAppear:animated];
-    
     [self loadSchedule: nil];
-//    [self loadBackendless];
+    //    [self loadBackendless];
 }
 
 - (void)matchNotes {
