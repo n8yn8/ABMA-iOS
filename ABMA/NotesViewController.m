@@ -143,6 +143,17 @@
         textField.secureTextEntry = YES;
     }];
     
+    [alertController addAction:[UIAlertAction actionWithTitle:@"Reset Password" style:UIAlertActionStyleDefault handler:^(UIAlertAction * _Nonnull action) {
+        
+        [self.activityIndicator startAnimating];
+        NSString *email = alertController.textFields[0].text;
+        [[DbManager sharedInstance] userPasswordRecoveryWithEmail:email callback:^(NSString * _Nullable result) {
+            [self show:result];
+            [self.activityIndicator stopAnimating];
+        }];
+        
+    }]];
+    
     [alertController addAction:[UIAlertAction actionWithTitle:@"Cancel" style:UIAlertActionStyleCancel handler:^(UIAlertAction * _Nonnull action) {
         NSLog(@"Login cancelled");
     }]];

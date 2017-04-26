@@ -33,7 +33,12 @@ class DbManager: NSObject {
             self.login(email: email, password: password, callback: callback)
         }, error: { (error) in
             print("error: \(String(describing: error))")
-            callback(error.debugDescription)
+            if let message = error?.detail {
+                callback(message)
+            } else {
+                callback(error.debugDescription)
+            }
+            
         })
     }
     
@@ -43,7 +48,25 @@ class DbManager: NSObject {
             callback(nil)
         }, error: { (error) in
             print("Error \(error.debugDescription)")
-            callback(error.debugDescription)
+            if let message = error?.detail {
+                callback(message)
+            } else {
+                callback(error.debugDescription)
+            }
+        })
+    }
+    
+    func userPasswordRecovery(email: String, callback: @escaping (_ errorString: String?) -> Void) {
+        backendless?.userService.restorePassword(email, response: { (response) in
+            print(String(describing: response))
+            callback("Check your email to recover you password.")
+        }, error: { (fault) in
+            print(String(describing: fault))
+            if let message = fault?.detail {
+                callback(message)
+            } else {
+                callback(fault.debugDescription)
+            }
         })
     }
     
