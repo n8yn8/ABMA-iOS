@@ -27,4 +27,11 @@ class BEvent: NSObject {
         self.endDate = endDate
         self.title = title
     }
+    
+    func doSort() {
+        let sortedPapers = papers.sorted(by: { (paper1, paper2) -> Bool in
+            paper1.order < paper2.order
+        })
+        papers = sortedPapers
+    }
 }

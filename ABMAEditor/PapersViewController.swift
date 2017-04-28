@@ -21,9 +21,6 @@ class PapersViewController: NSViewController, NSTableViewDelegate, NSTableViewDa
     
     var papers = [BPaper]() {
         didSet {
-            papers = papers.sorted(by: { (paper1, paper2) -> Bool in
-                paper1.order < paper2.order
-            })
             papersTableView.deselectAll(self)
             papersTableView.reloadData()
         }
