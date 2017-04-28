@@ -54,8 +54,8 @@ class EventViewController: NSViewController {
             if let event = representedObject as? BEvent {
                 self.event = event
                 
-                datePicker.dateValue = event.startDate
                 let utcOffset = TimeInterval(-TimeZone.current.secondsFromGMT())
+                datePicker.dateValue = event.startDate.addingTimeInterval(utcOffset)
                 startTimePicker.dateValue = event.startDate.addingTimeInterval(utcOffset)
                 if let endDate = event.endDate {
                     endTimePicker.dateValue = endDate.addingTimeInterval(utcOffset)

@@ -33,6 +33,7 @@
     NSArray *pickerData;
     UIPickerView *picker;
     UIView *actionView;
+    UIRefreshControl *refreshControl;
 }
 
 - (id)initWithNibName:(NSString *)nibNameOrNil bundle:(NSBundle *)nibBundleOrNil
@@ -51,13 +52,12 @@
     AppDelegate *appdelegate = (AppDelegate *)[[UIApplication sharedApplication] delegate];
     context = [appdelegate managedObjectContext];
     
-}
-
-- (void)viewWillAppear:(BOOL)animated {
-    [super viewWillAppear:animated];
-    
     [self loadSchedule: nil];
-//    [self loadBackendless];
+    //    [self loadBackendless];
+    
+    refreshControl = [[UIRefreshControl alloc] init];
+    [refreshControl addTarget:self action:@selector(loadBackendless) forControlEvents:UIControlEventValueChanged];
+    self.tableView.refreshControl = refreshControl;
 }
 
 - (void)matchNotes {
@@ -97,6 +97,9 @@
 }
 
 - (void)loadBackendless {
+    if (!refreshControl.isRefreshing) {
+        [refreshControl beginRefreshing];
+    }
     [self.activityIndicator startAnimating];
     [[DbManager sharedInstance] getPublishedYearsSince:[Utils getLastUpdated] callback:^(NSArray<BYear *> * _Nullable years, NSString * _Nullable error) {
         [self.activityIndicator stopAnimating];
@@ -109,6 +112,9 @@
             }
             [self loadSchedule: nil];
             [self matchNotes];
+            if (refreshControl.isRefreshing) {
+                [refreshControl endRefreshing];
+            }
         }
     }];
 }

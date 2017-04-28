@@ -19,6 +19,7 @@
 
 @interface NotesViewController () {
     NSMutableDictionary<NSString *, NSMutableArray<Note *> *> *yearDict;
+    NSArray<NSString *> *yearsKeys;
     NSManagedObjectContext *context;
 }
 
@@ -63,6 +64,7 @@
         NSLog(@"note year = %@", note.paper.event.day.year.year );
         NSLog(@"note year = %@", note.event.day.year.year );
     }
+    yearsKeys = [[[yearDict allKeys] reverseObjectEnumerator] allObjects];
     
     [self.tableView reloadData];
 }
@@ -128,6 +130,7 @@
     
     [alertController addTextFieldWithConfigurationHandler:^(UITextField * _Nonnull textField) {
         textField.placeholder = @"Email";
+        textField.keyboardType = UIKeyboardTypeEmailAddress;
         [[NSNotificationCenter defaultCenter] addObserverForName:UITextFieldTextDidChangeNotification object:textField queue:[NSOperationQueue mainQueue] usingBlock:^(NSNotification * _Nonnull note) {
             if (![textField.text isEqualToString:@""]) {
                 loginAction.enabled = YES;
@@ -140,6 +143,17 @@
         textField.secureTextEntry = YES;
     }];
     
+    [alertController addAction:[UIAlertAction actionWithTitle:@"Reset Password" style:UIAlertActionStyleDefault handler:^(UIAlertAction * _Nonnull action) {
+        
+        [self.activityIndicator startAnimating];
+        NSString *email = alertController.textFields[0].text;
+        [[DbManager sharedInstance] userPasswordRecoveryWithEmail:email callback:^(NSString * _Nullable result) {
+            [self show:result];
+            [self.activityIndicator stopAnimating];
+        }];
+        
+    }]];
+    
     [alertController addAction:[UIAlertAction actionWithTitle:@"Cancel" style:UIAlertActionStyleCancel handler:^(UIAlertAction * _Nonnull action) {
         NSLog(@"Login cancelled");
     }]];
@@ -150,11 +164,19 @@
 - (void)handleResponse:(NSString * _Nullable)error {
     [self.activityIndicator stopAnimating];
     if (error) {
-        NSLog(@"Error: %@", error);
+        [self show:error];
     } else {
         [self retrieveOnlineNotes];
     }
     [self checkUser];
+}
+
+- (void)show:(NSString *)error {
+    UIAlertController *alertController = [UIAlertController alertControllerWithTitle:@"Error" message:error preferredStyle:UIAlertControllerStyleAlert];
+    
+    [alertController addAction:[UIAlertAction actionWithTitle:@"OK" style:UIAlertActionStyleDefault handler:nil]];
+    
+    [self presentViewController:alertController animated:YES completion:nil];
 }
 
 - (void)retrieveOnlineNotes {
@@ -218,19 +240,19 @@
 #pragma mark - UITableView
 
 - (NSInteger)numberOfSectionsInTableView:(UITableView *)tableView {
-    return [yearDict allKeys].count;
+    return yearsKeys.count;
 }
 
 - (NSString *)tableView:(UITableView *)tableView titleForHeaderInSection:(NSInteger)section {
-    return [[yearDict allKeys] objectAtIndex:section];
+    return [yearsKeys objectAtIndex:section];
 }
 
 - (NSArray<NSString *> *)sectionIndexTitlesForTableView:(UITableView *)tableView {
-    return [yearDict allKeys];
+    return yearsKeys;
 }
 
 - (NSInteger)tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section {
-    NSString *yearKey = [[yearDict allKeys] objectAtIndex:section];
+    NSString *yearKey = [yearsKeys objectAtIndex:section];
     return [yearDict objectForKey:yearKey].count;
 }
 
@@ -246,7 +268,7 @@
     UILabel *eventNameLabel = (UILabel *)[cell viewWithTag:201];
     UILabel *noteContent = (UILabel *)[cell viewWithTag:202];
     
-    NSString *yearKey = [[yearDict allKeys] objectAtIndex:indexPath.section];
+    NSString *yearKey = [yearsKeys objectAtIndex:indexPath.section];
     Note *note = [[yearDict objectForKey:yearKey] objectAtIndex:indexPath.row];
     if (note.event) {
         Event *thisEvent = note.event;
@@ -267,7 +289,7 @@
 - (void)prepareForSegue:(UIStoryboardSegue *)segue sender:(id)sender {
     if ([[segue identifier] isEqualToString:@"showDetail"]) {
         NSIndexPath *indexPath = [self.tableView indexPathForSelectedRow];
-        NSString *yearKey = [[yearDict allKeys] objectAtIndex:indexPath.section];
+        NSString *yearKey = [yearsKeys objectAtIndex:indexPath.section];
         Note *selectedNote = [[yearDict objectForKey:yearKey] objectAtIndex:indexPath.row];
         SchedDetailViewController* dvc = segue.destinationViewController;
         if (selectedNote.event) {
