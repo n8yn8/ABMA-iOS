@@ -22,4 +22,14 @@ class BYear: NSObject {
     var updated: Date?
     var created: Date?
     var publishedAt: Date?
+    
+    func doSort() {
+        for event in events {
+            event.doSort()
+        }
+        let sortedEvents = events.sorted(by: { (e1, e2) -> Bool in
+            e1.startDate.compare(e2.startDate) == ComparisonResult.orderedAscending
+        })
+        events = sortedEvents
+    }
 }

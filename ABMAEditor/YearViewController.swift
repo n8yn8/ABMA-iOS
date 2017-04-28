@@ -33,11 +33,14 @@ class YearViewController: NSViewController {
         DbManager.sharedInstance.getYears { (years, error) in
             self.activityIndicator.stopAnimation(self)
             if let data = years {
-                let sorted = data.sorted(by: { (year1, year2) -> Bool in
+                for year in data {
+                    year.doSort()
+                }
+                let sortedYears = data.sorted(by: { (year1, year2) -> Bool in
                     return year1.name > year2.name
                 })
                 self.years.removeAll()
-                self.years.append(contentsOf: sorted)
+                self.years.append(contentsOf: sortedYears)
                 self.updateYearOptions()
             }
         }
@@ -153,6 +156,7 @@ class YearViewController: NSViewController {
         activityIndicator.startAnimation(self)
         DbManager.sharedInstance.update(year: selectedYear!) { (saved, error) in
             self.activityIndicator.stopAnimation(self)
+            saved?.doSort()
             self.selectedYear = saved
             self.updateUi()
         }
@@ -178,6 +182,7 @@ extension YearViewController: NewYearsViewControllerDelegate {
         thisYear.name = year
         DbManager.sharedInstance.update(year: thisYear) { (saved, error) in
             if let savedYear = saved {
+                savedYear.doSort()
                 self.years.append(savedYear)
                 self.updateYearOptions()
             }
