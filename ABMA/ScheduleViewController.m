@@ -57,7 +57,12 @@
     
     refreshControl = [[UIRefreshControl alloc] init];
     [refreshControl addTarget:self action:@selector(loadBackendless) forControlEvents:UIControlEventValueChanged];
-    self.tableView.refreshControl = refreshControl;
+    if ([self.tableView respondsToSelector:@selector(setRefreshControl:)]) {
+        self.tableView.refreshControl = refreshControl;
+    } else {
+        [self.tableView addSubview:refreshControl];
+    }
+    
 }
 
 - (void)matchNotes {
