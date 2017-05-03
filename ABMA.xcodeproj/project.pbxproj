@@ -962,7 +962,6 @@
 			baseConfigurationReference = C685805833CDEF77E8CDA59D /* Pods-ABMA.debug.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
-				ASSETCATALOG_COMPILER_LAUNCHIMAGE_NAME = LaunchImage;
 				CLANG_ENABLE_MODULES = YES;
 				CODE_SIGN_ENTITLEMENTS = ABMA/ABMA.entitlements;
 				CODE_SIGN_IDENTITY = "iPhone Developer";
@@ -983,6 +982,7 @@
 				SWIFT_OBJC_BRIDGING_HEADER = "ABMA/ABMA-Bridging-Header.h";
 				SWIFT_OPTIMIZATION_LEVEL = "-Onone";
 				SWIFT_VERSION = 3.0;
+				TARGETED_DEVICE_FAMILY = "1,2";
 				WRAPPER_EXTENSION = app;
 			};
 			name = Debug;
@@ -992,7 +992,6 @@
 			baseConfigurationReference = A1C6CB95C3883781050D0BE8 /* Pods-ABMA.release.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
-				ASSETCATALOG_COMPILER_LAUNCHIMAGE_NAME = LaunchImage;
 				CLANG_ENABLE_MODULES = YES;
 				CODE_SIGN_ENTITLEMENTS = ABMA/ABMA.entitlements;
 				CODE_SIGN_IDENTITY = "iPhone Developer";
@@ -1012,6 +1011,7 @@
 				PROVISIONING_PROFILE = "";
 				SWIFT_OBJC_BRIDGING_HEADER = "ABMA/ABMA-Bridging-Header.h";
 				SWIFT_VERSION = 3.0;
+				TARGETED_DEVICE_FAMILY = "1,2";
 				WRAPPER_EXTENSION = app;
 			};
 			name = Release;
