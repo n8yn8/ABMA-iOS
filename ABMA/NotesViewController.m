@@ -64,7 +64,8 @@
         NSLog(@"note year = %@", note.paper.event.day.year.year );
         NSLog(@"note year = %@", note.event.day.year.year );
     }
-    yearsKeys = [[[yearDict allKeys] reverseObjectEnumerator] allObjects];
+
+    yearsKeys = [[[[yearDict allKeys] sortedArrayUsingSelector:@selector(caseInsensitiveCompare:)] reverseObjectEnumerator] allObjects];
     
     [self.tableView reloadData];
 }
