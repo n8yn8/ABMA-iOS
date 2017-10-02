@@ -17,7 +17,7 @@ class SponsorsViewController: NSViewController {
     
     weak var delegate: SponsorsViewControllerDelegate?
     lazy var sheetViewController: NewSponsorViewController = {
-        return self.storyboard!.instantiateController(withIdentifier: "NewSponsorViewController")
+        return self.storyboard!.instantiateController(withIdentifier: NSStoryboard.SceneIdentifier(rawValue: "NewSponsorViewController"))
             as! NewSponsorViewController
     }()
     
@@ -32,7 +32,7 @@ class SponsorsViewController: NSViewController {
         
         let flowLayout = NSCollectionViewFlowLayout()
         flowLayout.itemSize = NSSize(width: 160.0, height: 140.0)
-        flowLayout.sectionInset = EdgeInsets(top: 10.0, left: 20.0, bottom: 10.0, right: 20.0)
+        flowLayout.sectionInset = NSEdgeInsets(top: 10.0, left: 20.0, bottom: 10.0, right: 20.0)
         flowLayout.minimumInteritemSpacing = 20.0
         flowLayout.minimumLineSpacing = 20.0
         collectionView.collectionViewLayout = flowLayout
@@ -95,7 +95,7 @@ extension SponsorsViewController: NSCollectionViewDataSource {
     }
     
     func collectionView(_ collectionView: NSCollectionView, itemForRepresentedObjectAt indexPath: IndexPath) -> NSCollectionViewItem {
-        let item = collectionView.makeItem(withIdentifier: "SponsorItem", for: indexPath)
+        let item = collectionView.makeItem(withIdentifier: NSUserInterfaceItemIdentifier(rawValue: "SponsorItem"), for: indexPath)
         guard let sponsorItem = item as? SponsorItem else {return item}
         
         sponsorItem.sponsor = sponsors[indexPath.item]

@@ -42,11 +42,11 @@ class PapersViewController: NSViewController, NSTableViewDelegate, NSTableViewDa
         
         let paper = papers[row]
         
-        let cell = tableView.make(withIdentifier: tableColumn!.identifier, owner: self) as! NSTableCellView
+        let cell = tableView.makeView(withIdentifier: tableColumn!.identifier, owner: self) as! NSTableCellView
         
-        if tableColumn!.identifier == "Title" {
+        if tableColumn!.identifier.rawValue == "Title" {
             cell.textField?.stringValue = paper.title
-        } else if tableColumn!.identifier == "Author" {
+        } else if tableColumn!.identifier.rawValue == "Author" {
             cell.textField?.stringValue = paper.author
         }
         
@@ -122,7 +122,7 @@ class PapersViewController: NSViewController, NSTableViewDelegate, NSTableViewDa
         } else {
             paper = BPaper()
         }
-        paper.initWith(title: title, author: author, synopsis: abstract!, order: order)
+        paper.initWith(title: title, author: author, synopsis: abstract, order: order)
         
         if let index = selectedIndex {
             self.papers[index] = paper

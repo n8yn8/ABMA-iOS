@@ -60,10 +60,10 @@ class EventViewController: NSViewController {
                 if let endDate = event.endDate {
                     endTimePicker.dateValue = endDate.addingTimeInterval(utcOffset)
                     endTimePicker.isHidden = false
-                    includeEndTimeButton.state = 1
+                    includeEndTimeButton.state = NSControl.StateValue(rawValue: 1)
                 } else {
                     endTimePicker.isHidden = true
-                    includeEndTimeButton.state = 0
+                    includeEndTimeButton.state = NSControl.StateValue(rawValue: 0)
                 }
                 if let location = event.location {
                     locationTextField.stringValue = location
@@ -113,13 +113,13 @@ class EventViewController: NSViewController {
     }
     
     @IBAction func toggleIncludeEnd(_ sender: Any) {
-        endTimePicker.isHidden = includeEndTimeButton.state == 0
-        endTimePicker.isEnabled = includeEndTimeButton.state == 1
+        endTimePicker.isHidden = includeEndTimeButton.state.rawValue == 0
+        endTimePicker.isEnabled = includeEndTimeButton.state.rawValue == 1
     }
     
     func saveEvent() {
         let startDate = buildDate(timePartInCurTZ: startTimePicker.dateValue)
-        let endDate = includeEndTimeButton.state == 1 ? buildDate(timePartInCurTZ: endTimePicker.dateValue) : nil
+        let endDate = includeEndTimeButton.state.rawValue == 1 ? buildDate(timePartInCurTZ: endTimePicker.dateValue) : nil
         
         var isNew = false
         if event == nil {
