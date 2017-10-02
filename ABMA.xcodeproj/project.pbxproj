@@ -27,11 +27,6 @@
 		4338BBB118F26F53002683EF /* AppDelegate.m in Sources */ = {isa = PBXBuildFile; fileRef = 4338BBB018F26F53002683EF /* AppDelegate.m */; };
 		4338BBB418F26F53002683EF /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 4338BBB218F26F53002683EF /* Main.storyboard */; };
 		4338BBB918F26F53002683EF /* Images.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 4338BBB818F26F53002683EF /* Images.xcassets */; };
-		4338BBC018F26F53002683EF /* XCTest.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 4338BBBF18F26F53002683EF /* XCTest.framework */; };
-		4338BBC118F26F53002683EF /* Foundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 4338BBA018F26F53002683EF /* Foundation.framework */; };
-		4338BBC218F26F53002683EF /* UIKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 4338BBA418F26F53002683EF /* UIKit.framework */; };
-		4338BBCA18F26F53002683EF /* InfoPlist.strings in Resources */ = {isa = PBXBuildFile; fileRef = 4338BBC818F26F53002683EF /* InfoPlist.strings */; };
-		4338BBCC18F26F53002683EF /* ABMATests.m in Sources */ = {isa = PBXBuildFile; fileRef = 4338BBCB18F26F53002683EF /* ABMATests.m */; };
 		433BA81C1E581456007B7893 /* Note+CoreDataClass.m in Sources */ = {isa = PBXBuildFile; fileRef = 433BA8091E581456007B7893 /* Note+CoreDataClass.m */; };
 		433BA81D1E581456007B7893 /* Note+CoreDataProperties.m in Sources */ = {isa = PBXBuildFile; fileRef = 433BA80B1E581456007B7893 /* Note+CoreDataProperties.m */; };
 		433BA81E1E581456007B7893 /* Day+CoreDataClass.m in Sources */ = {isa = PBXBuildFile; fileRef = 433BA80D1E581456007B7893 /* Day+CoreDataClass.m */; };
@@ -80,20 +75,9 @@
 		43FA2A131E5900B700BAE929 /* Utils.swift in Sources */ = {isa = PBXBuildFile; fileRef = 43FA2A121E5900B700BAE929 /* Utils.swift */; };
 		43FA2A151E593F7900BAE929 /* BNote.swift in Sources */ = {isa = PBXBuildFile; fileRef = 43FA2A141E593F7900BAE929 /* BNote.swift */; };
 		43FA2A161E593F7900BAE929 /* BNote.swift in Sources */ = {isa = PBXBuildFile; fileRef = 43FA2A141E593F7900BAE929 /* BNote.swift */; };
-		A74DC917320DD00E07BDE9AE /* libPods-ABMATests.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 53801DBDA437513E1C1E9818 /* libPods-ABMATests.a */; };
 		C4F0E907AB72A132E94E0BDE /* Pods_ABMAEditor.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 2374DDF4EB28960621A806BE /* Pods_ABMAEditor.framework */; };
 		EFFEC9CC9B3881A91ED820F5 /* libPods-ABMA.a in Frameworks */ = {isa = PBXBuildFile; fileRef = A78BFBB4A91629F58FE039ED /* libPods-ABMA.a */; };
 /* End PBXBuildFile section */
-
-/* Begin PBXContainerItemProxy section */
-		4338BBC318F26F53002683EF /* PBXContainerItemProxy */ = {
-			isa = PBXContainerItemProxy;
-			containerPortal = 4338BB9518F26F52002683EF /* Project object */;
-			proxyType = 1;
-			remoteGlobalIDString = 4338BB9C18F26F52002683EF;
-			remoteInfo = ABMA;
-		};
-/* End PBXContainerItemProxy section */
 
 /* Begin PBXFileReference section */
 		2374DDF4EB28960621A806BE /* Pods_ABMAEditor.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_ABMAEditor.framework; sourceTree = BUILT_PRODUCTS_DIR; };
@@ -127,11 +111,7 @@
 		4338BBB018F26F53002683EF /* AppDelegate.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = AppDelegate.m; sourceTree = "<group>"; };
 		4338BBB318F26F53002683EF /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Main.storyboard; sourceTree = "<group>"; };
 		4338BBB818F26F53002683EF /* Images.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Images.xcassets; sourceTree = "<group>"; };
-		4338BBBE18F26F53002683EF /* ABMATests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = ABMATests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
 		4338BBBF18F26F53002683EF /* XCTest.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = XCTest.framework; path = Library/Frameworks/XCTest.framework; sourceTree = DEVELOPER_DIR; };
-		4338BBC718F26F53002683EF /* ABMATests-Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = "ABMATests-Info.plist"; sourceTree = "<group>"; };
-		4338BBC918F26F53002683EF /* en */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = en; path = en.lproj/InfoPlist.strings; sourceTree = "<group>"; };
-		4338BBCB18F26F53002683EF /* ABMATests.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = ABMATests.m; sourceTree = "<group>"; };
 		433BA8081E581456007B7893 /* Note+CoreDataClass.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "Note+CoreDataClass.h"; sourceTree = "<group>"; };
 		433BA8091E581456007B7893 /* Note+CoreDataClass.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "Note+CoreDataClass.m"; sourceTree = "<group>"; };
 		433BA80A1E581456007B7893 /* Note+CoreDataProperties.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "Note+CoreDataProperties.h"; sourceTree = "<group>"; };
@@ -221,17 +201,6 @@
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
-		4338BBBB18F26F53002683EF /* Frameworks */ = {
-			isa = PBXFrameworksBuildPhase;
-			buildActionMask = 2147483647;
-			files = (
-				4338BBC018F26F53002683EF /* XCTest.framework in Frameworks */,
-				4338BBC218F26F53002683EF /* UIKit.framework in Frameworks */,
-				4338BBC118F26F53002683EF /* Foundation.framework in Frameworks */,
-				A74DC917320DD00E07BDE9AE /* libPods-ABMATests.a in Frameworks */,
-			);
-			runOnlyForDeploymentPostprocessing = 0;
-		};
 		434B44D71E1B231F00963096 /* Frameworks */ = {
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
@@ -247,7 +216,6 @@
 			isa = PBXGroup;
 			children = (
 				4338BBA618F26F53002683EF /* ABMA */,
-				4338BBC518F26F53002683EF /* ABMATests */,
 				434B44DB1E1B231F00963096 /* ABMAEditor */,
 				4338BB9F18F26F52002683EF /* Frameworks */,
 				4338BB9E18F26F52002683EF /* Products */,
@@ -259,7 +227,6 @@
 			isa = PBXGroup;
 			children = (
 				4338BB9D18F26F52002683EF /* ABMA.app */,
-				4338BBBE18F26F53002683EF /* ABMATests.xctest */,
 				434B44DA1E1B231F00963096 /* ABMAEditor.app */,
 			);
 			name = Products;
@@ -332,24 +299,6 @@
 				4352A8771AB28BBE00EC03CB /* BaseViewController.h */,
 				4352A8781AB28BBE00EC03CB /* BaseViewController.m */,
 				43FA2A121E5900B700BAE929 /* Utils.swift */,
-			);
-			name = "Supporting Files";
-			sourceTree = "<group>";
-		};
-		4338BBC518F26F53002683EF /* ABMATests */ = {
-			isa = PBXGroup;
-			children = (
-				4338BBCB18F26F53002683EF /* ABMATests.m */,
-				4338BBC618F26F53002683EF /* Supporting Files */,
-			);
-			path = ABMATests;
-			sourceTree = "<group>";
-		};
-		4338BBC618F26F53002683EF /* Supporting Files */ = {
-			isa = PBXGroup;
-			children = (
-				4338BBC718F26F53002683EF /* ABMATests-Info.plist */,
-				4338BBC818F26F53002683EF /* InfoPlist.strings */,
 			);
 			name = "Supporting Files";
 			sourceTree = "<group>";
@@ -460,27 +409,6 @@
 			productReference = 4338BB9D18F26F52002683EF /* ABMA.app */;
 			productType = "com.apple.product-type.application";
 		};
-		4338BBBD18F26F53002683EF /* ABMATests */ = {
-			isa = PBXNativeTarget;
-			buildConfigurationList = 4338BBD218F26F53002683EF /* Build configuration list for PBXNativeTarget "ABMATests" */;
-			buildPhases = (
-				97FC8AC692A580E8E7937D45 /* [CP] Check Pods Manifest.lock */,
-				4338BBBA18F26F53002683EF /* Sources */,
-				4338BBBB18F26F53002683EF /* Frameworks */,
-				4338BBBC18F26F53002683EF /* Resources */,
-				3461E600985E9EA83756814A /* [CP] Embed Pods Frameworks */,
-				08383E71777ECE908B7CA7D7 /* [CP] Copy Pods Resources */,
-			);
-			buildRules = (
-			);
-			dependencies = (
-				4338BBC418F26F53002683EF /* PBXTargetDependency */,
-			);
-			name = ABMATests;
-			productName = ABMATests;
-			productReference = 4338BBBE18F26F53002683EF /* ABMATests.xctest */;
-			productType = "com.apple.product-type.bundle.unit-test";
-		};
 		434B44D91E1B231F00963096 /* ABMAEditor */ = {
 			isa = PBXNativeTarget;
 			buildConfigurationList = 434B44E81E1B231F00963096 /* Build configuration list for PBXNativeTarget "ABMAEditor" */;
@@ -514,15 +442,12 @@
 				TargetAttributes = {
 					4338BB9C18F26F52002683EF = {
 						DevelopmentTeam = Z3X6HD4H5L;
-						LastSwiftMigration = 0820;
+						LastSwiftMigration = 0900;
 						SystemCapabilities = {
 							com.apple.Push = {
 								enabled = 1;
 							};
 						};
-					};
-					4338BBBD18F26F53002683EF = {
-						TestTargetID = 4338BB9C18F26F52002683EF;
 					};
 					434B44D91E1B231F00963096 = {
 						CreatedOnToolsVersion = 8.2.1;
@@ -546,7 +471,6 @@
 			projectRoot = "";
 			targets = (
 				4338BB9C18F26F52002683EF /* ABMA */,
-				4338BBBD18F26F53002683EF /* ABMATests */,
 				434B44D91E1B231F00963096 /* ABMAEditor */,
 			);
 		};
@@ -565,14 +489,6 @@
 				43F995E418F46102004DC565 /* Y2014.plist in Resources */,
 				438D599E1ABA97D3004FF7ED /* Launch Screen.xib in Resources */,
 				43C75EC31C9F9A500020C39E /* Y2016.plist in Resources */,
-			);
-			runOnlyForDeploymentPostprocessing = 0;
-		};
-		4338BBBC18F26F53002683EF /* Resources */ = {
-			isa = PBXResourcesBuildPhase;
-			buildActionMask = 2147483647;
-			files = (
-				4338BBCA18F26F53002683EF /* InfoPlist.strings in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -597,43 +513,16 @@
 			files = (
 			);
 			inputPaths = (
+				"${PODS_PODFILE_DIR_PATH}/Podfile.lock",
+				"${PODS_ROOT}/Manifest.lock",
 			);
 			name = "[CP] Check Pods Manifest.lock";
 			outputPaths = (
+				"$(DERIVED_FILE_DIR)/Pods-ABMAEditor-checkManifestLockResult.txt",
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 			shellPath = /bin/sh;
-			shellScript = "diff \"${PODS_ROOT}/../Podfile.lock\" \"${PODS_ROOT}/Manifest.lock\" > /dev/null\nif [ $? != 0 ] ; then\n    # print error to STDERR\n    echo \"error: The sandbox is not in sync with the Podfile.lock. Run 'pod install' or update your CocoaPods installation.\" >&2\n    exit 1\nfi\n";
-			showEnvVarsInLog = 0;
-		};
-		08383E71777ECE908B7CA7D7 /* [CP] Copy Pods Resources */ = {
-			isa = PBXShellScriptBuildPhase;
-			buildActionMask = 2147483647;
-			files = (
-			);
-			inputPaths = (
-			);
-			name = "[CP] Copy Pods Resources";
-			outputPaths = (
-			);
-			runOnlyForDeploymentPostprocessing = 0;
-			shellPath = /bin/sh;
-			shellScript = "\"${SRCROOT}/Pods/Target Support Files/Pods-ABMATests/Pods-ABMATests-resources.sh\"\n";
-			showEnvVarsInLog = 0;
-		};
-		3461E600985E9EA83756814A /* [CP] Embed Pods Frameworks */ = {
-			isa = PBXShellScriptBuildPhase;
-			buildActionMask = 2147483647;
-			files = (
-			);
-			inputPaths = (
-			);
-			name = "[CP] Embed Pods Frameworks";
-			outputPaths = (
-			);
-			runOnlyForDeploymentPostprocessing = 0;
-			shellPath = /bin/sh;
-			shellScript = "\"${SRCROOT}/Pods/Target Support Files/Pods-ABMATests/Pods-ABMATests-frameworks.sh\"\n";
+			shellScript = "diff \"${PODS_PODFILE_DIR_PATH}/Podfile.lock\" \"${PODS_ROOT}/Manifest.lock\" > /dev/null\nif [ $? != 0 ] ; then\n    # print error to STDERR\n    echo \"error: The sandbox is not in sync with the Podfile.lock. Run 'pod install' or update your CocoaPods installation.\" >&2\n    exit 1\nfi\n# This output is used by Xcode 'outputs' to avoid re-running this script phase.\necho \"SUCCESS\" > \"${SCRIPT_OUTPUT_FILE_0}\"\n";
 			showEnvVarsInLog = 0;
 		};
 		43732BD21E72F34200A85B63 /* Fabric Run Script */ = {
@@ -670,13 +559,16 @@
 			files = (
 			);
 			inputPaths = (
+				"${PODS_PODFILE_DIR_PATH}/Podfile.lock",
+				"${PODS_ROOT}/Manifest.lock",
 			);
 			name = "[CP] Check Pods Manifest.lock";
 			outputPaths = (
+				"$(DERIVED_FILE_DIR)/Pods-ABMA-checkManifestLockResult.txt",
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 			shellPath = /bin/sh;
-			shellScript = "diff \"${PODS_ROOT}/../Podfile.lock\" \"${PODS_ROOT}/Manifest.lock\" > /dev/null\nif [ $? != 0 ] ; then\n    # print error to STDERR\n    echo \"error: The sandbox is not in sync with the Podfile.lock. Run 'pod install' or update your CocoaPods installation.\" >&2\n    exit 1\nfi\n";
+			shellScript = "diff \"${PODS_PODFILE_DIR_PATH}/Podfile.lock\" \"${PODS_ROOT}/Manifest.lock\" > /dev/null\nif [ $? != 0 ] ; then\n    # print error to STDERR\n    echo \"error: The sandbox is not in sync with the Podfile.lock. Run 'pod install' or update your CocoaPods installation.\" >&2\n    exit 1\nfi\n# This output is used by Xcode 'outputs' to avoid re-running this script phase.\necho \"SUCCESS\" > \"${SCRIPT_OUTPUT_FILE_0}\"\n";
 			showEnvVarsInLog = 0;
 		};
 		461F3C39CFC8DA0E924A5770 /* [CP] Embed Pods Frameworks */ = {
@@ -692,21 +584,6 @@
 			runOnlyForDeploymentPostprocessing = 0;
 			shellPath = /bin/sh;
 			shellScript = "\"${SRCROOT}/Pods/Target Support Files/Pods-ABMA/Pods-ABMA-frameworks.sh\"\n";
-			showEnvVarsInLog = 0;
-		};
-		97FC8AC692A580E8E7937D45 /* [CP] Check Pods Manifest.lock */ = {
-			isa = PBXShellScriptBuildPhase;
-			buildActionMask = 2147483647;
-			files = (
-			);
-			inputPaths = (
-			);
-			name = "[CP] Check Pods Manifest.lock";
-			outputPaths = (
-			);
-			runOnlyForDeploymentPostprocessing = 0;
-			shellPath = /bin/sh;
-			shellScript = "diff \"${PODS_ROOT}/../Podfile.lock\" \"${PODS_ROOT}/Manifest.lock\" > /dev/null\nif [ $? != 0 ] ; then\n    # print error to STDERR\n    echo \"error: The sandbox is not in sync with the Podfile.lock. Run 'pod install' or update your CocoaPods installation.\" >&2\n    exit 1\nfi\n";
 			showEnvVarsInLog = 0;
 		};
 		C12D6CD538280536E265BE30 /* [CP] Copy Pods Resources */ = {
@@ -730,9 +607,12 @@
 			files = (
 			);
 			inputPaths = (
+				"${SRCROOT}/Pods/Target Support Files/Pods-ABMAEditor/Pods-ABMAEditor-frameworks.sh",
+				"${BUILT_PRODUCTS_DIR}/SDWebImage-framework/SDWebImage.framework",
 			);
 			name = "[CP] Embed Pods Frameworks";
 			outputPaths = (
+				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/SDWebImage.framework",
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 			shellPath = /bin/sh;
@@ -797,14 +677,6 @@
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
-		4338BBBA18F26F53002683EF /* Sources */ = {
-			isa = PBXSourcesBuildPhase;
-			buildActionMask = 2147483647;
-			files = (
-				4338BBCC18F26F53002683EF /* ABMATests.m in Sources */,
-			);
-			runOnlyForDeploymentPostprocessing = 0;
-		};
 		434B44D61E1B231F00963096 /* Sources */ = {
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
@@ -831,14 +703,6 @@
 		};
 /* End PBXSourcesBuildPhase section */
 
-/* Begin PBXTargetDependency section */
-		4338BBC418F26F53002683EF /* PBXTargetDependency */ = {
-			isa = PBXTargetDependency;
-			target = 4338BB9C18F26F52002683EF /* ABMA */;
-			targetProxy = 4338BBC318F26F53002683EF /* PBXContainerItemProxy */;
-		};
-/* End PBXTargetDependency section */
-
 /* Begin PBXVariantGroup section */
 		4338BBA918F26F53002683EF /* InfoPlist.strings */ = {
 			isa = PBXVariantGroup;
@@ -854,14 +718,6 @@
 				4338BBB318F26F53002683EF /* Base */,
 			);
 			name = Main.storyboard;
-			sourceTree = "<group>";
-		};
-		4338BBC818F26F53002683EF /* InfoPlist.strings */ = {
-			isa = PBXVariantGroup;
-			children = (
-				4338BBC918F26F53002683EF /* en */,
-			);
-			name = InfoPlist.strings;
 			sourceTree = "<group>";
 		};
 		434B44E21E1B231F00963096 /* Main.storyboard */ = {
@@ -993,7 +849,8 @@
 				PROVISIONING_PROFILE = "";
 				SWIFT_OBJC_BRIDGING_HEADER = "ABMA/ABMA-Bridging-Header.h";
 				SWIFT_OPTIMIZATION_LEVEL = "-Onone";
-				SWIFT_VERSION = 3.0;
+				SWIFT_SWIFT3_OBJC_INFERENCE = On;
+				SWIFT_VERSION = 4.0;
 				TARGETED_DEVICE_FAMILY = "1,2";
 				WRAPPER_EXTENSION = app;
 			};
@@ -1022,55 +879,10 @@
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				PROVISIONING_PROFILE = "";
 				SWIFT_OBJC_BRIDGING_HEADER = "ABMA/ABMA-Bridging-Header.h";
-				SWIFT_VERSION = 3.0;
+				SWIFT_SWIFT3_OBJC_INFERENCE = On;
+				SWIFT_VERSION = 4.0;
 				TARGETED_DEVICE_FAMILY = "1,2";
 				WRAPPER_EXTENSION = app;
-			};
-			name = Release;
-		};
-		4338BBD318F26F53002683EF /* Debug */ = {
-			isa = XCBuildConfiguration;
-			baseConfigurationReference = F51044F705C6889618CD44E9 /* Pods-ABMATests.debug.xcconfig */;
-			buildSettings = {
-				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = YES;
-				BUNDLE_LOADER = "$(BUILT_PRODUCTS_DIR)/ABMA.app/ABMA";
-				FRAMEWORK_SEARCH_PATHS = (
-					"$(SDKROOT)/Developer/Library/Frameworks",
-					"$(inherited)",
-					"$(DEVELOPER_FRAMEWORKS_DIR)",
-				);
-				GCC_PRECOMPILE_PREFIX_HEADER = YES;
-				GCC_PREFIX_HEADER = "ABMA/ABMA-Prefix.pch";
-				GCC_PREPROCESSOR_DEFINITIONS = (
-					"DEBUG=1",
-					"$(inherited)",
-				);
-				INFOPLIST_FILE = "ABMATests/ABMATests-Info.plist";
-				PRODUCT_BUNDLE_IDENTIFIER = "com.n8yn8.${PRODUCT_NAME:rfc1034identifier}";
-				PRODUCT_NAME = "$(TARGET_NAME)";
-				TEST_HOST = "$(BUNDLE_LOADER)";
-				WRAPPER_EXTENSION = xctest;
-			};
-			name = Debug;
-		};
-		4338BBD418F26F53002683EF /* Release */ = {
-			isa = XCBuildConfiguration;
-			baseConfigurationReference = 5FC6B48EF335B7844BFD6C79 /* Pods-ABMATests.release.xcconfig */;
-			buildSettings = {
-				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = YES;
-				BUNDLE_LOADER = "$(BUILT_PRODUCTS_DIR)/ABMA.app/ABMA";
-				FRAMEWORK_SEARCH_PATHS = (
-					"$(SDKROOT)/Developer/Library/Frameworks",
-					"$(inherited)",
-					"$(DEVELOPER_FRAMEWORKS_DIR)",
-				);
-				GCC_PRECOMPILE_PREFIX_HEADER = YES;
-				GCC_PREFIX_HEADER = "ABMA/ABMA-Prefix.pch";
-				INFOPLIST_FILE = "ABMATests/ABMATests-Info.plist";
-				PRODUCT_BUNDLE_IDENTIFIER = "com.n8yn8.${PRODUCT_NAME:rfc1034identifier}";
-				PRODUCT_NAME = "$(TARGET_NAME)";
-				TEST_HOST = "$(BUNDLE_LOADER)";
-				WRAPPER_EXTENSION = xctest;
 			};
 			name = Release;
 		};
@@ -1153,15 +965,6 @@
 			buildConfigurations = (
 				4338BBD018F26F53002683EF /* Debug */,
 				4338BBD118F26F53002683EF /* Release */,
-			);
-			defaultConfigurationIsVisible = 0;
-			defaultConfigurationName = Release;
-		};
-		4338BBD218F26F53002683EF /* Build configuration list for PBXNativeTarget "ABMATests" */ = {
-			isa = XCConfigurationList;
-			buildConfigurations = (
-				4338BBD318F26F53002683EF /* Debug */,
-				4338BBD418F26F53002683EF /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
 			defaultConfigurationName = Release;
