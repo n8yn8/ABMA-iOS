@@ -10,19 +10,20 @@ import Foundation
 
 class BYear: NSObject {
     
-    var objectId: String?
-    var name = 0
-    var events = [BEvent]()
-    var welcome: String?
-    var info: String?
-    var sponsors = [BSponsor]()
-    var surveyUrl: String?
-    var surveyStart: Date?
-    var surveyEnd: Date?
-    var updated: Date?
-    var created: Date?
-    var publishedAt: Date?
+    @objc var objectId: String?
+    @objc var name = 0
+    @objc var events = [BEvent]()
+    @objc var welcome: String?
+    @objc var info: String?
+    @objc var sponsors = [BSponsor]()
+    @objc var surveyUrl: String?
+    @objc var surveyStart: Date?
+    @objc var surveyEnd: Date?
+    @objc var updated: Date?
+    @objc var created: Date?
+    @objc var publishedAt: Date?
     
+    @objc 
     func doSort() {
         for event in events {
             event.doSort()

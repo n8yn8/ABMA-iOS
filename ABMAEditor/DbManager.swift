@@ -10,6 +10,7 @@ import Foundation
 
 class DbManager: NSObject {
     
+    @objc
     static let sharedInstance = DbManager()
 
     let APP_ID = "627F9018-4483-B50E-FFCA-0E42A1E33F00"
@@ -24,6 +25,7 @@ class DbManager: NSObject {
         backendless?.userService.setStayLoggedIn(true)
     }
     
+    @objc
     func registerUser(email: String, password: String, callback: @escaping (_ errorString: String?) -> Void) {
         let user: BackendlessUser = BackendlessUser()
         user.email = email as NSString!
@@ -42,6 +44,7 @@ class DbManager: NSObject {
         })
     }
     
+    @objc
     func login(email: String, password: String, callback: @escaping (_ errorString: String?) -> Void) {
         backendless?.userService.login(email, password: password, response: { (user) in
             print("User logged in")
@@ -56,6 +59,7 @@ class DbManager: NSObject {
         })
     }
     
+    @objc
     func userPasswordRecovery(email: String, callback: @escaping (_ errorString: String?) -> Void) {
         backendless?.userService.restorePassword(email, response: { (response) in
             print(String(describing: response))
@@ -70,6 +74,7 @@ class DbManager: NSObject {
         })
     }
     
+    @objc
     func logout(callback: @escaping (_ errorString: String?) -> Void) {
         backendless?.userService.logout({ (response) in
             callback(nil)
@@ -78,10 +83,12 @@ class DbManager: NSObject {
         })
     }
     
+    @objc
     func getCurrentUser() -> BackendlessUser? {
         return backendless?.userService.currentUser
     }
     
+    @objc
     func update(year: BYear, callback: @escaping (_ savedYear: BYear?, _ errorString: String?) -> Void) {
         backendless?.persistenceService.of(BYear.ofClass()).save(year, response: { (response) in
             if let saved = response as? BYear {
@@ -112,6 +119,7 @@ class DbManager: NSObject {
         getYears(query: nil, callback: callback)
     }
 
+    @objc
     func getPublishedYears(since: Date?, callback: @escaping (_ years: [BYear]?, _ errorString: String?) -> Void) {
         var query = "publishedAt is not null"
         if let s = since {
@@ -163,6 +171,7 @@ class DbManager: NSObject {
         })
     }
     
+    @objc
     func uploadImage(name: String, image: NSData, callback: @escaping (_ imageUrl: String) -> Void) {
         backendless?.file.saveFile("sponsors", fileName: name, content: image as Data!, response: { (saved) in
             if let file = saved {
@@ -187,13 +196,13 @@ class DbManager: NSObject {
         })
     }
     
+    @objc
     func getNotes(callback: @escaping (_ years: [BNote]?, _ errorString: String?) -> Void) {
         guard let user = getCurrentUser() else {
             callback(nil, "User not logged in")
             return
         }
-        let dataQuery = DataQueryBuilder()
-        dataQuery?.setWhereClause("user.objectId = \'\(user.objectId!)\'")
+        let dataQuery = DataQueryBuilder().setWhereClause("user.objectId = \'\(user.objectId!)\'")
         backendless?.persistenceService.find(BNote.ofClass(), queryBuilder: dataQuery, response: { (response) in
             print("response \(String(describing: response))")
             if let notes = response as? [BNote] {
@@ -205,6 +214,7 @@ class DbManager: NSObject {
         })
     }
     
+    @objc
     func registerForPush(tokenData: Data) {
         backendless?.messaging.registerDevice(tokenData, response: { (response) in
             print("response \(String(describing: response))")

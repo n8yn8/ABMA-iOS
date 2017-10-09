@@ -10,10 +10,10 @@ import Foundation
 
 class BSponsor: NSObject {
     
-    var objectId: String?
-    var url: String?
-    var imageUrl: String?
-    var upadted: Date?
-    var created: Date?
+    @objc var objectId: String?
+    @objc var url: String?
+    @objc var imageUrl: String?
+    @objc var upadted: Date?
+    @objc var created: Date?
     
 }

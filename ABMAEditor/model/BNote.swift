@@ -10,12 +10,12 @@ import Foundation
 
 class BNote: NSObject {
     
-    var objectId: String?
-    var content: String?
-    var paperId: String?
-    var eventId: String?
-    var user: BackendlessUser!
-    var updated: Date?
-    var created: Date?
+    @objc var objectId: String?
+    @objc var content: String?
+    @objc var paperId: String?
+    @objc var eventId: String?
+    @objc var user: BackendlessUser!
+    @objc var updated: Date?
+    @objc var created: Date?
     
 }
