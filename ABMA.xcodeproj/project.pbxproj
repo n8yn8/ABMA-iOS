@@ -50,12 +50,11 @@
 		43732BCF1E6E660E00A85B63 /* Year+CoreDataClass.m in Sources */ = {isa = PBXBuildFile; fileRef = 43732BCC1E6E660E00A85B63 /* Year+CoreDataClass.m */; };
 		43732BD01E6E660E00A85B63 /* Year+CoreDataProperties.m in Sources */ = {isa = PBXBuildFile; fileRef = 43732BCE1E6E660E00A85B63 /* Year+CoreDataProperties.m */; };
 		4378FD9B1E3A452F00319DE0 /* Papers.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 4378FD9A1E3A452F00319DE0 /* Papers.storyboard */; };
-		4378FDA11E3C482C00319DE0 /* DbManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4378FDA01E3C482C00319DE0 /* DbManager.swift */; };
 		438D599E1ABA97D3004FF7ED /* Launch Screen.xib in Resources */ = {isa = PBXBuildFile; fileRef = 438D599D1ABA97D3004FF7ED /* Launch Screen.xib */; };
 		439947E51AB1E9F500D1479B /* NotesViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 439947E41AB1E9F500D1479B /* NotesViewController.m */; };
+		43A436081FA767EB00754298 /* DbManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 43A436071FA767EB00754298 /* DbManager.swift */; };
 		43AAAE2A1AAAA484002C424A /* CoreData.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 43AAAE291AAAA484002C424A /* CoreData.framework */; };
 		43AAAE2D1AAAA4D1002C424A /* ABMA.xcdatamodeld in Sources */ = {isa = PBXBuildFile; fileRef = 43AAAE2B1AAAA4D1002C424A /* ABMA.xcdatamodeld */; };
-		43B16CEA1E54A83C00A240FA /* DbManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4378FDA01E3C482C00319DE0 /* DbManager.swift */; };
 		43B16CEB1E54A83C00A240FA /* BEvent.swift in Sources */ = {isa = PBXBuildFile; fileRef = 434B44ED1E1BF75500963096 /* BEvent.swift */; };
 		43B16CEC1E54A83C00A240FA /* BPaper.swift in Sources */ = {isa = PBXBuildFile; fileRef = 432ED0931E267AC300DD92BB /* BPaper.swift */; };
 		43B16CED1E54A83C00A240FA /* BYear.swift in Sources */ = {isa = PBXBuildFile; fileRef = 435EEE671E3D329F00C9CF84 /* BYear.swift */; };
@@ -152,10 +151,10 @@
 		43732BCE1E6E660E00A85B63 /* Year+CoreDataProperties.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "Year+CoreDataProperties.m"; sourceTree = "<group>"; };
 		43732BD11E70501A00A85B63 /* ABMA.entitlements */ = {isa = PBXFileReference; lastKnownFileType = text.plist.entitlements; path = ABMA.entitlements; sourceTree = "<group>"; };
 		4378FD9A1E3A452F00319DE0 /* Papers.storyboard */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.storyboard; path = Papers.storyboard; sourceTree = "<group>"; };
-		4378FDA01E3C482C00319DE0 /* DbManager.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = DbManager.swift; path = ../DbManager.swift; sourceTree = "<group>"; };
 		438D599D1ABA97D3004FF7ED /* Launch Screen.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = "Launch Screen.xib"; sourceTree = "<group>"; };
 		439947E31AB1E9F500D1479B /* NotesViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = NotesViewController.h; sourceTree = "<group>"; };
 		439947E41AB1E9F500D1479B /* NotesViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = NotesViewController.m; sourceTree = "<group>"; };
+		43A436071FA767EB00754298 /* DbManager.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = DbManager.swift; sourceTree = "<group>"; };
 		43AAAE291AAAA484002C424A /* CoreData.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CoreData.framework; path = System/Library/Frameworks/CoreData.framework; sourceTree = SDKROOT; };
 		43AAAE2C1AAAA4D1002C424A /* ABMA.xcdatamodel */ = {isa = PBXFileReference; lastKnownFileType = wrapper.xcdatamodel; path = ABMA.xcdatamodel; sourceTree = "<group>"; };
 		43B16CE71E54A80100A240FA /* ABMA-Bridging-Header.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = "ABMA-Bridging-Header.h"; sourceTree = "<group>"; };
@@ -306,6 +305,7 @@
 		433BA8071E581400007B7893 /* model */ = {
 			isa = PBXGroup;
 			children = (
+				43A436071FA767EB00754298 /* DbManager.swift */,
 				43732BCB1E6E660E00A85B63 /* Year+CoreDataClass.h */,
 				43732BCC1E6E660E00A85B63 /* Year+CoreDataClass.m */,
 				43732BCD1E6E660E00A85B63 /* Year+CoreDataProperties.h */,
@@ -362,7 +362,6 @@
 		434B44EC1E1BF74700963096 /* model */ = {
 			isa = PBXGroup;
 			children = (
-				4378FDA01E3C482C00319DE0 /* DbManager.swift */,
 				434B44ED1E1BF75500963096 /* BEvent.swift */,
 				432ED0931E267AC300DD92BB /* BPaper.swift */,
 				435EEE671E3D329F00C9CF84 /* BYear.swift */,
@@ -645,7 +644,6 @@
 				43B16CEE1E54A83C00A240FA /* BSponsor.swift in Sources */,
 				433BA81C1E581456007B7893 /* Note+CoreDataClass.m in Sources */,
 				433BA81D1E581456007B7893 /* Note+CoreDataProperties.m in Sources */,
-				43B16CEA1E54A83C00A240FA /* DbManager.swift in Sources */,
 				43201F441ABF371F00486999 /* PaperTableViewCell.m in Sources */,
 				433BA85C1E58B471007B7893 /* Sponsor+CoreDataProperties.m in Sources */,
 				43F070C818F3631E0077F11E /* ScheduleViewController.m in Sources */,
@@ -669,6 +667,7 @@
 				43732BD01E6E660E00A85B63 /* Year+CoreDataProperties.m in Sources */,
 				433BA8241E581456007B7893 /* Event+CoreDataClass.m in Sources */,
 				433BA85B1E58B471007B7893 /* Sponsor+CoreDataClass.m in Sources */,
+				43A436081FA767EB00754298 /* DbManager.swift in Sources */,
 				433BA8221E581456007B7893 /* Paper+CoreDataClass.m in Sources */,
 				43732BCF1E6E660E00A85B63 /* Year+CoreDataClass.m in Sources */,
 				43B16CED1E54A83C00A240FA /* BYear.swift in Sources */,
@@ -689,7 +688,6 @@
 				43027B371E39B7F400585C8B /* PapersViewController.swift in Sources */,
 				431326B21E3D8B47003C808E /* NewSponsorViewController.swift in Sources */,
 				434B44F21E23222700963096 /* ContainerController.swift in Sources */,
-				4378FDA11E3C482C00319DE0 /* DbManager.swift in Sources */,
 				431326AF1E3D7BE7003C808E /* SponsorItem.swift in Sources */,
 				435EEE681E3D329F00C9CF84 /* BYear.swift in Sources */,
 				432ED0941E267AC300DD92BB /* BPaper.swift in Sources */,
