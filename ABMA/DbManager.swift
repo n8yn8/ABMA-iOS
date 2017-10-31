@@ -87,37 +87,6 @@ class DbManager: NSObject {
     func getCurrentUser() -> BackendlessUser? {
         return backendless?.userService.currentUser
     }
-    
-    @objc
-    func update(year: BYear, callback: @escaping (_ savedYear: BYear?, _ errorString: String?) -> Void) {
-        backendless?.persistenceService.of(BYear.ofClass()).save(year, response: { (response) in
-            if let saved = response as? BYear {
-                callback(saved, nil)
-            } else {
-                callback(nil, nil)
-            }
-        }, error: { (error) in
-            print("error: \(String(describing: error))")
-            callback(nil, error.debugDescription)
-        })
-    }
-    
-    func updateEvent(event: BEvent, callback: @escaping (_ savedEvent: BEvent?, _ errorString: String?) -> Void) {
-        backendless?.persistenceService.of(BEvent.ofClass()).save(event, response: { (response) in
-            if let savedEvent = response as? BEvent {
-                callback(savedEvent, nil)
-            } else {
-                callback(nil, nil)
-            }
-        }, error: { (error) in
-            print("error: \(String(describing: error))")
-            callback(nil, error.debugDescription)
-        })
-    }
-    
-    func getYears(callback: @escaping (_ years: [BYear]?, _ errorString: String?) -> Void) {
-        getYears(query: nil, callback: callback)
-    }
 
     @objc
     func getPublishedYears(since: Date?, callback: @escaping (_ years: [BYear]?, _ errorString: String?) -> Void) {
@@ -143,43 +112,6 @@ class DbManager: NSObject {
         }, error: { (error) in
             print("error: \(String(describing: error))")
             callback(nil, error.debugDescription)
-        })
-    }
-    
-    func deleteEvent(event: BEvent) {
-        deleteRelatedPapers(event: event) {
-            self.backendless?.data.remove(BEvent.ofClass(), objectId: event.objectId, response: { (number) in
-                print("delete ref: \(String(describing: number))")
-            }, error: { (error) in
-                print("\(error.debugDescription)")
-            })
-        }
-    }
-    
-    func deleteRelatedPapers(event: BEvent, callback: @escaping () -> Void) {
-        for paper in event.papers {
-            deletePaper(paper: paper)
-        }
-        callback() //TODO: put callback in last response
-    }
-    
-    func deletePaper(paper: BPaper) {
-        backendless?.data.remove(paper, response: { (ref) in
-            print("delete ref: \(String(describing: ref))")
-        }, error: { (error) in
-            print("\(error.debugDescription)")
-        })
-    }
-    
-    @objc
-    func uploadImage(name: String, image: NSData, callback: @escaping (_ imageUrl: String) -> Void) {
-        backendless?.file.saveFile("sponsors", fileName: name, content: image as Data!, response: { (saved) in
-            if let file = saved {
-                print("file uplodaed")
-                callback(file.fileURL)
-            }
-        }, error: { (error) in
-            print("error: \(error.debugDescription)")
         })
     }
     
@@ -220,18 +152,6 @@ class DbManager: NSObject {
             print("response \(String(describing: response))")
         }, error: { (error) in
             print("error: \(String(describing: error?.message))")
-        })
-    }
-    
-    func pushUpdate(message: String) {
-        let publishOptions = PublishOptions()
-        publishOptions.assignHeaders(["ios-text":message,
-                                      "android-content-title":"ABMA",
-                                      "android-content-text":message])
-        backendless?.messaging.publish("default", message: message, response: { (messageStatus) in
-            print("message status = \(String(describing: messageStatus?.status)) \(String(describing: messageStatus?.messageId))")
-        }, error: { (fault) in
-            print("Message fault \(String(describing: fault?.message))")
         })
     }
     
