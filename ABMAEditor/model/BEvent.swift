@@ -8,7 +8,7 @@
 
 import Foundation
 
-class BEvent: NSObject {
+class BEvent: NSObject, Codable {
     
     @objc var objectId: String?
     @objc var details: String?

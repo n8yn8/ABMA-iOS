@@ -8,7 +8,7 @@
 
 import Foundation
 
-class BSponsor: NSObject {
+class BSponsor: NSObject, Codable {
     
     @objc var objectId: String?
     @objc var url: String?

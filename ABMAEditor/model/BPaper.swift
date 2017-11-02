@@ -8,7 +8,7 @@
 
 import Foundation
 
-class BPaper: NSObject {
+class BPaper: NSObject, Codable {
     
     @objc var objectId: String?
     @objc var title: String!

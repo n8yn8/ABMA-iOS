@@ -45,7 +45,6 @@
 		434B44F01E1FF92900963096 /* EventListViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 434B44EF1E1FF92900963096 /* EventListViewController.swift */; };
 		434B44F21E23222700963096 /* ContainerController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 434B44F11E23222700963096 /* ContainerController.swift */; };
 		4352A8791AB28BBE00EC03CB /* BaseViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 4352A8781AB28BBE00EC03CB /* BaseViewController.m */; };
-		435EEE681E3D329F00C9CF84 /* BYear.swift in Sources */ = {isa = PBXBuildFile; fileRef = 435EEE671E3D329F00C9CF84 /* BYear.swift */; };
 		435EEE6E1E3D3A4200C9CF84 /* NewYearsViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 435EEE6D1E3D3A4200C9CF84 /* NewYearsViewController.swift */; };
 		43732BCF1E6E660E00A85B63 /* Year+CoreDataClass.m in Sources */ = {isa = PBXBuildFile; fileRef = 43732BCC1E6E660E00A85B63 /* Year+CoreDataClass.m */; };
 		43732BD01E6E660E00A85B63 /* Year+CoreDataProperties.m in Sources */ = {isa = PBXBuildFile; fileRef = 43732BCE1E6E660E00A85B63 /* Year+CoreDataProperties.m */; };
@@ -53,11 +52,14 @@
 		438D599E1ABA97D3004FF7ED /* Launch Screen.xib in Resources */ = {isa = PBXBuildFile; fileRef = 438D599D1ABA97D3004FF7ED /* Launch Screen.xib */; };
 		439947E51AB1E9F500D1479B /* NotesViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 439947E41AB1E9F500D1479B /* NotesViewController.m */; };
 		43A436081FA767EB00754298 /* DbManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 43A436071FA767EB00754298 /* DbManager.swift */; };
+		43A4360A1FA7694600754298 /* DbManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 43A436091FA7694600754298 /* DbManager.swift */; };
+		43A436131FA8C3CD00754298 /* BackendError.swift in Sources */ = {isa = PBXBuildFile; fileRef = 43A436121FA8C3CD00754298 /* BackendError.swift */; };
+		43A436141FA8D27200754298 /* BYear.swift in Sources */ = {isa = PBXBuildFile; fileRef = 435EEE671E3D329F00C9CF84 /* BYear.swift */; };
+		43A436151FAB589F00754298 /* BYear.swift in Sources */ = {isa = PBXBuildFile; fileRef = 435EEE671E3D329F00C9CF84 /* BYear.swift */; };
 		43AAAE2A1AAAA484002C424A /* CoreData.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 43AAAE291AAAA484002C424A /* CoreData.framework */; };
 		43AAAE2D1AAAA4D1002C424A /* ABMA.xcdatamodeld in Sources */ = {isa = PBXBuildFile; fileRef = 43AAAE2B1AAAA4D1002C424A /* ABMA.xcdatamodeld */; };
 		43B16CEB1E54A83C00A240FA /* BEvent.swift in Sources */ = {isa = PBXBuildFile; fileRef = 434B44ED1E1BF75500963096 /* BEvent.swift */; };
 		43B16CEC1E54A83C00A240FA /* BPaper.swift in Sources */ = {isa = PBXBuildFile; fileRef = 432ED0931E267AC300DD92BB /* BPaper.swift */; };
-		43B16CED1E54A83C00A240FA /* BYear.swift in Sources */ = {isa = PBXBuildFile; fileRef = 435EEE671E3D329F00C9CF84 /* BYear.swift */; };
 		43B16CEE1E54A83C00A240FA /* BSponsor.swift in Sources */ = {isa = PBXBuildFile; fileRef = 431326A51E3D7796003C808E /* BSponsor.swift */; };
 		43B2B5A91AB72DE000F0A6D0 /* Y2015.plist in Resources */ = {isa = PBXBuildFile; fileRef = 43B2B5A81AB72DE000F0A6D0 /* Y2015.plist */; };
 		43C75EC31C9F9A500020C39E /* Y2016.plist in Resources */ = {isa = PBXBuildFile; fileRef = 43C75EC21C9F9A500020C39E /* Y2016.plist */; };
@@ -73,7 +75,6 @@
 		43F995E418F46102004DC565 /* Y2014.plist in Resources */ = {isa = PBXBuildFile; fileRef = 43F995E318F46102004DC565 /* Y2014.plist */; };
 		43FA2A131E5900B700BAE929 /* Utils.swift in Sources */ = {isa = PBXBuildFile; fileRef = 43FA2A121E5900B700BAE929 /* Utils.swift */; };
 		43FA2A151E593F7900BAE929 /* BNote.swift in Sources */ = {isa = PBXBuildFile; fileRef = 43FA2A141E593F7900BAE929 /* BNote.swift */; };
-		43FA2A161E593F7900BAE929 /* BNote.swift in Sources */ = {isa = PBXBuildFile; fileRef = 43FA2A141E593F7900BAE929 /* BNote.swift */; };
 		C4F0E907AB72A132E94E0BDE /* Pods_ABMAEditor.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 2374DDF4EB28960621A806BE /* Pods_ABMAEditor.framework */; };
 		EFFEC9CC9B3881A91ED820F5 /* libPods-ABMA.a in Frameworks */ = {isa = PBXBuildFile; fileRef = A78BFBB4A91629F58FE039ED /* libPods-ABMA.a */; };
 /* End PBXBuildFile section */
@@ -155,6 +156,8 @@
 		439947E31AB1E9F500D1479B /* NotesViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = NotesViewController.h; sourceTree = "<group>"; };
 		439947E41AB1E9F500D1479B /* NotesViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = NotesViewController.m; sourceTree = "<group>"; };
 		43A436071FA767EB00754298 /* DbManager.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = DbManager.swift; sourceTree = "<group>"; };
+		43A436091FA7694600754298 /* DbManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DbManager.swift; sourceTree = "<group>"; };
+		43A436121FA8C3CD00754298 /* BackendError.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BackendError.swift; sourceTree = "<group>"; };
 		43AAAE291AAAA484002C424A /* CoreData.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CoreData.framework; path = System/Library/Frameworks/CoreData.framework; sourceTree = SDKROOT; };
 		43AAAE2C1AAAA4D1002C424A /* ABMA.xcdatamodel */ = {isa = PBXFileReference; lastKnownFileType = wrapper.xcdatamodel; path = ABMA.xcdatamodel; sourceTree = "<group>"; };
 		43B16CE71E54A80100A240FA /* ABMA-Bridging-Header.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = "ABMA-Bridging-Header.h"; sourceTree = "<group>"; };
@@ -337,6 +340,7 @@
 		434B44DB1E1B231F00963096 /* ABMAEditor */ = {
 			isa = PBXGroup;
 			children = (
+				43A4360F1FA8C33600754298 /* network */,
 				434B44EC1E1BF74700963096 /* model */,
 				434B44DC1E1B231F00963096 /* AppDelegate.swift */,
 				434B44E01E1B231F00963096 /* Assets.xcassets */,
@@ -367,8 +371,17 @@
 				435EEE671E3D329F00C9CF84 /* BYear.swift */,
 				431326A51E3D7796003C808E /* BSponsor.swift */,
 				43FA2A141E593F7900BAE929 /* BNote.swift */,
+				43A436091FA7694600754298 /* DbManager.swift */,
 			);
 			path = model;
+			sourceTree = "<group>";
+		};
+		43A4360F1FA8C33600754298 /* network */ = {
+			isa = PBXGroup;
+			children = (
+				43A436121FA8C3CD00754298 /* BackendError.swift */,
+			);
+			path = network;
 			sourceTree = "<group>";
 		};
 		CEA04F89B2F522C3FB46F93D /* Pods */ = {
@@ -657,6 +670,7 @@
 				439947E51AB1E9F500D1479B /* NotesViewController.m in Sources */,
 				4305618B1A9AF95000ED4BB0 /* SWRevealViewController.m in Sources */,
 				4338BBAD18F26F53002683EF /* main.m in Sources */,
+				43A436141FA8D27200754298 /* BYear.swift in Sources */,
 				43B16CEC1E54A83C00A240FA /* BPaper.swift in Sources */,
 				4352A8791AB28BBE00EC03CB /* BaseViewController.m in Sources */,
 				433BA8231E581456007B7893 /* Paper+CoreDataProperties.m in Sources */,
@@ -670,7 +684,6 @@
 				43A436081FA767EB00754298 /* DbManager.swift in Sources */,
 				433BA8221E581456007B7893 /* Paper+CoreDataClass.m in Sources */,
 				43732BCF1E6E660E00A85B63 /* Year+CoreDataClass.m in Sources */,
-				43B16CED1E54A83C00A240FA /* BYear.swift in Sources */,
 				433BA81F1E581456007B7893 /* Day+CoreDataProperties.m in Sources */,
 				43F070D418F3B6A20077F11E /* SponsorCollectionViewController.m in Sources */,
 			);
@@ -689,13 +702,14 @@
 				431326B21E3D8B47003C808E /* NewSponsorViewController.swift in Sources */,
 				434B44F21E23222700963096 /* ContainerController.swift in Sources */,
 				431326AF1E3D7BE7003C808E /* SponsorItem.swift in Sources */,
-				435EEE681E3D329F00C9CF84 /* BYear.swift in Sources */,
+				43A4360A1FA7694600754298 /* DbManager.swift in Sources */,
+				43A436131FA8C3CD00754298 /* BackendError.swift in Sources */,
 				432ED0941E267AC300DD92BB /* BPaper.swift in Sources */,
 				434B44F01E1FF92900963096 /* EventListViewController.swift in Sources */,
 				434B44EE1E1BF75500963096 /* BEvent.swift in Sources */,
 				434B44DD1E1B231F00963096 /* AppDelegate.swift in Sources */,
-				43FA2A161E593F7900BAE929 /* BNote.swift in Sources */,
 				431326A01E3D655B003C808E /* YearViewController.swift in Sources */,
+				43A436151FAB589F00754298 /* BYear.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

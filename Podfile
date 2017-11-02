@@ -18,7 +18,6 @@ target 'ABMAEditor' do
   use_frameworks!
 
   # Pods for ABMAEditor
-  pod 'Backendless-osx-SDK'
   pod 'SDWebImage', '~>4.0'
 
 end

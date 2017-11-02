@@ -8,7 +8,7 @@
 
 import Foundation
 
-class BYear: NSObject {
+class BYear: NSObject, Codable {
     
     @objc var objectId: String?
     @objc var name = 0
