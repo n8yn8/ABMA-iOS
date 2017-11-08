@@ -193,15 +193,18 @@ extension YearViewController: NewYearsViewControllerDelegate {
 extension YearViewController: SponsorsViewControllerDelegate {
     func saveSponsor(savedSponsor: BSponsor) {
         if let thisYear = selectedYear {
+            if thisYear.sponsors == nil {
+                thisYear.sponsors = [BSponsor]()
+            }
             if let id = savedSponsor.objectId {
-                for i in 0 ..< thisYear.sponsors.count {
-                    let sponsor = selectedYear?.sponsors[i]
+                for i in 0 ..< thisYear.sponsors!.count {
+                    let sponsor = selectedYear?.sponsors![i]
                     if id == sponsor?.objectId {
-                        selectedYear?.sponsors[i] = savedSponsor
+                        selectedYear?.sponsors![i] = savedSponsor
                     }
                 }
             } else {
-                selectedYear?.sponsors.append(savedSponsor)
+                selectedYear?.sponsors!.append(savedSponsor)
             }
             updateYear(callback: nil)
         }

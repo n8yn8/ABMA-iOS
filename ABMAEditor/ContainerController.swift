@@ -34,9 +34,11 @@ class ContainerController: NSSplitViewController {
 
     }
     
-    func updateEventList(events: [BEvent]) {
+    func updateEventList(events: [BEvent]?) {
         eventList.removeAll()
-        eventList.append(contentsOf: events)
+        if let theseEvents = events {
+            eventList.append(contentsOf: theseEvents)
+        }
         update()
     }
     

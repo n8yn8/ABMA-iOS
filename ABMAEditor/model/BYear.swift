@@ -12,10 +12,10 @@ class BYear: NSObject, Codable {
     
     @objc var objectId: String?
     @objc var name = 0
-    @objc var events = [BEvent]()
+    @objc var events: [BEvent]?
     @objc var welcome: String?
     @objc var info: String?
-    @objc var sponsors = [BSponsor]()
+    @objc var sponsors: [BSponsor]?
     @objc var surveyUrl: String?
     @objc var surveyStart: Date?
     @objc var surveyEnd: Date?
@@ -25,10 +25,13 @@ class BYear: NSObject, Codable {
     
     @objc 
     func doSort() {
-        for event in events {
+        guard let theseEvents = events else {
+            return
+        }
+        for event in theseEvents {
             event.doSort()
         }
-        let sortedEvents = events.sorted(by: { (e1, e2) -> Bool in
+        let sortedEvents = theseEvents.sorted(by: { (e1, e2) -> Bool in
             e1.startDate.compare(e2.startDate) == ComparisonResult.orderedAscending
         })
         events = sortedEvents
