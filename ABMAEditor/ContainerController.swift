@@ -16,6 +16,7 @@ class ContainerController: NSSplitViewController {
     var eventController: EventViewController!
     var eventList = [BEvent]()
     var selectedEventIndex: Int?
+    var yearObjectId: String?
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -34,9 +35,12 @@ class ContainerController: NSSplitViewController {
 
     }
     
-    func updateEventList(events: [BEvent]) {
+    func updateEventList(events: [BEvent]?, yearObjectId: String?) {
+        self.yearObjectId = yearObjectId
         eventList.removeAll()
-        eventList.append(contentsOf: events)
+        if let theseEvents = events {
+            eventList.append(contentsOf: theseEvents)
+        }
         update()
     }
     
@@ -67,18 +71,15 @@ extension ContainerController: MasterViewControllerDelegate {
 
 extension ContainerController: EventViewControllerDelegate {
     func updateEvent(event: BEvent) {
-        DbManager.sharedInstance.updateEvent(event: event) { (saved, error) in
-            
+        guard let yearId = yearObjectId else {
+            return
         }
-        if let index = selectedEventIndex {
-            eventList[index] = event
+        DbManager.sharedInstance.update(event: event, yearParent: yearId) { (saved, error) in
+            if let index = self.selectedEventIndex, let savedEvent = saved {
+                self.eventList[index] = savedEvent
+            }
+            self.update()
         }
-        update()
-    }
-    
-    func createEvent(event: BEvent) {
-        eventList.append(event)
-        delegate?.updateEvents(list: eventList)
     }
 }
 

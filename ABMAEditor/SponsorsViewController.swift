@@ -40,9 +40,11 @@ class SponsorsViewController: NSViewController {
         view.wantsLayer = true
     }
     
-    func updateSponsors(sponsorList: [BSponsor]) {
-        sponsors.removeAll()
-        sponsors.append(contentsOf: sponsorList)
+    func updateSponsors(sponsorList: [BSponsor]?) {
+        self.sponsors.removeAll()
+        if let sponsors = sponsorList {
+            self.sponsors.append(contentsOf: sponsors)
+        }
         collectionView.reloadData()
     }
     

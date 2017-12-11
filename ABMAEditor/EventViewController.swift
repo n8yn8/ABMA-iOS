@@ -79,12 +79,15 @@ class EventViewController: NSViewController {
                     descriptionTextView.string = details
                     tabView.selectFirstTabViewItem(self)
                 }
-                if !event.papers.isEmpty {
-                    tabView.selectLastTabViewItem(self)
+                if let papers = event.papers {
+                    if !papers.isEmpty {
+                        tabView.selectLastTabViewItem(self)
+                    }
+                    if let controller = papersViewController {
+                        controller.papers = papers
+                    }
                 }
-                if let controller = papersViewController {
-                    controller.papers = event.papers
-                }
+                
                 setEnabled(enabled: true)
                 
             } else{
@@ -121,9 +124,7 @@ class EventViewController: NSViewController {
         let startDate = buildDate(timePartInCurTZ: startTimePicker.dateValue)
         let endDate = includeEndTimeButton.state.rawValue == 1 ? buildDate(timePartInCurTZ: endTimePicker.dateValue) : nil
         
-        var isNew = false
         if event == nil {
-            isNew = true
             event = BEvent()
         }
         event?.startDate = startDate
@@ -134,11 +135,7 @@ class EventViewController: NSViewController {
         event!.details = descriptionTextView.string
         event!.papers = papersViewController!.papers
         
-        if isNew {
-            self.delegate?.createEvent(event: event!)
-        } else {
-            self.delegate?.updateEvent(event: event!)
-        }
+        self.delegate?.updateEvent(event: event!)
     }
     
     func buildDate(timePartInCurTZ: Date) -> Date {
@@ -160,5 +157,4 @@ class EventViewController: NSViewController {
 
 protocol EventViewControllerDelegate: class {
     func updateEvent(event: BEvent)
-    func createEvent(event: BEvent)
 }

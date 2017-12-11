@@ -75,7 +75,7 @@ class YearViewController: NSViewController {
         surveyEndDatePicker.dateValue = Date()
         
         if let year = selectedYear {
-            containerController?.updateEventList(events: year.events)
+            containerController?.updateEventList(events: year.events, yearObjectId: year.objectId!)
             if let welcome = year.welcome {
                 welcomeTextView.string = welcome
             } else {
@@ -107,7 +107,7 @@ class YearViewController: NSViewController {
             
             sponsorsViewController?.updateSponsors(sponsorList: year.sponsors)
         } else {
-            containerController?.updateEventList(events: [BEvent]())
+            containerController?.updateEventList(events: [BEvent](), yearObjectId: nil)
             welcomeTextView.string = ""
             infoTextView.string = ""
             sponsorsViewController?.updateSponsors(sponsorList: [BSponsor]())
@@ -193,15 +193,18 @@ extension YearViewController: NewYearsViewControllerDelegate {
 extension YearViewController: SponsorsViewControllerDelegate {
     func saveSponsor(savedSponsor: BSponsor) {
         if let thisYear = selectedYear {
+            if thisYear.sponsors == nil {
+                thisYear.sponsors = [BSponsor]()
+            }
             if let id = savedSponsor.objectId {
-                for i in 0 ..< thisYear.sponsors.count {
-                    let sponsor = selectedYear?.sponsors[i]
+                for i in 0 ..< thisYear.sponsors!.count {
+                    let sponsor = selectedYear?.sponsors![i]
                     if id == sponsor?.objectId {
-                        selectedYear?.sponsors[i] = savedSponsor
+                        selectedYear?.sponsors![i] = savedSponsor
                     }
                 }
             } else {
-                selectedYear?.sponsors.append(savedSponsor)
+                selectedYear?.sponsors!.append(savedSponsor)
             }
             updateYear(callback: nil)
         }
