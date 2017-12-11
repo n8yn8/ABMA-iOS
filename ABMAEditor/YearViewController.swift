@@ -75,7 +75,7 @@ class YearViewController: NSViewController {
         surveyEndDatePicker.dateValue = Date()
         
         if let year = selectedYear {
-            containerController?.updateEventList(events: year.events)
+            containerController?.updateEventList(events: year.events, yearObjectId: year.objectId!)
             if let welcome = year.welcome {
                 welcomeTextView.string = welcome
             } else {
@@ -107,7 +107,7 @@ class YearViewController: NSViewController {
             
             sponsorsViewController?.updateSponsors(sponsorList: year.sponsors)
         } else {
-            containerController?.updateEventList(events: [BEvent]())
+            containerController?.updateEventList(events: [BEvent](), yearObjectId: nil)
             welcomeTextView.string = ""
             infoTextView.string = ""
             sponsorsViewController?.updateSponsors(sponsorList: [BSponsor]())

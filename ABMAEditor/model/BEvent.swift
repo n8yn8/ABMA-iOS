@@ -17,7 +17,7 @@ class BEvent: NSObject, Codable {
     @objc var startDate: Date!
     @objc var subtitle: String?
     @objc var title: String?
-    @objc var papers = [BPaper]()
+    @objc var papers: [BPaper]?
     @objc var upadted: Date?
     @objc var created: Date?
     
@@ -31,7 +31,10 @@ class BEvent: NSObject, Codable {
     
     @objc 
     func doSort() {
-        let sortedPapers = papers.sorted(by: { (paper1, paper2) -> Bool in
+        guard let thesePapers = papers else {
+            return
+        }
+        let sortedPapers = thesePapers.sorted(by: { (paper1, paper2) -> Bool in
             paper1.order < paper2.order
         })
         papers = sortedPapers

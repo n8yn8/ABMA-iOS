@@ -14,7 +14,7 @@ class NetworkExecutor {
     static let restKey = "16CA6717-731C-8523-FFFD-AC9B1A0AD600"
     
     enum Endpoint : String {
-        case year = "BYear"
+        case year = "BYear", event = "BEvent"
     }
     
     enum Method : String {
@@ -32,7 +32,17 @@ class NetworkExecutor {
             callback(nil, error)
             return
         }
-        execute(endpoint: endpoint, method: method, params: params, url: url, callback: callback)
+        var paramsData: Data?
+        do {
+            try paramsData = getParamsData(params: params)
+        } catch {
+            print("error trying to convert object to data")
+            print(error)
+            DispatchQueue.main.async {
+                callback(nil, error)
+            }
+        }
+        execute(method: method, paramsData: paramsData, url: url, callback: callback)
     }
     
     static func put<T : Codable>(endpoint: Endpoint, params: T?, objectId: String, callback: @escaping (T?, Error?) -> Void) {
@@ -42,30 +52,68 @@ class NetworkExecutor {
             callback(nil, error)
             return
         }
-        execute(endpoint: endpoint, method: .put, params: params, url: url, callback: callback)
+        var paramsData: Data?
+        do {
+            try paramsData = getParamsData(params: params)
+        } catch {
+            print("error trying to convert object to data")
+            print(error)
+            DispatchQueue.main.async {
+                callback(nil, error)
+            }
+        }
+        execute(method: .put, paramsData: paramsData, url: url, callback: callback)
     }
     
-    static func execute<T : Codable>(endpoint: Endpoint, method: Method, params: T?, url: URL, callback: @escaping (T?, Error?) -> Void) {
+    static func addRelation(parentTable: Endpoint, parentObjectId: String, childObjectId: String, relationName: String, callback: @escaping (String?, Error?) -> Void) {
+        guard let url = URL(string: "https://api.backendless.com/\(appId)/\(restKey)/data/\(parentTable.rawValue)/\(parentObjectId)/\(relationName)") else {
+            print("Error: cannot create URL")
+            let error = BackendError.urlError(reason: "Could not construct URL")
+            callback(nil, error)
+            return
+        }
+        var params: Data?
+        do {
+            try params = getParamsData(params: [childObjectId])
+        } catch {
+            print("error trying to convert object to data")
+            print(error)
+            DispatchQueue.main.async {
+                callback(nil, error)
+            }
+        }
+        execute(method: .put, paramsData: params, url: url, callback: callback)
+        
+    }
+    
+    private static func getParamsData<T : Codable>(params: T?) throws -> Data? {
+        guard let parameters = params else {
+            return nil
+        }
+        let encoder = JSONEncoder()
+        encoder.dateEncodingStrategy = .millisecondsSince1970
+        let object = try encoder.encode(parameters)
+        return object
+    }
+    
+    private static func getParamsData<T : Codable>(params: [T]?) throws -> Data? {
+        guard let parameters = params else {
+            return nil
+        }
+        let encoder = JSONEncoder()
+        encoder.dateEncodingStrategy = .millisecondsSince1970
+        let object = try encoder.encode(parameters)
+        return object
+    }
+    
+    static func execute<T : Codable>(method: Method, paramsData: Data?, url: URL, callback: @escaping (T?, Error?) -> Void) {
         
         var urlRequest = URLRequest(url: url)
         urlRequest.httpMethod = method.rawValue
         urlRequest.addValue("application/json", forHTTPHeaderField: "Content-Type")
         urlRequest.addValue("application/json", forHTTPHeaderField: "Accept")
         
-        if let parameters = params {
-            let encoder = JSONEncoder()
-            encoder.dateEncodingStrategy = .millisecondsSince1970
-            do {
-                let object = try encoder.encode(parameters)
-                urlRequest.httpBody = object
-            } catch {
-                print("error trying to convert object to data")
-                print(error)
-                DispatchQueue.main.async {
-                    callback(nil, error)
-                }
-            }
-        }
+        urlRequest.httpBody = paramsData
         
         // Make request
         let session = URLSession.shared

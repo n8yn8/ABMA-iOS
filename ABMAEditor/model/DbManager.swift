@@ -38,8 +38,39 @@ class DbManager: NSObject {
         }
     }
     
-    func updateEvent(event: BEvent, callback: @escaping (_ savedEvent: BEvent?, _ errorString: String?) -> Void) {
-        
+    func update(event: BEvent, yearParent: String, callback: @escaping (_ savedEvent: BEvent?, _ errorString: String?) -> Void) {
+        if let objectId = event.objectId {
+            NetworkExecutor.put(endpoint: .event, params: event, objectId: objectId, callback: { (event, error) in
+                if let err = error {
+                    callback(nil, err.localizedDescription)
+                } else {
+                    callback(event, nil)
+                }
+            })
+        } else {
+            NetworkExecutor.execute(endpoint: .event, method: .post, params: event) { (event, error) in
+                if let err = error {
+                    callback(nil, err.localizedDescription)
+                } else {
+                    self.relate(event: event!, yearParent: yearParent, callback: callback)
+                    
+                }
+            }
+        }
+    }
+    
+    private func relate(event: BEvent, yearParent: String, callback: @escaping (_ savedEvent: BEvent?, _ errorString: String?) -> Void) {
+        NetworkExecutor.addRelation(parentTable: NetworkExecutor.Endpoint.year, parentObjectId: yearParent, childObjectId: event.objectId!, relationName: "events", callback: { (object, error) in
+            if let err = error {
+                if err is DecodingError {
+                    callback(event, nil)
+                } else {
+                    callback(nil, err.localizedDescription)
+                }
+            } else {
+                callback(event, nil)
+            }
+        })
     }
     
     func getYears(callback: @escaping ([BYear]?, Error?) -> Void) {
