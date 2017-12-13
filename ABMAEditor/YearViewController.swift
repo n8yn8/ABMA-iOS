@@ -215,7 +215,6 @@ extension YearViewController: SponsorsViewControllerDelegate {
 extension YearViewController: ContainerControllerDelegate {
     func updateEvents(list: [BEvent]) {
         selectedYear?.events = list
-        updateYear(callback: nil)
     }
 }
 
