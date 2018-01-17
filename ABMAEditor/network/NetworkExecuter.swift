@@ -14,7 +14,7 @@ class NetworkExecutor {
     static let restKey = "16CA6717-731C-8523-FFFD-AC9B1A0AD600"
     
     enum Endpoint : String {
-        case year = "BYear", event = "BEvent", paper = "BPaper"
+        case year = "BYear", event = "BEvent", paper = "BPaper", sponsor = "BSponsor"
     }
     
     enum Method : String {
@@ -107,7 +107,7 @@ class NetworkExecutor {
     }
     
     static func upload(fileName: String, image: NSData, callback: @escaping (String?, Error?) -> Void) {
-        guard let url = URL(string: "https://api.backendless.com/\(appId)/\(restKey)/files/sponsors/\(fileName)") else {
+        guard let url = URL(string: "https://api.backendless.com/\(appId)/\(restKey)/files/sponsors/\(fileName)?overwrite=true") else {
             print("Error: cannot create URL")
             let error = BackendError.urlError(reason: "Could not construct URL")
             callback(nil, error)

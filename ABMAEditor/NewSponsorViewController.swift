@@ -17,6 +17,7 @@ class NewSponsorViewController: NSViewController {
     var image: NSImage!
     var imageData: NSData!
     var imageName: String!
+    var yearParentId: String!
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -32,12 +33,21 @@ class NewSponsorViewController: NSViewController {
     }
     
     @IBAction func save(_ sender: Any) {
-        DbManager.sharedInstance.uploadImage(name: imageName, image: imageData) { (url, error) in
+        DbManager.sharedInstance.uploadImage(name: imageName, image: imageData) { (imageUrl, error) in
+            if let err = error {
+                print("error saving image: \(err.localizedDescription)")
+                return
+            }
             let sponsor = BSponsor()
             sponsor.url = self.urlTextField.stringValue
-            sponsor.imageUrl = url
-            self.delegate?.saveSponsor(sponsor: sponsor)
-            self.dismiss(nil)
+            sponsor.imageUrl = imageUrl
+            DbManager.sharedInstance.update(sponsor: sponsor, yearParent: self.yearParentId, callback: { (savedSponsor, error) in
+                if let saved = savedSponsor {
+                    self.delegate?.saveSponsor(sponsor: saved)
+                    self.dismiss(nil)
+                }
+            })
+            
         }
         
     }
