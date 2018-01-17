@@ -59,6 +59,48 @@ class DbManager: NSObject {
         }
     }
     
+    func update(paper: BPaper, eventParent: String, callback: @escaping (_ savedPaper: BPaper?, _ errorString: String?) -> Void) {
+        if let objectId = paper.objectId {
+            NetworkExecutor.put(endpoint: .paper, params: paper, objectId: objectId, callback: { (savedPaper, error) in
+                if let err = error {
+                    callback(nil, err.localizedDescription)
+                } else {
+                    callback(savedPaper, nil)
+                }
+            })
+        } else {
+            NetworkExecutor.execute(endpoint: .paper, method: .post, params: paper) { (savedPaper, error) in
+                if let err = error {
+                    callback(nil, err.localizedDescription)
+                } else {
+                    self.relate(paper: savedPaper!, eventParent: eventParent, callback: callback)
+                    
+                }
+            }
+        }
+    }
+    
+    func update(sponsor: BSponsor, yearParent: String, callback: @escaping (_ savedSponsor: BSponsor?, _ errorString: String?) -> Void) {
+        if let objectId = sponsor.objectId {
+            NetworkExecutor.put(endpoint: .sponsor, params: sponsor, objectId: objectId, callback: { (savedSponsor, error) in
+                if let err = error {
+                    callback(nil, err.localizedDescription)
+                } else {
+                    callback(savedSponsor, nil)
+                }
+            })
+        } else {
+            NetworkExecutor.execute(endpoint: .sponsor, method: .post, params: sponsor) { (savedSponsor, error) in
+                if let err = error {
+                    callback(nil, err.localizedDescription)
+                } else {
+                    self.relate(sponsor: savedSponsor!, yearParent: yearParent, callback: callback)
+                    
+                }
+            }
+        }
+    }
+    
     private func relate(event: BEvent, yearParent: String, callback: @escaping (_ savedEvent: BEvent?, _ errorString: String?) -> Void) {
         NetworkExecutor.addRelation(parentTable: NetworkExecutor.Endpoint.year, parentObjectId: yearParent, childObjectId: event.objectId!, relationName: "events", callback: { (object, error) in
             if let err = error {
@@ -69,6 +111,34 @@ class DbManager: NSObject {
                 }
             } else {
                 callback(event, nil)
+            }
+        })
+    }
+    
+    private func relate(paper: BPaper, eventParent: String, callback: @escaping (_ savedPaper: BPaper?, _ errorString: String?) -> Void) {
+        NetworkExecutor.addRelation(parentTable: NetworkExecutor.Endpoint.event, parentObjectId: eventParent, childObjectId: paper.objectId!, relationName: "papers", callback: { (object, error) in
+            if let err = error {
+                if err is DecodingError {
+                    callback(paper, nil)
+                } else {
+                    callback(nil, err.localizedDescription)
+                }
+            } else {
+                callback(paper, nil)
+            }
+        })
+    }
+    
+    private func relate(sponsor: BSponsor, yearParent: String, callback: @escaping (_ savedSponsor: BSponsor?, _ errorString: String?) -> Void) {
+        NetworkExecutor.addRelation(parentTable: NetworkExecutor.Endpoint.year, parentObjectId: yearParent, childObjectId: sponsor.objectId!, relationName: "sponsors", callback: { (object, error) in
+            if let err = error {
+                if err is DecodingError {
+                    callback(sponsor, nil)
+                } else {
+                    callback(nil, err.localizedDescription)
+                }
+            } else {
+                callback(sponsor, nil)
             }
         })
     }
@@ -91,8 +161,8 @@ class DbManager: NSObject {
         
     }
     
-    func uploadImage(name: String, image: NSData, callback: @escaping (_ imageUrl: String) -> Void) {
-        
+    func uploadImage(name: String, image: NSData, callback: @escaping (String?, Error?) -> Void) {
+        NetworkExecutor.upload(fileName: name, image: image, callback: callback)
     }
     
     func pushUpdate(message: String) {

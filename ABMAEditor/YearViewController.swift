@@ -106,6 +106,7 @@ class YearViewController: NSViewController {
             }
             
             sponsorsViewController?.updateSponsors(sponsorList: year.sponsors)
+            sponsorsViewController?.yearParentId = year.objectId
         } else {
             containerController?.updateEventList(events: [BEvent](), yearObjectId: nil)
             welcomeTextView.string = ""
@@ -197,16 +198,22 @@ extension YearViewController: SponsorsViewControllerDelegate {
                 thisYear.sponsors = [BSponsor]()
             }
             if let id = savedSponsor.objectId {
+                var found = false
                 for i in 0 ..< thisYear.sponsors!.count {
-                    let sponsor = selectedYear?.sponsors![i]
-                    if id == sponsor?.objectId {
-                        selectedYear?.sponsors![i] = savedSponsor
+                    let sponsor = thisYear.sponsors![i]
+                    if id == sponsor.objectId {
+                        found = true
+                        thisYear.sponsors![i] = savedSponsor
                     }
                 }
+                if !found {
+                    thisYear.sponsors!.append(savedSponsor)
+                }
             } else {
-                selectedYear?.sponsors!.append(savedSponsor)
+                thisYear.sponsors!.append(savedSponsor)
             }
-            updateYear(callback: nil)
+            thisYear.doSort()
+            self.updateUi()
         }
         
     }
@@ -215,7 +222,6 @@ extension YearViewController: SponsorsViewControllerDelegate {
 extension YearViewController: ContainerControllerDelegate {
     func updateEvents(list: [BEvent]) {
         selectedYear?.events = list
-        updateYear(callback: nil)
     }
 }
 
