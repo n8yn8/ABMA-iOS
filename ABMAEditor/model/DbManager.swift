@@ -126,8 +126,8 @@ class DbManager: NSObject {
         
     }
     
-    func uploadImage(name: String, image: NSData, callback: @escaping (_ imageUrl: String) -> Void) {
-        
+    func uploadImage(name: String, image: NSData, callback: @escaping (String?, Error?) -> Void) {
+        NetworkExecutor.upload(fileName: name, image: image, callback: callback)
     }
     
     func pushUpdate(message: String) {

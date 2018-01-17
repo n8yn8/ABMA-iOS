@@ -106,6 +106,85 @@ class NetworkExecutor {
         return object
     }
     
+    static func upload(fileName: String, image: NSData, callback: @escaping (String?, Error?) -> Void) {
+        guard let url = URL(string: "https://api.backendless.com/\(appId)/\(restKey)/files/sponsors/\(fileName)") else {
+            print("Error: cannot create URL")
+            let error = BackendError.urlError(reason: "Could not construct URL")
+            callback(nil, error)
+            return
+        }
+        
+        var urlRequest = URLRequest(url: url)
+        urlRequest.httpMethod = "POST"
+        
+        let boundary = "Boundary-\(NSUUID().uuidString)"
+        
+        urlRequest.addValue("multipart/form-data; boundary=\(boundary)", forHTTPHeaderField: "Content-Type")
+        var body = Data()
+        
+        let fname = "test.png"
+        let mimetype = "image/png"
+        
+        //define the data post parameter
+        
+        body.append("--\(boundary)\r\n".data(using: String.Encoding.utf8)!)
+        body.append("Content-Disposition:form-data; name=\"test\"\r\n\r\n".data(using: String.Encoding.utf8)!)
+        body.append("hi\r\n".data(using: String.Encoding.utf8)!)
+        
+        body.append("--\(boundary)\r\n".data(using: String.Encoding.utf8)!)
+        body.append("Content-Disposition:form-data; name=\"file\"; filename=\"\(fname)\"\r\n".data(using: String.Encoding.utf8)!)
+        body.append("Content-Type: \(mimetype)\r\n\r\n".data(using: String.Encoding.utf8)!)
+        body.append(Data(referencing: image))
+        body.append("\r\n".data(using: String.Encoding.utf8)!)
+        
+        body.append("--\(boundary)--\r\n".data(using: String.Encoding.utf8)!)
+        
+        urlRequest.httpBody = body
+        
+        let session = URLSession.shared
+        let task = session.dataTask(with: urlRequest, completionHandler: {
+            (data, response, error) in
+            // handle response to request
+            // check for error
+            guard error == nil else {
+                DispatchQueue.main.async {
+                    callback(nil, error!)
+                }
+                return
+            }
+            // make sure we got data in the response
+            guard let responseData = data else {
+                print("Error: did not receive data")
+                let error = BackendError.objectSerialization(reason: "No data in response")
+                DispatchQueue.main.async {
+                    callback(nil, error)
+                }
+                return
+            }
+            
+            let decoder = JSONDecoder()
+            decoder.dateDecodingStrategy = .millisecondsSince1970
+            do {
+                let object = try decoder.decode(Dictionary<String, String>.self, from: responseData)
+                let imageUrl = object["fileURL"] //nil if error
+                var error: BackendError?
+                if let errorMessage = object["message"] {
+                    error = BackendError.objectSerialization(reason: errorMessage)
+                }
+                DispatchQueue.main.async {
+                    callback(imageUrl, error)
+                }
+            } catch {
+                print("error trying to convert data to JSON")
+                print(error)
+                DispatchQueue.main.async {
+                    callback(nil, error)
+                }
+            }
+        })
+        task.resume()
+    }
+    
     static func execute<T : Codable>(method: Method, paramsData: Data?, url: URL, callback: @escaping (T?, Error?) -> Void) {
         
         var urlRequest = URLRequest(url: url)
