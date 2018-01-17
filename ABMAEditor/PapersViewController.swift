@@ -25,6 +25,7 @@ class PapersViewController: NSViewController, NSTableViewDelegate, NSTableViewDa
             papersTableView.reloadData()
         }
     }
+    var eventParent: String?
     
     private var selectedIndex: Int?
 
@@ -123,15 +124,21 @@ class PapersViewController: NSViewController, NSTableViewDelegate, NSTableViewDa
             paper = BPaper()
         }
         paper.initWith(title: title, author: author, synopsis: abstract, order: order)
-        
-        if let index = selectedIndex {
-            self.papers[index] = paper
-        } else {
-            self.papers.append(paper)
+        DbManager.sharedInstance.update(paper: paper, eventParent: eventParent!) { (saved, error) in
+            guard let savedPaper = saved else {
+                return
+            }
+            if let index = self.selectedIndex {
+                self.papers[index] = savedPaper
+            } else {
+                self.papers.append(savedPaper)
+            }
+            
+            self.papersTableView.reloadData()
+            self.papersTableView.selectRowIndexes(NSIndexSet(index: self.papers.count - 1) as IndexSet, byExtendingSelection: false)
         }
         
-        self.papersTableView.reloadData()
-        self.papersTableView.selectRowIndexes(NSIndexSet(index: papers.count - 1) as IndexSet, byExtendingSelection: false)
+        
     }
     
     @IBAction func orderChanged(_ sender: NSStepper) {

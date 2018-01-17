@@ -14,7 +14,7 @@ class NetworkExecutor {
     static let restKey = "16CA6717-731C-8523-FFFD-AC9B1A0AD600"
     
     enum Endpoint : String {
-        case year = "BYear", event = "BEvent"
+        case year = "BYear", event = "BEvent", paper = "BPaper"
     }
     
     enum Method : String {
