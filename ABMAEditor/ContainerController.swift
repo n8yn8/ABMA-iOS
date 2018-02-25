@@ -75,8 +75,13 @@ extension ContainerController: EventViewControllerDelegate {
             return
         }
         DbManager.sharedInstance.update(event: event, yearParent: yearId) { (saved, error) in
-            if let index = self.selectedEventIndex, let savedEvent = saved {
-                self.eventList[index] = savedEvent
+            if let savedEvent = saved {
+                if let index = self.selectedEventIndex {
+                    self.eventList[index] = savedEvent
+                } else {
+                    self.eventList.append(event)
+                    self.delegate?.updateEvents(list: self.eventList)
+                }
             }
             self.update()
         }

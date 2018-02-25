@@ -47,9 +47,6 @@ class EventViewController: NSViewController {
             titleTextField.stringValue = ""
             subtitleTextField.stringValue = ""
             descriptionTextView.string = ""
-            if let controller = papersViewController {
-                controller.papers = [BPaper]()
-            }
             
             if let event = representedObject as? BEvent {
                 self.event = event
@@ -89,6 +86,10 @@ class EventViewController: NSViewController {
                 }
                 
                 setEnabled(enabled: true)
+                
+                if let controller = papersViewController {
+                    controller.eventParent = event.objectId
+                }
                 
             } else{
                 self.event = nil

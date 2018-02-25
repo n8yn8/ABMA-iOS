@@ -11,14 +11,17 @@ import Cocoa
 class SponsorsViewController: NSViewController {
     
     var sponsors = [BSponsor]()
+    var yearParentId: String!
 
     @IBOutlet weak var collectionView: NSCollectionView!
     @IBOutlet weak var removeButton: NSButton!
     
     weak var delegate: SponsorsViewControllerDelegate?
     lazy var sheetViewController: NewSponsorViewController = {
-        return self.storyboard!.instantiateController(withIdentifier: NSStoryboard.SceneIdentifier(rawValue: "NewSponsorViewController"))
+        let vc = self.storyboard!.instantiateController(withIdentifier: NSStoryboard.SceneIdentifier(rawValue: "NewSponsorViewController"))
             as! NewSponsorViewController
+        vc.yearParentId = yearParentId
+        return vc
     }()
     
     override func viewDidLoad() {
