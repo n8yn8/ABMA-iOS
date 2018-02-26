@@ -10,8 +10,8 @@ import Foundation
 
 class NetworkExecutor {
     
-    static let appId = "627F9018-4483-B50E-FFCA-0E42A1E33F00"
-    static let restKey = "16CA6717-731C-8523-FFFD-AC9B1A0AD600"
+    static let appId = "7D06F708-89FA-DD86-FF95-C51A10425A00"
+    static let restKey = "B33AA35D-DC43-EF5D-FF7A-7473FADBE400"
     
     enum Endpoint : String {
         case year = "BYear", event = "BEvent", paper = "BPaper", sponsor = "BSponsor"
