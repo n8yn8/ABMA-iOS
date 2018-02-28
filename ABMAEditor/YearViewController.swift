@@ -93,17 +93,17 @@ class YearViewController: NSViewController {
                 publishButton.title = "Update"
             }
             
-            if let surveyLink = year.surveyUrl {
-                surveyLinkTextField.stringValue = surveyLink
-            }
-            
-            if let surveyStart = year.surveyStart {
-                surveyStartDatePicker.dateValue = surveyStart
-            }
-            
-            if let surveyEnd = year.surveyEnd {
-                surveyEndDatePicker.dateValue = surveyEnd
-            }
+//            if let surveyLink = year.surveyUrl {
+//                surveyLinkTextField.stringValue = surveyLink
+//            }
+//            
+//            if let surveyStart = year.surveyStart {
+//                surveyStartDatePicker.dateValue = surveyStart
+//            }
+//            
+//            if let surveyEnd = year.surveyEnd {
+//                surveyEndDatePicker.dateValue = surveyEnd
+//            }
             
             sponsorsViewController?.updateSponsors(sponsorList: year.sponsors)
             sponsorsViewController?.yearParentId = year.objectId
@@ -146,9 +146,17 @@ class YearViewController: NSViewController {
         selectedYear?.info = infoTextView.string
         let surveyLink = surveyLinkTextField.stringValue
         if !surveyLink.isEmpty {
-            selectedYear?.surveyUrl = surveyLink
-            selectedYear?.surveyStart = surveyStartDatePicker.dateValue
-            selectedYear?.surveyEnd = surveyEndDatePicker.dateValue
+            let survey = BSurvey()
+            survey.initWith(title: "", details: "", url: surveyLink, start: surveyStartDatePicker.dateValue, end: surveyEndDatePicker.dateValue)
+            do {
+                let jsonEncoder = JSONEncoder()
+                let jsonData = try jsonEncoder.encode(survey)
+                selectedYear?.surveys = String(data: jsonData, encoding: String.Encoding.utf8)
+            } catch {
+                print("error trying to convert object to data")
+                print(error)
+            }
+            
         }
         updateYear(callback: nil)
     }

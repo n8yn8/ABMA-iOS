@@ -16,9 +16,7 @@ class BYear: NSObject, Codable {
     @objc var welcome: String?
     @objc var info: String?
     @objc var sponsors: [BSponsor]?
-    @objc var surveyUrl: String?
-    @objc var surveyStart: Date?
-    @objc var surveyEnd: Date?
+    @objc var surveys: String?
     @objc var updated: Date?
     @objc var created: Date?
     @objc var publishedAt: Date?

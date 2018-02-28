@@ -147,9 +147,9 @@
     year.year = [NSString stringWithFormat:@"%ld", (long)bYear.name] ;
     year.info = bYear.info;
     year.welcome = bYear.welcome;
-    year.surveyLink = bYear.surveyUrl;
-    year.surveyStart = bYear.surveyStart;
-    year.surveyEnd = bYear.surveyEnd;
+//    year.surveyLink = bYear.surveyUrl;
+//    year.surveyStart = bYear.surveyStart;
+//    year.surveyEnd = bYear.surveyEnd;
     year.created = bYear.created;
     year.updated = bYear.updated;
     if (year.updated) {
