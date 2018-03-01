@@ -19,6 +19,7 @@
 		43201F2F1ABE37A600486999 /* InfoViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 43201F2E1ABE37A600486999 /* InfoViewController.m */; };
 		43201F441ABF371F00486999 /* PaperTableViewCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 43201F431ABF371F00486999 /* PaperTableViewCell.m */; };
 		4324097320444C5F0093FF83 /* BSurvey.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4324097220444C5F0093FF83 /* BSurvey.swift */; };
+		4329A2FB20465E4B007F7704 /* Surveys.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 4329A2FA20465E4B007F7704 /* Surveys.storyboard */; };
 		432ED0941E267AC300DD92BB /* BPaper.swift in Sources */ = {isa = PBXBuildFile; fileRef = 432ED0931E267AC300DD92BB /* BPaper.swift */; };
 		4338BBA118F26F53002683EF /* Foundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 4338BBA018F26F53002683EF /* Foundation.framework */; };
 		4338BBA318F26F53002683EF /* CoreGraphics.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 4338BBA218F26F53002683EF /* CoreGraphics.framework */; };
@@ -100,6 +101,7 @@
 		43201F421ABF371F00486999 /* PaperTableViewCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = PaperTableViewCell.h; sourceTree = "<group>"; };
 		43201F431ABF371F00486999 /* PaperTableViewCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = PaperTableViewCell.m; sourceTree = "<group>"; };
 		4324097220444C5F0093FF83 /* BSurvey.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BSurvey.swift; sourceTree = "<group>"; };
+		4329A2FA20465E4B007F7704 /* Surveys.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; path = Surveys.storyboard; sourceTree = "<group>"; };
 		432CF5E21E9E359B003FC09D /* ABMA 3.xcdatamodel */ = {isa = PBXFileReference; lastKnownFileType = wrapper.xcdatamodel; path = "ABMA 3.xcdatamodel"; sourceTree = "<group>"; };
 		432ED0931E267AC300DD92BB /* BPaper.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = BPaper.swift; sourceTree = "<group>"; };
 		4338BB9D18F26F52002683EF /* ABMA.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = ABMA.app; sourceTree = BUILT_PRODUCTS_DIR; };
@@ -363,6 +365,7 @@
 				431326AE1E3D7BE7003C808E /* SponsorItem.xib */,
 				431326B11E3D8B47003C808E /* NewSponsorViewController.swift */,
 				43E5AC801E9F3A3D00F2AAC1 /* PushViewController.swift */,
+				4329A2FA20465E4B007F7704 /* Surveys.storyboard */,
 			);
 			path = ABMAEditor;
 			sourceTree = "<group>";
@@ -516,6 +519,7 @@
 			files = (
 				434B44E11E1B231F00963096 /* Assets.xcassets in Resources */,
 				431326A41E3D7605003C808E /* Sponsors.storyboard in Resources */,
+				4329A2FB20465E4B007F7704 /* Surveys.storyboard in Resources */,
 				434B44E41E1B231F00963096 /* Main.storyboard in Resources */,
 				431326B01E3D7BE7003C808E /* SponsorItem.xib in Resources */,
 				4378FD9B1E3A452F00319DE0 /* Papers.storyboard in Resources */,

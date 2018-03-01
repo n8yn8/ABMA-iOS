@@ -13,9 +13,6 @@ class YearViewController: NSViewController {
     @IBOutlet weak var activityIndicator: NSProgressIndicator!
     @IBOutlet var welcomeTextView: NSTextView!
     @IBOutlet var infoTextView: NSTextView!
-    @IBOutlet weak var surveyLinkTextField: NSTextField!
-    @IBOutlet weak var surveyStartDatePicker: NSDatePicker!
-    @IBOutlet weak var surveyEndDatePicker: NSDatePicker!
     var containerController: ContainerController?
     var sponsorsViewController: SponsorsViewController?
     
@@ -69,11 +66,6 @@ class YearViewController: NSViewController {
     
     func updateUi() {
         
-        
-        surveyLinkTextField.stringValue = ""
-        surveyStartDatePicker.dateValue = Date()
-        surveyEndDatePicker.dateValue = Date()
-        
         if let year = selectedYear {
             containerController?.updateEventList(events: year.events, yearObjectId: year.objectId!)
             if let welcome = year.welcome {
@@ -92,18 +84,6 @@ class YearViewController: NSViewController {
             } else {
                 publishButton.title = "Update"
             }
-            
-//            if let surveyLink = year.surveyUrl {
-//                surveyLinkTextField.stringValue = surveyLink
-//            }
-//            
-//            if let surveyStart = year.surveyStart {
-//                surveyStartDatePicker.dateValue = surveyStart
-//            }
-//            
-//            if let surveyEnd = year.surveyEnd {
-//                surveyEndDatePicker.dateValue = surveyEnd
-//            }
             
             sponsorsViewController?.updateSponsors(sponsorList: year.sponsors)
             sponsorsViewController?.yearParentId = year.objectId
@@ -144,20 +124,20 @@ class YearViewController: NSViewController {
     @IBAction func saveWelcome(_ sender: Any) {
         selectedYear?.welcome = welcomeTextView.string
         selectedYear?.info = infoTextView.string
-        let surveyLink = surveyLinkTextField.stringValue
-        if !surveyLink.isEmpty {
-            let survey = BSurvey()
-            survey.initWith(title: "", details: "", url: surveyLink, start: surveyStartDatePicker.dateValue, end: surveyEndDatePicker.dateValue)
-            do {
-                let jsonEncoder = JSONEncoder()
-                let jsonData = try jsonEncoder.encode(survey)
-                selectedYear?.surveys = String(data: jsonData, encoding: String.Encoding.utf8)
-            } catch {
-                print("error trying to convert object to data")
-                print(error)
-            }
-            
-        }
+//        let surveyLink = surveyLinkTextField.stringValue
+//        if !surveyLink.isEmpty {
+//            let survey = BSurvey()
+//            survey.initWith(title: "", details: "", url: surveyLink, start: surveyStartDatePicker.dateValue, end: surveyEndDatePicker.dateValue)
+//            do {
+//                let jsonEncoder = JSONEncoder()
+//                let jsonData = try jsonEncoder.encode(survey)
+//                selectedYear?.surveys = String(data: jsonData, encoding: String.Encoding.utf8)
+//            } catch {
+//                print("error trying to convert object to data")
+//                print(error)
+//            }
+//            
+//        }
         updateYear(callback: nil)
     }
     
