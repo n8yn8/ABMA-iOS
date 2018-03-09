@@ -6,10 +6,10 @@
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
     </dependencies>
     <scenes>
-        <!--View Controller-->
+        <!--Survey View Controller-->
         <scene sceneID="lDE-rV-a1b">
             <objects>
-                <viewController id="Im1-Cj-cxQ" sceneMemberID="viewController">
+                <viewController id="Im1-Cj-cxQ" customClass="SurveyViewController" customModule="ABMAEditor" customModuleProvider="target" sceneMemberID="viewController">
                     <view key="view" id="9Hc-U8-IxT">
                         <rect key="frame" x="0.0" y="0.0" width="587" height="211"/>
                         <autoresizingMask key="autoresizingMask"/>
@@ -141,15 +141,22 @@
                             <constraint firstItem="Obp-sm-kR1" firstAttribute="leading" secondItem="Mk0-F6-WaD" secondAttribute="trailing" constant="8" id="zbb-td-8RP"/>
                         </constraints>
                     </view>
+                    <connections>
+                        <outlet property="endDatePicker" destination="VyW-aL-RIw" id="zdO-pP-6Lr"/>
+                        <outlet property="startDatePicker" destination="0Vw-du-Ue1" id="bTb-oT-wRf"/>
+                        <outlet property="surveyTitleTextField" destination="ISU-co-FgL" id="ble-Ip-e1W"/>
+                        <outlet property="titleTextField" destination="Obp-sm-kR1" id="ZxN-5o-JJu"/>
+                        <outlet property="urlTextField" destination="qzD-Go-8mj" id="TDC-PA-Zzo"/>
+                    </connections>
                 </viewController>
                 <customObject id="j3O-ch-cha" userLabel="First Responder" customClass="NSResponder" sceneMemberID="firstResponder"/>
             </objects>
             <point key="canvasLocation" x="507" y="360"/>
         </scene>
-        <!--View Controller-->
+        <!--Survey List View Controller-->
         <scene sceneID="zY2-xm-uUO">
             <objects>
-                <viewController id="JgG-d1-xKR" sceneMemberID="viewController">
+                <viewController id="JgG-d1-xKR" customClass="SurveyListViewController" customModule="ABMAEditor" customModuleProvider="target" sceneMemberID="viewController">
                     <view key="view" id="W4W-rz-YzH">
                         <rect key="frame" x="0.0" y="0.0" width="450" height="300"/>
                         <autoresizingMask key="autoresizingMask"/>
@@ -164,7 +171,7 @@
                                             <scrollView autohidesScrollers="YES" horizontalLineScroll="19" horizontalPageScroll="10" verticalLineScroll="19" verticalPageScroll="10" usesPredominantAxisScrolling="NO" translatesAutoresizingMaskIntoConstraints="NO" id="3a2-HZ-dq4">
                                                 <rect key="frame" x="0.0" y="0.0" width="450" height="142"/>
                                                 <clipView key="contentView" id="rIR-Jy-HOL">
-                                                    <rect key="frame" x="1" y="23" width="448" height="118"/>
+                                                    <rect key="frame" x="1" y="0.0" width="448" height="141"/>
                                                     <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                                                     <subviews>
                                                         <tableView verticalHuggingPriority="750" allowsExpansionToolTips="YES" columnAutoresizingStyle="lastColumnOnly" columnSelection="YES" multipleSelection="NO" autosaveColumns="NO" rowSizeStyle="automatic" headerView="Tlk-mg-J44" viewBased="YES" id="r7y-Ey-U4V">
@@ -245,7 +252,7 @@
                                                     </subviews>
                                                 </clipView>
                                                 <scroller key="horizontalScroller" hidden="YES" verticalHuggingPriority="750" horizontal="YES" id="3tj-zW-Xe3">
-                                                    <rect key="frame" x="1" y="117.66531592607498" width="237.26138687133789" height="16"/>
+                                                    <rect key="frame" x="1" y="117" width="237.26138687133789" height="16"/>
                                                     <autoresizingMask key="autoresizingMask"/>
                                                 </scroller>
                                                 <scroller key="verticalScroller" hidden="YES" verticalHuggingPriority="750" doubleValue="1" horizontal="NO" id="oJD-L6-AbY">
@@ -297,6 +304,9 @@
                             <constraint firstItem="bi5-k1-iBH" firstAttribute="leading" secondItem="W4W-rz-YzH" secondAttribute="leading" id="yay-NQ-AGP"/>
                         </constraints>
                     </view>
+                    <connections>
+                        <outlet property="surveysTableView" destination="r7y-Ey-U4V" id="k5Z-PI-Fwc"/>
+                    </connections>
                 </viewController>
                 <customObject id="RhP-h0-e5p" userLabel="First Responder" customClass="NSResponder" sceneMemberID="firstResponder"/>
             </objects>

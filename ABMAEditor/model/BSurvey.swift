@@ -10,9 +10,9 @@ import Foundation
 
 class BSurvey: NSObject, Codable {
     
-    @objc var title: String?
-    @objc var details: String?
-    @objc var url: String?
+    @objc var title = ""
+    @objc var details = ""
+    @objc var url = ""
     @objc var start: Date?
     @objc var end: Date?
     
