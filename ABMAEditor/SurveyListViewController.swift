@@ -57,8 +57,8 @@ class SurveyListViewController: NSViewController, NSTableViewDelegate, NSTableVi
         
         if tableColumn!.identifier.rawValue == "Title" {
             cell.textField?.stringValue = survey.title
-        } else if tableColumn!.identifier.rawValue == "Author" {
-            
+        } else if tableColumn!.identifier.rawValue == "Details" {
+            cell.textField?.stringValue = survey.details
         }
         
         return cell
@@ -90,10 +90,7 @@ class SurveyListViewController: NSViewController, NSTableViewDelegate, NSTableVi
     
     @IBAction func remove(_ sender: Any) {
         surveys.remove(at: surveysTableView.selectedRow)
-        //TODO: Update Year
-        surveysTableView.reloadData()
-        removeButton.isEnabled = false
-        updateSelectedSurvey()
+        save()
     }
     
     override func prepare(for segue: NSStoryboardSegue, sender: Any?) {
@@ -103,12 +100,7 @@ class SurveyListViewController: NSViewController, NSTableViewDelegate, NSTableVi
         }
     }
     
-}
-
-extension SurveyListViewController: SurveyViewControllerDelegate {
-    
-    func saveSurvey(survey: BSurvey) {
-        surveys.append(survey)
+    private func save() {
         do {
             let jsonEncoder = JSONEncoder()
             let jsonData = try jsonEncoder.encode(surveys)
@@ -118,7 +110,15 @@ extension SurveyListViewController: SurveyViewControllerDelegate {
             print("error trying to convert object to data")
             print(error)
         }
-        
+    }
+    
+}
+
+extension SurveyListViewController: SurveyViewControllerDelegate {
+    
+    func saveSurvey(survey: BSurvey) {
+        surveys.append(survey)
+        save()
     }
     
 }
