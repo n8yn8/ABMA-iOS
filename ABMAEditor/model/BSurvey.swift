@@ -13,8 +13,8 @@ class BSurvey: NSObject, Codable {
     @objc var title = ""
     @objc var details = ""
     @objc var url = ""
-    @objc var start: Date?
-    @objc var end: Date?
+    @objc var start = Date()
+    @objc var end = Date()
     
     @objc
     func initWith(title: String, details: String, url: String, start: Date, end: Date) {

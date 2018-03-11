@@ -142,10 +142,10 @@
                         </constraints>
                     </view>
                     <connections>
+                        <outlet property="desciptionTextField" destination="Obp-sm-kR1" id="rf1-4O-dwE"/>
                         <outlet property="endDatePicker" destination="VyW-aL-RIw" id="zdO-pP-6Lr"/>
                         <outlet property="startDatePicker" destination="0Vw-du-Ue1" id="bTb-oT-wRf"/>
-                        <outlet property="surveyTitleTextField" destination="ISU-co-FgL" id="ble-Ip-e1W"/>
-                        <outlet property="titleTextField" destination="Obp-sm-kR1" id="ZxN-5o-JJu"/>
+                        <outlet property="titleTextField" destination="ISU-co-FgL" id="J6r-9X-9iL"/>
                         <outlet property="urlTextField" destination="qzD-Go-8mj" id="TDC-PA-Zzo"/>
                     </connections>
                 </viewController>
