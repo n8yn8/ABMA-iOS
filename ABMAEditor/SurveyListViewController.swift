@@ -11,8 +11,24 @@ import Cocoa
 class SurveyListViewController: NSViewController, NSTableViewDelegate, NSTableViewDataSource {
 
     @IBOutlet weak var surveysTableView: NSTableView!
-    var surveysString = "" {
+    @IBOutlet weak var removeButton: NSButton!
+    
+    weak var delegate: SurveyListViewControllerDelegate?
+    var surveysString: String? {
         didSet {
+            if let string = surveysString {
+                do {
+                    let decoder = JSONDecoder()
+                    decoder.dateDecodingStrategy = .millisecondsSince1970
+                    surveys = try decoder.decode([BSurvey].self, from: string.data(using: .utf8)!)
+                } catch {
+                    print("error trying to convert data to JSON")
+                    print(error)
+                    surveys = [BSurvey]()
+                }
+            } else {
+                surveys = [BSurvey]()
+            }
         }
     }
     private var surveys = [BSurvey](){
@@ -49,16 +65,16 @@ class SurveyListViewController: NSViewController, NSTableViewDelegate, NSTableVi
     }
     
     func tableViewSelectionDidChange(_ notification: Notification) {
-        updateSelectedPaper()
+        updateSelectedSurvey()
     }
     
-    func updateSelectedPaper() {
+    func updateSelectedSurvey() {
         surveyViewController?.survey = getSelectedSurvey()
     }
     
     func getSelectedSurvey() -> BSurvey? {
         let selectedRow = surveysTableView.selectedRow
-//        removeButton.isEnabled = selectedRow >= 0
+        removeButton.isEnabled = selectedRow >= 0
         if selectedRow >= 0 && surveys.count > selectedRow {
             selectedIndex = selectedRow
             return surveys[selectedRow]
@@ -67,10 +83,46 @@ class SurveyListViewController: NSViewController, NSTableViewDelegate, NSTableVi
         return nil
     }
     
+    @IBAction func add(_ sender: Any) {
+        surveysTableView.deselectAll(self)
+        surveyViewController?.setEnabled(isEnabled: true)
+    }
+    
+    @IBAction func remove(_ sender: Any) {
+        surveys.remove(at: surveysTableView.selectedRow)
+        //TODO: Update Year
+        surveysTableView.reloadData()
+        removeButton.isEnabled = false
+        updateSelectedSurvey()
+    }
+    
     override func prepare(for segue: NSStoryboardSegue, sender: Any?) {
         if let controller = segue.destinationController as? SurveyViewController {
             surveyViewController = controller
+            surveyViewController?.delegate = self
         }
     }
     
+}
+
+extension SurveyListViewController: SurveyViewControllerDelegate {
+    
+    func saveSurvey(survey: BSurvey) {
+        surveys.append(survey)
+        do {
+            let jsonEncoder = JSONEncoder()
+            let jsonData = try jsonEncoder.encode(surveys)
+            let string = String(data: jsonData, encoding: String.Encoding.utf8)
+            delegate?.saveSurveys(surveys: string!)
+        } catch {
+            print("error trying to convert object to data")
+            print(error)
+        }
+        
+    }
+    
+}
+
+protocol SurveyListViewControllerDelegate: class {
+    func saveSurveys(surveys: String)
 }

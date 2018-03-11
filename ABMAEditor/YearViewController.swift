@@ -15,6 +15,7 @@ class YearViewController: NSViewController {
     @IBOutlet var infoTextView: NSTextView!
     var containerController: ContainerController?
     var sponsorsViewController: SponsorsViewController?
+    var surveyListViewController: SurveyListViewController?
     
     var years = [BYear]()
     var selectedYear: BYear?
@@ -87,6 +88,8 @@ class YearViewController: NSViewController {
             
             sponsorsViewController?.updateSponsors(sponsorList: year.sponsors)
             sponsorsViewController?.yearParentId = year.objectId
+            
+            surveyListViewController?.surveysString = year.surveys
         } else {
             containerController?.updateEventList(events: [BEvent](), yearObjectId: nil)
             welcomeTextView.string = ""
@@ -118,26 +121,15 @@ class YearViewController: NSViewController {
             sponsorsViewController?.delegate = self
         } else if let dvc = segue.destinationController as? PushViewController {
             dvc.delegate = self
+        } else if let dvc = segue.destinationController as? SurveyListViewController {
+            surveyListViewController = dvc
+            surveyListViewController?.delegate = self
         }
     }
     
     @IBAction func saveWelcome(_ sender: Any) {
         selectedYear?.welcome = welcomeTextView.string
         selectedYear?.info = infoTextView.string
-//        let surveyLink = surveyLinkTextField.stringValue
-//        if !surveyLink.isEmpty {
-//            let survey = BSurvey()
-//            survey.initWith(title: "", details: "", url: surveyLink, start: surveyStartDatePicker.dateValue, end: surveyEndDatePicker.dateValue)
-//            do {
-//                let jsonEncoder = JSONEncoder()
-//                let jsonData = try jsonEncoder.encode(survey)
-//                selectedYear?.surveys = String(data: jsonData, encoding: String.Encoding.utf8)
-//            } catch {
-//                print("error trying to convert object to data")
-//                print(error)
-//            }
-//            
-//        }
         updateYear(callback: nil)
     }
     
@@ -223,5 +215,12 @@ extension YearViewController: PushViewControllerDelegate {
         } else {
             DbManager.sharedInstance.pushUpdate(message: message)
         }
+    }
+}
+
+extension YearViewController: SurveyListViewControllerDelegate {
+    func saveSurveys(surveys: String) {
+        selectedYear?.surveys = surveys
+        updateYear(callback: nil)
     }
 }
