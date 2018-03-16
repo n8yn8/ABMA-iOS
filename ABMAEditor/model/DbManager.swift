@@ -149,6 +149,14 @@ class DbManager: NSObject {
 
     }
     
+    func getSponsors(parentId: String, callback: @escaping ([BSponsor]?, Error?) -> Void) {
+        NetworkExecutor.getRelated(parentId: parentId, relationName: "sponsors", endpoint: .year, method: .get, callback: callback)
+    }
+    
+    func getEvents(parentId: String, callback: @escaping ([BEvent]?, Error?) -> Void) {
+        NetworkExecutor.getRelated(parentId: parentId, relationName: "events", endpoint: .year, method: .get, callback: callback)
+    }
+    
     func deleteEvent(event: BEvent) {
         
     }
