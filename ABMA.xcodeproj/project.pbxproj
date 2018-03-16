@@ -379,12 +379,12 @@
 		434B44EC1E1BF74700963096 /* model */ = {
 			isa = PBXGroup;
 			children = (
+				43A436091FA7694600754298 /* DbManager.swift */,
 				434B44ED1E1BF75500963096 /* BEvent.swift */,
 				432ED0931E267AC300DD92BB /* BPaper.swift */,
 				435EEE671E3D329F00C9CF84 /* BYear.swift */,
 				431326A51E3D7796003C808E /* BSponsor.swift */,
 				43FA2A141E593F7900BAE929 /* BNote.swift */,
-				43A436091FA7694600754298 /* DbManager.swift */,
 				4324097220444C5F0093FF83 /* BSurvey.swift */,
 			);
 			path = model;
