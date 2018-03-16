@@ -96,4 +96,23 @@ class Utils: NSObject {
         Answers.logCustomEvent(withName: "Error", customAttributes: ["method": method, "message": message])
         print("Error \(method) \(message)")
     }
+    
+    @objc
+    static func getSurveys(surveysString: String?) -> [BSurvey] {
+        var surveys = [BSurvey]()
+        if let string = surveysString {
+            do {
+                let decoder = JSONDecoder()
+                decoder.dateDecodingStrategy = .millisecondsSince1970
+                surveys = try decoder.decode([BSurvey].self, from: string.data(using: .utf8)!)
+            } catch {
+                print("error trying to convert data to JSON")
+                print(error)
+                surveys = [BSurvey]()
+            }
+        } else {
+            surveys = [BSurvey]()
+        }
+        return surveys
+    }
 }

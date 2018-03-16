@@ -36,22 +36,9 @@
     
     _menuItems = [[NSMutableArray alloc] initWithArray:@[@"logo", @"welcome", @"schedule", @"notes", @"info", @"sponsor", @"contact"]];
     
-    BOOL isSurveyAvailable = false;
     AppDelegate *appdelegate = (AppDelegate *)[[UIApplication sharedApplication] delegate];
     NSManagedObjectContext *context = [appdelegate managedObjectContext];
     Year *year = [Year getLatestYear:nil context:context];
-    if (year) {
-        if (year.surveyLink) {
-            surveyUrl = year.surveyLink;
-            NSDate *now = [[NSDate alloc] init];
-            if (now.timeIntervalSince1970 > year.surveyStart.timeIntervalSince1970 && now.timeIntervalSince1970 < year.surveyEnd.timeIntervalSince1970) {
-                isSurveyAvailable = true;
-            }
-        }
-    }
-    if (isSurveyAvailable) {
-        [_menuItems addObject:@"survey"];
-    }
     
     BackendlessUser *user = [[DbManager sharedInstance] getCurrentUser];
     if (user) {

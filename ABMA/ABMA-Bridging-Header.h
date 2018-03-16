@@ -7,3 +7,4 @@
 #import "Note+CoreDataClass.h"
 #import "Paper+CoreDataClass.h"
 #import "Event+CoreDataClass.h"
+#import "Survey+CoreDataClass.h"

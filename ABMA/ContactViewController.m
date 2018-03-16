@@ -8,22 +8,20 @@
 
 #import "ContactViewController.h"
 #import "SWRevealViewController.h"
+#import "Year+CoreDataClass.h"
+#import "AppDelegate.h"
+#import "Survey+CoreDataClass.h"
+#import "SurveyTableViewCell.h"
 
 @interface ContactViewController ()
 @property (weak, nonatomic) IBOutlet UIButton *websiteButton;
-@property (weak, nonatomic) IBOutlet UIButton *surveyButton;
+@property (weak, nonatomic) IBOutlet UIButton *contactButton;
+@property (weak, nonatomic) IBOutlet UITableView *surveysTableView;
 
 @end
 
-@implementation ContactViewController
-
-- (id)initWithNibName:(NSString *)nibNameOrNil bundle:(NSBundle *)nibBundleOrNil
-{
-    self = [super initWithNibName:nibNameOrNil bundle:nibBundleOrNil];
-    if (self) {
-        // Custom initialization
-    }
-    return self;
+@implementation ContactViewController {
+    NSArray<Survey*> *surveys;
 }
 
 - (void)viewDidLoad
@@ -31,26 +29,33 @@
     [super viewDidLoad];
     
     self.websiteButton.layer.cornerRadius = 6;
-    self.surveyButton.layer.cornerRadius = 6;
+    self.contactButton.layer.cornerRadius = 6;
+    
+    self.surveysTableView.delegate = self;
+    self.surveysTableView.dataSource = self;
+    
+    AppDelegate *appdelegate = (AppDelegate *)[[UIApplication sharedApplication] delegate];
+    NSManagedObjectContext *context = [appdelegate managedObjectContext];
+    Year *year = [Year getLatestYear:nil context:context];
+    surveys = [year.surveys allObjects];
 }
 
-- (void)didReceiveMemoryWarning
-{
-    [super didReceiveMemoryWarning];
-    // Dispose of any resources that can be recreated.
+- (nonnull UITableViewCell *)tableView:(nonnull UITableView *)tableView cellForRowAtIndexPath:(nonnull NSIndexPath *)indexPath {
+    static NSString *simpleTableIdentifier = @"SurveyCell";
+    
+    SurveyTableViewCell *cell = [tableView dequeueReusableCellWithIdentifier:simpleTableIdentifier];
+    if (cell == nil) {
+        cell = [[SurveyTableViewCell alloc] initWithStyle:UITableViewCellStyleDefault reuseIdentifier:simpleTableIdentifier];
+    }
+    
+    Survey *survey = [surveys objectAtIndex:indexPath.row];
+    
+    return cell;
 }
 
-/*
-#pragma mark - Navigation
-
-// In a storyboard-based application, you will often want to do a little preparation before navigation
-- (void)prepareForSegue:(UIStoryboardSegue *)segue sender:(id)sender
-{
-    // Get the new view controller using [segue destinationViewController].
-    // Pass the selected object to the new view controller.
+- (NSInteger)tableView:(nonnull UITableView *)tableView numberOfRowsInSection:(NSInteger)section {
+    return surveys.count;
 }
-*/
-
 
 - (IBAction)abmaWebsite:(id)sender {
     [[UIApplication sharedApplication] openURL:[NSURL URLWithString: @"http://www.theabma.org"]];

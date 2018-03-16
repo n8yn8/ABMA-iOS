@@ -17,6 +17,7 @@
 #import "Sponsor+CoreDataClass.h"
 #import "ABMA-Swift.h"
 #import "Note+CoreDataClass.h"
+#import "Survey+CoreDataClass.h"
 
 @interface ScheduleViewController ()
 
@@ -147,15 +148,22 @@
     year.year = [NSString stringWithFormat:@"%ld", (long)bYear.name] ;
     year.info = bYear.info;
     year.welcome = bYear.welcome;
-//    year.surveyLink = bYear.surveyUrl;
-//    year.surveyStart = bYear.surveyStart;
-//    year.surveyEnd = bYear.surveyEnd;
     year.created = bYear.created;
     year.updated = bYear.updated;
     if (year.updated) {
         [Utils updateLastUpdatedWithDate:year.updated];
     } else {
         [Utils updateLastUpdatedWithDate:year.created];
+    }
+    NSArray<BSurvey *> *bSurveys = [Utils getSurveysWithSurveysString:bYear.surveys];
+    for (BSurvey *bSurvey in bSurveys) {
+        Survey *survey = [[Survey alloc] initWithEntity:[NSEntityDescription entityForName:@"Survey" inManagedObjectContext:context] insertIntoManagedObjectContext:context];
+        survey.title = bSurvey.title;
+        survey.details = bSurvey.details;
+        survey.url = bSurvey.url;
+        survey.start = bSurvey.start;
+        survey.end = bSurvey.end;
+        [year addSurveysObject:survey];
     }
     for (BSponsor *bSponsor in bYear.sponsors) {
         
@@ -175,6 +183,7 @@
         sponsor.updated = bSponsor.upadted;
         [year addSponsorsObject:sponsor];
     }
+    
     for (BEvent *bEvent in bYear.events) {
         NSCalendar * calendar = [[NSCalendar alloc] initWithCalendarIdentifier:NSCalendarIdentifierGregorian];
         
