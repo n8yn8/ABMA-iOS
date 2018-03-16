@@ -68,7 +68,7 @@ class YearViewController: NSViewController {
     func updateUi() {
         
         if let year = selectedYear {
-            containerController?.updateEventList(events: year.events, yearObjectId: year.objectId!)
+            containerController?.updateEventList(yearObjectId: year.objectId!)
             if let welcome = year.welcome {
                 welcomeTextView.string = welcome
             } else {
@@ -91,7 +91,7 @@ class YearViewController: NSViewController {
             
             surveyListViewController?.surveysString = year.surveys
         } else {
-            containerController?.updateEventList(events: [BEvent](), yearObjectId: nil)
+            containerController?.updateEventList(yearObjectId: nil)
             welcomeTextView.string = ""
             infoTextView.string = ""
             sponsorsViewController?.updateSponsors(sponsorList: [BSponsor]())
