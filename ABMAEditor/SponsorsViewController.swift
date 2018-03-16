@@ -75,7 +75,7 @@ class SponsorsViewController: NSViewController {
             print("Image exists")
             sheetViewController.image = image
             sheetViewController.imageData = data
-            sheetViewController.imageName = name
+            sheetViewController.imageName = name.replacingOccurrences(of: " ", with: "_", options: NSString.CompareOptions.literal, range: nil)
             sheetViewController.delegate = self
             presentViewControllerAsSheet(sheetViewController)
         } else {
