@@ -162,15 +162,21 @@ class DbManager: NSObject {
     }
     
     func deleteEvent(event: BEvent) {
+        if let papers = event.papers {
+            for paper in papers {
+                deletePaper(paper: paper)
+            }
+        }
         
-    }
-    
-    func deleteRelatedPapers(event: BEvent, callback: @escaping () -> Void) {
-        
+        NetworkExecutor.delete(objectId: event.objectId!, endpoint: .event) { (response, error) in
+            print("deleteEvent error = \(String(describing: error))")
+        }
     }
     
     func deletePaper(paper: BPaper) {
-        
+        NetworkExecutor.delete(objectId: paper.objectId!, endpoint: .paper) { (response, error) in
+            print("deletePaper error = \(String(describing: error))")
+        }
     }
     
     func uploadImage(name: String, image: NSData, callback: @escaping (String?, Error?) -> Void) {

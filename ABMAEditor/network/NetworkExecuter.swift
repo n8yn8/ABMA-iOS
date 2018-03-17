@@ -18,7 +18,7 @@ class NetworkExecutor {
     }
     
     enum Method : String {
-        case get = "GET", post = "POST", put = "PUT"
+        case get = "GET", post = "POST", put = "PUT", delete = "DELETE"
     }
     
     static func getRelated<T : Codable>(parentId: String, relationName: String, endpoint: Endpoint, callback: @escaping (T?, Error?) -> Void) {
@@ -33,6 +33,16 @@ class NetworkExecutor {
     
     static func execute<T : Codable>(endpoint: Endpoint, method: Method, callback: @escaping (T?, Error?) -> Void) {
         execute(endpoint: endpoint, method: method, params: nil, callback: callback)
+    }
+    
+    static func delete(objectId: String, endpoint: Endpoint, callback: @escaping (String?, Error?) -> Void) {
+        guard let url = URL(string: "https://api.backendless.com/\(appId)/\(restKey)/data/\(endpoint.rawValue)/\(objectId)") else {
+            print("Error: cannot create URL")
+            let error = BackendError.urlError(reason: "Could not construct URL")
+            callback(nil, error)
+            return
+        }
+        execute(method: .delete, paramsData: nil, url: url, callback: callback)
     }
     
     static func execute<T : Codable>(endpoint: Endpoint, method: Method, params: T?, callback: @escaping (T?, Error?) -> Void) {
