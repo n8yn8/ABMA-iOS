@@ -79,7 +79,7 @@ extension ContainerController: EventViewControllerDelegate {
                 if let index = self.selectedEventIndex {
                     self.eventList[index] = savedEvent
                 } else {
-                    self.eventList.append(event)
+                    self.eventList.append(savedEvent)
                     self.delegate?.updateEvents(list: self.eventList)
                 }
             }

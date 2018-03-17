@@ -30,6 +30,7 @@ class EventListViewController: NSViewController, NSTableViewDelegate, NSTableVie
         eventList = list
         eventTableView.deselectAll(self)
         eventTableView.reloadData()
+        updateSelectedEvent()
     }
     
     func numberOfRows(in tableView: NSTableView) -> Int {
@@ -58,6 +59,10 @@ class EventListViewController: NSViewController, NSTableViewDelegate, NSTableVie
     }
     
     func tableViewSelectionDidChange(_ notification: Notification) {
+        updateSelectedEvent()
+    }
+    
+    private func updateSelectedEvent() {
         delegate?.updateSelectedEvent(event: getSelectedEvent(), index: selectedIndex)
     }
     
