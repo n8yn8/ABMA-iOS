@@ -68,7 +68,15 @@ class YearViewController: NSViewController {
     func updateUi() {
         
         if let year = selectedYear {
-            containerController?.updateEventList(yearObjectId: year.objectId!)
+            if let events = year.events {
+                containerController?.updateEventList(events: events, yearObjectId: year.objectId)
+            } else {
+                DbManager.sharedInstance.getEvents(parentId: year.objectId!) { (response, error) in
+                    year.events = response
+                    self.containerController?.updateEventList(events: response, yearObjectId: year.objectId)
+                }
+            }
+            
             if let welcome = year.welcome {
                 welcomeTextView.string = welcome
             } else {
@@ -85,13 +93,19 @@ class YearViewController: NSViewController {
             } else {
                 publishButton.title = "Update"
             }
+            if let sponsors = year.sponsors {
+                sponsorsViewController?.updateSponsors(sponsorList: sponsors)
+            } else {
+                DbManager.sharedInstance.getSponsors(parentId: year.objectId!) { (response, error) in
+                    year.sponsors = response
+                    self.sponsorsViewController?.updateSponsors(sponsorList: response)
+                }
+            }
             
-            sponsorsViewController?.updateSponsors(sponsorList: year.sponsors)
             sponsorsViewController?.yearParentId = year.objectId
-            
             surveyListViewController?.surveysString = year.surveys
         } else {
-            containerController?.updateEventList(yearObjectId: nil)
+            containerController?.updateEventList(events: nil, yearObjectId: nil)
             welcomeTextView.string = ""
             infoTextView.string = ""
             sponsorsViewController?.updateSponsors(sponsorList: [BSponsor]())

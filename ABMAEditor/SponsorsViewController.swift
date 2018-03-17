@@ -10,21 +10,8 @@ import Cocoa
 
 class SponsorsViewController: NSViewController {
     
-    private var sponsors = [BSponsor]() {
-        didSet {
-            collectionView.reloadData()
-        }
-    }
-    var yearParentId: String! {
-        didSet {
-            DbManager.sharedInstance.getSponsors(parentId: yearParentId) { (response, error) in
-                guard let theseSponsors = response else {
-                    return
-                }
-                self.sponsors = theseSponsors
-            }
-        }
-    }
+    private var sponsors = [BSponsor]()
+    var yearParentId: String!
 
     @IBOutlet weak var collectionView: NSCollectionView!
     @IBOutlet weak var removeButton: NSButton!
