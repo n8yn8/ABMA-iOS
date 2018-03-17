@@ -21,14 +21,14 @@ class NetworkExecutor {
         case get = "GET", post = "POST", put = "PUT"
     }
     
-    static func getRelated<T : Codable>(parentId: String, relationName: String, endpoint: Endpoint, method: Method, callback: @escaping (T?, Error?) -> Void) {
-        guard let url = URL(string: "https://api.backendless.com/\(appId)/\(restKey)/data/\(endpoint.rawValue)/\(parentId)/\(relationName)?pageSize=100&offset=0") else {
+    static func getRelated<T : Codable>(parentId: String, relationName: String, endpoint: Endpoint, callback: @escaping (T?, Error?) -> Void) {
+        guard let url = URL(string: "https://api.backendless.com/\(appId)/\(restKey)/data/\(endpoint.rawValue)/\(parentId)/\(relationName)?pageSize=100&offset=0&relationsDepth=2") else {
             print("Error: cannot create URL")
             let error = BackendError.urlError(reason: "Could not construct URL")
             callback(nil, error)
             return
         }
-        execute(method: method, paramsData: nil, url: url, callback: callback)
+        execute(method: .get, paramsData: nil, url: url, callback: callback)
     }
     
     static func execute<T : Codable>(endpoint: Endpoint, method: Method, callback: @escaping (T?, Error?) -> Void) {

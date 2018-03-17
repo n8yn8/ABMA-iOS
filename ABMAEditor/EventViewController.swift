@@ -75,13 +75,19 @@ class EventViewController: NSViewController {
                 if let details = event.details {
                     descriptionTextView.string = details
                     tabView.selectFirstTabViewItem(self)
+                } else {
+                    
                 }
-                if let papers = event.papers {
-                    if !papers.isEmpty {
-                        tabView.selectLastTabViewItem(self)
-                    }
-                    if let controller = papersViewController {
-                        controller.papers = papers
+                if event.papersCount > 0 {
+                    if let papers = event.papers {
+                        setPapers(papers: papers)
+                    } else {
+                        DbManager.sharedInstance.getPapers(parentId: event.objectId!, callback: { (response, errore) in
+                            event.papers = response
+                            if let papers = response {
+                                self.setPapers(papers: papers)
+                            }
+                        })
                     }
                 }
                 
@@ -96,6 +102,15 @@ class EventViewController: NSViewController {
                 tabView.selectFirstTabViewItem(self)
                 setEnabled(enabled: false)
             }
+        }
+    }
+    
+    func setPapers(papers: [BPaper]) {
+        if !papers.isEmpty {
+            tabView.selectLastTabViewItem(self)
+        }
+        if let controller = papersViewController {
+            controller.papers = papers
         }
     }
     
@@ -134,7 +149,9 @@ class EventViewController: NSViewController {
         event!.location = locationTextField.stringValue
         event!.subtitle = subtitleTextField.stringValue
         event!.details = descriptionTextView.string
-        event!.papers = papersViewController!.papers
+        let papers = papersViewController!.papers
+        event!.papers = papers
+        event?.papersCount = papers.count
         
         self.delegate?.updateEvent(event: event!)
     }
