@@ -35,20 +35,13 @@ class ContainerController: NSSplitViewController {
 
     }
     
-    func updateEventList(yearObjectId: String?) {
+    func updateEventList(events: [BEvent]?, yearObjectId: String?) {
         self.yearObjectId = yearObjectId
         self.eventList.removeAll()
-        guard let parentId = yearObjectId else {
-            return
+        if let theseEvents = events {
+            self.eventList.append(contentsOf: theseEvents)
         }
-        DbManager.sharedInstance.getEvents(parentId: parentId) { (response, error) in
-            
-            if let theseEvents = response {
-                self.eventList.append(contentsOf: theseEvents)
-            }
-            self.update()
-        }
-        
+        self.update()
     }
     
     func update() {
