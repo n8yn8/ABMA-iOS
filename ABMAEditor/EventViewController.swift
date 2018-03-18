@@ -167,10 +167,21 @@ class EventViewController: NSViewController {
     
     override func prepare(for segue: NSStoryboardSegue, sender: Any?) {
         if let controller = segue.destinationController as? PapersViewController {
+            controller.delegate = self
             papersViewController = controller
         }
     }
 
+}
+
+extension EventViewController : PapersViewControllerDelegate {
+    func updatedPapers() {
+        let papersCount = papersViewController!.papers.count
+        if event?.papersCount != papersCount {
+            event?.papersCount = papersCount
+            saveEvent()
+        }
+    }
 }
 
 protocol EventViewControllerDelegate: class {

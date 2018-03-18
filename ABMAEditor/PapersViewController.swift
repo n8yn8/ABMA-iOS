@@ -26,6 +26,7 @@ class PapersViewController: NSViewController, NSTableViewDelegate, NSTableViewDa
         }
     }
     var eventParent: String?
+    weak var delegate: PapersViewControllerDelegate?
     
     private var selectedIndex: Int?
 
@@ -109,6 +110,7 @@ class PapersViewController: NSViewController, NSTableViewDelegate, NSTableViewDa
         papersTableView.reloadData()
         removeButton.isEnabled = false
         updateSelectedPaper()
+        self.delegate?.updatedPapers()
     }
     
     @IBAction func save(_ sender: Any) {
@@ -132,6 +134,7 @@ class PapersViewController: NSViewController, NSTableViewDelegate, NSTableViewDa
                 self.papers[index] = savedPaper
             } else {
                 self.papers.append(savedPaper)
+                self.delegate?.updatedPapers()
             }
             
             self.papersTableView.reloadData()
@@ -144,4 +147,8 @@ class PapersViewController: NSViewController, NSTableViewDelegate, NSTableViewDa
     @IBAction func orderChanged(_ sender: NSStepper) {
         orderTextView.stringValue = "\(orderStepper.integerValue)"
     }
+}
+
+protocol PapersViewControllerDelegate: class {
+    func updatedPapers()
 }
