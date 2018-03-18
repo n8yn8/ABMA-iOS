@@ -14,7 +14,7 @@ class ContainerController: NSSplitViewController {
     
     var eventListController: EventListViewController!
     var eventController: EventViewController!
-    var eventList = [BEvent]()
+    private var eventList = [BEvent]()
     var selectedEventIndex: Int?
     var yearObjectId: String?
     
@@ -37,11 +37,11 @@ class ContainerController: NSSplitViewController {
     
     func updateEventList(events: [BEvent]?, yearObjectId: String?) {
         self.yearObjectId = yearObjectId
-        eventList.removeAll()
+        self.eventList.removeAll()
         if let theseEvents = events {
-            eventList.append(contentsOf: theseEvents)
+            self.eventList.append(contentsOf: theseEvents)
         }
-        update()
+        self.update()
     }
     
     func update() {
@@ -79,7 +79,7 @@ extension ContainerController: EventViewControllerDelegate {
                 if let index = self.selectedEventIndex {
                     self.eventList[index] = savedEvent
                 } else {
-                    self.eventList.append(event)
+                    self.eventList.append(savedEvent)
                     self.delegate?.updateEvents(list: self.eventList)
                 }
             }
