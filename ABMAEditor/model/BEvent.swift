@@ -18,6 +18,7 @@ class BEvent: NSObject, Codable {
     @objc var subtitle: String?
     @objc var title: String?
     @objc var papers: [BPaper]?
+    @objc var papersCount = 0
     @objc var upadted: Date?
     @objc var created: Date?
     

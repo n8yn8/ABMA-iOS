@@ -149,16 +149,34 @@ class DbManager: NSObject {
 
     }
     
-    func deleteEvent(event: BEvent) {
-        
+    func getSponsors(parentId: String, callback: @escaping ([BSponsor]?, Error?) -> Void) {
+        NetworkExecutor.getRelated(parentId: parentId, relationName: "sponsors", endpoint: .year, callback: callback)
     }
     
-    func deleteRelatedPapers(event: BEvent, callback: @escaping () -> Void) {
+    func getEvents(parentId: String, callback: @escaping ([BEvent]?, Error?) -> Void) {
+        NetworkExecutor.getRelated(parentId: parentId, relationName: "events", endpoint: .year, callback: callback)
+    }
+    
+    func getPapers(parentId: String, callback: @escaping ([BPaper]?, Error?) -> Void) {
+        NetworkExecutor.getRelated(parentId: parentId, relationName: "papers", endpoint: .event, callback: callback)
+    }
+    
+    func deleteEvent(event: BEvent) {
+        if let papers = event.papers {
+            for paper in papers {
+                deletePaper(paper: paper)
+            }
+        }
         
+        NetworkExecutor.delete(objectId: event.objectId!, endpoint: .event) { (response, error) in
+            print("deleteEvent error = \(String(describing: error))")
+        }
     }
     
     func deletePaper(paper: BPaper) {
-        
+        NetworkExecutor.delete(objectId: paper.objectId!, endpoint: .paper) { (response, error) in
+            print("deletePaper error = \(String(describing: error))")
+        }
     }
     
     func uploadImage(name: String, image: NSData, callback: @escaping (String?, Error?) -> Void) {
