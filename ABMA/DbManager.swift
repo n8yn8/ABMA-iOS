@@ -108,6 +108,62 @@ class DbManager: NSObject {
             print("response \(String(describing: response))")
             if let years = response as? [BYear] {
                 callback(years, nil)
+            } else {
+                callback([BYear](), nil)
+            }
+        }, error: { (error) in
+            print("error: \(String(describing: error))")
+            callback(nil, error.debugDescription)
+        })
+    }
+    
+    @objc
+    func getSponsors(yearId: String, callback: @escaping (_ events: [BSponsor]?, _ errorString: String?) -> Void) {
+        let loadRelationsQueryBuilder = LoadRelationsQueryBuilder.of(BSponsor.ofClass())
+            .setRelationName("sponsors")
+            .setPageSize(100)
+        
+        backendless?.data.of(BYear.ofClass()).loadRelations(yearId, queryBuilder: loadRelationsQueryBuilder, response: { (response) in
+            if let sponsors = response as? [BSponsor] {
+                callback(sponsors, nil)
+            } else {
+                callback([BSponsor](), nil)
+            }
+        }, error: { (error) in
+            print("error: \(String(describing: error))")
+            callback(nil, error.debugDescription)
+        })
+    }
+    
+    @objc
+    func getEvents(yearId: String, callback: @escaping (_ events: [BEvent]?, _ errorString: String?) -> Void) {
+        let loadRelationsQueryBuilder = LoadRelationsQueryBuilder.of(BEvent.ofClass())
+            .setRelationName("events")
+            .setPageSize(100)
+        
+        backendless?.data.of(BYear.ofClass()).loadRelations(yearId, queryBuilder: loadRelationsQueryBuilder, response: { (response) in
+            if let events = response as? [BEvent] {
+                callback(events, nil)
+            } else {
+                callback([BEvent](), nil)
+            }
+        }, error: { (error) in
+            print("error: \(String(describing: error))")
+            callback(nil, error.debugDescription)
+        })
+    }
+    
+    @objc
+    func getPapers(eventId: String, callback: @escaping (_ papers: [BPaper]?, _ errorString: String?) -> Void) {
+        let loadRelationsQueryBuilder = LoadRelationsQueryBuilder.of(BPaper.ofClass())
+            .setRelationName("papers")
+            .setPageSize(100)
+        
+        backendless?.data.of(BEvent.ofClass()).loadRelations(eventId, queryBuilder: loadRelationsQueryBuilder, response: { (response) in
+            if let papers = response as? [BPaper] {
+                callback(papers, nil)
+            } else {
+                callback([BPaper](), nil)
             }
         }, error: { (error) in
             print("error: \(String(describing: error))")

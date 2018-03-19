@@ -110,7 +110,9 @@ class EventViewController: NSViewController {
             tabView.selectLastTabViewItem(self)
         }
         if let controller = papersViewController {
-            controller.papers = papers
+            controller.papers = papers.sorted(by: { (paper1, paper2) -> Bool in
+                paper1.order < paper2.order
+            })
         }
     }
     

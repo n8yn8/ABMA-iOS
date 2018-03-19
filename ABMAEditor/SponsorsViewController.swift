@@ -12,6 +12,7 @@ class SponsorsViewController: NSViewController {
     
     private var sponsors = [BSponsor]()
     var yearParentId: String!
+    private var selectedSponsorIndex: Int?
 
     @IBOutlet weak var collectionView: NSCollectionView!
     @IBOutlet weak var removeButton: NSButton!
@@ -29,6 +30,7 @@ class SponsorsViewController: NSViewController {
         // Do view setup here.
         
         configureCollectionView()
+        removeButton.isEnabled = false
     }
     
     private func configureCollectionView() {
@@ -85,11 +87,18 @@ class SponsorsViewController: NSViewController {
     }
     
     @IBAction func remove(_ sender: Any) {
+        guard let selected = selectedSponsorIndex else {
+            return
+        }
+        let sponsor = sponsors.remove(at: selected)
+        DbManager.sharedInstance.delete(sponsor: sponsor)
+        collectionView.reloadData()
+        removeButton.isEnabled = false
     }
     
 }
 
-extension SponsorsViewController: NSCollectionViewDataSource {
+extension SponsorsViewController: NSCollectionViewDataSource, NSCollectionViewDelegate {
     
     func numberOfSections(in collectionView: NSCollectionView) -> Int {
         return 1
@@ -106,6 +115,16 @@ extension SponsorsViewController: NSCollectionViewDataSource {
         sponsorItem.sponsor = sponsors[indexPath.item]
         
         return sponsorItem
+    }
+    
+    func collectionView(_ collectionView: NSCollectionView, didDeselectItemsAt indexPaths: Set<IndexPath>) {
+        selectedSponsorIndex = nil
+        removeButton.isEnabled = false
+    }
+    
+    func collectionView(_ collectionView: NSCollectionView, didSelectItemsAt indexPaths: Set<IndexPath>) {
+        selectedSponsorIndex = indexPaths.first?.item
+        removeButton.isEnabled = true
     }
     
 }
