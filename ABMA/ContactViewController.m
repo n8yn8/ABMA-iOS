@@ -12,6 +12,7 @@
 #import "AppDelegate.h"
 #import "Survey+CoreDataClass.h"
 #import "SurveyTableViewCell.h"
+#import "ABMA-Swift.h"
 
 @interface ContactViewController ()
 @property (weak, nonatomic) IBOutlet UIButton *websiteButton;
@@ -49,6 +50,10 @@
     }
     
     Survey *survey = [surveys objectAtIndex:indexPath.row];
+    
+    cell.titleLabel.text = survey.title;
+    cell.detailsLabel.text = survey.details;
+    cell.timeLabel.text = [NSString stringWithFormat:@"Available until %@", [Utils timeWithEndDate:survey.end]];
     
     return cell;
 }

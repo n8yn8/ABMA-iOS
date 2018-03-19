@@ -25,6 +25,13 @@ class Utils: NSObject {
     }
     
     @objc
+    static func time(endDate: Date) -> String {
+        let dateFormatter = DateFormatter()
+        dateFormatter.dateFormat = "MMM d, h:mm a"
+        return dateFormatter.string(from: endDate)
+    }
+    
+    @objc
     static func save(note: Note, context: NSManagedObjectContext) {
         
         let user = DbManager.sharedInstance.getCurrentUser()
