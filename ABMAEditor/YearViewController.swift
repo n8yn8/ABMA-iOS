@@ -31,9 +31,6 @@ class YearViewController: NSViewController {
         DbManager.sharedInstance.getYears { (years, error) in
             self.activityIndicator.stopAnimation(self)
             if let data = years {
-                for year in data {
-                    year.doSort()
-                }
                 let sortedYears = data.sorted(by: { (year1, year2) -> Bool in
                     return year1.name > year2.name
                 })
