@@ -161,10 +161,10 @@ class DbManager: NSObject {
         NetworkExecutor.getRelated(parentId: parentId, relationName: "papers", endpoint: .event, callback: callback)
     }
     
-    func deleteEvent(event: BEvent) {
+    func delete(event: BEvent) {
         if let papers = event.papers {
             for paper in papers {
-                deletePaper(paper: paper)
+                delete(paper: paper)
             }
         }
         
@@ -173,9 +173,27 @@ class DbManager: NSObject {
         }
     }
     
-    func deletePaper(paper: BPaper) {
+    func delete(paper: BPaper) {
         NetworkExecutor.delete(objectId: paper.objectId!, endpoint: .paper) { (response, error) in
             print("deletePaper error = \(String(describing: error))")
+        }
+    }
+    
+    func delete(sponsor: BSponsor) {
+        NetworkExecutor.delete(objectId: sponsor.objectId!, endpoint: .sponsor) { (response, error) in
+            print("deleteSponsor error = \(String(describing: error))")
+        }
+        if let url = sponsor.imageUrl {
+            delete(fileUrl: url)
+        }
+    }
+    
+    private func delete(fileUrl: String) {
+        let parts = fileUrl.components(separatedBy: "/")
+        if let fileName = parts.last {
+            NetworkExecutor.delete(fileName: fileName) { (response, error) in
+                print("deleteFile error = \(String(describing: error))")
+            }
         }
     }
     
