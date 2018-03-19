@@ -13,6 +13,12 @@ class SponsorItem: NSCollectionViewItem {
     
     @IBOutlet weak var spinner: NSProgressIndicator!
     
+    override var isSelected: Bool {
+        didSet {
+            view.layer?.borderWidth = isSelected ? 5.0 : 0.0
+        }
+    }
+    
     var sponsor: BSponsor? {
         didSet {
             guard isViewLoaded else { return }
@@ -37,6 +43,10 @@ class SponsorItem: NSCollectionViewItem {
     override func viewDidLoad() {
         super.viewDidLoad()
         view.wantsLayer = true
+        
+        view.layer?.borderColor = NSColor.gray.cgColor
+        // 2
+        view.layer?.borderWidth = 0.0
     }
     
 }
