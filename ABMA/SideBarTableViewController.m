@@ -36,15 +36,12 @@
     
     _menuItems = [[NSMutableArray alloc] initWithArray:@[@"logo", @"welcome", @"schedule", @"notes", @"info", @"sponsor", @"contact"]];
     
-    AppDelegate *appdelegate = (AppDelegate *)[[UIApplication sharedApplication] delegate];
-    NSManagedObjectContext *context = [appdelegate managedObjectContext];
-    Year *year = [Year getLatestYear:nil context:context];
-    
     BackendlessUser *user = [[DbManager sharedInstance] getCurrentUser];
     if (user) {
         [_menuItems addObject:@"logout"];
     }
     
+    self.tableView.rowHeight = UITableViewAutomaticDimension;
     self.tableView.estimatedRowHeight = 22;
     
     // Uncomment the following line to preserve selection between presentations.
