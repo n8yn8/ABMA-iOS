@@ -50,38 +50,65 @@
 }
 
 - (nonnull UITableViewCell *)tableView:(nonnull UITableView *)tableView cellForRowAtIndexPath:(nonnull NSIndexPath *)indexPath {
-    static NSString *simpleTableIdentifier = @"SurveyCell";
     
-    SurveyTableViewCell *cell = [tableView dequeueReusableCellWithIdentifier:simpleTableIdentifier];
-    if (cell == nil) {
-        cell = [[SurveyTableViewCell alloc] initWithStyle:UITableViewCellStyleDefault reuseIdentifier:simpleTableIdentifier];
+    if (indexPath.section == 0) {
+        if (surveys.count == 0) {
+            static NSString *simpleTableIdentifier = @"NoSurveys";
+            return [tableView dequeueReusableCellWithIdentifier:simpleTableIdentifier];
+        }
+        static NSString *simpleTableIdentifier = @"SurveyCell";
+        
+        SurveyTableViewCell *cell = [tableView dequeueReusableCellWithIdentifier:simpleTableIdentifier];
+        if (cell == nil) {
+            cell = [[SurveyTableViewCell alloc] initWithStyle:UITableViewCellStyleDefault reuseIdentifier:simpleTableIdentifier];
+        }
+        
+        Survey *survey = [surveys objectAtIndex:indexPath.row];
+        
+        cell.titleLabel.text = survey.title;
+        cell.detailsLabel.text = survey.details;
+        cell.timeLabel.text = [NSString stringWithFormat:@"Available until %@", [Utils timeWithEndDate:survey.end]];
+        
+        return cell;
+    } else {
+        static NSString *simpleTableIdentifier = @"NoSurveys";
+        UITableViewCell *cell = [tableView dequeueReusableCellWithIdentifier:simpleTableIdentifier];
+        cell.textLabel.text = indexPath.row == 0 ? @"ABMA Website" : @"Contact ABMA";
+        return cell;
     }
-    
-    Survey *survey = [surveys objectAtIndex:indexPath.row];
-    
-    cell.titleLabel.text = survey.title;
-    cell.detailsLabel.text = survey.details;
-    cell.timeLabel.text = [NSString stringWithFormat:@"Available until %@", [Utils timeWithEndDate:survey.end]];
-    
-    return cell;
+}
+
+- (NSInteger)numberOfSectionsInTableView:(UITableView *)tableView {
+    return 2;
+}
+
+- (NSString *)tableView:(UITableView *)tableView titleForHeaderInSection:(NSInteger)section {
+    if (section == 0) {
+        return @"Surveys";
+    } else {
+        return @"Links";
+    }
 }
 
 - (NSInteger)tableView:(nonnull UITableView *)tableView numberOfRowsInSection:(NSInteger)section {
-    return surveys.count;
+    if (section == 0) {
+        return surveys.count == 0? 1 : surveys.count;
+    }
+    return 2;
 }
 
 - (void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath {
+    if (indexPath.section == 1) {
+        if (indexPath.row == 0) {
+            [[UIApplication sharedApplication] openURL:[NSURL URLWithString: @"https://www.theabma.org"]];
+        } else {
+            [[UIApplication sharedApplication] openURL:[NSURL URLWithString: @"https://theabma.org/contact/"]];
+        }
+        return;
+    }
     Survey *survey = [surveys objectAtIndex:indexPath.row];
     NSURL *url = [NSURL URLWithString:survey.url];
     [[UIApplication sharedApplication] openURL:url];
-}
-
-- (IBAction)abmaWebsite:(id)sender {
-    [[UIApplication sharedApplication] openURL:[NSURL URLWithString: @"https://www.theabma.org"]];
-}
-
-- (IBAction)abmaContactForm:(id)sender {
-    [[UIApplication sharedApplication] openURL:[NSURL URLWithString: @"https://theabma.org/contact/"]];
 }
 
 @end
