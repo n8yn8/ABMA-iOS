@@ -42,6 +42,9 @@ class SurveyViewController: NSViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         
+        startDatePicker.dateValue = Date()
+        endDatePicker.dateValue = Date()
+        
         setEnabled(isEnabled: survey != nil)
     }
     
