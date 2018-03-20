@@ -2,8 +2,9 @@
 //  Year+CoreDataProperties.h
 //  ABMA
 //
-//  Created by Nathan Condell on 4/7/17.
-//  Copyright © 2017 Nathan Condell. All rights reserved.
+//  Created by Nathan Condell on 3/11/18.
+//  Copyright © 2018 Nathan Condell. All rights reserved.
+//
 //
 
 #import "Year+CoreDataClass.h"
@@ -21,11 +22,9 @@ NS_ASSUME_NONNULL_BEGIN
 @property (nullable, nonatomic, copy) NSDate *updated;
 @property (nullable, nonatomic, copy) NSString *welcome;
 @property (nullable, nonatomic, copy) NSString *year;
-@property (nullable, nonatomic, copy) NSString *surveyLink;
-@property (nullable, nonatomic, copy) NSDate *surveyStart;
-@property (nullable, nonatomic, copy) NSDate *surveyEnd;
 @property (nullable, nonatomic, retain) NSSet<Day *> *day;
 @property (nullable, nonatomic, retain) NSSet<Sponsor *> *sponsors;
+@property (nullable, nonatomic, retain) NSSet<Survey *> *surveys;
 
 @end
 
@@ -40,6 +39,11 @@ NS_ASSUME_NONNULL_BEGIN
 - (void)removeSponsorsObject:(Sponsor *)value;
 - (void)addSponsors:(NSSet<Sponsor *> *)values;
 - (void)removeSponsors:(NSSet<Sponsor *> *)values;
+
+- (void)addSurveysObject:(Survey *)value;
+- (void)removeSurveysObject:(Survey *)value;
+- (void)addSurveys:(NSSet<Survey *> *)values;
+- (void)removeSurveys:(NSSet<Survey *> *)values;
 
 @end
 

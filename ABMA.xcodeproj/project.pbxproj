@@ -51,8 +51,12 @@
 		4352A8791AB28BBE00EC03CB /* BaseViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 4352A8781AB28BBE00EC03CB /* BaseViewController.m */; };
 		435EEE6E1E3D3A4200C9CF84 /* NewYearsViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 435EEE6D1E3D3A4200C9CF84 /* NewYearsViewController.swift */; };
 		43732BCF1E6E660E00A85B63 /* Year+CoreDataClass.m in Sources */ = {isa = PBXBuildFile; fileRef = 43732BCC1E6E660E00A85B63 /* Year+CoreDataClass.m */; };
-		43732BD01E6E660E00A85B63 /* Year+CoreDataProperties.m in Sources */ = {isa = PBXBuildFile; fileRef = 43732BCE1E6E660E00A85B63 /* Year+CoreDataProperties.m */; };
 		4378FD9B1E3A452F00319DE0 /* Papers.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 4378FD9A1E3A452F00319DE0 /* Papers.storyboard */; };
+		437F118720562C42006EBBC0 /* Year+CoreDataProperties.m in Sources */ = {isa = PBXBuildFile; fileRef = 437F118220562C42006EBBC0 /* Year+CoreDataProperties.m */; };
+		437F118820562C42006EBBC0 /* Survey+CoreDataClass.m in Sources */ = {isa = PBXBuildFile; fileRef = 437F118520562C42006EBBC0 /* Survey+CoreDataClass.m */; };
+		437F118920562C42006EBBC0 /* Survey+CoreDataProperties.m in Sources */ = {isa = PBXBuildFile; fileRef = 437F118620562C42006EBBC0 /* Survey+CoreDataProperties.m */; };
+		437F118B205631B9006EBBC0 /* BSurvey.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4324097220444C5F0093FF83 /* BSurvey.swift */; };
+		437F1192205A0055006EBBC0 /* SurveyTableViewCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 437F1191205A0055006EBBC0 /* SurveyTableViewCell.m */; };
 		438D599E1ABA97D3004FF7ED /* Launch Screen.xib in Resources */ = {isa = PBXBuildFile; fileRef = 438D599D1ABA97D3004FF7ED /* Launch Screen.xib */; };
 		439947E51AB1E9F500D1479B /* NotesViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 439947E41AB1E9F500D1479B /* NotesViewController.m */; };
 		43A436081FA767EB00754298 /* DbManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 43A436071FA767EB00754298 /* DbManager.swift */; };
@@ -157,10 +161,17 @@
 		435EEE6D1E3D3A4200C9CF84 /* NewYearsViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = NewYearsViewController.swift; sourceTree = "<group>"; };
 		43732BCB1E6E660E00A85B63 /* Year+CoreDataClass.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "Year+CoreDataClass.h"; sourceTree = "<group>"; };
 		43732BCC1E6E660E00A85B63 /* Year+CoreDataClass.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "Year+CoreDataClass.m"; sourceTree = "<group>"; };
-		43732BCD1E6E660E00A85B63 /* Year+CoreDataProperties.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "Year+CoreDataProperties.h"; sourceTree = "<group>"; };
-		43732BCE1E6E660E00A85B63 /* Year+CoreDataProperties.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "Year+CoreDataProperties.m"; sourceTree = "<group>"; };
 		43732BD11E70501A00A85B63 /* ABMA.entitlements */ = {isa = PBXFileReference; lastKnownFileType = text.plist.entitlements; path = ABMA.entitlements; sourceTree = "<group>"; };
 		4378FD9A1E3A452F00319DE0 /* Papers.storyboard */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.storyboard; path = Papers.storyboard; sourceTree = "<group>"; };
+		437F116E20562A49006EBBC0 /* ABMA 4.xcdatamodel */ = {isa = PBXFileReference; lastKnownFileType = wrapper.xcdatamodel; path = "ABMA 4.xcdatamodel"; sourceTree = "<group>"; };
+		437F118120562C42006EBBC0 /* Year+CoreDataProperties.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = "Year+CoreDataProperties.h"; sourceTree = "<group>"; };
+		437F118220562C42006EBBC0 /* Year+CoreDataProperties.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = "Year+CoreDataProperties.m"; sourceTree = "<group>"; };
+		437F118320562C42006EBBC0 /* Survey+CoreDataProperties.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = "Survey+CoreDataProperties.h"; sourceTree = "<group>"; };
+		437F118420562C42006EBBC0 /* Survey+CoreDataClass.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = "Survey+CoreDataClass.h"; sourceTree = "<group>"; };
+		437F118520562C42006EBBC0 /* Survey+CoreDataClass.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = "Survey+CoreDataClass.m"; sourceTree = "<group>"; };
+		437F118620562C42006EBBC0 /* Survey+CoreDataProperties.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = "Survey+CoreDataProperties.m"; sourceTree = "<group>"; };
+		437F1190205A0055006EBBC0 /* SurveyTableViewCell.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = SurveyTableViewCell.h; sourceTree = "<group>"; };
+		437F1191205A0055006EBBC0 /* SurveyTableViewCell.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = SurveyTableViewCell.m; sourceTree = "<group>"; };
 		438D599D1ABA97D3004FF7ED /* Launch Screen.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = "Launch Screen.xib"; sourceTree = "<group>"; };
 		439947E31AB1E9F500D1479B /* NotesViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = NotesViewController.h; sourceTree = "<group>"; };
 		439947E41AB1E9F500D1479B /* NotesViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = NotesViewController.m; sourceTree = "<group>"; };
@@ -227,6 +238,7 @@
 		4338BB9418F26F51002683EF = {
 			isa = PBXGroup;
 			children = (
+				437F118A20563146006EBBC0 /* Common */,
 				4338BBA618F26F53002683EF /* ABMA */,
 				434B44DB1E1B231F00963096 /* ABMAEditor */,
 				4338BB9F18F26F52002683EF /* Frameworks */,
@@ -290,6 +302,8 @@
 				43201F2E1ABE37A600486999 /* InfoViewController.m */,
 				43201F421ABF371F00486999 /* PaperTableViewCell.h */,
 				43201F431ABF371F00486999 /* PaperTableViewCell.m */,
+				437F1190205A0055006EBBC0 /* SurveyTableViewCell.h */,
+				437F1191205A0055006EBBC0 /* SurveyTableViewCell.m */,
 			);
 			path = ABMA;
 			sourceTree = "<group>";
@@ -321,8 +335,12 @@
 				43A436071FA767EB00754298 /* DbManager.swift */,
 				43732BCB1E6E660E00A85B63 /* Year+CoreDataClass.h */,
 				43732BCC1E6E660E00A85B63 /* Year+CoreDataClass.m */,
-				43732BCD1E6E660E00A85B63 /* Year+CoreDataProperties.h */,
-				43732BCE1E6E660E00A85B63 /* Year+CoreDataProperties.m */,
+				437F118120562C42006EBBC0 /* Year+CoreDataProperties.h */,
+				437F118220562C42006EBBC0 /* Year+CoreDataProperties.m */,
+				437F118420562C42006EBBC0 /* Survey+CoreDataClass.h */,
+				437F118520562C42006EBBC0 /* Survey+CoreDataClass.m */,
+				437F118320562C42006EBBC0 /* Survey+CoreDataProperties.h */,
+				437F118620562C42006EBBC0 /* Survey+CoreDataProperties.m */,
 				433BA8571E58B471007B7893 /* Sponsor+CoreDataClass.h */,
 				433BA8581E58B471007B7893 /* Sponsor+CoreDataClass.m */,
 				433BA8591E58B471007B7893 /* Sponsor+CoreDataProperties.h */,
@@ -388,6 +406,13 @@
 				4324097220444C5F0093FF83 /* BSurvey.swift */,
 			);
 			path = model;
+			sourceTree = "<group>";
+		};
+		437F118A20563146006EBBC0 /* Common */ = {
+			isa = PBXGroup;
+			children = (
+			);
+			path = Common;
 			sourceTree = "<group>";
 		};
 		43A4360F1FA8C33600754298 /* network */ = {
@@ -671,7 +696,9 @@
 			files = (
 				433BA81E1E581456007B7893 /* Day+CoreDataClass.m in Sources */,
 				43B16CEE1E54A83C00A240FA /* BSponsor.swift in Sources */,
+				437F1192205A0055006EBBC0 /* SurveyTableViewCell.m in Sources */,
 				433BA81C1E581456007B7893 /* Note+CoreDataClass.m in Sources */,
+				437F118820562C42006EBBC0 /* Survey+CoreDataClass.m in Sources */,
 				433BA81D1E581456007B7893 /* Note+CoreDataProperties.m in Sources */,
 				43201F441ABF371F00486999 /* PaperTableViewCell.m in Sources */,
 				433BA85C1E58B471007B7893 /* Sponsor+CoreDataProperties.m in Sources */,
@@ -683,6 +710,7 @@
 				4338BBB118F26F53002683EF /* AppDelegate.m in Sources */,
 				43B16CEB1E54A83C00A240FA /* BEvent.swift in Sources */,
 				43FA2A151E593F7900BAE929 /* BNote.swift in Sources */,
+				437F118920562C42006EBBC0 /* Survey+CoreDataProperties.m in Sources */,
 				439947E51AB1E9F500D1479B /* NotesViewController.m in Sources */,
 				4305618B1A9AF95000ED4BB0 /* SWRevealViewController.m in Sources */,
 				4338BBAD18F26F53002683EF /* main.m in Sources */,
@@ -690,11 +718,12 @@
 				43B16CEC1E54A83C00A240FA /* BPaper.swift in Sources */,
 				4352A8791AB28BBE00EC03CB /* BaseViewController.m in Sources */,
 				433BA8231E581456007B7893 /* Paper+CoreDataProperties.m in Sources */,
+				437F118720562C42006EBBC0 /* Year+CoreDataProperties.m in Sources */,
 				43CF9B1D18F5B23500885DAC /* ContactViewController.m in Sources */,
 				43FA2A131E5900B700BAE929 /* Utils.swift in Sources */,
 				433BA8251E581456007B7893 /* Event+CoreDataProperties.m in Sources */,
 				43F070C518F3561A0077F11E /* SideBarTableViewController.m in Sources */,
-				43732BD01E6E660E00A85B63 /* Year+CoreDataProperties.m in Sources */,
+				437F118B205631B9006EBBC0 /* BSurvey.swift in Sources */,
 				433BA8241E581456007B7893 /* Event+CoreDataClass.m in Sources */,
 				433BA85B1E58B471007B7893 /* Sponsor+CoreDataClass.m in Sources */,
 				43A436081FA767EB00754298 /* DbManager.swift in Sources */,
@@ -1016,11 +1045,12 @@
 		43AAAE2B1AAAA4D1002C424A /* ABMA.xcdatamodeld */ = {
 			isa = XCVersionGroup;
 			children = (
+				437F116E20562A49006EBBC0 /* ABMA 4.xcdatamodel */,
 				432CF5E21E9E359B003FC09D /* ABMA 3.xcdatamodel */,
 				433BA8561E58ACBE007B7893 /* ABMA 2.xcdatamodel */,
 				43AAAE2C1AAAA4D1002C424A /* ABMA.xcdatamodel */,
 			);
-			currentVersion = 432CF5E21E9E359B003FC09D /* ABMA 3.xcdatamodel */;
+			currentVersion = 437F116E20562A49006EBBC0 /* ABMA 4.xcdatamodel */;
 			path = ABMA.xcdatamodeld;
 			sourceTree = "<group>";
 			versionGroupType = wrapper.xcdatamodel;

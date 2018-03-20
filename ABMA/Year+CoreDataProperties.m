@@ -2,8 +2,9 @@
 //  Year+CoreDataProperties.m
 //  ABMA
 //
-//  Created by Nathan Condell on 4/7/17.
-//  Copyright © 2017 Nathan Condell. All rights reserved.
+//  Created by Nathan Condell on 3/11/18.
+//  Copyright © 2018 Nathan Condell. All rights reserved.
+//
 //
 
 #import "Year+CoreDataProperties.h"
@@ -20,10 +21,8 @@
 @dynamic updated;
 @dynamic welcome;
 @dynamic year;
-@dynamic surveyLink;
-@dynamic surveyStart;
-@dynamic surveyEnd;
 @dynamic day;
 @dynamic sponsors;
+@dynamic surveys;
 
 @end
