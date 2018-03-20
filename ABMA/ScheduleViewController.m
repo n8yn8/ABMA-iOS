@@ -217,6 +217,10 @@
     } else {
         [Utils updateLastUpdatedWithDate:year.created];
     }
+    
+    for (Survey *survey in year.surveys) {
+        [context deleteObject:survey];
+    }
     NSArray<BSurvey *> *bSurveys = [Utils getSurveysWithSurveysString:bYear.surveys];
     for (BSurvey *bSurvey in bSurveys) {
         Survey *survey = [[Survey alloc] initWithEntity:[NSEntityDescription entityForName:@"Survey" inManagedObjectContext:context] insertIntoManagedObjectContext:context];
