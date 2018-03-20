@@ -22,7 +22,7 @@
 @end
 
 @implementation ContactViewController {
-    NSArray<Survey*> *surveys;
+    NSMutableArray<Survey*> *surveys;
 }
 
 - (void)viewDidLoad
@@ -38,7 +38,15 @@
     AppDelegate *appdelegate = (AppDelegate *)[[UIApplication sharedApplication] delegate];
     NSManagedObjectContext *context = [appdelegate managedObjectContext];
     Year *year = [Year getLatestYear:nil context:context];
-    surveys = [year.surveys allObjects];
+    
+    surveys = [[NSMutableArray alloc] init];
+    NSDate *now = [[NSDate alloc] init];
+    for (Survey *survey in year.surveys) {
+        if (now.timeIntervalSince1970 > survey.start.timeIntervalSince1970 && now.timeIntervalSince1970 < survey.end.timeIntervalSince1970) {
+            [surveys addObject:survey];
+        }
+
+    }
 }
 
 - (nonnull UITableViewCell *)tableView:(nonnull UITableView *)tableView cellForRowAtIndexPath:(nonnull NSIndexPath *)indexPath {
