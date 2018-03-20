@@ -62,8 +62,14 @@
     return surveys.count;
 }
 
+- (void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath {
+    Survey *survey = [surveys objectAtIndex:indexPath.row];
+    NSURL *url = [NSURL URLWithString:survey.url];
+    [[UIApplication sharedApplication] openURL:url];
+}
+
 - (IBAction)abmaWebsite:(id)sender {
-    [[UIApplication sharedApplication] openURL:[NSURL URLWithString: @"http://www.theabma.org"]];
+    [[UIApplication sharedApplication] openURL:[NSURL URLWithString: @"https://www.theabma.org"]];
 }
 
 - (IBAction)abmaContactForm:(id)sender {
