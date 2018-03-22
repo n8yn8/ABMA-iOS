@@ -169,6 +169,7 @@
                     }
                     thisEvent.papers = papersSet;
                 }
+                [dayForEvent addEventObject:thisEvent];
                 NSError *saveEror;
                 [context save:&saveEror];
                 if (saveEror) {
@@ -352,6 +353,10 @@
     self.dateLabe.text = [dayFormatter stringFromDate:thisDay.date];
     NSArray *sortDescriptors = [NSArray arrayWithObjects:[NSSortDescriptor sortDescriptorWithKey:@"startDate" ascending:YES], [NSSortDescriptor sortDescriptorWithKey:@"endDate" ascending:YES], nil];
     events = [thisDay.event sortedArrayUsingDescriptors:sortDescriptors];
+    if (refreshControl.isRefreshing) {
+        [refreshControl endRefreshing];
+    }
+    [self.activityIndicator stopAnimating];
     [self.tableView reloadData];
 }
 
