@@ -83,8 +83,10 @@ class EventViewController: NSViewController {
                         setPapers(papers: papers)
                     } else {
                         DbManager.sharedInstance.getPapers(parentId: event.objectId!, callback: { (response, errore) in
-                            event.papers = response
-                            if let papers = response {
+                            event.papers = response?.sorted(by: { (paper1, paper2) -> Bool in
+                                paper1.order < paper2.order
+                            })
+                            if let papers = event.papers {
                                 self.setPapers(papers: papers)
                             }
                         })
@@ -110,9 +112,7 @@ class EventViewController: NSViewController {
             tabView.selectLastTabViewItem(self)
         }
         if let controller = papersViewController {
-            controller.papers = papers.sorted(by: { (paper1, paper2) -> Bool in
-                paper1.order < paper2.order
-            })
+            controller.papers = papers
         }
     }
     

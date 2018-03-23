@@ -65,12 +65,17 @@ class YearViewController: NSViewController {
     func updateUi() {
         
         if let year = selectedYear {
-            if let events = year.events {
+            if var events = year.events {
+                events = events.sorted(by: { (e1, e2) -> Bool in
+                    e1.startDate.compare(e2.startDate) == ComparisonResult.orderedAscending
+                })
                 containerController?.updateEventList(events: events, yearObjectId: year.objectId)
             } else {
                 DbManager.sharedInstance.getEvents(parentId: year.objectId!) { (response, error) in
-                    year.events = response
-                    self.containerController?.updateEventList(events: response, yearObjectId: year.objectId)
+                    year.events = response?.sorted(by: { (e1, e2) -> Bool in
+                        e1.startDate.compare(e2.startDate) == ComparisonResult.orderedAscending
+                    })
+                    self.containerController?.updateEventList(events: year.events, yearObjectId: year.objectId)
                 }
             }
             
