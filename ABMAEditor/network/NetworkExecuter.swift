@@ -75,6 +75,26 @@ class NetworkExecutor {
         execute(method: method, paramsData: paramsData, url: url, callback: callback)
     }
     
+    static func pushNotification(params: PushParams, callback: @escaping (String?, Error?) -> Void) {
+        guard let url = URL(string: "https://api.backendless.com/\(appId)/\(restKey)/messaging/default") else {
+            print("Error: cannot create URL")
+            let error = BackendError.urlError(reason: "Could not construct URL")
+            callback(nil, error)
+            return
+        }
+        var paramsData: Data?
+        do {
+            try paramsData = getParamsData(params: params)
+        } catch {
+            print("error trying to convert object to data")
+            print(error)
+            DispatchQueue.main.async {
+                callback(nil, error)
+            }
+        }
+        execute(method: .post, paramsData: paramsData, url: url, callback: callback)
+    }
+    
     static func put<T : Codable>(endpoint: Endpoint, params: T?, objectId: String, callback: @escaping (T?, Error?) -> Void) {
         guard let url = URL(string: "https://api.backendless.com/\(appId)/\(restKey)/data/\(endpoint.rawValue)/\(objectId)") else {
             print("Error: cannot create URL")
