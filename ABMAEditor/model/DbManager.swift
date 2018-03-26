@@ -202,7 +202,15 @@ class DbManager: NSObject {
     }
     
     func pushUpdate(message: String) {
+        let title = "ABMA"
+        let text = "ABMA Update"
+        let headers = PushHeaders(androidTitle: title, androidText: text, iosTitle: title, iosText: message, iosContentAvail: "true")
+        let params = PushParams(message: message, pushPolicy: "PUSH", headers: headers)
         
+        NetworkExecutor.pushNotification(params: params) { (success, error) in
+            print("Push success \(String(describing: success))")
+            print("Push error \(String(describing: error))")
+        }
     }
     
 }

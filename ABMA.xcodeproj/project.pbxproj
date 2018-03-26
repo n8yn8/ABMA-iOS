@@ -8,6 +8,7 @@
 
 /* Begin PBXBuildFile section */
 		43027B371E39B7F400585C8B /* PapersViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 43027B361E39B7F400585C8B /* PapersViewController.swift */; };
+		430559682066AA5300069B49 /* PushParams.swift in Sources */ = {isa = PBXBuildFile; fileRef = 430559672066AA5200069B49 /* PushParams.swift */; };
 		4305618B1A9AF95000ED4BB0 /* SWRevealViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 4305618A1A9AF95000ED4BB0 /* SWRevealViewController.m */; };
 		431326A01E3D655B003C808E /* YearViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4313269F1E3D655B003C808E /* YearViewController.swift */; };
 		431326A41E3D7605003C808E /* Sponsors.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 431326A31E3D7605003C808E /* Sponsors.storyboard */; };
@@ -93,6 +94,7 @@
 		36B59CEF124395FA37DA9BD4 /* Pods-ABMAEditor.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-ABMAEditor.debug.xcconfig"; path = "Pods/Target Support Files/Pods-ABMAEditor/Pods-ABMAEditor.debug.xcconfig"; sourceTree = "<group>"; };
 		421E1376FF79708CEFB3F634 /* Pods-ABMAEditor.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-ABMAEditor.release.xcconfig"; path = "Pods/Target Support Files/Pods-ABMAEditor/Pods-ABMAEditor.release.xcconfig"; sourceTree = "<group>"; };
 		43027B361E39B7F400585C8B /* PapersViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = PapersViewController.swift; sourceTree = "<group>"; };
+		430559672066AA5200069B49 /* PushParams.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = PushParams.swift; sourceTree = "<group>"; };
 		430561891A9AF95000ED4BB0 /* SWRevealViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SWRevealViewController.h; sourceTree = "<group>"; };
 		4305618A1A9AF95000ED4BB0 /* SWRevealViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SWRevealViewController.m; sourceTree = "<group>"; };
 		4313269F1E3D655B003C808E /* YearViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = YearViewController.swift; sourceTree = "<group>"; };
@@ -418,6 +420,7 @@
 		43A4360F1FA8C33600754298 /* network */ = {
 			isa = PBXGroup;
 			children = (
+				430559672066AA5200069B49 /* PushParams.swift */,
 				43A436121FA8C3CD00754298 /* BackendError.swift */,
 				43DCB0041FB22CF000528436 /* NetworkExecuter.swift */,
 			);
@@ -751,6 +754,7 @@
 				431326AF1E3D7BE7003C808E /* SponsorItem.swift in Sources */,
 				43A4360A1FA7694600754298 /* DbManager.swift in Sources */,
 				43A436131FA8C3CD00754298 /* BackendError.swift in Sources */,
+				430559682066AA5300069B49 /* PushParams.swift in Sources */,
 				43DCB0051FB22CF000528436 /* NetworkExecuter.swift in Sources */,
 				432ED0941E267AC300DD92BB /* BPaper.swift in Sources */,
 				434B44F01E1FF92900963096 /* EventListViewController.swift in Sources */,
