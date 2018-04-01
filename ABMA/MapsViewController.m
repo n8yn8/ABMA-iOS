@@ -13,6 +13,7 @@
 #import "BaseViewController.h"
 #import "MapTableViewCell.h"
 #import <SDWebImage/UIImageView+WebCache.h>
+#import "MapDetailViewController.h"
 
 @interface MapsViewController ()
 @property (weak, nonatomic) IBOutlet UITableView *tableView;
@@ -71,18 +72,17 @@
 
 - (void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath {
     Map *map = [maps objectAtIndex:indexPath.row];
-    NSURL *url = [NSURL URLWithString:map.url];
-    [[UIApplication sharedApplication] openURL:url];
+    [self performSegueWithIdentifier:@"showMap" sender:map];
 }
 
-/*
 #pragma mark - Navigation
 
 // In a storyboard-based application, you will often want to do a little preparation before navigation
 - (void)prepareForSegue:(UIStoryboardSegue *)segue sender:(id)sender {
-    // Get the new view controller using [segue destinationViewController].
-    // Pass the selected object to the new view controller.
+    if ([[segue identifier] isEqualToString:@"showMap"]) {
+        MapDetailViewController *dvc = segue.destinationViewController;
+        dvc.map = sender;
+    }
 }
-*/
 
 @end

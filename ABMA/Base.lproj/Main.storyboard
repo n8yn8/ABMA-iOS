@@ -947,11 +947,56 @@
                     <navigationItem key="navigationItem" id="IRm-H7-Y4K"/>
                     <connections>
                         <outlet property="tableView" destination="Xk4-jV-ydZ" id="RNK-3Y-ZdE"/>
+                        <segue destination="zuh-hj-wpi" kind="show" identifier="showMap" id="ixK-HW-8HP"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="aAr-Z2-0Qm" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
             <point key="canvasLocation" x="2453.5999999999999" y="1437.9310344827588"/>
+        </scene>
+        <!--Map Detail View Controller-->
+        <scene sceneID="ND1-Tj-wIv">
+            <objects>
+                <viewController id="zuh-hj-wpi" customClass="MapDetailViewController" sceneMemberID="viewController">
+                    <layoutGuides>
+                        <viewControllerLayoutGuide type="top" id="C9A-5W-xCb"/>
+                        <viewControllerLayoutGuide type="bottom" id="ClC-TG-21m"/>
+                    </layoutGuides>
+                    <view key="view" contentMode="scaleToFill" id="XcB-If-DOm">
+                        <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <scrollView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" ambiguous="YES" translatesAutoresizingMaskIntoConstraints="NO" id="VUA-FC-9ej">
+                                <rect key="frame" x="0.0" y="64" width="375" height="603"/>
+                                <subviews>
+                                    <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" ambiguous="YES" translatesAutoresizingMaskIntoConstraints="NO" id="7lw-7d-Vvb">
+                                        <rect key="frame" x="0.0" y="0.0" width="375" height="603"/>
+                                    </imageView>
+                                </subviews>
+                                <constraints>
+                                    <constraint firstAttribute="trailing" secondItem="7lw-7d-Vvb" secondAttribute="trailing" id="1g5-Rr-FeC"/>
+                                    <constraint firstAttribute="bottom" secondItem="7lw-7d-Vvb" secondAttribute="bottom" id="JUv-WR-Ekj"/>
+                                    <constraint firstItem="7lw-7d-Vvb" firstAttribute="top" secondItem="VUA-FC-9ej" secondAttribute="top" id="Pf4-NT-zKD"/>
+                                    <constraint firstItem="7lw-7d-Vvb" firstAttribute="leading" secondItem="VUA-FC-9ej" secondAttribute="leading" id="cFh-of-voV"/>
+                                </constraints>
+                            </scrollView>
+                        </subviews>
+                        <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                        <constraints>
+                            <constraint firstAttribute="trailing" secondItem="VUA-FC-9ej" secondAttribute="trailing" id="IdB-T9-wVv"/>
+                            <constraint firstItem="VUA-FC-9ej" firstAttribute="leading" secondItem="XcB-If-DOm" secondAttribute="leading" id="Zsx-GY-nMv"/>
+                            <constraint firstItem="VUA-FC-9ej" firstAttribute="top" secondItem="C9A-5W-xCb" secondAttribute="bottom" id="b3H-Qt-xHF"/>
+                            <constraint firstItem="ClC-TG-21m" firstAttribute="top" secondItem="VUA-FC-9ej" secondAttribute="bottom" id="ofU-7S-gzi"/>
+                        </constraints>
+                    </view>
+                    <connections>
+                        <outlet property="imageView" destination="7lw-7d-Vvb" id="QTm-54-lqV"/>
+                        <outlet property="scrollView" destination="VUA-FC-9ej" id="gBq-OW-y80"/>
+                    </connections>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="IMJ-tv-ZcG" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="3328.8000000000002" y="1437.9310344827588"/>
         </scene>
         <!--Info View Controller-->
         <scene sceneID="RA9-w2-8O9">
