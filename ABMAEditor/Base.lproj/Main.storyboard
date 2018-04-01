@@ -923,6 +923,26 @@
                                             </constraints>
                                         </view>
                                     </tabViewItem>
+                                    <tabViewItem label="Maps" identifier="" id="Rod-ur-Dmb">
+                                        <view key="view" id="NKY-oV-56O">
+                                            <rect key="frame" x="10" y="33" width="548" height="569"/>
+                                            <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                                            <subviews>
+                                                <containerView translatesAutoresizingMaskIntoConstraints="NO" id="RTw-r8-M0N">
+                                                    <rect key="frame" x="0.0" y="0.0" width="548" height="569"/>
+                                                    <connections>
+                                                        <segue destination="Ja9-A8-w6w" kind="embed" id="9Wj-0Z-S0y"/>
+                                                    </connections>
+                                                </containerView>
+                                            </subviews>
+                                            <constraints>
+                                                <constraint firstAttribute="trailing" secondItem="RTw-r8-M0N" secondAttribute="trailing" id="2Ky-hX-0nm"/>
+                                                <constraint firstItem="RTw-r8-M0N" firstAttribute="top" secondItem="NKY-oV-56O" secondAttribute="top" id="haU-TM-tdE"/>
+                                                <constraint firstItem="RTw-r8-M0N" firstAttribute="leading" secondItem="NKY-oV-56O" secondAttribute="leading" id="qIQ-Y2-Anh"/>
+                                                <constraint firstAttribute="bottom" secondItem="RTw-r8-M0N" secondAttribute="bottom" id="zsB-yH-A19"/>
+                                            </constraints>
+                                        </view>
+                                    </tabViewItem>
                                 </tabViewItems>
                             </tabView>
                             <button verticalHuggingPriority="750" translatesAutoresizingMaskIntoConstraints="NO" id="H8n-MC-rnf">
@@ -1019,6 +1039,14 @@
                 <customObject id="8qP-0g-DRr" userLabel="First Responder" customClass="NSResponder" sceneMemberID="firstResponder"/>
             </objects>
             <point key="canvasLocation" x="931" y="810"/>
+        </scene>
+        <!--Maps-->
+        <scene sceneID="8vX-85-Lx7">
+            <objects>
+                <controllerPlaceholder storyboardName="Maps" id="Ja9-A8-w6w" sceneMemberID="viewController"/>
+                <customObject id="nhH-uU-DsR" userLabel="First Responder" customClass="NSResponder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="944" y="893"/>
         </scene>
         <!--Event List View Controller-->
         <scene sceneID="FUY-HF-pZ9">

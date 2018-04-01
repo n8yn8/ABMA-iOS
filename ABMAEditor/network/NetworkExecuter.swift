@@ -17,6 +17,10 @@ class NetworkExecutor {
         case year = "BYear", event = "BEvent", paper = "BPaper", sponsor = "BSponsor"
     }
     
+    enum FileType : String {
+        case sponsor = "sponsor", map = "map"
+    }
+    
     enum Method : String {
         case get = "GET", post = "POST", put = "PUT", delete = "DELETE"
     }
@@ -156,8 +160,8 @@ class NetworkExecutor {
         return object
     }
     
-    static func upload(fileName: String, image: NSData, callback: @escaping (String?, Error?) -> Void) {
-        guard let url = URL(string: "https://api.backendless.com/\(appId)/\(restKey)/files/sponsors/\(fileName)?overwrite=true") else {
+    static func upload(fileName: String, image: NSData, fileType: FileType, callback: @escaping (String?, Error?) -> Void) {
+        guard let url = URL(string: "https://api.backendless.com/\(appId)/\(restKey)/files/\(fileType.rawValue)/\(fileName)?overwrite=true") else {
             print("Error: cannot create URL")
             let error = BackendError.urlError(reason: "Could not construct URL")
             callback(nil, error)

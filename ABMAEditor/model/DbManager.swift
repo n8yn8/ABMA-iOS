@@ -188,6 +188,12 @@ class DbManager: NSObject {
         }
     }
     
+    func delete(map: BMap) {
+        if let url = map.url {
+            delete(fileUrl: url)
+        }
+    }
+    
     private func delete(fileUrl: String) {
         let parts = fileUrl.components(separatedBy: "/")
         if let fileName = parts.last {
@@ -197,8 +203,12 @@ class DbManager: NSObject {
         }
     }
     
-    func uploadImage(name: String, image: NSData, callback: @escaping (String?, Error?) -> Void) {
-        NetworkExecutor.upload(fileName: name, image: image, callback: callback)
+    func uploadSponsorImage(name: String, image: NSData, callback: @escaping (String?, Error?) -> Void) {
+        NetworkExecutor.upload(fileName: name, image: image, fileType: .sponsor, callback: callback)
+    }
+    
+    func uploadMapImage(name: String, image: NSData, callback: @escaping (String?, Error?) -> Void) {
+        NetworkExecutor.upload(fileName: name, image: image, fileType: .map, callback: callback)
     }
     
     func pushUpdate(message: String) {

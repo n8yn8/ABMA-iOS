@@ -51,6 +51,12 @@
 		434B44F21E23222700963096 /* ContainerController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 434B44F11E23222700963096 /* ContainerController.swift */; };
 		4352A8791AB28BBE00EC03CB /* BaseViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 4352A8781AB28BBE00EC03CB /* BaseViewController.m */; };
 		435EEE6E1E3D3A4200C9CF84 /* NewYearsViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 435EEE6D1E3D3A4200C9CF84 /* NewYearsViewController.swift */; };
+		4364687A2070676D0048685F /* Maps.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 436468792070676D0048685F /* Maps.storyboard */; };
+		4364687C207068BC0048685F /* BMap.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4364687B207068BC0048685F /* BMap.swift */; };
+		4364687E2070692A0048685F /* MapsViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4364687D2070692A0048685F /* MapsViewController.swift */; };
+		436468832070698B0048685F /* MapViewItem.swift in Sources */ = {isa = PBXBuildFile; fileRef = 436468812070698B0048685F /* MapViewItem.swift */; };
+		436468842070698B0048685F /* MapViewItem.xib in Resources */ = {isa = PBXBuildFile; fileRef = 436468822070698B0048685F /* MapViewItem.xib */; };
+		4364688620706C780048685F /* NewMapViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4364688520706C780048685F /* NewMapViewController.swift */; };
 		43732BCF1E6E660E00A85B63 /* Year+CoreDataClass.m in Sources */ = {isa = PBXBuildFile; fileRef = 43732BCC1E6E660E00A85B63 /* Year+CoreDataClass.m */; };
 		4378FD9B1E3A452F00319DE0 /* Papers.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 4378FD9A1E3A452F00319DE0 /* Papers.storyboard */; };
 		437F118720562C42006EBBC0 /* Year+CoreDataProperties.m in Sources */ = {isa = PBXBuildFile; fileRef = 437F118220562C42006EBBC0 /* Year+CoreDataProperties.m */; };
@@ -161,6 +167,12 @@
 		4352A8781AB28BBE00EC03CB /* BaseViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = BaseViewController.m; sourceTree = "<group>"; };
 		435EEE671E3D329F00C9CF84 /* BYear.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = BYear.swift; sourceTree = "<group>"; };
 		435EEE6D1E3D3A4200C9CF84 /* NewYearsViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = NewYearsViewController.swift; sourceTree = "<group>"; };
+		436468792070676D0048685F /* Maps.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; path = Maps.storyboard; sourceTree = "<group>"; };
+		4364687B207068BC0048685F /* BMap.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BMap.swift; sourceTree = "<group>"; };
+		4364687D2070692A0048685F /* MapsViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MapsViewController.swift; sourceTree = "<group>"; };
+		436468812070698B0048685F /* MapViewItem.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MapViewItem.swift; sourceTree = "<group>"; };
+		436468822070698B0048685F /* MapViewItem.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = MapViewItem.xib; sourceTree = "<group>"; };
+		4364688520706C780048685F /* NewMapViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NewMapViewController.swift; sourceTree = "<group>"; };
 		43732BCB1E6E660E00A85B63 /* Year+CoreDataClass.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "Year+CoreDataClass.h"; sourceTree = "<group>"; };
 		43732BCC1E6E660E00A85B63 /* Year+CoreDataClass.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "Year+CoreDataClass.m"; sourceTree = "<group>"; };
 		43732BD11E70501A00A85B63 /* ABMA.entitlements */ = {isa = PBXFileReference; lastKnownFileType = text.plist.entitlements; path = ABMA.entitlements; sourceTree = "<group>"; };
@@ -392,6 +404,11 @@
 				4329A2FA20465E4B007F7704 /* Surveys.storyboard */,
 				4329A2FC20502B2E007F7704 /* SurveyListViewController.swift */,
 				4329A30020502B92007F7704 /* SurveyViewController.swift */,
+				436468792070676D0048685F /* Maps.storyboard */,
+				4364687D2070692A0048685F /* MapsViewController.swift */,
+				436468812070698B0048685F /* MapViewItem.swift */,
+				436468822070698B0048685F /* MapViewItem.xib */,
+				4364688520706C780048685F /* NewMapViewController.swift */,
 			);
 			path = ABMAEditor;
 			sourceTree = "<group>";
@@ -406,6 +423,7 @@
 				431326A51E3D7796003C808E /* BSponsor.swift */,
 				43FA2A141E593F7900BAE929 /* BNote.swift */,
 				4324097220444C5F0093FF83 /* BSurvey.swift */,
+				4364687B207068BC0048685F /* BMap.swift */,
 			);
 			path = model;
 			sourceTree = "<group>";
@@ -551,7 +569,9 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				436468842070698B0048685F /* MapViewItem.xib in Resources */,
 				434B44E11E1B231F00963096 /* Assets.xcassets in Resources */,
+				4364687A2070676D0048685F /* Maps.storyboard in Resources */,
 				431326A41E3D7605003C808E /* Sponsors.storyboard in Resources */,
 				4329A2FB20465E4B007F7704 /* Surveys.storyboard in Resources */,
 				434B44E41E1B231F00963096 /* Main.storyboard in Resources */,
@@ -744,16 +764,20 @@
 				431326A91E3D7AF3003C808E /* SponsorsViewController.swift in Sources */,
 				4329A30120502B92007F7704 /* SurveyViewController.swift in Sources */,
 				431326A61E3D7796003C808E /* BSponsor.swift in Sources */,
+				4364687E2070692A0048685F /* MapsViewController.swift in Sources */,
 				435EEE6E1E3D3A4200C9CF84 /* NewYearsViewController.swift in Sources */,
 				43E5AC821E9F3A3D00F2AAC1 /* PushViewController.swift in Sources */,
 				434B44DF1E1B231F00963096 /* EventViewController.swift in Sources */,
 				43027B371E39B7F400585C8B /* PapersViewController.swift in Sources */,
+				436468832070698B0048685F /* MapViewItem.swift in Sources */,
 				4329A2FE20502B2E007F7704 /* SurveyListViewController.swift in Sources */,
 				431326B21E3D8B47003C808E /* NewSponsorViewController.swift in Sources */,
 				434B44F21E23222700963096 /* ContainerController.swift in Sources */,
 				431326AF1E3D7BE7003C808E /* SponsorItem.swift in Sources */,
+				4364687C207068BC0048685F /* BMap.swift in Sources */,
 				43A4360A1FA7694600754298 /* DbManager.swift in Sources */,
 				43A436131FA8C3CD00754298 /* BackendError.swift in Sources */,
+				4364688620706C780048685F /* NewMapViewController.swift in Sources */,
 				430559682066AA5300069B49 /* PushParams.swift in Sources */,
 				43DCB0051FB22CF000528436 /* NetworkExecuter.swift in Sources */,
 				432ED0941E267AC300DD92BB /* BPaper.swift in Sources */,
