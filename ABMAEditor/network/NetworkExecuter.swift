@@ -49,8 +49,8 @@ class NetworkExecutor {
         execute(method: .delete, paramsData: nil, url: url, callback: callback)
     }
     
-    static func delete(fileName: String,  callback: @escaping (String?, Error?) -> Void) {
-        guard let url = URL(string: "https://api.backendless.com/\(appId)/\(restKey)/files/sponsors/\(fileName)") else {
+    static func delete(fileName: String, fileType: FileType, callback: @escaping (String?, Error?) -> Void) {
+        guard let url = URL(string: "https://api.backendless.com/\(appId)/\(restKey)/files/\(fileType.rawValue)/\(fileName)") else {
             print("Error: cannot create URL")
             let error = BackendError.urlError(reason: "Could not construct URL")
             callback(nil, error)

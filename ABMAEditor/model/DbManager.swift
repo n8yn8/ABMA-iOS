@@ -184,20 +184,20 @@ class DbManager: NSObject {
             print("deleteSponsor error = \(String(describing: error))")
         }
         if let url = sponsor.imageUrl {
-            delete(fileUrl: url)
+            delete(fileUrl: url, fileType: .sponsor)
         }
     }
     
     func delete(map: BMap) {
         if let url = map.url {
-            delete(fileUrl: url)
+            delete(fileUrl: url, fileType: .map)
         }
     }
     
-    private func delete(fileUrl: String) {
+    private func delete(fileUrl: String, fileType: FileType) {
         let parts = fileUrl.components(separatedBy: "/")
         if let fileName = parts.last {
-            NetworkExecutor.delete(fileName: fileName) { (response, error) in
+            NetworkExecutor.delete(fileName: fileName, fileType: fileType) { (response, error) in
                 print("deleteFile error = \(String(describing: error))")
             }
         }
