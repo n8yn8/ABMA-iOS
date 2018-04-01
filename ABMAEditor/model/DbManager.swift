@@ -194,7 +194,7 @@ class DbManager: NSObject {
         }
     }
     
-    private func delete(fileUrl: String, fileType: FileType) {
+    private func delete(fileUrl: String, fileType: NetworkExecutor.FileType) {
         let parts = fileUrl.components(separatedBy: "/")
         if let fileName = parts.last {
             NetworkExecutor.delete(fileName: fileName, fileType: fileType) { (response, error) in

@@ -16,6 +16,7 @@ class YearViewController: NSViewController {
     var containerController: ContainerController?
     var sponsorsViewController: SponsorsViewController?
     var surveyListViewController: SurveyListViewController?
+    var mapsViewController: MapsViewController?
     
     var years = [BYear]()
     var selectedYear: BYear?
@@ -106,6 +107,7 @@ class YearViewController: NSViewController {
             
             sponsorsViewController?.yearParentId = year.objectId
             surveyListViewController?.surveysString = year.surveys
+            mapsViewController?.mapsString = year.maps
         } else {
             containerController?.updateEventList(events: nil, yearObjectId: nil)
             welcomeTextView.string = ""
@@ -140,6 +142,9 @@ class YearViewController: NSViewController {
         } else if let dvc = segue.destinationController as? SurveyListViewController {
             surveyListViewController = dvc
             surveyListViewController?.delegate = self
+        } else if let dvc = segue.destinationController as? MapsViewController {
+            mapsViewController = dvc
+            mapsViewController?.delegate = self
         }
     }
     
@@ -237,6 +242,13 @@ extension YearViewController: PushViewControllerDelegate {
 extension YearViewController: SurveyListViewControllerDelegate {
     func saveSurveys(surveys: String) {
         selectedYear?.surveys = surveys
+        updateYear(callback: nil)
+    }
+}
+
+extension YearViewController: MapsViewControllerDelegate {
+    func saveMaps(mapsString: String) {
+        selectedYear?.maps = mapsString
         updateYear(callback: nil)
     }
 }

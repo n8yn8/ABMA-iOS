@@ -10,7 +10,12 @@ import Cocoa
 
 class MapsViewController: NSViewController {
     
-    private var maps = [BMap]()
+    private var maps = [BMap]() {
+        didSet {
+            collectionView.deselectAll(self)
+            collectionView.reloadData()
+        }
+    }
     var yearParentId: String!
     private var selectedMapIndex: Int?
     
@@ -24,6 +29,23 @@ class MapsViewController: NSViewController {
         vc.yearParentId = yearParentId
         return vc
     }()
+    var mapsString: String? {
+        didSet {
+            if let string = mapsString {
+                do {
+                    let decoder = JSONDecoder()
+                    decoder.dateDecodingStrategy = .millisecondsSince1970
+                    maps = try decoder.decode([BMap].self, from: string.data(using: .utf8)!)
+                } catch {
+                    print("error trying to convert data to JSON")
+                    print(error)
+                    maps = [BMap]()
+                }
+            } else {
+                maps = [BMap]()
+            }
+        }
+    }
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -43,14 +65,6 @@ class MapsViewController: NSViewController {
         collectionView.collectionViewLayout = flowLayout
         
         view.wantsLayer = true
-    }
-    
-    func updateMaps(mapList: [BMap]?) {
-        self.maps.removeAll()
-        if let maps = mapList {
-            self.maps.append(contentsOf: maps)
-        }
-        collectionView.reloadData()
     }
     
     @IBAction func add(_ sender: Any) {
@@ -92,8 +106,26 @@ class MapsViewController: NSViewController {
         }
         let map = maps.remove(at: selected)
         DbManager.sharedInstance.delete(map: map)
+        saveMaps()
         collectionView.reloadData()
         removeButton.isEnabled = false
+    }
+    
+    private func saveMaps() {
+        do {
+            let jsonEncoder = JSONEncoder()
+            jsonEncoder.dateEncodingStrategy = .custom({ (date, encoder) in
+                let number = Int(date.timeIntervalSince1970 * 1000)
+                var container = encoder.singleValueContainer()
+                try container.encode(number)
+            })
+            let jsonData = try jsonEncoder.encode(maps)
+            let string = String(data: jsonData, encoding: String.Encoding.utf8)
+            delegate?.saveMaps(mapsString: string!)
+        } catch {
+            print("error trying to convert object to data")
+            print(error)
+        }
     }
     
 }
@@ -133,10 +165,10 @@ extension MapsViewController: NewMapViewControllerDelegate {
     func saveMap(map: BMap) {
         maps.append(map)
         collectionView.reloadData()
-        delegate?.saveMaps()
+        saveMaps()
     }
 }
 
 protocol MapsViewControllerDelegate: class {
-    func saveMaps()
+    func saveMaps(mapsString: String)
 }

@@ -31,7 +31,7 @@ class SurveyListViewController: NSViewController, NSTableViewDelegate, NSTableVi
             }
         }
     }
-    private var surveys = [BSurvey](){
+    private var surveys = [BSurvey]() {
         didSet {
             surveysTableView.deselectAll(self)
             surveysTableView.reloadData()
