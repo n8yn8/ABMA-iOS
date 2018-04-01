@@ -2,7 +2,7 @@
 //  Year+CoreDataProperties.h
 //  ABMA
 //
-//  Created by Nathan Condell on 3/11/18.
+//  Created by Nathan Condell on 4/1/18.
 //  Copyright © 2018 Nathan Condell. All rights reserved.
 //
 //
@@ -25,6 +25,7 @@ NS_ASSUME_NONNULL_BEGIN
 @property (nullable, nonatomic, retain) NSSet<Day *> *day;
 @property (nullable, nonatomic, retain) NSSet<Sponsor *> *sponsors;
 @property (nullable, nonatomic, retain) NSSet<Survey *> *surveys;
+@property (nullable, nonatomic, retain) NSSet<Map *> *maps;
 
 @end
 
@@ -44,6 +45,11 @@ NS_ASSUME_NONNULL_BEGIN
 - (void)removeSurveysObject:(Survey *)value;
 - (void)addSurveys:(NSSet<Survey *> *)values;
 - (void)removeSurveys:(NSSet<Survey *> *)values;
+
+- (void)addMapsObject:(Map *)value;
+- (void)removeMapsObject:(Map *)value;
+- (void)addMaps:(NSSet<Map *> *)values;
+- (void)removeMaps:(NSSet<Map *> *)values;
 
 @end
 

@@ -122,4 +122,23 @@ class Utils: NSObject {
         }
         return surveys
     }
+    
+    @objc
+    static func getMapss(mapsString: String?) -> [BMap] {
+        var maps = [BMap]()
+        if let string = mapsString {
+            do {
+                let decoder = JSONDecoder()
+                decoder.dateDecodingStrategy = .millisecondsSince1970
+                maps = try decoder.decode([BMap].self, from: string.data(using: .utf8)!)
+            } catch {
+                print("error trying to convert data to JSON")
+                print(error)
+                maps = [BMap]()
+            }
+        } else {
+            maps = [BMap]()
+        }
+        return maps
+    }
 }

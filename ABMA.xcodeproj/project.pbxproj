@@ -24,6 +24,9 @@
 		4329A2FE20502B2E007F7704 /* SurveyListViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4329A2FC20502B2E007F7704 /* SurveyListViewController.swift */; };
 		4329A30120502B92007F7704 /* SurveyViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4329A30020502B92007F7704 /* SurveyViewController.swift */; };
 		432ED0941E267AC300DD92BB /* BPaper.swift in Sources */ = {isa = PBXBuildFile; fileRef = 432ED0931E267AC300DD92BB /* BPaper.swift */; };
+		432F4F332071573D0024591C /* Map+CoreDataClass.m in Sources */ = {isa = PBXBuildFile; fileRef = 432F4F312071573D0024591C /* Map+CoreDataClass.m */; };
+		432F4F342071573D0024591C /* Map+CoreDataProperties.m in Sources */ = {isa = PBXBuildFile; fileRef = 432F4F322071573D0024591C /* Map+CoreDataProperties.m */; };
+		432F4F35207159900024591C /* BMap.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4364687B207068BC0048685F /* BMap.swift */; };
 		4338BBA118F26F53002683EF /* Foundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 4338BBA018F26F53002683EF /* Foundation.framework */; };
 		4338BBA318F26F53002683EF /* CoreGraphics.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 4338BBA218F26F53002683EF /* CoreGraphics.framework */; };
 		4338BBA518F26F53002683EF /* UIKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 4338BBA418F26F53002683EF /* UIKit.framework */; };
@@ -120,6 +123,11 @@
 		4329A30020502B92007F7704 /* SurveyViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SurveyViewController.swift; sourceTree = "<group>"; };
 		432CF5E21E9E359B003FC09D /* ABMA 3.xcdatamodel */ = {isa = PBXFileReference; lastKnownFileType = wrapper.xcdatamodel; path = "ABMA 3.xcdatamodel"; sourceTree = "<group>"; };
 		432ED0931E267AC300DD92BB /* BPaper.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = BPaper.swift; sourceTree = "<group>"; };
+		432F4F2E207156560024591C /* ABMA 5.xcdatamodel */ = {isa = PBXFileReference; lastKnownFileType = wrapper.xcdatamodel; path = "ABMA 5.xcdatamodel"; sourceTree = "<group>"; };
+		432F4F2F2071573D0024591C /* Map+CoreDataProperties.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = "Map+CoreDataProperties.h"; sourceTree = "<group>"; };
+		432F4F302071573D0024591C /* Map+CoreDataClass.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = "Map+CoreDataClass.h"; sourceTree = "<group>"; };
+		432F4F312071573D0024591C /* Map+CoreDataClass.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = "Map+CoreDataClass.m"; sourceTree = "<group>"; };
+		432F4F322071573D0024591C /* Map+CoreDataProperties.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = "Map+CoreDataProperties.m"; sourceTree = "<group>"; };
 		4338BB9D18F26F52002683EF /* ABMA.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = ABMA.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		4338BBA018F26F53002683EF /* Foundation.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Foundation.framework; path = System/Library/Frameworks/Foundation.framework; sourceTree = SDKROOT; };
 		4338BBA218F26F53002683EF /* CoreGraphics.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CoreGraphics.framework; path = System/Library/Frameworks/CoreGraphics.framework; sourceTree = SDKROOT; };
@@ -375,6 +383,10 @@
 				433BA8191E581456007B7893 /* Event+CoreDataClass.m */,
 				433BA81A1E581456007B7893 /* Event+CoreDataProperties.h */,
 				433BA81B1E581456007B7893 /* Event+CoreDataProperties.m */,
+				432F4F2F2071573D0024591C /* Map+CoreDataProperties.h */,
+				432F4F302071573D0024591C /* Map+CoreDataClass.h */,
+				432F4F312071573D0024591C /* Map+CoreDataClass.m */,
+				432F4F322071573D0024591C /* Map+CoreDataProperties.m */,
 			);
 			name = model;
 			sourceTree = "<group>";
@@ -722,10 +734,13 @@
 				437F1192205A0055006EBBC0 /* SurveyTableViewCell.m in Sources */,
 				433BA81C1E581456007B7893 /* Note+CoreDataClass.m in Sources */,
 				437F118820562C42006EBBC0 /* Survey+CoreDataClass.m in Sources */,
+				432F4F35207159900024591C /* BMap.swift in Sources */,
 				433BA81D1E581456007B7893 /* Note+CoreDataProperties.m in Sources */,
+				432F4F332071573D0024591C /* Map+CoreDataClass.m in Sources */,
 				43201F441ABF371F00486999 /* PaperTableViewCell.m in Sources */,
 				433BA85C1E58B471007B7893 /* Sponsor+CoreDataProperties.m in Sources */,
 				43F070C818F3631E0077F11E /* ScheduleViewController.m in Sources */,
+				432F4F342071573D0024591C /* Map+CoreDataProperties.m in Sources */,
 				43F070D118F3B4B60077F11E /* SchedDetailViewController.m in Sources */,
 				43D07C6F1AAEABA00033A1E6 /* EventCellTableViewCell.m in Sources */,
 				43201F2F1ABE37A600486999 /* InfoViewController.m in Sources */,
@@ -1073,12 +1088,13 @@
 		43AAAE2B1AAAA4D1002C424A /* ABMA.xcdatamodeld */ = {
 			isa = XCVersionGroup;
 			children = (
+				432F4F2E207156560024591C /* ABMA 5.xcdatamodel */,
 				437F116E20562A49006EBBC0 /* ABMA 4.xcdatamodel */,
 				432CF5E21E9E359B003FC09D /* ABMA 3.xcdatamodel */,
 				433BA8561E58ACBE007B7893 /* ABMA 2.xcdatamodel */,
 				43AAAE2C1AAAA4D1002C424A /* ABMA.xcdatamodel */,
 			);
-			currentVersion = 437F116E20562A49006EBBC0 /* ABMA 4.xcdatamodel */;
+			currentVersion = 432F4F2E207156560024591C /* ABMA 5.xcdatamodel */;
 			path = ABMA.xcdatamodeld;
 			sourceTree = "<group>";
 			versionGroupType = wrapper.xcdatamodel;

@@ -8,3 +8,4 @@
 #import "Paper+CoreDataClass.h"
 #import "Event+CoreDataClass.h"
 #import "Survey+CoreDataClass.h"
+#import "Map+CoreDataClass.h"
