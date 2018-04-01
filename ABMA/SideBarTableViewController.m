@@ -34,7 +34,7 @@
 {
     [super viewDidLoad];
     
-    _menuItems = [[NSMutableArray alloc] initWithArray:@[@"logo", @"welcome", @"schedule", @"notes", @"info", @"sponsor", @"contact"]];
+    _menuItems = [[NSMutableArray alloc] initWithArray:@[@"logo", @"welcome", @"schedule", @"notes", @"info", @"maps", @"sponsor", @"contact"]];
     
     BackendlessUser *user = [[DbManager sharedInstance] getCurrentUser];
     if (user) {

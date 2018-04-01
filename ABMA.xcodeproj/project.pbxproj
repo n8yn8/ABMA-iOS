@@ -20,6 +20,8 @@
 		43201F2F1ABE37A600486999 /* InfoViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 43201F2E1ABE37A600486999 /* InfoViewController.m */; };
 		43201F441ABF371F00486999 /* PaperTableViewCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 43201F431ABF371F00486999 /* PaperTableViewCell.m */; };
 		4324097320444C5F0093FF83 /* BSurvey.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4324097220444C5F0093FF83 /* BSurvey.swift */; };
+		4326FECE207164F300CE676F /* MapsViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 4326FECD207164F300CE676F /* MapsViewController.m */; };
+		4326FED12071664800CE676F /* MapTableViewCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 4326FED02071664800CE676F /* MapTableViewCell.m */; };
 		4329A2FB20465E4B007F7704 /* Surveys.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 4329A2FA20465E4B007F7704 /* Surveys.storyboard */; };
 		4329A2FE20502B2E007F7704 /* SurveyListViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4329A2FC20502B2E007F7704 /* SurveyListViewController.swift */; };
 		4329A30120502B92007F7704 /* SurveyViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4329A30020502B92007F7704 /* SurveyViewController.swift */; };
@@ -118,6 +120,10 @@
 		43201F421ABF371F00486999 /* PaperTableViewCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = PaperTableViewCell.h; sourceTree = "<group>"; };
 		43201F431ABF371F00486999 /* PaperTableViewCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = PaperTableViewCell.m; sourceTree = "<group>"; };
 		4324097220444C5F0093FF83 /* BSurvey.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BSurvey.swift; sourceTree = "<group>"; };
+		4326FECC207164F300CE676F /* MapsViewController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = MapsViewController.h; sourceTree = "<group>"; };
+		4326FECD207164F300CE676F /* MapsViewController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = MapsViewController.m; sourceTree = "<group>"; };
+		4326FECF2071664800CE676F /* MapTableViewCell.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = MapTableViewCell.h; sourceTree = "<group>"; };
+		4326FED02071664800CE676F /* MapTableViewCell.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = MapTableViewCell.m; sourceTree = "<group>"; };
 		4329A2FA20465E4B007F7704 /* Surveys.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; path = Surveys.storyboard; sourceTree = "<group>"; };
 		4329A2FC20502B2E007F7704 /* SurveyListViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SurveyListViewController.swift; sourceTree = "<group>"; };
 		4329A30020502B92007F7704 /* SurveyViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SurveyViewController.swift; sourceTree = "<group>"; };
@@ -326,6 +332,10 @@
 				43201F431ABF371F00486999 /* PaperTableViewCell.m */,
 				437F1190205A0055006EBBC0 /* SurveyTableViewCell.h */,
 				437F1191205A0055006EBBC0 /* SurveyTableViewCell.m */,
+				4326FECC207164F300CE676F /* MapsViewController.h */,
+				4326FECD207164F300CE676F /* MapsViewController.m */,
+				4326FECF2071664800CE676F /* MapTableViewCell.h */,
+				4326FED02071664800CE676F /* MapTableViewCell.m */,
 			);
 			path = ABMA;
 			sourceTree = "<group>";
@@ -741,6 +751,7 @@
 				433BA85C1E58B471007B7893 /* Sponsor+CoreDataProperties.m in Sources */,
 				43F070C818F3631E0077F11E /* ScheduleViewController.m in Sources */,
 				432F4F342071573D0024591C /* Map+CoreDataProperties.m in Sources */,
+				4326FED12071664800CE676F /* MapTableViewCell.m in Sources */,
 				43F070D118F3B4B60077F11E /* SchedDetailViewController.m in Sources */,
 				43D07C6F1AAEABA00033A1E6 /* EventCellTableViewCell.m in Sources */,
 				43201F2F1ABE37A600486999 /* InfoViewController.m in Sources */,
@@ -750,6 +761,7 @@
 				43FA2A151E593F7900BAE929 /* BNote.swift in Sources */,
 				437F118920562C42006EBBC0 /* Survey+CoreDataProperties.m in Sources */,
 				439947E51AB1E9F500D1479B /* NotesViewController.m in Sources */,
+				4326FECE207164F300CE676F /* MapsViewController.m in Sources */,
 				4305618B1A9AF95000ED4BB0 /* SWRevealViewController.m in Sources */,
 				4338BBAD18F26F53002683EF /* main.m in Sources */,
 				43A436141FA8D27200754298 /* BYear.swift in Sources */,
