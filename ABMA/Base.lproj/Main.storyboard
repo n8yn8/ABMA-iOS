@@ -855,7 +855,7 @@
         <!--Navigation Controller-->
         <scene sceneID="Ej9-X8-gMM">
             <objects>
-                <navigationController id="EkV-sJ-ofU" sceneMemberID="viewController">
+                <navigationController automaticallyAdjustsScrollViewInsets="NO" id="EkV-sJ-ofU" sceneMemberID="viewController">
                     <navigationBar key="navigationBar" contentMode="scaleToFill" insetsLayoutMarginsFromSafeArea="NO" id="uHr-Ir-OQu">
                         <rect key="frame" x="0.0" y="20" width="375" height="44"/>
                         <autoresizingMask key="autoresizingMask"/>
@@ -872,7 +872,7 @@
         <!--Maps View Controller-->
         <scene sceneID="CzW-BV-5aZ">
             <objects>
-                <viewController id="d2P-qE-7lz" customClass="MapsViewController" sceneMemberID="viewController">
+                <viewController automaticallyAdjustsScrollViewInsets="NO" id="d2P-qE-7lz" customClass="MapsViewController" sceneMemberID="viewController">
                     <layoutGuides>
                         <viewControllerLayoutGuide type="top" id="iMO-30-p0r"/>
                         <viewControllerLayoutGuide type="bottom" id="hUu-Gg-gcq"/>
@@ -957,7 +957,7 @@
         <!--Map Detail View Controller-->
         <scene sceneID="ND1-Tj-wIv">
             <objects>
-                <viewController id="zuh-hj-wpi" customClass="MapDetailViewController" sceneMemberID="viewController">
+                <viewController automaticallyAdjustsScrollViewInsets="NO" id="zuh-hj-wpi" customClass="MapDetailViewController" sceneMemberID="viewController">
                     <layoutGuides>
                         <viewControllerLayoutGuide type="top" id="C9A-5W-xCb"/>
                         <viewControllerLayoutGuide type="bottom" id="ClC-TG-21m"/>
