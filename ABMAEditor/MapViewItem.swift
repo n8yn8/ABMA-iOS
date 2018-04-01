@@ -1,15 +1,15 @@
 //
-//  SponsorItem.swift
-//  ABMA
+//  MapViewItem.swift
+//  ABMAEditor
 //
-//  Created by Nathan Condell on 1/28/17.
-//  Copyright © 2017 Nathan Condell. All rights reserved.
+//  Created by Nathan Condell on 3/31/18.
+//  Copyright © 2018 Nathan Condell. All rights reserved.
 //
 
 import Cocoa
 import SDWebImage
 
-class SponsorItem: NSCollectionViewItem {
+class MapViewItem: NSCollectionViewItem {
     
     @IBOutlet weak var spinner: NSProgressIndicator!
     
@@ -19,20 +19,16 @@ class SponsorItem: NSCollectionViewItem {
         }
     }
     
-    var sponsor: BSponsor? {
+    var map: BMap? {
         didSet {
             guard isViewLoaded else { return }
-            if let sponsor = sponsor {
+            if let map = map {
                 spinner.startAnimation(nil)
-                let url = URL(string: sponsor.imageUrl!)
+                let url = URL(string: map.url!)
                 imageView?.sd_setImage(with: url!, completed: { (image, error, cacheType, url) in
                     self.spinner.stopAnimation(nil)
                 })
-                if let clickUrl = sponsor.url {
-                    textField?.stringValue = clickUrl
-                } else {
-                    textField?.stringValue = ""
-                }
+                textField?.stringValue = map.title
             } else {
                 imageView?.image = nil
                 textField?.stringValue = ""

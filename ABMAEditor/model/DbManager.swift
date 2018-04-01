@@ -184,21 +184,31 @@ class DbManager: NSObject {
             print("deleteSponsor error = \(String(describing: error))")
         }
         if let url = sponsor.imageUrl {
-            delete(fileUrl: url)
+            delete(fileUrl: url, fileType: .sponsor)
         }
     }
     
-    private func delete(fileUrl: String) {
+    func delete(map: BMap) {
+        if let url = map.url {
+            delete(fileUrl: url, fileType: .map)
+        }
+    }
+    
+    private func delete(fileUrl: String, fileType: NetworkExecutor.FileType) {
         let parts = fileUrl.components(separatedBy: "/")
         if let fileName = parts.last {
-            NetworkExecutor.delete(fileName: fileName) { (response, error) in
+            NetworkExecutor.delete(fileName: fileName, fileType: fileType) { (response, error) in
                 print("deleteFile error = \(String(describing: error))")
             }
         }
     }
     
-    func uploadImage(name: String, image: NSData, callback: @escaping (String?, Error?) -> Void) {
-        NetworkExecutor.upload(fileName: name, image: image, callback: callback)
+    func uploadSponsorImage(name: String, image: NSData, callback: @escaping (String?, Error?) -> Void) {
+        NetworkExecutor.upload(fileName: name, image: image, fileType: .sponsor, callback: callback)
+    }
+    
+    func uploadMapImage(name: String, image: NSData, callback: @escaping (String?, Error?) -> Void) {
+        NetworkExecutor.upload(fileName: name, image: image, fileType: .map, callback: callback)
     }
     
     func pushUpdate(message: String) {
