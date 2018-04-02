@@ -35,7 +35,7 @@ class NewSponsorViewController: NSViewController {
     
     @IBAction func save(_ sender: Any) {
         activityIndicator.startAnimation(self)
-        DbManager.sharedInstance.uploadImage(name: imageName, image: imageData) { (imageUrl, error) in
+        DbManager.sharedInstance.uploadSponsorImage(name: imageName, image: imageData) { (imageUrl, error) in
             if let err = error {
                 print("error saving image: \(err.localizedDescription)")
                 self.activityIndicator.stopAnimation(self)

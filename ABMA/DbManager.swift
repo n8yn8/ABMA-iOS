@@ -96,12 +96,8 @@ class DbManager: NSObject {
         getYears(query: query, callback: callback)
     }
     
-    private func getYears(query: String?, callback: @escaping (_ years: [BYear]?, _ errorString: String?) -> Void) {
-        let dataQuery = DataQueryBuilder()
-        
-        if let q = query {
-            dataQuery?.setWhereClause(q)
-        }
+    private func getYears(query: String, callback: @escaping (_ years: [BYear]?, _ errorString: String?) -> Void) {
+        let dataQuery = DataQueryBuilder().setWhereClause(query)
         
         backendless?.persistenceService.find(BYear.ofClass(), queryBuilder: dataQuery, response: { (response) in
             print("response \(String(describing: response))")

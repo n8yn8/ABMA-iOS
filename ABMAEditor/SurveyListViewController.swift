@@ -31,7 +31,7 @@ class SurveyListViewController: NSViewController, NSTableViewDelegate, NSTableVi
             }
         }
     }
-    private var surveys = [BSurvey](){
+    private var surveys = [BSurvey]() {
         didSet {
             surveysTableView.deselectAll(self)
             surveysTableView.reloadData()
@@ -103,7 +103,11 @@ class SurveyListViewController: NSViewController, NSTableViewDelegate, NSTableVi
     private func save() {
         do {
             let jsonEncoder = JSONEncoder()
-            jsonEncoder.dateEncodingStrategy = .millisecondsSince1970
+            jsonEncoder.dateEncodingStrategy = .custom({ (date, encoder) in
+                let number = Int(date.timeIntervalSince1970 * 1000)
+                var container = encoder.singleValueContainer()
+                try container.encode(number)
+            })
             let jsonData = try jsonEncoder.encode(surveys)
             let string = String(data: jsonData, encoding: String.Encoding.utf8)
             delegate?.saveSurveys(surveys: string!)

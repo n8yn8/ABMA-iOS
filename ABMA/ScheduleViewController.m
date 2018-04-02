@@ -18,6 +18,7 @@
 #import "ABMA-Swift.h"
 #import "Note+CoreDataClass.h"
 #import "Survey+CoreDataClass.h"
+#import "Map+CoreDataClass.h"
 
 @interface ScheduleViewController ()
 
@@ -232,6 +233,18 @@
         survey.end = bSurvey.end;
         [year addSurveysObject:survey];
     }
+    
+    for (Map *map in year.maps) {
+        [context deleteObject:map];
+    }
+    NSArray<BMap *> *bMaps = [Utils getMapssWithMapsString:bYear.maps];
+    for (BMap *bMap in bMaps) {
+        Map *map = [[Map alloc] initWithEntity:[NSEntityDescription entityForName:@"Map" inManagedObjectContext:context] insertIntoManagedObjectContext:context];
+        map.title = bMap.title;
+        map.url = bMap.url;
+        [year addMapsObject:map];
+    }
+    
     for (BSponsor *bSponsor in bYear.sponsors) {
         
         NSFetchRequest<Sponsor*> *sponsorRequest = [Sponsor fetchRequest];
