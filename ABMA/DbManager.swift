@@ -13,9 +13,8 @@ class DbManager: NSObject {
     @objc
     static let sharedInstance = DbManager()
 
-    let APP_ID = "627F9018-4483-B50E-FFCA-0E42A1E33F00"
-    let SECRET_KEY = "39CCEDB9-46FF-D20D-FF00-832690CDE400"
-    let VERSION_NUM = "v1"
+    let APP_ID = "7D06F708-89FA-DD86-FF95-C51A10425A00"
+    let SECRET_KEY = "5DB2DE1C-0AFF-9AD6-FF16-83C8AE9F1600"
     
     var backendless = Backendless.sharedInstance()
     

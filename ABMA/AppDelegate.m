@@ -41,11 +41,13 @@
 
 - (void)application:(UIApplication *)application didReceiveRemoteNotification:(NSDictionary *)userInfo {
     NSLog(@"Received %@", userInfo);
-    [[DbManager sharedInstance] getPublishedYearsSince:[Utils getLastUpdated] callback:^(NSArray<BYear *> * _Nullable years, NSString * _Nullable error) {
-        for (BYear *bYear in years) {
-            [ScheduleViewController saveBackendlessYear:bYear context:[self managedObjectContext]];
-        }
-    }];
+    
+    NSUserDefaults *defaults = [NSUserDefaults standardUserDefaults];
+    [defaults setBool:true forKey:@"PushReceived"];
+    [defaults synchronize];
+    
+    [[NSNotificationCenter defaultCenter] postNotificationName:@"PushReceived" object:nil];
+    
 }
 							
 - (void)applicationWillResignActive:(UIApplication *)application

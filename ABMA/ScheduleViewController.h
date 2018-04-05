@@ -18,6 +18,4 @@
 
 @property (strong, nonatomic) NSManagedObjectContext *managedObjectContext;
 
-+ (void)saveBackendlessYear:(BYear *)bYear context:(NSManagedObjectContext *)context;
-
 @end

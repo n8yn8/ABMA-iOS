@@ -68,7 +68,25 @@
     
 }
 
+- (void)viewWillAppear:(BOOL)animated {
+    [super viewWillAppear:animated];
+    [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(loadBackendless) name:@"PushReceived" object:nil];
+    
+    if ([[NSUserDefaults standardUserDefaults] boolForKey:@"PushReceived"]) {
+        [self loadBackendless];
+    }
+}
+
+- (void)viewWillDisappear:(BOOL)animated {
+    [super viewWillDisappear:animated];
+    [[NSNotificationCenter defaultCenter] removeObserver:self];
+}
+
 - (void)loadBackendless {
+    NSUserDefaults *defaults = [NSUserDefaults standardUserDefaults];
+    [defaults setBool:false forKey:@"PushReceived"];
+    [defaults synchronize];
+    
     if (!refreshControl.isRefreshing) {
         [refreshControl beginRefreshing];
     }
@@ -80,7 +98,7 @@
             NSLog(@"error: %@", error);
         } else {
             for (BYear *bYear in years) {
-                [ScheduleViewController saveBackendlessYear:bYear context:context];
+                [self saveBackendlessYear:bYear context:context];
             }
             [self loadSchedule];
         }
@@ -119,7 +137,7 @@
         }
         if (dayForEvent == nil) {
             dayForEvent = [[Day alloc] initWithEntity:[NSEntityDescription entityForName:@"Day" inManagedObjectContext:context] insertIntoManagedObjectContext:context];
-            dayForEvent.date = [ScheduleViewController dateWithOutTime:bEvent.startDate];
+            dayForEvent.date = [self dateWithOutTime:bEvent.startDate];
             [year addDayObject:dayForEvent];
         }
         
@@ -189,7 +207,7 @@
     [self loadSchedule];
 }
 
-+ (void)saveBackendlessYear:(BYear *)bYear context:(NSManagedObjectContext *)context {
+- (void)saveBackendlessYear:(BYear *)bYear context:(NSManagedObjectContext *)context {
     NSDateFormatter *dayFormatter = [[NSDateFormatter alloc] init];
     [dayFormatter setDateFormat:@"MMM d, yyyy"];
     NSTimeZone *timeZone = [NSTimeZone timeZoneWithName:@"UTC"];
@@ -328,7 +346,7 @@
     }
 }
 
-+ (NSDate *)dateWithOutTime:(NSDate *)datDate {
+- (NSDate *)dateWithOutTime:(NSDate *)datDate {
     if( datDate == nil ) {
         datDate = [NSDate date];
     }
