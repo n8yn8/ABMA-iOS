@@ -10,6 +10,8 @@ import Foundation
 import Crashlytics
 
 class Utils: NSObject {
+    
+    @objc
     static func timeFrame(startDate: Date, endDate: Date?) -> String {
         let timeZone = TimeZone(abbreviation: "UTC")
         let dateFormatter = DateFormatter()
@@ -22,6 +24,14 @@ class Utils: NSObject {
         return value
     }
     
+    @objc
+    static func time(endDate: Date) -> String {
+        let dateFormatter = DateFormatter()
+        dateFormatter.dateFormat = "MMM d, h:mm a"
+        return dateFormatter.string(from: endDate)
+    }
+    
+    @objc
     static func save(note: Note, context: NSManagedObjectContext) {
         
         let user = DbManager.sharedInstance.getCurrentUser()
@@ -54,6 +64,7 @@ class Utils: NSObject {
         
     }
     
+    @objc
     static func save(context: NSManagedObjectContext) {
         do {
             try context.save()
@@ -64,11 +75,13 @@ class Utils: NSObject {
     
     private static let LAST_UPDATED = "lastUpdated"
     
+    @objc
     static func getLastUpdated() -> Date? {
         let date = UserDefaults.standard.object(forKey: LAST_UPDATED) as? Date
         return date
     }
     
+    @objc
     static func updateLastUpdated(date: Date) {
         let prevUpdated = getLastUpdated()
         if let prev = prevUpdated {
@@ -80,12 +93,52 @@ class Utils: NSObject {
         }
     }
     
+    @objc
     private static func saveLastUpdated(date: Date) {
         UserDefaults.standard.set(date, forKey: LAST_UPDATED)
     }
     
+    @objc
     static func handleError(method: String, message: String) {
         Answers.logCustomEvent(withName: "Error", customAttributes: ["method": method, "message": message])
         print("Error \(method) \(message)")
+    }
+    
+    @objc
+    static func getSurveys(surveysString: String?) -> [BSurvey] {
+        var surveys = [BSurvey]()
+        if let string = surveysString {
+            do {
+                let decoder = JSONDecoder()
+                decoder.dateDecodingStrategy = .millisecondsSince1970
+                surveys = try decoder.decode([BSurvey].self, from: string.data(using: .utf8)!)
+            } catch {
+                print("error trying to convert data to JSON")
+                print(error)
+                surveys = [BSurvey]()
+            }
+        } else {
+            surveys = [BSurvey]()
+        }
+        return surveys
+    }
+    
+    @objc
+    static func getMapss(mapsString: String?) -> [BMap] {
+        var maps = [BMap]()
+        if let string = mapsString {
+            do {
+                let decoder = JSONDecoder()
+                decoder.dateDecodingStrategy = .millisecondsSince1970
+                maps = try decoder.decode([BMap].self, from: string.data(using: .utf8)!)
+            } catch {
+                print("error trying to convert data to JSON")
+                print(error)
+                maps = [BMap]()
+            }
+        } else {
+            maps = [BMap]()
+        }
+        return maps
     }
 }

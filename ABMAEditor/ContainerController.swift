@@ -14,8 +14,9 @@ class ContainerController: NSSplitViewController {
     
     var eventListController: EventListViewController!
     var eventController: EventViewController!
-    var eventList = [BEvent]()
+    private var eventList = [BEvent]()
     var selectedEventIndex: Int?
+    var yearObjectId: String?
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -34,10 +35,13 @@ class ContainerController: NSSplitViewController {
 
     }
     
-    func updateEventList(events: [BEvent]) {
-        eventList.removeAll()
-        eventList.append(contentsOf: events)
-        update()
+    func updateEventList(events: [BEvent]?, yearObjectId: String?) {
+        self.yearObjectId = yearObjectId
+        self.eventList.removeAll()
+        if let theseEvents = events {
+            self.eventList.append(contentsOf: theseEvents)
+        }
+        self.update()
     }
     
     func update() {
@@ -60,25 +64,27 @@ extension ContainerController: MasterViewControllerDelegate {
     
     func removeSelectedEvent(index: Int) {
         let removedEvent = eventList.remove(at: index)
-        DbManager.sharedInstance.deleteEvent(event: removedEvent)
+        DbManager.sharedInstance.delete(event: removedEvent)
         update()
     }
 }
 
 extension ContainerController: EventViewControllerDelegate {
     func updateEvent(event: BEvent) {
-        DbManager.sharedInstance.updateEvent(event: event) { (saved, error) in
-            
+        guard let yearId = yearObjectId else {
+            return
         }
-        if let index = selectedEventIndex {
-            eventList[index] = event
+        DbManager.sharedInstance.update(event: event, yearParent: yearId) { (saved, error) in
+            if let savedEvent = saved {
+                if let index = self.selectedEventIndex {
+                    self.eventList[index] = savedEvent
+                } else {
+                    self.eventList.append(savedEvent)
+                    self.delegate?.updateEvents(list: self.eventList)
+                }
+            }
+            self.update()
         }
-        update()
-    }
-    
-    func createEvent(event: BEvent) {
-        eventList.append(event)
-        delegate?.updateEvents(list: eventList)
     }
 }
 

@@ -25,6 +25,8 @@ class PapersViewController: NSViewController, NSTableViewDelegate, NSTableViewDa
             papersTableView.reloadData()
         }
     }
+    var eventParent: String?
+    weak var delegate: PapersViewControllerDelegate?
     
     private var selectedIndex: Int?
 
@@ -42,11 +44,11 @@ class PapersViewController: NSViewController, NSTableViewDelegate, NSTableViewDa
         
         let paper = papers[row]
         
-        let cell = tableView.make(withIdentifier: tableColumn!.identifier, owner: self) as! NSTableCellView
+        let cell = tableView.makeView(withIdentifier: tableColumn!.identifier, owner: self) as! NSTableCellView
         
-        if tableColumn!.identifier == "Title" {
+        if tableColumn!.identifier.rawValue == "Title" {
             cell.textField?.stringValue = paper.title
-        } else if tableColumn!.identifier == "Author" {
+        } else if tableColumn!.identifier.rawValue == "Author" {
             cell.textField?.stringValue = paper.author
         }
         
@@ -103,11 +105,12 @@ class PapersViewController: NSViewController, NSTableViewDelegate, NSTableViewDa
     @IBAction func remove(_ sender: Any) {
         let removedPaper = papers.remove(at: papersTableView.selectedRow)
         if removedPaper.objectId != nil {
-            DbManager.sharedInstance.deletePaper(paper: removedPaper)
+            DbManager.sharedInstance.delete(paper: removedPaper)
         }
         papersTableView.reloadData()
         removeButton.isEnabled = false
         updateSelectedPaper()
+        self.delegate?.updatedPapers()
     }
     
     @IBAction func save(_ sender: Any) {
@@ -122,19 +125,30 @@ class PapersViewController: NSViewController, NSTableViewDelegate, NSTableViewDa
         } else {
             paper = BPaper()
         }
-        paper.initWith(title: title, author: author, synopsis: abstract!, order: order)
-        
-        if let index = selectedIndex {
-            self.papers[index] = paper
-        } else {
-            self.papers.append(paper)
+        paper.initWith(title: title, author: author, synopsis: abstract, order: order)
+        DbManager.sharedInstance.update(paper: paper, eventParent: eventParent!) { (saved, error) in
+            guard let savedPaper = saved else {
+                return
+            }
+            if let index = self.selectedIndex {
+                self.papers[index] = savedPaper
+            } else {
+                self.papers.append(savedPaper)
+                self.delegate?.updatedPapers()
+            }
+            
+            self.papersTableView.reloadData()
+            self.papersTableView.selectRowIndexes(NSIndexSet(index: self.papers.count - 1) as IndexSet, byExtendingSelection: false)
         }
         
-        self.papersTableView.reloadData()
-        self.papersTableView.selectRowIndexes(NSIndexSet(index: papers.count - 1) as IndexSet, byExtendingSelection: false)
+        
     }
     
     @IBAction func orderChanged(_ sender: NSStepper) {
         orderTextView.stringValue = "\(orderStepper.integerValue)"
     }
+}
+
+protocol PapersViewControllerDelegate: class {
+    func updatedPapers()
 }

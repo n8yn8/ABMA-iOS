@@ -9,7 +9,7 @@
 #import <Foundation/Foundation.h>
 #import <CoreData/CoreData.h>
 
-@class Day, Sponsor;
+@class Day, Sponsor, Survey, Map;
 
 NS_ASSUME_NONNULL_BEGIN
 

@@ -13,11 +13,10 @@ class YearViewController: NSViewController {
     @IBOutlet weak var activityIndicator: NSProgressIndicator!
     @IBOutlet var welcomeTextView: NSTextView!
     @IBOutlet var infoTextView: NSTextView!
-    @IBOutlet weak var surveyLinkTextField: NSTextField!
-    @IBOutlet weak var surveyStartDatePicker: NSDatePicker!
-    @IBOutlet weak var surveyEndDatePicker: NSDatePicker!
     var containerController: ContainerController?
     var sponsorsViewController: SponsorsViewController?
+    var surveyListViewController: SurveyListViewController?
+    var mapsViewController: MapsViewController?
     
     var years = [BYear]()
     var selectedYear: BYear?
@@ -33,9 +32,6 @@ class YearViewController: NSViewController {
         DbManager.sharedInstance.getYears { (years, error) in
             self.activityIndicator.stopAnimation(self)
             if let data = years {
-                for year in data {
-                    year.doSort()
-                }
                 let sortedYears = data.sorted(by: { (year1, year2) -> Bool in
                     return year1.name > year2.name
                 })
@@ -69,13 +65,21 @@ class YearViewController: NSViewController {
     
     func updateUi() {
         
-        
-        surveyLinkTextField.stringValue = ""
-        surveyStartDatePicker.dateValue = Date()
-        surveyEndDatePicker.dateValue = Date()
-        
         if let year = selectedYear {
-            containerController?.updateEventList(events: year.events)
+            if var events = year.events {
+                events = events.sorted(by: { (e1, e2) -> Bool in
+                    e1.startDate.compare(e2.startDate) == ComparisonResult.orderedAscending
+                })
+                containerController?.updateEventList(events: events, yearObjectId: year.objectId)
+            } else {
+                DbManager.sharedInstance.getEvents(parentId: year.objectId!) { (response, error) in
+                    year.events = response?.sorted(by: { (e1, e2) -> Bool in
+                        e1.startDate.compare(e2.startDate) == ComparisonResult.orderedAscending
+                    })
+                    self.containerController?.updateEventList(events: year.events, yearObjectId: year.objectId)
+                }
+            }
+            
             if let welcome = year.welcome {
                 welcomeTextView.string = welcome
             } else {
@@ -92,22 +96,20 @@ class YearViewController: NSViewController {
             } else {
                 publishButton.title = "Update"
             }
-            
-            if let surveyLink = year.surveyUrl {
-                surveyLinkTextField.stringValue = surveyLink
+            if let sponsors = year.sponsors {
+                sponsorsViewController?.updateSponsors(sponsorList: sponsors)
+            } else {
+                DbManager.sharedInstance.getSponsors(parentId: year.objectId!) { (response, error) in
+                    year.sponsors = response
+                    self.sponsorsViewController?.updateSponsors(sponsorList: response)
+                }
             }
             
-            if let surveyStart = year.surveyStart {
-                surveyStartDatePicker.dateValue = surveyStart
-            }
-            
-            if let surveyEnd = year.surveyEnd {
-                surveyEndDatePicker.dateValue = surveyEnd
-            }
-            
-            sponsorsViewController?.updateSponsors(sponsorList: year.sponsors)
+            sponsorsViewController?.yearParentId = year.objectId
+            surveyListViewController?.surveysString = year.surveys
+            mapsViewController?.mapsString = year.maps
         } else {
-            containerController?.updateEventList(events: [BEvent]())
+            containerController?.updateEventList(events: nil, yearObjectId: nil)
             welcomeTextView.string = ""
             infoTextView.string = ""
             sponsorsViewController?.updateSponsors(sponsorList: [BSponsor]())
@@ -137,18 +139,18 @@ class YearViewController: NSViewController {
             sponsorsViewController?.delegate = self
         } else if let dvc = segue.destinationController as? PushViewController {
             dvc.delegate = self
+        } else if let dvc = segue.destinationController as? SurveyListViewController {
+            surveyListViewController = dvc
+            surveyListViewController?.delegate = self
+        } else if let dvc = segue.destinationController as? MapsViewController {
+            mapsViewController = dvc
+            mapsViewController?.delegate = self
         }
     }
     
     @IBAction func saveWelcome(_ sender: Any) {
         selectedYear?.welcome = welcomeTextView.string
         selectedYear?.info = infoTextView.string
-        let surveyLink = surveyLinkTextField.stringValue
-        if !surveyLink.isEmpty {
-            selectedYear?.surveyUrl = surveyLink
-            selectedYear?.surveyStart = surveyStartDatePicker.dateValue
-            selectedYear?.surveyEnd = surveyEndDatePicker.dateValue
-        }
         updateYear(callback: nil)
     }
     
@@ -193,17 +195,26 @@ extension YearViewController: NewYearsViewControllerDelegate {
 extension YearViewController: SponsorsViewControllerDelegate {
     func saveSponsor(savedSponsor: BSponsor) {
         if let thisYear = selectedYear {
+            if thisYear.sponsors == nil {
+                thisYear.sponsors = [BSponsor]()
+            }
             if let id = savedSponsor.objectId {
-                for i in 0 ..< thisYear.sponsors.count {
-                    let sponsor = selectedYear?.sponsors[i]
-                    if id == sponsor?.objectId {
-                        selectedYear?.sponsors[i] = savedSponsor
+                var found = false
+                for i in 0 ..< thisYear.sponsors!.count {
+                    let sponsor = thisYear.sponsors![i]
+                    if id == sponsor.objectId {
+                        found = true
+                        thisYear.sponsors![i] = savedSponsor
                     }
                 }
+                if !found {
+                    thisYear.sponsors!.append(savedSponsor)
+                }
             } else {
-                selectedYear?.sponsors.append(savedSponsor)
+                thisYear.sponsors!.append(savedSponsor)
             }
-            updateYear(callback: nil)
+            thisYear.doSort()
+            self.updateUi()
         }
         
     }
@@ -212,7 +223,6 @@ extension YearViewController: SponsorsViewControllerDelegate {
 extension YearViewController: ContainerControllerDelegate {
     func updateEvents(list: [BEvent]) {
         selectedYear?.events = list
-        updateYear(callback: nil)
     }
 }
 
@@ -226,5 +236,19 @@ extension YearViewController: PushViewControllerDelegate {
         } else {
             DbManager.sharedInstance.pushUpdate(message: message)
         }
+    }
+}
+
+extension YearViewController: SurveyListViewControllerDelegate {
+    func saveSurveys(surveys: String) {
+        selectedYear?.surveys = surveys
+        updateYear(callback: nil)
+    }
+}
+
+extension YearViewController: MapsViewControllerDelegate {
+    func saveMaps(mapsString: String) {
+        selectedYear?.maps = mapsString
+        updateYear(callback: nil)
     }
 }

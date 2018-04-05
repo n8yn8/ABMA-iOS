@@ -12,6 +12,7 @@
 #import "AppDelegate.h"
 #import "Sponsor+CoreDataClass.h"
 #import "Year+CoreDataClass.h"
+#import "ABMA-Swift.h"
 
 @interface SponsorCollectionViewController ()
 @property (weak, nonatomic) IBOutlet UICollectionView *sponsorsCollectionView;
@@ -48,41 +49,46 @@
     Year *year = [context executeFetchRequest:yearRequest error:&error].firstObject;
     if (year) {
         sponsors = [year.sponsors allObjects];
+        if (sponsors.count) {
+            NSLog(@"Sponsors exist");
+        } else {
+            [[DbManager sharedInstance] getSponsorsWithYearId:year.bObjectId callback:^(NSArray<BSponsor *> * _Nullable response, NSString * _Nullable error) {
+                if (error) {
+                    [Utils handleErrorWithMethod:@"GetPublishedYears" message:error];
+                    NSLog(@"error: %@", error);
+                } else {
+                    NSMutableArray<Sponsor*> *netSponsors = [[NSMutableArray alloc] initWithCapacity:response.count];
+                    for (BSponsor *bSponsor in response) {
+                        
+                        NSFetchRequest<Sponsor*> *sponsorRequest = [Sponsor fetchRequest];
+                        sponsorRequest.fetchLimit = 1;
+                        sponsorRequest.predicate = [NSPredicate predicateWithFormat:@"bObjectId==%@", bSponsor.objectId];
+                        NSError *sponsorError = nil;
+                        Sponsor *sponsor = [context executeFetchRequest:sponsorRequest error:&sponsorError].firstObject;
+                        if (!sponsor) {
+                            sponsor = [[Sponsor alloc] initWithEntity:[NSEntityDescription entityForName:@"Sponsor" inManagedObjectContext:context] insertIntoManagedObjectContext:context];
+                        }
+                        sponsor.bObjectId = bSponsor.objectId;
+                        sponsor.url = bSponsor.url;
+                        sponsor.imageUrl = bSponsor.imageUrl;
+                        sponsor.year = year;
+                        sponsor.created = bSponsor.created;
+                        sponsor.updated = bSponsor.upadted;
+                        [year addSponsorsObject:sponsor];
+                        [netSponsors addObject:sponsor];
+                    }
+                    NSError *error;
+                    [context save:&error];
+                    if (error) {
+                        NSLog(@"Error: %@", error.localizedDescription);
+                    } else {
+                        sponsors = netSponsors;
+                        [self.sponsorsCollectionView reloadData];
+                    }
+                }
+            }];
+        }
     }
-    
-    //Sponsor image array
-//    sponsorImages = [[NSArray alloc] initWithObjects:@"AAZK-Dallas.png", @"AAZK-Galv.png", @"AAZKChey.png", @"ABI.png", @"AP.png", @"Blue.png", @"ChildrensAquarium.png", @"Cliff.png", @"DallasZoo.png", @"DWA.png", @"FRWC.png", @"FWZoo.png", @"MAF.png", @"NatBal.png", @"NEI.png", @"SeaWorld.png", nil];
-//    sponsorImages = [[NSArray alloc] initWithObjects:@"DBP.png", @"CPHZoo.png", @"GIVSKUD_ZOO.png", @"Odense Zoo.png", @"SDU.png", @"training_store.png", @"mazuri.png", @"profis.png", @"sea_world.png", @"zooply.png",  nil];
-    
-//    sponsorImages = [[NSArray alloc] initWithObjects:
-//                     @"brevard_zoo_logo_m.jpg",
-//                     @"CFZ.jpg",
-//                     @"Zoo_Logo.jpg",
-//                     @"sante_fe_teaching_zoo.png",
-//                     @"CMA.png",
-//                     @"fl aq logo.jpg",
-//                     @"SWO Logo.jpg",
-//                     @"NEI.png",
-//                     @"PB.png",
-//                     @"ABI Logo.jpg",
-//                     @"BGT Logo.png",
-//                     @"FAZA.png",
-//                     @"TAMPA BAY AAZK.png",  nil];
-//    links = [[NSArray alloc] initWithObjects:
-//             @"http://www.brevardzoo.org/",
-//             @"http://www.centralfloridazoo.org/",
-//             @"http://www.lowryparkzoo.org/",
-//             @"http://www.sfcollege.edu/zoo/",
-//             @"http://www.seewinter.com/",
-//             @"http://www.flaquarium.org/",
-//             @"https://seaworldparks.com/seaworld-orlando?&gclid=CNnZ_rOg5ssCFUQbgQodW_gLyg&dclid=CMvQhLSg5ssCFUQFgQod384IRQ",
-//             @"http://naturalencounters.com/",
-//             @"http://www.precisionbehavior.com/",
-//             @"http://www.animaledu.com/Home/d/1",
-//             @"https://seaworldparks.com/en/buschgardens-tampa/?&gclid=CM7sh5ig5ssCFYclgQodFi4MFg&dclid=CLD5i5ig5ssCFQsNgQodm1IJ_g",
-//             @"http://www.flaza.org/zoos--aquariums.html",
-//             @"http://tampabayaazk.weebly.com/",
-//               nil];
 }
 
 - (void)didReceiveMemoryWarning

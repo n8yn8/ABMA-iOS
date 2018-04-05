@@ -10,15 +10,19 @@ import Cocoa
 
 class SponsorsViewController: NSViewController {
     
-    var sponsors = [BSponsor]()
+    private var sponsors = [BSponsor]()
+    var yearParentId: String!
+    private var selectedSponsorIndex: Int?
 
     @IBOutlet weak var collectionView: NSCollectionView!
     @IBOutlet weak var removeButton: NSButton!
     
     weak var delegate: SponsorsViewControllerDelegate?
     lazy var sheetViewController: NewSponsorViewController = {
-        return self.storyboard!.instantiateController(withIdentifier: "NewSponsorViewController")
+        let vc = self.storyboard!.instantiateController(withIdentifier: NSStoryboard.SceneIdentifier(rawValue: "NewSponsorViewController"))
             as! NewSponsorViewController
+        vc.yearParentId = yearParentId
+        return vc
     }()
     
     override func viewDidLoad() {
@@ -26,13 +30,14 @@ class SponsorsViewController: NSViewController {
         // Do view setup here.
         
         configureCollectionView()
+        removeButton.isEnabled = false
     }
     
     private func configureCollectionView() {
         
         let flowLayout = NSCollectionViewFlowLayout()
         flowLayout.itemSize = NSSize(width: 160.0, height: 140.0)
-        flowLayout.sectionInset = EdgeInsets(top: 10.0, left: 20.0, bottom: 10.0, right: 20.0)
+        flowLayout.sectionInset = NSEdgeInsets(top: 10.0, left: 20.0, bottom: 10.0, right: 20.0)
         flowLayout.minimumInteritemSpacing = 20.0
         flowLayout.minimumLineSpacing = 20.0
         collectionView.collectionViewLayout = flowLayout
@@ -40,9 +45,11 @@ class SponsorsViewController: NSViewController {
         view.wantsLayer = true
     }
     
-    func updateSponsors(sponsorList: [BSponsor]) {
-        sponsors.removeAll()
-        sponsors.append(contentsOf: sponsorList)
+    func updateSponsors(sponsorList: [BSponsor]?) {
+        self.sponsors.removeAll()
+        if let sponsors = sponsorList {
+            self.sponsors.append(contentsOf: sponsors)
+        }
         collectionView.reloadData()
     }
     
@@ -70,7 +77,7 @@ class SponsorsViewController: NSViewController {
             print("Image exists")
             sheetViewController.image = image
             sheetViewController.imageData = data
-            sheetViewController.imageName = name
+            sheetViewController.imageName = name.replacingOccurrences(of: " ", with: "_", options: NSString.CompareOptions.literal, range: nil)
             sheetViewController.delegate = self
             presentViewControllerAsSheet(sheetViewController)
         } else {
@@ -80,11 +87,18 @@ class SponsorsViewController: NSViewController {
     }
     
     @IBAction func remove(_ sender: Any) {
+        guard let selected = selectedSponsorIndex else {
+            return
+        }
+        let sponsor = sponsors.remove(at: selected)
+        DbManager.sharedInstance.delete(sponsor: sponsor)
+        collectionView.reloadData()
+        removeButton.isEnabled = false
     }
     
 }
 
-extension SponsorsViewController: NSCollectionViewDataSource {
+extension SponsorsViewController: NSCollectionViewDataSource, NSCollectionViewDelegate {
     
     func numberOfSections(in collectionView: NSCollectionView) -> Int {
         return 1
@@ -95,12 +109,22 @@ extension SponsorsViewController: NSCollectionViewDataSource {
     }
     
     func collectionView(_ collectionView: NSCollectionView, itemForRepresentedObjectAt indexPath: IndexPath) -> NSCollectionViewItem {
-        let item = collectionView.makeItem(withIdentifier: "SponsorItem", for: indexPath)
+        let item = collectionView.makeItem(withIdentifier: NSUserInterfaceItemIdentifier(rawValue: "SponsorItem"), for: indexPath)
         guard let sponsorItem = item as? SponsorItem else {return item}
         
         sponsorItem.sponsor = sponsors[indexPath.item]
         
         return sponsorItem
+    }
+    
+    func collectionView(_ collectionView: NSCollectionView, didDeselectItemsAt indexPaths: Set<IndexPath>) {
+        selectedSponsorIndex = nil
+        removeButton.isEnabled = false
+    }
+    
+    func collectionView(_ collectionView: NSCollectionView, didSelectItemsAt indexPaths: Set<IndexPath>) {
+        selectedSponsorIndex = indexPaths.first?.item
+        removeButton.isEnabled = true
     }
     
 }

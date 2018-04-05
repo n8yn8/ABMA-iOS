@@ -30,6 +30,7 @@ class EventListViewController: NSViewController, NSTableViewDelegate, NSTableVie
         eventList = list
         eventTableView.deselectAll(self)
         eventTableView.reloadData()
+        updateSelectedEvent()
     }
     
     func numberOfRows(in tableView: NSTableView) -> Int {
@@ -40,12 +41,12 @@ class EventListViewController: NSViewController, NSTableViewDelegate, NSTableVie
         
         let event = eventList[row]
         
-        let cell = tableView.make(withIdentifier: tableColumn!.identifier, owner: self) as! NSTableCellView
+        let cell = tableView.makeView(withIdentifier: tableColumn!.identifier, owner: self) as! NSTableCellView
         
-        if tableColumn!.identifier == "Time" {
+        if tableColumn!.identifier.rawValue == "Time" {
             let dateUTC = event.startDate.addingTimeInterval(TimeInterval(-TimeZone.current.secondsFromGMT()))
             cell.textField?.stringValue = formatter.string(from: dateUTC)
-        } else if tableColumn!.identifier == "Title" {
+        } else if tableColumn!.identifier.rawValue == "Title" {
             if let title = event.title {
                 cell.textField?.stringValue = title
             } else {
@@ -58,6 +59,10 @@ class EventListViewController: NSViewController, NSTableViewDelegate, NSTableVie
     }
     
     func tableViewSelectionDidChange(_ notification: Notification) {
+        updateSelectedEvent()
+    }
+    
+    private func updateSelectedEvent() {
         delegate?.updateSelectedEvent(event: getSelectedEvent(), index: selectedIndex)
     }
     

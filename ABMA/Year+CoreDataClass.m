@@ -9,6 +9,8 @@
 #import "Year+CoreDataClass.h"
 #import "Day+CoreDataClass.h"
 #import "Sponsor+CoreDataClass.h"
+#import "Survey+CoreDataClass.h"
+#import "Map+CoreDataClass.h"
 @implementation Year
 
 + (Year *)getLatestYear:(NSString * _Nullable )selectedYear context:(NSManagedObjectContext *)context {

@@ -1,8 +1,8 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<document type="com.apple.InterfaceBuilder3.Cocoa.Storyboard.XIB" version="3.0" toolsVersion="11762" systemVersion="16C67" targetRuntime="MacOSX.Cocoa" propertyAccessControl="none" useAutolayout="YES" initialViewController="GNt-1z-Gu9">
+<document type="com.apple.InterfaceBuilder3.Cocoa.Storyboard.XIB" version="3.0" toolsVersion="13771" targetRuntime="MacOSX.Cocoa" propertyAccessControl="none" useAutolayout="YES" initialViewController="GNt-1z-Gu9">
     <dependencies>
         <deployment identifier="macosx"/>
-        <plugIn identifier="com.apple.InterfaceBuilder.CocoaPlugin" version="11762"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.CocoaPlugin" version="13771"/>
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
     </dependencies>
     <scenes>
@@ -20,9 +20,9 @@
                                     <rect key="frame" x="1" y="1" width="448" height="237"/>
                                     <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                                     <subviews>
-                                        <collectionView id="TqB-hM-6ce">
+                                        <collectionView selectable="YES" id="TqB-hM-6ce">
                                             <rect key="frame" x="0.0" y="0.0" width="448" height="236"/>
-                                            <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                                            <autoresizingMask key="autoresizingMask" widthSizable="YES"/>
                                             <collectionViewFlowLayout key="collectionViewLayout" minimumInteritemSpacing="10" minimumLineSpacing="10" id="k8h-5d-okf">
                                                 <size key="itemSize" width="50" height="50"/>
                                             </collectionViewFlowLayout>
@@ -110,7 +110,7 @@
                         <rect key="frame" x="0.0" y="0.0" width="450" height="300"/>
                         <autoresizingMask key="autoresizingMask"/>
                         <subviews>
-                            <textField horizontalHuggingPriority="251" verticalHuggingPriority="750" allowsCharacterPickerTouchBarItem="NO" translatesAutoresizingMaskIntoConstraints="NO" id="53d-TW-2Gk">
+                            <textField horizontalHuggingPriority="251" verticalHuggingPriority="750" translatesAutoresizingMaskIntoConstraints="NO" id="53d-TW-2Gk">
                                 <rect key="frame" x="18" y="81" width="22" height="17"/>
                                 <textFieldCell key="cell" scrollable="YES" lineBreakMode="clipping" sendsActionOnEndEditing="YES" title="Url" id="Fdf-Za-f4D">
                                     <font key="font" metaFont="system"/>
@@ -118,7 +118,7 @@
                                     <color key="backgroundColor" name="controlColor" catalog="System" colorSpace="catalog"/>
                                 </textFieldCell>
                             </textField>
-                            <textField verticalHuggingPriority="750" allowsCharacterPickerTouchBarItem="NO" translatesAutoresizingMaskIntoConstraints="NO" id="O5J-hg-PuC">
+                            <textField verticalHuggingPriority="750" translatesAutoresizingMaskIntoConstraints="NO" id="O5J-hg-PuC">
                                 <rect key="frame" x="58" y="78" width="372" height="22"/>
                                 <textFieldCell key="cell" scrollable="YES" lineBreakMode="clipping" selectable="YES" editable="YES" sendsActionOnEndEditing="YES" state="on" borderStyle="bezel" drawsBackground="YES" id="bUP-OV-kdk">
                                     <font key="font" metaFont="system"/>
@@ -157,15 +157,20 @@ Gw
                                 </constraints>
                                 <imageCell key="cell" refusesFirstResponder="YES" alignment="left" imageScaling="proportionallyDown" id="VG3-U5-l6s"/>
                             </imageView>
+                            <progressIndicator wantsLayer="YES" horizontalHuggingPriority="750" verticalHuggingPriority="750" maxValue="100" displayedWhenStopped="NO" bezeled="NO" indeterminate="YES" style="spinning" translatesAutoresizingMaskIntoConstraints="NO" id="CeM-ne-1jL">
+                                <rect key="frame" x="171" y="22" width="32" height="32"/>
+                            </progressIndicator>
                         </subviews>
                         <constraints>
                             <constraint firstItem="O5J-hg-PuC" firstAttribute="centerY" secondItem="53d-TW-2Gk" secondAttribute="centerY" id="DvO-io-l6w"/>
                             <constraint firstItem="O5J-hg-PuC" firstAttribute="leading" secondItem="53d-TW-2Gk" secondAttribute="trailing" constant="20" id="EKw-SX-zPJ"/>
                             <constraint firstItem="SXI-jb-3HT" firstAttribute="centerX" secondItem="A9k-rh-chG" secondAttribute="centerX" id="HZt-Ia-Gbm"/>
                             <constraint firstItem="ZMU-58-Jaw" firstAttribute="leading" secondItem="53d-TW-2Gk" secondAttribute="leading" id="Iz3-L0-Km9"/>
+                            <constraint firstItem="CeM-ne-1jL" firstAttribute="leading" secondItem="UwU-qx-EFk" secondAttribute="trailing" constant="8" id="SwG-cM-twg"/>
                             <constraint firstItem="O5J-hg-PuC" firstAttribute="top" secondItem="SXI-jb-3HT" secondAttribute="bottom" constant="30" id="UiK-dr-ecL"/>
                             <constraint firstItem="SXI-jb-3HT" firstAttribute="top" secondItem="A9k-rh-chG" secondAttribute="top" constant="20" id="Yb6-BT-WMR"/>
                             <constraint firstAttribute="trailing" secondItem="O5J-hg-PuC" secondAttribute="trailing" constant="20" id="YmT-BH-B9C"/>
+                            <constraint firstItem="CeM-ne-1jL" firstAttribute="centerY" secondItem="UwU-qx-EFk" secondAttribute="centerY" id="ih2-Tk-kyw"/>
                             <constraint firstItem="UwU-qx-EFk" firstAttribute="centerY" secondItem="ZMU-58-Jaw" secondAttribute="centerY" id="jc4-ca-mKC"/>
                             <constraint firstItem="53d-TW-2Gk" firstAttribute="leading" secondItem="A9k-rh-chG" secondAttribute="leading" constant="20" id="oqE-8r-TIQ"/>
                             <constraint firstItem="UwU-qx-EFk" firstAttribute="top" secondItem="O5J-hg-PuC" secondAttribute="bottom" constant="30" id="u8G-ER-OLn"/>
@@ -173,6 +178,7 @@ Gw
                         </constraints>
                     </view>
                     <connections>
+                        <outlet property="activityIndicator" destination="CeM-ne-1jL" id="651-5S-D3W"/>
                         <outlet property="imageView" destination="SXI-jb-3HT" id="rRa-n2-mnA"/>
                         <outlet property="urlTextField" destination="O5J-hg-PuC" id="v6N-2d-52u"/>
                         <segue destination="GNt-1z-Gu9" kind="sheet" identifier="showPreview" id="Y3q-9M-cuw"/>
@@ -180,7 +186,7 @@ Gw
                 </viewController>
                 <customObject id="CK9-UM-agh" userLabel="First Responder" customClass="NSResponder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="122" y="544"/>
+            <point key="canvasLocation" x="121" y="658"/>
         </scene>
     </scenes>
     <resources>

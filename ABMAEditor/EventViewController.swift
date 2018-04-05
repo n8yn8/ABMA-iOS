@@ -47,9 +47,6 @@ class EventViewController: NSViewController {
             titleTextField.stringValue = ""
             subtitleTextField.stringValue = ""
             descriptionTextView.string = ""
-            if let controller = papersViewController {
-                controller.papers = [BPaper]()
-            }
             
             if let event = representedObject as? BEvent {
                 self.event = event
@@ -60,10 +57,10 @@ class EventViewController: NSViewController {
                 if let endDate = event.endDate {
                     endTimePicker.dateValue = endDate.addingTimeInterval(utcOffset)
                     endTimePicker.isHidden = false
-                    includeEndTimeButton.state = 1
+                    includeEndTimeButton.state = NSControl.StateValue(rawValue: 1)
                 } else {
                     endTimePicker.isHidden = true
-                    includeEndTimeButton.state = 0
+                    includeEndTimeButton.state = NSControl.StateValue(rawValue: 0)
                 }
                 if let location = event.location {
                     locationTextField.stringValue = location
@@ -78,20 +75,44 @@ class EventViewController: NSViewController {
                 if let details = event.details {
                     descriptionTextView.string = details
                     tabView.selectFirstTabViewItem(self)
+                } else {
+                    
                 }
-                if !event.papers.isEmpty {
-                    tabView.selectLastTabViewItem(self)
+                if event.papersCount > 0 {
+                    if let papers = event.papers {
+                        setPapers(papers: papers)
+                    } else {
+                        DbManager.sharedInstance.getPapers(parentId: event.objectId!, callback: { (response, errore) in
+                            event.papers = response?.sorted(by: { (paper1, paper2) -> Bool in
+                                paper1.order < paper2.order
+                            })
+                            if let papers = event.papers {
+                                self.setPapers(papers: papers)
+                            }
+                        })
+                    }
                 }
-                if let controller = papersViewController {
-                    controller.papers = event.papers
-                }
+                
                 setEnabled(enabled: true)
+                
+                if let controller = papersViewController {
+                    controller.eventParent = event.objectId
+                }
                 
             } else{
                 self.event = nil
                 tabView.selectFirstTabViewItem(self)
                 setEnabled(enabled: false)
             }
+        }
+    }
+    
+    func setPapers(papers: [BPaper]) {
+        if !papers.isEmpty {
+            tabView.selectLastTabViewItem(self)
+        }
+        if let controller = papersViewController {
+            controller.papers = papers
         }
     }
     
@@ -113,17 +134,15 @@ class EventViewController: NSViewController {
     }
     
     @IBAction func toggleIncludeEnd(_ sender: Any) {
-        endTimePicker.isHidden = includeEndTimeButton.state == 0
-        endTimePicker.isEnabled = includeEndTimeButton.state == 1
+        endTimePicker.isHidden = includeEndTimeButton.state.rawValue == 0
+        endTimePicker.isEnabled = includeEndTimeButton.state.rawValue == 1
     }
     
     func saveEvent() {
         let startDate = buildDate(timePartInCurTZ: startTimePicker.dateValue)
-        let endDate = includeEndTimeButton.state == 1 ? buildDate(timePartInCurTZ: endTimePicker.dateValue) : nil
+        let endDate = includeEndTimeButton.state.rawValue == 1 ? buildDate(timePartInCurTZ: endTimePicker.dateValue) : nil
         
-        var isNew = false
         if event == nil {
-            isNew = true
             event = BEvent()
         }
         event?.startDate = startDate
@@ -132,13 +151,11 @@ class EventViewController: NSViewController {
         event!.location = locationTextField.stringValue
         event!.subtitle = subtitleTextField.stringValue
         event!.details = descriptionTextView.string
-        event!.papers = papersViewController!.papers
+        let papers = papersViewController!.papers
+        event!.papers = papers
+        event?.papersCount = papers.count
         
-        if isNew {
-            self.delegate?.createEvent(event: event!)
-        } else {
-            self.delegate?.updateEvent(event: event!)
-        }
+        self.delegate?.updateEvent(event: event!)
     }
     
     func buildDate(timePartInCurTZ: Date) -> Date {
@@ -152,13 +169,23 @@ class EventViewController: NSViewController {
     
     override func prepare(for segue: NSStoryboardSegue, sender: Any?) {
         if let controller = segue.destinationController as? PapersViewController {
+            controller.delegate = self
             papersViewController = controller
         }
     }
 
 }
 
+extension EventViewController : PapersViewControllerDelegate {
+    func updatedPapers() {
+        let papersCount = papersViewController!.papers.count
+        if event?.papersCount != papersCount {
+            event?.papersCount = papersCount
+            saveEvent()
+        }
+    }
+}
+
 protocol EventViewControllerDelegate: class {
     func updateEvent(event: BEvent)
-    func createEvent(event: BEvent)
 }
