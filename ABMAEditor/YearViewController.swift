@@ -161,6 +161,9 @@ class YearViewController: NSViewController {
             saved?.doSort()
             self.selectedYear = saved
             self.updateUi()
+            if let call = callback {
+                call()
+            }
         }
     }
     
@@ -234,7 +237,9 @@ extension YearViewController: PushViewControllerDelegate {
                 DbManager.sharedInstance.pushUpdate(message: message)
             })
         } else {
-            DbManager.sharedInstance.pushUpdate(message: message)
+            updateYear(callback: {
+                DbManager.sharedInstance.pushUpdate(message: message)
+            })
         }
     }
 }
