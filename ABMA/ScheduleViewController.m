@@ -55,11 +55,11 @@
     AppDelegate *appdelegate = (AppDelegate *)[[UIApplication sharedApplication] delegate];
     context = [appdelegate managedObjectContext];
     
-    [self loadSchedule];
+    [self loadSchedule:false];
     //    [self loadBackendless];
     
     refreshControl = [[UIRefreshControl alloc] init];
-    [refreshControl addTarget:self action:@selector(loadBackendless) forControlEvents:UIControlEventValueChanged];
+    [refreshControl addTarget:self action:@selector(loadBackendless:) forControlEvents:UIControlEventValueChanged];
     if ([self.tableView respondsToSelector:@selector(setRefreshControl:)]) {
         self.tableView.refreshControl = refreshControl;
     } else {
@@ -70,10 +70,10 @@
 
 - (void)viewWillAppear:(BOOL)animated {
     [super viewWillAppear:animated];
-    [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(loadBackendless) name:@"PushReceived" object:nil];
+    [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(loadBackendless:) name:@"PushReceived" object:nil];
     
     if ([[NSUserDefaults standardUserDefaults] boolForKey:@"PushReceived"]) {
-        [self loadBackendless];
+        [self loadBackendless:true];
     }
 }
 
@@ -82,7 +82,7 @@
     [[NSNotificationCenter defaultCenter] removeObserver:self];
 }
 
-- (void)loadBackendless {
+- (void)loadBackendless:(BOOL)isUpdate {
     NSUserDefaults *defaults = [NSUserDefaults standardUserDefaults];
     [defaults setBool:false forKey:@"PushReceived"];
     [defaults synchronize];
@@ -100,7 +100,7 @@
             for (BYear *bYear in years) {
                 [self saveBackendlessYear:bYear context:context];
             }
-            [self loadSchedule];
+            [self loadSchedule:isUpdate];
         }
     }];
 }
@@ -204,7 +204,7 @@
             }
         }
     }
-    [self loadSchedule];
+    [self loadSchedule:false];
 }
 
 - (void)saveBackendlessYear:(BYear *)bYear context:(NSManagedObjectContext *)context {
@@ -282,63 +282,6 @@
         [year addSponsorsObject:sponsor];
     }
     
-    for (BEvent *bEvent in bYear.events) {
-        NSCalendar * calendar = [[NSCalendar alloc] initWithCalendarIdentifier:NSCalendarIdentifierGregorian];
-        
-        Day *dayForEvent = nil;
-        for (Day *day in year.day) {
-            if ([calendar isDate:bEvent.startDate equalToDate:day.date toUnitGranularity:NSCalendarUnitDay]) {
-                dayForEvent = day;
-                break;
-            }
-        }
-        if (dayForEvent == nil) {
-            dayForEvent = [[Day alloc] initWithEntity:[NSEntityDescription entityForName:@"Day" inManagedObjectContext:context] insertIntoManagedObjectContext:context];
-            dayForEvent.date = [self dateWithOutTime:bEvent.startDate];
-            [year addDayObject:dayForEvent];
-        }
-        
-        NSFetchRequest<Event*> *eventRequest = [Event fetchRequest];
-        eventRequest.fetchLimit = 1;
-        eventRequest.predicate = [NSPredicate predicateWithFormat:@"bObjectId==%@", bEvent.objectId];
-        NSError *eventError = nil;
-        Event *thisEvent = [context executeFetchRequest:eventRequest error:&eventError].firstObject;
-        if (!thisEvent) {
-            thisEvent = [[Event alloc] initWithEntity:[NSEntityDescription entityForName:@"Event" inManagedObjectContext:context] insertIntoManagedObjectContext:context];
-        }
-        thisEvent.bObjectId = bEvent.objectId;
-        thisEvent.title = bEvent.title;
-        thisEvent.subtitle = bEvent.subtitle;
-        thisEvent.locatoin = bEvent.location;
-        thisEvent.startDate = bEvent.startDate;
-        thisEvent.endDate = bEvent.endDate;
-        thisEvent.details = bEvent.details;
-        thisEvent.created = bEvent.created;
-        thisEvent.updated = bEvent.upadted;
-        NSMutableOrderedSet *papersSet = [[NSMutableOrderedSet alloc] init];
-        NSArray <BPaper *> *orderedPapers = [bEvent.papers sortedArrayUsingDescriptors: @[[NSSortDescriptor sortDescriptorWithKey:@"order" ascending:YES]]];
-        for (BPaper *bPaper in orderedPapers) {
-            
-            NSFetchRequest<Paper*> *paperRequest = [Paper fetchRequest];
-            paperRequest.fetchLimit = 1;
-            paperRequest.predicate = [NSPredicate predicateWithFormat:@"bObjectId==%@", bPaper.objectId];
-            NSError *paperError = nil;
-            Paper *paper = [context executeFetchRequest:paperRequest error:&paperError].firstObject;
-            if (!paper) {
-                paper = [[Paper alloc] initWithEntity:[NSEntityDescription entityForName:@"Paper" inManagedObjectContext:context] insertIntoManagedObjectContext:context];
-            }
-            paper.bObjectId = bPaper.objectId;
-            paper.author = bPaper.author;
-            paper.title = bPaper.title;
-            paper.abstract = bPaper.synopsis;
-            paper.event = thisEvent;
-            paper.created = bPaper.created;
-            paper.updated = bPaper.upadted;
-            [papersSet addObject:paper];
-        }
-        thisEvent.papers = papersSet;
-        [dayForEvent addEventObject:thisEvent];
-    }
     NSError *saveEror;
     [context save:&saveEror];
     if (saveEror) {
@@ -354,12 +297,12 @@
     return [[NSCalendar currentCalendar] dateFromComponents:comps];
 }
 
-- (void)loadSchedule {
+- (void)loadSchedule:(BOOL)isUdpate {
     
     Year *year = [Year getLatestYear:selectedYear context:context];
     
     if (year) {
-        if (year.day && year.day.count) {
+        if ((year.day && year.day.count) && !isUdpate) {
             NSSortDescriptor *sortDescriptor = [[NSSortDescriptor alloc] initWithKey:@"date" ascending:TRUE];
             days = [[year.day allObjects] sortedArrayUsingDescriptors:@[sortDescriptor]];
             
@@ -368,7 +311,7 @@
             [self loadBackendlessEvents:year];
         }
     } else {
-        [self loadBackendless];
+        [self loadBackendless: false];
     }
     NSString *currentBuild = [[NSBundle mainBundle] objectForInfoDictionaryKey: (NSString *)kCFBundleVersionKey];
     [[NSUserDefaults standardUserDefaults] setObject:currentBuild forKey:@"build"];
@@ -446,7 +389,7 @@
     if (error) {
         NSLog(@"Error: %@", error.localizedDescription);
     } else {
-        [self loadSchedule];
+        [self loadSchedule: false];
     }
 }
 
@@ -567,7 +510,7 @@
     NSInteger myRow = [picker selectedRowInComponent:0];
     selectedYear = [pickerData objectAtIndex:myRow];
     NSLog(@"Selected %@", selectedYear);
-    [self loadSchedule];
+    [self loadSchedule:false];
     
     [self dismissPicker];
 }
