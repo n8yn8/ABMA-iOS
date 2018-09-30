@@ -13,6 +13,13 @@ DEPENDENCIES:
   - Fabric
   - SDWebImage (= 4.3.2)
 
+SPEC REPOS:
+  https://github.com/cocoapods/specs.git:
+    - Backendless
+    - Crashlytics
+    - Fabric
+    - SDWebImage
+
 SPEC CHECKSUMS:
   Backendless: 71af4d0aa588e966a8598e7738fb424c6e948bac
   Crashlytics: aee1a064cbbf99b32efa3f056a5f458d846bc8ff
@@ -21,4 +28,4 @@ SPEC CHECKSUMS:
 
 PODFILE CHECKSUM: 82d0f626163fc7a80a552842e41d57c7c5fc4bca
 
-COCOAPODS: 1.4.0
+COCOAPODS: 1.5.3
