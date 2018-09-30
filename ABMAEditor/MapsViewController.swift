@@ -24,7 +24,7 @@ class MapsViewController: NSViewController {
     
     weak var delegate: MapsViewControllerDelegate?
     lazy var sheetViewController: NewMapViewController = {
-        let vc = self.storyboard!.instantiateController(withIdentifier: NSStoryboard.SceneIdentifier(rawValue: "NewMapViewController"))
+        let vc = self.storyboard!.instantiateController(withIdentifier: "NewMapViewController")
             as! NewMapViewController
         vc.yearParentId = yearParentId
         return vc
@@ -93,7 +93,7 @@ class MapsViewController: NSViewController {
             sheetViewController.imageData = data
             sheetViewController.imageName = name.replacingOccurrences(of: " ", with: "_", options: NSString.CompareOptions.literal, range: nil)
             sheetViewController.delegate = self
-            presentViewControllerAsSheet(sheetViewController)
+            presentAsSheet(sheetViewController)
         } else {
             print("missing image at: \(path)")
         }

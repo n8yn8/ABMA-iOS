@@ -19,7 +19,7 @@ class SponsorsViewController: NSViewController {
     
     weak var delegate: SponsorsViewControllerDelegate?
     lazy var sheetViewController: NewSponsorViewController = {
-        let vc = self.storyboard!.instantiateController(withIdentifier: NSStoryboard.SceneIdentifier(rawValue: "NewSponsorViewController"))
+        let vc = self.storyboard!.instantiateController(withIdentifier: "NewSponsorViewController")
             as! NewSponsorViewController
         vc.yearParentId = yearParentId
         return vc
@@ -79,7 +79,7 @@ class SponsorsViewController: NSViewController {
             sheetViewController.imageData = data
             sheetViewController.imageName = name.replacingOccurrences(of: " ", with: "_", options: NSString.CompareOptions.literal, range: nil)
             sheetViewController.delegate = self
-            presentViewControllerAsSheet(sheetViewController)
+            presentAsSheet(sheetViewController)
         } else {
             print("missing image at: \(path)")
         }
