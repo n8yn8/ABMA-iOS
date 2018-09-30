@@ -191,7 +191,7 @@
                 NSFetchRequest *paperRequest = [Paper fetchRequest];
                 paperRequest.predicate = [NSPredicate predicateWithFormat:@"bObjectId==%@", bNote.paperId];
                 NSError *error = nil;
-                NSArray <Paper *> *matches = [context executeFetchRequest:paperRequest error:&error];
+                NSArray <Paper *> *matches = [self->context executeFetchRequest:paperRequest error:&error];
                 if (matches.count) {
                     foundPaper = [matches firstObject];
                     note = foundPaper.note;
@@ -200,7 +200,7 @@
                 NSFetchRequest *eventRequest = [Event fetchRequest];
                 eventRequest.predicate = [NSPredicate predicateWithFormat:@"bObjectId==%@", bNote.eventId];
                 NSError *error = nil;
-                NSArray <Event *> *matches = [context executeFetchRequest:eventRequest error:&error];
+                NSArray <Event *> *matches = [self->context executeFetchRequest:eventRequest error:&error];
                 if (matches.count) {
                     foundEvent = [matches firstObject];
                     note = foundEvent.note;
@@ -209,7 +209,7 @@
             
             
             if (!note) {
-                note = [NSEntityDescription insertNewObjectForEntityForName:@"Note" inManagedObjectContext:context];
+                note = [NSEntityDescription insertNewObjectForEntityForName:@"Note" inManagedObjectContext:self->context];
             } else {
                 //TODO: check for updated note
             }
@@ -221,7 +221,7 @@
             note.paper = foundPaper;
         }
         NSError *saveError = nil;
-        [context save:&saveError];
+        [self->context save:&saveError];
         [self.activityIndicator stopAnimating];
         [self fetchNotes];
     }];

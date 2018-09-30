@@ -82,7 +82,7 @@
                     if (error) {
                         NSLog(@"Error: %@", error.localizedDescription);
                     } else {
-                        sponsors = netSponsors;
+                        self->sponsors = netSponsors;
                         [self.sponsorsCollectionView reloadData];
                     }
                 }
