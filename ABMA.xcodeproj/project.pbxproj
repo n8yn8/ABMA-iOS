@@ -63,6 +63,7 @@
 		436468832070698B0048685F /* MapViewItem.swift in Sources */ = {isa = PBXBuildFile; fileRef = 436468812070698B0048685F /* MapViewItem.swift */; };
 		436468842070698B0048685F /* MapViewItem.xib in Resources */ = {isa = PBXBuildFile; fileRef = 436468822070698B0048685F /* MapViewItem.xib */; };
 		4364688620706C780048685F /* NewMapViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4364688520706C780048685F /* NewMapViewController.swift */; };
+		436BA4D021D0352B007B6B36 /* UserNotifications.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 436BA4CF21D0352B007B6B36 /* UserNotifications.framework */; };
 		43732BCF1E6E660E00A85B63 /* Year+CoreDataClass.m in Sources */ = {isa = PBXBuildFile; fileRef = 43732BCC1E6E660E00A85B63 /* Year+CoreDataClass.m */; };
 		4378FD9B1E3A452F00319DE0 /* Papers.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 4378FD9A1E3A452F00319DE0 /* Papers.storyboard */; };
 		437F118720562C42006EBBC0 /* Year+CoreDataProperties.m in Sources */ = {isa = PBXBuildFile; fileRef = 437F118220562C42006EBBC0 /* Year+CoreDataProperties.m */; };
@@ -190,6 +191,7 @@
 		436468812070698B0048685F /* MapViewItem.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MapViewItem.swift; sourceTree = "<group>"; };
 		436468822070698B0048685F /* MapViewItem.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = MapViewItem.xib; sourceTree = "<group>"; };
 		4364688520706C780048685F /* NewMapViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NewMapViewController.swift; sourceTree = "<group>"; };
+		436BA4CF21D0352B007B6B36 /* UserNotifications.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = UserNotifications.framework; path = System/Library/Frameworks/UserNotifications.framework; sourceTree = SDKROOT; };
 		43732BCB1E6E660E00A85B63 /* Year+CoreDataClass.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "Year+CoreDataClass.h"; sourceTree = "<group>"; };
 		43732BCC1E6E660E00A85B63 /* Year+CoreDataClass.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "Year+CoreDataClass.m"; sourceTree = "<group>"; };
 		43732BD11E70501A00A85B63 /* ABMA.entitlements */ = {isa = PBXFileReference; lastKnownFileType = text.plist.entitlements; path = ABMA.entitlements; sourceTree = "<group>"; };
@@ -246,6 +248,7 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				436BA4D021D0352B007B6B36 /* UserNotifications.framework in Frameworks */,
 				43AAAE2A1AAAA484002C424A /* CoreData.framework in Frameworks */,
 				43CF9B1A18F5A4E600885DAC /* libz.dylib in Frameworks */,
 				4338BBA318F26F53002683EF /* CoreGraphics.framework in Frameworks */,
@@ -290,6 +293,7 @@
 		4338BB9F18F26F52002683EF /* Frameworks */ = {
 			isa = PBXGroup;
 			children = (
+				436BA4CF21D0352B007B6B36 /* UserNotifications.framework */,
 				43AAAE291AAAA484002C424A /* CoreData.framework */,
 				43CF9B1918F5A4E600885DAC /* libz.dylib */,
 				4338BBA018F26F53002683EF /* Foundation.framework */,
