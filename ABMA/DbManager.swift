@@ -60,8 +60,7 @@ class DbManager: NSObject {
     
     @objc
     func userPasswordRecovery(email: String, callback: @escaping (_ errorString: String?) -> Void) {
-        backendless?.userService.restorePassword(email, response: { (response) in
-            print(String(describing: response))
+        backendless?.userService?.restorePassword(email, response: {
             callback("Check your email to recover you password.")
         }, error: { (fault) in
             print(String(describing: fault))
@@ -75,10 +74,10 @@ class DbManager: NSObject {
     
     @objc
     func logout(callback: @escaping (_ errorString: String?) -> Void) {
-        backendless?.userService.logout({ (response) in
+        backendless?.userService.logout({
             callback(nil)
-        }, error: { (error) in
-            callback(error.debugDescription)
+        }, error: { (fault) in
+            callback(fault.debugDescription)
         })
     }
     
