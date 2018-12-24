@@ -278,13 +278,33 @@ class NetworkExecutor {
                     callback(object, nil)
                 }
             } catch {
-                print("error trying to convert data to JSON")
-                print(error)
-                DispatchQueue.main.async {
-                    callback(nil, error)
+                if method == .put {
+                    DispatchQueue.main.async {
+                        let error = getInt(data: responseData) > -1 ? nil : BackendError.objectSerialization(reason: "No items updated")
+                        callback(nil, error)
+                    }
+                } else {
+                    print("error trying to convert data to JSON")
+                    print(error)
+                    print(urlRequest)
+                    DispatchQueue.main.async {
+                        callback(nil, error)
+                    }
                 }
             }
         })
         task.resume()
+    }
+    
+    private static func getInt(data: Data) -> Int {
+        guard let text = String(data: data, encoding: .utf8) else {
+            print("data is not in UTF-8")
+            return -1
+        }
+        guard let value = Int(text) else {
+            print("text cannot be converted to Int")
+            return -1
+        }
+        return value
     }
 }
