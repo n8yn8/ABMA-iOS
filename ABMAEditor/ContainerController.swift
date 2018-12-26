@@ -25,9 +25,9 @@ class ContainerController: NSSplitViewController {
         
         for splitItem in splitViewItems {
             if splitItem.viewController is EventListViewController {
-                eventListController = splitItem.viewController as! EventListViewController
+                eventListController = (splitItem.viewController as! EventListViewController)
             } else if splitItem.viewController is EventViewController {
-                eventController = splitItem.viewController as! EventViewController
+                eventController = (splitItem.viewController as! EventViewController)
             }
         }
         eventListController.delegate = self

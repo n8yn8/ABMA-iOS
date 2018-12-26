@@ -27,8 +27,8 @@ class DbManager: NSObject {
     @objc
     func registerUser(email: String, password: String, callback: @escaping (_ errorString: String?) -> Void) {
         let user: BackendlessUser = BackendlessUser()
-        user.email = email as NSString!
-        user.password = password as NSString!
+        user.email = email as NSString
+        user.password = password as NSString
         backendless?.userService.register(user, response: { (response) in
             print("response: \(String(describing: response))")
             self.login(email: email, password: password, callback: callback)
