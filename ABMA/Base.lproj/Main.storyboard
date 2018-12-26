@@ -1,11 +1,11 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="14313.18" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" colorMatched="YES" initialViewController="BJu-71-Rud">
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="14460.31" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" colorMatched="YES" initialViewController="BJu-71-Rud">
     <device id="retina4_7" orientation="portrait">
         <adaptation id="fullscreen"/>
     </device>
     <dependencies>
         <deployment identifier="iOS"/>
-        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="14283.14"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="14460.20"/>
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
     </dependencies>
     <scenes>
@@ -350,6 +350,7 @@
                                                 <constraint firstItem="3kc-li-Yuf" firstAttribute="centerY" secondItem="6tj-1K-ikm" secondAttribute="centerY" id="A5p-Pt-jc7"/>
                                                 <constraint firstItem="3kc-li-Yuf" firstAttribute="leading" secondItem="scf-RB-J9Y" secondAttribute="leadingMargin" constant="12" id="C5s-G3-6iY"/>
                                                 <constraint firstAttribute="trailingMargin" secondItem="y9e-1h-cyc" secondAttribute="trailing" constant="-8" id="DVy-cj-eXf"/>
+                                                <constraint firstAttribute="trailing" relation="greaterThanOrEqual" secondItem="6tj-1K-ikm" secondAttribute="trailing" constant="8" id="YcG-Pt-ndb"/>
                                                 <constraint firstItem="y9e-1h-cyc" firstAttribute="top" secondItem="scf-RB-J9Y" secondAttribute="topMargin" constant="-4" id="cpC-RT-EhK"/>
                                                 <constraint firstItem="y9e-1h-cyc" firstAttribute="leading" secondItem="scf-RB-J9Y" secondAttribute="leadingMargin" constant="12" id="eUZ-4Y-Lgc"/>
                                             </constraints>
@@ -408,7 +409,7 @@
                                     <action selector="showYearSelection:" destination="beF-5d-Hwp" id="kIV-G8-43M"/>
                                 </connections>
                             </barButtonItem>
-                            <barButtonItem style="plain" id="0Jy-cJ-szD">
+                            <barButtonItem id="0Jy-cJ-szD">
                                 <view key="customView" contentMode="scaleToFill" id="ZrJ-7c-zO2">
                                     <rect key="frame" x="248.5" y="5.5" width="60" height="33"/>
                                     <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
@@ -625,6 +626,7 @@
                                     <constraint firstAttribute="bottom" secondItem="p0m-dm-2vR" secondAttribute="bottom" constant="8" id="Lfg-ut-ir3"/>
                                     <constraint firstItem="LbT-Eo-dPP" firstAttribute="top" secondItem="FWk-c8-mms" secondAttribute="top" constant="8" id="S6K-x8-p7g"/>
                                     <constraint firstAttribute="trailing" secondItem="sti-eg-us9" secondAttribute="trailing" id="V1o-Te-N3O"/>
+                                    <constraint firstItem="tSZ-SH-Z67" firstAttribute="leading" relation="greaterThanOrEqual" secondItem="LbT-Eo-dPP" secondAttribute="trailing" constant="8" id="cNt-Ca-7af"/>
                                     <constraint firstAttribute="trailing" secondItem="p0m-dm-2vR" secondAttribute="trailing" constant="16" id="j59-hl-zVQ"/>
                                     <constraint firstItem="p0m-dm-2vR" firstAttribute="top" secondItem="LbT-Eo-dPP" secondAttribute="bottom" constant="8" id="kXZ-HR-Vbw"/>
                                     <constraint firstItem="sti-eg-us9" firstAttribute="top" secondItem="FWk-c8-mms" secondAttribute="top" id="woq-4B-qlH"/>
@@ -704,6 +706,7 @@
                             <constraint firstItem="CXc-44-K0D" firstAttribute="leading" secondItem="fmh-gj-NrB" secondAttribute="leadingMargin" constant="2" id="flb-cz-yU9"/>
                             <constraint firstAttribute="trailing" secondItem="YpM-9f-4gb" secondAttribute="trailing" id="kYs-9M-E7u"/>
                             <constraint firstAttribute="trailing" secondItem="JfH-Nb-q4i" secondAttribute="trailing" id="kby-sv-Wwp"/>
+                            <constraint firstAttribute="trailingMargin" relation="greaterThanOrEqual" secondItem="16V-SM-KGc" secondAttribute="trailing" constant="8" id="lsQ-4L-irR"/>
                             <constraint firstItem="16V-SM-KGc" firstAttribute="leading" secondItem="CXc-44-K0D" secondAttribute="trailing" constant="2" id="m4r-Ym-wZb"/>
                             <constraint firstItem="01s-k2-b3i" firstAttribute="leading" secondItem="fmh-gj-NrB" secondAttribute="leading" id="wdc-BK-cJc"/>
                             <constraint firstItem="1KJ-OP-0Mm" firstAttribute="top" secondItem="B0D-gF-6Yn" secondAttribute="bottom" id="x3p-Rx-hy2"/>
@@ -1159,7 +1162,7 @@
                         </constraints>
                     </view>
                     <navigationItem key="navigationItem" id="MaL-yG-U1c">
-                        <barButtonItem key="rightBarButtonItem" style="plain" id="aXh-Gp-XNd">
+                        <barButtonItem key="rightBarButtonItem" id="aXh-Gp-XNd">
                             <view key="customView" contentMode="scaleToFill" id="gma-dC-Ocw">
                                 <rect key="frame" x="299" y="5.5" width="60" height="33"/>
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
