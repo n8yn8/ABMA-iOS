@@ -165,6 +165,7 @@
 - (void)handleResponse:(NSString * _Nullable)error {
     [self.activityIndicator stopAnimating];
     if (error) {
+        [self.loginButton setEnabled:YES];
         [self show:error];
     } else {
         [self retrieveOnlineNotes];
