@@ -168,10 +168,23 @@ class DbManager: NSObject {
     func update(note: BNote, callback: @escaping (_ savedNote: BNote?, _ errorString: String?) -> Void) {
         backendless?.data.of(BNote.ofClass()).save(note, response: { (response) in
             if let saved = response as? BNote {
-                callback(saved, nil)
+                self.relate(note: saved, user: note.user, callback: callback)
             } else {
                 callback(nil, nil)
             }
+        }, error: { (error) in
+            print("error \(error.debugDescription)")
+            callback(nil, error.debugDescription)
+        })
+    }
+    
+    func relate(note: BNote, user: BackendlessUser, callback: @escaping (_ savedNote: BNote?, _ errorString: String?) -> Void) {
+        guard  let dataStore = backendless?.data.of(BNote.ofClass()) else {
+            callback(note, nil)
+            return
+        }
+        dataStore.addRelation("user", parentObjectId: note.objectId, childObjects: [user.objectId as String], response: { (response) in
+            callback(note, nil)
         }, error: { (error) in
             print("error \(error.debugDescription)")
             callback(nil, error.debugDescription)
@@ -199,9 +212,9 @@ class DbManager: NSObject {
     @objc
     func registerForPush(tokenData: Data) {
         backendless?.messaging.registerDevice(tokenData, response: { (response) in
-            print("response \(String(describing: response))")
+            print("registerForPush response \(String(describing: response))")
         }, error: { (error) in
-            print("error: \(String(describing: error?.message))")
+            print("registerForPush error: \(String(describing: error?.message))")
         })
     }
     
