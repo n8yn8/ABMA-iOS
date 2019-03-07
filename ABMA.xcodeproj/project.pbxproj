@@ -681,7 +681,7 @@
 			files = (
 			);
 			inputPaths = (
-				"${SRCROOT}/Pods/Target Support Files/Pods-ABMAEditor/Pods-ABMAEditor-frameworks.sh",
+				"${PODS_ROOT}/Target Support Files/Pods-ABMAEditor/Pods-ABMAEditor-frameworks.sh",
 				"${BUILT_PRODUCTS_DIR}/SDWebImage-framework/SDWebImage.framework",
 			);
 			name = "[CP] Embed Pods Frameworks";
@@ -690,7 +690,7 @@
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 			shellPath = /bin/sh;
-			shellScript = "\"${SRCROOT}/Pods/Target Support Files/Pods-ABMAEditor/Pods-ABMAEditor-frameworks.sh\"\n";
+			shellScript = "\"${PODS_ROOT}/Target Support Files/Pods-ABMAEditor/Pods-ABMAEditor-frameworks.sh\"\n";
 			showEnvVarsInLog = 0;
 		};
 /* End PBXShellScriptBuildPhase section */
