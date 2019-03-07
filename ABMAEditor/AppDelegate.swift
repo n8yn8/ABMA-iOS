@@ -7,14 +7,17 @@
 //
 
 import Cocoa
+import Fabric
+import Crashlytics
 
 @NSApplicationMain
 class AppDelegate: NSObject, NSApplicationDelegate {
 
 
-
     func applicationDidFinishLaunching(_ aNotification: Notification) {
-        // Insert code here to initialize your application
+        let defaults = NSUserDefaultsController.shared.defaults
+        defaults.register(defaults: ["NSApplicationCrashOnExceptions" : true])
+        Fabric.with([Crashlytics.self])
     }
 
     func applicationWillTerminate(_ aNotification: Notification) {
