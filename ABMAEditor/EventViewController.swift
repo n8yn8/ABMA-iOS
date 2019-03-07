@@ -91,6 +91,8 @@ class EventViewController: NSViewController {
                             }
                         })
                     }
+                } else {
+                    self.setPapers(papers: [])
                 }
                 
                 setEnabled(enabled: true)
