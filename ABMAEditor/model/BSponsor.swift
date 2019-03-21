@@ -13,7 +13,7 @@ class BSponsor: NSObject, Codable {
     @objc var objectId: String?
     @objc var url: String?
     @objc var imageUrl: String?
-    @objc var upadted: Date?
+    @objc var updated: Date?
     @objc var created: Date?
     
 }
