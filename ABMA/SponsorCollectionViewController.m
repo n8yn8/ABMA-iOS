@@ -73,7 +73,7 @@
                         sponsor.imageUrl = bSponsor.imageUrl;
                         sponsor.year = year;
                         sponsor.created = bSponsor.created;
-                        sponsor.updated = bSponsor.upadted;
+                        sponsor.updated = bSponsor.updated;
                         [year addSponsorsObject:sponsor];
                         [netSponsors addObject:sponsor];
                     }

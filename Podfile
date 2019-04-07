@@ -19,5 +19,6 @@ target 'ABMAEditor' do
 
   # Pods for ABMAEditor
   pod 'SDWebImage', '=4.4.3'
-
+  pod 'Fabric'
+  pod 'Crashlytics'
 end

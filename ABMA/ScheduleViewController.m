@@ -157,7 +157,7 @@
         thisEvent.endDate = bEvent.endDate;
         thisEvent.details = bEvent.details;
         thisEvent.created = bEvent.created;
-        thisEvent.updated = bEvent.upadted;
+        thisEvent.updated = bEvent.updated;
         
         if (bEvent.papersCount) {
             [[DbManager sharedInstance] getPapersWithEventId:bEvent.objectId callback:^(NSArray<BPaper *> * _Nullable papers, NSString * _Nullable error) {
@@ -183,7 +183,7 @@
                         paper.abstract = bPaper.synopsis;
                         paper.event = thisEvent;
                         paper.created = bPaper.created;
-                        paper.updated = bPaper.upadted;
+                        paper.updated = bPaper.updated;
                         [papersSet addObject:paper];
                     }
                     thisEvent.papers = papersSet;
@@ -278,7 +278,7 @@
         sponsor.imageUrl = bSponsor.imageUrl;
         sponsor.year = year;
         sponsor.created = bSponsor.created;
-        sponsor.updated = bSponsor.upadted;
+        sponsor.updated = bSponsor.updated;
         [year addSponsorsObject:sponsor];
     }
     
