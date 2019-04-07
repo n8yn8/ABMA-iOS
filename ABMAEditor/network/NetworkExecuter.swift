@@ -47,7 +47,9 @@ class NetworkExecutor {
             callback(nil, error)
             return
         }
-        execute(method: .delete, paramsData: nil, url: url, callback: callback)
+        let paramsData: Data? = "{}".data(using: .utf8)
+
+        execute(method: .delete, paramsData: paramsData, url: url, callback: callback)
     }
     
     static func delete(fileName: String, fileType: FileType, callback: @escaping (String?, Error?) -> Void) {
@@ -57,7 +59,9 @@ class NetworkExecutor {
             callback(nil, error)
             return
         }
-        execute(method: .delete, paramsData: nil, url: url, callback: callback)
+        let paramsData: Data? = "{}".data(using: .utf8)
+        
+        execute(method: .delete, paramsData: paramsData, url: url, callback: callback)
     }
     
     static func execute<T : Codable>(endpoint: Endpoint, method: Method, params: T?, callback: @escaping (T?, Error?) -> Void) {
