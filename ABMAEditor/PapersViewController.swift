@@ -114,6 +114,14 @@ class PapersViewController: NSViewController, NSTableViewDelegate, NSTableViewDa
     }
     
     @IBAction func save(_ sender: Any) {
+        guard let parent = eventParent else {
+            let alert = NSAlert.init()
+            alert.messageText = "Save the event before adding papers."
+            alert.addButton(withTitle: "OK")
+            alert.runModal()
+            return
+        }
+        
         let title = titleTextField.stringValue
         let author = authorTextField.stringValue
         let abstract = abstractTextView.string
@@ -126,7 +134,7 @@ class PapersViewController: NSViewController, NSTableViewDelegate, NSTableViewDa
             paper = BPaper()
         }
         paper.initWith(title: title, author: author, synopsis: abstract, order: order)
-        DbManager.sharedInstance.update(paper: paper, eventParent: eventParent!) { (saved, error) in
+        DbManager.sharedInstance.update(paper: paper, eventParent: parent) { (saved, error) in
             guard let savedPaper = saved else {
                 return
             }

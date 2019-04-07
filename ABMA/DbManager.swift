@@ -13,8 +13,9 @@ class DbManager: NSObject {
     @objc
     static let sharedInstance = DbManager()
 
-    let APP_ID = "7D06F708-89FA-DD86-FF95-C51A10425A00"
-    let SECRET_KEY = "5DB2DE1C-0AFF-9AD6-FF16-83C8AE9F1600"
+    let APP_ID = "7D06F708-89FA-DD86-FF95-C51A10425A00" //Prod
+//    let APP_ID = "05CFD853-3BFF-40F5-BAD0-E9CE8FA56630" //Test
+    let SECRET_KEY = "5DB2DE1C-0AFF-9AD6-FF16-83C8AE9F1600" //Both
     
     var backendless = Backendless.sharedInstance()
     
@@ -27,8 +28,8 @@ class DbManager: NSObject {
     @objc
     func registerUser(email: String, password: String, callback: @escaping (_ errorString: String?) -> Void) {
         let user: BackendlessUser = BackendlessUser()
-        user.email = email as NSString!
-        user.password = password as NSString!
+        user.email = email as NSString
+        user.password = password as NSString
         backendless?.userService.register(user, response: { (response) in
             print("response: \(String(describing: response))")
             self.login(email: email, password: password, callback: callback)
@@ -60,8 +61,7 @@ class DbManager: NSObject {
     
     @objc
     func userPasswordRecovery(email: String, callback: @escaping (_ errorString: String?) -> Void) {
-        backendless?.userService.restorePassword(email, response: { (response) in
-            print(String(describing: response))
+        backendless?.userService?.restorePassword(email, response: {
             callback("Check your email to recover you password.")
         }, error: { (fault) in
             print(String(describing: fault))
@@ -75,10 +75,10 @@ class DbManager: NSObject {
     
     @objc
     func logout(callback: @escaping (_ errorString: String?) -> Void) {
-        backendless?.userService.logout({ (response) in
+        backendless?.userService.logout({
             callback(nil)
-        }, error: { (error) in
-            callback(error.debugDescription)
+        }, error: { (fault) in
+            callback(fault.debugDescription)
         })
     }
     
@@ -169,10 +169,23 @@ class DbManager: NSObject {
     func update(note: BNote, callback: @escaping (_ savedNote: BNote?, _ errorString: String?) -> Void) {
         backendless?.data.of(BNote.ofClass()).save(note, response: { (response) in
             if let saved = response as? BNote {
-                callback(saved, nil)
+                self.relate(note: saved, user: note.user, callback: callback)
             } else {
                 callback(nil, nil)
             }
+        }, error: { (error) in
+            print("error \(error.debugDescription)")
+            callback(nil, error.debugDescription)
+        })
+    }
+    
+    func relate(note: BNote, user: BackendlessUser, callback: @escaping (_ savedNote: BNote?, _ errorString: String?) -> Void) {
+        guard  let dataStore = backendless?.data.of(BNote.ofClass()) else {
+            callback(note, nil)
+            return
+        }
+        dataStore.addRelation("user", parentObjectId: note.objectId, childObjects: [user.objectId as String], response: { (response) in
+            callback(note, nil)
         }, error: { (error) in
             print("error \(error.debugDescription)")
             callback(nil, error.debugDescription)
@@ -200,9 +213,9 @@ class DbManager: NSObject {
     @objc
     func registerForPush(tokenData: Data) {
         backendless?.messaging.registerDevice(tokenData, response: { (response) in
-            print("response \(String(describing: response))")
+            print("registerForPush response \(String(describing: response))")
         }, error: { (error) in
-            print("error: \(String(describing: error?.message))")
+            print("registerForPush error: \(String(describing: error?.message))")
         })
     }
     

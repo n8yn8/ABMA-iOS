@@ -10,8 +10,9 @@ import Foundation
 
 class NetworkExecutor {
     
-    static let appId = "7D06F708-89FA-DD86-FF95-C51A10425A00"
-    static let restKey = "B33AA35D-DC43-EF5D-FF7A-7473FADBE400"
+    static let appId = "7D06F708-89FA-DD86-FF95-C51A10425A00" //Prod
+//    static let appId = "05CFD853-3BFF-40F5-BAD0-E9CE8FA56630" //Test
+    static let restKey = "B33AA35D-DC43-EF5D-FF7A-7473FADBE400" //both
     
     enum Endpoint : String {
         case year = "BYear", event = "BEvent", paper = "BPaper", sponsor = "BSponsor"
@@ -278,13 +279,33 @@ class NetworkExecutor {
                     callback(object, nil)
                 }
             } catch {
-                print("error trying to convert data to JSON")
-                print(error)
-                DispatchQueue.main.async {
-                    callback(nil, error)
+                if method == .put {
+                    DispatchQueue.main.async {
+                        let error = getInt(data: responseData) > -1 ? nil : BackendError.objectSerialization(reason: "No items updated")
+                        callback(nil, error)
+                    }
+                } else {
+                    print("error trying to convert data to JSON")
+                    print(error)
+                    print(urlRequest)
+                    DispatchQueue.main.async {
+                        callback(nil, error)
+                    }
                 }
             }
         })
         task.resume()
+    }
+    
+    private static func getInt(data: Data) -> Int {
+        guard let text = String(data: data, encoding: .utf8) else {
+            print("data is not in UTF-8")
+            return -1
+        }
+        guard let value = Int(text) else {
+            print("text cannot be converted to Int")
+            return -1
+        }
+        return value
     }
 }

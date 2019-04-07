@@ -14,7 +14,7 @@ class BPaper: NSObject, Codable {
     @objc var title: String!
     @objc var author: String!
     @objc var synopsis: String!
-    @objc var upadted: Date?
+    @objc var updated: Date?
     @objc var created: Date?
     @objc var order = 0
     

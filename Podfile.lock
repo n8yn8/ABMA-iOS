@@ -1,24 +1,39 @@
 PODS:
-  - Backendless (4.0.15)
-  - Crashlytics (3.10.1):
-    - Fabric (~> 1.7.5)
-  - Fabric (1.7.5)
-  - SDWebImage (4.3.2):
-    - SDWebImage/Core (= 4.3.2)
-  - SDWebImage/Core (4.3.2)
+  - Backendless (5.2.8):
+    - Socket.IO-Client-Swift (~> 13.3.0)
+  - Crashlytics (3.12.0):
+    - Fabric (~> 1.9.0)
+  - Fabric (1.9.0)
+  - SDWebImage (4.4.3):
+    - SDWebImage/Core (= 4.4.3)
+  - SDWebImage/Core (4.4.3)
+  - Socket.IO-Client-Swift (13.3.1):
+    - Starscream (~> 3.0.2)
+  - Starscream (3.0.6)
 
 DEPENDENCIES:
-  - Backendless (= 4.0.15)
+  - Backendless (= 5.2.8)
   - Crashlytics
   - Fabric
-  - SDWebImage (= 4.3.2)
+  - SDWebImage (= 4.4.3)
+
+SPEC REPOS:
+  https://github.com/cocoapods/specs.git:
+    - Backendless
+    - Crashlytics
+    - Fabric
+    - SDWebImage
+    - Socket.IO-Client-Swift
+    - Starscream
 
 SPEC CHECKSUMS:
-  Backendless: 71af4d0aa588e966a8598e7738fb424c6e948bac
-  Crashlytics: aee1a064cbbf99b32efa3f056a5f458d846bc8ff
-  Fabric: ae7146a5f505ea370a1e44820b4b1dc8890e2890
-  SDWebImage: 29bd3c0bc1f01e5eb59720847c64ad4c4ca1af5d
+  Backendless: 16666c90ecc4146650c5097e34e6b1e31162cb11
+  Crashlytics: 07fb167b1694128c1c9a5a5cc319b0e9c3ca0933
+  Fabric: f988e33c97f08930a413e08123064d2e5f68d655
+  SDWebImage: c5594f1a19c48d526d321e548902b56b479cd508
+  Socket.IO-Client-Swift: 79f8f85fa44881838175a20f9bd2c32bef2c9d37
+  Starscream: ef3ece99d765eeccb67de105bfa143f929026cf5
 
-PODFILE CHECKSUM: 82d0f626163fc7a80a552842e41d57c7c5fc4bca
+PODFILE CHECKSUM: fa3b6c85156e184d253d9b1b9227193bcf78c16f
 
-COCOAPODS: 1.4.0
+COCOAPODS: 1.6.1

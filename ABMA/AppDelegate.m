@@ -18,9 +18,22 @@
 {
     [Fabric with:@[[Crashlytics class]]];
 
-    UIUserNotificationSettings *settings = [UIUserNotificationSettings settingsForTypes:(UIUserNotificationTypeBadge | UIUserNotificationTypeAlert | UIUserNotificationTypeSound) categories:nil];
-    
-    [application registerUserNotificationSettings:settings];
+    UNUserNotificationCenter *center = [UNUserNotificationCenter currentNotificationCenter];
+    //Not available before iOS 10.
+    if (center) {
+        center.delegate = self;
+        [center requestAuthorizationWithOptions:(UNAuthorizationOptionAlert + UNAuthorizationOptionBadge + UNAuthorizationOptionSound)
+                              completionHandler:^(BOOL granted, NSError * _Nullable error) {
+                                  NSLog(@"requestAuthorizationWithOptions granted = %d, error = %@", granted, error);
+                                  dispatch_async(dispatch_get_main_queue(), ^{
+                                      [[UIApplication sharedApplication] registerForRemoteNotifications];
+                                  });
+                              }];
+    } else {
+        UIUserNotificationSettings *settings = [UIUserNotificationSettings settingsForTypes:(UIUserNotificationTypeBadge | UIUserNotificationTypeAlert | UIUserNotificationTypeSound) categories:nil];
+        [application registerUserNotificationSettings:settings];
+
+    }
     
     return YES;
 }

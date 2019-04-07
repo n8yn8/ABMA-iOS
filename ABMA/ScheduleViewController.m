@@ -98,7 +98,7 @@
             NSLog(@"error: %@", error);
         } else {
             for (BYear *bYear in years) {
-                [self saveBackendlessYear:bYear context:context];
+                [self saveBackendlessYear:bYear context:self->context];
             }
             [self loadSchedule:isUpdate];
         }
@@ -116,8 +116,8 @@
             NSLog(@"error: %@", error);
         } else {
             [self saveBackendlessEvents:response forYear:year];
-            if (refreshControl.isRefreshing) {
-                [refreshControl endRefreshing];
+            if (self->refreshControl.isRefreshing) {
+                [self->refreshControl endRefreshing];
             }
             [self.activityIndicator stopAnimating];
         }
@@ -157,7 +157,7 @@
         thisEvent.endDate = bEvent.endDate;
         thisEvent.details = bEvent.details;
         thisEvent.created = bEvent.created;
-        thisEvent.updated = bEvent.upadted;
+        thisEvent.updated = bEvent.updated;
         
         if (bEvent.papersCount) {
             [[DbManager sharedInstance] getPapersWithEventId:bEvent.objectId callback:^(NSArray<BPaper *> * _Nullable papers, NSString * _Nullable error) {
@@ -173,9 +173,9 @@
                         paperRequest.fetchLimit = 1;
                         paperRequest.predicate = [NSPredicate predicateWithFormat:@"bObjectId==%@", bPaper.objectId];
                         NSError *paperError = nil;
-                        Paper *paper = [context executeFetchRequest:paperRequest error:&paperError].firstObject;
+                        Paper *paper = [self->context executeFetchRequest:paperRequest error:&paperError].firstObject;
                         if (!paper) {
-                            paper = [[Paper alloc] initWithEntity:[NSEntityDescription entityForName:@"Paper" inManagedObjectContext:context] insertIntoManagedObjectContext:context];
+                            paper = [[Paper alloc] initWithEntity:[NSEntityDescription entityForName:@"Paper" inManagedObjectContext:self->context] insertIntoManagedObjectContext:self->context];
                         }
                         paper.bObjectId = bPaper.objectId;
                         paper.author = bPaper.author;
@@ -183,14 +183,14 @@
                         paper.abstract = bPaper.synopsis;
                         paper.event = thisEvent;
                         paper.created = bPaper.created;
-                        paper.updated = bPaper.upadted;
+                        paper.updated = bPaper.updated;
                         [papersSet addObject:paper];
                     }
                     thisEvent.papers = papersSet;
                 }
                 [dayForEvent addEventObject:thisEvent];
                 NSError *saveEror;
-                [context save:&saveEror];
+                [self->context save:&saveEror];
                 if (saveEror) {
                     NSLog(@"Error: %@", saveEror.localizedDescription);
                 }
@@ -278,7 +278,7 @@
         sponsor.imageUrl = bSponsor.imageUrl;
         sponsor.year = year;
         sponsor.created = bSponsor.created;
-        sponsor.updated = bSponsor.upadted;
+        sponsor.updated = bSponsor.updated;
         [year addSponsorsObject:sponsor];
     }
     
@@ -497,7 +497,7 @@
     [self.view addSubview:actionView];
     
     [UIView animateWithDuration:0.2 animations:^{
-        actionView.frame = CGRectMake(0, [UIScreen mainScreen].bounds.size.height - 260.0, [UIScreen mainScreen].bounds.size.width, 260.0);
+        self->actionView.frame = CGRectMake(0, [UIScreen mainScreen].bounds.size.height - 260.0, [UIScreen mainScreen].bounds.size.width, 260.0);
     }];
 }
 
@@ -517,9 +517,9 @@
 
 - (void)dismissPicker {
     [UIView animateWithDuration:0.2 animations:^{
-        actionView.frame = CGRectMake(0, [UIScreen mainScreen].bounds.size.height, [UIScreen mainScreen].bounds.size.width, 260.0);
+        self->actionView.frame = CGRectMake(0, [UIScreen mainScreen].bounds.size.height, [UIScreen mainScreen].bounds.size.width, 260.0);
     } completion:^(BOOL finished) {
-        for (UIView *subview in actionView.subviews) {
+        for (UIView *subview in self->actionView.subviews) {
             [subview removeFromSuperview];
         }
     }];

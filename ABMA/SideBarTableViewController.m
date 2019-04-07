@@ -78,7 +78,7 @@
     UITableViewCell *cell = [tableView cellForRowAtIndexPath:indexPath];
     if ([cell.reuseIdentifier isEqualToString:@"logout"]) {
         [[DbManager sharedInstance] logoutWithCallback:^(NSString * _Nullable error) {
-            [_menuItems removeObject:@"logout"];
+            [self->_menuItems removeObject:@"logout"];
             [self.tableView reloadData];
         }];
     } else if ([cell.reuseIdentifier isEqualToString:@"survey"]) {
