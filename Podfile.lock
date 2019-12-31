@@ -1,24 +1,24 @@
 PODS:
-  - Backendless (5.2.8):
-    - Socket.IO-Client-Swift (~> 13.3.0)
-  - Crashlytics (3.12.0):
-    - Fabric (~> 1.9.0)
-  - Fabric (1.9.0)
-  - SDWebImage (4.4.3):
-    - SDWebImage/Core (= 4.4.3)
-  - SDWebImage/Core (4.4.3)
-  - Socket.IO-Client-Swift (13.3.1):
-    - Starscream (~> 3.0.2)
-  - Starscream (3.0.6)
+  - Backendless (5.6.0):
+    - Socket.IO-Client-Swift
+  - Crashlytics (3.14.0):
+    - Fabric (~> 1.10.2)
+  - Fabric (1.10.2)
+  - SDWebImage (5.4.1):
+    - SDWebImage/Core (= 5.4.1)
+  - SDWebImage/Core (5.4.1)
+  - Socket.IO-Client-Swift (15.2.0):
+    - Starscream (~> 3.1)
+  - Starscream (3.1.1)
 
 DEPENDENCIES:
-  - Backendless (= 5.2.8)
+  - Backendless
   - Crashlytics
   - Fabric
-  - SDWebImage (= 4.4.3)
+  - SDWebImage (= 5.4.1)
 
 SPEC REPOS:
-  https://github.com/cocoapods/specs.git:
+  trunk:
     - Backendless
     - Crashlytics
     - Fabric
@@ -27,13 +27,13 @@ SPEC REPOS:
     - Starscream
 
 SPEC CHECKSUMS:
-  Backendless: 16666c90ecc4146650c5097e34e6b1e31162cb11
-  Crashlytics: 07fb167b1694128c1c9a5a5cc319b0e9c3ca0933
-  Fabric: f988e33c97f08930a413e08123064d2e5f68d655
-  SDWebImage: c5594f1a19c48d526d321e548902b56b479cd508
-  Socket.IO-Client-Swift: 79f8f85fa44881838175a20f9bd2c32bef2c9d37
-  Starscream: ef3ece99d765eeccb67de105bfa143f929026cf5
+  Backendless: f9e5497c2cb09df646a15f6556dd4c9f2774ed92
+  Crashlytics: 540b7e5f5da5a042647227a5e3ac51d85eed06df
+  Fabric: 706c8b8098fff96c33c0db69cbf81f9c551d0d74
+  SDWebImage: 29c340dbdcef342bb13125553f4e19ce056b07a7
+  Socket.IO-Client-Swift: 1e3e3a1f09f3312a167f0d781eb2f383d477357c
+  Starscream: 4bb2f9942274833f7b4d296a55504dcfc7edb7b0
 
-PODFILE CHECKSUM: fa3b6c85156e184d253d9b1b9227193bcf78c16f
+PODFILE CHECKSUM: 49e820d2bda412f9b555437213ce09a40da0968b
 
-COCOAPODS: 1.6.1
+COCOAPODS: 1.8.4

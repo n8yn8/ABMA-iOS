@@ -3,10 +3,10 @@
 
 target 'ABMA' do
   # Pods for ABMA
-  platform :ios, '8.0'
+  platform :ios, '11.0'
   
-  pod 'Backendless', '=5.2.8'
-  pod 'SDWebImage', '=4.4.3'
+  pod 'Backendless', '=5.6.0'
+  pod 'SDWebImage', '=5.4.1'
   pod 'Fabric'
   pod 'Crashlytics'
 
@@ -18,7 +18,7 @@ target 'ABMAEditor' do
   use_frameworks!
 
   # Pods for ABMAEditor
-  pod 'SDWebImage', '=4.4.3'
+  pod 'SDWebImage', '=5.4.1'
   pod 'Fabric'
   pod 'Crashlytics'
 end
