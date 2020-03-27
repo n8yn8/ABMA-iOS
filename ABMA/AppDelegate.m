@@ -7,16 +7,15 @@
 //
 
 #import "AppDelegate.h"
-#import <Fabric/Fabric.h>
-#import <Crashlytics/Crashlytics.h>
 #import "ABMA-Swift.h"
 #import "ScheduleViewController.h"
+@import Firebase;
 
 @implementation AppDelegate
 
 - (BOOL)application:(UIApplication *)application didFinishLaunchingWithOptions:(NSDictionary *)launchOptions
 {
-    [Fabric with:@[[Crashlytics class]]];
+    [FIRApp configure];
 
     UNUserNotificationCenter *center = [UNUserNotificationCenter currentNotificationCenter];
     //Not available before iOS 10.

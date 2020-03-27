@@ -90,6 +90,8 @@
 		43CF9B1D18F5B23500885DAC /* ContactViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 43CF9B1C18F5B23500885DAC /* ContactViewController.m */; };
 		43D07C6F1AAEABA00033A1E6 /* EventCellTableViewCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 43D07C6E1AAEABA00033A1E6 /* EventCellTableViewCell.m */; };
 		43DCB0051FB22CF000528436 /* NetworkExecuter.swift in Sources */ = {isa = PBXBuildFile; fileRef = 43DCB0041FB22CF000528436 /* NetworkExecuter.swift */; };
+		43E0AA5D242841560009DE39 /* GoogleService-Info.plist in Resources */ = {isa = PBXBuildFile; fileRef = 43E0AA5B242841560009DE39 /* GoogleService-Info.plist */; };
+		43E0AA5F242848980009DE39 /* GoogleService-Info.plist in Resources */ = {isa = PBXBuildFile; fileRef = 43E0AA5E242848980009DE39 /* GoogleService-Info.plist */; };
 		43E5AC821E9F3A3D00F2AAC1 /* PushViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 43E5AC801E9F3A3D00F2AAC1 /* PushViewController.swift */; };
 		43F070C518F3561A0077F11E /* SideBarTableViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 43F070C418F3561A0077F11E /* SideBarTableViewController.m */; };
 		43F070C818F3631E0077F11E /* ScheduleViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 43F070C718F3631E0077F11E /* ScheduleViewController.m */; };
@@ -98,13 +100,12 @@
 		43F995E418F46102004DC565 /* Y2014.plist in Resources */ = {isa = PBXBuildFile; fileRef = 43F995E318F46102004DC565 /* Y2014.plist */; };
 		43FA2A131E5900B700BAE929 /* Utils.swift in Sources */ = {isa = PBXBuildFile; fileRef = 43FA2A121E5900B700BAE929 /* Utils.swift */; };
 		43FA2A151E593F7900BAE929 /* BNote.swift in Sources */ = {isa = PBXBuildFile; fileRef = 43FA2A141E593F7900BAE929 /* BNote.swift */; };
-		4AD65D74789C9FC367F1F9A5 /* libPods-ABMA.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 301E3C9B2C88499DE010A814 /* libPods-ABMA.a */; };
-		ECEE09A16ECAF1F8864089B1 /* Pods_ABMAEditor.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = CA45DB04F3960E78413E3B93 /* Pods_ABMAEditor.framework */; };
+		9F0AE5C2B932BA257C1EDBE9 /* Pods_ABMAEditor.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 9E6BC2C5B7E5050D9D64230C /* Pods_ABMAEditor.framework */; };
+		E6F3A91B88D5267CDE7DB487 /* libPods-ABMA.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 7ACB57E5C777031D8D4ADB55 /* libPods-ABMA.a */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
-		301E3C9B2C88499DE010A814 /* libPods-ABMA.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; includeInIndex = 0; path = "libPods-ABMA.a"; sourceTree = BUILT_PRODUCTS_DIR; };
-		396ECE2F9DD605E125E9D594 /* Pods-ABMAEditor.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-ABMAEditor.debug.xcconfig"; path = "Target Support Files/Pods-ABMAEditor/Pods-ABMAEditor.debug.xcconfig"; sourceTree = "<group>"; };
+		0EE192566A5871AB893BBFC5 /* Pods-ABMAEditor.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-ABMAEditor.release.xcconfig"; path = "Target Support Files/Pods-ABMAEditor/Pods-ABMAEditor.release.xcconfig"; sourceTree = "<group>"; };
 		43027B361E39B7F400585C8B /* PapersViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = PapersViewController.swift; sourceTree = "<group>"; };
 		430559672066AA5200069B49 /* PushParams.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = PushParams.swift; sourceTree = "<group>"; };
 		430561891A9AF95000ED4BB0 /* SWRevealViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SWRevealViewController.h; sourceTree = "<group>"; };
@@ -222,6 +223,8 @@
 		43D07C6D1AAEABA00033A1E6 /* EventCellTableViewCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = EventCellTableViewCell.h; sourceTree = "<group>"; };
 		43D07C6E1AAEABA00033A1E6 /* EventCellTableViewCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = EventCellTableViewCell.m; sourceTree = "<group>"; };
 		43DCB0041FB22CF000528436 /* NetworkExecuter.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NetworkExecuter.swift; sourceTree = "<group>"; };
+		43E0AA5B242841560009DE39 /* GoogleService-Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = "GoogleService-Info.plist"; sourceTree = "<group>"; };
+		43E0AA5E242848980009DE39 /* GoogleService-Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = "GoogleService-Info.plist"; sourceTree = "<group>"; };
 		43E5AC801E9F3A3D00F2AAC1 /* PushViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = PushViewController.swift; sourceTree = "<group>"; };
 		43F070C318F3561A0077F11E /* SideBarTableViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SideBarTableViewController.h; sourceTree = "<group>"; };
 		43F070C418F3561A0077F11E /* SideBarTableViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SideBarTableViewController.m; sourceTree = "<group>"; };
@@ -234,10 +237,11 @@
 		43F995E318F46102004DC565 /* Y2014.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = Y2014.plist; sourceTree = "<group>"; };
 		43FA2A121E5900B700BAE929 /* Utils.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Utils.swift; sourceTree = "<group>"; };
 		43FA2A141E593F7900BAE929 /* BNote.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = BNote.swift; sourceTree = "<group>"; };
-		CA45DB04F3960E78413E3B93 /* Pods_ABMAEditor.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_ABMAEditor.framework; sourceTree = BUILT_PRODUCTS_DIR; };
-		D147325B852EEFEB7D5DC210 /* Pods-ABMA.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-ABMA.debug.xcconfig"; path = "Target Support Files/Pods-ABMA/Pods-ABMA.debug.xcconfig"; sourceTree = "<group>"; };
-		DA7420160473F709D55A0F9C /* Pods-ABMA.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-ABMA.release.xcconfig"; path = "Target Support Files/Pods-ABMA/Pods-ABMA.release.xcconfig"; sourceTree = "<group>"; };
-		E2C13E2867CB1A5292FD941A /* Pods-ABMAEditor.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-ABMAEditor.release.xcconfig"; path = "Target Support Files/Pods-ABMAEditor/Pods-ABMAEditor.release.xcconfig"; sourceTree = "<group>"; };
+		7ACB57E5C777031D8D4ADB55 /* libPods-ABMA.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; includeInIndex = 0; path = "libPods-ABMA.a"; sourceTree = BUILT_PRODUCTS_DIR; };
+		9E6BC2C5B7E5050D9D64230C /* Pods_ABMAEditor.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_ABMAEditor.framework; sourceTree = BUILT_PRODUCTS_DIR; };
+		AB4EA80E42E09C7467F03D2C /* Pods-ABMAEditor.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-ABMAEditor.debug.xcconfig"; path = "Target Support Files/Pods-ABMAEditor/Pods-ABMAEditor.debug.xcconfig"; sourceTree = "<group>"; };
+		ECCA7BA3768C40DD30F9D0A6 /* Pods-ABMA.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-ABMA.release.xcconfig"; path = "Target Support Files/Pods-ABMA/Pods-ABMA.release.xcconfig"; sourceTree = "<group>"; };
+		F871F5CFE005D615AA0E972A /* Pods-ABMA.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-ABMA.debug.xcconfig"; path = "Target Support Files/Pods-ABMA/Pods-ABMA.debug.xcconfig"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -251,7 +255,7 @@
 				4338BBA318F26F53002683EF /* CoreGraphics.framework in Frameworks */,
 				4338BBA518F26F53002683EF /* UIKit.framework in Frameworks */,
 				4338BBA118F26F53002683EF /* Foundation.framework in Frameworks */,
-				4AD65D74789C9FC367F1F9A5 /* libPods-ABMA.a in Frameworks */,
+				E6F3A91B88D5267CDE7DB487 /* libPods-ABMA.a in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -259,7 +263,7 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				ECEE09A16ECAF1F8864089B1 /* Pods_ABMAEditor.framework in Frameworks */,
+				9F0AE5C2B932BA257C1EDBE9 /* Pods_ABMAEditor.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -297,8 +301,8 @@
 				4338BBA218F26F53002683EF /* CoreGraphics.framework */,
 				4338BBA418F26F53002683EF /* UIKit.framework */,
 				4338BBBF18F26F53002683EF /* XCTest.framework */,
-				301E3C9B2C88499DE010A814 /* libPods-ABMA.a */,
-				CA45DB04F3960E78413E3B93 /* Pods_ABMAEditor.framework */,
+				7ACB57E5C777031D8D4ADB55 /* libPods-ABMA.a */,
+				9E6BC2C5B7E5050D9D64230C /* Pods_ABMAEditor.framework */,
 			);
 			name = Frameworks;
 			sourceTree = "<group>";
@@ -306,6 +310,7 @@
 		4338BBA618F26F53002683EF /* ABMA */ = {
 			isa = PBXGroup;
 			children = (
+				43E0AA5E242848980009DE39 /* GoogleService-Info.plist */,
 				43732BD11E70501A00A85B63 /* ABMA.entitlements */,
 				433BA8071E581400007B7893 /* model */,
 				4338BBAF18F26F53002683EF /* AppDelegate.h */,
@@ -409,6 +414,7 @@
 		434B44DB1E1B231F00963096 /* ABMAEditor */ = {
 			isa = PBXGroup;
 			children = (
+				43E0AA5B242841560009DE39 /* GoogleService-Info.plist */,
 				43A4360F1FA8C33600754298 /* network */,
 				434B44EC1E1BF74700963096 /* model */,
 				434B44DC1E1B231F00963096 /* AppDelegate.swift */,
@@ -475,10 +481,10 @@
 		E455821ACBC12207F0B9E164 /* Pods */ = {
 			isa = PBXGroup;
 			children = (
-				D147325B852EEFEB7D5DC210 /* Pods-ABMA.debug.xcconfig */,
-				DA7420160473F709D55A0F9C /* Pods-ABMA.release.xcconfig */,
-				396ECE2F9DD605E125E9D594 /* Pods-ABMAEditor.debug.xcconfig */,
-				E2C13E2867CB1A5292FD941A /* Pods-ABMAEditor.release.xcconfig */,
+				F871F5CFE005D615AA0E972A /* Pods-ABMA.debug.xcconfig */,
+				ECCA7BA3768C40DD30F9D0A6 /* Pods-ABMA.release.xcconfig */,
+				AB4EA80E42E09C7467F03D2C /* Pods-ABMAEditor.debug.xcconfig */,
+				0EE192566A5871AB893BBFC5 /* Pods-ABMAEditor.release.xcconfig */,
 			);
 			path = Pods;
 			sourceTree = "<group>";
@@ -490,7 +496,7 @@
 			isa = PBXNativeTarget;
 			buildConfigurationList = 4338BBCF18F26F53002683EF /* Build configuration list for PBXNativeTarget "ABMA" */;
 			buildPhases = (
-				934EE4ABE9582E0AE0948632 /* [CP] Check Pods Manifest.lock */,
+				5AF11D8876B23AA5C00AC50E /* [CP] Check Pods Manifest.lock */,
 				4338BB9918F26F52002683EF /* Sources */,
 				4338BB9A18F26F52002683EF /* Frameworks */,
 				4338BB9B18F26F52002683EF /* Resources */,
@@ -509,12 +515,12 @@
 			isa = PBXNativeTarget;
 			buildConfigurationList = 434B44E81E1B231F00963096 /* Build configuration list for PBXNativeTarget "ABMAEditor" */;
 			buildPhases = (
-				17A51AE40C1E0E1F8CD9F55C /* [CP] Check Pods Manifest.lock */,
+				D86E965E804D12DDCB283FE1 /* [CP] Check Pods Manifest.lock */,
 				434B44D61E1B231F00963096 /* Sources */,
 				434B44D71E1B231F00963096 /* Frameworks */,
 				434B44D81E1B231F00963096 /* Resources */,
 				439234E722301F1700F9425A /* ShellScript */,
-				F011993ACDBD7621919A63B4 /* [CP] Embed Pods Frameworks */,
+				B13B6B88F9B0C9A00EDC39A2 /* [CP] Embed Pods Frameworks */,
 			);
 			buildRules = (
 			);
@@ -578,6 +584,7 @@
 			files = (
 				4338BBB918F26F53002683EF /* Images.xcassets in Resources */,
 				4338BBAB18F26F53002683EF /* InfoPlist.strings in Resources */,
+				43E0AA5F242848980009DE39 /* GoogleService-Info.plist in Resources */,
 				43B2B5A91AB72DE000F0A6D0 /* Y2015.plist in Resources */,
 				43C75EC51C9F9CF50020C39E /* Template.plist in Resources */,
 				4338BBB418F26F53002683EF /* Main.storyboard in Resources */,
@@ -593,6 +600,7 @@
 			files = (
 				436468842070698B0048685F /* MapViewItem.xib in Resources */,
 				434B44E11E1B231F00963096 /* Assets.xcassets in Resources */,
+				43E0AA5D242841560009DE39 /* GoogleService-Info.plist in Resources */,
 				4364687A2070676D0048685F /* Maps.storyboard in Resources */,
 				431326A41E3D7605003C808E /* Sponsors.storyboard in Resources */,
 				4329A2FB20465E4B007F7704 /* Surveys.storyboard in Resources */,
@@ -605,28 +613,6 @@
 /* End PBXResourcesBuildPhase section */
 
 /* Begin PBXShellScriptBuildPhase section */
-		17A51AE40C1E0E1F8CD9F55C /* [CP] Check Pods Manifest.lock */ = {
-			isa = PBXShellScriptBuildPhase;
-			buildActionMask = 2147483647;
-			files = (
-			);
-			inputFileListPaths = (
-			);
-			inputPaths = (
-				"${PODS_PODFILE_DIR_PATH}/Podfile.lock",
-				"${PODS_ROOT}/Manifest.lock",
-			);
-			name = "[CP] Check Pods Manifest.lock";
-			outputFileListPaths = (
-			);
-			outputPaths = (
-				"$(DERIVED_FILE_DIR)/Pods-ABMAEditor-checkManifestLockResult.txt",
-			);
-			runOnlyForDeploymentPostprocessing = 0;
-			shellPath = /bin/sh;
-			shellScript = "diff \"${PODS_PODFILE_DIR_PATH}/Podfile.lock\" \"${PODS_ROOT}/Manifest.lock\" > /dev/null\nif [ $? != 0 ] ; then\n    # print error to STDERR\n    echo \"error: The sandbox is not in sync with the Podfile.lock. Run 'pod install' or update your CocoaPods installation.\" >&2\n    exit 1\nfi\n# This output is used by Xcode 'outputs' to avoid re-running this script phase.\necho \"SUCCESS\" > \"${SCRIPT_OUTPUT_FILE_0}\"\n";
-			showEnvVarsInLog = 0;
-		};
 		43732BD31E72F5F400A85B63 /* Fabric Run Script */ = {
 			isa = PBXShellScriptBuildPhase;
 			buildActionMask = 2147483647;
@@ -659,7 +645,7 @@
 			shellPath = /bin/sh;
 			shellScript = "\"${PODS_ROOT}/Fabric/run\" 8d96e50ad3aa3a14f2bc63cc1f2ecefb807e2099 f58304b865eb4803e74654648b5849c744e24c53c2597d274229a2fd8c959401\n";
 		};
-		934EE4ABE9582E0AE0948632 /* [CP] Check Pods Manifest.lock */ = {
+		5AF11D8876B23AA5C00AC50E /* [CP] Check Pods Manifest.lock */ = {
 			isa = PBXShellScriptBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
@@ -681,7 +667,7 @@
 			shellScript = "diff \"${PODS_PODFILE_DIR_PATH}/Podfile.lock\" \"${PODS_ROOT}/Manifest.lock\" > /dev/null\nif [ $? != 0 ] ; then\n    # print error to STDERR\n    echo \"error: The sandbox is not in sync with the Podfile.lock. Run 'pod install' or update your CocoaPods installation.\" >&2\n    exit 1\nfi\n# This output is used by Xcode 'outputs' to avoid re-running this script phase.\necho \"SUCCESS\" > \"${SCRIPT_OUTPUT_FILE_0}\"\n";
 			showEnvVarsInLog = 0;
 		};
-		F011993ACDBD7621919A63B4 /* [CP] Embed Pods Frameworks */ = {
+		B13B6B88F9B0C9A00EDC39A2 /* [CP] Embed Pods Frameworks */ = {
 			isa = PBXShellScriptBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
@@ -697,6 +683,28 @@
 			runOnlyForDeploymentPostprocessing = 0;
 			shellPath = /bin/sh;
 			shellScript = "\"${PODS_ROOT}/Target Support Files/Pods-ABMAEditor/Pods-ABMAEditor-frameworks.sh\"\n";
+			showEnvVarsInLog = 0;
+		};
+		D86E965E804D12DDCB283FE1 /* [CP] Check Pods Manifest.lock */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputFileListPaths = (
+			);
+			inputPaths = (
+				"${PODS_PODFILE_DIR_PATH}/Podfile.lock",
+				"${PODS_ROOT}/Manifest.lock",
+			);
+			name = "[CP] Check Pods Manifest.lock";
+			outputFileListPaths = (
+			);
+			outputPaths = (
+				"$(DERIVED_FILE_DIR)/Pods-ABMAEditor-checkManifestLockResult.txt",
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "diff \"${PODS_PODFILE_DIR_PATH}/Podfile.lock\" \"${PODS_ROOT}/Manifest.lock\" > /dev/null\nif [ $? != 0 ] ; then\n    # print error to STDERR\n    echo \"error: The sandbox is not in sync with the Podfile.lock. Run 'pod install' or update your CocoaPods installation.\" >&2\n    exit 1\nfi\n# This output is used by Xcode 'outputs' to avoid re-running this script phase.\necho \"SUCCESS\" > \"${SCRIPT_OUTPUT_FILE_0}\"\n";
 			showEnvVarsInLog = 0;
 		};
 /* End PBXShellScriptBuildPhase section */
@@ -917,7 +925,7 @@
 		};
 		4338BBD018F26F53002683EF /* Debug */ = {
 			isa = XCBuildConfiguration;
-			baseConfigurationReference = D147325B852EEFEB7D5DC210 /* Pods-ABMA.debug.xcconfig */;
+			baseConfigurationReference = F871F5CFE005D615AA0E972A /* Pods-ABMA.debug.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				CLANG_ENABLE_MODULES = YES;
@@ -948,7 +956,7 @@
 		};
 		4338BBD118F26F53002683EF /* Release */ = {
 			isa = XCBuildConfiguration;
-			baseConfigurationReference = DA7420160473F709D55A0F9C /* Pods-ABMA.release.xcconfig */;
+			baseConfigurationReference = ECCA7BA3768C40DD30F9D0A6 /* Pods-ABMA.release.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				CLANG_ENABLE_MODULES = YES;
@@ -978,7 +986,7 @@
 		};
 		434B44E61E1B231F00963096 /* Debug */ = {
 			isa = XCBuildConfiguration;
-			baseConfigurationReference = 396ECE2F9DD605E125E9D594 /* Pods-ABMAEditor.debug.xcconfig */;
+			baseConfigurationReference = AB4EA80E42E09C7467F03D2C /* Pods-ABMAEditor.debug.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = "AppIcon-Mac";
 				CLANG_ANALYZER_NONNULL = YES;
@@ -1008,7 +1016,7 @@
 		};
 		434B44E71E1B231F00963096 /* Release */ = {
 			isa = XCBuildConfiguration;
-			baseConfigurationReference = E2C13E2867CB1A5292FD941A /* Pods-ABMAEditor.release.xcconfig */;
+			baseConfigurationReference = 0EE192566A5871AB893BBFC5 /* Pods-ABMAEditor.release.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = "AppIcon-Mac";
 				CLANG_ANALYZER_NONNULL = YES;

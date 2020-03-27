@@ -7,8 +7,8 @@ target 'ABMA' do
   
   pod 'BackendlessSwift', '=5.7.7'
   pod 'SDWebImage', '=5.6.1'
-  pod 'Fabric'
-  pod 'Crashlytics'
+  pod 'Firebase/Crashlytics'
+  pod 'Firebase/Analytics'
 
 end
 
