@@ -16,7 +16,7 @@ class NewMapViewController: NSViewController {
     
     weak var delegate: NewMapViewControllerDelegate?
     var image: NSImage!
-    var imageData: NSData!
+    var imageData: Data!
     var imageName: String!
     var yearParentId: String!
     
@@ -35,19 +35,22 @@ class NewMapViewController: NSViewController {
     
     @IBAction func save(_ sender: Any) {
         activityIndicator.startAnimation(self)
+        let mapTitle = self.titleTextField.stringValue
         DbManager.sharedInstance.uploadMapImage(name: imageName, image: imageData) { (imageUrl, error) in
+            DispatchQueue.main.async {
+                self.activityIndicator.stopAnimation(self)
+            }
             if let err = error {
                 print("error saving image: \(err.localizedDescription)")
-                self.activityIndicator.stopAnimation(self)
                 return
             }
             let map = BMap()
-            map.title = self.titleTextField.stringValue
+            map.title = mapTitle
             map.url = imageUrl
-            self.activityIndicator.stopAnimation(self)
-            self.delegate?.saveMap(map: map)
-            self.dismiss(nil)
-            
+            DispatchQueue.main.async {
+                self.delegate?.saveMap(map: map)
+                self.dismiss(nil)
+            }
         }
         
     }

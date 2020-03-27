@@ -167,20 +167,26 @@ class DbManager: NSObject {
             }
         }
         
-        NetworkExecutor.delete(objectId: event.objectId!, endpoint: .event) { (response, error) in
-            print("deleteEvent error = \(String(describing: error))")
+        Backendless.shared.data.of(BEvent.self).remove(entity: event, responseHandler: { (responseCount) in
+            print("deleted = \(String(describing: event))")
+        }) { (error) in
+            print("deletePaper error = \(String(describing: error))")
         }
     }
     
     func delete(paper: BPaper) {
-        NetworkExecutor.delete(objectId: paper.objectId!, endpoint: .paper) { (response, error) in
+        Backendless.shared.data.of(BPaper.self).remove(entity: paper, responseHandler: { (responseCount) in
+            print("deleted = \(String(describing: paper))")
+        }) { (error) in
             print("deletePaper error = \(String(describing: error))")
         }
     }
     
     func delete(sponsor: BSponsor) {
-        NetworkExecutor.delete(objectId: sponsor.objectId!, endpoint: .sponsor) { (response, error) in
-            print("deleteSponsor error = \(String(describing: error))")
+        Backendless.shared.data.of(BSponsor.self).remove(entity: sponsor, responseHandler: { (responseCount) in
+            print("deleted = \(String(describing: sponsor))")
+        }) { (error) in
+            print("deletePaper error = \(String(describing: error))")
         }
         if let url = sponsor.imageUrl {
             delete(fileUrl: url, fileType: .sponsor)
@@ -202,12 +208,20 @@ class DbManager: NSObject {
         }
     }
     
-    func uploadSponsorImage(name: String, image: NSData, callback: @escaping (String?, Error?) -> Void) {
-        NetworkExecutor.upload(fileName: name, image: image, fileType: .sponsor, callback: callback)
+    func uploadSponsorImage(name: String, image: Data, callback: @escaping (String?, Error?) -> Void) {
+        Backendless.shared.file.uploadFile(fileName: name, filePath: "files/sponsor", content: image, overwrite: true, responseHandler: { (backendlessFile) in
+            callback(backendlessFile.fileUrl, nil)
+        }) { (fault) in
+            callback(nil, fault)
+        }
     }
     
-    func uploadMapImage(name: String, image: NSData, callback: @escaping (String?, Error?) -> Void) {
-        NetworkExecutor.upload(fileName: name, image: image, fileType: .map, callback: callback)
+    func uploadMapImage(name: String, image: Data, callback: @escaping (String?, Error?) -> Void) {
+        Backendless.shared.file.uploadFile(fileName: name, filePath: "files/map", content: image, overwrite: true, responseHandler: { (backendlessFile) in
+                    callback(backendlessFile.fileUrl, nil)
+                }) { (fault) in
+                    callback(nil, fault)
+                }
     }
     
     func pushUpdate(message: String) {
