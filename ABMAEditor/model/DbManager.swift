@@ -16,10 +16,13 @@ class DbManager: NSObject {
     static let applicationId = "76269ABA-AF2E-5901-FF61-99AB83F57700"
     static let apiKey = "F7225E47-B7A7-487D-91AD-0DAF47C8AD17"
     
+    enum FileType : String {
+        case sponsor = "sponsor", map = "map"
+    }
     
     override init() {
         super.init()
-        Backendless.shared.initApp(applicationId: DbManager.applicationId, apiKey: NetworkExecutor.restKey)
+        Backendless.shared.initApp(applicationId: DbManager.applicationId, apiKey: DbManager.apiKey)
     }
     
     func handleResponse<T : Codable>(response: Any, callback: @escaping (T?, String?) -> Void) {
@@ -207,17 +210,19 @@ class DbManager: NSObject {
         }
     }
     
-    private func delete(fileUrl: String, fileType: NetworkExecutor.FileType) {
+    private func delete(fileUrl: String, fileType: DbManager.FileType) {
         let parts = fileUrl.components(separatedBy: "/")
         if let fileName = parts.last {
-            NetworkExecutor.delete(fileName: fileName, fileType: fileType) { (response, error) in
+            Backendless.shared.file.remove(path: "\(fileType.rawValue)/\(fileName)", responseHandler: {
+                print("deleteFile success = \(fileName)")
+            }) { (error) in
                 print("deleteFile error = \(String(describing: error))")
             }
         }
     }
     
     func uploadSponsorImage(name: String, image: Data, callback: @escaping (String?, Error?) -> Void) {
-        Backendless.shared.file.uploadFile(fileName: name, filePath: "files/sponsor", content: image, overwrite: true, responseHandler: { (backendlessFile) in
+        Backendless.shared.file.uploadFile(fileName: name, filePath: "sponsor", content: image, overwrite: true, responseHandler: { (backendlessFile) in
             callback(backendlessFile.fileUrl, nil)
         }) { (fault) in
             callback(nil, fault)
@@ -225,7 +230,7 @@ class DbManager: NSObject {
     }
     
     func uploadMapImage(name: String, image: Data, callback: @escaping (String?, Error?) -> Void) {
-        Backendless.shared.file.uploadFile(fileName: name, filePath: "files/map", content: image, overwrite: true, responseHandler: { (backendlessFile) in
+        Backendless.shared.file.uploadFile(fileName: name, filePath: "map", content: image, overwrite: true, responseHandler: { (backendlessFile) in
                     callback(backendlessFile.fileUrl, nil)
                 }) { (fault) in
                     callback(nil, fault)
