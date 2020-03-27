@@ -12,7 +12,7 @@ PODS:
   - Starscream (3.1.1)
 
 DEPENDENCIES:
-  - Backendless
+  - Backendless (= 5.6.0)
   - Crashlytics
   - Fabric
   - SDWebImage (= 5.4.1)
@@ -34,6 +34,6 @@ SPEC CHECKSUMS:
   Socket.IO-Client-Swift: 1e3e3a1f09f3312a167f0d781eb2f383d477357c
   Starscream: 4bb2f9942274833f7b4d296a55504dcfc7edb7b0
 
-PODFILE CHECKSUM: 49e820d2bda412f9b555437213ce09a40da0968b
+PODFILE CHECKSUM: e0acd2564f8f939908540fbcf2e72a60e952b8c6
 
-COCOAPODS: 1.8.4
+COCOAPODS: 1.9.1
