@@ -31,10 +31,18 @@ class DbManager: NSObject {
     }
     
     func update(year: BYear, callback: @escaping (BYear?, String?) -> Void) {
-        Backendless.shared.data.of(BYear.self).create(entity: year, responseHandler: { (response) in
-            self.handleResponse(response: response, callback: callback)
-        }) { (error) in
-            callback(nil, error.message)
+        if year.objectId != nil {
+            Backendless.shared.data.of(BYear.self).update(entity: year, responseHandler: { (response) in
+                self.handleResponse(response: response, callback: callback)
+            }) { (error) in
+                callback(nil, error.message)
+            }
+        } else {
+            Backendless.shared.data.of(BYear.self).create(entity: year, responseHandler: { (response) in
+                self.handleResponse(response: response, callback: callback)
+            }) { (error) in
+                callback(nil, error.message)
+            }
         }
     }
     
@@ -227,13 +235,32 @@ class DbManager: NSObject {
     func pushUpdate(message: String) {
         let title = "ABMA"
         let text = "ABMA Update"
-        let headers = PushHeaders(androidTitle: title, androidText: text, iosTitle: title, iosText: message, iosContentAvail: "true")
-        let params = PushParams(message: message, pushPolicy: "PUSH", headers: headers)
-        
-        NetworkExecutor.pushNotification(params: params) { (success, error) in
-            print("Push success \(String(describing: success))")
-            print("Push error \(String(describing: error))")
+        guard let headers = try? PushHeaders(androidTitle: title, androidText: text, iosTitle: title, iosText: message, iosContentAvail: "true").asDictionary() else {
+            print("pushUpdate convert to dict failed")
+            return
         }
+        
+        let publishOptions = PublishOptions()
+        publishOptions.setHeaders(headers: headers)
+
+        let deliveryOptions = DeliveryOptions()
+        deliveryOptions.setPushBroadcast(pushBroadcast: PushBroadcastEnum.FOR_IOS.rawValue | PushBroadcastEnum.FOR_ANDROID.rawValue)
+        
+        Backendless.shared.messaging.publish(channelName: "default", message: message, publishOptions: publishOptions, deliveryOptions: deliveryOptions, responseHandler: { messageStatus in
+            print("Message status: \(messageStatus)")
+        }, errorHandler: { fault in
+            print("Error: \(fault.message ?? "")")
+        })
     }
     
+}
+
+extension Encodable {
+  func asDictionary() throws -> [String: Any] {
+    let data = try JSONEncoder().encode(self)
+    guard let dictionary = try JSONSerialization.jsonObject(with: data, options: .allowFragments) as? [String: Any] else {
+      throw NSError()
+    }
+    return dictionary
+  }
 }
