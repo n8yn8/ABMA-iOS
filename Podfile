@@ -21,4 +21,5 @@ target 'ABMAEditor' do
   pod 'SDWebImage', '=5.6.1'
   pod 'Fabric'
   pod 'Crashlytics'
+  pod 'BackendlessSwift', '=5.7.7'
 end

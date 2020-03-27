@@ -7,6 +7,7 @@
 //
 
 import Foundation
+import Backendless
 
 class DbManager: NSObject {
     
@@ -15,6 +16,7 @@ class DbManager: NSObject {
     
     override init() {
         super.init()
+        Backendless.shared.initApp(applicationId: NetworkExecutor.appId, apiKey: NetworkExecutor.restKey)
     }
     
     func update(year: BYear, callback: @escaping (_ savedYear: BYear?, _ errorString: String?) -> Void) {
@@ -145,20 +147,50 @@ class DbManager: NSObject {
     
     func getYears(callback: @escaping ([BYear]?, Error?) -> Void) {
         
-        NetworkExecutor.execute(endpoint: .year, method: .get, callback: callback)
+        Backendless.shared.data.of(BYear.self).find(responseHandler: { (response) in
+            print("response \(String(describing: response))")
+            self.handleResponse(response: response, callback: callback)
+        }, errorHandler: { (error) in
+            print("error: \(String(describing: error))")
+            callback(nil, error)
+        })
 
     }
     
+    func getRelated<T : Codable>(relationName: String, parentId: String, parentClass: AnyClass, callback: @escaping ([T]?, Error?) -> Void) {
+        let loadRelationsQueryBuilder = LoadRelationsQueryBuilder(entityClass: T.self, relationName: relationName)
+        loadRelationsQueryBuilder.setPageSize(pageSize: 100)
+        
+        Backendless.shared.data.of(parentClass).loadRelations(objectId: parentId, queryBuilder: loadRelationsQueryBuilder, responseHandler: { (response) in
+            self.handleResponse(response: response, callback: callback)
+        }, errorHandler: { (error) in
+            print("error: \(String(describing: error))")
+            callback(nil, error)
+        })
+    }
+    
+    func handleResponse<T : Codable>(response: Any, callback: @escaping ([T]?, Error?) -> Void) {
+        if let objects = response as? [T] {
+            callback(objects, nil)
+        } else {
+            callback([T](), nil)
+        }
+    }
+    
     func getSponsors(parentId: String, callback: @escaping ([BSponsor]?, Error?) -> Void) {
-        NetworkExecutor.getRelated(parentId: parentId, relationName: "sponsors", endpoint: .year, callback: callback)
+        getRelatedToYear(relationName: "sponsors", parentId: parentId, callback: callback)
     }
     
     func getEvents(parentId: String, callback: @escaping ([BEvent]?, Error?) -> Void) {
-        NetworkExecutor.getRelated(parentId: parentId, relationName: "events", endpoint: .year, callback: callback)
+        getRelatedToYear(relationName: "events", parentId: parentId, callback: callback)
+    }
+    
+    func getRelatedToYear<T : Codable>(relationName: String, parentId: String, callback: @escaping ([T]?, Error?) -> Void) {
+        getRelated(relationName: relationName, parentId: parentId, parentClass: BYear.self, callback: callback)
     }
     
     func getPapers(parentId: String, callback: @escaping ([BPaper]?, Error?) -> Void) {
-        NetworkExecutor.getRelated(parentId: parentId, relationName: "papers", endpoint: .event, callback: callback)
+        getRelated(relationName: "papers", parentId: parentId, parentClass: BEvent.self, callback: callback)
     }
     
     func delete(event: BEvent) {
