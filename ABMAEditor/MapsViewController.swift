@@ -82,12 +82,11 @@ class MapsViewController: NSViewController {
     }
     
     func loadImageFromPath(name: String, path: String) {
-        
-        let data = NSData(contentsOfFile: path)
+        let data = try? Data.init(contentsOf: URL(fileURLWithPath: path))
         
         let image = NSImage(contentsOfFile: path)
         
-        if let image = image  {
+        if let image = image, let data = data  {
             print("Image exists")
             sheetViewController.image = image
             sheetViewController.imageData = data

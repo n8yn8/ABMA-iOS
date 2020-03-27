@@ -16,7 +16,7 @@ class NewSponsorViewController: NSViewController {
     
     weak var delegate: NewSponsorViewControllerDelegate?
     var image: NSImage!
-    var imageData: NSData!
+    var imageData: Data!
     var imageName: String!
     var yearParentId: String!
     
@@ -35,6 +35,7 @@ class NewSponsorViewController: NSViewController {
     
     @IBAction func save(_ sender: Any) {
         activityIndicator.startAnimation(self)
+        let sponsorUrl = self.urlTextField.stringValue
         DbManager.sharedInstance.uploadSponsorImage(name: imageName, image: imageData) { (imageUrl, error) in
             if let err = error {
                 print("error saving image: \(err.localizedDescription)")
@@ -42,14 +43,17 @@ class NewSponsorViewController: NSViewController {
                 return
             }
             let sponsor = BSponsor()
-            sponsor.url = self.urlTextField.stringValue
+            sponsor.url = sponsorUrl
             sponsor.imageUrl = imageUrl
             DbManager.sharedInstance.update(sponsor: sponsor, yearParent: self.yearParentId, callback: { (savedSponsor, error) in
-                self.activityIndicator.stopAnimation(self)
-                if let saved = savedSponsor {
-                    self.delegate?.saveSponsor(sponsor: saved)
-                    self.dismiss(nil)
+                DispatchQueue.main.async {
+                    self.activityIndicator.stopAnimation(self)
+                    if let saved = savedSponsor {
+                        self.delegate?.saveSponsor(sponsor: saved)
+                        self.dismiss(nil)
+                    }
                 }
+                
             })
             
         }
