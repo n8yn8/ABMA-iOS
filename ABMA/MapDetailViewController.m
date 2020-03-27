@@ -7,7 +7,7 @@
 //
 
 #import "MapDetailViewController.h"
-#import <SDWebImage/UIImageView+WebCache.h>
+@import SDWebImage;
 
 @interface MapDetailViewController () <UIScrollViewDelegate>
 @property (weak, nonatomic) IBOutlet UIScrollView *scrollView;

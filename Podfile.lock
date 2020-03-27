@@ -79,9 +79,6 @@ PODS:
   - nanopb/decode (0.3.9011)
   - nanopb/encode (0.3.9011)
   - PromisesObjC (1.2.8)
-  - SDWebImage (5.6.1):
-    - SDWebImage/Core (= 5.6.1)
-  - SDWebImage/Core (5.6.1)
   - Socket.IO-Client-Swift (15.2.0):
     - Starscream (~> 3.1)
   - Starscream (3.1.1)
@@ -92,7 +89,6 @@ DEPENDENCIES:
   - Fabric
   - Firebase/Analytics
   - Firebase/Crashlytics
-  - SDWebImage (= 5.6.1)
 
 SPEC REPOS:
   trunk:
@@ -113,7 +109,6 @@ SPEC REPOS:
     - GoogleUtilities
     - nanopb
     - PromisesObjC
-    - SDWebImage
     - Socket.IO-Client-Swift
     - Starscream
 
@@ -135,10 +130,9 @@ SPEC CHECKSUMS:
   GoogleUtilities: ad0f3b691c67909d03a3327cc205222ab8f42e0e
   nanopb: 18003b5e52dab79db540fe93fe9579f399bd1ccd
   PromisesObjC: c119f3cd559f50b7ae681fa59dc1acd19173b7e6
-  SDWebImage: 7edb9c3ea661e77a66661f7f044de8c1b55d1120
   Socket.IO-Client-Swift: 1e3e3a1f09f3312a167f0d781eb2f383d477357c
   Starscream: 4bb2f9942274833f7b4d296a55504dcfc7edb7b0
 
-PODFILE CHECKSUM: 7112daded7325360eb17d9d52fc9fe07ee939840
+PODFILE CHECKSUM: 6c9a3f9dde4fc6f1d21d2f83a8f52e7a66d53e00
 
 COCOAPODS: 1.9.1

@@ -8,7 +8,7 @@
 
 #import "SponsorCollectionViewController.h"
 #import "SWRevealViewController.h"
-#import <SDWebImage/UIImageView+WebCache.h>
+@import SDWebImage;
 #import "AppDelegate.h"
 #import "Sponsor+CoreDataClass.h"
 #import "Year+CoreDataClass.h"
