@@ -1,9 +1,6 @@
 PODS:
   - BackendlessSwift (5.7.7):
     - Socket.IO-Client-Swift
-  - Crashlytics (3.14.0):
-    - Fabric (~> 1.10.2)
-  - Fabric (1.10.2)
   - Firebase/Analytics (6.20.0):
     - Firebase/Core
   - Firebase/Core (6.20.0):
@@ -85,16 +82,12 @@ PODS:
 
 DEPENDENCIES:
   - BackendlessSwift (= 5.7.7)
-  - Crashlytics
-  - Fabric
   - Firebase/Analytics
   - Firebase/Crashlytics
 
 SPEC REPOS:
   trunk:
     - BackendlessSwift
-    - Crashlytics
-    - Fabric
     - Firebase
     - FirebaseAnalytics
     - FirebaseAnalyticsInterop
@@ -114,8 +107,6 @@ SPEC REPOS:
 
 SPEC CHECKSUMS:
   BackendlessSwift: 851ae1b64f0804028745d2f64ebc0b55de80936a
-  Crashlytics: 540b7e5f5da5a042647227a5e3ac51d85eed06df
-  Fabric: 706c8b8098fff96c33c0db69cbf81f9c551d0d74
   Firebase: fe7f74012742ab403451dd283e6909b8f1fb348a
   FirebaseAnalytics: 572e467f3d977825266e8ccd52674aa3e6f47eac
   FirebaseAnalyticsInterop: 3f86269c38ae41f47afeb43ebf32a001f58fcdae
@@ -133,6 +124,6 @@ SPEC CHECKSUMS:
   Socket.IO-Client-Swift: 1e3e3a1f09f3312a167f0d781eb2f383d477357c
   Starscream: 4bb2f9942274833f7b4d296a55504dcfc7edb7b0
 
-PODFILE CHECKSUM: 6c9a3f9dde4fc6f1d21d2f83a8f52e7a66d53e00
+PODFILE CHECKSUM: 3d8a8fbcb78fc8c4a787bfc7088ce4fb306004e1
 
 COCOAPODS: 1.9.1

@@ -17,7 +17,6 @@ target 'ABMAEditor' do
   use_frameworks!
 
   # Pods for ABMAEditor
-  pod 'Fabric'
-  pod 'Crashlytics'
+  pod 'Firebase/Crashlytics'
   pod 'BackendlessSwift', '=5.7.7'
 end

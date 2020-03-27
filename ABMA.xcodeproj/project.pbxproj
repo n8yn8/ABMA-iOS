@@ -520,8 +520,8 @@
 				434B44D61E1B231F00963096 /* Sources */,
 				434B44D71E1B231F00963096 /* Frameworks */,
 				434B44D81E1B231F00963096 /* Resources */,
-				439234E722301F1700F9425A /* ShellScript */,
 				EDF7209FBFB64719E156DBBD /* [CP] Embed Pods Frameworks */,
+				436FFC8B242E47CD0044D935 /* Firebase */,
 			);
 			buildRules = (
 			);
@@ -620,6 +620,24 @@
 /* End PBXResourcesBuildPhase section */
 
 /* Begin PBXShellScriptBuildPhase section */
+		436FFC8B242E47CD0044D935 /* Firebase */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputFileListPaths = (
+			);
+			inputPaths = (
+			);
+			name = Firebase;
+			outputFileListPaths = (
+			);
+			outputPaths = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "\"${PODS_ROOT}/FirebaseCrashlytics/run\"\n";
+		};
 		43732BD31E72F5F400A85B63 /* Fabric Run Script */ = {
 			isa = PBXShellScriptBuildPhase;
 			buildActionMask = 2147483647;
@@ -633,24 +651,6 @@
 			runOnlyForDeploymentPostprocessing = 0;
 			shellPath = /bin/sh;
 			shellScript = "releaseConfig=\"Release\"\n\nif [ \"$releaseConfig\" = \"${CONFIGURATION}\" ]; then\necho \"Running Crashlytics\"\n\"${PODS_ROOT}/Fabric/run\" 8d96e50ad3aa3a14f2bc63cc1f2ecefb807e2099 f58304b865eb4803e74654648b5849c744e24c53c2597d274229a2fd8c959401\nfi";
-		};
-		439234E722301F1700F9425A /* ShellScript */ = {
-			isa = PBXShellScriptBuildPhase;
-			buildActionMask = 2147483647;
-			files = (
-			);
-			inputFileListPaths = (
-			);
-			inputPaths = (
-				"$(SRCROOT)/$(BUILT_PRODUCTS_DIR)/$(INFOPLIST_PATH)",
-			);
-			outputFileListPaths = (
-			);
-			outputPaths = (
-			);
-			runOnlyForDeploymentPostprocessing = 0;
-			shellPath = /bin/sh;
-			shellScript = "\"${PODS_ROOT}/Fabric/run\" 8d96e50ad3aa3a14f2bc63cc1f2ecefb807e2099 f58304b865eb4803e74654648b5849c744e24c53c2597d274229a2fd8c959401\n";
 		};
 		9542D120307B29D5569B2267 /* [CP] Check Pods Manifest.lock */ = {
 			isa = PBXShellScriptBuildPhase;
