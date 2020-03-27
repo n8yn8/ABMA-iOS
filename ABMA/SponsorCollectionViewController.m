@@ -129,7 +129,7 @@
 - (void)collectionView:(UICollectionView *)collectionView didSelectItemAtIndexPath:(NSIndexPath *)indexPath {
     NSString *selectedLink = [sponsors objectAtIndex:indexPath.item].url;
     if (selectedLink) {
-        [[UIApplication sharedApplication] openURL:[NSURL URLWithString: selectedLink]];
+        [[UIApplication sharedApplication] openURL:[NSURL URLWithString: selectedLink] options:@{} completionHandler:nil];
     }
     
 }

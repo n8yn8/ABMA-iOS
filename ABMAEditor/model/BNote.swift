@@ -7,6 +7,7 @@
 //
 
 import Foundation
+import Backendless
 
 class BNote: NSObject {
     

@@ -7,7 +7,7 @@
 //
 
 import Foundation
-import Crashlytics
+import Firebase
 
 class Utils: NSObject {
     
@@ -100,7 +100,7 @@ class Utils: NSObject {
     
     @objc
     static func handleError(method: String, message: String) {
-        Answers.logCustomEvent(withName: "Error", customAttributes: ["method": method, "message": message])
+        Analytics.logEvent("Error", parameters: ["method": method, "message": message])
         print("Error \(method) \(message)")
     }
     

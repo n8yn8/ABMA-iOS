@@ -82,7 +82,7 @@
             [self.tableView reloadData];
         }];
     } else if ([cell.reuseIdentifier isEqualToString:@"survey"]) {
-        [[UIApplication sharedApplication] openURL:[NSURL URLWithString: surveyUrl]];
+        [[UIApplication sharedApplication] openURL:[NSURL URLWithString: surveyUrl] options:@{} completionHandler:nil];
     }
     
 }

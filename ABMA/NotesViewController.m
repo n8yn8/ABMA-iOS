@@ -15,7 +15,7 @@
 #import "AppDelegate.h"
 #import "SchedDetailViewController.h"
 #import "ABMA-Swift.h"
-#import <Crashlytics/Crashlytics.h>
+@import Firebase;
 
 @interface NotesViewController () {
     NSMutableDictionary<NSString *, NSMutableArray<Note *> *> *yearDict;
@@ -60,7 +60,9 @@
             yearNotes = [[NSMutableArray alloc] init];
         }
         [yearNotes addObject:note];
-        yearDict[yearKey] = yearNotes;
+        if (yearKey) {
+            yearDict[yearKey] = yearNotes;
+        }
         NSLog(@"note year = %@", note.paper.event.day.year.year );
         NSLog(@"note year = %@", note.event.day.year.year );
     }
@@ -116,12 +118,12 @@
         NSString *password = alertController.textFields[1].text;
         if (isNew) {
             [[DbManager sharedInstance] registerUserWithEmail:email password:password callback:^(NSString * _Nullable error) {
-                [Answers logSignUpWithMethod:@"Email" success:@(error == nil) customAttributes:error ? @{@"error": error} : nil];
+                [FIRAnalytics logEventWithName:kFIREventSignUp parameters:@{kFIRParameterMethod: @"Email"}];
                 [self handleResponse:error];
             }];
         } else {
             [[DbManager sharedInstance] loginWithEmail:email password:password callback:^(NSString * _Nullable error) {
-                [Answers logLoginWithMethod:@"Email" success: @(error == nil) customAttributes:error ? @{@"error": error} : nil];
+                [FIRAnalytics logEventWithName:kFIREventLogin parameters:@{kFIRParameterMethod: @"Email"}];
                 [self handleResponse:error];
             }];
         }

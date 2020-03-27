@@ -7,6 +7,7 @@
 //
 
 import Foundation
+import Backendless
 
 class DbManager: NSObject {
     
@@ -17,74 +18,74 @@ class DbManager: NSObject {
 //    let APP_ID = "05CFD853-3BFF-40F5-BAD0-E9CE8FA56630" //Test
     let SECRET_KEY = "5DB2DE1C-0AFF-9AD6-FF16-83C8AE9F1600" //Both
     
-    var backendless = Backendless.sharedInstance()
+    var backendless = Backendless.shared
     
     override init() {
         super.init()
-        backendless?.initApp(APP_ID, apiKey: SECRET_KEY)
-        backendless?.userService.setStayLoggedIn(true)
+        backendless.initApp(applicationId: APP_ID, apiKey: SECRET_KEY)
+        backendless.userService.stayLoggedIn = true
     }
     
     @objc
     func registerUser(email: String, password: String, callback: @escaping (_ errorString: String?) -> Void) {
         let user: BackendlessUser = BackendlessUser()
-        user.email = email as NSString
-        user.password = password as NSString
-        backendless?.userService.register(user, response: { (response) in
+        user.email = email
+        user.password = password
+        backendless.userService.registerUser(user: user, responseHandler: { (response) in
             print("response: \(String(describing: response))")
             self.login(email: email, password: password, callback: callback)
-        }, error: { (error) in
+        }) { (error) in
             print("error: \(String(describing: error))")
-            if let message = error?.detail {
+            if let message = error.message {
                 callback(message)
             } else {
                 callback(error.debugDescription)
             }
-            
-        })
+        }
+    
     }
     
     @objc
     func login(email: String, password: String, callback: @escaping (_ errorString: String?) -> Void) {
-        backendless?.userService.login(email, password: password, response: { (user) in
+        backendless.userService.login(identity: email, password: password, responseHandler: { (user) in
             print("User logged in")
             callback(nil)
-        }, error: { (error) in
+        }) { (error) in
             print("Error \(error.debugDescription)")
-            if let message = error?.detail {
+            if let message = error.message {
                 callback(message)
             } else {
                 callback(error.debugDescription)
             }
-        })
+        }
     }
     
     @objc
     func userPasswordRecovery(email: String, callback: @escaping (_ errorString: String?) -> Void) {
-        backendless?.userService?.restorePassword(email, response: {
+        backendless.userService.restorePassword(identity: email, responseHandler: {
             callback("Check your email to recover you password.")
-        }, error: { (fault) in
+        }) { (fault) in
             print(String(describing: fault))
-            if let message = fault?.detail {
+            if let message = fault.message {
                 callback(message)
             } else {
                 callback(fault.debugDescription)
             }
-        })
+        }
     }
     
     @objc
     func logout(callback: @escaping (_ errorString: String?) -> Void) {
-        backendless?.userService.logout({
+        backendless.userService.logout(responseHandler: {
             callback(nil)
-        }, error: { (fault) in
+        }) { (fault) in
             callback(fault.debugDescription)
-        })
+        }
     }
     
     @objc
     func getCurrentUser() -> BackendlessUser? {
-        return backendless?.userService.currentUser
+        return backendless.userService.getCurrentUser()
     }
 
     @objc
@@ -97,16 +98,17 @@ class DbManager: NSObject {
     }
     
     private func getYears(query: String, callback: @escaping (_ years: [BYear]?, _ errorString: String?) -> Void) {
-        let dataQuery = DataQueryBuilder().setWhereClause(query)
+        let dataQuery = DataQueryBuilder()
+        dataQuery.setWhereClause(whereClause: query)
         
-        backendless?.persistenceService.find(BYear.ofClass(), queryBuilder: dataQuery, response: { (response) in
+        backendless.data.of(BYear.self).find(queryBuilder: dataQuery, responseHandler: { (response) in
             print("response \(String(describing: response))")
             if let years = response as? [BYear] {
                 callback(years, nil)
             } else {
                 callback([BYear](), nil)
             }
-        }, error: { (error) in
+        }, errorHandler: { (error) in
             print("error: \(String(describing: error))")
             callback(nil, error.debugDescription)
         })
@@ -114,17 +116,16 @@ class DbManager: NSObject {
     
     @objc
     func getSponsors(yearId: String, callback: @escaping (_ events: [BSponsor]?, _ errorString: String?) -> Void) {
-        let loadRelationsQueryBuilder = LoadRelationsQueryBuilder.of(BSponsor.ofClass())
-            .setRelationName("sponsors")
-            .setPageSize(100)
+        let loadRelationsQueryBuilder = LoadRelationsQueryBuilder(entityClass: BSponsor.self, relationName: "sponsors")
+        loadRelationsQueryBuilder.setPageSize(pageSize: 100)
         
-        backendless?.data.of(BYear.ofClass()).loadRelations(yearId, queryBuilder: loadRelationsQueryBuilder, response: { (response) in
+        backendless.data.of(BYear.self).loadRelations(objectId: yearId, queryBuilder: loadRelationsQueryBuilder, responseHandler: { (response) in
             if let sponsors = response as? [BSponsor] {
                 callback(sponsors, nil)
             } else {
                 callback([BSponsor](), nil)
             }
-        }, error: { (error) in
+        }, errorHandler: { (error) in
             print("error: \(String(describing: error))")
             callback(nil, error.debugDescription)
         })
@@ -132,17 +133,16 @@ class DbManager: NSObject {
     
     @objc
     func getEvents(yearId: String, callback: @escaping (_ events: [BEvent]?, _ errorString: String?) -> Void) {
-        let loadRelationsQueryBuilder = LoadRelationsQueryBuilder.of(BEvent.ofClass())
-            .setRelationName("events")
-            .setPageSize(100)
+        let loadRelationsQueryBuilder = LoadRelationsQueryBuilder(entityClass: BEvent.self, relationName: "events")
+        loadRelationsQueryBuilder.setPageSize(pageSize: 100)
         
-        backendless?.data.of(BYear.ofClass()).loadRelations(yearId, queryBuilder: loadRelationsQueryBuilder, response: { (response) in
+        backendless.data.of(BYear.self).loadRelations(objectId: yearId, queryBuilder: loadRelationsQueryBuilder, responseHandler: { (response) in
             if let events = response as? [BEvent] {
                 callback(events, nil)
             } else {
                 callback([BEvent](), nil)
             }
-        }, error: { (error) in
+        }, errorHandler: { (error) in
             print("error: \(String(describing: error))")
             callback(nil, error.debugDescription)
         })
@@ -150,46 +150,41 @@ class DbManager: NSObject {
     
     @objc
     func getPapers(eventId: String, callback: @escaping (_ papers: [BPaper]?, _ errorString: String?) -> Void) {
-        let loadRelationsQueryBuilder = LoadRelationsQueryBuilder.of(BPaper.ofClass())
-            .setRelationName("papers")
-            .setPageSize(100)
+        let loadRelationsQueryBuilder = LoadRelationsQueryBuilder(entityClass: BPaper.self, relationName: "papers")
+        loadRelationsQueryBuilder.setPageSize(pageSize: 100)
         
-        backendless?.data.of(BEvent.ofClass()).loadRelations(eventId, queryBuilder: loadRelationsQueryBuilder, response: { (response) in
+        backendless.data.of(BEvent.self).loadRelations(objectId: eventId, queryBuilder: loadRelationsQueryBuilder, responseHandler: { (response) in
             if let papers = response as? [BPaper] {
                 callback(papers, nil)
             } else {
                 callback([BPaper](), nil)
             }
-        }, error: { (error) in
+        }, errorHandler: { (error) in
             print("error: \(String(describing: error))")
             callback(nil, error.debugDescription)
         })
     }
     
     func update(note: BNote, callback: @escaping (_ savedNote: BNote?, _ errorString: String?) -> Void) {
-        backendless?.data.of(BNote.ofClass()).save(note, response: { (response) in
+        backendless.data.of(BNote.self).save(entity: note, responseHandler: { (response) in
             if let saved = response as? BNote {
                 self.relate(note: saved, user: note.user, callback: callback)
             } else {
                 callback(nil, nil)
             }
-        }, error: { (error) in
+        }, errorHandler: { (error) in
             print("error \(error.debugDescription)")
             callback(nil, error.debugDescription)
         })
     }
     
     func relate(note: BNote, user: BackendlessUser, callback: @escaping (_ savedNote: BNote?, _ errorString: String?) -> Void) {
-        guard  let dataStore = backendless?.data.of(BNote.ofClass()) else {
+        backendless.data.of(BNote.self).addRelation(columnName: "user", parentObjectId: note.objectId!, childrenObjectIds: [user.objectId!], responseHandler: { (response) in
             callback(note, nil)
-            return
-        }
-        dataStore.addRelation("user", parentObjectId: note.objectId, childObjects: [user.objectId as String], response: { (response) in
-            callback(note, nil)
-        }, error: { (error) in
+        }) { (error) in
             print("error \(error.debugDescription)")
             callback(nil, error.debugDescription)
-        })
+        }
     }
     
     @objc
@@ -198,13 +193,14 @@ class DbManager: NSObject {
             callback(nil, "User not logged in")
             return
         }
-        let dataQuery = DataQueryBuilder().setWhereClause("user.objectId = \'\(user.objectId!)\'")
-        backendless?.persistenceService.find(BNote.ofClass(), queryBuilder: dataQuery, response: { (response) in
+        let dataQuery = DataQueryBuilder()
+        dataQuery.setWhereClause(whereClause: "user.objectId = \'\(user.objectId!)\'")
+        backendless.data.of(BNote.self).find(queryBuilder: dataQuery, responseHandler: { (response) in
             print("response \(String(describing: response))")
             if let notes = response as? [BNote] {
                 callback(notes, nil)
             }
-        }, error: { (error) in
+        }, errorHandler: { (error) in
             print("error: \(String(describing: error))")
             callback(nil, error.debugDescription)
         })
@@ -212,10 +208,10 @@ class DbManager: NSObject {
     
     @objc
     func registerForPush(tokenData: Data) {
-        backendless?.messaging.registerDevice(tokenData, response: { (response) in
+        backendless.messaging.registerDevice(deviceToken: tokenData, responseHandler: { (response) in
             print("registerForPush response \(String(describing: response))")
-        }, error: { (error) in
-            print("registerForPush error: \(String(describing: error?.message))")
+        }, errorHandler: { (error) in
+            print("registerForPush error: \(String(describing: error.message))")
         })
     }
     

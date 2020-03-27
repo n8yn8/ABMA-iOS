@@ -7,16 +7,15 @@
 //
 
 #import "AppDelegate.h"
-#import <Fabric/Fabric.h>
-#import <Crashlytics/Crashlytics.h>
 #import "ABMA-Swift.h"
 #import "ScheduleViewController.h"
+@import Firebase;
 
 @implementation AppDelegate
 
 - (BOOL)application:(UIApplication *)application didFinishLaunchingWithOptions:(NSDictionary *)launchOptions
 {
-    [Fabric with:@[[Crashlytics class]]];
+    [FIRApp configure];
 
     UNUserNotificationCenter *center = [UNUserNotificationCenter currentNotificationCenter];
     //Not available before iOS 10.
@@ -29,19 +28,9 @@
                                       [[UIApplication sharedApplication] registerForRemoteNotifications];
                                   });
                               }];
-    } else {
-        UIUserNotificationSettings *settings = [UIUserNotificationSettings settingsForTypes:(UIUserNotificationTypeBadge | UIUserNotificationTypeAlert | UIUserNotificationTypeSound) categories:nil];
-        [application registerUserNotificationSettings:settings];
-
     }
     
     return YES;
-}
-
-- (void)application:(UIApplication *)application didRegisterUserNotificationSettings:(UIUserNotificationSettings *)notificationSettings {
-    if (notificationSettings.types != UIUserNotificationTypeNone) {
-        [application registerForRemoteNotifications];
-    }
 }
 
 - (void)application:(UIApplication *)application didRegisterForRemoteNotificationsWithDeviceToken:(NSData *)deviceToken {
@@ -50,17 +39,6 @@
 
 - (void)application:(UIApplication *)application didFailToRegisterForRemoteNotificationsWithError:(NSError *)error {
     NSLog(@"Error registering for remote notifications: %@", error.description);
-}
-
-- (void)application:(UIApplication *)application didReceiveRemoteNotification:(NSDictionary *)userInfo {
-    NSLog(@"Received %@", userInfo);
-    
-    NSUserDefaults *defaults = [NSUserDefaults standardUserDefaults];
-    [defaults setBool:true forKey:@"PushReceived"];
-    [defaults synchronize];
-    
-    [[NSNotificationCenter defaultCenter] postNotificationName:@"PushReceived" object:nil];
-    
 }
 							
 - (void)applicationWillResignActive:(UIApplication *)application
@@ -116,7 +94,7 @@
     
     NSPersistentStoreCoordinator *coordinator = [self persistentStoreCoordinator];
     if (coordinator != nil) {
-        _managedObjectContext = [[NSManagedObjectContext alloc] init];
+        _managedObjectContext = [[NSManagedObjectContext alloc] initWithConcurrencyType:NSMainQueueConcurrencyType];
         [_managedObjectContext setPersistentStoreCoordinator:coordinator];
     }
     return _managedObjectContext;
