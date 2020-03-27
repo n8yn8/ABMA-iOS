@@ -87,49 +87,33 @@ class DbManager: NSObject {
     }
     
     private func relate(event: BEvent, yearParent: String, callback: @escaping (_ savedEvent: BEvent?, _ errorString: String?) -> Void) {
-        NetworkExecutor.addRelation(parentTable: NetworkExecutor.Endpoint.year, parentObjectId: yearParent, childObjectId: event.objectId!, relationName: "events", callback: { (object, error) in
-            if let err = error {
-                if err is DecodingError {
-                    callback(event, nil)
-                } else {
-                    callback(nil, err.localizedDescription)
-                }
-            } else {
-                callback(event, nil)
-            }
-        })
+        Backendless.shared.data.of(BYear.self).addRelation(columnName: "events", parentObjectId: yearParent, childrenObjectIds: [event.objectId!], responseHandler: { (response) in
+            callback(event, nil)
+        }) { (error) in
+            print("error \(error.debugDescription)")
+            callback(nil, error.debugDescription)
+        }
     }
     
     private func relate(paper: BPaper, eventParent: String, callback: @escaping (_ savedPaper: BPaper?, _ errorString: String?) -> Void) {
-        NetworkExecutor.addRelation(parentTable: NetworkExecutor.Endpoint.event, parentObjectId: eventParent, childObjectId: paper.objectId!, relationName: "papers", callback: { (object, error) in
-            if let err = error {
-                if err is DecodingError {
-                    callback(paper, nil)
-                } else {
-                    callback(nil, err.localizedDescription)
-                }
-            } else {
-                callback(paper, nil)
-            }
-        })
+        Backendless.shared.data.of(BEvent.self).addRelation(columnName: "papers", parentObjectId: eventParent, childrenObjectIds: [paper.objectId!], responseHandler: { (response) in
+            callback(paper, nil)
+        }) { (error) in
+            print("error \(error.debugDescription)")
+            callback(nil, error.debugDescription)
+        }
     }
     
     private func relate(sponsor: BSponsor, yearParent: String, callback: @escaping (_ savedSponsor: BSponsor?, _ errorString: String?) -> Void) {
-        NetworkExecutor.addRelation(parentTable: NetworkExecutor.Endpoint.year, parentObjectId: yearParent, childObjectId: sponsor.objectId!, relationName: "sponsors", callback: { (object, error) in
-            if let err = error {
-                if err is DecodingError {
-                    callback(sponsor, nil)
-                } else {
-                    callback(nil, err.localizedDescription)
-                }
-            } else {
-                callback(sponsor, nil)
-            }
-        })
+        Backendless.shared.data.of(BYear.self).addRelation(columnName: "sponsors", parentObjectId: yearParent, childrenObjectIds: [sponsor.objectId!], responseHandler: { (response) in
+            callback(sponsor, nil)
+        }) { (error) in
+            print("error \(error.debugDescription)")
+            callback(nil, error.debugDescription)
+        }
     }
     
     func getYears(callback: @escaping ([BYear]?, Error?) -> Void) {
-        
         Backendless.shared.data.of(BYear.self).find(responseHandler: { (response) in
             print("response \(String(describing: response))")
             self.handleResponse(response: response, callback: callback)
