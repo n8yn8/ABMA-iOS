@@ -60,7 +60,9 @@
             yearNotes = [[NSMutableArray alloc] init];
         }
         [yearNotes addObject:note];
-        yearDict[yearKey] = yearNotes;
+        if (yearKey) {
+            yearDict[yearKey] = yearNotes;
+        }
         NSLog(@"note year = %@", note.paper.event.day.year.year );
         NSLog(@"note year = %@", note.event.day.year.year );
     }
