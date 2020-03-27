@@ -100,15 +100,15 @@
 - (void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath {
     if (indexPath.section == 1) {
         if (indexPath.row == 0) {
-            [[UIApplication sharedApplication] openURL:[NSURL URLWithString: @"https://www.theabma.org"]];
+            [[UIApplication sharedApplication] openURL:[NSURL URLWithString: @"https://www.theabma.org"] options:@{} completionHandler:nil];
         } else {
-            [[UIApplication sharedApplication] openURL:[NSURL URLWithString: @"https://theabma.org/contact/"]];
+            [[UIApplication sharedApplication] openURL:[NSURL URLWithString: @"https://theabma.org/contact/"] options:@{} completionHandler:nil];
         }
         return;
     }
     Survey *survey = [surveys objectAtIndex:indexPath.row];
     NSURL *url = [NSURL URLWithString:survey.url];
-    [[UIApplication sharedApplication] openURL:url];
+    [[UIApplication sharedApplication] openURL:url options:@{} completionHandler:nil];
 }
 
 @end
