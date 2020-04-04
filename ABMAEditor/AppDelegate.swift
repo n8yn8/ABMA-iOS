@@ -7,8 +7,7 @@
 //
 
 import Cocoa
-import Fabric
-import Crashlytics
+import Firebase
 
 @NSApplicationMain
 class AppDelegate: NSObject, NSApplicationDelegate {
@@ -17,7 +16,7 @@ class AppDelegate: NSObject, NSApplicationDelegate {
     func applicationDidFinishLaunching(_ aNotification: Notification) {
         let defaults = NSUserDefaultsController.shared.defaults
         defaults.register(defaults: ["NSApplicationCrashOnExceptions" : true])
-        Fabric.with([Crashlytics.self])
+        FirebaseApp.configure()
     }
 
     func applicationWillTerminate(_ aNotification: Notification) {

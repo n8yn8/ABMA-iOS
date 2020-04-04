@@ -12,7 +12,7 @@
 #import "Map+CoreDataClass.h"
 #import "BaseViewController.h"
 #import "MapTableViewCell.h"
-#import <SDWebImage/UIImageView+WebCache.h>
+@import SDWebImage;
 #import "MapDetailViewController.h"
 
 @interface MapsViewController ()
