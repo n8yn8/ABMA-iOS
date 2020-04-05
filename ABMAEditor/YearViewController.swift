@@ -15,7 +15,6 @@ class YearViewController: NSViewController {
     @IBOutlet weak var activityIndicator: NSProgressIndicator!
     @IBOutlet var welcomeTextView: NSTextView!
     @IBOutlet var infoTextView: NSTextView!
-    var containerController: ContainerController?
     var sponsorsViewController: SponsorsViewController?
     var surveyListViewController: SurveyListViewController?
     var mapsViewController: MapsViewController?
@@ -69,19 +68,6 @@ class YearViewController: NSViewController {
         
         if let year = selectedYear {
             yearsPopUpButton.selectItem(withTitle: "\(year.name)")
-            if var events = year.events {
-                events = events.sorted(by: { (e1, e2) -> Bool in
-                    e1.startDate.compare(e2.startDate) == ComparisonResult.orderedAscending
-                })
-                containerController?.updateEventList(events: events, yearObjectId: year.objectId)
-            } else {
-                DbManager.sharedInstance.getEvents(parentId: year.objectId!) { (response, error) in
-                    year.events = response?.sorted(by: { (e1, e2) -> Bool in
-                        e1.startDate.compare(e2.startDate) == ComparisonResult.orderedAscending
-                    })
-                    self.containerController?.updateEventList(events: year.events, yearObjectId: year.objectId)
-                }
-            }
             
             if let welcome = year.welcome {
                 welcomeTextView.string = welcome
@@ -111,7 +97,6 @@ class YearViewController: NSViewController {
             
             sponsorsViewController?.yearParentId = year.objectId
         } else {
-            containerController?.updateEventList(events: nil, yearObjectId: nil)
             welcomeTextView.string = ""
             infoTextView.string = ""
             publishButton.isEnabled = false
@@ -131,9 +116,6 @@ class YearViewController: NSViewController {
     override func prepare(for segue: NSStoryboardSegue, sender: Any?) {
         if let dvc = segue.destinationController as? NewYearsViewController {
             dvc.year = 2017
-        } else if let dvc = segue.destinationController as? ContainerController {
-            containerController = dvc
-            containerController?.delegate = self
         } else if let dvc = segue.destinationController as? SponsorsViewController {
             sponsorsViewController = dvc
         } else if let dvc = segue.destinationController as? PushViewController {
@@ -166,12 +148,6 @@ class YearViewController: NSViewController {
     
     @IBAction func publish(_ sender: Any) {
         updateYear(callback: nil)
-    }
-}
-
-extension YearViewController: ContainerControllerDelegate {
-    func updateEvents(list: [BEvent]) {
-        yearsModel.selectedYearRelay.value?.events = list
     }
 }
 

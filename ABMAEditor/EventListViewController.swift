@@ -7,16 +7,25 @@
 //
 
 import Cocoa
+import RxSwift
+import RxCocoa
 
 class EventListViewController: NSViewController, NSTableViewDelegate, NSTableViewDataSource {
     
+    private let disposeBag = DisposeBag()
+    
     @IBOutlet weak var eventTableView: NSTableView!
     @IBOutlet weak var removeButton: NSButton!
-    weak var delegate: MasterViewControllerDelegate?
     
     private let formatter = DateFormatter()
     
-    private var eventList = [BEvent]()
+    private var eventList = [BEvent]() {
+        didSet {
+            eventTableView.deselectAll(self)
+            eventTableView.reloadData()
+            updateSelectedEvent()
+        }
+    }
     private var selectedIndex: Int?
     
     override func viewDidLoad() {
@@ -24,18 +33,14 @@ class EventListViewController: NSViewController, NSTableViewDelegate, NSTableVie
         
         formatter.dateStyle = .medium
         formatter.timeStyle = .short
-    }
-    
-    func setEventList() {
-        if let events = YearsModel.instance.selectedYearRelay.value?.events {
-            eventList = events
-        } else {
-            eventList = []
-        }
         
-        eventTableView.deselectAll(self)
-        eventTableView.reloadData()
-        updateSelectedEvent()
+        YearsModel.instance.eventsRelay.asObservable()
+        .subscribe(onNext: { [unowned self] selectedEvents in
+            print("event list observed \(String(describing: selectedEvents))")
+            self.eventList = selectedEvents
+            
+        })
+        .disposed(by: disposeBag)
     }
     
     func numberOfRows(in tableView: NSTableView) -> Int {
@@ -49,7 +54,7 @@ class EventListViewController: NSViewController, NSTableViewDelegate, NSTableVie
         let cell = tableView.makeView(withIdentifier: tableColumn!.identifier, owner: self) as! NSTableCellView
         
         if tableColumn!.identifier.rawValue == "Time" {
-            let dateUTC = event.startDate.addingTimeInterval(TimeInterval(-TimeZone.current.secondsFromGMT()))
+            let dateUTC = event.startDate!.addingTimeInterval(TimeInterval(-TimeZone.current.secondsFromGMT()))
             cell.textField?.stringValue = formatter.string(from: dateUTC)
         } else if tableColumn!.identifier.rawValue == "Title" {
             if let title = event.title {
@@ -68,7 +73,7 @@ class EventListViewController: NSViewController, NSTableViewDelegate, NSTableVie
     }
     
     private func updateSelectedEvent() {
-        delegate?.updateSelectedEvent(event: getSelectedEvent(), index: selectedIndex)
+        YearsModel.instance.select(event: getSelectedEvent())
     }
     
     func getSelectedEvent() -> BEvent? {
@@ -83,18 +88,14 @@ class EventListViewController: NSViewController, NSTableViewDelegate, NSTableVie
     }
     
     @IBAction func add(_ sender: Any) {
-        delegate?.addNewEvent()
+        YearsModel.instance.select(event: BEvent())
     }
 
     @IBAction func remove(_ sender: Any) {
-        delegate?.removeSelectedEvent(index: eventTableView.selectedRow)
+        if let selectedEvent = getSelectedEvent() {
+            YearsModel.instance.delete(event: selectedEvent)
+        }
         removeButton.isEnabled = false
     }
     
-}
-
-protocol MasterViewControllerDelegate: class {
-    func updateSelectedEvent(event: BEvent?, index: Int?)
-    func addNewEvent()
-    func removeSelectedEvent(index: Int)
 }

@@ -14,7 +14,7 @@ class BEvent: NSObject, Codable {
     @objc var details: String?
     @objc var endDate: Date?
     @objc var location: String?
-    @objc var startDate: Date!
+    @objc var startDate: Date?
     @objc var subtitle: String?
     @objc var title: String?
     @objc var papers: [BPaper]?
