@@ -27,7 +27,7 @@ class EventListViewController: NSViewController, NSTableViewDelegate, NSTableVie
     }
     
     func setEventList() {
-        if let events = YearsModel.instance.selectedYear?.events {
+        if let events = YearsModel.instance.selectedYear.value?.events {
             eventList = events
         } else {
             eventList = []

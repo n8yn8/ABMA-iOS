@@ -12,14 +12,46 @@ import RxCocoa
 
 class YearsModel {
     static let instance = YearsModel()
-    var years: [BYear] = [BYear]()
-    var selectedYear: BYear? = nil
+    var years: BehaviorRelay<[BYear]> = BehaviorRelay(value: [])
+    var selectedYear: BehaviorRelay<BYear?> = BehaviorRelay(value: nil)
     let sponsors: BehaviorRelay<[BSponsor]> = BehaviorRelay(value: [])
+    
+    init() {
+        DbManager.sharedInstance.getYears { (years, error) in
+            if let data = years {
+                let sortedYears = data.sorted(by: { (year1, year2) -> Bool in
+                    return year1.name > year2.name
+                })
+                self.years.accept(sortedYears)
+            }
+        }
+    }
+}
+
+extension YearsModel {
+    func add(year: BYear) {
+        DbManager.sharedInstance.update(year: year) { (saved, error) in
+            if let savedYear = saved {
+                savedYear.doSort()
+                let newYears = self.years.value + [savedYear]
+                self.years.accept(newYears)
+                self.selectedYear.accept(savedYear)
+            }
+        }
+    }
+    
+    func select(yearName: String) {
+        for thisYear in years.value {
+            if "\(thisYear.name)" == yearName {
+                selectedYear.accept(thisYear)
+            }
+        }
+    }
 }
 
 extension YearsModel {
     func add(sponsor: BSponsor) {
-        guard let thisYear = selectedYear else {
+        guard let thisYear = selectedYear.value else {
             return
         }
         if thisYear.sponsors == nil {
@@ -46,10 +78,10 @@ extension YearsModel {
     func remove(sponsor: BSponsor) {
         DbManager.sharedInstance.delete(sponsor: sponsor)
         
-        if let index = selectedYear?.sponsors?.firstIndex(of: sponsor) {
-            selectedYear?.sponsors?.remove(at: index)
+        if let index = selectedYear.value?.sponsors?.firstIndex(of: sponsor) {
+            selectedYear.value?.sponsors?.remove(at: index)
         }
-        sponsors.accept(selectedYear!.sponsors!)
+        sponsors.accept(selectedYear.value!.sponsors!)
         
     }
 }
