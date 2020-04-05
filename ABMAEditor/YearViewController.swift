@@ -69,19 +69,6 @@ class YearViewController: NSViewController {
         
         if let year = selectedYear {
             yearsPopUpButton.selectItem(withTitle: "\(year.name)")
-            if var events = year.events {
-                events = events.sorted(by: { (e1, e2) -> Bool in
-                    e1.startDate.compare(e2.startDate) == ComparisonResult.orderedAscending
-                })
-                containerController?.updateEventList(events: events, yearObjectId: year.objectId)
-            } else {
-                DbManager.sharedInstance.getEvents(parentId: year.objectId!) { (response, error) in
-                    year.events = response?.sorted(by: { (e1, e2) -> Bool in
-                        e1.startDate.compare(e2.startDate) == ComparisonResult.orderedAscending
-                    })
-                    self.containerController?.updateEventList(events: year.events, yearObjectId: year.objectId)
-                }
-            }
             
             if let welcome = year.welcome {
                 welcomeTextView.string = welcome
@@ -111,7 +98,6 @@ class YearViewController: NSViewController {
             
             sponsorsViewController?.yearParentId = year.objectId
         } else {
-            containerController?.updateEventList(events: nil, yearObjectId: nil)
             welcomeTextView.string = ""
             infoTextView.string = ""
             publishButton.isEnabled = false

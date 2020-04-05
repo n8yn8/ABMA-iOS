@@ -31,7 +31,7 @@ class BYear: NSObject, Codable {
             event.doSort()
         }
         let sortedEvents = theseEvents.sorted(by: { (e1, e2) -> Bool in
-            e1.startDate.compare(e2.startDate) == ComparisonResult.orderedAscending
+            e1.startDate!.compare(e2.startDate!) == ComparisonResult.orderedAscending
         })
         events = sortedEvents
     }

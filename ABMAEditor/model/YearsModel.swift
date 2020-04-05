@@ -22,12 +22,40 @@ class YearsModel {
     private var selectedYear: BYear? = nil {
         didSet {
             selectedYearRelay.accept(selectedYear)
+            
+            guard let year = selectedYear else { return }
+            if let events = year.events {
+                self.events = events
+            } else {
+                DbManager.sharedInstance.getEvents(parentId: year.objectId!) { (response, error) in
+                    let events = response?.sorted(by: { (e1, e2) -> Bool in
+                        e1.startDate!.compare(e2.startDate!) == ComparisonResult.orderedAscending
+                    })
+                    self.selectedYear?.events = events
+                    self.events = events ?? []
+                }
+            }
         }
     }
     let sponsorsRelay: BehaviorRelay<[BSponsor]> = BehaviorRelay(value: [])
     private var sponsors = [BSponsor]() {
         didSet {
             sponsorsRelay.accept(sponsors)
+        }
+    }
+    
+    let eventsRelay: BehaviorRelay<[BEvent]> = BehaviorRelay(value: [])
+    private var events = [BEvent]() {
+        didSet {
+            eventsRelay.accept(events)
+        }
+    }
+    
+    var selectedEventRelay: BehaviorRelay<BEvent?> = BehaviorRelay(value: nil)
+    private var selectedEvent: BEvent? = nil {
+        didSet {
+            selectedEventRelay.accept(selectedEvent)
+            
         }
     }
     
@@ -130,5 +158,36 @@ extension YearsModel {
         }
         sponsors = selectedYear!.sponsors!
         
+    }
+}
+
+extension YearsModel {
+    
+    func update(event: BEvent) {
+        guard let yearId = selectedYear?.name else {
+            return
+        }
+        DbManager.sharedInstance.update(event: event, yearParent: "\(yearId)") { (saved, error) in
+            if let error = error {
+                print("udpateEvent error \(error)")
+            }
+            if let savedEvent = saved {
+                if let index = self.events.firstIndex(where: { (eventInArray) -> Bool in
+                    savedEvent.objectId == eventInArray.objectId
+                }) {
+                    self.events[index] = savedEvent
+                } else {
+                    self.events.append(savedEvent)
+                }
+            }
+        }
+    }
+    
+    func delete(event: BEvent) {
+        
+    }
+    
+    func select(event: BEvent?) {
+        selectedEvent = event
     }
 }

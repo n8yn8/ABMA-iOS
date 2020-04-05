@@ -7,8 +7,12 @@
 //
 
 import Cocoa
+import RxSwift
+import RxCocoa
 
 class EventViewController: NSViewController {
+    
+    private let disposeBag = DisposeBag()
 
     @IBOutlet weak var datePicker: NSDatePicker!
     @IBOutlet weak var startTimePicker: NSDatePicker!
@@ -24,7 +28,7 @@ class EventViewController: NSViewController {
     weak var delegate: EventViewControllerDelegate?
     
     private let calendar = Calendar.current
-    fileprivate var event: BEvent?
+    private var event: BEvent?
     fileprivate var papersViewController: PapersViewController?
     
     override func viewDidLoad() {
@@ -35,7 +39,13 @@ class EventViewController: NSViewController {
         datePicker.calendar = self.calendar
         datePicker.dateValue = Date()
 
-        // Do any additional setup after loading the view.
+        YearsModel.instance.selectedEventRelay.asObservable()
+        .subscribe(onNext: { [unowned self] selectedEvent in
+            print("event observed \(String(describing: selectedEvent))")
+            self.representedObject = selectedEvent
+            
+        })
+        .disposed(by: disposeBag)
     }
 
     override var representedObject: Any? {
@@ -49,11 +59,14 @@ class EventViewController: NSViewController {
             descriptionTextView.string = ""
             
             if let event = representedObject as? BEvent {
+                setEnabled(enabled: true)
                 self.event = event
                 
                 let utcOffset = TimeInterval(-TimeZone.current.secondsFromGMT())
-                datePicker.dateValue = event.startDate.addingTimeInterval(utcOffset)
-                startTimePicker.dateValue = event.startDate.addingTimeInterval(utcOffset)
+                if let startDate = event.startDate {
+                    datePicker.dateValue = startDate.addingTimeInterval(utcOffset)
+                    startTimePicker.dateValue = startDate.addingTimeInterval(utcOffset)
+                }
                 if let endDate = event.endDate {
                     endTimePicker.dateValue = endDate.addingTimeInterval(utcOffset)
                     endTimePicker.isHidden = false
@@ -118,7 +131,7 @@ class EventViewController: NSViewController {
         }
     }
     
-    func setEnabled(enabled: Bool) {
+    private func setEnabled(enabled: Bool) {
         datePicker.isEnabled = enabled
         startTimePicker.isEnabled = enabled
         endTimePicker.isEnabled = enabled
