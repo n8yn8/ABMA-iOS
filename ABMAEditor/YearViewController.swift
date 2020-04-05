@@ -16,8 +16,6 @@ class YearViewController: NSViewController {
     @IBOutlet var welcomeTextView: NSTextView!
     @IBOutlet var infoTextView: NSTextView!
     var sponsorsViewController: SponsorsViewController?
-    var surveyListViewController: SurveyListViewController?
-    var mapsViewController: MapsViewController?
     
     var yearsModel = YearsModel.instance
     private let disposeBag = DisposeBag()
@@ -109,12 +107,6 @@ class YearViewController: NSViewController {
             dvc.year = 2017
         } else if let dvc = segue.destinationController as? SponsorsViewController {
             sponsorsViewController = dvc
-        } else if let dvc = segue.destinationController as? PushViewController {
-            dvc.delegate = self
-        } else if let dvc = segue.destinationController as? SurveyListViewController {
-            surveyListViewController = dvc
-        } else if let dvc = segue.destinationController as? MapsViewController {
-            mapsViewController = dvc
         }
     }
     
