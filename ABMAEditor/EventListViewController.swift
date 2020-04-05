@@ -26,8 +26,13 @@ class EventListViewController: NSViewController, NSTableViewDelegate, NSTableVie
         formatter.timeStyle = .short
     }
     
-    func setEventList(list: [BEvent]) {
-        eventList = list
+    func setEventList() {
+        if let events = YearsModel.instance.selectedYear?.events {
+            eventList = events
+        } else {
+            eventList = []
+        }
+        
         eventTableView.deselectAll(self)
         eventTableView.reloadData()
         updateSelectedEvent()

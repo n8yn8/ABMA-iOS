@@ -18,8 +18,7 @@ class YearViewController: NSViewController {
     var surveyListViewController: SurveyListViewController?
     var mapsViewController: MapsViewController?
     
-    var years = YearsModel.instance.years
-    var selectedYear: BYear?
+    var yearsModel = YearsModel.instance
     
     @IBOutlet weak var yearsPopUpButton: NSPopUpButton!
     @IBOutlet weak var publishButton: NSButton!
@@ -35,8 +34,8 @@ class YearViewController: NSViewController {
                 let sortedYears = data.sorted(by: { (year1, year2) -> Bool in
                     return year1.name > year2.name
                 })
-                self.years.removeAll()
-                self.years.append(contentsOf: sortedYears)
+                self.yearsModel.years.removeAll()
+                self.yearsModel.years.append(contentsOf: sortedYears)
                 self.updateYearOptions()
             }
         }
@@ -55,9 +54,9 @@ class YearViewController: NSViewController {
     }
     
     func updateSeelctedYear(year: String) {
-        for thisYear in years {
+        for thisYear in yearsModel.years {
             if "\(thisYear.name)" == year {
-                selectedYear = thisYear
+                yearsModel.selectedYear = thisYear
                 updateUi()
             }
         }
@@ -65,7 +64,7 @@ class YearViewController: NSViewController {
     
     func updateUi() {
         
-        if let year = selectedYear {
+        if let year = yearsModel.selectedYear {
             if var events = year.events {
                 events = events.sorted(by: { (e1, e2) -> Bool in
                     e1.startDate.compare(e2.startDate) == ComparisonResult.orderedAscending
@@ -121,7 +120,7 @@ class YearViewController: NSViewController {
     
     func updateYearOptions() {
         var yearList = [String]()
-        for year in years {
+        for year in yearsModel.years {
             yearList.append("\(year.name)")
         }
         setYears(years: yearList)
@@ -149,17 +148,17 @@ class YearViewController: NSViewController {
     }
     
     @IBAction func saveWelcome(_ sender: Any) {
-        selectedYear?.welcome = welcomeTextView.string
-        selectedYear?.info = infoTextView.string
+        yearsModel.selectedYear?.welcome = welcomeTextView.string
+        yearsModel.selectedYear?.info = infoTextView.string
         updateYear(callback: nil)
     }
     
     func updateYear(callback: (() -> Void)?) {
         activityIndicator.startAnimation(self)
-        DbManager.sharedInstance.update(year: selectedYear!) { (saved, error) in
+        DbManager.sharedInstance.update(year: yearsModel.selectedYear!) { (saved, error) in
             self.activityIndicator.stopAnimation(self)
             saved?.doSort()
-            self.selectedYear = saved
+            self.yearsModel.selectedYear = saved
             self.updateUi()
             if let call = callback {
                 call()
@@ -174,9 +173,9 @@ class YearViewController: NSViewController {
 
 extension YearViewController: NewYearsViewControllerDelegate {
     func yearCreated(year: Int) {
-        for checkYear in years {
+        for checkYear in yearsModel.years {
             if checkYear.name == year {
-                selectedYear = checkYear
+                yearsModel.selectedYear = checkYear
                 updateYearOptions()
                 yearsPopUpButton.selectItem(withTitle: "\(year)")
                 yearSelected(yearsPopUpButton)
@@ -188,7 +187,7 @@ extension YearViewController: NewYearsViewControllerDelegate {
         DbManager.sharedInstance.update(year: thisYear) { (saved, error) in
             if let savedYear = saved {
                 savedYear.doSort()
-                self.years.append(savedYear)
+                self.yearsModel.years.append(savedYear)
                 self.updateYearOptions()
             }
         }
@@ -197,7 +196,7 @@ extension YearViewController: NewYearsViewControllerDelegate {
 
 extension YearViewController: SponsorsViewControllerDelegate {
     func saveSponsor(savedSponsor: BSponsor) {
-        if let thisYear = selectedYear {
+        if let thisYear = yearsModel.selectedYear {
             if thisYear.sponsors == nil {
                 thisYear.sponsors = [BSponsor]()
             }
@@ -225,14 +224,14 @@ extension YearViewController: SponsorsViewControllerDelegate {
 
 extension YearViewController: ContainerControllerDelegate {
     func updateEvents(list: [BEvent]) {
-        selectedYear?.events = list
+        yearsModel.selectedYear?.events = list
     }
 }
 
 extension YearViewController: PushViewControllerDelegate {
     func sendUpdate(message: String) {
-        if selectedYear?.publishedAt == nil {
-            selectedYear?.publishedAt = Date()
+        if yearsModel.selectedYear?.publishedAt == nil {
+            yearsModel.selectedYear?.publishedAt = Date()
             updateYear(callback: { 
                 DbManager.sharedInstance.pushUpdate(message: message)
             })
@@ -246,14 +245,14 @@ extension YearViewController: PushViewControllerDelegate {
 
 extension YearViewController: SurveyListViewControllerDelegate {
     func saveSurveys(surveys: String) {
-        selectedYear?.surveys = surveys
+        yearsModel.selectedYear?.surveys = surveys
         updateYear(callback: nil)
     }
 }
 
 extension YearViewController: MapsViewControllerDelegate {
     func saveMaps(mapsString: String) {
-        selectedYear?.maps = mapsString
+        yearsModel.selectedYear?.maps = mapsString
         updateYear(callback: nil)
     }
 }

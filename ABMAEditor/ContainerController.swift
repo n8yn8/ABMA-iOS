@@ -45,7 +45,7 @@ class ContainerController: NSSplitViewController {
     }
     
     func update() {
-        eventListController.setEventList(list: eventList)
+        eventListController.setEventList()
     }
 }
 
