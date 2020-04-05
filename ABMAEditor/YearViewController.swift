@@ -32,7 +32,7 @@ class YearViewController: NSViewController {
         
         activityIndicator.startAnimation(self)
         
-        yearsModel.years.asObservable()
+        yearsModel.yearsRelay.asObservable()
         .subscribe(onNext: { [unowned self] years in
             self.activityIndicator.stopAnimation(self)
             self.updateYearOptions()
@@ -40,7 +40,7 @@ class YearViewController: NSViewController {
         })
         .disposed(by: disposeBag)
         
-        yearsModel.selectedYear.asObservable()
+        yearsModel.selectedYearRelay.asObservable()
         .subscribe(onNext: { [unowned self] year in
             self.activityIndicator.stopAnimation(self)
             self.updateUi(selectedYear: year)
@@ -100,17 +100,16 @@ class YearViewController: NSViewController {
                 publishButton.title = "Update"
             }
             if let sponsors = year.sponsors {
-                yearsModel.sponsors.accept(sponsors)
+                yearsModel.sponsorsRelay.accept(sponsors)
             } else {
                 DbManager.sharedInstance.getSponsors(parentId: year.objectId!) { (response, error) in
                     year.sponsors = response
                     let sponsors = response ?? []
-                    self.yearsModel.sponsors.accept(sponsors)
+                    self.yearsModel.sponsorsRelay.accept(sponsors)
                 }
             }
             
             sponsorsViewController?.yearParentId = year.objectId
-            surveyListViewController?.surveysString = year.surveys
             mapsViewController?.mapsString = year.maps
         } else {
             containerController?.updateEventList(events: nil, yearObjectId: nil)
@@ -124,7 +123,7 @@ class YearViewController: NSViewController {
     
     func updateYearOptions() {
         var yearList = [String]()
-        for year in yearsModel.years.value {
+        for year in yearsModel.yearsRelay.value {
             yearList.append("\(year.name)")
         }
         setYears(years: yearList)
@@ -142,7 +141,6 @@ class YearViewController: NSViewController {
             dvc.delegate = self
         } else if let dvc = segue.destinationController as? SurveyListViewController {
             surveyListViewController = dvc
-            surveyListViewController?.delegate = self
         } else if let dvc = segue.destinationController as? MapsViewController {
             mapsViewController = dvc
             mapsViewController?.delegate = self
@@ -150,17 +148,17 @@ class YearViewController: NSViewController {
     }
     
     @IBAction func saveWelcome(_ sender: Any) {
-        yearsModel.selectedYear.value?.welcome = welcomeTextView.string
-        yearsModel.selectedYear.value?.info = infoTextView.string
+        yearsModel.selectedYearRelay.value?.welcome = welcomeTextView.string
+        yearsModel.selectedYearRelay.value?.info = infoTextView.string
         updateYear(callback: nil)
     }
     
     func updateYear(callback: (() -> Void)?) {
         activityIndicator.startAnimation(self)
-        DbManager.sharedInstance.update(year: yearsModel.selectedYear.value!) { (saved, error) in
+        DbManager.sharedInstance.update(year: yearsModel.selectedYearRelay.value!) { (saved, error) in
             self.activityIndicator.stopAnimation(self)
             saved?.doSort()
-            self.yearsModel.selectedYear.accept(saved)
+            self.yearsModel.selectedYearRelay.accept(saved)
             if let call = callback {
                 call()
             }
@@ -174,14 +172,14 @@ class YearViewController: NSViewController {
 
 extension YearViewController: ContainerControllerDelegate {
     func updateEvents(list: [BEvent]) {
-        yearsModel.selectedYear.value?.events = list
+        yearsModel.selectedYearRelay.value?.events = list
     }
 }
 
 extension YearViewController: PushViewControllerDelegate {
     func sendUpdate(message: String) {
-        if yearsModel.selectedYear.value?.publishedAt == nil {
-            yearsModel.selectedYear.value?.publishedAt = Date()
+        if yearsModel.selectedYearRelay.value?.publishedAt == nil {
+            yearsModel.selectedYearRelay.value?.publishedAt = Date()
             updateYear(callback: { 
                 DbManager.sharedInstance.pushUpdate(message: message)
             })
@@ -193,16 +191,9 @@ extension YearViewController: PushViewControllerDelegate {
     }
 }
 
-extension YearViewController: SurveyListViewControllerDelegate {
-    func saveSurveys(surveys: String) {
-        yearsModel.selectedYear.value?.surveys = surveys
-        updateYear(callback: nil)
-    }
-}
-
 extension YearViewController: MapsViewControllerDelegate {
     func saveMaps(mapsString: String) {
-        yearsModel.selectedYear.value?.maps = mapsString
+        yearsModel.selectedYearRelay.value?.maps = mapsString
         updateYear(callback: nil)
     }
 }

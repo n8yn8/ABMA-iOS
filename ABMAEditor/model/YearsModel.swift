@@ -12,17 +12,35 @@ import RxCocoa
 
 class YearsModel {
     static let instance = YearsModel()
-    var years: BehaviorRelay<[BYear]> = BehaviorRelay(value: [])
-    var selectedYear: BehaviorRelay<BYear?> = BehaviorRelay(value: nil)
-    let sponsors: BehaviorRelay<[BSponsor]> = BehaviorRelay(value: [])
+    var yearsRelay: BehaviorRelay<[BYear]> = BehaviorRelay(value: [])
+    private var years = [BYear]() {
+        didSet {
+            yearsRelay.accept(years)
+        }
+    }
+    var selectedYearRelay: BehaviorRelay<BYear?> = BehaviorRelay(value: nil)
+    private var selectedYear: BYear? = nil {
+        didSet {
+            selectedYearRelay.accept(selectedYear)
+        }
+    }
+    let sponsorsRelay: BehaviorRelay<[BSponsor]> = BehaviorRelay(value: [])
+    private var sponsors = [BSponsor]() {
+        didSet {
+            sponsorsRelay.accept(sponsors)
+        }
+    }
     
     init() {
         DbManager.sharedInstance.getYears { (years, error) in
+            if let error = error {
+                print("getYears error \(error)")
+            }
             if let data = years {
                 let sortedYears = data.sorted(by: { (year1, year2) -> Bool in
                     return year1.name > year2.name
                 })
-                self.years.accept(sortedYears)
+                self.years = sortedYears
             }
         }
     }
@@ -31,27 +49,45 @@ class YearsModel {
 extension YearsModel {
     func add(year: BYear) {
         DbManager.sharedInstance.update(year: year) { (saved, error) in
+            if let error = error {
+                print("addYear error \(error)")
+            }
             if let savedYear = saved {
                 savedYear.doSort()
-                let newYears = self.years.value + [savedYear]
-                self.years.accept(newYears)
-                self.selectedYear.accept(savedYear)
+                self.years.append(savedYear)
             }
         }
     }
     
     func select(yearName: String) {
-        for thisYear in years.value {
+        for thisYear in years {
             if "\(thisYear.name)" == yearName {
-                selectedYear.accept(thisYear)
+                selectedYear = thisYear
             }
         }
     }
 }
 
 extension YearsModel {
+    private func updateYear() {
+        DbManager.sharedInstance.update(year: selectedYear!) { (saved, error) in
+            if let error = error {
+                print("udpateYear error \(error)")
+            }
+            saved?.doSort()
+            self.selectedYear = saved
+        }
+    }
+    
+    func update(surveys: String?) {
+        selectedYear?.surveys = surveys
+        updateYear()
+    }
+}
+
+extension YearsModel {
     func add(sponsor: BSponsor) {
-        guard let thisYear = selectedYear.value else {
+        guard let thisYear = selectedYear else {
             return
         }
         if thisYear.sponsors == nil {
@@ -72,16 +108,16 @@ extension YearsModel {
         } else {
             thisYear.sponsors!.append(sponsor)
         }
-        sponsors.accept(thisYear.sponsors!)
+        sponsors = thisYear.sponsors!
     }
     
     func remove(sponsor: BSponsor) {
         DbManager.sharedInstance.delete(sponsor: sponsor)
         
-        if let index = selectedYear.value?.sponsors?.firstIndex(of: sponsor) {
-            selectedYear.value?.sponsors?.remove(at: index)
+        if let index = selectedYear?.sponsors?.firstIndex(of: sponsor) {
+            selectedYear?.sponsors?.remove(at: index)
         }
-        sponsors.accept(selectedYear.value!.sponsors!)
+        sponsors = selectedYear!.sponsors!
         
     }
 }

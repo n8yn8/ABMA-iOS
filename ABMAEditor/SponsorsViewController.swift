@@ -39,7 +39,7 @@ class SponsorsViewController: NSViewController {
         configureCollectionView()
         removeButton.isEnabled = false
         
-        YearsModel.instance.sponsors.asObservable()
+        YearsModel.instance.sponsorsRelay.asObservable()
             .subscribe(onNext: { [unowned self] inSponsors in
                 self.sponsors = inSponsors
                 

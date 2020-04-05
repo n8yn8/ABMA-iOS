@@ -37,9 +37,9 @@ class NewYearsViewController: NSViewController {
     
     @IBAction func done(_ sender: Any) {
         let yearsModel = YearsModel.instance
-        for checkYear in yearsModel.years.value {
+        for checkYear in yearsModel.yearsRelay.value {
             if checkYear.name == year {
-                yearsModel.selectedYear.accept(checkYear)
+                yearsModel.selectedYearRelay.accept(checkYear)
                 dismiss(nil)
                 return
             }
