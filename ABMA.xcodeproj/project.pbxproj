@@ -75,6 +75,7 @@
 		437F1192205A0055006EBBC0 /* SurveyTableViewCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 437F1191205A0055006EBBC0 /* SurveyTableViewCell.m */; };
 		438D599E1ABA97D3004FF7ED /* Launch Screen.xib in Resources */ = {isa = PBXBuildFile; fileRef = 438D599D1ABA97D3004FF7ED /* Launch Screen.xib */; };
 		439947E51AB1E9F500D1479B /* NotesViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 439947E41AB1E9F500D1479B /* NotesViewController.m */; };
+		439E10BF243955F600F57775 /* YearsModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 439E10BE243955F600F57775 /* YearsModel.swift */; };
 		43A436081FA767EB00754298 /* DbManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 43A436071FA767EB00754298 /* DbManager.swift */; };
 		43A4360A1FA7694600754298 /* DbManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 43A436091FA7694600754298 /* DbManager.swift */; };
 		43A436141FA8D27200754298 /* BYear.swift in Sources */ = {isa = PBXBuildFile; fileRef = 435EEE671E3D329F00C9CF84 /* BYear.swift */; };
@@ -208,6 +209,7 @@
 		438D599D1ABA97D3004FF7ED /* Launch Screen.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = "Launch Screen.xib"; sourceTree = "<group>"; };
 		439947E31AB1E9F500D1479B /* NotesViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = NotesViewController.h; sourceTree = "<group>"; };
 		439947E41AB1E9F500D1479B /* NotesViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = NotesViewController.m; sourceTree = "<group>"; };
+		439E10BE243955F600F57775 /* YearsModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = YearsModel.swift; sourceTree = "<group>"; };
 		43A436071FA767EB00754298 /* DbManager.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = DbManager.swift; sourceTree = "<group>"; };
 		43A436091FA7694600754298 /* DbManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DbManager.swift; sourceTree = "<group>"; };
 		43AAAE291AAAA484002C424A /* CoreData.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CoreData.framework; path = System/Library/Frameworks/CoreData.framework; sourceTree = SDKROOT; };
@@ -457,6 +459,7 @@
 				43FA2A141E593F7900BAE929 /* BNote.swift */,
 				4324097220444C5F0093FF83 /* BSurvey.swift */,
 				4364687B207068BC0048685F /* BMap.swift */,
+				439E10BE243955F600F57775 /* YearsModel.swift */,
 			);
 			path = model;
 			sourceTree = "<group>";
@@ -784,6 +787,7 @@
 				434B44F21E23222700963096 /* ContainerController.swift in Sources */,
 				431326AF1E3D7BE7003C808E /* SponsorItem.swift in Sources */,
 				4364687C207068BC0048685F /* BMap.swift in Sources */,
+				439E10BF243955F600F57775 /* YearsModel.swift in Sources */,
 				43A4360A1FA7694600754298 /* DbManager.swift in Sources */,
 				4364688620706C780048685F /* NewMapViewController.swift in Sources */,
 				430559682066AA5300069B49 /* PushParams.swift in Sources */,

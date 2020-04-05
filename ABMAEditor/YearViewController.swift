@@ -18,7 +18,7 @@ class YearViewController: NSViewController {
     var surveyListViewController: SurveyListViewController?
     var mapsViewController: MapsViewController?
     
-    var years = [BYear]()
+    var years = YearsModel.instance.years
     var selectedYear: BYear?
     
     @IBOutlet weak var yearsPopUpButton: NSPopUpButton!
