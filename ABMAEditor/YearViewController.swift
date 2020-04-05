@@ -85,15 +85,6 @@ class YearViewController: NSViewController {
             } else {
                 publishButton.title = "Update"
             }
-            if let sponsors = year.sponsors {
-                yearsModel.sponsorsRelay.accept(sponsors)
-            } else {
-                DbManager.sharedInstance.getSponsors(parentId: year.objectId!) { (response, error) in
-                    year.sponsors = response
-                    let sponsors = response ?? []
-                    self.yearsModel.sponsorsRelay.accept(sponsors)
-                }
-            }
             
             sponsorsViewController?.yearParentId = year.objectId
         } else {

@@ -35,6 +35,14 @@ class YearsModel {
                     self.events = events ?? []
                 }
             }
+            if let sponsors = year.sponsors {
+                self.sponsors = sponsors
+            } else {
+                DbManager.sharedInstance.getSponsors(parentId: year.objectId!) { (response, error) in
+                    self.selectedYear?.sponsors = response
+                    self.sponsors = response ?? []
+                }
+            }
         }
     }
     let sponsorsRelay: BehaviorRelay<[BSponsor]> = BehaviorRelay(value: [])
