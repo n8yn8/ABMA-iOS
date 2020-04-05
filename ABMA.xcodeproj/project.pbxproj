@@ -75,7 +75,9 @@
 		437F1192205A0055006EBBC0 /* SurveyTableViewCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 437F1191205A0055006EBBC0 /* SurveyTableViewCell.m */; };
 		438D599E1ABA97D3004FF7ED /* Launch Screen.xib in Resources */ = {isa = PBXBuildFile; fileRef = 438D599D1ABA97D3004FF7ED /* Launch Screen.xib */; };
 		439947E51AB1E9F500D1479B /* NotesViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 439947E41AB1E9F500D1479B /* NotesViewController.m */; };
+		439E10BD2439306400F57775 /* RxSwift in Frameworks */ = {isa = PBXBuildFile; productRef = 439E10BC2439306400F57775 /* RxSwift */; };
 		439E10BF243955F600F57775 /* YearsModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 439E10BE243955F600F57775 /* YearsModel.swift */; };
+		439E10C12439574100F57775 /* RxCocoa in Frameworks */ = {isa = PBXBuildFile; productRef = 439E10C02439574100F57775 /* RxCocoa */; };
 		43A436081FA767EB00754298 /* DbManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 43A436071FA767EB00754298 /* DbManager.swift */; };
 		43A4360A1FA7694600754298 /* DbManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 43A436091FA7694600754298 /* DbManager.swift */; };
 		43A436141FA8D27200754298 /* BYear.swift in Sources */ = {isa = PBXBuildFile; fileRef = 435EEE671E3D329F00C9CF84 /* BYear.swift */; };
@@ -264,7 +266,9 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				439E10BD2439306400F57775 /* RxSwift in Frameworks */,
 				4311F517242D4920002871BC /* SDWebImage in Frameworks */,
+				439E10C12439574100F57775 /* RxCocoa in Frameworks */,
 				5D02F189E686D97E9E39CFB5 /* Pods_ABMAEditor.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -533,6 +537,8 @@
 			name = ABMAEditor;
 			packageProductDependencies = (
 				4311F516242D4920002871BC /* SDWebImage */,
+				439E10BC2439306400F57775 /* RxSwift */,
+				439E10C02439574100F57775 /* RxCocoa */,
 			);
 			productName = ABMAEditor;
 			productReference = 434B44DA1E1B231F00963096 /* ABMAEditor.app */;
@@ -576,6 +582,7 @@
 			mainGroup = 4338BB9418F26F51002683EF;
 			packageReferences = (
 				4311F513242D48B3002871BC /* XCRemoteSwiftPackageReference "SDWebImage" */,
+				439E10BB2439306400F57775 /* XCRemoteSwiftPackageReference "RxSwift" */,
 			);
 			productRefGroup = 4338BB9E18F26F52002683EF /* Products */;
 			projectDirPath = "";
@@ -1107,6 +1114,14 @@
 				version = 5.6.1;
 			};
 		};
+		439E10BB2439306400F57775 /* XCRemoteSwiftPackageReference "RxSwift" */ = {
+			isa = XCRemoteSwiftPackageReference;
+			repositoryURL = "https://github.com/ReactiveX/RxSwift.git";
+			requirement = {
+				kind = exactVersion;
+				version = 5.0.0;
+			};
+		};
 /* End XCRemoteSwiftPackageReference section */
 
 /* Begin XCSwiftPackageProductDependency section */
@@ -1119,6 +1134,16 @@
 			isa = XCSwiftPackageProductDependency;
 			package = 4311F513242D48B3002871BC /* XCRemoteSwiftPackageReference "SDWebImage" */;
 			productName = SDWebImage;
+		};
+		439E10BC2439306400F57775 /* RxSwift */ = {
+			isa = XCSwiftPackageProductDependency;
+			package = 439E10BB2439306400F57775 /* XCRemoteSwiftPackageReference "RxSwift" */;
+			productName = RxSwift;
+		};
+		439E10C02439574100F57775 /* RxCocoa */ = {
+			isa = XCSwiftPackageProductDependency;
+			package = 439E10BB2439306400F57775 /* XCRemoteSwiftPackageReference "RxSwift" */;
+			productName = RxCocoa;
 		};
 /* End XCSwiftPackageProductDependency section */
 

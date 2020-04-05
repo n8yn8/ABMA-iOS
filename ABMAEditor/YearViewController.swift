@@ -96,11 +96,12 @@ class YearViewController: NSViewController {
                 publishButton.title = "Update"
             }
             if let sponsors = year.sponsors {
-                sponsorsViewController?.updateSponsors(sponsorList: sponsors)
+                yearsModel.sponsors.accept(sponsors)
             } else {
                 DbManager.sharedInstance.getSponsors(parentId: year.objectId!) { (response, error) in
                     year.sponsors = response
-                    self.sponsorsViewController?.updateSponsors(sponsorList: response)
+                    let sponsors = response ?? []
+                    self.yearsModel.sponsors.accept(sponsors)
                 }
             }
             
@@ -111,7 +112,7 @@ class YearViewController: NSViewController {
             containerController?.updateEventList(events: nil, yearObjectId: nil)
             welcomeTextView.string = ""
             infoTextView.string = ""
-            sponsorsViewController?.updateSponsors(sponsorList: [BSponsor]())
+            self.yearsModel.sponsors.accept([])
             publishButton.isEnabled = false
             publishButton.title = "Publish"
         }
@@ -135,7 +136,6 @@ class YearViewController: NSViewController {
             containerController?.delegate = self
         } else if let dvc = segue.destinationController as? SponsorsViewController {
             sponsorsViewController = dvc
-            sponsorsViewController?.delegate = self
         } else if let dvc = segue.destinationController as? PushViewController {
             dvc.delegate = self
         } else if let dvc = segue.destinationController as? SurveyListViewController {
@@ -191,34 +191,6 @@ extension YearViewController: NewYearsViewControllerDelegate {
                 self.updateYearOptions()
             }
         }
-    }
-}
-
-extension YearViewController: SponsorsViewControllerDelegate {
-    func saveSponsor(savedSponsor: BSponsor) {
-        if let thisYear = yearsModel.selectedYear {
-            if thisYear.sponsors == nil {
-                thisYear.sponsors = [BSponsor]()
-            }
-            if let id = savedSponsor.objectId {
-                var found = false
-                for i in 0 ..< thisYear.sponsors!.count {
-                    let sponsor = thisYear.sponsors![i]
-                    if id == sponsor.objectId {
-                        found = true
-                        thisYear.sponsors![i] = savedSponsor
-                    }
-                }
-                if !found {
-                    thisYear.sponsors!.append(savedSponsor)
-                }
-            } else {
-                thisYear.sponsors!.append(savedSponsor)
-            }
-            thisYear.doSort()
-            self.updateUi()
-        }
-        
     }
 }
 
