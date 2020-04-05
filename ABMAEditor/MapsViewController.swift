@@ -7,8 +7,12 @@
 //
 
 import Cocoa
+import RxSwift
+import RxCocoa
 
 class MapsViewController: NSViewController {
+    
+    private let disposeBag = DisposeBag()
     
     private var maps = [BMap]() {
         didSet {
@@ -22,14 +26,13 @@ class MapsViewController: NSViewController {
     @IBOutlet weak var collectionView: NSCollectionView!
     @IBOutlet weak var removeButton: NSButton!
     
-    weak var delegate: MapsViewControllerDelegate?
     lazy var sheetViewController: NewMapViewController = {
         let vc = self.storyboard!.instantiateController(withIdentifier: "NewMapViewController")
             as! NewMapViewController
         vc.yearParentId = yearParentId
         return vc
     }()
-    var mapsString: String? {
+    private var mapsString: String? {
         didSet {
             if let string = mapsString {
                 do {
@@ -49,10 +52,16 @@ class MapsViewController: NSViewController {
     
     override func viewDidLoad() {
         super.viewDidLoad()
-        // Do view setup here.
         
         configureCollectionView()
         removeButton.isEnabled = false
+        
+        YearsModel.instance.selectedYearRelay.asObservable()
+        .subscribe(onNext: { [unowned self] selectedYear in
+            self.mapsString = selectedYear?.maps
+            
+        })
+        .disposed(by: disposeBag)
     }
     
     private func configureCollectionView() {
@@ -120,7 +129,7 @@ class MapsViewController: NSViewController {
             })
             let jsonData = try jsonEncoder.encode(maps)
             let string = String(data: jsonData, encoding: String.Encoding.utf8)
-            delegate?.saveMaps(mapsString: string!)
+            YearsModel.instance.update(maps: string)
         } catch {
             print("error trying to convert object to data")
             print(error)
@@ -166,8 +175,4 @@ extension MapsViewController: NewMapViewControllerDelegate {
         collectionView.reloadData()
         saveMaps()
     }
-}
-
-protocol MapsViewControllerDelegate: class {
-    func saveMaps(mapsString: String)
 }

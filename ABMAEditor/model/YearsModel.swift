@@ -83,6 +83,17 @@ extension YearsModel {
         selectedYear?.surveys = surveys
         updateYear()
     }
+    
+    func update(maps: String?) {
+        selectedYear?.maps = maps
+        updateYear()
+    }
+    
+    func update(welcome: String, info: String) {
+        selectedYear?.welcome = welcome
+        selectedYear?.info = info
+        updateYear()
+    }
 }
 
 extension YearsModel {

@@ -110,7 +110,6 @@ class YearViewController: NSViewController {
             }
             
             sponsorsViewController?.yearParentId = year.objectId
-            mapsViewController?.mapsString = year.maps
         } else {
             containerController?.updateEventList(events: nil, yearObjectId: nil)
             welcomeTextView.string = ""
@@ -143,14 +142,14 @@ class YearViewController: NSViewController {
             surveyListViewController = dvc
         } else if let dvc = segue.destinationController as? MapsViewController {
             mapsViewController = dvc
-            mapsViewController?.delegate = self
         }
     }
     
     @IBAction func saveWelcome(_ sender: Any) {
-        yearsModel.selectedYearRelay.value?.welcome = welcomeTextView.string
-        yearsModel.selectedYearRelay.value?.info = infoTextView.string
-        updateYear(callback: nil)
+        activityIndicator.startAnimation(self)
+        let welcome = welcomeTextView.string
+        let info = infoTextView.string
+        yearsModel.update(welcome: welcome, info: info)
     }
     
     func updateYear(callback: (() -> Void)?) {
@@ -188,12 +187,5 @@ extension YearViewController: PushViewControllerDelegate {
                 DbManager.sharedInstance.pushUpdate(message: message)
             })
         }
-    }
-}
-
-extension YearViewController: MapsViewControllerDelegate {
-    func saveMaps(mapsString: String) {
-        yearsModel.selectedYearRelay.value?.maps = mapsString
-        updateYear(callback: nil)
     }
 }
