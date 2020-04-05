@@ -48,6 +48,14 @@ class YearsModel {
     private var events = [BEvent]() {
         didSet {
             eventsRelay.accept(events)
+            if let year = selectedYear {
+                if year.events != events {
+                    print("Events not equal, setting")
+                    year.events = events
+                } else {
+                    print("Events ARE equal, weee")
+                }
+            }
         }
     }
     
@@ -164,10 +172,10 @@ extension YearsModel {
 extension YearsModel {
     
     func update(event: BEvent) {
-        guard let yearId = selectedYear?.name else {
+        guard let yearId = selectedYear?.objectId else {
             return
         }
-        DbManager.sharedInstance.update(event: event, yearParent: "\(yearId)") { (saved, error) in
+        DbManager.sharedInstance.update(event: event, yearParent: yearId) { (saved, error) in
             if let error = error {
                 print("udpateEvent error \(error)")
             }
@@ -184,7 +192,10 @@ extension YearsModel {
     }
     
     func delete(event: BEvent) {
-        
+        DbManager.sharedInstance.delete(event: event)
+        if let index = self.events.firstIndex(of: event) {
+            self.events.remove(at: index)
+        }
     }
     
     func select(event: BEvent?) {

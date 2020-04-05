@@ -15,7 +15,6 @@ class YearViewController: NSViewController {
     @IBOutlet weak var activityIndicator: NSProgressIndicator!
     @IBOutlet var welcomeTextView: NSTextView!
     @IBOutlet var infoTextView: NSTextView!
-    var containerController: ContainerController?
     var sponsorsViewController: SponsorsViewController?
     var surveyListViewController: SurveyListViewController?
     var mapsViewController: MapsViewController?
@@ -117,9 +116,6 @@ class YearViewController: NSViewController {
     override func prepare(for segue: NSStoryboardSegue, sender: Any?) {
         if let dvc = segue.destinationController as? NewYearsViewController {
             dvc.year = 2017
-        } else if let dvc = segue.destinationController as? ContainerController {
-            containerController = dvc
-            containerController?.delegate = self
         } else if let dvc = segue.destinationController as? SponsorsViewController {
             sponsorsViewController = dvc
         } else if let dvc = segue.destinationController as? PushViewController {
@@ -152,12 +148,6 @@ class YearViewController: NSViewController {
     
     @IBAction func publish(_ sender: Any) {
         updateYear(callback: nil)
-    }
-}
-
-extension YearViewController: ContainerControllerDelegate {
-    func updateEvents(list: [BEvent]) {
-        yearsModel.selectedYearRelay.value?.events = list
     }
 }
 

@@ -25,7 +25,6 @@ class EventViewController: NSViewController {
     @IBOutlet weak var tabView: NSTabView!
     @IBOutlet weak var saveButton: NSButton!
     
-    weak var delegate: EventViewControllerDelegate?
     
     private let calendar = Calendar.current
     private var event: BEvent?
@@ -157,20 +156,18 @@ class EventViewController: NSViewController {
         let startDate = buildDate(timePartInCurTZ: startTimePicker.dateValue)
         let endDate = includeEndTimeButton.state.rawValue == 1 ? buildDate(timePartInCurTZ: endTimePicker.dateValue) : nil
         
-        if event == nil {
-            event = BEvent()
-        }
-        event?.startDate = startDate
-        event?.endDate = endDate
-        event?.title = titleTextField.stringValue
-        event!.location = locationTextField.stringValue
-        event!.subtitle = subtitleTextField.stringValue
-        event!.details = descriptionTextView.string
+        let thisEvent = event ?? BEvent()
+        thisEvent.startDate = startDate
+        thisEvent.endDate = endDate
+        thisEvent.title = titleTextField.stringValue
+        thisEvent.location = locationTextField.stringValue
+        thisEvent.subtitle = subtitleTextField.stringValue
+        thisEvent.details = descriptionTextView.string
         let papers = papersViewController!.papers
-        event!.papers = papers
-        event?.papersCount = papers.count
+        thisEvent.papers = papers
+        thisEvent.papersCount = papers.count
         
-        self.delegate?.updateEvent(event: event!)
+        YearsModel.instance.update(event: thisEvent)
     }
     
     func buildDate(timePartInCurTZ: Date) -> Date {
@@ -199,8 +196,4 @@ extension EventViewController : PapersViewControllerDelegate {
             saveEvent()
         }
     }
-}
-
-protocol EventViewControllerDelegate: class {
-    func updateEvent(event: BEvent)
 }
