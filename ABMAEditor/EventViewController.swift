@@ -87,24 +87,9 @@ class EventViewController: NSViewController {
                 if let details = event.details {
                     descriptionTextView.string = details
                     tabView.selectFirstTabViewItem(self)
-                } else {
-                    
                 }
                 if event.papersCount > 0 {
-                    if let papers = event.papers {
-                        setPapers(papers: papers)
-                    } else {
-                        DbManager.sharedInstance.getPapers(parentId: event.objectId!, callback: { (response, errore) in
-                            event.papers = response?.sorted(by: { (paper1, paper2) -> Bool in
-                                paper1.order < paper2.order
-                            })
-                            if let papers = event.papers {
-                                self.setPapers(papers: papers)
-                            }
-                        })
-                    }
-                } else {
-                    self.setPapers(papers: [])
+                    tabView.selectLastTabViewItem(self)
                 }
                 
                 setEnabled(enabled: true)
@@ -118,15 +103,6 @@ class EventViewController: NSViewController {
                 tabView.selectFirstTabViewItem(self)
                 setEnabled(enabled: false)
             }
-        }
-    }
-    
-    func setPapers(papers: [BPaper]) {
-        if !papers.isEmpty {
-            tabView.selectLastTabViewItem(self)
-        }
-        if let controller = papersViewController {
-            controller.papers = papers
         }
     }
     
@@ -163,9 +139,6 @@ class EventViewController: NSViewController {
         thisEvent.location = locationTextField.stringValue
         thisEvent.subtitle = subtitleTextField.stringValue
         thisEvent.details = descriptionTextView.string
-        let papers = papersViewController!.papers
-        thisEvent.papers = papers
-        thisEvent.papersCount = papers.count
         
         YearsModel.instance.update(event: thisEvent)
     }
@@ -181,19 +154,8 @@ class EventViewController: NSViewController {
     
     override func prepare(for segue: NSStoryboardSegue, sender: Any?) {
         if let controller = segue.destinationController as? PapersViewController {
-            controller.delegate = self
             papersViewController = controller
         }
     }
 
-}
-
-extension EventViewController : PapersViewControllerDelegate {
-    func updatedPapers() {
-        let papersCount = papersViewController!.papers.count
-        if event?.papersCount != papersCount {
-            event?.papersCount = papersCount
-            saveEvent()
-        }
-    }
 }

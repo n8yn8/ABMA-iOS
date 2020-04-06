@@ -48,6 +48,7 @@ class YearsModel {
     let sponsorsRelay: BehaviorRelay<[BSponsor]> = BehaviorRelay(value: [])
     private var sponsors = [BSponsor]() {
         didSet {
+            print("didSet sponsors \(sponsors)")
             sponsorsRelay.accept(sponsors)
         }
     }
@@ -55,6 +56,7 @@ class YearsModel {
     let eventsRelay: BehaviorRelay<[BEvent]> = BehaviorRelay(value: [])
     private var events = [BEvent]() {
         didSet {
+            print("didSet events \(events)")
             eventsRelay.accept(events)
             if let year = selectedYear {
                 if year.events != events {
@@ -70,8 +72,36 @@ class YearsModel {
     var selectedEventRelay: BehaviorRelay<BEvent?> = BehaviorRelay(value: nil)
     private var selectedEvent: BEvent? = nil {
         didSet {
+            print("didSet selectedEvent \(String(describing: selectedEvent))")
             selectedEventRelay.accept(selectedEvent)
             
+            guard let event = selectedEvent else { return }
+            if let papers = event.papers {
+                self.papers = papers
+            } else {
+                DbManager.sharedInstance.getPapers(parentId: event.objectId!, callback: { (response, errore) in
+                    self.papers = response?.sorted(by: { (paper1, paper2) -> Bool in
+                        paper1.order < paper2.order
+                    }) ?? []
+                })
+
+            }
+        }
+    }
+    
+    let papersRelay: BehaviorRelay<[BPaper]> = BehaviorRelay(value: [])
+    private var papers = [BPaper]() {
+        didSet {
+            print("didSet papers \(papers)")
+            papersRelay.accept(papers)
+            if let event = selectedEvent {
+                if event.papers != papers {
+                    print("papers not equal, setting")
+                    event.papers = papers
+                } else {
+                    print("papers ARE equal, weee")
+                }
+            }
         }
     }
     
@@ -183,6 +213,7 @@ extension YearsModel {
         guard let yearId = selectedYear?.objectId else {
             return
         }
+        event.papersCount = papers.count
         DbManager.sharedInstance.update(event: event, yearParent: yearId) { (saved, error) in
             if let error = error {
                 print("udpateEvent error \(error)")
@@ -208,5 +239,31 @@ extension YearsModel {
     
     func select(event: BEvent?) {
         selectedEvent = event
+    }
+}
+
+extension YearsModel {
+    func delete(paper: BPaper) {
+        if paper.objectId != nil {
+            DbManager.sharedInstance.delete(paper: paper)
+        }
+    }
+    
+    func update(paper: BPaper) {
+        DbManager.sharedInstance.update(paper: paper, eventParent: selectedEvent!.objectId!) { (saved, error) in
+            guard let savedPaper = saved else {
+                return
+            }
+            if let index = self.papers.firstIndex(where: { (arrayPaper) -> Bool in
+                savedPaper.objectId! == arrayPaper.objectId
+            }) {
+                self.papers[index] = savedPaper
+            } else {
+                self.papers.append(savedPaper)
+            }
+            if self.papers.count != self.selectedEvent!.papersCount {
+                self.update(event: self.selectedEvent!)
+            }
+        }
     }
 }

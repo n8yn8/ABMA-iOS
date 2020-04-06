@@ -7,8 +7,12 @@
 //
 
 import Cocoa
+import RxSwift
+import RxCocoa
 
 class PapersViewController: NSViewController, NSTableViewDelegate, NSTableViewDataSource {
+    
+    private let disposeBag = DisposeBag()
     
     @IBOutlet weak var papersTableView: NSTableView!
     @IBOutlet weak var removeButton: NSButton!
@@ -19,14 +23,14 @@ class PapersViewController: NSViewController, NSTableViewDelegate, NSTableViewDa
     @IBOutlet weak var orderStepper: NSStepper!
     @IBOutlet weak var orderTextView: NSTextField!
     
-    var papers = [BPaper]() {
+    private var papers = [BPaper]() {
         didSet {
             papersTableView.deselectAll(self)
             papersTableView.reloadData()
+            updateSelectedPaper()
         }
     }
     var eventParent: String?
-    weak var delegate: PapersViewControllerDelegate?
     
     private var selectedIndex: Int?
 
@@ -34,6 +38,14 @@ class PapersViewController: NSViewController, NSTableViewDelegate, NSTableViewDa
         super.viewDidLoad()
         // Do view setup here.
         setEnabled(enabled: false)
+        
+        YearsModel.instance.papersRelay.asObservable()
+        .subscribe(onNext: { [unowned self] selectedPapers in
+            print("event list observed \(String(describing: selectedPapers))")
+            self.papers = selectedPapers
+            
+        })
+        .disposed(by: disposeBag)
     }
     
     func numberOfRows(in tableView: NSTableView) -> Int {
@@ -104,17 +116,12 @@ class PapersViewController: NSViewController, NSTableViewDelegate, NSTableViewDa
     
     @IBAction func remove(_ sender: Any) {
         let removedPaper = papers.remove(at: papersTableView.selectedRow)
-        if removedPaper.objectId != nil {
-            DbManager.sharedInstance.delete(paper: removedPaper)
-        }
-        papersTableView.reloadData()
+        YearsModel.instance.delete(paper: removedPaper)
         removeButton.isEnabled = false
-        updateSelectedPaper()
-        self.delegate?.updatedPapers()
     }
     
     @IBAction func save(_ sender: Any) {
-        guard let parent = eventParent else {
+        guard eventParent != nil else {
             let alert = NSAlert.init()
             alert.messageText = "Save the event before adding papers."
             alert.addButton(withTitle: "OK")
@@ -134,29 +141,10 @@ class PapersViewController: NSViewController, NSTableViewDelegate, NSTableViewDa
             paper = BPaper()
         }
         paper.initWith(title: title, author: author, synopsis: abstract, order: order)
-        DbManager.sharedInstance.update(paper: paper, eventParent: parent) { (saved, error) in
-            guard let savedPaper = saved else {
-                return
-            }
-            if let index = self.selectedIndex {
-                self.papers[index] = savedPaper
-            } else {
-                self.papers.append(savedPaper)
-                self.delegate?.updatedPapers()
-            }
-            
-            self.papersTableView.reloadData()
-            self.papersTableView.selectRowIndexes(NSIndexSet(index: self.papers.count - 1) as IndexSet, byExtendingSelection: false)
-        }
-        
-        
+        YearsModel.instance.update(paper: paper)
     }
     
     @IBAction func orderChanged(_ sender: NSStepper) {
         orderTextView.stringValue = "\(orderStepper.integerValue)"
     }
-}
-
-protocol PapersViewControllerDelegate: class {
-    func updatedPapers()
 }
