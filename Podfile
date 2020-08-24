@@ -5,7 +5,7 @@ target 'ABMA' do
   # Pods for ABMA
   platform :ios, '13.0'
   
-  pod 'BackendlessSwift', '=5.7.7'
+  pod 'BackendlessSwift', '=6.0.3'
   pod 'Firebase/Crashlytics'
   pod 'Firebase/Analytics'
 
@@ -18,5 +18,5 @@ target 'ABMAEditor' do
 
   # Pods for ABMAEditor
   pod 'Firebase/Crashlytics'
-  pod 'BackendlessSwift', '=5.7.7'
+  pod 'BackendlessSwift', '=6.0.3'
 end
