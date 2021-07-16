@@ -14,10 +14,10 @@ class DbManager: NSObject {
     @objc
     static let sharedInstance = DbManager()
 
-//    let APP_ID = "7D06F708-89FA-DD86-FF95-C51A10425A00" //Prod
-    let APP_ID = "76269ABA-AF2E-5901-FF61-99AB83F57700" //Test
-//    let SECRET_KEY = "5DB2DE1C-0AFF-9AD6-FF16-83C8AE9F1600" //Prod
-    let SECRET_KEY = "DB8C6226-658C-4EA7-B076-FC0A8C882BCE" //Test
+    let APP_ID = "7D06F708-89FA-DD86-FF95-C51A10425A00" //Prod
+//    let APP_ID = "76269ABA-AF2E-5901-FF61-99AB83F57700" //Test
+    let SECRET_KEY = "5DB2DE1C-0AFF-9AD6-FF16-83C8AE9F1600" //Prod
+//    let SECRET_KEY = "DB8C6226-658C-4EA7-B076-FC0A8C882BCE" //Test
     
     var backendless = Backendless.shared
     
@@ -86,7 +86,7 @@ class DbManager: NSObject {
     
     @objc
     func getCurrentUser() -> BackendlessUser? {
-        return backendless.userService.getCurrentUser()
+        return backendless.userService.currentUser
     }
 
     @objc
@@ -100,7 +100,7 @@ class DbManager: NSObject {
     
     private func getYears(query: String, callback: @escaping (_ years: [BYear]?, _ errorString: String?) -> Void) {
         let dataQuery = DataQueryBuilder()
-        dataQuery.setWhereClause(whereClause: query)
+        dataQuery.whereClause = query
         
         backendless.data.of(BYear.self).find(queryBuilder: dataQuery, responseHandler: { (response) in
             print("response \(String(describing: response))")
@@ -118,7 +118,7 @@ class DbManager: NSObject {
     @objc
     func getSponsors(yearId: String, callback: @escaping (_ events: [BSponsor]?, _ errorString: String?) -> Void) {
         let loadRelationsQueryBuilder = LoadRelationsQueryBuilder(entityClass: BSponsor.self, relationName: "sponsors")
-        loadRelationsQueryBuilder.setPageSize(pageSize: 100)
+        loadRelationsQueryBuilder.pageSize = 100
         
         backendless.data.of(BYear.self).loadRelations(objectId: yearId, queryBuilder: loadRelationsQueryBuilder, responseHandler: { (response) in
             if let sponsors = response as? [BSponsor] {
@@ -135,7 +135,7 @@ class DbManager: NSObject {
     @objc
     func getEvents(yearId: String, callback: @escaping (_ events: [BEvent]?, _ errorString: String?) -> Void) {
         let loadRelationsQueryBuilder = LoadRelationsQueryBuilder(entityClass: BEvent.self, relationName: "events")
-        loadRelationsQueryBuilder.setPageSize(pageSize: 100)
+        loadRelationsQueryBuilder.pageSize = 100
         
         backendless.data.of(BYear.self).loadRelations(objectId: yearId, queryBuilder: loadRelationsQueryBuilder, responseHandler: { (response) in
             if let events = response as? [BEvent] {
@@ -152,7 +152,7 @@ class DbManager: NSObject {
     @objc
     func getPapers(eventId: String, callback: @escaping (_ papers: [BPaper]?, _ errorString: String?) -> Void) {
         let loadRelationsQueryBuilder = LoadRelationsQueryBuilder(entityClass: BPaper.self, relationName: "papers")
-        loadRelationsQueryBuilder.setPageSize(pageSize: 100)
+        loadRelationsQueryBuilder.pageSize = 100
         
         backendless.data.of(BEvent.self).loadRelations(objectId: eventId, queryBuilder: loadRelationsQueryBuilder, responseHandler: { (response) in
             if let papers = response as? [BPaper] {
@@ -195,7 +195,7 @@ class DbManager: NSObject {
             return
         }
         let dataQuery = DataQueryBuilder()
-        dataQuery.setWhereClause(whereClause: "user.objectId = \'\(user.objectId!)\'")
+        dataQuery.whereClause = "user.objectId = \'\(user.objectId!)\'"
         backendless.data.of(BNote.self).find(queryBuilder: dataQuery, responseHandler: { (response) in
             print("response \(String(describing: response))")
             if let notes = response as? [BNote] {
