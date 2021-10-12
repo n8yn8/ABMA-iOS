@@ -7,8 +7,12 @@
 //
 
 import Cocoa
+import RxSwift
+import RxCocoa
 
 class EventViewController: NSViewController {
+    
+    private let disposeBag = DisposeBag()
 
     @IBOutlet weak var datePicker: NSDatePicker!
     @IBOutlet weak var startTimePicker: NSDatePicker!
@@ -21,10 +25,9 @@ class EventViewController: NSViewController {
     @IBOutlet weak var tabView: NSTabView!
     @IBOutlet weak var saveButton: NSButton!
     
-    weak var delegate: EventViewControllerDelegate?
     
     private let calendar = Calendar.current
-    fileprivate var event: BEvent?
+    private var event: BEvent?
     fileprivate var papersViewController: PapersViewController?
     
     override func viewDidLoad() {
@@ -35,7 +38,13 @@ class EventViewController: NSViewController {
         datePicker.calendar = self.calendar
         datePicker.dateValue = Date()
 
-        // Do any additional setup after loading the view.
+        YearsModel.instance.selectedEventRelay.asObservable()
+        .subscribe(onNext: { [unowned self] selectedEvent in
+            print("event observed \(String(describing: selectedEvent))")
+            self.representedObject = selectedEvent
+            
+        })
+        .disposed(by: disposeBag)
     }
 
     override var representedObject: Any? {
@@ -49,11 +58,14 @@ class EventViewController: NSViewController {
             descriptionTextView.string = ""
             
             if let event = representedObject as? BEvent {
+                setEnabled(enabled: true)
                 self.event = event
                 
                 let utcOffset = TimeInterval(-TimeZone.current.secondsFromGMT())
-                datePicker.dateValue = event.startDate.addingTimeInterval(utcOffset)
-                startTimePicker.dateValue = event.startDate.addingTimeInterval(utcOffset)
+                if let startDate = event.startDate {
+                    datePicker.dateValue = startDate.addingTimeInterval(utcOffset)
+                    startTimePicker.dateValue = startDate.addingTimeInterval(utcOffset)
+                }
                 if let endDate = event.endDate {
                     endTimePicker.dateValue = endDate.addingTimeInterval(utcOffset)
                     endTimePicker.isHidden = false
@@ -75,24 +87,9 @@ class EventViewController: NSViewController {
                 if let details = event.details {
                     descriptionTextView.string = details
                     tabView.selectFirstTabViewItem(self)
-                } else {
-                    
                 }
                 if event.papersCount > 0 {
-                    if let papers = event.papers {
-                        setPapers(papers: papers)
-                    } else {
-                        DbManager.sharedInstance.getPapers(parentId: event.objectId!, callback: { (response, errore) in
-                            event.papers = response?.sorted(by: { (paper1, paper2) -> Bool in
-                                paper1.order < paper2.order
-                            })
-                            if let papers = event.papers {
-                                self.setPapers(papers: papers)
-                            }
-                        })
-                    }
-                } else {
-                    self.setPapers(papers: [])
+                    tabView.selectLastTabViewItem(self)
                 }
                 
                 setEnabled(enabled: true)
@@ -109,16 +106,7 @@ class EventViewController: NSViewController {
         }
     }
     
-    func setPapers(papers: [BPaper]) {
-        if !papers.isEmpty {
-            tabView.selectLastTabViewItem(self)
-        }
-        if let controller = papersViewController {
-            controller.papers = papers
-        }
-    }
-    
-    func setEnabled(enabled: Bool) {
+    private func setEnabled(enabled: Bool) {
         datePicker.isEnabled = enabled
         startTimePicker.isEnabled = enabled
         endTimePicker.isEnabled = enabled
@@ -144,20 +132,15 @@ class EventViewController: NSViewController {
         let startDate = buildDate(timePartInCurTZ: startTimePicker.dateValue)
         let endDate = includeEndTimeButton.state.rawValue == 1 ? buildDate(timePartInCurTZ: endTimePicker.dateValue) : nil
         
-        if event == nil {
-            event = BEvent()
-        }
-        event?.startDate = startDate
-        event?.endDate = endDate
-        event?.title = titleTextField.stringValue
-        event!.location = locationTextField.stringValue
-        event!.subtitle = subtitleTextField.stringValue
-        event!.details = descriptionTextView.string
-        let papers = papersViewController!.papers
-        event!.papers = papers
-        event?.papersCount = papers.count
+        let thisEvent = event ?? BEvent()
+        thisEvent.startDate = startDate
+        thisEvent.endDate = endDate
+        thisEvent.title = titleTextField.stringValue
+        thisEvent.location = locationTextField.stringValue
+        thisEvent.subtitle = subtitleTextField.stringValue
+        thisEvent.details = descriptionTextView.string
         
-        self.delegate?.updateEvent(event: event!)
+        YearsModel.instance.update(event: thisEvent)
     }
     
     func buildDate(timePartInCurTZ: Date) -> Date {
@@ -171,23 +154,8 @@ class EventViewController: NSViewController {
     
     override func prepare(for segue: NSStoryboardSegue, sender: Any?) {
         if let controller = segue.destinationController as? PapersViewController {
-            controller.delegate = self
             papersViewController = controller
         }
     }
 
-}
-
-extension EventViewController : PapersViewControllerDelegate {
-    func updatedPapers() {
-        let papersCount = papersViewController!.papers.count
-        if event?.papersCount != papersCount {
-            event?.papersCount = papersCount
-            saveEvent()
-        }
-    }
-}
-
-protocol EventViewControllerDelegate: class {
-    func updateEvent(event: BEvent)
 }

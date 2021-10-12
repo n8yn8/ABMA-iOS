@@ -25,6 +25,6 @@ class PushViewController: NSViewController {
     }
 }
 
-protocol PushViewControllerDelegate: class {
+protocol PushViewControllerDelegate: AnyObject {
     func sendUpdate(message: String)
 }

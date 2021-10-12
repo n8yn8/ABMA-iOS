@@ -7,17 +7,24 @@
 //
 
 import Cocoa
+import RxSwift
+import RxCocoa
 
 class SponsorsViewController: NSViewController {
     
-    private var sponsors = [BSponsor]()
+    private let disposeBag = DisposeBag()
+    
+    private var sponsors = [BSponsor]() {
+        didSet {
+            self.collectionView.reloadData()
+        }
+    }
     var yearParentId: String!
     private var selectedSponsorIndex: Int?
 
     @IBOutlet weak var collectionView: NSCollectionView!
     @IBOutlet weak var removeButton: NSButton!
     
-    weak var delegate: SponsorsViewControllerDelegate?
     lazy var sheetViewController: NewSponsorViewController = {
         let vc = self.storyboard!.instantiateController(withIdentifier: "NewSponsorViewController")
             as! NewSponsorViewController
@@ -31,6 +38,13 @@ class SponsorsViewController: NSViewController {
         
         configureCollectionView()
         removeButton.isEnabled = false
+        
+        YearsModel.instance.sponsorsRelay.asObservable()
+            .subscribe(onNext: { [unowned self] inSponsors in
+                self.sponsors = inSponsors
+                
+            })
+            .disposed(by: disposeBag)
     }
     
     private func configureCollectionView() {
@@ -43,14 +57,6 @@ class SponsorsViewController: NSViewController {
         collectionView.collectionViewLayout = flowLayout
         
         view.wantsLayer = true
-    }
-    
-    func updateSponsors(sponsorList: [BSponsor]?) {
-        self.sponsors.removeAll()
-        if let sponsors = sponsorList {
-            self.sponsors.append(contentsOf: sponsors)
-        }
-        collectionView.reloadData()
     }
     
     @IBAction func add(_ sender: Any) {
@@ -78,7 +84,6 @@ class SponsorsViewController: NSViewController {
             sheetViewController.image = image
             sheetViewController.imageData = data
             sheetViewController.imageName = name.replacingOccurrences(of: " ", with: "_", options: NSString.CompareOptions.literal, range: nil)
-            sheetViewController.delegate = self
             presentAsSheet(sheetViewController)
         } else {
             print("missing image at: \(path)")
@@ -91,8 +96,7 @@ class SponsorsViewController: NSViewController {
             return
         }
         let sponsor = sponsors.remove(at: selected)
-        DbManager.sharedInstance.delete(sponsor: sponsor)
-        collectionView.reloadData()
+        YearsModel.instance.remove(sponsor: sponsor)
         removeButton.isEnabled = false
     }
     
@@ -127,14 +131,4 @@ extension SponsorsViewController: NSCollectionViewDataSource, NSCollectionViewDe
         removeButton.isEnabled = true
     }
     
-}
-
-extension SponsorsViewController: NewSponsorViewControllerDelegate {
-    func saveSponsor(sponsor: BSponsor) {
-        delegate?.saveSponsor(savedSponsor: sponsor)
-    }
-}
-
-protocol SponsorsViewControllerDelegate: class {
-    func saveSponsor(savedSponsor: BSponsor)
 }

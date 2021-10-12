@@ -9,8 +9,6 @@
 import Cocoa
 
 class NewYearsViewController: NSViewController {
-    
-    weak var delegate: NewYearsViewControllerDelegate?
 
     @IBOutlet weak var yearTextField: NSTextField!
     @IBOutlet weak var yearStepper: NSStepper!
@@ -38,12 +36,18 @@ class NewYearsViewController: NSViewController {
     }
     
     @IBAction func done(_ sender: Any) {
-        delegate?.yearCreated(year: year)
+        let yearsModel = YearsModel.instance
+        for checkYear in yearsModel.yearsRelay.value {
+            if checkYear.name == year {
+                yearsModel.selectedYearRelay.accept(checkYear)
+                dismiss(nil)
+                return
+            }
+        }
+        let thisYear = BYear()
+        thisYear.name = year
+        yearsModel.add(year: thisYear)
         dismiss(nil)
     }
     
-}
-
-protocol NewYearsViewControllerDelegate: class {
-    func yearCreated(year: Int)
 }

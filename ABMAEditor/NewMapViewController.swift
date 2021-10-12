@@ -60,6 +60,6 @@ class NewMapViewController: NSViewController {
     }
 }
 
-protocol NewMapViewControllerDelegate: class {
+protocol NewMapViewControllerDelegate: AnyObject {
     func saveMap(map: BMap)
 }

@@ -7,14 +7,17 @@
 //
 
 import Cocoa
+import RxSwift
+import RxCocoa
 
 class SurveyListViewController: NSViewController, NSTableViewDelegate, NSTableViewDataSource {
+    
+    private let disposeBag = DisposeBag()
 
     @IBOutlet weak var surveysTableView: NSTableView!
     @IBOutlet weak var removeButton: NSButton!
     
-    weak var delegate: SurveyListViewControllerDelegate?
-    var surveysString: String? {
+    private var surveysString: String? {
         didSet {
             if let string = surveysString {
                 do {
@@ -35,6 +38,7 @@ class SurveyListViewController: NSViewController, NSTableViewDelegate, NSTableVi
         didSet {
             surveysTableView.deselectAll(self)
             surveysTableView.reloadData()
+            updateSelectedSurvey()
         }
     }
     private var selectedIndex: Int?
@@ -42,7 +46,13 @@ class SurveyListViewController: NSViewController, NSTableViewDelegate, NSTableVi
     
     override func viewDidLoad() {
         super.viewDidLoad()
-        // Do view setup here.
+        
+        YearsModel.instance.selectedYearRelay.asObservable()
+        .subscribe(onNext: { [unowned self] selectedYear in
+            self.surveysString = selectedYear?.surveys
+            
+        })
+        .disposed(by: disposeBag)
     }
     
     func numberOfRows(in tableView: NSTableView) -> Int {
@@ -110,7 +120,7 @@ class SurveyListViewController: NSViewController, NSTableViewDelegate, NSTableVi
             })
             let jsonData = try jsonEncoder.encode(surveys)
             let string = String(data: jsonData, encoding: String.Encoding.utf8)
-            delegate?.saveSurveys(surveys: string!)
+            YearsModel.instance.update(surveys: string)
         } catch {
             print("error trying to convert object to data")
             print(error)
@@ -126,8 +136,4 @@ extension SurveyListViewController: SurveyViewControllerDelegate {
         save()
     }
     
-}
-
-protocol SurveyListViewControllerDelegate: class {
-    func saveSurveys(surveys: String)
 }

@@ -13,8 +13,8 @@ class DbManager: NSObject {
     
     static let sharedInstance = DbManager()
     
-    static let applicationId = "76269ABA-AF2E-5901-FF61-99AB83F57700"
-    static let apiKey = "F7225E47-B7A7-487D-91AD-0DAF47C8AD17"
+    static let applicationId = "7D06F708-89FA-DD86-FF95-C51A10425A00"
+    static let apiKey = "5DB2DE1C-0AFF-9AD6-FF16-83C8AE9F1600"
     
     enum FileType : String {
         case sponsor = "sponsor", map = "map"
@@ -137,7 +137,7 @@ class DbManager: NSObject {
     
     func getRelated<T : Codable>(relationName: String, parentId: String, parentClass: AnyClass, callback: @escaping ([T]?, Error?) -> Void) {
         let loadRelationsQueryBuilder = LoadRelationsQueryBuilder(entityClass: T.self, relationName: relationName)
-        loadRelationsQueryBuilder.setPageSize(pageSize: 100)
+        loadRelationsQueryBuilder.pageSize = 100
         
         Backendless.shared.data.of(parentClass).loadRelations(objectId: parentId, queryBuilder: loadRelationsQueryBuilder, responseHandler: { (response) in
             self.handleResponse(response: response, callback: callback)
@@ -213,7 +213,7 @@ class DbManager: NSObject {
     private func delete(fileUrl: String, fileType: DbManager.FileType) {
         let parts = fileUrl.components(separatedBy: "/")
         if let fileName = parts.last {
-            Backendless.shared.file.remove(path: "\(fileType.rawValue)/\(fileName)", responseHandler: {
+            Backendless.shared.file.remove(path: "\(fileType.rawValue)/\(fileName)", responseHandler: {_ in
                 print("deleteFile success = \(fileName)")
             }) { (error) in
                 print("deleteFile error = \(String(describing: error))")
@@ -246,10 +246,10 @@ class DbManager: NSObject {
         }
         
         let publishOptions = PublishOptions()
-        publishOptions.setHeaders(headers: headers)
+        publishOptions.headers = headers
 
         let deliveryOptions = DeliveryOptions()
-        deliveryOptions.setPushBroadcast(pushBroadcast: PushBroadcastEnum.FOR_IOS.rawValue | PushBroadcastEnum.FOR_ANDROID.rawValue)
+        deliveryOptions.pushBroadcast = PushBroadcastEnum.FOR_IOS.rawValue | PushBroadcastEnum.FOR_ANDROID.rawValue
         
         Backendless.shared.messaging.publish(channelName: "default", message: message, publishOptions: publishOptions, deliveryOptions: deliveryOptions, responseHandler: { messageStatus in
             print("Message status: \(messageStatus)")

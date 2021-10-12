@@ -14,7 +14,6 @@ class NewSponsorViewController: NSViewController {
     @IBOutlet weak var urlTextField: NSTextField!
     @IBOutlet weak var activityIndicator: NSProgressIndicator!
     
-    weak var delegate: NewSponsorViewControllerDelegate?
     var image: NSImage!
     var imageData: Data!
     var imageName: String!
@@ -49,7 +48,7 @@ class NewSponsorViewController: NSViewController {
                 DispatchQueue.main.async {
                     self.activityIndicator.stopAnimation(self)
                     if let saved = savedSponsor {
-                        self.delegate?.saveSponsor(sponsor: saved)
+                        YearsModel.instance.add(sponsor: saved)
                         self.dismiss(nil)
                     }
                 }
@@ -63,8 +62,4 @@ class NewSponsorViewController: NSViewController {
     @IBAction func cancel(_ sender: Any) {
         dismiss(nil)
     }
-}
-
-protocol NewSponsorViewControllerDelegate: class {
-    func saveSponsor(sponsor: BSponsor)
 }

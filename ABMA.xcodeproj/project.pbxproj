@@ -75,6 +75,9 @@
 		437F1192205A0055006EBBC0 /* SurveyTableViewCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 437F1191205A0055006EBBC0 /* SurveyTableViewCell.m */; };
 		438D599E1ABA97D3004FF7ED /* Launch Screen.xib in Resources */ = {isa = PBXBuildFile; fileRef = 438D599D1ABA97D3004FF7ED /* Launch Screen.xib */; };
 		439947E51AB1E9F500D1479B /* NotesViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 439947E41AB1E9F500D1479B /* NotesViewController.m */; };
+		439E10BD2439306400F57775 /* RxSwift in Frameworks */ = {isa = PBXBuildFile; productRef = 439E10BC2439306400F57775 /* RxSwift */; };
+		439E10BF243955F600F57775 /* YearsModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 439E10BE243955F600F57775 /* YearsModel.swift */; };
+		439E10C12439574100F57775 /* RxCocoa in Frameworks */ = {isa = PBXBuildFile; productRef = 439E10C02439574100F57775 /* RxCocoa */; };
 		43A436081FA767EB00754298 /* DbManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 43A436071FA767EB00754298 /* DbManager.swift */; };
 		43A4360A1FA7694600754298 /* DbManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 43A436091FA7694600754298 /* DbManager.swift */; };
 		43A436141FA8D27200754298 /* BYear.swift in Sources */ = {isa = PBXBuildFile; fileRef = 435EEE671E3D329F00C9CF84 /* BYear.swift */; };
@@ -208,6 +211,7 @@
 		438D599D1ABA97D3004FF7ED /* Launch Screen.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = "Launch Screen.xib"; sourceTree = "<group>"; };
 		439947E31AB1E9F500D1479B /* NotesViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = NotesViewController.h; sourceTree = "<group>"; };
 		439947E41AB1E9F500D1479B /* NotesViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = NotesViewController.m; sourceTree = "<group>"; };
+		439E10BE243955F600F57775 /* YearsModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = YearsModel.swift; sourceTree = "<group>"; };
 		43A436071FA767EB00754298 /* DbManager.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = DbManager.swift; sourceTree = "<group>"; };
 		43A436091FA7694600754298 /* DbManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DbManager.swift; sourceTree = "<group>"; };
 		43AAAE291AAAA484002C424A /* CoreData.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CoreData.framework; path = System/Library/Frameworks/CoreData.framework; sourceTree = SDKROOT; };
@@ -262,7 +266,9 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				439E10BD2439306400F57775 /* RxSwift in Frameworks */,
 				4311F517242D4920002871BC /* SDWebImage in Frameworks */,
+				439E10C12439574100F57775 /* RxCocoa in Frameworks */,
 				5D02F189E686D97E9E39CFB5 /* Pods_ABMAEditor.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -457,6 +463,7 @@
 				43FA2A141E593F7900BAE929 /* BNote.swift */,
 				4324097220444C5F0093FF83 /* BSurvey.swift */,
 				4364687B207068BC0048685F /* BMap.swift */,
+				439E10BE243955F600F57775 /* YearsModel.swift */,
 			);
 			path = model;
 			sourceTree = "<group>";
@@ -530,6 +537,8 @@
 			name = ABMAEditor;
 			packageProductDependencies = (
 				4311F516242D4920002871BC /* SDWebImage */,
+				439E10BC2439306400F57775 /* RxSwift */,
+				439E10C02439574100F57775 /* RxCocoa */,
 			);
 			productName = ABMAEditor;
 			productReference = 434B44DA1E1B231F00963096 /* ABMAEditor.app */;
@@ -573,6 +582,7 @@
 			mainGroup = 4338BB9418F26F51002683EF;
 			packageReferences = (
 				4311F513242D48B3002871BC /* XCRemoteSwiftPackageReference "SDWebImage" */,
+				439E10BB2439306400F57775 /* XCRemoteSwiftPackageReference "RxSwift" */,
 			);
 			productRefGroup = 4338BB9E18F26F52002683EF /* Products */;
 			projectDirPath = "";
@@ -636,7 +646,7 @@
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 			shellPath = /bin/sh;
-			shellScript = "\"${PODS_ROOT}/FirebaseCrashlytics/run\"\n";
+			shellScript = "releaseConfig=\"Release\"\n\nif [ \"$releaseConfig\" = \"${CONFIGURATION}\" ]; then\necho \"Running Crashlytics\"\n\"${PODS_ROOT}/FirebaseCrashlytics/run\"\nfi\n\n";
 		};
 		43732BD31E72F5F400A85B63 /* Fabric Run Script */ = {
 			isa = PBXShellScriptBuildPhase;
@@ -650,7 +660,7 @@
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 			shellPath = /bin/sh;
-			shellScript = "releaseConfig=\"Release\"\n\nif [ \"$releaseConfig\" = \"${CONFIGURATION}\" ]; then\necho \"Running Crashlytics\"\n\"${PODS_ROOT}/Fabric/run\" 8d96e50ad3aa3a14f2bc63cc1f2ecefb807e2099 f58304b865eb4803e74654648b5849c744e24c53c2597d274229a2fd8c959401\nfi";
+			shellScript = "releaseConfig=\"Release\"\n\nif [ \"$releaseConfig\" = \"${CONFIGURATION}\" ]; then\necho \"Running Crashlytics\"\n\"${PODS_ROOT}/Fabric/run\" 8d96e50ad3aa3a14f2bc63cc1f2ecefb807e2099 f58304b865eb4803e74654648b5849c744e24c53c2597d274229a2fd8c959401\nfi\n";
 		};
 		9542D120307B29D5569B2267 /* [CP] Check Pods Manifest.lock */ = {
 			isa = PBXShellScriptBuildPhase;
@@ -805,6 +815,7 @@
 				434B44F21E23222700963096 /* ContainerController.swift in Sources */,
 				431326AF1E3D7BE7003C808E /* SponsorItem.swift in Sources */,
 				4364687C207068BC0048685F /* BMap.swift in Sources */,
+				439E10BF243955F600F57775 /* YearsModel.swift in Sources */,
 				43A4360A1FA7694600754298 /* DbManager.swift in Sources */,
 				4364688620706C780048685F /* NewMapViewController.swift in Sources */,
 				430559682066AA5300069B49 /* PushParams.swift in Sources */,
@@ -1128,6 +1139,14 @@
 				version = 5.6.1;
 			};
 		};
+		439E10BB2439306400F57775 /* XCRemoteSwiftPackageReference "RxSwift" */ = {
+			isa = XCRemoteSwiftPackageReference;
+			repositoryURL = "https://github.com/ReactiveX/RxSwift.git";
+			requirement = {
+				kind = exactVersion;
+				version = 5.1.1;
+			};
+		};
 /* End XCRemoteSwiftPackageReference section */
 
 /* Begin XCSwiftPackageProductDependency section */
@@ -1140,6 +1159,16 @@
 			isa = XCSwiftPackageProductDependency;
 			package = 4311F513242D48B3002871BC /* XCRemoteSwiftPackageReference "SDWebImage" */;
 			productName = SDWebImage;
+		};
+		439E10BC2439306400F57775 /* RxSwift */ = {
+			isa = XCSwiftPackageProductDependency;
+			package = 439E10BB2439306400F57775 /* XCRemoteSwiftPackageReference "RxSwift" */;
+			productName = RxSwift;
+		};
+		439E10C02439574100F57775 /* RxCocoa */ = {
+			isa = XCSwiftPackageProductDependency;
+			package = 439E10BB2439306400F57775 /* XCRemoteSwiftPackageReference "RxSwift" */;
+			productName = RxCocoa;
 		};
 /* End XCSwiftPackageProductDependency section */
 
