@@ -137,7 +137,7 @@ class DbManager: NSObject {
     
     func getRelated<T : Codable>(relationName: String, parentId: String, parentClass: AnyClass, callback: @escaping ([T]?, Error?) -> Void) {
         let loadRelationsQueryBuilder = LoadRelationsQueryBuilder(entityClass: T.self, relationName: relationName)
-        loadRelationsQueryBuilder.setPageSize(pageSize: 100)
+        loadRelationsQueryBuilder.pageSize = 100
         
         Backendless.shared.data.of(parentClass).loadRelations(objectId: parentId, queryBuilder: loadRelationsQueryBuilder, responseHandler: { (response) in
             self.handleResponse(response: response, callback: callback)
@@ -246,10 +246,10 @@ class DbManager: NSObject {
         }
         
         let publishOptions = PublishOptions()
-        publishOptions.setHeaders(headers: headers)
+        publishOptions.headers = headers
 
         let deliveryOptions = DeliveryOptions()
-        deliveryOptions.setPushBroadcast(pushBroadcast: PushBroadcastEnum.FOR_IOS.rawValue | PushBroadcastEnum.FOR_ANDROID.rawValue)
+        deliveryOptions.pushBroadcast = PushBroadcastEnum.FOR_IOS.rawValue | PushBroadcastEnum.FOR_ANDROID.rawValue
         
         Backendless.shared.messaging.publish(channelName: "default", message: message, publishOptions: publishOptions, deliveryOptions: deliveryOptions, responseHandler: { messageStatus in
             print("Message status: \(messageStatus)")

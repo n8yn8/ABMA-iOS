@@ -70,6 +70,6 @@ class SurveyViewController: NSViewController {
     
 }
 
-protocol SurveyViewControllerDelegate: class {
+protocol SurveyViewControllerDelegate: AnyObject {
     func saveSurvey(survey: BSurvey)
 }
