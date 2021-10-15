@@ -10,8 +10,8 @@
 		43027B371E39B7F400585C8B /* PapersViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 43027B361E39B7F400585C8B /* PapersViewController.swift */; };
 		430559682066AA5300069B49 /* PushParams.swift in Sources */ = {isa = PBXBuildFile; fileRef = 430559672066AA5200069B49 /* PushParams.swift */; };
 		4305618B1A9AF95000ED4BB0 /* SWRevealViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 4305618A1A9AF95000ED4BB0 /* SWRevealViewController.m */; };
-		4311F515242D48B3002871BC /* SDWebImage in Frameworks */ = {isa = PBXBuildFile; productRef = 4311F514242D48B3002871BC /* SDWebImage */; };
-		4311F517242D4920002871BC /* SDWebImage in Frameworks */ = {isa = PBXBuildFile; productRef = 4311F516242D4920002871BC /* SDWebImage */; };
+		4311F515242D48B3002871BC /* BuildFile in Frameworks */ = {isa = PBXBuildFile; productRef = 4311F514242D48B3002871BC /* SwiftPackageProductDependency */; };
+		4311F517242D4920002871BC /* BuildFile in Frameworks */ = {isa = PBXBuildFile; productRef = 4311F516242D4920002871BC /* SwiftPackageProductDependency */; };
 		431326A01E3D655B003C808E /* YearViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4313269F1E3D655B003C808E /* YearViewController.swift */; };
 		431326A41E3D7605003C808E /* Sponsors.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 431326A31E3D7605003C808E /* Sponsors.storyboard */; };
 		431326A61E3D7796003C808E /* BSponsor.swift in Sources */ = {isa = PBXBuildFile; fileRef = 431326A51E3D7796003C808E /* BSponsor.swift */; };
@@ -57,6 +57,8 @@
 		434B44EE1E1BF75500963096 /* BEvent.swift in Sources */ = {isa = PBXBuildFile; fileRef = 434B44ED1E1BF75500963096 /* BEvent.swift */; };
 		434B44F01E1FF92900963096 /* EventListViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 434B44EF1E1FF92900963096 /* EventListViewController.swift */; };
 		434B44F21E23222700963096 /* ContainerController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 434B44F11E23222700963096 /* ContainerController.swift */; };
+		434DF3C92715CF2D00258F08 /* BuildFile in Frameworks */ = {isa = PBXBuildFile; productRef = 434DF3C82715CF2D00258F08 /* SwiftPackageProductDependency */; };
+		434DF3CB2715CF2D00258F08 /* BuildFile in Frameworks */ = {isa = PBXBuildFile; productRef = 434DF3CA2715CF2D00258F08 /* SwiftPackageProductDependency */; };
 		4352A8791AB28BBE00EC03CB /* BaseViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 4352A8781AB28BBE00EC03CB /* BaseViewController.m */; };
 		435EEE6E1E3D3A4200C9CF84 /* NewYearsViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 435EEE6D1E3D3A4200C9CF84 /* NewYearsViewController.swift */; };
 		4364687A2070676D0048685F /* Maps.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 436468792070676D0048685F /* Maps.storyboard */; };
@@ -75,9 +77,9 @@
 		437F1192205A0055006EBBC0 /* SurveyTableViewCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 437F1191205A0055006EBBC0 /* SurveyTableViewCell.m */; };
 		438D599E1ABA97D3004FF7ED /* Launch Screen.xib in Resources */ = {isa = PBXBuildFile; fileRef = 438D599D1ABA97D3004FF7ED /* Launch Screen.xib */; };
 		439947E51AB1E9F500D1479B /* NotesViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 439947E41AB1E9F500D1479B /* NotesViewController.m */; };
-		439E10BD2439306400F57775 /* RxSwift in Frameworks */ = {isa = PBXBuildFile; productRef = 439E10BC2439306400F57775 /* RxSwift */; };
+		439E10BD2439306400F57775 /* BuildFile in Frameworks */ = {isa = PBXBuildFile; productRef = 439E10BC2439306400F57775 /* SwiftPackageProductDependency */; };
 		439E10BF243955F600F57775 /* YearsModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 439E10BE243955F600F57775 /* YearsModel.swift */; };
-		439E10C12439574100F57775 /* RxCocoa in Frameworks */ = {isa = PBXBuildFile; productRef = 439E10C02439574100F57775 /* RxCocoa */; };
+		439E10C12439574100F57775 /* BuildFile in Frameworks */ = {isa = PBXBuildFile; productRef = 439E10C02439574100F57775 /* SwiftPackageProductDependency */; };
 		43A436081FA767EB00754298 /* DbManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 43A436071FA767EB00754298 /* DbManager.swift */; };
 		43A4360A1FA7694600754298 /* DbManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 43A436091FA7694600754298 /* DbManager.swift */; };
 		43A436141FA8D27200754298 /* BYear.swift in Sources */ = {isa = PBXBuildFile; fileRef = 435EEE671E3D329F00C9CF84 /* BYear.swift */; };
@@ -253,10 +255,12 @@
 			files = (
 				436BA4D021D0352B007B6B36 /* UserNotifications.framework in Frameworks */,
 				43AAAE2A1AAAA484002C424A /* CoreData.framework in Frameworks */,
-				4311F515242D48B3002871BC /* SDWebImage in Frameworks */,
+				4311F515242D48B3002871BC /* BuildFile in Frameworks */,
+				434DF3C92715CF2D00258F08 /* BuildFile in Frameworks */,
 				43CF9B1A18F5A4E600885DAC /* libz.dylib in Frameworks */,
 				4338BBA318F26F53002683EF /* CoreGraphics.framework in Frameworks */,
 				4338BBA518F26F53002683EF /* UIKit.framework in Frameworks */,
+				434DF3CB2715CF2D00258F08 /* BuildFile in Frameworks */,
 				4338BBA118F26F53002683EF /* Foundation.framework in Frameworks */,
 				46EECC52B6BB0A76343F50B7 /* libPods-ABMA.a in Frameworks */,
 			);
@@ -266,9 +270,9 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				439E10BD2439306400F57775 /* RxSwift in Frameworks */,
-				4311F517242D4920002871BC /* SDWebImage in Frameworks */,
-				439E10C12439574100F57775 /* RxCocoa in Frameworks */,
+				439E10BD2439306400F57775 /* BuildFile in Frameworks */,
+				4311F517242D4920002871BC /* BuildFile in Frameworks */,
+				439E10C12439574100F57775 /* BuildFile in Frameworks */,
 				5D02F189E686D97E9E39CFB5 /* Pods_ABMAEditor.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -279,7 +283,6 @@
 		4338BB9418F26F51002683EF = {
 			isa = PBXGroup;
 			children = (
-				437F118A20563146006EBBC0 /* Common */,
 				4338BBA618F26F53002683EF /* ABMA */,
 				434B44DB1E1B231F00963096 /* ABMAEditor */,
 				4338BB9F18F26F52002683EF /* Frameworks */,
@@ -468,13 +471,6 @@
 			path = model;
 			sourceTree = "<group>";
 		};
-		437F118A20563146006EBBC0 /* Common */ = {
-			isa = PBXGroup;
-			children = (
-			);
-			path = Common;
-			sourceTree = "<group>";
-		};
 		43A4360F1FA8C33600754298 /* network */ = {
 			isa = PBXGroup;
 			children = (
@@ -513,7 +509,9 @@
 			);
 			name = ABMA;
 			packageProductDependencies = (
-				4311F514242D48B3002871BC /* SDWebImage */,
+				4311F514242D48B3002871BC /* SwiftPackageProductDependency */,
+				434DF3C82715CF2D00258F08 /* SwiftPackageProductDependency */,
+				434DF3CA2715CF2D00258F08 /* SwiftPackageProductDependency */,
 			);
 			productName = ABMA;
 			productReference = 4338BB9D18F26F52002683EF /* ABMA.app */;
@@ -536,9 +534,9 @@
 			);
 			name = ABMAEditor;
 			packageProductDependencies = (
-				4311F516242D4920002871BC /* SDWebImage */,
-				439E10BC2439306400F57775 /* RxSwift */,
-				439E10C02439574100F57775 /* RxCocoa */,
+				4311F516242D4920002871BC /* SwiftPackageProductDependency */,
+				439E10BC2439306400F57775 /* SwiftPackageProductDependency */,
+				439E10C02439574100F57775 /* SwiftPackageProductDependency */,
 			);
 			productName = ABMAEditor;
 			productReference = 434B44DA1E1B231F00963096 /* ABMAEditor.app */;
@@ -581,8 +579,9 @@
 			);
 			mainGroup = 4338BB9418F26F51002683EF;
 			packageReferences = (
-				4311F513242D48B3002871BC /* XCRemoteSwiftPackageReference "SDWebImage" */,
-				439E10BB2439306400F57775 /* XCRemoteSwiftPackageReference "RxSwift" */,
+				4311F513242D48B3002871BC /* RemoteSwiftPackageReference */,
+				439E10BB2439306400F57775 /* RemoteSwiftPackageReference */,
+				434DF3C72715CF2D00258F08 /* RemoteSwiftPackageReference */,
 			);
 			productRefGroup = 4338BB9E18F26F52002683EF /* Products */;
 			projectDirPath = "";
@@ -646,7 +645,7 @@
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 			shellPath = /bin/sh;
-			shellScript = "releaseConfig=\"Release\"\n\nif [ \"$releaseConfig\" = \"${CONFIGURATION}\" ]; then\necho \"Running Crashlytics\"\n\"${PODS_ROOT}/FirebaseCrashlytics/run\"\nfi\n\n";
+			shellScript = "releaseConfig=\"Release\"\n\nif [ \"$releaseConfig\" = \"${CONFIGURATION}\" ]; then\necho \"Running Crashlytics\"\n\"${BUILD_DIR%Build/*}/SourcePackages/checkouts/firebase-ios-sdk/Crashlytics/run\"\nfi\n\n";
 		};
 		43732BD31E72F5F400A85B63 /* Fabric Run Script */ = {
 			isa = PBXShellScriptBuildPhase;
@@ -714,20 +713,22 @@
 			inputPaths = (
 				"${PODS_ROOT}/Target Support Files/Pods-ABMAEditor/Pods-ABMAEditor-frameworks.sh",
 				"${BUILT_PRODUCTS_DIR}/BackendlessSwift-framework/Backendless.framework",
-				"${BUILT_PRODUCTS_DIR}/FirebaseCore-framework/FirebaseCore.framework",
-				"${BUILT_PRODUCTS_DIR}/FirebaseCoreDiagnostics-framework/FirebaseCoreDiagnostics.framework",
-				"${BUILT_PRODUCTS_DIR}/FirebaseCrashlytics-framework/FirebaseCrashlytics.framework",
-				"${BUILT_PRODUCTS_DIR}/FirebaseInstallations-framework/FirebaseInstallations.framework",
-				"${BUILT_PRODUCTS_DIR}/GoogleDataTransport-framework/GoogleDataTransport.framework",
-				"${BUILT_PRODUCTS_DIR}/GoogleUtilities-Environment-Logger-UserDefaults/GoogleUtilities.framework",
-				"${BUILT_PRODUCTS_DIR}/PromisesObjC-framework/FBLPromises.framework",
 				"${BUILT_PRODUCTS_DIR}/Socket.IO-Client-Swift-framework/SocketIO.framework",
 				"${BUILT_PRODUCTS_DIR}/Starscream-framework/Starscream.framework",
-				"${BUILT_PRODUCTS_DIR}/nanopb-framework/nanopb.framework",
+				"${BUILT_PRODUCTS_DIR}/FirebaseCore/FirebaseCore.framework",
+				"${BUILT_PRODUCTS_DIR}/FirebaseCoreDiagnostics/FirebaseCoreDiagnostics.framework",
+				"${BUILT_PRODUCTS_DIR}/FirebaseCrashlytics/FirebaseCrashlytics.framework",
+				"${BUILT_PRODUCTS_DIR}/FirebaseInstallations/FirebaseInstallations.framework",
+				"${BUILT_PRODUCTS_DIR}/GoogleDataTransport/GoogleDataTransport.framework",
+				"${BUILT_PRODUCTS_DIR}/GoogleUtilities/GoogleUtilities.framework",
+				"${BUILT_PRODUCTS_DIR}/PromisesObjC/FBLPromises.framework",
+				"${BUILT_PRODUCTS_DIR}/nanopb/nanopb.framework",
 			);
 			name = "[CP] Embed Pods Frameworks";
 			outputPaths = (
 				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/Backendless.framework",
+				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/SocketIO.framework",
+				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/Starscream.framework",
 				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/FirebaseCore.framework",
 				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/FirebaseCoreDiagnostics.framework",
 				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/FirebaseCrashlytics.framework",
@@ -735,8 +736,6 @@
 				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/GoogleDataTransport.framework",
 				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/GoogleUtilities.framework",
 				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/FBLPromises.framework",
-				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/SocketIO.framework",
-				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/Starscream.framework",
 				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/nanopb.framework",
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -1131,7 +1130,7 @@
 /* End XCConfigurationList section */
 
 /* Begin XCRemoteSwiftPackageReference section */
-		4311F513242D48B3002871BC /* XCRemoteSwiftPackageReference "SDWebImage" */ = {
+		4311F513242D48B3002871BC /* RemoteSwiftPackageReference */ = {
 			isa = XCRemoteSwiftPackageReference;
 			repositoryURL = "https://github.com/SDWebImage/SDWebImage.git";
 			requirement = {
@@ -1139,7 +1138,15 @@
 				version = 5.6.1;
 			};
 		};
-		439E10BB2439306400F57775 /* XCRemoteSwiftPackageReference "RxSwift" */ = {
+		434DF3C72715CF2D00258F08 /* RemoteSwiftPackageReference */ = {
+			isa = XCRemoteSwiftPackageReference;
+			repositoryURL = "https://github.com/firebase/firebase-ios-sdk.git";
+			requirement = {
+				kind = exactVersion;
+				version = 8.8.1;
+			};
+		};
+		439E10BB2439306400F57775 /* RemoteSwiftPackageReference */ = {
 			isa = XCRemoteSwiftPackageReference;
 			repositoryURL = "https://github.com/ReactiveX/RxSwift.git";
 			requirement = {
@@ -1150,24 +1157,34 @@
 /* End XCRemoteSwiftPackageReference section */
 
 /* Begin XCSwiftPackageProductDependency section */
-		4311F514242D48B3002871BC /* SDWebImage */ = {
+		4311F514242D48B3002871BC /* SwiftPackageProductDependency */ = {
 			isa = XCSwiftPackageProductDependency;
-			package = 4311F513242D48B3002871BC /* XCRemoteSwiftPackageReference "SDWebImage" */;
+			package = 4311F513242D48B3002871BC /* RemoteSwiftPackageReference */;
 			productName = SDWebImage;
 		};
-		4311F516242D4920002871BC /* SDWebImage */ = {
+		4311F516242D4920002871BC /* SwiftPackageProductDependency */ = {
 			isa = XCSwiftPackageProductDependency;
-			package = 4311F513242D48B3002871BC /* XCRemoteSwiftPackageReference "SDWebImage" */;
+			package = 4311F513242D48B3002871BC /* RemoteSwiftPackageReference */;
 			productName = SDWebImage;
 		};
-		439E10BC2439306400F57775 /* RxSwift */ = {
+		434DF3C82715CF2D00258F08 /* SwiftPackageProductDependency */ = {
 			isa = XCSwiftPackageProductDependency;
-			package = 439E10BB2439306400F57775 /* XCRemoteSwiftPackageReference "RxSwift" */;
+			package = 434DF3C72715CF2D00258F08 /* RemoteSwiftPackageReference */;
+			productName = "FirebaseAnalyticsSwift-Beta";
+		};
+		434DF3CA2715CF2D00258F08 /* SwiftPackageProductDependency */ = {
+			isa = XCSwiftPackageProductDependency;
+			package = 434DF3C72715CF2D00258F08 /* RemoteSwiftPackageReference */;
+			productName = FirebaseCrashlytics;
+		};
+		439E10BC2439306400F57775 /* SwiftPackageProductDependency */ = {
+			isa = XCSwiftPackageProductDependency;
+			package = 439E10BB2439306400F57775 /* RemoteSwiftPackageReference */;
 			productName = RxSwift;
 		};
-		439E10C02439574100F57775 /* RxCocoa */ = {
+		439E10C02439574100F57775 /* SwiftPackageProductDependency */ = {
 			isa = XCSwiftPackageProductDependency;
-			package = 439E10BB2439306400F57775 /* XCRemoteSwiftPackageReference "RxSwift" */;
+			package = 439E10BB2439306400F57775 /* RemoteSwiftPackageReference */;
 			productName = RxCocoa;
 		};
 /* End XCSwiftPackageProductDependency section */

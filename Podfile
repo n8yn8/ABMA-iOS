@@ -6,8 +6,6 @@ target 'ABMA' do
   platform :ios, '13.0'
   
   pod 'BackendlessSwift', '=6.1.3.1'
-  pod 'Firebase/Crashlytics'
-  pod 'Firebase/Analytics'
 
 end
 
