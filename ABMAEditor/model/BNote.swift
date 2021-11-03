@@ -7,7 +7,7 @@
 //
 
 import Foundation
-import Backendless
+import SwiftSDK
 
 class BNote: NSObject {
     
