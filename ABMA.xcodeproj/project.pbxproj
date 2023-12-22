@@ -1045,7 +1045,7 @@
 			repositoryURL = "https://github.com/SDWebImage/SDWebImage.git";
 			requirement = {
 				kind = exactVersion;
-				version = 5.6.1;
+				version = 5.15.8;
 			};
 		};
 		434DF3C72715CF2D00258F08 /* XCRemoteSwiftPackageReference "firebase-ios-sdk" */ = {
