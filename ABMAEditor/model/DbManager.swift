@@ -34,66 +34,46 @@ class DbManager: NSObject {
     }
     
     func update(year: BYear, callback: @escaping (BYear?, String?) -> Void) {
-        if year.objectId != nil {
-            Backendless.shared.data.of(BYear.self).update(entity: year, responseHandler: { (response) in
-                self.handleResponse(response: response, callback: callback)
-            }) { (error) in
-                callback(nil, error.message)
-            }
-        } else {
-            Backendless.shared.data.of(BYear.self).create(entity: year, responseHandler: { (response) in
-                self.handleResponse(response: response, callback: callback)
-            }) { (error) in
-                callback(nil, error.message)
-            }
+        Backendless.shared.data.of(BYear.self).save(entity: year, responseHandler: { (response) in
+            self.handleResponse(response: response, callback: callback)
+        }) { (error) in
+            callback(nil, error.message)
         }
     }
     
     func update(event: BEvent, yearParent: String, callback: @escaping (_ savedEvent: BEvent?, _ errorString: String?) -> Void) {
-        if event.objectId != nil {
-            Backendless.shared.data.of(BEvent.self).update(entity: event, responseHandler: { (response) in
-                self.handleResponse(response: response, callback: callback)
-            }) { (error) in
-                callback(nil, error.message)
-            }
-        } else {
-            Backendless.shared.data.of(BEvent.self).create(entity: event, responseHandler: { (response) in
+        Backendless.shared.data.of(BEvent.self).save(entity: event, responseHandler: { (response) in
+            if event.objectId == nil {
                 self.relate(event: response as! BEvent, yearParent: yearParent, callback: callback)
-            }) { (error) in
-                callback(nil, error.message)
+            } else {
+                self.handleResponse(response: response, callback: callback)
             }
+        }) { (error) in
+            callback(nil, error.message)
         }
     }
     
     func update(paper: BPaper, eventParent: String, callback: @escaping (_ savedPaper: BPaper?, _ errorString: String?) -> Void) {
-        if paper.objectId != nil {
-            Backendless.shared.data.of(BPaper.self).update(entity: paper, responseHandler: { (response) in
-                self.handleResponse(response: response, callback: callback)
-            }) { (error) in
-                callback(nil, error.message)
-            }
-        } else {
-            Backendless.shared.data.of(BPaper.self).create(entity: paper, responseHandler: { (response) in
+        Backendless.shared.data.of(BPaper.self).save(entity: paper, responseHandler: { (response) in
+            if paper.objectId == nil {
                 self.relate(paper: response as! BPaper, eventParent: eventParent, callback: callback)
-            }) { (error) in
-                callback(nil, error.message)
+            } else {
+                self.handleResponse(response: response, callback: callback)
             }
+        }) { (error) in
+            callback(nil, error.message)
         }
     }
     
     func update(sponsor: BSponsor, yearParent: String, callback: @escaping (_ savedSponsor: BSponsor?, _ errorString: String?) -> Void) {
-        if sponsor.objectId != nil {
-            Backendless.shared.data.of(BSponsor.self).update(entity: sponsor, responseHandler: { (response) in
-                self.handleResponse(response: response, callback: callback)
-            }) { (error) in
-                callback(nil, error.message)
-            }
-        } else {
-            Backendless.shared.data.of(BSponsor.self).create(entity: sponsor, responseHandler: { (response) in
+        Backendless.shared.data.of(BSponsor.self).save(entity: sponsor, responseHandler: { (response) in
+            if sponsor.objectId == nil {
                 self.relate(sponsor: response as! BSponsor, yearParent: yearParent, callback: callback)
-            }) { (error) in
-                callback(nil, error.message)
+            } else {
+                self.handleResponse(response: response, callback: callback)
             }
+        }) { (error) in
+            callback(nil, error.message)
         }
     }
     

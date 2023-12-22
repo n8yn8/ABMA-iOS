@@ -1061,7 +1061,7 @@
 			repositoryURL = "https://github.com/Backendless/Swift-SDK";
 			requirement = {
 				kind = exactVersion;
-				version = 6.4.3;
+				version = 7.0.4;
 			};
 		};
 		439E10BB2439306400F57775 /* XCRemoteSwiftPackageReference "RxSwift" */ = {
