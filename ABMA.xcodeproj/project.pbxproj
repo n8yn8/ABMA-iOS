@@ -3,7 +3,7 @@
 	archiveVersion = 1;
 	classes = {
 	};
-	objectVersion = 52;
+	objectVersion = 54;
 	objects = {
 
 /* Begin PBXBuildFile section */
@@ -22,6 +22,7 @@
 		43201F2F1ABE37A600486999 /* InfoViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 43201F2E1ABE37A600486999 /* InfoViewController.m */; };
 		43201F441ABF371F00486999 /* PaperTableViewCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 43201F431ABF371F00486999 /* PaperTableViewCell.m */; };
 		4324097320444C5F0093FF83 /* BSurvey.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4324097220444C5F0093FF83 /* BSurvey.swift */; };
+		4326CF712B362C6C00A630E1 /* FirebaseAnalyticsSwift in Frameworks */ = {isa = PBXBuildFile; productRef = 4326CF702B362C6C00A630E1 /* FirebaseAnalyticsSwift */; };
 		4326FECE207164F300CE676F /* MapsViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 4326FECD207164F300CE676F /* MapsViewController.m */; };
 		4326FED12071664800CE676F /* MapTableViewCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 4326FED02071664800CE676F /* MapTableViewCell.m */; };
 		4326FED4207176D500CE676F /* MapDetailViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 4326FED3207176D500CE676F /* MapDetailViewController.m */; };
@@ -57,7 +58,6 @@
 		434B44EE1E1BF75500963096 /* BEvent.swift in Sources */ = {isa = PBXBuildFile; fileRef = 434B44ED1E1BF75500963096 /* BEvent.swift */; };
 		434B44F01E1FF92900963096 /* EventListViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 434B44EF1E1FF92900963096 /* EventListViewController.swift */; };
 		434B44F21E23222700963096 /* ContainerController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 434B44F11E23222700963096 /* ContainerController.swift */; };
-		434DF3C92715CF2D00258F08 /* FirebaseAnalyticsSwift-Beta in Frameworks */ = {isa = PBXBuildFile; productRef = 434DF3C82715CF2D00258F08 /* FirebaseAnalyticsSwift-Beta */; };
 		434DF3CB2715CF2D00258F08 /* FirebaseCrashlytics in Frameworks */ = {isa = PBXBuildFile; productRef = 434DF3CA2715CF2D00258F08 /* FirebaseCrashlytics */; };
 		4352A8791AB28BBE00EC03CB /* BaseViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 4352A8781AB28BBE00EC03CB /* BaseViewController.m */; };
 		435EEE6E1E3D3A4200C9CF84 /* NewYearsViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 435EEE6D1E3D3A4200C9CF84 /* NewYearsViewController.swift */; };
@@ -251,8 +251,8 @@
 				436BA4D021D0352B007B6B36 /* UserNotifications.framework in Frameworks */,
 				43AAAE2A1AAAA484002C424A /* CoreData.framework in Frameworks */,
 				4311F515242D48B3002871BC /* SDWebImage in Frameworks */,
-				434DF3C92715CF2D00258F08 /* FirebaseAnalyticsSwift-Beta in Frameworks */,
 				4393DC1D2732CEBA0021BD25 /* Backendless in Frameworks */,
+				4326CF712B362C6C00A630E1 /* FirebaseAnalyticsSwift in Frameworks */,
 				43CF9B1A18F5A4E600885DAC /* libz.dylib in Frameworks */,
 				4338BBA318F26F53002683EF /* CoreGraphics.framework in Frameworks */,
 				4338BBA518F26F53002683EF /* UIKit.framework in Frameworks */,
@@ -482,7 +482,7 @@
 				4338BB9918F26F52002683EF /* Sources */,
 				4338BB9A18F26F52002683EF /* Frameworks */,
 				4338BB9B18F26F52002683EF /* Resources */,
-				43732BD31E72F5F400A85B63 /* Fabric Run Script */,
+				43732BD31E72F5F400A85B63 /* Crashlytics */,
 			);
 			buildRules = (
 			);
@@ -491,9 +491,9 @@
 			name = ABMA;
 			packageProductDependencies = (
 				4311F514242D48B3002871BC /* SDWebImage */,
-				434DF3C82715CF2D00258F08 /* FirebaseAnalyticsSwift-Beta */,
 				434DF3CA2715CF2D00258F08 /* FirebaseCrashlytics */,
 				4393DC1C2732CEBA0021BD25 /* Backendless */,
+				4326CF702B362C6C00A630E1 /* FirebaseAnalyticsSwift */,
 			);
 			productName = ABMA;
 			productReference = 4338BB9D18F26F52002683EF /* ABMA.app */;
@@ -506,7 +506,7 @@
 				434B44D61E1B231F00963096 /* Sources */,
 				434B44D71E1B231F00963096 /* Frameworks */,
 				434B44D81E1B231F00963096 /* Resources */,
-				436FFC8B242E47CD0044D935 /* Firebase */,
+				436FFC8B242E47CD0044D935 /* Crashlytics */,
 			);
 			buildRules = (
 			);
@@ -530,8 +530,9 @@
 		4338BB9518F26F52002683EF /* Project object */ = {
 			isa = PBXProject;
 			attributes = {
+				BuildIndependentTargetsInParallel = YES;
 				LastSwiftUpdateCheck = 0820;
-				LastUpgradeCheck = 1230;
+				LastUpgradeCheck = 1510;
 				ORGANIZATIONNAME = "Nathan Condell";
 				TargetAttributes = {
 					4338BB9C18F26F52002683EF = {
@@ -612,7 +613,7 @@
 /* End PBXResourcesBuildPhase section */
 
 /* Begin PBXShellScriptBuildPhase section */
-		436FFC8B242E47CD0044D935 /* Firebase */ = {
+		436FFC8B242E47CD0044D935 /* Crashlytics */ = {
 			isa = PBXShellScriptBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
@@ -620,29 +621,39 @@
 			inputFileListPaths = (
 			);
 			inputPaths = (
+				"${DWARF_DSYM_FOLDER_PATH}/${DWARF_DSYM_FILE_NAME}",
+				"${DWARF_DSYM_FOLDER_PATH}/${DWARF_DSYM_FILE_NAME}/Contents/Resources/DWARF/${PRODUCT_NAME}",
+				"${DWARF_DSYM_FOLDER_PATH}/${DWARF_DSYM_FILE_NAME}/Contents/Info.plist",
+				"$(TARGET_BUILD_DIR)/$(UNLOCALIZED_RESOURCES_FOLDER_PATH)/GoogleService-Info.plist",
+				"$(TARGET_BUILD_DIR)/$(EXECUTABLE_PATH)",
 			);
-			name = Firebase;
+			name = Crashlytics;
 			outputFileListPaths = (
 			);
 			outputPaths = (
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 			shellPath = /bin/sh;
-			shellScript = "releaseConfig=\"Release\"\n\nif [ \"$releaseConfig\" = \"${CONFIGURATION}\" ]; then\necho \"Running Crashlytics\"\n\"${BUILD_DIR%Build/*}/SourcePackages/checkouts/firebase-ios-sdk/Crashlytics/run\"\nfi\n\n";
+			shellScript = "releaseConfig=\"Release\"\n\nif [ \"$releaseConfig\" = \"${CONFIGURATION}\" ]; then\necho \"Running Crashlytics\"\n\"${BUILD_DIR%/Build/*}/SourcePackages/checkouts/firebase-ios-sdk/Crashlytics/run\"\nfi\n\n";
 		};
-		43732BD31E72F5F400A85B63 /* Fabric Run Script */ = {
+		43732BD31E72F5F400A85B63 /* Crashlytics */ = {
 			isa = PBXShellScriptBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
 			);
 			inputPaths = (
+				"${DWARF_DSYM_FOLDER_PATH}/${DWARF_DSYM_FILE_NAME}",
+				"${DWARF_DSYM_FOLDER_PATH}/${DWARF_DSYM_FILE_NAME}/Contents/Resources/DWARF/${PRODUCT_NAME}",
+				"${DWARF_DSYM_FOLDER_PATH}/${DWARF_DSYM_FILE_NAME}/Contents/Info.plist",
+				"$(TARGET_BUILD_DIR)/$(UNLOCALIZED_RESOURCES_FOLDER_PATH)/GoogleService-Info.plist",
+				"$(TARGET_BUILD_DIR)/$(EXECUTABLE_PATH)",
 			);
-			name = "Fabric Run Script";
+			name = Crashlytics;
 			outputPaths = (
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 			shellPath = /bin/sh;
-			shellScript = "releaseConfig=\"Release\"\n\nif [ \"$releaseConfig\" = \"${CONFIGURATION}\" ]; then\necho \"Running Crashlytics\"\n\"${PODS_ROOT}/Fabric/run\" 8d96e50ad3aa3a14f2bc63cc1f2ecefb807e2099 f58304b865eb4803e74654648b5849c744e24c53c2597d274229a2fd8c959401\nfi\n";
+			shellScript = "releaseConfig=\"Release\"\n\nif [ \"$releaseConfig\" = \"${CONFIGURATION}\" ]; then\necho \"Running Crashlytics\"\n\"${BUILD_DIR%/Build/*}/SourcePackages/checkouts/firebase-ios-sdk/Crashlytics/run\"\nfi\n";
 		};
 /* End PBXShellScriptBuildPhase section */
 
@@ -792,6 +803,7 @@
 				COPY_PHASE_STRIP = NO;
 				ENABLE_STRICT_OBJC_MSGSEND = YES;
 				ENABLE_TESTABILITY = YES;
+				ENABLE_USER_SCRIPT_SANDBOXING = YES;
 				GCC_C_LANGUAGE_STANDARD = gnu99;
 				GCC_DYNAMIC_NO_PIC = NO;
 				GCC_NO_COMMON_BLOCKS = YES;
@@ -810,6 +822,7 @@
 				IPHONEOS_DEPLOYMENT_TARGET = 13.0;
 				ONLY_ACTIVE_ARCH = YES;
 				SDKROOT = iphoneos;
+				SWIFT_VERSION = 5.0;
 			};
 			name = Debug;
 		};
@@ -846,6 +859,7 @@
 				COPY_PHASE_STRIP = YES;
 				ENABLE_NS_ASSERTIONS = NO;
 				ENABLE_STRICT_OBJC_MSGSEND = YES;
+				ENABLE_USER_SCRIPT_SANDBOXING = YES;
 				GCC_C_LANGUAGE_STANDARD = gnu99;
 				GCC_NO_COMMON_BLOCKS = YES;
 				GCC_WARN_64_TO_32_BIT_CONVERSION = YES;
@@ -858,6 +872,7 @@
 				SDKROOT = iphoneos;
 				SWIFT_COMPILATION_MODE = wholemodule;
 				SWIFT_OPTIMIZATION_LEVEL = "-O";
+				SWIFT_VERSION = 5.0;
 				VALIDATE_PRODUCT = YES;
 			};
 			name = Release;
@@ -872,6 +887,7 @@
 				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
 				DEFINES_MODULE = YES;
 				DEVELOPMENT_TEAM = Z3X6HD4H5L;
+				ENABLE_MODULE_VERIFIER = YES;
 				GCC_PRECOMPILE_PREFIX_HEADER = YES;
 				GCC_PREFIX_HEADER = "ABMA/ABMA-Prefix.pch";
 				INFOPLIST_FILE = "ABMA/ABMA-Info.plist";
@@ -884,6 +900,8 @@
 					"$(inherited)",
 					"$(PROJECT_DIR)",
 				);
+				MODULE_VERIFIER_SUPPORTED_LANGUAGES = "objective-c objective-c++";
+				MODULE_VERIFIER_SUPPORTED_LANGUAGE_STANDARDS = "gnu99 gnu++11";
 				PRODUCT_BUNDLE_IDENTIFIER = "com.n8yn8.${PRODUCT_NAME:rfc1034identifier}";
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				PROVISIONING_PROFILE = "";
@@ -905,6 +923,7 @@
 				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
 				DEFINES_MODULE = YES;
 				DEVELOPMENT_TEAM = Z3X6HD4H5L;
+				ENABLE_MODULE_VERIFIER = YES;
 				GCC_PRECOMPILE_PREFIX_HEADER = YES;
 				GCC_PREFIX_HEADER = "ABMA/ABMA-Prefix.pch";
 				INFOPLIST_FILE = "ABMA/ABMA-Info.plist";
@@ -917,6 +936,8 @@
 					"$(inherited)",
 					"$(PROJECT_DIR)",
 				);
+				MODULE_VERIFIER_SUPPORTED_LANGUAGES = "objective-c objective-c++";
+				MODULE_VERIFIER_SUPPORTED_LANGUAGE_STANDARDS = "gnu99 gnu++11";
 				PRODUCT_BUNDLE_IDENTIFIER = "com.n8yn8.${PRODUCT_NAME:rfc1034identifier}";
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				PROVISIONING_PROFILE = "";
@@ -936,6 +957,7 @@
 				CLANG_WARN_DOCUMENTATION_COMMENTS = YES;
 				CODE_SIGN_IDENTITY = "Apple Development";
 				COMBINE_HIDPI_IMAGES = YES;
+				DEAD_CODE_STRIPPING = YES;
 				DEBUG_INFORMATION_FORMAT = dwarf;
 				DEVELOPMENT_TEAM = Z3X6HD4H5L;
 				ENABLE_HARDENED_RUNTIME = YES;
@@ -948,7 +970,7 @@
 					"$(inherited)",
 					"@executable_path/../Frameworks",
 				);
-				MACOSX_DEPLOYMENT_TARGET = 10.12;
+				MACOSX_DEPLOYMENT_TARGET = "$(RECOMMENDED_MACOSX_DEPLOYMENT_TARGET)";
 				MTL_ENABLE_DEBUG_INFO = YES;
 				PRODUCT_BUNDLE_IDENTIFIER = com.n8yn8.ABMAEditor;
 				PRODUCT_NAME = "$(TARGET_NAME)";
@@ -970,6 +992,7 @@
 				CODE_SIGN_IDENTITY = "Apple Development";
 				COMBINE_HIDPI_IMAGES = YES;
 				COPY_PHASE_STRIP = NO;
+				DEAD_CODE_STRIPPING = YES;
 				DEBUG_INFORMATION_FORMAT = "dwarf-with-dsym";
 				DEVELOPMENT_TEAM = Z3X6HD4H5L;
 				ENABLE_HARDENED_RUNTIME = YES;
@@ -982,7 +1005,7 @@
 					"$(inherited)",
 					"@executable_path/../Frameworks",
 				);
-				MACOSX_DEPLOYMENT_TARGET = 10.12;
+				MACOSX_DEPLOYMENT_TARGET = "$(RECOMMENDED_MACOSX_DEPLOYMENT_TARGET)";
 				MTL_ENABLE_DEBUG_INFO = NO;
 				PRODUCT_BUNDLE_IDENTIFIER = com.n8yn8.ABMAEditor;
 				PRODUCT_NAME = "$(TARGET_NAME)";
@@ -1032,7 +1055,7 @@
 			repositoryURL = "https://github.com/SDWebImage/SDWebImage.git";
 			requirement = {
 				kind = exactVersion;
-				version = 5.6.1;
+				version = 5.15.8;
 			};
 		};
 		434DF3C72715CF2D00258F08 /* XCRemoteSwiftPackageReference "firebase-ios-sdk" */ = {
@@ -1040,7 +1063,7 @@
 			repositoryURL = "https://github.com/firebase/firebase-ios-sdk.git";
 			requirement = {
 				kind = exactVersion;
-				version = 8.9.1;
+				version = 10.19.1;
 			};
 		};
 		4393DC192732CDDD0021BD25 /* XCRemoteSwiftPackageReference "Swift-SDK" */ = {
@@ -1048,7 +1071,7 @@
 			repositoryURL = "https://github.com/Backendless/Swift-SDK";
 			requirement = {
 				kind = exactVersion;
-				version = 6.4.3;
+				version = 7.0.4;
 			};
 		};
 		439E10BB2439306400F57775 /* XCRemoteSwiftPackageReference "RxSwift" */ = {
@@ -1056,7 +1079,7 @@
 			repositoryURL = "https://github.com/ReactiveX/RxSwift.git";
 			requirement = {
 				kind = exactVersion;
-				version = 5.1.1;
+				version = 6.6.0;
 			};
 		};
 /* End XCRemoteSwiftPackageReference section */
@@ -1072,10 +1095,10 @@
 			package = 4311F513242D48B3002871BC /* XCRemoteSwiftPackageReference "SDWebImage" */;
 			productName = SDWebImage;
 		};
-		434DF3C82715CF2D00258F08 /* FirebaseAnalyticsSwift-Beta */ = {
+		4326CF702B362C6C00A630E1 /* FirebaseAnalyticsSwift */ = {
 			isa = XCSwiftPackageProductDependency;
 			package = 434DF3C72715CF2D00258F08 /* XCRemoteSwiftPackageReference "firebase-ios-sdk" */;
-			productName = "FirebaseAnalyticsSwift-Beta";
+			productName = FirebaseAnalyticsSwift;
 		};
 		434DF3CA2715CF2D00258F08 /* FirebaseCrashlytics */ = {
 			isa = XCSwiftPackageProductDependency;
