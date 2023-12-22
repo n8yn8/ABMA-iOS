@@ -22,6 +22,7 @@
 		43201F2F1ABE37A600486999 /* InfoViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 43201F2E1ABE37A600486999 /* InfoViewController.m */; };
 		43201F441ABF371F00486999 /* PaperTableViewCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 43201F431ABF371F00486999 /* PaperTableViewCell.m */; };
 		4324097320444C5F0093FF83 /* BSurvey.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4324097220444C5F0093FF83 /* BSurvey.swift */; };
+		4326CF712B362C6C00A630E1 /* FirebaseAnalyticsSwift in Frameworks */ = {isa = PBXBuildFile; productRef = 4326CF702B362C6C00A630E1 /* FirebaseAnalyticsSwift */; };
 		4326FECE207164F300CE676F /* MapsViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 4326FECD207164F300CE676F /* MapsViewController.m */; };
 		4326FED12071664800CE676F /* MapTableViewCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 4326FED02071664800CE676F /* MapTableViewCell.m */; };
 		4326FED4207176D500CE676F /* MapDetailViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 4326FED3207176D500CE676F /* MapDetailViewController.m */; };
@@ -57,7 +58,6 @@
 		434B44EE1E1BF75500963096 /* BEvent.swift in Sources */ = {isa = PBXBuildFile; fileRef = 434B44ED1E1BF75500963096 /* BEvent.swift */; };
 		434B44F01E1FF92900963096 /* EventListViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 434B44EF1E1FF92900963096 /* EventListViewController.swift */; };
 		434B44F21E23222700963096 /* ContainerController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 434B44F11E23222700963096 /* ContainerController.swift */; };
-		434DF3C92715CF2D00258F08 /* FirebaseAnalyticsSwift-Beta in Frameworks */ = {isa = PBXBuildFile; productRef = 434DF3C82715CF2D00258F08 /* FirebaseAnalyticsSwift-Beta */; };
 		434DF3CB2715CF2D00258F08 /* FirebaseCrashlytics in Frameworks */ = {isa = PBXBuildFile; productRef = 434DF3CA2715CF2D00258F08 /* FirebaseCrashlytics */; };
 		4352A8791AB28BBE00EC03CB /* BaseViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 4352A8781AB28BBE00EC03CB /* BaseViewController.m */; };
 		435EEE6E1E3D3A4200C9CF84 /* NewYearsViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 435EEE6D1E3D3A4200C9CF84 /* NewYearsViewController.swift */; };
@@ -251,8 +251,8 @@
 				436BA4D021D0352B007B6B36 /* UserNotifications.framework in Frameworks */,
 				43AAAE2A1AAAA484002C424A /* CoreData.framework in Frameworks */,
 				4311F515242D48B3002871BC /* SDWebImage in Frameworks */,
-				434DF3C92715CF2D00258F08 /* FirebaseAnalyticsSwift-Beta in Frameworks */,
 				4393DC1D2732CEBA0021BD25 /* Backendless in Frameworks */,
+				4326CF712B362C6C00A630E1 /* FirebaseAnalyticsSwift in Frameworks */,
 				43CF9B1A18F5A4E600885DAC /* libz.dylib in Frameworks */,
 				4338BBA318F26F53002683EF /* CoreGraphics.framework in Frameworks */,
 				4338BBA518F26F53002683EF /* UIKit.framework in Frameworks */,
@@ -482,7 +482,7 @@
 				4338BB9918F26F52002683EF /* Sources */,
 				4338BB9A18F26F52002683EF /* Frameworks */,
 				4338BB9B18F26F52002683EF /* Resources */,
-				43732BD31E72F5F400A85B63 /* Fabric Run Script */,
+				43732BD31E72F5F400A85B63 /* Crashlytics */,
 			);
 			buildRules = (
 			);
@@ -491,9 +491,9 @@
 			name = ABMA;
 			packageProductDependencies = (
 				4311F514242D48B3002871BC /* SDWebImage */,
-				434DF3C82715CF2D00258F08 /* FirebaseAnalyticsSwift-Beta */,
 				434DF3CA2715CF2D00258F08 /* FirebaseCrashlytics */,
 				4393DC1C2732CEBA0021BD25 /* Backendless */,
+				4326CF702B362C6C00A630E1 /* FirebaseAnalyticsSwift */,
 			);
 			productName = ABMA;
 			productReference = 4338BB9D18F26F52002683EF /* ABMA.app */;
@@ -506,7 +506,7 @@
 				434B44D61E1B231F00963096 /* Sources */,
 				434B44D71E1B231F00963096 /* Frameworks */,
 				434B44D81E1B231F00963096 /* Resources */,
-				436FFC8B242E47CD0044D935 /* Firebase */,
+				436FFC8B242E47CD0044D935 /* Crashlytics */,
 			);
 			buildRules = (
 			);
@@ -613,7 +613,7 @@
 /* End PBXResourcesBuildPhase section */
 
 /* Begin PBXShellScriptBuildPhase section */
-		436FFC8B242E47CD0044D935 /* Firebase */ = {
+		436FFC8B242E47CD0044D935 /* Crashlytics */ = {
 			isa = PBXShellScriptBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
@@ -621,29 +621,39 @@
 			inputFileListPaths = (
 			);
 			inputPaths = (
+				"${DWARF_DSYM_FOLDER_PATH}/${DWARF_DSYM_FILE_NAME}",
+				"${DWARF_DSYM_FOLDER_PATH}/${DWARF_DSYM_FILE_NAME}/Contents/Resources/DWARF/${PRODUCT_NAME}",
+				"${DWARF_DSYM_FOLDER_PATH}/${DWARF_DSYM_FILE_NAME}/Contents/Info.plist",
+				"$(TARGET_BUILD_DIR)/$(UNLOCALIZED_RESOURCES_FOLDER_PATH)/GoogleService-Info.plist",
+				"$(TARGET_BUILD_DIR)/$(EXECUTABLE_PATH)",
 			);
-			name = Firebase;
+			name = Crashlytics;
 			outputFileListPaths = (
 			);
 			outputPaths = (
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 			shellPath = /bin/sh;
-			shellScript = "releaseConfig=\"Release\"\n\nif [ \"$releaseConfig\" = \"${CONFIGURATION}\" ]; then\necho \"Running Crashlytics\"\n\"${BUILD_DIR%Build/*}/SourcePackages/checkouts/firebase-ios-sdk/Crashlytics/run\"\nfi\n\n";
+			shellScript = "releaseConfig=\"Release\"\n\nif [ \"$releaseConfig\" = \"${CONFIGURATION}\" ]; then\necho \"Running Crashlytics\"\n\"${BUILD_DIR%/Build/*}/SourcePackages/checkouts/firebase-ios-sdk/Crashlytics/run\"\nfi\n\n";
 		};
-		43732BD31E72F5F400A85B63 /* Fabric Run Script */ = {
+		43732BD31E72F5F400A85B63 /* Crashlytics */ = {
 			isa = PBXShellScriptBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
 			);
 			inputPaths = (
+				"${DWARF_DSYM_FOLDER_PATH}/${DWARF_DSYM_FILE_NAME}",
+				"${DWARF_DSYM_FOLDER_PATH}/${DWARF_DSYM_FILE_NAME}/Contents/Resources/DWARF/${PRODUCT_NAME}",
+				"${DWARF_DSYM_FOLDER_PATH}/${DWARF_DSYM_FILE_NAME}/Contents/Info.plist",
+				"$(TARGET_BUILD_DIR)/$(UNLOCALIZED_RESOURCES_FOLDER_PATH)/GoogleService-Info.plist",
+				"$(TARGET_BUILD_DIR)/$(EXECUTABLE_PATH)",
 			);
-			name = "Fabric Run Script";
+			name = Crashlytics;
 			outputPaths = (
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 			shellPath = /bin/sh;
-			shellScript = "releaseConfig=\"Release\"\n\nif [ \"$releaseConfig\" = \"${CONFIGURATION}\" ]; then\necho \"Running Crashlytics\"\n\"${PODS_ROOT}/Fabric/run\" 8d96e50ad3aa3a14f2bc63cc1f2ecefb807e2099 f58304b865eb4803e74654648b5849c744e24c53c2597d274229a2fd8c959401\nfi\n";
+			shellScript = "releaseConfig=\"Release\"\n\nif [ \"$releaseConfig\" = \"${CONFIGURATION}\" ]; then\necho \"Running Crashlytics\"\n\"${BUILD_DIR%/Build/*}/SourcePackages/checkouts/firebase-ios-sdk/Crashlytics/run\"\nfi\n";
 		};
 /* End PBXShellScriptBuildPhase section */
 
@@ -1053,7 +1063,7 @@
 			repositoryURL = "https://github.com/firebase/firebase-ios-sdk.git";
 			requirement = {
 				kind = exactVersion;
-				version = 8.9.1;
+				version = 10.19.1;
 			};
 		};
 		4393DC192732CDDD0021BD25 /* XCRemoteSwiftPackageReference "Swift-SDK" */ = {
@@ -1085,10 +1095,10 @@
 			package = 4311F513242D48B3002871BC /* XCRemoteSwiftPackageReference "SDWebImage" */;
 			productName = SDWebImage;
 		};
-		434DF3C82715CF2D00258F08 /* FirebaseAnalyticsSwift-Beta */ = {
+		4326CF702B362C6C00A630E1 /* FirebaseAnalyticsSwift */ = {
 			isa = XCSwiftPackageProductDependency;
 			package = 434DF3C72715CF2D00258F08 /* XCRemoteSwiftPackageReference "firebase-ios-sdk" */;
-			productName = "FirebaseAnalyticsSwift-Beta";
+			productName = FirebaseAnalyticsSwift;
 		};
 		434DF3CA2715CF2D00258F08 /* FirebaseCrashlytics */ = {
 			isa = XCSwiftPackageProductDependency;
