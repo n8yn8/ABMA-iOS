@@ -1079,7 +1079,7 @@
 			repositoryURL = "https://github.com/ReactiveX/RxSwift.git";
 			requirement = {
 				kind = exactVersion;
-				version = 5.1.1;
+				version = 6.6.0;
 			};
 		};
 /* End XCRemoteSwiftPackageReference section */
