@@ -23,6 +23,10 @@
 		43201F441ABF371F00486999 /* PaperTableViewCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 43201F431ABF371F00486999 /* PaperTableViewCell.m */; };
 		4324097320444C5F0093FF83 /* BSurvey.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4324097220444C5F0093FF83 /* BSurvey.swift */; };
 		4326CF712B362C6C00A630E1 /* FirebaseAnalyticsSwift in Frameworks */ = {isa = PBXBuildFile; productRef = 4326CF702B362C6C00A630E1 /* FirebaseAnalyticsSwift */; };
+		4326CFAF2B36392700A630E1 /* ABMAApp.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4326CFAE2B36392700A630E1 /* ABMAApp.swift */; };
+		4326CFB42B363B1000A630E1 /* ContentView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4326CFB32B363B1000A630E1 /* ContentView.swift */; };
+		4326CFB62B363E4400A630E1 /* WelcomeView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4326CFB52B363E4400A630E1 /* WelcomeView.swift */; };
+		4326CFB92B363F2B00A630E1 /* Persistence.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4326CFB82B363F2B00A630E1 /* Persistence.swift */; };
 		4326FECE207164F300CE676F /* MapsViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 4326FECD207164F300CE676F /* MapsViewController.m */; };
 		4326FED12071664800CE676F /* MapTableViewCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 4326FED02071664800CE676F /* MapTableViewCell.m */; };
 		4326FED4207176D500CE676F /* MapDetailViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 4326FED3207176D500CE676F /* MapDetailViewController.m */; };
@@ -127,6 +131,10 @@
 		43201F421ABF371F00486999 /* PaperTableViewCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = PaperTableViewCell.h; sourceTree = "<group>"; };
 		43201F431ABF371F00486999 /* PaperTableViewCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = PaperTableViewCell.m; sourceTree = "<group>"; };
 		4324097220444C5F0093FF83 /* BSurvey.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BSurvey.swift; sourceTree = "<group>"; };
+		4326CFAE2B36392700A630E1 /* ABMAApp.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ABMAApp.swift; sourceTree = "<group>"; };
+		4326CFB32B363B1000A630E1 /* ContentView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ContentView.swift; sourceTree = "<group>"; };
+		4326CFB52B363E4400A630E1 /* WelcomeView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WelcomeView.swift; sourceTree = "<group>"; };
+		4326CFB82B363F2B00A630E1 /* Persistence.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Persistence.swift; sourceTree = "<group>"; };
 		4326FECC207164F300CE676F /* MapsViewController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = MapsViewController.h; sourceTree = "<group>"; };
 		4326FECD207164F300CE676F /* MapsViewController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = MapsViewController.m; sourceTree = "<group>"; };
 		4326FECF2071664800CE676F /* MapTableViewCell.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = MapTableViewCell.h; sourceTree = "<group>"; };
@@ -276,6 +284,33 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		4326CFB02B36394B00A630E1 /* SwiftUI */ = {
+			isa = PBXGroup;
+			children = (
+				4326CFB72B363EAB00A630E1 /* Data */,
+				4326CFB22B363AF900A630E1 /* View */,
+				4326CFAE2B36392700A630E1 /* ABMAApp.swift */,
+			);
+			path = SwiftUI;
+			sourceTree = "<group>";
+		};
+		4326CFB22B363AF900A630E1 /* View */ = {
+			isa = PBXGroup;
+			children = (
+				4326CFB32B363B1000A630E1 /* ContentView.swift */,
+				4326CFB52B363E4400A630E1 /* WelcomeView.swift */,
+			);
+			path = View;
+			sourceTree = "<group>";
+		};
+		4326CFB72B363EAB00A630E1 /* Data */ = {
+			isa = PBXGroup;
+			children = (
+				4326CFB82B363F2B00A630E1 /* Persistence.swift */,
+			);
+			path = Data;
+			sourceTree = "<group>";
+		};
 		4338BB9418F26F51002683EF = {
 			isa = PBXGroup;
 			children = (
@@ -312,6 +347,7 @@
 		4338BBA618F26F53002683EF /* ABMA */ = {
 			isa = PBXGroup;
 			children = (
+				4326CFB02B36394B00A630E1 /* SwiftUI */,
 				43E0AA5E242848980009DE39 /* GoogleService-Info.plist */,
 				43732BD11E70501A00A85B63 /* ABMA.entitlements */,
 				433BA8071E581400007B7893 /* model */,
@@ -677,6 +713,7 @@
 				4326FED12071664800CE676F /* MapTableViewCell.m in Sources */,
 				43F070D118F3B4B60077F11E /* SchedDetailViewController.m in Sources */,
 				43D07C6F1AAEABA00033A1E6 /* EventCellTableViewCell.m in Sources */,
+				4326CFB92B363F2B00A630E1 /* Persistence.swift in Sources */,
 				43201F2F1ABE37A600486999 /* InfoViewController.m in Sources */,
 				43AAAE2D1AAAA4D1002C424A /* ABMA.xcdatamodeld in Sources */,
 				4338BBB118F26F53002683EF /* AppDelegate.m in Sources */,
@@ -684,6 +721,7 @@
 				43FA2A151E593F7900BAE929 /* BNote.swift in Sources */,
 				437F118920562C42006EBBC0 /* Survey+CoreDataProperties.m in Sources */,
 				439947E51AB1E9F500D1479B /* NotesViewController.m in Sources */,
+				4326CFAF2B36392700A630E1 /* ABMAApp.swift in Sources */,
 				4326FECE207164F300CE676F /* MapsViewController.m in Sources */,
 				4305618B1A9AF95000ED4BB0 /* SWRevealViewController.m in Sources */,
 				4338BBAD18F26F53002683EF /* main.m in Sources */,
@@ -694,6 +732,7 @@
 				433BA8231E581456007B7893 /* Paper+CoreDataProperties.m in Sources */,
 				437F118720562C42006EBBC0 /* Year+CoreDataProperties.m in Sources */,
 				43CF9B1D18F5B23500885DAC /* ContactViewController.m in Sources */,
+				4326CFB62B363E4400A630E1 /* WelcomeView.swift in Sources */,
 				43FA2A131E5900B700BAE929 /* Utils.swift in Sources */,
 				433BA8251E581456007B7893 /* Event+CoreDataProperties.m in Sources */,
 				43F070C518F3561A0077F11E /* SideBarTableViewController.m in Sources */,
@@ -702,6 +741,7 @@
 				433BA85B1E58B471007B7893 /* Sponsor+CoreDataClass.m in Sources */,
 				43A436081FA767EB00754298 /* DbManager.swift in Sources */,
 				433BA8221E581456007B7893 /* Paper+CoreDataClass.m in Sources */,
+				4326CFB42B363B1000A630E1 /* ContentView.swift in Sources */,
 				43732BCF1E6E660E00A85B63 /* Year+CoreDataClass.m in Sources */,
 				433BA81F1E581456007B7893 /* Day+CoreDataProperties.m in Sources */,
 				43F070D418F3B6A20077F11E /* SponsorCollectionViewController.m in Sources */,
@@ -891,7 +931,7 @@
 				GCC_PRECOMPILE_PREFIX_HEADER = YES;
 				GCC_PREFIX_HEADER = "ABMA/ABMA-Prefix.pch";
 				INFOPLIST_FILE = "ABMA/ABMA-Info.plist";
-				IPHONEOS_DEPLOYMENT_TARGET = 12.0;
+				IPHONEOS_DEPLOYMENT_TARGET = 15.0;
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
 					"@executable_path/Frameworks",
@@ -927,7 +967,7 @@
 				GCC_PRECOMPILE_PREFIX_HEADER = YES;
 				GCC_PREFIX_HEADER = "ABMA/ABMA-Prefix.pch";
 				INFOPLIST_FILE = "ABMA/ABMA-Info.plist";
-				IPHONEOS_DEPLOYMENT_TARGET = 12.0;
+				IPHONEOS_DEPLOYMENT_TARGET = 15.0;
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
 					"@executable_path/Frameworks",

@@ -7,3 +7,4 @@
 #import "Event+CoreDataClass.h"
 #import "Survey+CoreDataClass.h"
 #import "Map+CoreDataClass.h"
+#import "Year+CoreDataClass.h"
