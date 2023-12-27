@@ -19,6 +19,10 @@ struct ABMAApp: App {
 //                let newItem = Year(context: viewContext)
 //                newItem.year = "\(item.name)"
 //                newItem.welcome = item.welcome
+//                newItem.bObjectId = item.objectId
+//                newItem.info = item.info
+//                newItem.created = item.created;
+//                newItem.updated = item.updated;
 //            })
 //            
 //            do {

@@ -17,6 +17,7 @@ struct PersistenceController {
             let newItem = Year(context: viewContext)
             newItem.year = "200\(item)"
             newItem.welcome = "Welcome \(item)"
+            newItem.info = "Info for \(item)"
         }
         do {
             try viewContext.save()

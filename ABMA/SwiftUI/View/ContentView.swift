@@ -20,7 +20,7 @@ struct ContentView: View {
         NavigationView {
             List {
                 NavigationLink {
-                    WelcomeView(welcomeText: items.first?.welcome)
+                    GeneralView(title: "Welcome", text: items.first?.welcome)
                 } label: {
                     Text("Welcome")
                 }
@@ -38,7 +38,7 @@ struct ContentView: View {
                 }
                 
                 NavigationLink {
-                    Text("Info")
+                    GeneralView(title: "Info", text: items.first?.info)
                 } label: {
                     Text("Info")
                 }
