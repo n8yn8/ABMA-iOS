@@ -50,7 +50,7 @@ struct ContentView: View {
                 }
                 
                 NavigationLink {
-                    Text("Sponsor")
+                    SponsorsView(sponsors: items.first?.sponsors?.map({ $0 }) ?? [])
                 } label: {
                     Text("Sponsor")
                 }

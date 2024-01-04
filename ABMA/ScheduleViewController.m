@@ -263,25 +263,6 @@
         [year addMapsObject:map];
     }
     
-    for (BSponsor *bSponsor in bYear.sponsors) {
-        
-        NSFetchRequest<Sponsor*> *sponsorRequest = [Sponsor fetchRequest];
-        sponsorRequest.fetchLimit = 1;
-        sponsorRequest.predicate = [NSPredicate predicateWithFormat:@"bObjectId==%@", bSponsor.objectId];
-        NSError *sponsorError = nil;
-        Sponsor *sponsor = [context executeFetchRequest:sponsorRequest error:&sponsorError].firstObject;
-        if (!sponsor) {
-            sponsor = [[Sponsor alloc] initWithEntity:[NSEntityDescription entityForName:@"Sponsor" inManagedObjectContext:context] insertIntoManagedObjectContext:context];
-        }
-        sponsor.bObjectId = bSponsor.objectId;
-        sponsor.url = bSponsor.url;
-        sponsor.imageUrl = bSponsor.imageUrl;
-        sponsor.year = year;
-        sponsor.created = bSponsor.created;
-        sponsor.updated = bSponsor.updated;
-        [year addSponsorsObject:sponsor];
-    }
-    
     NSError *saveEror;
     [context save:&saveEror];
     if (saveEror) {

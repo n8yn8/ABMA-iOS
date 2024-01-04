@@ -28,6 +28,8 @@
 		4326CFB62B363E4400A630E1 /* GeneralView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4326CFB52B363E4400A630E1 /* GeneralView.swift */; };
 		4326CFB92B363F2B00A630E1 /* Persistence.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4326CFB82B363F2B00A630E1 /* Persistence.swift */; };
 		4326CFBC2B3E130100A630E1 /* BannerView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4326CFBB2B3E130100A630E1 /* BannerView.swift */; };
+		4326CFBE2B3E145200A630E1 /* SponsorsView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4326CFBD2B3E145200A630E1 /* SponsorsView.swift */; };
+		4326CFC12B3F41F500A630E1 /* SDWebImageSwiftUI in Frameworks */ = {isa = PBXBuildFile; productRef = 4326CFC02B3F41F500A630E1 /* SDWebImageSwiftUI */; };
 		4326FECE207164F300CE676F /* MapsViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 4326FECD207164F300CE676F /* MapsViewController.m */; };
 		4326FED12071664800CE676F /* MapTableViewCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 4326FED02071664800CE676F /* MapTableViewCell.m */; };
 		4326FED4207176D500CE676F /* MapDetailViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 4326FED3207176D500CE676F /* MapDetailViewController.m */; };
@@ -137,6 +139,7 @@
 		4326CFB52B363E4400A630E1 /* GeneralView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GeneralView.swift; sourceTree = "<group>"; };
 		4326CFB82B363F2B00A630E1 /* Persistence.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Persistence.swift; sourceTree = "<group>"; };
 		4326CFBB2B3E130100A630E1 /* BannerView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BannerView.swift; sourceTree = "<group>"; };
+		4326CFBD2B3E145200A630E1 /* SponsorsView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SponsorsView.swift; sourceTree = "<group>"; };
 		4326FECC207164F300CE676F /* MapsViewController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = MapsViewController.h; sourceTree = "<group>"; };
 		4326FECD207164F300CE676F /* MapsViewController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = MapsViewController.m; sourceTree = "<group>"; };
 		4326FECF2071664800CE676F /* MapTableViewCell.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = MapTableViewCell.h; sourceTree = "<group>"; };
@@ -266,6 +269,7 @@
 				43CF9B1A18F5A4E600885DAC /* libz.dylib in Frameworks */,
 				4338BBA318F26F53002683EF /* CoreGraphics.framework in Frameworks */,
 				4338BBA518F26F53002683EF /* UIKit.framework in Frameworks */,
+				4326CFC12B3F41F500A630E1 /* SDWebImageSwiftUI in Frameworks */,
 				434DF3CB2715CF2D00258F08 /* FirebaseCrashlytics in Frameworks */,
 				4338BBA118F26F53002683EF /* Foundation.framework in Frameworks */,
 			);
@@ -318,6 +322,7 @@
 			children = (
 				4326CFB52B363E4400A630E1 /* GeneralView.swift */,
 				4326CFBB2B3E130100A630E1 /* BannerView.swift */,
+				4326CFBD2B3E145200A630E1 /* SponsorsView.swift */,
 			);
 			path = Year;
 			sourceTree = "<group>";
@@ -541,6 +546,7 @@
 				434DF3CA2715CF2D00258F08 /* FirebaseCrashlytics */,
 				4393DC1C2732CEBA0021BD25 /* Backendless */,
 				4326CF702B362C6C00A630E1 /* FirebaseAnalyticsSwift */,
+				4326CFC02B3F41F500A630E1 /* SDWebImageSwiftUI */,
 			);
 			productName = ABMA;
 			productReference = 4338BB9D18F26F52002683EF /* ABMA.app */;
@@ -613,6 +619,7 @@
 				439E10BB2439306400F57775 /* XCRemoteSwiftPackageReference "RxSwift" */,
 				434DF3C72715CF2D00258F08 /* XCRemoteSwiftPackageReference "firebase-ios-sdk" */,
 				4393DC192732CDDD0021BD25 /* XCRemoteSwiftPackageReference "Swift-SDK" */,
+				4326CFBF2B3F41DA00A630E1 /* XCRemoteSwiftPackageReference "SDWebImageSwiftUI" */,
 			);
 			productRefGroup = 4338BB9E18F26F52002683EF /* Products */;
 			projectDirPath = "";
@@ -721,6 +728,7 @@
 				433BA85C1E58B471007B7893 /* Sponsor+CoreDataProperties.m in Sources */,
 				43F070C818F3631E0077F11E /* ScheduleViewController.m in Sources */,
 				432F4F342071573D0024591C /* Map+CoreDataProperties.m in Sources */,
+				4326CFBE2B3E145200A630E1 /* SponsorsView.swift in Sources */,
 				4326FED12071664800CE676F /* MapTableViewCell.m in Sources */,
 				43F070D118F3B4B60077F11E /* SchedDetailViewController.m in Sources */,
 				43D07C6F1AAEABA00033A1E6 /* EventCellTableViewCell.m in Sources */,
@@ -1110,6 +1118,14 @@
 				version = 5.15.8;
 			};
 		};
+		4326CFBF2B3F41DA00A630E1 /* XCRemoteSwiftPackageReference "SDWebImageSwiftUI" */ = {
+			isa = XCRemoteSwiftPackageReference;
+			repositoryURL = "https://github.com/SDWebImage/SDWebImageSwiftUI.git";
+			requirement = {
+				kind = exactVersion;
+				version = 2.2.6;
+			};
+		};
 		434DF3C72715CF2D00258F08 /* XCRemoteSwiftPackageReference "firebase-ios-sdk" */ = {
 			isa = XCRemoteSwiftPackageReference;
 			repositoryURL = "https://github.com/firebase/firebase-ios-sdk.git";
@@ -1151,6 +1167,11 @@
 			isa = XCSwiftPackageProductDependency;
 			package = 434DF3C72715CF2D00258F08 /* XCRemoteSwiftPackageReference "firebase-ios-sdk" */;
 			productName = FirebaseAnalyticsSwift;
+		};
+		4326CFC02B3F41F500A630E1 /* SDWebImageSwiftUI */ = {
+			isa = XCSwiftPackageProductDependency;
+			package = 4326CFBF2B3F41DA00A630E1 /* XCRemoteSwiftPackageReference "SDWebImageSwiftUI" */;
+			productName = SDWebImageSwiftUI;
 		};
 		434DF3CA2715CF2D00258F08 /* FirebaseCrashlytics */ = {
 			isa = XCSwiftPackageProductDependency;

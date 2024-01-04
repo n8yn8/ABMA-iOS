@@ -14,15 +14,39 @@ struct ABMAApp: App {
     
 //    init(){
 //        let viewContext = persistenceController.container.viewContext
-//        DbManager.sharedInstance.getPublishedYears(since: nil) { years, errorString in
-//            years?.forEach({ item in
-//                let newItem = Year(context: viewContext)
-//                newItem.year = "\(item.name)"
-//                newItem.welcome = item.welcome
-//                newItem.bObjectId = item.objectId
-//                newItem.info = item.info
-//                newItem.created = item.created;
-//                newItem.updated = item.updated;
+//        let networkManager = DbManager.sharedInstance
+//        networkManager.getPublishedYears(since: nil) { years, errorString in
+//            years?.forEach({ bYear in
+//                let year = Year(context: viewContext)
+//                year.year = "\(bYear.name)"
+//                year.welcome = bYear.welcome
+//                year.bObjectId = bYear.objectId
+//                year.info = bYear.info
+//                year.created = bYear.created;
+//                year.updated = bYear.updated;
+//                
+//                networkManager.getSponsors(yearId: bYear.objectId!) { sponsors, errorString in
+//                    sponsors?.forEach({ bSponsor in
+//                        let sponsor = Sponsor(context: viewContext)
+//                        sponsor.bObjectId = bSponsor.objectId
+//                        sponsor.url = bSponsor.url
+//                        sponsor.imageUrl = bSponsor.imageUrl
+//                        sponsor.created = bSponsor.created
+//                        sponsor.updated = bSponsor.updated
+//                        sponsor.year = year
+//                        print("save sponsor \(sponsor)")
+//                        year.addSponsorsObject(sponsor)
+//                    })
+//                    
+//                    do {
+//                        try viewContext.save()
+//                    } catch {
+//                        // Replace this implementation with code to handle the error appropriately.
+//                        // fatalError() causes the application to generate a crash log and terminate. You should not use this function in a shipping application, although it may be useful during development.
+//                        let nsError = error as NSError
+//                        fatalError("Unresolved error \(nsError), \(nsError.userInfo)")
+//                    }
+//                }
 //            })
 //            
 //            do {
