@@ -44,7 +44,7 @@ struct ContentView: View {
                 }
                 
                 NavigationLink {
-                    Text("Maps")
+                    MapsView(maps: items.first?.maps?.map({ $0 }) ?? [])
                 } label: {
                     Text("Maps")
                 }

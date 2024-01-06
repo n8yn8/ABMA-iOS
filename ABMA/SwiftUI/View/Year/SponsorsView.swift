@@ -26,6 +26,7 @@ struct SponsorsView: View {
                             print("error loading \(String(describing: sponsor.imageUrl)) error \(error)")
                         }
                         .resizable()
+                        .placeholder(Image("ABMA-logo"))
                         .indicator(.activity)
                         .scaledToFit()
                 }

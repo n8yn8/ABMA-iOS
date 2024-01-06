@@ -30,6 +30,7 @@
 		4326CFBC2B3E130100A630E1 /* BannerView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4326CFBB2B3E130100A630E1 /* BannerView.swift */; };
 		4326CFBE2B3E145200A630E1 /* SponsorsView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4326CFBD2B3E145200A630E1 /* SponsorsView.swift */; };
 		4326CFC12B3F41F500A630E1 /* SDWebImageSwiftUI in Frameworks */ = {isa = PBXBuildFile; productRef = 4326CFC02B3F41F500A630E1 /* SDWebImageSwiftUI */; };
+		4326CFC32B474FE100A630E1 /* MapsView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4326CFC22B474FE100A630E1 /* MapsView.swift */; };
 		4326FECE207164F300CE676F /* MapsViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 4326FECD207164F300CE676F /* MapsViewController.m */; };
 		4326FED12071664800CE676F /* MapTableViewCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 4326FED02071664800CE676F /* MapTableViewCell.m */; };
 		4326FED4207176D500CE676F /* MapDetailViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 4326FED3207176D500CE676F /* MapDetailViewController.m */; };
@@ -140,6 +141,7 @@
 		4326CFB82B363F2B00A630E1 /* Persistence.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Persistence.swift; sourceTree = "<group>"; };
 		4326CFBB2B3E130100A630E1 /* BannerView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BannerView.swift; sourceTree = "<group>"; };
 		4326CFBD2B3E145200A630E1 /* SponsorsView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SponsorsView.swift; sourceTree = "<group>"; };
+		4326CFC22B474FE100A630E1 /* MapsView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MapsView.swift; sourceTree = "<group>"; };
 		4326FECC207164F300CE676F /* MapsViewController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = MapsViewController.h; sourceTree = "<group>"; };
 		4326FECD207164F300CE676F /* MapsViewController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = MapsViewController.m; sourceTree = "<group>"; };
 		4326FECF2071664800CE676F /* MapTableViewCell.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = MapTableViewCell.h; sourceTree = "<group>"; };
@@ -323,6 +325,7 @@
 				4326CFB52B363E4400A630E1 /* GeneralView.swift */,
 				4326CFBB2B3E130100A630E1 /* BannerView.swift */,
 				4326CFBD2B3E145200A630E1 /* SponsorsView.swift */,
+				4326CFC22B474FE100A630E1 /* MapsView.swift */,
 			);
 			path = Year;
 			sourceTree = "<group>";
@@ -741,6 +744,7 @@
 				437F118920562C42006EBBC0 /* Survey+CoreDataProperties.m in Sources */,
 				439947E51AB1E9F500D1479B /* NotesViewController.m in Sources */,
 				4326CFAF2B36392700A630E1 /* ABMAApp.swift in Sources */,
+				4326CFC32B474FE100A630E1 /* MapsView.swift in Sources */,
 				4326FECE207164F300CE676F /* MapsViewController.m in Sources */,
 				4305618B1A9AF95000ED4BB0 /* SWRevealViewController.m in Sources */,
 				4338BBAD18F26F53002683EF /* main.m in Sources */,
