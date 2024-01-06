@@ -21,14 +21,16 @@ struct SponsorsView: View {
         ScrollView {
             LazyVGrid(columns: columns) {
                 ForEach(sponsors, id: \.self) { sponsor in
-                    WebImage(url: URL(string: sponsor.imageUrl ?? ""))
-                        .onFailure { error in
-                            print("error loading \(String(describing: sponsor.imageUrl)) error \(error)")
-                        }
-                        .resizable()
-                        .placeholder(Image("ABMA-logo"))
-                        .indicator(.activity)
-                        .scaledToFit()
+                    Link(destination: URL(string: sponsor.url!)!) {
+                        WebImage(url: URL(string: sponsor.imageUrl ?? ""))
+                            .onFailure { error in
+                                print("error loading \(String(describing: sponsor.imageUrl)) error \(error)")
+                            }
+                            .resizable()
+                            .placeholder(Image("ABMA-logo"))
+                            .indicator(.activity)
+                            .scaledToFit()
+                    }
                 }
             }
             .padding()
