@@ -32,6 +32,7 @@
 		4326CFC12B3F41F500A630E1 /* SDWebImageSwiftUI in Frameworks */ = {isa = PBXBuildFile; productRef = 4326CFC02B3F41F500A630E1 /* SDWebImageSwiftUI */; };
 		4326CFC32B474FE100A630E1 /* MapsView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4326CFC22B474FE100A630E1 /* MapsView.swift */; };
 		4326CFC62B4A18A700A630E1 /* MapView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4326CFC52B4A18A700A630E1 /* MapView.swift */; };
+		4326CFC82B4A1C7600A630E1 /* ContactView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4326CFC72B4A1C7600A630E1 /* ContactView.swift */; };
 		4326FECE207164F300CE676F /* MapsViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 4326FECD207164F300CE676F /* MapsViewController.m */; };
 		4326FED12071664800CE676F /* MapTableViewCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 4326FED02071664800CE676F /* MapTableViewCell.m */; };
 		4326FED4207176D500CE676F /* MapDetailViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 4326FED3207176D500CE676F /* MapDetailViewController.m */; };
@@ -144,6 +145,7 @@
 		4326CFBD2B3E145200A630E1 /* SponsorsView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SponsorsView.swift; sourceTree = "<group>"; };
 		4326CFC22B474FE100A630E1 /* MapsView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MapsView.swift; sourceTree = "<group>"; };
 		4326CFC52B4A18A700A630E1 /* MapView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MapView.swift; sourceTree = "<group>"; };
+		4326CFC72B4A1C7600A630E1 /* ContactView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ContactView.swift; sourceTree = "<group>"; };
 		4326FECC207164F300CE676F /* MapsViewController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = MapsViewController.h; sourceTree = "<group>"; };
 		4326FECD207164F300CE676F /* MapsViewController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = MapsViewController.m; sourceTree = "<group>"; };
 		4326FECF2071664800CE676F /* MapTableViewCell.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = MapTableViewCell.h; sourceTree = "<group>"; };
@@ -329,6 +331,7 @@
 				4326CFBB2B3E130100A630E1 /* BannerView.swift */,
 				4326CFBD2B3E145200A630E1 /* SponsorsView.swift */,
 				4326CFC22B474FE100A630E1 /* MapsView.swift */,
+				4326CFC72B4A1C7600A630E1 /* ContactView.swift */,
 			);
 			path = Year;
 			sourceTree = "<group>";
@@ -773,6 +776,7 @@
 				437F118B205631B9006EBBC0 /* BSurvey.swift in Sources */,
 				433BA8241E581456007B7893 /* Event+CoreDataClass.m in Sources */,
 				433BA85B1E58B471007B7893 /* Sponsor+CoreDataClass.m in Sources */,
+				4326CFC82B4A1C7600A630E1 /* ContactView.swift in Sources */,
 				4326CFC62B4A18A700A630E1 /* MapView.swift in Sources */,
 				43A436081FA767EB00754298 /* DbManager.swift in Sources */,
 				433BA8221E581456007B7893 /* Paper+CoreDataClass.m in Sources */,

@@ -56,7 +56,15 @@ struct ContentView: View {
                 }
                 
                 NavigationLink {
-                    Text("Contact")
+                    let now = Date()
+                    ContactView(
+                        surveys: items.first?.surveys?.filter({ 
+                            let surveyStart = $0.start ?? Date()
+                            let surveyEnd = $0.end ?? Date()
+                            return now.timeIntervalSince1970 > surveyStart.timeIntervalSince1970 && 
+                            now.timeIntervalSince1970 < surveyEnd.timeIntervalSince1970
+                        }) ?? []
+                    )
                 } label: {
                     Text("Contact")
                 }

@@ -33,6 +33,17 @@ struct ABMAApp: App {
 //                        year.addMapsObject(map)
 //                    }
 //                
+//                Utils.getSurveys(surveysString: bYear.surveys)
+//                    .forEach { bSurvey in
+//                        let survey = Survey(context: viewContext)
+//                        survey.title = bSurvey.title
+//                        survey.details = bSurvey.details
+//                        survey.url = bSurvey.url
+//                        survey.start = bSurvey.start
+//                        survey.end = bSurvey.end
+//                        year.addSurveysObject(survey)
+//                    }
+//                
 //                networkManager.getSponsors(yearId: bYear.objectId!) { sponsors, errorString in
 //                    sponsors?.forEach({ bSponsor in
 //                        let sponsor = Sponsor(context: viewContext)
