@@ -26,7 +26,7 @@ struct ContentView: View {
                 }
                 
                 NavigationLink {
-                    Text("Schedule")
+                    ScheduleView(days: items.first?.day?.sorted(by: { first, second in first.date! < second.date! }) ?? [])
                 } label: {
                     Text("Schedule")
                 }
@@ -58,10 +58,10 @@ struct ContentView: View {
                 NavigationLink {
                     let now = Date()
                     ContactView(
-                        surveys: items.first?.surveys?.filter({ 
+                        surveys: items.first?.surveys?.filter({
                             let surveyStart = $0.start ?? Date()
                             let surveyEnd = $0.end ?? Date()
-                            return now.timeIntervalSince1970 > surveyStart.timeIntervalSince1970 && 
+                            return now.timeIntervalSince1970 > surveyStart.timeIntervalSince1970 &&
                             now.timeIntervalSince1970 < surveyEnd.timeIntervalSince1970
                         }) ?? []
                     )

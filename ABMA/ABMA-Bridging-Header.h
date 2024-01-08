@@ -5,6 +5,7 @@
 #import "Note+CoreDataClass.h"
 #import "Paper+CoreDataClass.h"
 #import "Event+CoreDataClass.h"
+#import "Day+CoreDataClass.h"
 #import "Survey+CoreDataClass.h"
 #import "Map+CoreDataClass.h"
 #import "Year+CoreDataClass.h"
