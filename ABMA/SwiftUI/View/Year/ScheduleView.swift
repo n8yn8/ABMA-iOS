@@ -47,13 +47,18 @@ struct ScheduleView: View {
                     }) ?? [],
                 id: \.self
             ) { event in
-                VStack(alignment: .leading) {
-                    Text(event.title ?? "")
-                    HStack {
-                        Image("TimeIcon")
-                        Text(Utils.timeFrame(startDate: event.startDate!, endDate: event.endDate))
+                NavigationLink {
+                    EventView(event: event)
+                } label: {
+                    VStack(alignment: .leading) {
+                        Text(event.title ?? "")
+                        HStack {
+                            Image("TimeIcon")
+                            Text(Utils.timeFrame(startDate: event.startDate!, endDate: event.endDate))
+                        }
                     }
                 }
+                
             }
         }
     }

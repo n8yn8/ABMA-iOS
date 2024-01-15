@@ -18,8 +18,10 @@ struct ABMAApp: App {
 //        
 //        let calendar = Calendar(identifier: .gregorian)
 //        
-//        networkManager.getPublishedYears(since: nil) { years, errorString in
+//        networkManager.getPublishedYears(since: Date(timeIntervalSince1970: 1583635306)) { years, errorString in
+//            print("years count \(years?.count ?? 0)")
 //            years?.forEach({ bYear in
+//                print("year \(bYear.name)")
 //                let year = Year(context: viewContext)
 //                year.year = "\(bYear.name)"
 //                year.welcome = bYear.welcome

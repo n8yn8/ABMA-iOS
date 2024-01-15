@@ -119,6 +119,7 @@
 		43F995E418F46102004DC565 /* Y2014.plist in Resources */ = {isa = PBXBuildFile; fileRef = 43F995E318F46102004DC565 /* Y2014.plist */; };
 		43FA2A131E5900B700BAE929 /* Utils.swift in Sources */ = {isa = PBXBuildFile; fileRef = 43FA2A121E5900B700BAE929 /* Utils.swift */; };
 		43FA2A151E593F7900BAE929 /* BNote.swift in Sources */ = {isa = PBXBuildFile; fileRef = 43FA2A141E593F7900BAE929 /* BNote.swift */; };
+		43FE0D2E2B54A6140031A062 /* EventView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 43FE0D2D2B54A6140031A062 /* EventView.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -262,6 +263,7 @@
 		43F995E318F46102004DC565 /* Y2014.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = Y2014.plist; sourceTree = "<group>"; };
 		43FA2A121E5900B700BAE929 /* Utils.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Utils.swift; sourceTree = "<group>"; };
 		43FA2A141E593F7900BAE929 /* BNote.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = BNote.swift; sourceTree = "<group>"; };
+		43FE0D2D2B54A6140031A062 /* EventView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EventView.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -343,6 +345,7 @@
 			isa = PBXGroup;
 			children = (
 				4326CFC52B4A18A700A630E1 /* MapView.swift */,
+				43FE0D2D2B54A6140031A062 /* EventView.swift */,
 			);
 			path = Detail;
 			sourceTree = "<group>";
@@ -757,6 +760,7 @@
 				43201F2F1ABE37A600486999 /* InfoViewController.m in Sources */,
 				43AAAE2D1AAAA4D1002C424A /* ABMA.xcdatamodeld in Sources */,
 				4338BBB118F26F53002683EF /* AppDelegate.m in Sources */,
+				43FE0D2E2B54A6140031A062 /* EventView.swift in Sources */,
 				43B16CEB1E54A83C00A240FA /* BEvent.swift in Sources */,
 				43FA2A151E593F7900BAE929 /* BNote.swift in Sources */,
 				437F118920562C42006EBBC0 /* Survey+CoreDataProperties.m in Sources */,
