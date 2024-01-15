@@ -2,8 +2,8 @@
 //  Year+CoreDataProperties.m
 //  ABMA
 //
-//  Created by Nathan Condell on 4/1/18.
-//  Copyright © 2018 Nathan Condell. All rights reserved.
+//  Created by Nate Condell on 1/15/24.
+//  Copyright © 2024 Nathan Condell. All rights reserved.
 //
 //
 
@@ -12,7 +12,7 @@
 @implementation Year (CoreDataProperties)
 
 + (NSFetchRequest<Year *> *)fetchRequest {
-	return [[NSFetchRequest alloc] initWithEntityName:@"Year"];
+	return [NSFetchRequest fetchRequestWithEntityName:@"Year"];
 }
 
 @dynamic bObjectId;
@@ -22,8 +22,8 @@
 @dynamic welcome;
 @dynamic year;
 @dynamic day;
+@dynamic maps;
 @dynamic sponsors;
 @dynamic surveys;
-@dynamic maps;
 
 @end

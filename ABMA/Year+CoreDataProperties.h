@@ -2,8 +2,8 @@
 //  Year+CoreDataProperties.h
 //  ABMA
 //
-//  Created by Nathan Condell on 4/1/18.
-//  Copyright © 2018 Nathan Condell. All rights reserved.
+//  Created by Nate Condell on 1/15/24.
+//  Copyright © 2024 Nathan Condell. All rights reserved.
 //
 //
 
@@ -14,7 +14,7 @@ NS_ASSUME_NONNULL_BEGIN
 
 @interface Year (CoreDataProperties)
 
-+ (NSFetchRequest<Year *> *)fetchRequest;
++ (NSFetchRequest<Year *> *)fetchRequest NS_SWIFT_NAME(fetchRequest());
 
 @property (nullable, nonatomic, copy) NSString *bObjectId;
 @property (nullable, nonatomic, copy) NSDate *created;
@@ -23,9 +23,9 @@ NS_ASSUME_NONNULL_BEGIN
 @property (nullable, nonatomic, copy) NSString *welcome;
 @property (nullable, nonatomic, copy) NSString *year;
 @property (nullable, nonatomic, retain) NSSet<Day *> *day;
+@property (nullable, nonatomic, retain) NSSet<Map *> *maps;
 @property (nullable, nonatomic, retain) NSSet<Sponsor *> *sponsors;
 @property (nullable, nonatomic, retain) NSSet<Survey *> *surveys;
-@property (nullable, nonatomic, retain) NSSet<Map *> *maps;
 
 @end
 
@@ -36,6 +36,11 @@ NS_ASSUME_NONNULL_BEGIN
 - (void)addDay:(NSSet<Day *> *)values;
 - (void)removeDay:(NSSet<Day *> *)values;
 
+- (void)addMapsObject:(Map *)value;
+- (void)removeMapsObject:(Map *)value;
+- (void)addMaps:(NSSet<Map *> *)values;
+- (void)removeMaps:(NSSet<Map *> *)values;
+
 - (void)addSponsorsObject:(Sponsor *)value;
 - (void)removeSponsorsObject:(Sponsor *)value;
 - (void)addSponsors:(NSSet<Sponsor *> *)values;
@@ -45,11 +50,6 @@ NS_ASSUME_NONNULL_BEGIN
 - (void)removeSurveysObject:(Survey *)value;
 - (void)addSurveys:(NSSet<Survey *> *)values;
 - (void)removeSurveys:(NSSet<Survey *> *)values;
-
-- (void)addMapsObject:(Map *)value;
-- (void)removeMapsObject:(Map *)value;
-- (void)addMaps:(NSSet<Map *> *)values;
-- (void)removeMaps:(NSSet<Map *> *)values;
 
 @end
 

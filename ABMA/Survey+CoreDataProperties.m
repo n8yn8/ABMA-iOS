@@ -2,8 +2,8 @@
 //  Survey+CoreDataProperties.m
 //  ABMA
 //
-//  Created by Nathan Condell on 3/11/18.
-//  Copyright © 2018 Nathan Condell. All rights reserved.
+//  Created by Nate Condell on 1/15/24.
+//  Copyright © 2024 Nathan Condell. All rights reserved.
 //
 //
 
@@ -12,14 +12,14 @@
 @implementation Survey (CoreDataProperties)
 
 + (NSFetchRequest<Survey *> *)fetchRequest {
-	return [[NSFetchRequest alloc] initWithEntityName:@"Survey"];
+	return [NSFetchRequest fetchRequestWithEntityName:@"Survey"];
 }
 
-@dynamic title;
 @dynamic details;
-@dynamic url;
-@dynamic start;
 @dynamic end;
+@dynamic start;
+@dynamic title;
+@dynamic url;
 @dynamic year;
 
 @end

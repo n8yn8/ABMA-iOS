@@ -2,8 +2,9 @@
 //  Day+CoreDataProperties.m
 //  ABMA
 //
-//  Created by Nathan Condell on 3/12/17.
-//  Copyright © 2017 Nathan Condell. All rights reserved.
+//  Created by Nate Condell on 1/15/24.
+//  Copyright © 2024 Nathan Condell. All rights reserved.
+//
 //
 
 #import "Day+CoreDataProperties.h"
@@ -11,7 +12,7 @@
 @implementation Day (CoreDataProperties)
 
 + (NSFetchRequest<Day *> *)fetchRequest {
-	return [[NSFetchRequest alloc] initWithEntityName:@"Day"];
+	return [NSFetchRequest fetchRequestWithEntityName:@"Day"];
 }
 
 @dynamic date;

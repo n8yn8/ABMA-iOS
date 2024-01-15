@@ -2,8 +2,9 @@
 //  Day+CoreDataProperties.h
 //  ABMA
 //
-//  Created by Nathan Condell on 3/12/17.
-//  Copyright © 2017 Nathan Condell. All rights reserved.
+//  Created by Nate Condell on 1/15/24.
+//  Copyright © 2024 Nathan Condell. All rights reserved.
+//
 //
 
 #import "Day+CoreDataClass.h"
@@ -13,7 +14,7 @@ NS_ASSUME_NONNULL_BEGIN
 
 @interface Day (CoreDataProperties)
 
-+ (NSFetchRequest<Day *> *)fetchRequest;
++ (NSFetchRequest<Day *> *)fetchRequest NS_SWIFT_NAME(fetchRequest());
 
 @property (nullable, nonatomic, copy) NSDate *date;
 @property (nullable, nonatomic, retain) NSSet<Event *> *event;

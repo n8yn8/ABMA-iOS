@@ -152,7 +152,7 @@
         cell = [[PaperTableViewCell alloc] initWithStyle:UITableViewCellStyleDefault reuseIdentifier:simpleTableIdentifier];
     }
     
-    Paper *paper = [self.event.papers objectAtIndex:indexPath.row];
+    Paper *paper = [self.event.papers.allObjects objectAtIndex:indexPath.row];
     cell.paperTitleLabel.text = paper.title;
     cell.authorLabel.text = paper.author;
     
@@ -166,7 +166,7 @@
 {
     if ([[segue identifier] isEqualToString:@"showPaper"]) {
         SchedDetailViewController* dvc = segue.destinationViewController;
-        dvc.paper = self.event.papers[[self.tableView indexPathForSelectedRow].row];
+        dvc.paper = self.event.papers.allObjects[[self.tableView indexPathForSelectedRow].row];
     }
 }
 
