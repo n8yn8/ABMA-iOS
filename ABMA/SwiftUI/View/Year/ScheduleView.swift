@@ -12,28 +12,43 @@ struct ScheduleView: View {
     
     var days: [Day]
     
+    @State private var index = 0
+    @State private var selectedDay: Day?
+    
+    init(days: [Day]) {
+        self.days = days
+        _selectedDay = State(initialValue: days.first)
+    }
+    
     var body: some View {
         HStack {
-            Button {
-                print("back")
-            } label: {
-                Image("ArrowLeft")
+            if index > 0 {
+                Button {
+                    index -= 1
+                    selectedDay = days[index]
+                } label: {
+                    Image("ArrowLeft")
+                }
+                .padding()
             }
-            .padding()
             
             Spacer()
             
             //TODO: UTC time
-            Text(days.first?.date?.formatted(date: .abbreviated, time: .omitted) ?? "")
+            Text(selectedDay?.date?.formatted(date: .abbreviated, time: .omitted) ?? "")
             
             Spacer()
             
-            Button {
-                print("forward")
-            } label: {
-                Image("ArrowRight")
+            if index < days.count - 1 {
+                Button {
+                    index += 1
+                    selectedDay = days[index]
+                } label: {
+                    Image("ArrowRight")
+                }
+                .padding()
             }
-            .padding()
+            
             
         }
         .frame(maxWidth: .infinity)
@@ -41,7 +56,7 @@ struct ScheduleView: View {
         
         List {
             ForEach(
-                days.first?.event?
+                selectedDay?.event?
                     .sorted(by: { first, second in
                         first.startDate! < second.startDate!
                     }) ?? [],

@@ -41,7 +41,7 @@ struct EventView: View {
         
         HStack(alignment: .firstTextBaseline) {
             Image("PlaceIcon")
-            Text(event.place ?? "")
+            Text(event.locatoin ?? "")
             Spacer()
             Image("TimeIcon")
             Text(Utils.timeFrame(startDate: event.startDate ?? Date(), endDate: event.endDate))
