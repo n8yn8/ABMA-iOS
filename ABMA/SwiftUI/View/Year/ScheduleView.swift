@@ -10,6 +10,8 @@ import SwiftUI
 
 struct ScheduleView: View {
     
+    @Environment(\.managedObjectContext) private var viewContext
+    
     var days: [Day]
     
     @State private var index = 0
@@ -64,6 +66,7 @@ struct ScheduleView: View {
             ) { event in
                 NavigationLink {
                     EventView(event: event)
+                        .environment(\.managedObjectContext, viewContext)
                 } label: {
                     VStack(alignment: .leading) {
                         Text(event.title ?? "")

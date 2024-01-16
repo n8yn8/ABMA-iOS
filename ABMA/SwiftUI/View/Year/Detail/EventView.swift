@@ -9,7 +9,17 @@
 import SwiftUI
 
 struct EventView: View {
+    @Environment(\.managedObjectContext) private var viewContext
+
     var event: Event
+    
+    @State private var showingNote = false
+    @State private var noteText = ""
+    
+    init(event: Event) {
+        self.event = event
+        _noteText = State(initialValue: event.note?.content ?? "")
+    }
     
     var body: some View {
         HStack {
@@ -21,6 +31,41 @@ struct EventView: View {
         .frame(maxWidth: .infinity)
         .padding()
         .background { Color.gray }
+        .toolbar {
+            Button("Note") {
+                showingNote.toggle()
+            }
+            .sheet(isPresented: $showingNote) {
+                if noteText == "" {
+                    guard let note = event.note else { return }
+                    viewContext.delete(note)
+                } else {
+                    if event.note == nil {
+                        event.note = Note(context: viewContext)
+                        event.note?.created = Date()
+                    }
+                    event.note?.content = noteText
+                    event.note?.updated = Date()
+                }
+                do {
+                    try viewContext.save()
+                } catch {
+                    let nsError = error as NSError
+                    print("Save events unresolved error \(nsError), \(nsError.userInfo)")
+                }
+            } content: {
+                VStack() {
+                    Text("Note")
+                        .padding()
+                    TextField(text: $noteText, axis: .vertical) {
+                        Text("Note")
+                    }
+                    .padding()
+                    Spacer()
+                }
+                .presentationDetents([.medium])
+            }
+        }
         
         HStack(alignment: .top) {
             Image("ABMA-transparent")

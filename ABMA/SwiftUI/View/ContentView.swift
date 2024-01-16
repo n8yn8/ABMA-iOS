@@ -27,12 +27,14 @@ struct ContentView: View {
                 
                 NavigationLink {
                     ScheduleView(days: items.first?.day?.sorted(by: { first, second in first.date! < second.date! }) ?? [])
+                        .environment(\.managedObjectContext, viewContext)
                 } label: {
                     Text("Schedule")
                 }
                 
                 NavigationLink {
-                    Text("Notes")
+                    NotesView()
+                        .environment(\.managedObjectContext, viewContext)
                 } label: {
                     Text("Notes")
                 }
