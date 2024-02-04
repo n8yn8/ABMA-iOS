@@ -16,6 +16,8 @@ struct ContentView: View {
     )
     private var items: FetchedResults<Year>
     
+    @StateObject private var dbManager = DbManager.sharedInstance
+    
     var body: some View {
         NavigationView {
             List {
@@ -33,7 +35,7 @@ struct ContentView: View {
                 }
                 
                 NavigationLink {
-                    NotesView()
+                    NotesView(isLoggedIn: dbManager.isUserLoggedIn)
                         .environment(\.managedObjectContext, viewContext)
                 } label: {
                     Text("Notes")
@@ -69,6 +71,14 @@ struct ContentView: View {
                     )
                 } label: {
                     Text("Contact")
+                }
+                
+                if dbManager.isUserLoggedIn {
+                    Button("Logout") {
+                        DbManager.sharedInstance.logout { error in
+                            print("Error logging out \(String(describing: error))")
+                        }
+                    }
                 }
             }
         }

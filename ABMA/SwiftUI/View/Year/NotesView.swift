@@ -10,6 +10,8 @@ import SwiftUI
 
 struct NotesView: View {
     
+    var isLoggedIn: Bool
+    
     @Environment(\.managedObjectContext) private var viewContext
     
     @FetchRequest(
@@ -19,6 +21,10 @@ struct NotesView: View {
     
     var body: some View {
         BannerView(title: "Notes")
+        
+        if !isLoggedIn {
+            LoginView(isLoggedIn: isLoggedIn)
+        }
         
         List {
             ForEach(items, id: \.self) { note in
@@ -37,6 +43,6 @@ struct NotesView: View {
     }
 }
 
-#Preview {
-    NotesView()
-}
+//#Preview {
+//    NotesView(isLoggedIn: )
+//}

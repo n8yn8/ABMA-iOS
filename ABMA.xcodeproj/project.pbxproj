@@ -121,6 +121,7 @@
 		43FA2A151E593F7900BAE929 /* BNote.swift in Sources */ = {isa = PBXBuildFile; fileRef = 43FA2A141E593F7900BAE929 /* BNote.swift */; };
 		43FE0D2E2B54A6140031A062 /* EventView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 43FE0D2D2B54A6140031A062 /* EventView.swift */; };
 		43FE0D8D2B55FCDB0031A062 /* NotesView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 43FE0D8C2B55FCDB0031A062 /* NotesView.swift */; };
+		43FE0D902B59C34C0031A062 /* LoginView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 43FE0D8F2B59C34C0031A062 /* LoginView.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -266,6 +267,7 @@
 		43FA2A141E593F7900BAE929 /* BNote.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = BNote.swift; sourceTree = "<group>"; };
 		43FE0D2D2B54A6140031A062 /* EventView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EventView.swift; sourceTree = "<group>"; };
 		43FE0D8C2B55FCDB0031A062 /* NotesView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NotesView.swift; sourceTree = "<group>"; };
+		43FE0D8F2B59C34C0031A062 /* LoginView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LoginView.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -315,6 +317,7 @@
 		4326CFB22B363AF900A630E1 /* View */ = {
 			isa = PBXGroup;
 			children = (
+				43FE0D8E2B59C3370031A062 /* Components */,
 				4326CFBA2B3CC1AB00A630E1 /* Year */,
 				4326CFB32B363B1000A630E1 /* ContentView.swift */,
 			);
@@ -333,7 +336,6 @@
 			isa = PBXGroup;
 			children = (
 				4326CFC42B4A188F00A630E1 /* Detail */,
-				4326CFBB2B3E130100A630E1 /* BannerView.swift */,
 				4326CFC72B4A1C7600A630E1 /* ContactView.swift */,
 				4326CFB52B363E4400A630E1 /* GeneralView.swift */,
 				4326CFC22B474FE100A630E1 /* MapsView.swift */,
@@ -550,6 +552,15 @@
 			path = network;
 			sourceTree = "<group>";
 		};
+		43FE0D8E2B59C3370031A062 /* Components */ = {
+			isa = PBXGroup;
+			children = (
+				4326CFBB2B3E130100A630E1 /* BannerView.swift */,
+				43FE0D8F2B59C34C0031A062 /* LoginView.swift */,
+			);
+			path = Components;
+			sourceTree = "<group>";
+		};
 /* End PBXGroup section */
 
 /* Begin PBXNativeTarget section */
@@ -764,6 +775,7 @@
 				43201F2F1ABE37A600486999 /* InfoViewController.m in Sources */,
 				43AAAE2D1AAAA4D1002C424A /* ABMA.xcdatamodeld in Sources */,
 				4338BBB118F26F53002683EF /* AppDelegate.m in Sources */,
+				43FE0D902B59C34C0031A062 /* LoginView.swift in Sources */,
 				43FE0D2E2B54A6140031A062 /* EventView.swift in Sources */,
 				43B16CEB1E54A83C00A240FA /* BEvent.swift in Sources */,
 				43FA2A151E593F7900BAE929 /* BNote.swift in Sources */,

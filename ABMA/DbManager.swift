@@ -9,7 +9,9 @@
 import Foundation
 import SwiftSDK
 
-class DbManager: NSObject {
+class DbManager: NSObject, ObservableObject {
+    
+    @Published var isUserLoggedIn: Bool = false
     
     @objc
     static let sharedInstance = DbManager()
@@ -25,6 +27,8 @@ class DbManager: NSObject {
         super.init()
         backendless.initApp(applicationId: APP_ID, apiKey: SECRET_KEY)
         backendless.userService.stayLoggedIn = true
+        
+        isUserLoggedIn = backendless.userService.currentUser != nil
     }
     
     @objc
@@ -50,6 +54,7 @@ class DbManager: NSObject {
     func login(email: String, password: String, callback: @escaping (_ errorString: String?) -> Void) {
         backendless.userService.login(identity: email, password: password, responseHandler: { (user) in
             print("User logged in")
+            self.isUserLoggedIn = true
             callback(nil)
         }) { (error) in
             print("Error \(error.debugDescription)")
@@ -78,6 +83,7 @@ class DbManager: NSObject {
     @objc
     func logout(callback: @escaping (_ errorString: String?) -> Void) {
         backendless.userService.logout(responseHandler: {
+            self.isUserLoggedIn = false
             callback(nil)
         }) { (fault) in
             callback(fault.debugDescription)
