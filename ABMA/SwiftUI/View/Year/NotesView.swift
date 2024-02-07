@@ -29,12 +29,14 @@ struct NotesView: View {
         List {
             ForEach(items, id: \.self) { note in
                 NavigationLink {
-                    if note.event != nil {
+                    if note.paper != nil {
+                        PaperView(paper: note.paper!)
+                    } else if note.event != nil {
                         EventView(event: note.event!)
                     }
                 } label: {
                     VStack(alignment: .leading) {
-                        Text(note.event?.title ?? "")
+                        Text(note.paper?.title ?? note.event?.title ?? "")
                         Text(note.content ?? "")
                     }
                 }
