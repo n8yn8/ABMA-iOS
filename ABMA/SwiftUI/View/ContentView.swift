@@ -16,61 +16,20 @@ struct ContentView: View {
     )
     private var items: FetchedResults<Year>
     
+    @State private var isInitialView: Bool = true
+    
     @StateObject private var dbManager = DbManager.sharedInstance
     
+    private enum Destinations: String, CaseIterable {
+        case Welcome, Schedule, Notes, Info, Maps, Sponsors, Contact
+    }
+    
+    
     var body: some View {
-        NavigationView {
+        NavigationStack {
             List {
-                NavigationLink {
-                    GeneralView(title: "Welcome", text: items.first?.welcome)
-                } label: {
-                    Text("Welcome")
-                }
-                
-                NavigationLink {
-                    ScheduleView(days: items.first?.day?.sorted(by: { first, second in first.date! < second.date! }) ?? [])
-                        .environment(\.managedObjectContext, viewContext)
-                } label: {
-                    Text("Schedule")
-                }
-                
-                NavigationLink {
-                    NotesView(isLoggedIn: dbManager.isUserLoggedIn)
-                        .environment(\.managedObjectContext, viewContext)
-                } label: {
-                    Text("Notes")
-                }
-                
-                NavigationLink {
-                    GeneralView(title: "Info", text: items.first?.info)
-                } label: {
-                    Text("Info")
-                }
-                
-                NavigationLink {
-                    MapsView(maps: items.first?.maps?.map({ $0 }) ?? [])
-                } label: {
-                    Text("Maps")
-                }
-                
-                NavigationLink {
-                    SponsorsView(sponsors: items.first?.sponsors?.map({ $0 }) ?? [])
-                } label: {
-                    Text("Sponsor")
-                }
-                
-                NavigationLink {
-                    let now = Date()
-                    ContactView(
-                        surveys: items.first?.surveys?.filter({
-                            let surveyStart = $0.start ?? Date()
-                            let surveyEnd = $0.end ?? Date()
-                            return now.timeIntervalSince1970 > surveyStart.timeIntervalSince1970 &&
-                            now.timeIntervalSince1970 < surveyEnd.timeIntervalSince1970
-                        }) ?? []
-                    )
-                } label: {
-                    Text("Contact")
+                ForEach(Destinations.allCases, id: \.rawValue) { destination in
+                    NavigationLink(destination.rawValue, value: destination)
                 }
                 
                 if dbManager.isUserLoggedIn {
@@ -81,6 +40,40 @@ struct ContentView: View {
                     }
                 }
             }
+            .navigationDestination(isPresented: $isInitialView, destination: {
+                ScheduleView(days: items.first?.day?.sorted(by: { first, second in first.date! < second.date! }) ?? [])
+                    .environment(\.managedObjectContext, viewContext)
+            })
+            .navigationDestination(for: Destinations.self) { destination in
+                switch destination {
+                case .Welcome:
+                    GeneralView(title: "Welcome", text: items.first?.welcome)
+                case .Schedule:
+                    ScheduleView(days: items.first?.day?.sorted(by: { first, second in first.date! < second.date! }) ?? [])
+                        .environment(\.managedObjectContext, viewContext)
+                case .Notes:
+                    NotesView(isLoggedIn: dbManager.isUserLoggedIn)
+                        .environment(\.managedObjectContext, viewContext)
+                case .Info:
+                    GeneralView(title: "Info", text: items.first?.info)
+                case .Maps:
+                    MapsView(maps: items.first?.maps?.map({ $0 }) ?? [])
+                case .Sponsors:
+                    SponsorsView(sponsors: items.first?.sponsors?.map({ $0 }) ?? [])
+                case .Contact:
+                    let now = Date()
+                    ContactView(
+                        surveys: items.first?.surveys?.filter({
+                            let surveyStart = $0.start ?? Date()
+                            let surveyEnd = $0.end ?? Date()
+                            return now.timeIntervalSince1970 > surveyStart.timeIntervalSince1970 &&
+                            now.timeIntervalSince1970 < surveyEnd.timeIntervalSince1970
+                        }) ?? []
+                    )
+                }
+            }
+        }.onAppear {
+            isInitialView = true
         }
     }
 }
