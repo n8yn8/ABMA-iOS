@@ -38,7 +38,7 @@ struct EventView: View {
                         event.note?.created = Date()
                     }
                     event.note?.content = noteText
-                    event.note?.updated = Date()
+                    event.note?.updatedAt = Date()
                 }
                 do {
                     try viewContext.save()
@@ -62,7 +62,8 @@ struct EventView: View {
             }
         } else {
             List {
-                ForEach(event.papers?.map({ $0 }) ?? [], id: \.self) { paper in
+                let papers = event.papers?.allObjects as? [Paper] ?? []
+                ForEach(papers.map({ $0 }), id: \.self) { paper in
                     NavigationLink {
                         PaperView(paper: paper)
                             .environment(\.managedObjectContext, viewContext)

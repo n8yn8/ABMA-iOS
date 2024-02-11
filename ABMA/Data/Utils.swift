@@ -8,6 +8,7 @@
 
 import Foundation
 import Firebase
+import CoreData
 
 class Utils: NSObject {
     
@@ -53,7 +54,7 @@ class Utils: NSObject {
                 } else {
                     note.bObjectId = savedNote?.objectId
                     note.created = savedNote?.created
-                    note.updated = savedNote?.updated
+                    note.updatedAt = savedNote?.updated
                     save(context: context)
                 }
             }

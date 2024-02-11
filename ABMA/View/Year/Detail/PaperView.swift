@@ -34,7 +34,7 @@ struct PaperView: View {
                             paper.note?.created = Date()
                         }
                         paper.note?.content = noteText
-                        paper.note?.updated = Date()
+                        paper.note?.updatedAt = Date()
                     }
                     do {
                         try viewContext.save()

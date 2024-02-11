@@ -59,11 +59,12 @@ struct ScheduleView: View {
         .background { Color.gray }
         
         List {
+            let events = selectedDay?.event?.allObjects as? [Event] ?? []
             ForEach(
-                selectedDay?.event?
+                events
                     .sorted(by: { first, second in
                         first.startDate! < second.startDate!
-                    }) ?? [],
+                    }),
                 id: \.self
             ) { event in
                 NavigationLink {

@@ -32,14 +32,14 @@ struct ABMAApp: App {
                 year.bObjectId = bYear.objectId
                 year.info = bYear.info
                 year.created = bYear.created;
-                year.updated = bYear.updated;
+                year.updatedAt = bYear.updated;
                 
                 Utils.getMapss(mapsString: bYear.maps)
                     .forEach { bMap in
                         let map = Map(context: viewContext)
                         map.title = bMap.title
                         map.url = bMap.url
-                        year.addMapsObject(map)
+                        year.addToMaps(map)
                     }
                 
                 Utils.getSurveys(surveysString: bYear.surveys)
@@ -50,17 +50,18 @@ struct ABMAApp: App {
                         survey.url = bSurvey.url
                         survey.start = bSurvey.start
                         survey.end = bSurvey.end
-                        year.addSurveysObject(survey)
+                        year.addToSurveys(survey)
                     }
                 
                 networkManager.getEvents(yearId: bYear.objectId!) { bEvents, errorString in
                     bEvents?.forEach({ bEvent in
-                        let day = year.day?.first(where: { day in
+                        let days = year.day?.allObjects as? [Day]
+                        let day = days?.first(where: { day in
                             calendar.isDate(bEvent.startDate!, inSameDayAs: day.date!)
                         }) ?? {
                             let newDay = Day(context: viewContext)
                             newDay.date = calendar.date(from: calendar.dateComponents([.year, .month, .day], from: bEvent.startDate!))
-                            year.addDayObject(newDay)
+                            year.addToDay(newDay)
                             return newDay
                         }()
                         
@@ -73,9 +74,9 @@ struct ABMAApp: App {
                         event.endDate = bEvent.endDate
                         event.details = bEvent.details
                         event.created = bEvent.created
-                        event.updated = bEvent.updated
+                        event.updatedAt = bEvent.updated
                         
-                        day.addEventObject(event)
+                        day.addToEvent(event)
                         
                         if bEvent.papersCount > 0 {
                             networkManager.getPapers(eventId: bEvent.objectId!) { bPapers, errorString in
@@ -90,9 +91,9 @@ struct ABMAApp: App {
                                     paper.abstract = bPaper.synopsis
                                     paper.event = event
                                     paper.created = bPaper.created
-                                    paper.updated = bPaper.updated
+                                    paper.updatedAt = bPaper.updated
                                     
-                                    event.addPapersObject(paper)
+                                    event.addToPapers(paper)
                                 })
                                 
                                 do {
@@ -120,9 +121,9 @@ struct ABMAApp: App {
                         sponsor.url = bSponsor.url
                         sponsor.imageUrl = bSponsor.imageUrl
                         sponsor.created = bSponsor.created
-                        sponsor.updated = bSponsor.updated
+                        sponsor.updatedAt = bSponsor.updated
                         sponsor.year = year
-                        year.addSponsorsObject(sponsor)
+                        year.addToSponsors(sponsor)
                     })
                     
                     do {
