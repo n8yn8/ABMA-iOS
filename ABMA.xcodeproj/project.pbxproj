@@ -278,8 +278,11 @@
 		4326CFB72B363EAB00A630E1 /* Data */ = {
 			isa = PBXGroup;
 			children = (
+				43CF2FAB2B785C7900658C9C /* Entities */,
+				43A436071FA767EB00754298 /* DbManager.swift */,
 				4326CFB82B363F2B00A630E1 /* Persistence.swift */,
 				43CF2F1C2B72CFC900658C9C /* DateExtensions.swift */,
+				43FA2A121E5900B700BAE929 /* Utils.swift */,
 			);
 			path = Data;
 			sourceTree = "<group>";
@@ -347,7 +350,6 @@
 				4326CFB02B36394B00A630E1 /* SwiftUI */,
 				43E0AA5E242848980009DE39 /* GoogleService-Info.plist */,
 				43732BD11E70501A00A85B63 /* ABMA.entitlements */,
-				433BA8071E581400007B7893 /* model */,
 				4338BBB818F26F53002683EF /* Images.xcassets */,
 				4338BBA718F26F53002683EF /* Supporting Files */,
 			);
@@ -362,49 +364,8 @@
 				4338BBA818F26F53002683EF /* ABMA-Info.plist */,
 				4338BBA918F26F53002683EF /* InfoPlist.strings */,
 				43AAAE2B1AAAA4D1002C424A /* ABMA.xcdatamodeld */,
-				43FA2A121E5900B700BAE929 /* Utils.swift */,
 			);
 			name = "Supporting Files";
-			sourceTree = "<group>";
-		};
-		433BA8071E581400007B7893 /* model */ = {
-			isa = PBXGroup;
-			children = (
-				43A436071FA767EB00754298 /* DbManager.swift */,
-				43732BCB1E6E660E00A85B63 /* Year+CoreDataClass.h */,
-				43732BCC1E6E660E00A85B63 /* Year+CoreDataClass.m */,
-				437F118120562C42006EBBC0 /* Year+CoreDataProperties.h */,
-				437F118220562C42006EBBC0 /* Year+CoreDataProperties.m */,
-				437F118420562C42006EBBC0 /* Survey+CoreDataClass.h */,
-				437F118520562C42006EBBC0 /* Survey+CoreDataClass.m */,
-				437F118320562C42006EBBC0 /* Survey+CoreDataProperties.h */,
-				437F118620562C42006EBBC0 /* Survey+CoreDataProperties.m */,
-				433BA8571E58B471007B7893 /* Sponsor+CoreDataClass.h */,
-				433BA8581E58B471007B7893 /* Sponsor+CoreDataClass.m */,
-				433BA8591E58B471007B7893 /* Sponsor+CoreDataProperties.h */,
-				433BA85A1E58B471007B7893 /* Sponsor+CoreDataProperties.m */,
-				433BA8081E581456007B7893 /* Note+CoreDataClass.h */,
-				433BA8091E581456007B7893 /* Note+CoreDataClass.m */,
-				433BA80A1E581456007B7893 /* Note+CoreDataProperties.h */,
-				433BA80B1E581456007B7893 /* Note+CoreDataProperties.m */,
-				433BA80C1E581456007B7893 /* Day+CoreDataClass.h */,
-				433BA80D1E581456007B7893 /* Day+CoreDataClass.m */,
-				433BA80E1E581456007B7893 /* Day+CoreDataProperties.h */,
-				433BA80F1E581456007B7893 /* Day+CoreDataProperties.m */,
-				433BA8141E581456007B7893 /* Paper+CoreDataClass.h */,
-				433BA8151E581456007B7893 /* Paper+CoreDataClass.m */,
-				433BA8161E581456007B7893 /* Paper+CoreDataProperties.h */,
-				433BA8171E581456007B7893 /* Paper+CoreDataProperties.m */,
-				433BA8181E581456007B7893 /* Event+CoreDataClass.h */,
-				433BA8191E581456007B7893 /* Event+CoreDataClass.m */,
-				433BA81A1E581456007B7893 /* Event+CoreDataProperties.h */,
-				433BA81B1E581456007B7893 /* Event+CoreDataProperties.m */,
-				432F4F2F2071573D0024591C /* Map+CoreDataProperties.h */,
-				432F4F302071573D0024591C /* Map+CoreDataClass.h */,
-				432F4F312071573D0024591C /* Map+CoreDataClass.m */,
-				432F4F322071573D0024591C /* Map+CoreDataProperties.m */,
-			);
-			name = model;
 			sourceTree = "<group>";
 		};
 		434B44DB1E1B231F00963096 /* ABMAEditor */ = {
@@ -464,6 +425,45 @@
 				430559672066AA5200069B49 /* PushParams.swift */,
 			);
 			path = network;
+			sourceTree = "<group>";
+		};
+		43CF2FAB2B785C7900658C9C /* Entities */ = {
+			isa = PBXGroup;
+			children = (
+				43732BCB1E6E660E00A85B63 /* Year+CoreDataClass.h */,
+				43732BCC1E6E660E00A85B63 /* Year+CoreDataClass.m */,
+				437F118120562C42006EBBC0 /* Year+CoreDataProperties.h */,
+				437F118220562C42006EBBC0 /* Year+CoreDataProperties.m */,
+				437F118420562C42006EBBC0 /* Survey+CoreDataClass.h */,
+				437F118520562C42006EBBC0 /* Survey+CoreDataClass.m */,
+				437F118320562C42006EBBC0 /* Survey+CoreDataProperties.h */,
+				437F118620562C42006EBBC0 /* Survey+CoreDataProperties.m */,
+				433BA8571E58B471007B7893 /* Sponsor+CoreDataClass.h */,
+				433BA8581E58B471007B7893 /* Sponsor+CoreDataClass.m */,
+				433BA8591E58B471007B7893 /* Sponsor+CoreDataProperties.h */,
+				433BA85A1E58B471007B7893 /* Sponsor+CoreDataProperties.m */,
+				433BA8081E581456007B7893 /* Note+CoreDataClass.h */,
+				433BA8091E581456007B7893 /* Note+CoreDataClass.m */,
+				433BA80A1E581456007B7893 /* Note+CoreDataProperties.h */,
+				433BA80B1E581456007B7893 /* Note+CoreDataProperties.m */,
+				433BA80C1E581456007B7893 /* Day+CoreDataClass.h */,
+				433BA80D1E581456007B7893 /* Day+CoreDataClass.m */,
+				433BA80E1E581456007B7893 /* Day+CoreDataProperties.h */,
+				433BA80F1E581456007B7893 /* Day+CoreDataProperties.m */,
+				433BA8141E581456007B7893 /* Paper+CoreDataClass.h */,
+				433BA8151E581456007B7893 /* Paper+CoreDataClass.m */,
+				433BA8161E581456007B7893 /* Paper+CoreDataProperties.h */,
+				433BA8171E581456007B7893 /* Paper+CoreDataProperties.m */,
+				433BA8181E581456007B7893 /* Event+CoreDataClass.h */,
+				433BA8191E581456007B7893 /* Event+CoreDataClass.m */,
+				433BA81A1E581456007B7893 /* Event+CoreDataProperties.h */,
+				433BA81B1E581456007B7893 /* Event+CoreDataProperties.m */,
+				432F4F2F2071573D0024591C /* Map+CoreDataProperties.h */,
+				432F4F302071573D0024591C /* Map+CoreDataClass.h */,
+				432F4F312071573D0024591C /* Map+CoreDataClass.m */,
+				432F4F322071573D0024591C /* Map+CoreDataProperties.m */,
+			);
+			path = Entities;
 			sourceTree = "<group>";
 		};
 		43FE0D8E2B59C3370031A062 /* Components */ = {
