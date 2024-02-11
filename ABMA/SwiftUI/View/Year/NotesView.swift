@@ -37,7 +37,9 @@ struct NotesView: View {
                 } label: {
                     VStack(alignment: .leading) {
                         Text(note.paper?.title ?? note.event?.title ?? "")
+                            .font(.headline)
                         Text(note.content ?? "")
+                            .font(.subheadline)
                     }
                 }
             }

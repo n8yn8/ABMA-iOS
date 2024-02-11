@@ -38,6 +38,8 @@ struct ScheduleView: View {
             
             //TODO: UTC time
             Text(selectedDay?.date?.formatted(date: .abbreviated, time: .omitted) ?? "")
+                .font(.title)
+                .foregroundColor(Color.white)
             
             Spacer()
             
@@ -70,9 +72,11 @@ struct ScheduleView: View {
                 } label: {
                     VStack(alignment: .leading) {
                         Text(event.title ?? "")
+                            .font(.headline)
                         HStack {
                             Image("TimeIcon")
                             Text(Utils.timeFrame(startDate: event.startDate!, endDate: event.endDate))
+                                .font(.subheadline)
                         }
                     }
                 }
@@ -82,9 +86,9 @@ struct ScheduleView: View {
     }
 }
 
-#Preview {
-    ScheduleView(days: [SampleData.day()])
-}
+//#Preview {
+//    ScheduleView(days: [SampleData.day()])
+//}
 
 struct SampleData {
     static let day = {

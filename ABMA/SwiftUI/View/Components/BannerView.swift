@@ -14,8 +14,11 @@ struct BannerView: View {
     var body: some View {
         ZStack {
             Color.gray
-                .frame(height: 100)
+                .frame(height: 80)
             Text(title)
+                .font(.title)
+                .foregroundColor(Color.white)
+                
         }
     }
 }

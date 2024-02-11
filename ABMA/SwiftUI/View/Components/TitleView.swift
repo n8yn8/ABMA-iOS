@@ -21,10 +21,12 @@ struct TitleView: View {
               .clipShape(Circle())
               .overlay(Circle().stroke(Color.black, lineWidth: 1))
             
-            VStack(content: {
+            VStack(alignment: .leading) {
                 Text(title ?? "")
+                    .font(.headline)
                 Text(subtitle ?? "")
-            })
+                    .font(.subheadline)
+            }
         }
         .frame(maxWidth: .infinity, alignment: .leading)
         .padding()

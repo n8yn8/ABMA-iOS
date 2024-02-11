@@ -58,6 +58,7 @@ struct EventView: View {
         if event.papers == nil {
             ScrollView {
                 Text(event.details ?? "")
+                    .padding()
             }
         } else {
             List {
@@ -68,7 +69,9 @@ struct EventView: View {
                     } label: {
                         VStack(alignment: .leading) {
                             Text(paper.title ?? "")
+                                .font(.headline)
                             Text(paper.author ?? "")
+                                .font(.subheadline)
                         }
                     }
                     

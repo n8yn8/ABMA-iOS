@@ -15,9 +15,12 @@ struct EventDateView: View {
         HStack {
             //TODO: UTC time
             Text(event.startDate?.dayOfTheWeek().uppercased() ?? "")
+                .font(.title3)
             Text(event.startDate?.dateOfTheMonth() ?? "")
-            
+                .font(.title)
+            Spacer()
         }
+        .foregroundColor(Color.white)
         .frame(maxWidth: .infinity)
         .padding()
         .background { Color.gray }
@@ -25,5 +28,14 @@ struct EventDateView: View {
 }
 
 //#Preview {
-//    EventDateView()
+//    EventDateView(event: Event())
 //}
+//
+//struct EventSampleData {
+//    static let evemt = {
+//        let event = Event()
+//        event.startDate = Date()
+//        return event
+//    }
+//}
+

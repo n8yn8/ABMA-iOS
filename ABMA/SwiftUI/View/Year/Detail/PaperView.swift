@@ -53,6 +53,7 @@ struct PaperView: View {
         
         ScrollView {
             Text(paper.abstract ?? "")
+                .padding()
         }
     }
 }

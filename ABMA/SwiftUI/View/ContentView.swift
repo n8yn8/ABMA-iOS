@@ -27,6 +27,10 @@ struct ContentView: View {
     
     var body: some View {
         NavigationStack {
+            Image("ABMA-transparent")
+              .resizable()
+              .frame(width: 150, height: 150)
+            
             List {
                 ForEach(Destinations.allCases, id: \.rawValue) { destination in
                     NavigationLink(destination.rawValue, value: destination)
