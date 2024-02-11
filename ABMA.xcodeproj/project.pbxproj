@@ -255,62 +255,6 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
-		4326CFB02B36394B00A630E1 /* SwiftUI */ = {
-			isa = PBXGroup;
-			children = (
-				4326CFB72B363EAB00A630E1 /* Data */,
-				4326CFB22B363AF900A630E1 /* View */,
-				4326CFAE2B36392700A630E1 /* ABMAApp.swift */,
-			);
-			path = SwiftUI;
-			sourceTree = "<group>";
-		};
-		4326CFB22B363AF900A630E1 /* View */ = {
-			isa = PBXGroup;
-			children = (
-				43FE0D8E2B59C3370031A062 /* Components */,
-				4326CFBA2B3CC1AB00A630E1 /* Year */,
-				4326CFB32B363B1000A630E1 /* ContentView.swift */,
-			);
-			path = View;
-			sourceTree = "<group>";
-		};
-		4326CFB72B363EAB00A630E1 /* Data */ = {
-			isa = PBXGroup;
-			children = (
-				43CF2FAB2B785C7900658C9C /* Entities */,
-				43A436071FA767EB00754298 /* DbManager.swift */,
-				4326CFB82B363F2B00A630E1 /* Persistence.swift */,
-				43CF2F1C2B72CFC900658C9C /* DateExtensions.swift */,
-				43FA2A121E5900B700BAE929 /* Utils.swift */,
-			);
-			path = Data;
-			sourceTree = "<group>";
-		};
-		4326CFBA2B3CC1AB00A630E1 /* Year */ = {
-			isa = PBXGroup;
-			children = (
-				4326CFC42B4A188F00A630E1 /* Detail */,
-				4326CFC72B4A1C7600A630E1 /* ContactView.swift */,
-				4326CFB52B363E4400A630E1 /* GeneralView.swift */,
-				4326CFC22B474FE100A630E1 /* MapsView.swift */,
-				43FE0D8C2B55FCDB0031A062 /* NotesView.swift */,
-				4326CFBD2B3E145200A630E1 /* SponsorsView.swift */,
-				4326CFC92B4B570500A630E1 /* ScheduleView.swift */,
-			);
-			path = Year;
-			sourceTree = "<group>";
-		};
-		4326CFC42B4A188F00A630E1 /* Detail */ = {
-			isa = PBXGroup;
-			children = (
-				4326CFC52B4A18A700A630E1 /* MapView.swift */,
-				43FE0D2D2B54A6140031A062 /* EventView.swift */,
-				43CF2F142B704FC800658C9C /* PaperView.swift */,
-			);
-			path = Detail;
-			sourceTree = "<group>";
-		};
 		4338BB9418F26F51002683EF = {
 			isa = PBXGroup;
 			children = (
@@ -347,7 +291,9 @@
 		4338BBA618F26F53002683EF /* ABMA */ = {
 			isa = PBXGroup;
 			children = (
-				4326CFB02B36394B00A630E1 /* SwiftUI */,
+				43EB118F2B7860E200D29B93 /* View */,
+				43EB118D2B78601400D29B93 /* Data */,
+				4326CFAE2B36392700A630E1 /* ABMAApp.swift */,
 				43E0AA5E242848980009DE39 /* GoogleService-Info.plist */,
 				43732BD11E70501A00A85B63 /* ABMA.entitlements */,
 				4338BBB818F26F53002683EF /* Images.xcassets */,
@@ -427,7 +373,19 @@
 			path = network;
 			sourceTree = "<group>";
 		};
-		43CF2FAB2B785C7900658C9C /* Entities */ = {
+		43EB118D2B78601400D29B93 /* Data */ = {
+			isa = PBXGroup;
+			children = (
+				43EB118E2B78606C00D29B93 /* Entities */,
+				4326CFB82B363F2B00A630E1 /* Persistence.swift */,
+				43A436071FA767EB00754298 /* DbManager.swift */,
+				43CF2F1C2B72CFC900658C9C /* DateExtensions.swift */,
+				43FA2A121E5900B700BAE929 /* Utils.swift */,
+			);
+			path = Data;
+			sourceTree = "<group>";
+		};
+		43EB118E2B78606C00D29B93 /* Entities */ = {
 			isa = PBXGroup;
 			children = (
 				43732BCB1E6E660E00A85B63 /* Year+CoreDataClass.h */,
@@ -466,7 +424,41 @@
 			path = Entities;
 			sourceTree = "<group>";
 		};
-		43FE0D8E2B59C3370031A062 /* Components */ = {
+		43EB118F2B7860E200D29B93 /* View */ = {
+			isa = PBXGroup;
+			children = (
+				43EB11922B78612800D29B93 /* Components */,
+				43EB11902B7860F800D29B93 /* Year */,
+				4326CFB32B363B1000A630E1 /* ContentView.swift */,
+			);
+			path = View;
+			sourceTree = "<group>";
+		};
+		43EB11902B7860F800D29B93 /* Year */ = {
+			isa = PBXGroup;
+			children = (
+				43EB11912B78610600D29B93 /* Detail */,
+				4326CFC72B4A1C7600A630E1 /* ContactView.swift */,
+				4326CFB52B363E4400A630E1 /* GeneralView.swift */,
+				4326CFC22B474FE100A630E1 /* MapsView.swift */,
+				43FE0D8C2B55FCDB0031A062 /* NotesView.swift */,
+				4326CFBD2B3E145200A630E1 /* SponsorsView.swift */,
+				4326CFC92B4B570500A630E1 /* ScheduleView.swift */,
+			);
+			path = Year;
+			sourceTree = "<group>";
+		};
+		43EB11912B78610600D29B93 /* Detail */ = {
+			isa = PBXGroup;
+			children = (
+				4326CFC52B4A18A700A630E1 /* MapView.swift */,
+				43FE0D2D2B54A6140031A062 /* EventView.swift */,
+				43CF2F142B704FC800658C9C /* PaperView.swift */,
+			);
+			path = Detail;
+			sourceTree = "<group>";
+		};
+		43EB11922B78612800D29B93 /* Components */ = {
 			isa = PBXGroup;
 			children = (
 				4326CFBB2B3E130100A630E1 /* BannerView.swift */,
