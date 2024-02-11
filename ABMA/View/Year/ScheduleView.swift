@@ -37,7 +37,8 @@ struct ScheduleView: View {
             Spacer()
             
             //TODO: UTC time
-            Text(selectedDay?.date?.formatted(date: .abbreviated, time: .omitted) ?? "")
+            let date = selectedDay?.date ?? Date()
+            Text(date.formatted(date: .abbreviated, time: .omitted))
                 .font(.title)
                 .foregroundColor(Color.white)
             
@@ -83,6 +84,9 @@ struct ScheduleView: View {
                 }
                 
             }
+        }
+        .refreshable {
+            Utils.load(viewContext: viewContext)
         }
     }
 }

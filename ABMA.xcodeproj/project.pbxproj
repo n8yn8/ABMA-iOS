@@ -65,6 +65,7 @@
 		43535F172B795C50009645F8 /* Survey+CoreDataProperties.swift in Sources */ = {isa = PBXBuildFile; fileRef = 43535F072B795C50009645F8 /* Survey+CoreDataProperties.swift */; };
 		43535F182B795C50009645F8 /* Paper+CoreDataClass.swift in Sources */ = {isa = PBXBuildFile; fileRef = 43535F082B795C50009645F8 /* Paper+CoreDataClass.swift */; };
 		43535F192B795C50009645F8 /* Paper+CoreDataProperties.swift in Sources */ = {isa = PBXBuildFile; fileRef = 43535F092B795C50009645F8 /* Paper+CoreDataProperties.swift */; };
+		43535F1B2B79624A009645F8 /* FirebaseMessaging in Frameworks */ = {isa = PBXBuildFile; productRef = 43535F1A2B79624A009645F8 /* FirebaseMessaging */; };
 		435EEE6E1E3D3A4200C9CF84 /* NewYearsViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 435EEE6D1E3D3A4200C9CF84 /* NewYearsViewController.swift */; };
 		4364687A2070676D0048685F /* Maps.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 436468792070676D0048685F /* Maps.storyboard */; };
 		4364687C207068BC0048685F /* BMap.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4364687B207068BC0048685F /* BMap.swift */; };
@@ -82,7 +83,7 @@
 		439E10BD2439306400F57775 /* RxSwift in Frameworks */ = {isa = PBXBuildFile; productRef = 439E10BC2439306400F57775 /* RxSwift */; };
 		439E10BF243955F600F57775 /* YearsModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 439E10BE243955F600F57775 /* YearsModel.swift */; };
 		439E10C12439574100F57775 /* RxCocoa in Frameworks */ = {isa = PBXBuildFile; productRef = 439E10C02439574100F57775 /* RxCocoa */; };
-		43A436081FA767EB00754298 /* DbManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 43A436071FA767EB00754298 /* DbManager.swift */; };
+		43A436081FA767EB00754298 /* BackendlessManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 43A436071FA767EB00754298 /* BackendlessManager.swift */; };
 		43A4360A1FA7694600754298 /* DbManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 43A436091FA7694600754298 /* DbManager.swift */; };
 		43A436141FA8D27200754298 /* BYear.swift in Sources */ = {isa = PBXBuildFile; fileRef = 435EEE671E3D329F00C9CF84 /* BYear.swift */; };
 		43A436151FAB589F00754298 /* BYear.swift in Sources */ = {isa = PBXBuildFile; fileRef = 435EEE671E3D329F00C9CF84 /* BYear.swift */; };
@@ -183,7 +184,7 @@
 		437F116E20562A49006EBBC0 /* ABMA 4.xcdatamodel */ = {isa = PBXFileReference; lastKnownFileType = wrapper.xcdatamodel; path = "ABMA 4.xcdatamodel"; sourceTree = "<group>"; };
 		438D599D1ABA97D3004FF7ED /* Launch Screen.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = "Launch Screen.xib"; sourceTree = "<group>"; };
 		439E10BE243955F600F57775 /* YearsModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = YearsModel.swift; sourceTree = "<group>"; };
-		43A436071FA767EB00754298 /* DbManager.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = DbManager.swift; sourceTree = "<group>"; };
+		43A436071FA767EB00754298 /* BackendlessManager.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = BackendlessManager.swift; sourceTree = "<group>"; };
 		43A436091FA7694600754298 /* DbManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DbManager.swift; sourceTree = "<group>"; };
 		43AAAE291AAAA484002C424A /* CoreData.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CoreData.framework; path = System/Library/Frameworks/CoreData.framework; sourceTree = SDKROOT; };
 		43AAAE2C1AAAA4D1002C424A /* ABMA.xcdatamodel */ = {isa = PBXFileReference; lastKnownFileType = wrapper.xcdatamodel; path = ABMA.xcdatamodel; sourceTree = "<group>"; };
@@ -209,6 +210,7 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				43535F1B2B79624A009645F8 /* FirebaseMessaging in Frameworks */,
 				436BA4D021D0352B007B6B36 /* UserNotifications.framework in Frameworks */,
 				43AAAE2A1AAAA484002C424A /* CoreData.framework in Frameworks */,
 				4311F515242D48B3002871BC /* SDWebImage in Frameworks */,
@@ -360,7 +362,7 @@
 			children = (
 				43EB118E2B78606C00D29B93 /* Entities */,
 				4326CFB82B363F2B00A630E1 /* Persistence.swift */,
-				43A436071FA767EB00754298 /* DbManager.swift */,
+				43A436071FA767EB00754298 /* BackendlessManager.swift */,
 				43CF2F1C2B72CFC900658C9C /* DateExtensions.swift */,
 				43FA2A121E5900B700BAE929 /* Utils.swift */,
 			);
@@ -460,6 +462,7 @@
 				4393DC1C2732CEBA0021BD25 /* Backendless */,
 				4326CF702B362C6C00A630E1 /* FirebaseAnalyticsSwift */,
 				4326CFC02B3F41F500A630E1 /* SDWebImageSwiftUI */,
+				43535F1A2B79624A009645F8 /* FirebaseMessaging */,
 			);
 			productName = ABMA;
 			productReference = 4338BB9D18F26F52002683EF /* ABMA.app */;
@@ -660,7 +663,7 @@
 				4326CFC82B4A1C7600A630E1 /* ContactView.swift in Sources */,
 				43535F192B795C50009645F8 /* Paper+CoreDataProperties.swift in Sources */,
 				4326CFC62B4A18A700A630E1 /* MapView.swift in Sources */,
-				43A436081FA767EB00754298 /* DbManager.swift in Sources */,
+				43A436081FA767EB00754298 /* BackendlessManager.swift in Sources */,
 				43535F0A2B795C50009645F8 /* Map+CoreDataClass.swift in Sources */,
 				43535F0B2B795C50009645F8 /* Map+CoreDataProperties.swift in Sources */,
 				4326CFB42B363B1000A630E1 /* ContentView.swift in Sources */,
@@ -1073,6 +1076,11 @@
 			isa = XCSwiftPackageProductDependency;
 			package = 434DF3C72715CF2D00258F08 /* XCRemoteSwiftPackageReference "firebase-ios-sdk" */;
 			productName = FirebaseCrashlytics;
+		};
+		43535F1A2B79624A009645F8 /* FirebaseMessaging */ = {
+			isa = XCSwiftPackageProductDependency;
+			package = 434DF3C72715CF2D00258F08 /* XCRemoteSwiftPackageReference "firebase-ios-sdk" */;
+			productName = FirebaseMessaging;
 		};
 		4393DC1A2732CDDD0021BD25 /* Backendless */ = {
 			isa = XCSwiftPackageProductDependency;

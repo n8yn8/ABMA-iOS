@@ -18,7 +18,7 @@ struct ContentView: View {
     
     @State private var isInitialView: Bool = true
     
-    @StateObject private var dbManager = DbManager.sharedInstance
+    @StateObject private var dbManager = BackendlessManager.sharedInstance
     
     private enum Destinations: String, CaseIterable {
         case Welcome, Schedule, Notes, Info, Maps, Sponsors, Contact
@@ -37,7 +37,7 @@ struct ContentView: View {
                 
                 if dbManager.isUserLoggedIn {
                     Button("Logout") {
-                        DbManager.sharedInstance.logout { error in
+                        BackendlessManager.sharedInstance.logout { error in
                             print("Error logging out \(String(describing: error))")
                         }
                     }
@@ -78,6 +78,9 @@ struct ContentView: View {
             }
         }.onAppear {
             isInitialView = true
+            if (items.count == 0) {
+                Utils.load(viewContext: viewContext)
+            }
         }
     }
     

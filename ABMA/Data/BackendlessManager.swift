@@ -9,12 +9,11 @@
 import Foundation
 import SwiftSDK
 
-class DbManager: NSObject, ObservableObject {
+class BackendlessManager: NSObject, ObservableObject {
     
     @Published var isUserLoggedIn: Bool = false
     
-    @objc
-    static let sharedInstance = DbManager()
+    static let sharedInstance = BackendlessManager()
 
     let APP_ID = "7D06F708-89FA-DD86-FF95-C51A10425A00" //Prod
 //    let APP_ID = "76269ABA-AF2E-5901-FF61-99AB83F57700" //Test
@@ -31,7 +30,6 @@ class DbManager: NSObject, ObservableObject {
         isUserLoggedIn = backendless.userService.currentUser != nil
     }
     
-    @objc
     func registerUser(email: String, password: String, callback: @escaping (_ errorString: String?) -> Void) {
         let user: BackendlessUser = BackendlessUser()
         user.email = email
@@ -50,7 +48,6 @@ class DbManager: NSObject, ObservableObject {
     
     }
     
-    @objc
     func login(email: String, password: String, callback: @escaping (_ errorString: String?) -> Void) {
         backendless.userService.login(identity: email, password: password, responseHandler: { (user) in
             print("User logged in")
@@ -66,7 +63,6 @@ class DbManager: NSObject, ObservableObject {
         }
     }
     
-    @objc
     func userPasswordRecovery(email: String, callback: @escaping (_ errorString: String?) -> Void) {
         backendless.userService.restorePassword(identity: email, responseHandler: {
             callback("Check your email to recover you password.")
@@ -80,7 +76,6 @@ class DbManager: NSObject, ObservableObject {
         }
     }
     
-    @objc
     func logout(callback: @escaping (_ errorString: String?) -> Void) {
         backendless.userService.logout(responseHandler: {
             self.isUserLoggedIn = false
@@ -90,12 +85,10 @@ class DbManager: NSObject, ObservableObject {
         }
     }
     
-    @objc
     func getCurrentUser() -> BackendlessUser? {
         return backendless.userService.currentUser
     }
 
-    @objc
     func getPublishedYears(since: Date?, callback: @escaping (_ years: [BYear]?, _ errorString: String?) -> Void) {
         var query = "publishedAt is not null"
         if let s = since {
@@ -121,7 +114,6 @@ class DbManager: NSObject, ObservableObject {
         })
     }
     
-    @objc
     func getSponsors(yearId: String, callback: @escaping (_ events: [BSponsor]?, _ errorString: String?) -> Void) {
         let loadRelationsQueryBuilder = LoadRelationsQueryBuilder(entityClass: BSponsor.self, relationName: "sponsors")
         loadRelationsQueryBuilder.pageSize = 100
@@ -138,7 +130,6 @@ class DbManager: NSObject, ObservableObject {
         })
     }
     
-    @objc
     func getEvents(yearId: String, callback: @escaping (_ events: [BEvent]?, _ errorString: String?) -> Void) {
         let loadRelationsQueryBuilder = LoadRelationsQueryBuilder(entityClass: BEvent.self, relationName: "events")
         loadRelationsQueryBuilder.pageSize = 100
@@ -155,7 +146,6 @@ class DbManager: NSObject, ObservableObject {
         })
     }
     
-    @objc
     func getPapers(eventId: String, callback: @escaping (_ papers: [BPaper]?, _ errorString: String?) -> Void) {
         let loadRelationsQueryBuilder = LoadRelationsQueryBuilder(entityClass: BPaper.self, relationName: "papers")
         loadRelationsQueryBuilder.pageSize = 100
@@ -194,7 +184,6 @@ class DbManager: NSObject, ObservableObject {
         }
     }
     
-    @objc
     func getNotes(callback: @escaping (_ years: [BNote]?, _ errorString: String?) -> Void) {
         guard let user = getCurrentUser() else {
             callback(nil, "User not logged in")
@@ -213,7 +202,6 @@ class DbManager: NSObject, ObservableObject {
         })
     }
     
-    @objc
     func registerForPush(tokenData: Data) {
         backendless.messaging.registerDevice(deviceToken: tokenData, responseHandler: { (response) in
             print("registerForPush response \(String(describing: response))")

@@ -49,14 +49,14 @@ struct LoginView: View {
             }
             Button("New User") {
                 isWorking.toggle()
-                DbManager.sharedInstance.registerUser(email: email, password: password) { errorString in
+                BackendlessManager.sharedInstance.registerUser(email: email, password: password) { errorString in
                     isWorking.toggle()
                     error = errorString
                 }
             }
             Button("Existing User") {
                 isWorking.toggle()
-                DbManager.sharedInstance.login(email: email, password: password) { errorString in
+                BackendlessManager.sharedInstance.login(email: email, password: password) { errorString in
                     isWorking.toggle()
                     error = errorString
                 }
