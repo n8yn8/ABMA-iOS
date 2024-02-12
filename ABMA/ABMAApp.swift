@@ -45,7 +45,7 @@ class AppDelegate: NSObject, UIApplicationDelegate, MessagingDelegate, UNUserNot
         didReceiveRemoteNotification userInfo: [AnyHashable : Any]
     ) async -> UIBackgroundFetchResult {
         //TODO: verify
-        Utils.load(viewContext: PersistenceController.shared.container.viewContext)
+        await Utils.load(viewContext: PersistenceController.shared.container.viewContext)
         return .newData
     }
     

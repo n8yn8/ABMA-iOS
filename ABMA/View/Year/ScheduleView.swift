@@ -86,7 +86,7 @@ struct ScheduleView: View {
             }
         }
         .refreshable {
-            Utils.load(viewContext: viewContext)
+            await Utils.load(viewContext: viewContext)
         }
     }
 }

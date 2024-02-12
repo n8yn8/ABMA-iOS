@@ -37,9 +37,14 @@ struct ContentView: View {
                 
                 if dbManager.isUserLoggedIn {
                     Button("Logout") {
-                        BackendlessManager.sharedInstance.logout { error in
-                            print("Error logging out \(String(describing: error))")
+                        Task {
+                            do {
+                                try await BackendlessManager.sharedInstance.logout()
+                            } catch {
+                                print("Error logging out \(String(describing: error))")
+                            }
                         }
+                        
                     }
                 }
             }
@@ -78,8 +83,10 @@ struct ContentView: View {
             }
         }.onAppear {
             isInitialView = true
+        }
+        .task {
             if (items.count == 0) {
-                Utils.load(viewContext: viewContext)
+                await Utils.load(viewContext: viewContext)
             }
         }
     }

@@ -49,16 +49,25 @@ struct LoginView: View {
             }
             Button("New User") {
                 isWorking.toggle()
-                BackendlessManager.sharedInstance.registerUser(email: email, password: password) { errorString in
+                Task {
+                    do {
+                        let _ = try await BackendlessManager.sharedInstance.registerUser(email: email, password: password)
+                    } catch let exception as NSError {
+                        error = exception.localizedDescription
+                    }
                     isWorking.toggle()
-                    error = errorString
                 }
+                
             }
             Button("Existing User") {
                 isWorking.toggle()
-                BackendlessManager.sharedInstance.login(email: email, password: password) { errorString in
+                Task {
+                    do {
+                        let _ = try await BackendlessManager.sharedInstance.login(email: email, password: password)
+                    } catch let exception as NSError {
+                        error = exception.localizedDescription
+                    }
                     isWorking.toggle()
-                    error = errorString
                 }
             }
         }
